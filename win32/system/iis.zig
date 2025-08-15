@@ -948,14 +948,14 @@ pub const IID_IFtpProviderConstruct = &IID_IFtpProviderConstruct_Value;
 pub const IFtpProviderConstruct = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Construct: *const fn(
+        Construct: *const fn (
             self: *const IFtpProviderConstruct,
             configurationEntries: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Construct(self: *const IFtpProviderConstruct, configurationEntries: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn Construct(self: *const IFtpProviderConstruct, configurationEntries: ?*SAFEARRAY) HRESULT {
         return self.vtable.Construct(self, configurationEntries);
     }
 };
@@ -965,7 +965,7 @@ pub const IID_IFtpAuthenticationProvider = &IID_IFtpAuthenticationProvider_Value
 pub const IFtpAuthenticationProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AuthenticateUser: *const fn(
+        AuthenticateUser: *const fn (
             self: *const IFtpAuthenticationProvider,
             pszSessionId: ?[*:0]const u16,
             pszSiteName: ?[*:0]const u16,
@@ -973,11 +973,11 @@ pub const IFtpAuthenticationProvider = extern union {
             pszPassword: ?[*:0]const u16,
             ppszCanonicalUserName: ?*?PWSTR,
             pfAuthenticated: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AuthenticateUser(self: *const IFtpAuthenticationProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszPassword: ?[*:0]const u16, ppszCanonicalUserName: ?*?PWSTR, pfAuthenticated: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn AuthenticateUser(self: *const IFtpAuthenticationProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszPassword: ?[*:0]const u16, ppszCanonicalUserName: ?*?PWSTR, pfAuthenticated: ?*BOOL) HRESULT {
         return self.vtable.AuthenticateUser(self, pszSessionId, pszSiteName, pszUserName, pszPassword, ppszCanonicalUserName, pfAuthenticated);
     }
 };
@@ -987,25 +987,25 @@ pub const IID_AsyncIFtpAuthenticationProvider = &IID_AsyncIFtpAuthenticationProv
 pub const AsyncIFtpAuthenticationProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Begin_AuthenticateUser: *const fn(
+        Begin_AuthenticateUser: *const fn (
             self: *const AsyncIFtpAuthenticationProvider,
             pszSessionId: ?[*:0]const u16,
             pszSiteName: ?[*:0]const u16,
             pszUserName: ?[*:0]const u16,
             pszPassword: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Finish_AuthenticateUser: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Finish_AuthenticateUser: *const fn (
             self: *const AsyncIFtpAuthenticationProvider,
             ppszCanonicalUserName: ?*?PWSTR,
             pfAuthenticated: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Begin_AuthenticateUser(self: *const AsyncIFtpAuthenticationProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszPassword: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Begin_AuthenticateUser(self: *const AsyncIFtpAuthenticationProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszPassword: ?[*:0]const u16) HRESULT {
         return self.vtable.Begin_AuthenticateUser(self, pszSessionId, pszSiteName, pszUserName, pszPassword);
     }
-    pub fn Finish_AuthenticateUser(self: *const AsyncIFtpAuthenticationProvider, ppszCanonicalUserName: ?*?PWSTR, pfAuthenticated: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn Finish_AuthenticateUser(self: *const AsyncIFtpAuthenticationProvider, ppszCanonicalUserName: ?*?PWSTR, pfAuthenticated: ?*BOOL) HRESULT {
         return self.vtable.Finish_AuthenticateUser(self, ppszCanonicalUserName, pfAuthenticated);
     }
 };
@@ -1015,18 +1015,18 @@ pub const IID_IFtpRoleProvider = &IID_IFtpRoleProvider_Value;
 pub const IFtpRoleProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        IsUserInRole: *const fn(
+        IsUserInRole: *const fn (
             self: *const IFtpRoleProvider,
             pszSessionId: ?[*:0]const u16,
             pszSiteName: ?[*:0]const u16,
             pszUserName: ?[*:0]const u16,
             pszRole: ?[*:0]const u16,
             pfIsInRole: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn IsUserInRole(self: *const IFtpRoleProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszRole: ?[*:0]const u16, pfIsInRole: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn IsUserInRole(self: *const IFtpRoleProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszRole: ?[*:0]const u16, pfIsInRole: ?*BOOL) HRESULT {
         return self.vtable.IsUserInRole(self, pszSessionId, pszSiteName, pszUserName, pszRole, pfIsInRole);
     }
 };
@@ -1036,24 +1036,24 @@ pub const IID_AsyncIFtpRoleProvider = &IID_AsyncIFtpRoleProvider_Value;
 pub const AsyncIFtpRoleProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Begin_IsUserInRole: *const fn(
+        Begin_IsUserInRole: *const fn (
             self: *const AsyncIFtpRoleProvider,
             pszSessionId: ?[*:0]const u16,
             pszSiteName: ?[*:0]const u16,
             pszUserName: ?[*:0]const u16,
             pszRole: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Finish_IsUserInRole: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Finish_IsUserInRole: *const fn (
             self: *const AsyncIFtpRoleProvider,
             pfIsInRole: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Begin_IsUserInRole(self: *const AsyncIFtpRoleProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszRole: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Begin_IsUserInRole(self: *const AsyncIFtpRoleProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszRole: ?[*:0]const u16) HRESULT {
         return self.vtable.Begin_IsUserInRole(self, pszSessionId, pszSiteName, pszUserName, pszRole);
     }
-    pub fn Finish_IsUserInRole(self: *const AsyncIFtpRoleProvider, pfIsInRole: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn Finish_IsUserInRole(self: *const AsyncIFtpRoleProvider, pfIsInRole: ?*BOOL) HRESULT {
         return self.vtable.Finish_IsUserInRole(self, pfIsInRole);
     }
 };
@@ -1063,17 +1063,17 @@ pub const IID_IFtpHomeDirectoryProvider = &IID_IFtpHomeDirectoryProvider_Value;
 pub const IFtpHomeDirectoryProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetUserHomeDirectoryData: *const fn(
+        GetUserHomeDirectoryData: *const fn (
             self: *const IFtpHomeDirectoryProvider,
             pszSessionId: ?[*:0]const u16,
             pszSiteName: ?[*:0]const u16,
             pszUserName: ?[*:0]const u16,
             ppszHomeDirectoryData: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetUserHomeDirectoryData(self: *const IFtpHomeDirectoryProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, ppszHomeDirectoryData: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetUserHomeDirectoryData(self: *const IFtpHomeDirectoryProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, ppszHomeDirectoryData: ?*?PWSTR) HRESULT {
         return self.vtable.GetUserHomeDirectoryData(self, pszSessionId, pszSiteName, pszUserName, ppszHomeDirectoryData);
     }
 };
@@ -1083,23 +1083,23 @@ pub const IID_AsyncIFtpHomeDirectoryProvider = &IID_AsyncIFtpHomeDirectoryProvid
 pub const AsyncIFtpHomeDirectoryProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Begin_GetUserHomeDirectoryData: *const fn(
+        Begin_GetUserHomeDirectoryData: *const fn (
             self: *const AsyncIFtpHomeDirectoryProvider,
             pszSessionId: ?[*:0]const u16,
             pszSiteName: ?[*:0]const u16,
             pszUserName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Finish_GetUserHomeDirectoryData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Finish_GetUserHomeDirectoryData: *const fn (
             self: *const AsyncIFtpHomeDirectoryProvider,
             ppszHomeDirectoryData: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Begin_GetUserHomeDirectoryData(self: *const AsyncIFtpHomeDirectoryProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Begin_GetUserHomeDirectoryData(self: *const AsyncIFtpHomeDirectoryProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszUserName: ?[*:0]const u16) HRESULT {
         return self.vtable.Begin_GetUserHomeDirectoryData(self, pszSessionId, pszSiteName, pszUserName);
     }
-    pub fn Finish_GetUserHomeDirectoryData(self: *const AsyncIFtpHomeDirectoryProvider, ppszHomeDirectoryData: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn Finish_GetUserHomeDirectoryData(self: *const AsyncIFtpHomeDirectoryProvider, ppszHomeDirectoryData: ?*?PWSTR) HRESULT {
         return self.vtable.Finish_GetUserHomeDirectoryData(self, ppszHomeDirectoryData);
     }
 };
@@ -1130,14 +1130,14 @@ pub const IID_IFtpLogProvider = &IID_IFtpLogProvider_Value;
 pub const IFtpLogProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Log: *const fn(
+        Log: *const fn (
             self: *const IFtpLogProvider,
             pLoggingParameters: ?*const LOGGING_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Log(self: *const IFtpLogProvider, pLoggingParameters: ?*const LOGGING_PARAMETERS) callconv(.Inline) HRESULT {
+    pub inline fn Log(self: *const IFtpLogProvider, pLoggingParameters: ?*const LOGGING_PARAMETERS) HRESULT {
         return self.vtable.Log(self, pLoggingParameters);
     }
 };
@@ -1147,20 +1147,20 @@ pub const IID_AsyncIFtpLogProvider = &IID_AsyncIFtpLogProvider_Value;
 pub const AsyncIFtpLogProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Begin_Log: *const fn(
+        Begin_Log: *const fn (
             self: *const AsyncIFtpLogProvider,
             pLoggingParameters: ?*const LOGGING_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Finish_Log: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Finish_Log: *const fn (
             self: *const AsyncIFtpLogProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Begin_Log(self: *const AsyncIFtpLogProvider, pLoggingParameters: ?*const LOGGING_PARAMETERS) callconv(.Inline) HRESULT {
+    pub inline fn Begin_Log(self: *const AsyncIFtpLogProvider, pLoggingParameters: ?*const LOGGING_PARAMETERS) HRESULT {
         return self.vtable.Begin_Log(self, pLoggingParameters);
     }
-    pub fn Finish_Log(self: *const AsyncIFtpLogProvider) callconv(.Inline) HRESULT {
+    pub inline fn Finish_Log(self: *const AsyncIFtpLogProvider) HRESULT {
         return self.vtable.Finish_Log(self);
     }
 };
@@ -1181,18 +1181,18 @@ pub const IID_IFtpAuthorizationProvider = &IID_IFtpAuthorizationProvider_Value;
 pub const IFtpAuthorizationProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetUserAccessPermission: *const fn(
+        GetUserAccessPermission: *const fn (
             self: *const IFtpAuthorizationProvider,
             pszSessionId: ?[*:0]const u16,
             pszSiteName: ?[*:0]const u16,
             pszVirtualPath: ?[*:0]const u16,
             pszUserName: ?[*:0]const u16,
             pFtpAccess: ?*FTP_ACCESS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetUserAccessPermission(self: *const IFtpAuthorizationProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszVirtualPath: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pFtpAccess: ?*FTP_ACCESS) callconv(.Inline) HRESULT {
+    pub inline fn GetUserAccessPermission(self: *const IFtpAuthorizationProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszVirtualPath: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pFtpAccess: ?*FTP_ACCESS) HRESULT {
         return self.vtable.GetUserAccessPermission(self, pszSessionId, pszSiteName, pszVirtualPath, pszUserName, pFtpAccess);
     }
 };
@@ -1202,24 +1202,24 @@ pub const IID_AsyncIFtpAuthorizationProvider = &IID_AsyncIFtpAuthorizationProvid
 pub const AsyncIFtpAuthorizationProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Begin_GetUserAccessPermission: *const fn(
+        Begin_GetUserAccessPermission: *const fn (
             self: *const AsyncIFtpAuthorizationProvider,
             pszSessionId: ?[*:0]const u16,
             pszSiteName: ?[*:0]const u16,
             pszVirtualPath: ?[*:0]const u16,
             pszUserName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Finish_GetUserAccessPermission: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Finish_GetUserAccessPermission: *const fn (
             self: *const AsyncIFtpAuthorizationProvider,
             pFtpAccess: ?*FTP_ACCESS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Begin_GetUserAccessPermission(self: *const AsyncIFtpAuthorizationProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszVirtualPath: ?[*:0]const u16, pszUserName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Begin_GetUserAccessPermission(self: *const AsyncIFtpAuthorizationProvider, pszSessionId: ?[*:0]const u16, pszSiteName: ?[*:0]const u16, pszVirtualPath: ?[*:0]const u16, pszUserName: ?[*:0]const u16) HRESULT {
         return self.vtable.Begin_GetUserAccessPermission(self, pszSessionId, pszSiteName, pszVirtualPath, pszUserName);
     }
-    pub fn Finish_GetUserAccessPermission(self: *const AsyncIFtpAuthorizationProvider, pFtpAccess: ?*FTP_ACCESS) callconv(.Inline) HRESULT {
+    pub inline fn Finish_GetUserAccessPermission(self: *const AsyncIFtpAuthorizationProvider, pFtpAccess: ?*FTP_ACCESS) HRESULT {
         return self.vtable.Finish_GetUserAccessPermission(self, pFtpAccess);
     }
 };
@@ -1256,15 +1256,15 @@ pub const IID_IFtpPreprocessProvider = &IID_IFtpPreprocessProvider_Value;
 pub const IFtpPreprocessProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandlePreprocess: *const fn(
+        HandlePreprocess: *const fn (
             self: *const IFtpPreprocessProvider,
             pPreProcessParameters: ?*const PRE_PROCESS_PARAMETERS,
             pFtpProcessStatus: ?*FTP_PROCESS_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandlePreprocess(self: *const IFtpPreprocessProvider, pPreProcessParameters: ?*const PRE_PROCESS_PARAMETERS, pFtpProcessStatus: ?*FTP_PROCESS_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn HandlePreprocess(self: *const IFtpPreprocessProvider, pPreProcessParameters: ?*const PRE_PROCESS_PARAMETERS, pFtpProcessStatus: ?*FTP_PROCESS_STATUS) HRESULT {
         return self.vtable.HandlePreprocess(self, pPreProcessParameters, pFtpProcessStatus);
     }
 };
@@ -1274,21 +1274,21 @@ pub const IID_AsyncIFtpPreprocessProvider = &IID_AsyncIFtpPreprocessProvider_Val
 pub const AsyncIFtpPreprocessProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Begin_HandlePreprocess: *const fn(
+        Begin_HandlePreprocess: *const fn (
             self: *const AsyncIFtpPreprocessProvider,
             pPreProcessParameters: ?*const PRE_PROCESS_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Finish_HandlePreprocess: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Finish_HandlePreprocess: *const fn (
             self: *const AsyncIFtpPreprocessProvider,
             pFtpProcessStatus: ?*FTP_PROCESS_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Begin_HandlePreprocess(self: *const AsyncIFtpPreprocessProvider, pPreProcessParameters: ?*const PRE_PROCESS_PARAMETERS) callconv(.Inline) HRESULT {
+    pub inline fn Begin_HandlePreprocess(self: *const AsyncIFtpPreprocessProvider, pPreProcessParameters: ?*const PRE_PROCESS_PARAMETERS) HRESULT {
         return self.vtable.Begin_HandlePreprocess(self, pPreProcessParameters);
     }
-    pub fn Finish_HandlePreprocess(self: *const AsyncIFtpPreprocessProvider, pFtpProcessStatus: ?*FTP_PROCESS_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn Finish_HandlePreprocess(self: *const AsyncIFtpPreprocessProvider, pFtpProcessStatus: ?*FTP_PROCESS_STATUS) HRESULT {
         return self.vtable.Finish_HandlePreprocess(self, pFtpProcessStatus);
     }
 };
@@ -1321,15 +1321,15 @@ pub const IID_IFtpPostprocessProvider = &IID_IFtpPostprocessProvider_Value;
 pub const IFtpPostprocessProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandlePostprocess: *const fn(
+        HandlePostprocess: *const fn (
             self: *const IFtpPostprocessProvider,
             pPostProcessParameters: ?*const POST_PROCESS_PARAMETERS,
             pFtpProcessStatus: ?*FTP_PROCESS_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandlePostprocess(self: *const IFtpPostprocessProvider, pPostProcessParameters: ?*const POST_PROCESS_PARAMETERS, pFtpProcessStatus: ?*FTP_PROCESS_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn HandlePostprocess(self: *const IFtpPostprocessProvider, pPostProcessParameters: ?*const POST_PROCESS_PARAMETERS, pFtpProcessStatus: ?*FTP_PROCESS_STATUS) HRESULT {
         return self.vtable.HandlePostprocess(self, pPostProcessParameters, pFtpProcessStatus);
     }
 };
@@ -1339,21 +1339,21 @@ pub const IID_AsyncIFtpPostprocessProvider = &IID_AsyncIFtpPostprocessProvider_V
 pub const AsyncIFtpPostprocessProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Begin_HandlePostprocess: *const fn(
+        Begin_HandlePostprocess: *const fn (
             self: *const AsyncIFtpPostprocessProvider,
             pPostProcessParameters: ?*const POST_PROCESS_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Finish_HandlePostprocess: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Finish_HandlePostprocess: *const fn (
             self: *const AsyncIFtpPostprocessProvider,
             pFtpProcessStatus: ?*FTP_PROCESS_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Begin_HandlePostprocess(self: *const AsyncIFtpPostprocessProvider, pPostProcessParameters: ?*const POST_PROCESS_PARAMETERS) callconv(.Inline) HRESULT {
+    pub inline fn Begin_HandlePostprocess(self: *const AsyncIFtpPostprocessProvider, pPostProcessParameters: ?*const POST_PROCESS_PARAMETERS) HRESULT {
         return self.vtable.Begin_HandlePostprocess(self, pPostProcessParameters);
     }
-    pub fn Finish_HandlePostprocess(self: *const AsyncIFtpPostprocessProvider, pFtpProcessStatus: ?*FTP_PROCESS_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn Finish_HandlePostprocess(self: *const AsyncIFtpPostprocessProvider, pFtpProcessStatus: ?*FTP_PROCESS_STATUS) HRESULT {
         return self.vtable.Finish_HandlePostprocess(self, pFtpProcessStatus);
     }
 };
@@ -1363,27 +1363,27 @@ pub const IID_IADMEXT = &IID_IADMEXT_Value;
 pub const IADMEXT = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IADMEXT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumDcomCLSIDs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumDcomCLSIDs: *const fn (
             self: *const IADMEXT,
             pclsidDcom: ?*Guid,
             dwEnumIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Terminate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Terminate: *const fn (
             self: *const IADMEXT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IADMEXT) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IADMEXT) HRESULT {
         return self.vtable.Initialize(self);
     }
-    pub fn EnumDcomCLSIDs(self: *const IADMEXT, pclsidDcom: ?*Guid, dwEnumIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn EnumDcomCLSIDs(self: *const IADMEXT, pclsidDcom: ?*Guid, dwEnumIndex: u32) HRESULT {
         return self.vtable.EnumDcomCLSIDs(self, pclsidDcom, dwEnumIndex);
     }
-    pub fn Terminate(self: *const IADMEXT) callconv(.Inline) HRESULT {
+    pub inline fn Terminate(self: *const IADMEXT) HRESULT {
         return self.vtable.Terminate(self);
     }
 };
@@ -1455,29 +1455,29 @@ pub const IID_IMSAdminBaseW = &IID_IMSAdminBaseW_Value;
 pub const IMSAdminBaseW = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AddKey: *const fn(
+        AddKey: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteKey: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteChildKeys: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteChildKeys: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumKeys: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumKeys: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             pszMDName: *[256]u16,
             dwMDEnumObjectIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyKey: *const fn (
             self: *const IMSAdminBaseW,
             hMDSourceHandle: u32,
             pszMDSourcePath: ?[*:0]const u16,
@@ -1485,42 +1485,42 @@ pub const IMSAdminBaseW = extern union {
             pszMDDestPath: ?[*:0]const u16,
             bMDOverwriteFlag: BOOL,
             bMDCopyFlag: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RenameKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RenameKey: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             pszMDNewName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetData: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             pmdrMDData: ?*METADATA_RECORD,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetData: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             pmdrMDData: ?*METADATA_RECORD,
             pdwMDRequiredDataLen: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteData: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             dwMDIdentifier: u32,
             dwMDDataType: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumData: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             pmdrMDData: ?*METADATA_RECORD,
             dwMDEnumDataIndex: u32,
             pdwMDRequiredDataLen: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAllData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAllData: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
@@ -1532,15 +1532,15 @@ pub const IMSAdminBaseW = extern union {
             dwMDBufferSize: u32,
             pbMDBuffer: ?*u8,
             pdwMDRequiredBufferSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAllData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteAllData: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             dwMDUserType: u32,
             dwMDDataType: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyData: *const fn (
             self: *const IMSAdminBaseW,
             hMDSourceHandle: u32,
             pszMDSourcePath: ?[*:0]const u16,
@@ -1550,8 +1550,8 @@ pub const IMSAdminBaseW = extern union {
             dwMDUserType: u32,
             dwMDDataType: u32,
             bMDCopyFlag: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDataPaths: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDataPaths: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
@@ -1560,188 +1560,188 @@ pub const IMSAdminBaseW = extern union {
             dwMDBufferSize: u32,
             pszBuffer: [*:0]u16,
             pdwMDRequiredBufferSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OpenKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OpenKey: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             dwMDAccessRequested: u32,
             dwMDTimeOut: u32,
             phMDNewHandle: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CloseKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CloseKey: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ChangePermissions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ChangePermissions: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             dwMDTimeOut: u32,
             dwMDAccessRequested: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SaveData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SaveData: *const fn (
             self: *const IMSAdminBaseW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetHandleInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetHandleInfo: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pmdhiInfo: ?*METADATA_HANDLE_INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSystemChangeNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSystemChangeNumber: *const fn (
             self: *const IMSAdminBaseW,
             pdwSystemChangeNumber: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDataSetNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDataSetNumber: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             pdwMDDataSetNumber: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLastChangeTime: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLastChangeTime: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             pftMDLastChangeTime: ?*FILETIME,
             bLocalTime: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLastChangeTime: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLastChangeTime: *const fn (
             self: *const IMSAdminBaseW,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             pftMDLastChangeTime: ?*FILETIME,
             bLocalTime: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        KeyExchangePhase1: *const fn(
+        ) callconv(.winapi) HRESULT,
+        KeyExchangePhase1: *const fn (
             self: *const IMSAdminBaseW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        KeyExchangePhase2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        KeyExchangePhase2: *const fn (
             self: *const IMSAdminBaseW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Backup: *const fn(
-            self: *const IMSAdminBaseW,
-            pszMDBackupLocation: ?[*:0]const u16,
-            dwMDVersion: u32,
-            dwMDFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Restore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Backup: *const fn (
             self: *const IMSAdminBaseW,
             pszMDBackupLocation: ?[*:0]const u16,
             dwMDVersion: u32,
             dwMDFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumBackups: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Restore: *const fn (
+            self: *const IMSAdminBaseW,
+            pszMDBackupLocation: ?[*:0]const u16,
+            dwMDVersion: u32,
+            dwMDFlags: u32,
+        ) callconv(.winapi) HRESULT,
+        EnumBackups: *const fn (
             self: *const IMSAdminBaseW,
             pszMDBackupLocation: *[256]u16,
             pdwMDVersion: ?*u32,
             pftMDBackupTime: ?*FILETIME,
             dwMDEnumIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteBackup: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteBackup: *const fn (
             self: *const IMSAdminBaseW,
             pszMDBackupLocation: ?[*:0]const u16,
             dwMDVersion: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnmarshalInterface: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnmarshalInterface: *const fn (
             self: *const IMSAdminBaseW,
             piadmbwInterface: ?*?*IMSAdminBaseW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetServerGuid: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetServerGuid: *const fn (
             self: *const IMSAdminBaseW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AddKey(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn AddKey(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16) HRESULT {
         return self.vtable.AddKey(self, hMDHandle, pszMDPath);
     }
-    pub fn DeleteKey(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn DeleteKey(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16) HRESULT {
         return self.vtable.DeleteKey(self, hMDHandle, pszMDPath);
     }
-    pub fn DeleteChildKeys(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn DeleteChildKeys(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16) HRESULT {
         return self.vtable.DeleteChildKeys(self, hMDHandle, pszMDPath);
     }
-    pub fn EnumKeys(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pszMDName: *[256]u16, dwMDEnumObjectIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn EnumKeys(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pszMDName: *[256]u16, dwMDEnumObjectIndex: u32) HRESULT {
         return self.vtable.EnumKeys(self, hMDHandle, pszMDPath, pszMDName, dwMDEnumObjectIndex);
     }
-    pub fn CopyKey(self: *const IMSAdminBaseW, hMDSourceHandle: u32, pszMDSourcePath: ?[*:0]const u16, hMDDestHandle: u32, pszMDDestPath: ?[*:0]const u16, bMDOverwriteFlag: BOOL, bMDCopyFlag: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn CopyKey(self: *const IMSAdminBaseW, hMDSourceHandle: u32, pszMDSourcePath: ?[*:0]const u16, hMDDestHandle: u32, pszMDDestPath: ?[*:0]const u16, bMDOverwriteFlag: BOOL, bMDCopyFlag: BOOL) HRESULT {
         return self.vtable.CopyKey(self, hMDSourceHandle, pszMDSourcePath, hMDDestHandle, pszMDDestPath, bMDOverwriteFlag, bMDCopyFlag);
     }
-    pub fn RenameKey(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pszMDNewName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RenameKey(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pszMDNewName: ?[*:0]const u16) HRESULT {
         return self.vtable.RenameKey(self, hMDHandle, pszMDPath, pszMDNewName);
     }
-    pub fn SetData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pmdrMDData: ?*METADATA_RECORD) callconv(.Inline) HRESULT {
+    pub inline fn SetData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pmdrMDData: ?*METADATA_RECORD) HRESULT {
         return self.vtable.SetData(self, hMDHandle, pszMDPath, pmdrMDData);
     }
-    pub fn GetData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pmdrMDData: ?*METADATA_RECORD, pdwMDRequiredDataLen: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pmdrMDData: ?*METADATA_RECORD, pdwMDRequiredDataLen: ?*u32) HRESULT {
         return self.vtable.GetData(self, hMDHandle, pszMDPath, pmdrMDData, pdwMDRequiredDataLen);
     }
-    pub fn DeleteData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDIdentifier: u32, dwMDDataType: u32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDIdentifier: u32, dwMDDataType: u32) HRESULT {
         return self.vtable.DeleteData(self, hMDHandle, pszMDPath, dwMDIdentifier, dwMDDataType);
     }
-    pub fn EnumData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pmdrMDData: ?*METADATA_RECORD, dwMDEnumDataIndex: u32, pdwMDRequiredDataLen: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn EnumData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pmdrMDData: ?*METADATA_RECORD, dwMDEnumDataIndex: u32, pdwMDRequiredDataLen: ?*u32) HRESULT {
         return self.vtable.EnumData(self, hMDHandle, pszMDPath, pmdrMDData, dwMDEnumDataIndex, pdwMDRequiredDataLen);
     }
-    pub fn GetAllData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDAttributes: u32, dwMDUserType: u32, dwMDDataType: u32, pdwMDNumDataEntries: ?*u32, pdwMDDataSetNumber: ?*u32, dwMDBufferSize: u32, pbMDBuffer: ?*u8, pdwMDRequiredBufferSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetAllData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDAttributes: u32, dwMDUserType: u32, dwMDDataType: u32, pdwMDNumDataEntries: ?*u32, pdwMDDataSetNumber: ?*u32, dwMDBufferSize: u32, pbMDBuffer: ?*u8, pdwMDRequiredBufferSize: ?*u32) HRESULT {
         return self.vtable.GetAllData(self, hMDHandle, pszMDPath, dwMDAttributes, dwMDUserType, dwMDDataType, pdwMDNumDataEntries, pdwMDDataSetNumber, dwMDBufferSize, pbMDBuffer, pdwMDRequiredBufferSize);
     }
-    pub fn DeleteAllData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDUserType: u32, dwMDDataType: u32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAllData(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDUserType: u32, dwMDDataType: u32) HRESULT {
         return self.vtable.DeleteAllData(self, hMDHandle, pszMDPath, dwMDUserType, dwMDDataType);
     }
-    pub fn CopyData(self: *const IMSAdminBaseW, hMDSourceHandle: u32, pszMDSourcePath: ?[*:0]const u16, hMDDestHandle: u32, pszMDDestPath: ?[*:0]const u16, dwMDAttributes: u32, dwMDUserType: u32, dwMDDataType: u32, bMDCopyFlag: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn CopyData(self: *const IMSAdminBaseW, hMDSourceHandle: u32, pszMDSourcePath: ?[*:0]const u16, hMDDestHandle: u32, pszMDDestPath: ?[*:0]const u16, dwMDAttributes: u32, dwMDUserType: u32, dwMDDataType: u32, bMDCopyFlag: BOOL) HRESULT {
         return self.vtable.CopyData(self, hMDSourceHandle, pszMDSourcePath, hMDDestHandle, pszMDDestPath, dwMDAttributes, dwMDUserType, dwMDDataType, bMDCopyFlag);
     }
-    pub fn GetDataPaths(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDIdentifier: u32, dwMDDataType: u32, dwMDBufferSize: u32, pszBuffer: [*:0]u16, pdwMDRequiredBufferSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDataPaths(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDIdentifier: u32, dwMDDataType: u32, dwMDBufferSize: u32, pszBuffer: [*:0]u16, pdwMDRequiredBufferSize: ?*u32) HRESULT {
         return self.vtable.GetDataPaths(self, hMDHandle, pszMDPath, dwMDIdentifier, dwMDDataType, dwMDBufferSize, pszBuffer, pdwMDRequiredBufferSize);
     }
-    pub fn OpenKey(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDAccessRequested: u32, dwMDTimeOut: u32, phMDNewHandle: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn OpenKey(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, dwMDAccessRequested: u32, dwMDTimeOut: u32, phMDNewHandle: ?*u32) HRESULT {
         return self.vtable.OpenKey(self, hMDHandle, pszMDPath, dwMDAccessRequested, dwMDTimeOut, phMDNewHandle);
     }
-    pub fn CloseKey(self: *const IMSAdminBaseW, hMDHandle: u32) callconv(.Inline) HRESULT {
+    pub inline fn CloseKey(self: *const IMSAdminBaseW, hMDHandle: u32) HRESULT {
         return self.vtable.CloseKey(self, hMDHandle);
     }
-    pub fn ChangePermissions(self: *const IMSAdminBaseW, hMDHandle: u32, dwMDTimeOut: u32, dwMDAccessRequested: u32) callconv(.Inline) HRESULT {
+    pub inline fn ChangePermissions(self: *const IMSAdminBaseW, hMDHandle: u32, dwMDTimeOut: u32, dwMDAccessRequested: u32) HRESULT {
         return self.vtable.ChangePermissions(self, hMDHandle, dwMDTimeOut, dwMDAccessRequested);
     }
-    pub fn SaveData(self: *const IMSAdminBaseW) callconv(.Inline) HRESULT {
+    pub inline fn SaveData(self: *const IMSAdminBaseW) HRESULT {
         return self.vtable.SaveData(self);
     }
-    pub fn GetHandleInfo(self: *const IMSAdminBaseW, hMDHandle: u32, pmdhiInfo: ?*METADATA_HANDLE_INFO) callconv(.Inline) HRESULT {
+    pub inline fn GetHandleInfo(self: *const IMSAdminBaseW, hMDHandle: u32, pmdhiInfo: ?*METADATA_HANDLE_INFO) HRESULT {
         return self.vtable.GetHandleInfo(self, hMDHandle, pmdhiInfo);
     }
-    pub fn GetSystemChangeNumber(self: *const IMSAdminBaseW, pdwSystemChangeNumber: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSystemChangeNumber(self: *const IMSAdminBaseW, pdwSystemChangeNumber: ?*u32) HRESULT {
         return self.vtable.GetSystemChangeNumber(self, pdwSystemChangeNumber);
     }
-    pub fn GetDataSetNumber(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pdwMDDataSetNumber: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDataSetNumber(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pdwMDDataSetNumber: ?*u32) HRESULT {
         return self.vtable.GetDataSetNumber(self, hMDHandle, pszMDPath, pdwMDDataSetNumber);
     }
-    pub fn SetLastChangeTime(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pftMDLastChangeTime: ?*FILETIME, bLocalTime: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn SetLastChangeTime(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pftMDLastChangeTime: ?*FILETIME, bLocalTime: BOOL) HRESULT {
         return self.vtable.SetLastChangeTime(self, hMDHandle, pszMDPath, pftMDLastChangeTime, bLocalTime);
     }
-    pub fn GetLastChangeTime(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pftMDLastChangeTime: ?*FILETIME, bLocalTime: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn GetLastChangeTime(self: *const IMSAdminBaseW, hMDHandle: u32, pszMDPath: ?[*:0]const u16, pftMDLastChangeTime: ?*FILETIME, bLocalTime: BOOL) HRESULT {
         return self.vtable.GetLastChangeTime(self, hMDHandle, pszMDPath, pftMDLastChangeTime, bLocalTime);
     }
-    pub fn KeyExchangePhase1(self: *const IMSAdminBaseW) callconv(.Inline) HRESULT {
+    pub inline fn KeyExchangePhase1(self: *const IMSAdminBaseW) HRESULT {
         return self.vtable.KeyExchangePhase1(self);
     }
-    pub fn KeyExchangePhase2(self: *const IMSAdminBaseW) callconv(.Inline) HRESULT {
+    pub inline fn KeyExchangePhase2(self: *const IMSAdminBaseW) HRESULT {
         return self.vtable.KeyExchangePhase2(self);
     }
-    pub fn Backup(self: *const IMSAdminBaseW, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32, dwMDFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Backup(self: *const IMSAdminBaseW, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32, dwMDFlags: u32) HRESULT {
         return self.vtable.Backup(self, pszMDBackupLocation, dwMDVersion, dwMDFlags);
     }
-    pub fn Restore(self: *const IMSAdminBaseW, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32, dwMDFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Restore(self: *const IMSAdminBaseW, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32, dwMDFlags: u32) HRESULT {
         return self.vtable.Restore(self, pszMDBackupLocation, dwMDVersion, dwMDFlags);
     }
-    pub fn EnumBackups(self: *const IMSAdminBaseW, pszMDBackupLocation: *[256]u16, pdwMDVersion: ?*u32, pftMDBackupTime: ?*FILETIME, dwMDEnumIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn EnumBackups(self: *const IMSAdminBaseW, pszMDBackupLocation: *[256]u16, pdwMDVersion: ?*u32, pftMDBackupTime: ?*FILETIME, dwMDEnumIndex: u32) HRESULT {
         return self.vtable.EnumBackups(self, pszMDBackupLocation, pdwMDVersion, pftMDBackupTime, dwMDEnumIndex);
     }
-    pub fn DeleteBackup(self: *const IMSAdminBaseW, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteBackup(self: *const IMSAdminBaseW, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32) HRESULT {
         return self.vtable.DeleteBackup(self, pszMDBackupLocation, dwMDVersion);
     }
-    pub fn UnmarshalInterface(self: *const IMSAdminBaseW, piadmbwInterface: ?*?*IMSAdminBaseW) callconv(.Inline) HRESULT {
+    pub inline fn UnmarshalInterface(self: *const IMSAdminBaseW, piadmbwInterface: ?*?*IMSAdminBaseW) HRESULT {
         return self.vtable.UnmarshalInterface(self, piadmbwInterface);
     }
-    pub fn GetServerGuid(self: *const IMSAdminBaseW) callconv(.Inline) HRESULT {
+    pub inline fn GetServerGuid(self: *const IMSAdminBaseW) HRESULT {
         return self.vtable.GetServerGuid(self);
     }
 };
@@ -1755,70 +1755,70 @@ pub const IID_IMSAdminBase2W = &IID_IMSAdminBase2W_Value;
 pub const IMSAdminBase2W = extern union {
     pub const VTable = extern struct {
         base: IMSAdminBaseW.VTable,
-        BackupWithPasswd: *const fn(
+        BackupWithPasswd: *const fn (
             self: *const IMSAdminBase2W,
             pszMDBackupLocation: ?[*:0]const u16,
             dwMDVersion: u32,
             dwMDFlags: u32,
             pszPasswd: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RestoreWithPasswd: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RestoreWithPasswd: *const fn (
             self: *const IMSAdminBase2W,
             pszMDBackupLocation: ?[*:0]const u16,
             dwMDVersion: u32,
             dwMDFlags: u32,
             pszPasswd: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Export: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Export: *const fn (
             self: *const IMSAdminBase2W,
             pszPasswd: ?[*:0]const u16,
             pszFileName: ?[*:0]const u16,
             pszSourcePath: ?[*:0]const u16,
             dwMDFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Import: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Import: *const fn (
             self: *const IMSAdminBase2W,
             pszPasswd: ?[*:0]const u16,
             pszFileName: ?[*:0]const u16,
             pszSourcePath: ?[*:0]const u16,
             pszDestPath: ?[*:0]const u16,
             dwMDFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RestoreHistory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RestoreHistory: *const fn (
             self: *const IMSAdminBase2W,
             pszMDHistoryLocation: ?[*:0]const u16,
             dwMDMajorVersion: u32,
             dwMDMinorVersion: u32,
             dwMDFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumHistory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumHistory: *const fn (
             self: *const IMSAdminBase2W,
             pszMDHistoryLocation: *[256]u16,
             pdwMDMajorVersion: ?*u32,
             pdwMDMinorVersion: ?*u32,
             pftMDHistoryTime: ?*FILETIME,
             dwMDEnumIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IMSAdminBaseW: IMSAdminBaseW,
     IUnknown: IUnknown,
-    pub fn BackupWithPasswd(self: *const IMSAdminBase2W, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32, dwMDFlags: u32, pszPasswd: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn BackupWithPasswd(self: *const IMSAdminBase2W, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32, dwMDFlags: u32, pszPasswd: ?[*:0]const u16) HRESULT {
         return self.vtable.BackupWithPasswd(self, pszMDBackupLocation, dwMDVersion, dwMDFlags, pszPasswd);
     }
-    pub fn RestoreWithPasswd(self: *const IMSAdminBase2W, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32, dwMDFlags: u32, pszPasswd: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RestoreWithPasswd(self: *const IMSAdminBase2W, pszMDBackupLocation: ?[*:0]const u16, dwMDVersion: u32, dwMDFlags: u32, pszPasswd: ?[*:0]const u16) HRESULT {
         return self.vtable.RestoreWithPasswd(self, pszMDBackupLocation, dwMDVersion, dwMDFlags, pszPasswd);
     }
-    pub fn Export(self: *const IMSAdminBase2W, pszPasswd: ?[*:0]const u16, pszFileName: ?[*:0]const u16, pszSourcePath: ?[*:0]const u16, dwMDFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Export(self: *const IMSAdminBase2W, pszPasswd: ?[*:0]const u16, pszFileName: ?[*:0]const u16, pszSourcePath: ?[*:0]const u16, dwMDFlags: u32) HRESULT {
         return self.vtable.Export(self, pszPasswd, pszFileName, pszSourcePath, dwMDFlags);
     }
-    pub fn Import(self: *const IMSAdminBase2W, pszPasswd: ?[*:0]const u16, pszFileName: ?[*:0]const u16, pszSourcePath: ?[*:0]const u16, pszDestPath: ?[*:0]const u16, dwMDFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Import(self: *const IMSAdminBase2W, pszPasswd: ?[*:0]const u16, pszFileName: ?[*:0]const u16, pszSourcePath: ?[*:0]const u16, pszDestPath: ?[*:0]const u16, dwMDFlags: u32) HRESULT {
         return self.vtable.Import(self, pszPasswd, pszFileName, pszSourcePath, pszDestPath, dwMDFlags);
     }
-    pub fn RestoreHistory(self: *const IMSAdminBase2W, pszMDHistoryLocation: ?[*:0]const u16, dwMDMajorVersion: u32, dwMDMinorVersion: u32, dwMDFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn RestoreHistory(self: *const IMSAdminBase2W, pszMDHistoryLocation: ?[*:0]const u16, dwMDMajorVersion: u32, dwMDMinorVersion: u32, dwMDFlags: u32) HRESULT {
         return self.vtable.RestoreHistory(self, pszMDHistoryLocation, dwMDMajorVersion, dwMDMinorVersion, dwMDFlags);
     }
-    pub fn EnumHistory(self: *const IMSAdminBase2W, pszMDHistoryLocation: *[256]u16, pdwMDMajorVersion: ?*u32, pdwMDMinorVersion: ?*u32, pftMDHistoryTime: ?*FILETIME, dwMDEnumIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn EnumHistory(self: *const IMSAdminBase2W, pszMDHistoryLocation: *[256]u16, pdwMDMajorVersion: ?*u32, pdwMDMinorVersion: ?*u32, pftMDHistoryTime: ?*FILETIME, dwMDEnumIndex: u32) HRESULT {
         return self.vtable.EnumHistory(self, pszMDHistoryLocation, pdwMDMajorVersion, pdwMDMinorVersion, pftMDHistoryTime, dwMDEnumIndex);
     }
 };
@@ -1828,20 +1828,20 @@ pub const IID_IMSAdminBase3W = &IID_IMSAdminBase3W_Value;
 pub const IMSAdminBase3W = extern union {
     pub const VTable = extern struct {
         base: IMSAdminBase2W.VTable,
-        GetChildPaths: *const fn(
+        GetChildPaths: *const fn (
             self: *const IMSAdminBase3W,
             hMDHandle: u32,
             pszMDPath: ?[*:0]const u16,
             cchMDBufferSize: u32,
             pszBuffer: ?[*:0]u16,
             pcchMDRequiredBufferSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IMSAdminBase2W: IMSAdminBase2W,
     IMSAdminBaseW: IMSAdminBaseW,
     IUnknown: IUnknown,
-    pub fn GetChildPaths(self: *const IMSAdminBase3W, hMDHandle: u32, pszMDPath: ?[*:0]const u16, cchMDBufferSize: u32, pszBuffer: ?[*:0]u16, pcchMDRequiredBufferSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetChildPaths(self: *const IMSAdminBase3W, hMDHandle: u32, pszMDPath: ?[*:0]const u16, cchMDBufferSize: u32, pszBuffer: ?[*:0]u16, pcchMDRequiredBufferSize: ?*u32) HRESULT {
         return self.vtable.GetChildPaths(self, hMDHandle, pszMDPath, cchMDBufferSize, pszBuffer, pcchMDRequiredBufferSize);
     }
 };
@@ -1851,18 +1851,18 @@ pub const IID_IMSImpExpHelpW = &IID_IMSImpExpHelpW_Value;
 pub const IMSImpExpHelpW = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        EnumeratePathsInFile: *const fn(
+        EnumeratePathsInFile: *const fn (
             self: *const IMSImpExpHelpW,
             pszFileName: ?[*:0]const u16,
             pszKeyType: ?[*:0]const u16,
             dwMDBufferSize: u32,
             pszBuffer: ?[*:0]u16,
             pdwMDRequiredBufferSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn EnumeratePathsInFile(self: *const IMSImpExpHelpW, pszFileName: ?[*:0]const u16, pszKeyType: ?[*:0]const u16, dwMDBufferSize: u32, pszBuffer: ?[*:0]u16, pdwMDRequiredBufferSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn EnumeratePathsInFile(self: *const IMSImpExpHelpW, pszFileName: ?[*:0]const u16, pszKeyType: ?[*:0]const u16, dwMDBufferSize: u32, pszBuffer: ?[*:0]u16, pdwMDRequiredBufferSize: ?*u32) HRESULT {
         return self.vtable.EnumeratePathsInFile(self, pszFileName, pszKeyType, dwMDBufferSize, pszBuffer, pdwMDRequiredBufferSize);
     }
 };
@@ -1872,21 +1872,21 @@ pub const IID_IMSAdminBaseSinkW = &IID_IMSAdminBaseSinkW_Value;
 pub const IMSAdminBaseSinkW = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SinkNotify: *const fn(
+        SinkNotify: *const fn (
             self: *const IMSAdminBaseSinkW,
             dwMDNumElements: u32,
             pcoChangeList: [*]MD_CHANGE_OBJECT_W,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ShutdownNotify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ShutdownNotify: *const fn (
             self: *const IMSAdminBaseSinkW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SinkNotify(self: *const IMSAdminBaseSinkW, dwMDNumElements: u32, pcoChangeList: [*]MD_CHANGE_OBJECT_W) callconv(.Inline) HRESULT {
+    pub inline fn SinkNotify(self: *const IMSAdminBaseSinkW, dwMDNumElements: u32, pcoChangeList: [*]MD_CHANGE_OBJECT_W) HRESULT {
         return self.vtable.SinkNotify(self, dwMDNumElements, pcoChangeList);
     }
-    pub fn ShutdownNotify(self: *const IMSAdminBaseSinkW) callconv(.Inline) HRESULT {
+    pub inline fn ShutdownNotify(self: *const IMSAdminBaseSinkW) HRESULT {
         return self.vtable.ShutdownNotify(self);
     }
 };
@@ -1896,33 +1896,33 @@ pub const IID_AsyncIMSAdminBaseSinkW = &IID_AsyncIMSAdminBaseSinkW_Value;
 pub const AsyncIMSAdminBaseSinkW = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Begin_SinkNotify: *const fn(
+        Begin_SinkNotify: *const fn (
             self: *const AsyncIMSAdminBaseSinkW,
             dwMDNumElements: u32,
             pcoChangeList: [*]MD_CHANGE_OBJECT_W,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Finish_SinkNotify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Finish_SinkNotify: *const fn (
             self: *const AsyncIMSAdminBaseSinkW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Begin_ShutdownNotify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Begin_ShutdownNotify: *const fn (
             self: *const AsyncIMSAdminBaseSinkW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Finish_ShutdownNotify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Finish_ShutdownNotify: *const fn (
             self: *const AsyncIMSAdminBaseSinkW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Begin_SinkNotify(self: *const AsyncIMSAdminBaseSinkW, dwMDNumElements: u32, pcoChangeList: [*]MD_CHANGE_OBJECT_W) callconv(.Inline) HRESULT {
+    pub inline fn Begin_SinkNotify(self: *const AsyncIMSAdminBaseSinkW, dwMDNumElements: u32, pcoChangeList: [*]MD_CHANGE_OBJECT_W) HRESULT {
         return self.vtable.Begin_SinkNotify(self, dwMDNumElements, pcoChangeList);
     }
-    pub fn Finish_SinkNotify(self: *const AsyncIMSAdminBaseSinkW) callconv(.Inline) HRESULT {
+    pub inline fn Finish_SinkNotify(self: *const AsyncIMSAdminBaseSinkW) HRESULT {
         return self.vtable.Finish_SinkNotify(self);
     }
-    pub fn Begin_ShutdownNotify(self: *const AsyncIMSAdminBaseSinkW) callconv(.Inline) HRESULT {
+    pub inline fn Begin_ShutdownNotify(self: *const AsyncIMSAdminBaseSinkW) HRESULT {
         return self.vtable.Begin_ShutdownNotify(self);
     }
-    pub fn Finish_ShutdownNotify(self: *const AsyncIMSAdminBaseSinkW) callconv(.Inline) HRESULT {
+    pub inline fn Finish_ShutdownNotify(self: *const AsyncIMSAdminBaseSinkW) HRESULT {
         return self.vtable.Finish_ShutdownNotify(self);
     }
 };
@@ -1968,12 +1968,12 @@ pub const HSE_UNICODE_URL_MAPEX_INFO = extern struct {
     cchMatchingURL: u32,
 };
 
-pub const PFN_HSE_IO_COMPLETION = *const fn(
+pub const PFN_HSE_IO_COMPLETION = *const fn (
     pECB: ?*EXTENSION_CONTROL_BLOCK,
     pContext: ?*anyopaque,
     cbIO: u32,
     dwError: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const HSE_TF_INFO = extern struct {
     pfnHseIO: ?PFN_HSE_IO_COMPLETION,
@@ -2059,9 +2059,9 @@ pub const HSE_RESPONSE_VECTOR = extern struct {
     lpElementArray: ?*HSE_VECTOR_ELEMENT,
 };
 
-pub const PFN_HSE_CACHE_INVALIDATION_CALLBACK = *const fn(
+pub const PFN_HSE_CACHE_INVALIDATION_CALLBACK = *const fn (
     pszUrl: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub const CERT_CONTEXT_EX = extern struct {
     CertContext: CERT_CONTEXT,
@@ -2076,24 +2076,24 @@ pub const HSE_TRACE_INFO = extern struct {
     dwReserved2: u32,
 };
 
-pub const PFN_HSE_GET_PROTOCOL_MANAGER_CUSTOM_INTERFACE_CALLBACK = *const fn(
+pub const PFN_HSE_GET_PROTOCOL_MANAGER_CUSTOM_INTERFACE_CALLBACK = *const fn (
     pszProtocolManagerDll: ?[*:0]const u16,
     pszProtocolManagerDllInitFunction: ?[*:0]const u16,
     dwCustomInterfaceId: u32,
     ppCustomInterface: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const PFN_GETEXTENSIONVERSION = *const fn(
+pub const PFN_GETEXTENSIONVERSION = *const fn (
     pVer: ?*HSE_VERSION_INFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const PFN_HTTPEXTENSIONPROC = *const fn(
+pub const PFN_HTTPEXTENSIONPROC = *const fn (
     pECB: ?*EXTENSION_CONTROL_BLOCK,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PFN_TERMINATEEXTENSION = *const fn(
+pub const PFN_TERMINATEEXTENSION = *const fn (
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const SF_REQ_TYPE = enum(i32) {
     SEND_RESPONSE_HEADER = 0,
@@ -2285,43 +2285,41 @@ pub const HTTP_TRACE_CONFIGURATION = extern struct {
     fProviderEnabled: BOOL,
 };
 
-pub const PFN_WEB_CORE_SET_METADATA_DLL_ENTRY = *const fn(
+pub const PFN_WEB_CORE_SET_METADATA_DLL_ENTRY = *const fn (
     pszMetadataType: ?[*:0]const u16,
     pszValue: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const PFN_WEB_CORE_ACTIVATE = *const fn(
+pub const PFN_WEB_CORE_ACTIVATE = *const fn (
     pszAppHostConfigFile: ?[*:0]const u16,
     pszRootWebConfigFile: ?[*:0]const u16,
     pszInstanceName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const PFN_WEB_CORE_SHUTDOWN = *const fn(
+pub const PFN_WEB_CORE_SHUTDOWN = *const fn (
     fImmediate: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (4)
 //--------------------------------------------------------------------------------
 pub extern "rpcproxy" fn GetExtensionVersion(
     pVer: ?*HSE_VERSION_INFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "rpcproxy" fn HttpExtensionProc(
     pECB: ?*EXTENSION_CONTROL_BLOCK,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "rpcproxy" fn HttpFilterProc(
     pfc: ?*HTTP_FILTER_CONTEXT,
     NotificationType: u32,
     pvNotification: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "rpcproxy" fn GetFilterVersion(
     pVer: ?*HTTP_FILTER_VERSION,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -2344,19 +2342,35 @@ const SAFEARRAY = @import("../system/com.zig").SAFEARRAY;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "PFN_HSE_IO_COMPLETION")) { _ = PFN_HSE_IO_COMPLETION; }
-    if (@hasDecl(@This(), "PFN_HSE_CACHE_INVALIDATION_CALLBACK")) { _ = PFN_HSE_CACHE_INVALIDATION_CALLBACK; }
-    if (@hasDecl(@This(), "PFN_HSE_GET_PROTOCOL_MANAGER_CUSTOM_INTERFACE_CALLBACK")) { _ = PFN_HSE_GET_PROTOCOL_MANAGER_CUSTOM_INTERFACE_CALLBACK; }
-    if (@hasDecl(@This(), "PFN_GETEXTENSIONVERSION")) { _ = PFN_GETEXTENSIONVERSION; }
-    if (@hasDecl(@This(), "PFN_HTTPEXTENSIONPROC")) { _ = PFN_HTTPEXTENSIONPROC; }
-    if (@hasDecl(@This(), "PFN_TERMINATEEXTENSION")) { _ = PFN_TERMINATEEXTENSION; }
-    if (@hasDecl(@This(), "PFN_WEB_CORE_SET_METADATA_DLL_ENTRY")) { _ = PFN_WEB_CORE_SET_METADATA_DLL_ENTRY; }
-    if (@hasDecl(@This(), "PFN_WEB_CORE_ACTIVATE")) { _ = PFN_WEB_CORE_ACTIVATE; }
-    if (@hasDecl(@This(), "PFN_WEB_CORE_SHUTDOWN")) { _ = PFN_WEB_CORE_SHUTDOWN; }
+    if (@hasDecl(@This(), "PFN_HSE_IO_COMPLETION")) {
+        _ = PFN_HSE_IO_COMPLETION;
+    }
+    if (@hasDecl(@This(), "PFN_HSE_CACHE_INVALIDATION_CALLBACK")) {
+        _ = PFN_HSE_CACHE_INVALIDATION_CALLBACK;
+    }
+    if (@hasDecl(@This(), "PFN_HSE_GET_PROTOCOL_MANAGER_CUSTOM_INTERFACE_CALLBACK")) {
+        _ = PFN_HSE_GET_PROTOCOL_MANAGER_CUSTOM_INTERFACE_CALLBACK;
+    }
+    if (@hasDecl(@This(), "PFN_GETEXTENSIONVERSION")) {
+        _ = PFN_GETEXTENSIONVERSION;
+    }
+    if (@hasDecl(@This(), "PFN_HTTPEXTENSIONPROC")) {
+        _ = PFN_HTTPEXTENSIONPROC;
+    }
+    if (@hasDecl(@This(), "PFN_TERMINATEEXTENSION")) {
+        _ = PFN_TERMINATEEXTENSION;
+    }
+    if (@hasDecl(@This(), "PFN_WEB_CORE_SET_METADATA_DLL_ENTRY")) {
+        _ = PFN_WEB_CORE_SET_METADATA_DLL_ENTRY;
+    }
+    if (@hasDecl(@This(), "PFN_WEB_CORE_ACTIVATE")) {
+        _ = PFN_WEB_CORE_ACTIVATE;
+    }
+    if (@hasDecl(@This(), "PFN_WEB_CORE_SHUTDOWN")) {
+        _ = PFN_WEB_CORE_SHUTDOWN;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -11,29 +11,28 @@ pub const IID_IGraphicsCaptureItemInterop = &IID_IGraphicsCaptureItemInterop_Val
 pub const IGraphicsCaptureItemInterop = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateForWindow: *const fn(
+        CreateForWindow: *const fn (
             self: *const IGraphicsCaptureItemInterop,
             window: ?HWND,
             riid: ?*const Guid,
             result: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateForMonitor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateForMonitor: *const fn (
             self: *const IGraphicsCaptureItemInterop,
             monitor: ?HMONITOR,
             riid: ?*const Guid,
             result: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateForWindow(self: *const IGraphicsCaptureItemInterop, window: ?HWND, riid: ?*const Guid, result: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateForWindow(self: *const IGraphicsCaptureItemInterop, window: ?HWND, riid: ?*const Guid, result: **anyopaque) HRESULT {
         return self.vtable.CreateForWindow(self, window, riid, result);
     }
-    pub fn CreateForMonitor(self: *const IGraphicsCaptureItemInterop, monitor: ?HMONITOR, riid: ?*const Guid, result: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateForMonitor(self: *const IGraphicsCaptureItemInterop, monitor: ?HMONITOR, riid: ?*const Guid, result: **anyopaque) HRESULT {
         return self.vtable.CreateForMonitor(self, monitor, riid, result);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -52,9 +51,7 @@ const HWND = @import("../../../foundation.zig").HWND;
 const IUnknown = @import("../../../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

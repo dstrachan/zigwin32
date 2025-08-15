@@ -1333,78 +1333,78 @@ pub const IID_IEnumCERTVIEWCOLUMN = &IID_IEnumCERTVIEWCOLUMN_Value;
 pub const IEnumCERTVIEWCOLUMN = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Next: *const fn(
+        Next: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetName: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
             pstrOut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplayName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplayName: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
             pstrOut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetType: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
             pType: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsIndexed: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsIndexed: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
             pIndexed: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMaxLength: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMaxLength: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
             pMaxLength: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
             Flags: ENUM_CERT_COLUMN_VALUE_FLAGS,
             pvarValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
             celt: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumCERTVIEWCOLUMN,
             ppenum: ?*?*IEnumCERTVIEWCOLUMN,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Next(self: *const IEnumCERTVIEWCOLUMN, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumCERTVIEWCOLUMN, pIndex: ?*i32) HRESULT {
         return self.vtable.Next(self, pIndex);
     }
-    pub fn GetName(self: *const IEnumCERTVIEWCOLUMN, pstrOut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetName(self: *const IEnumCERTVIEWCOLUMN, pstrOut: ?*?BSTR) HRESULT {
         return self.vtable.GetName(self, pstrOut);
     }
-    pub fn GetDisplayName(self: *const IEnumCERTVIEWCOLUMN, pstrOut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplayName(self: *const IEnumCERTVIEWCOLUMN, pstrOut: ?*?BSTR) HRESULT {
         return self.vtable.GetDisplayName(self, pstrOut);
     }
-    pub fn GetType(self: *const IEnumCERTVIEWCOLUMN, pType: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetType(self: *const IEnumCERTVIEWCOLUMN, pType: ?*i32) HRESULT {
         return self.vtable.GetType(self, pType);
     }
-    pub fn IsIndexed(self: *const IEnumCERTVIEWCOLUMN, pIndexed: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn IsIndexed(self: *const IEnumCERTVIEWCOLUMN, pIndexed: ?*i32) HRESULT {
         return self.vtable.IsIndexed(self, pIndexed);
     }
-    pub fn GetMaxLength(self: *const IEnumCERTVIEWCOLUMN, pMaxLength: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetMaxLength(self: *const IEnumCERTVIEWCOLUMN, pMaxLength: ?*i32) HRESULT {
         return self.vtable.GetMaxLength(self, pMaxLength);
     }
-    pub fn GetValue(self: *const IEnumCERTVIEWCOLUMN, Flags: ENUM_CERT_COLUMN_VALUE_FLAGS, pvarValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const IEnumCERTVIEWCOLUMN, Flags: ENUM_CERT_COLUMN_VALUE_FLAGS, pvarValue: ?*VARIANT) HRESULT {
         return self.vtable.GetValue(self, Flags, pvarValue);
     }
-    pub fn Skip(self: *const IEnumCERTVIEWCOLUMN, celt: i32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumCERTVIEWCOLUMN, celt: i32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
-    pub fn Reset(self: *const IEnumCERTVIEWCOLUMN) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumCERTVIEWCOLUMN) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Clone(self: *const IEnumCERTVIEWCOLUMN, ppenum: ?*?*IEnumCERTVIEWCOLUMN) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumCERTVIEWCOLUMN, ppenum: ?*?*IEnumCERTVIEWCOLUMN) HRESULT {
         return self.vtable.Clone(self, ppenum);
     }
 };
@@ -1415,49 +1415,49 @@ pub const IID_IEnumCERTVIEWATTRIBUTE = &IID_IEnumCERTVIEWATTRIBUTE_Value;
 pub const IEnumCERTVIEWATTRIBUTE = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Next: *const fn(
+        Next: *const fn (
             self: *const IEnumCERTVIEWATTRIBUTE,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetName: *const fn (
             self: *const IEnumCERTVIEWATTRIBUTE,
             pstrOut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const IEnumCERTVIEWATTRIBUTE,
             pstrOut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumCERTVIEWATTRIBUTE,
             celt: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumCERTVIEWATTRIBUTE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumCERTVIEWATTRIBUTE,
             ppenum: ?*?*IEnumCERTVIEWATTRIBUTE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Next(self: *const IEnumCERTVIEWATTRIBUTE, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumCERTVIEWATTRIBUTE, pIndex: ?*i32) HRESULT {
         return self.vtable.Next(self, pIndex);
     }
-    pub fn GetName(self: *const IEnumCERTVIEWATTRIBUTE, pstrOut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetName(self: *const IEnumCERTVIEWATTRIBUTE, pstrOut: ?*?BSTR) HRESULT {
         return self.vtable.GetName(self, pstrOut);
     }
-    pub fn GetValue(self: *const IEnumCERTVIEWATTRIBUTE, pstrOut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const IEnumCERTVIEWATTRIBUTE, pstrOut: ?*?BSTR) HRESULT {
         return self.vtable.GetValue(self, pstrOut);
     }
-    pub fn Skip(self: *const IEnumCERTVIEWATTRIBUTE, celt: i32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumCERTVIEWATTRIBUTE, celt: i32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
-    pub fn Reset(self: *const IEnumCERTVIEWATTRIBUTE) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumCERTVIEWATTRIBUTE) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Clone(self: *const IEnumCERTVIEWATTRIBUTE, ppenum: ?*?*IEnumCERTVIEWATTRIBUTE) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumCERTVIEWATTRIBUTE, ppenum: ?*?*IEnumCERTVIEWATTRIBUTE) HRESULT {
         return self.vtable.Clone(self, ppenum);
     }
 };
@@ -1468,58 +1468,58 @@ pub const IID_IEnumCERTVIEWEXTENSION = &IID_IEnumCERTVIEWEXTENSION_Value;
 pub const IEnumCERTVIEWEXTENSION = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Next: *const fn(
+        Next: *const fn (
             self: *const IEnumCERTVIEWEXTENSION,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetName: *const fn (
             self: *const IEnumCERTVIEWEXTENSION,
             pstrOut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFlags: *const fn (
             self: *const IEnumCERTVIEWEXTENSION,
             pFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const IEnumCERTVIEWEXTENSION,
             Type: CERT_PROPERTY_TYPE,
             Flags: ENUM_CERT_COLUMN_VALUE_FLAGS,
             pvarValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumCERTVIEWEXTENSION,
             celt: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumCERTVIEWEXTENSION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumCERTVIEWEXTENSION,
             ppenum: ?*?*IEnumCERTVIEWEXTENSION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Next(self: *const IEnumCERTVIEWEXTENSION, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumCERTVIEWEXTENSION, pIndex: ?*i32) HRESULT {
         return self.vtable.Next(self, pIndex);
     }
-    pub fn GetName(self: *const IEnumCERTVIEWEXTENSION, pstrOut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetName(self: *const IEnumCERTVIEWEXTENSION, pstrOut: ?*?BSTR) HRESULT {
         return self.vtable.GetName(self, pstrOut);
     }
-    pub fn GetFlags(self: *const IEnumCERTVIEWEXTENSION, pFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetFlags(self: *const IEnumCERTVIEWEXTENSION, pFlags: ?*i32) HRESULT {
         return self.vtable.GetFlags(self, pFlags);
     }
-    pub fn GetValue(self: *const IEnumCERTVIEWEXTENSION, Type: CERT_PROPERTY_TYPE, Flags: ENUM_CERT_COLUMN_VALUE_FLAGS, pvarValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const IEnumCERTVIEWEXTENSION, Type: CERT_PROPERTY_TYPE, Flags: ENUM_CERT_COLUMN_VALUE_FLAGS, pvarValue: ?*VARIANT) HRESULT {
         return self.vtable.GetValue(self, Type, Flags, pvarValue);
     }
-    pub fn Skip(self: *const IEnumCERTVIEWEXTENSION, celt: i32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumCERTVIEWEXTENSION, celt: i32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
-    pub fn Reset(self: *const IEnumCERTVIEWEXTENSION) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumCERTVIEWEXTENSION) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Clone(self: *const IEnumCERTVIEWEXTENSION, ppenum: ?*?*IEnumCERTVIEWEXTENSION) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumCERTVIEWEXTENSION, ppenum: ?*?*IEnumCERTVIEWEXTENSION) HRESULT {
         return self.vtable.Clone(self, ppenum);
     }
 };
@@ -1530,65 +1530,65 @@ pub const IID_IEnumCERTVIEWROW = &IID_IEnumCERTVIEWROW_Value;
 pub const IEnumCERTVIEWROW = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Next: *const fn(
+        Next: *const fn (
             self: *const IEnumCERTVIEWROW,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumCertViewColumn: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumCertViewColumn: *const fn (
             self: *const IEnumCERTVIEWROW,
             ppenum: ?*?*IEnumCERTVIEWCOLUMN,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumCertViewAttribute: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumCertViewAttribute: *const fn (
             self: *const IEnumCERTVIEWROW,
             Flags: i32,
             ppenum: ?*?*IEnumCERTVIEWATTRIBUTE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumCertViewExtension: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumCertViewExtension: *const fn (
             self: *const IEnumCERTVIEWROW,
             Flags: i32,
             ppenum: ?*?*IEnumCERTVIEWEXTENSION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumCERTVIEWROW,
             celt: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumCERTVIEWROW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumCERTVIEWROW,
             ppenum: ?*?*IEnumCERTVIEWROW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMaxIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMaxIndex: *const fn (
             self: *const IEnumCERTVIEWROW,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Next(self: *const IEnumCERTVIEWROW, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumCERTVIEWROW, pIndex: ?*i32) HRESULT {
         return self.vtable.Next(self, pIndex);
     }
-    pub fn EnumCertViewColumn(self: *const IEnumCERTVIEWROW, ppenum: ?*?*IEnumCERTVIEWCOLUMN) callconv(.Inline) HRESULT {
+    pub inline fn EnumCertViewColumn(self: *const IEnumCERTVIEWROW, ppenum: ?*?*IEnumCERTVIEWCOLUMN) HRESULT {
         return self.vtable.EnumCertViewColumn(self, ppenum);
     }
-    pub fn EnumCertViewAttribute(self: *const IEnumCERTVIEWROW, Flags: i32, ppenum: ?*?*IEnumCERTVIEWATTRIBUTE) callconv(.Inline) HRESULT {
+    pub inline fn EnumCertViewAttribute(self: *const IEnumCERTVIEWROW, Flags: i32, ppenum: ?*?*IEnumCERTVIEWATTRIBUTE) HRESULT {
         return self.vtable.EnumCertViewAttribute(self, Flags, ppenum);
     }
-    pub fn EnumCertViewExtension(self: *const IEnumCERTVIEWROW, Flags: i32, ppenum: ?*?*IEnumCERTVIEWEXTENSION) callconv(.Inline) HRESULT {
+    pub inline fn EnumCertViewExtension(self: *const IEnumCERTVIEWROW, Flags: i32, ppenum: ?*?*IEnumCERTVIEWEXTENSION) HRESULT {
         return self.vtable.EnumCertViewExtension(self, Flags, ppenum);
     }
-    pub fn Skip(self: *const IEnumCERTVIEWROW, celt: i32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumCERTVIEWROW, celt: i32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
-    pub fn Reset(self: *const IEnumCERTVIEWROW) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumCERTVIEWROW) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Clone(self: *const IEnumCERTVIEWROW, ppenum: ?*?*IEnumCERTVIEWROW) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumCERTVIEWROW, ppenum: ?*?*IEnumCERTVIEWROW) HRESULT {
         return self.vtable.Clone(self, ppenum);
     }
-    pub fn GetMaxIndex(self: *const IEnumCERTVIEWROW, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetMaxIndex(self: *const IEnumCERTVIEWROW, pIndex: ?*i32) HRESULT {
         return self.vtable.GetMaxIndex(self, pIndex);
     }
 };
@@ -1599,71 +1599,71 @@ pub const IID_ICertView = &IID_ICertView_Value;
 pub const ICertView = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        OpenConnection: *const fn(
+        OpenConnection: *const fn (
             self: *const ICertView,
             strConfig: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumCertViewColumn: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumCertViewColumn: *const fn (
             self: *const ICertView,
             fResultColumn: CVRC_COLUMN,
             ppenum: ?*?*IEnumCERTVIEWCOLUMN,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetColumnCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetColumnCount: *const fn (
             self: *const ICertView,
             fResultColumn: CVRC_COLUMN,
             pcColumn: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetColumnIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetColumnIndex: *const fn (
             self: *const ICertView,
             fResultColumn: CVRC_COLUMN,
             strColumnName: ?BSTR,
             pColumnIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetResultColumnCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetResultColumnCount: *const fn (
             self: *const ICertView,
             cResultColumn: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetResultColumn: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetResultColumn: *const fn (
             self: *const ICertView,
             ColumnIndex: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetRestriction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetRestriction: *const fn (
             self: *const ICertView,
             ColumnIndex: CERT_VIEW_COLUMN_INDEX,
             SeekOperator: CERT_VIEW_SEEK_OPERATOR_FLAGS,
             SortOrder: i32,
             pvarValue: ?*const VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OpenView: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OpenView: *const fn (
             self: *const ICertView,
             ppenum: ?*?*IEnumCERTVIEWROW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn OpenConnection(self: *const ICertView, strConfig: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn OpenConnection(self: *const ICertView, strConfig: ?BSTR) HRESULT {
         return self.vtable.OpenConnection(self, strConfig);
     }
-    pub fn EnumCertViewColumn(self: *const ICertView, fResultColumn: CVRC_COLUMN, ppenum: ?*?*IEnumCERTVIEWCOLUMN) callconv(.Inline) HRESULT {
+    pub inline fn EnumCertViewColumn(self: *const ICertView, fResultColumn: CVRC_COLUMN, ppenum: ?*?*IEnumCERTVIEWCOLUMN) HRESULT {
         return self.vtable.EnumCertViewColumn(self, fResultColumn, ppenum);
     }
-    pub fn GetColumnCount(self: *const ICertView, fResultColumn: CVRC_COLUMN, pcColumn: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetColumnCount(self: *const ICertView, fResultColumn: CVRC_COLUMN, pcColumn: ?*i32) HRESULT {
         return self.vtable.GetColumnCount(self, fResultColumn, pcColumn);
     }
-    pub fn GetColumnIndex(self: *const ICertView, fResultColumn: CVRC_COLUMN, strColumnName: ?BSTR, pColumnIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetColumnIndex(self: *const ICertView, fResultColumn: CVRC_COLUMN, strColumnName: ?BSTR, pColumnIndex: ?*i32) HRESULT {
         return self.vtable.GetColumnIndex(self, fResultColumn, strColumnName, pColumnIndex);
     }
-    pub fn SetResultColumnCount(self: *const ICertView, cResultColumn: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetResultColumnCount(self: *const ICertView, cResultColumn: i32) HRESULT {
         return self.vtable.SetResultColumnCount(self, cResultColumn);
     }
-    pub fn SetResultColumn(self: *const ICertView, ColumnIndex: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetResultColumn(self: *const ICertView, ColumnIndex: i32) HRESULT {
         return self.vtable.SetResultColumn(self, ColumnIndex);
     }
-    pub fn SetRestriction(self: *const ICertView, ColumnIndex: CERT_VIEW_COLUMN_INDEX, SeekOperator: CERT_VIEW_SEEK_OPERATOR_FLAGS, SortOrder: i32, pvarValue: ?*const VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetRestriction(self: *const ICertView, ColumnIndex: CERT_VIEW_COLUMN_INDEX, SeekOperator: CERT_VIEW_SEEK_OPERATOR_FLAGS, SortOrder: i32, pvarValue: ?*const VARIANT) HRESULT {
         return self.vtable.SetRestriction(self, ColumnIndex, SeekOperator, SortOrder, pvarValue);
     }
-    pub fn OpenView(self: *const ICertView, ppenum: ?*?*IEnumCERTVIEWROW) callconv(.Inline) HRESULT {
+    pub inline fn OpenView(self: *const ICertView, ppenum: ?*?*IEnumCERTVIEWROW) HRESULT {
         return self.vtable.OpenView(self, ppenum);
     }
 };
@@ -1674,16 +1674,16 @@ pub const IID_ICertView2 = &IID_ICertView2_Value;
 pub const ICertView2 = extern union {
     pub const VTable = extern struct {
         base: ICertView.VTable,
-        SetTable: *const fn(
+        SetTable: *const fn (
             self: *const ICertView2,
             Table: CVRC_TABLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertView: ICertView,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn SetTable(self: *const ICertView2, Table: CVRC_TABLE) callconv(.Inline) HRESULT {
+    pub inline fn SetTable(self: *const ICertView2, Table: CVRC_TABLE) HRESULT {
         return self.vtable.SetTable(self, Table);
     }
 };
@@ -1694,30 +1694,30 @@ pub const IID_ICertAdmin = &IID_ICertAdmin_Value;
 pub const ICertAdmin = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        IsValidCertificate: *const fn(
+        IsValidCertificate: *const fn (
             self: *const ICertAdmin,
             strConfig: ?BSTR,
             strSerialNumber: ?BSTR,
             pDisposition: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRevocationReason: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRevocationReason: *const fn (
             self: *const ICertAdmin,
             pReason: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RevokeCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RevokeCertificate: *const fn (
             self: *const ICertAdmin,
             strConfig: ?BSTR,
             strSerialNumber: ?BSTR,
             Reason: i32,
             Date: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetRequestAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetRequestAttributes: *const fn (
             self: *const ICertAdmin,
             strConfig: ?BSTR,
             RequestId: i32,
             strAttributes: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCertificateExtension: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCertificateExtension: *const fn (
             self: *const ICertAdmin,
             strConfig: ?BSTR,
             RequestId: i32,
@@ -1725,68 +1725,68 @@ pub const ICertAdmin = extern union {
             Type: CERT_PROPERTY_TYPE,
             Flags: i32,
             pvarValue: ?*const VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DenyRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DenyRequest: *const fn (
             self: *const ICertAdmin,
             strConfig: ?BSTR,
             RequestId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ResubmitRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ResubmitRequest: *const fn (
             self: *const ICertAdmin,
             strConfig: ?BSTR,
             RequestId: i32,
             pDisposition: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PublishCRL: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PublishCRL: *const fn (
             self: *const ICertAdmin,
             strConfig: ?BSTR,
             Date: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCRL: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCRL: *const fn (
             self: *const ICertAdmin,
             strConfig: ?BSTR,
             Flags: i32,
             pstrCRL: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ImportCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ImportCertificate: *const fn (
             self: *const ICertAdmin,
             strConfig: ?BSTR,
             strCertificate: ?BSTR,
             Flags: CERT_IMPORT_FLAGS,
             pRequestId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn IsValidCertificate(self: *const ICertAdmin, strConfig: ?BSTR, strSerialNumber: ?BSTR, pDisposition: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn IsValidCertificate(self: *const ICertAdmin, strConfig: ?BSTR, strSerialNumber: ?BSTR, pDisposition: ?*i32) HRESULT {
         return self.vtable.IsValidCertificate(self, strConfig, strSerialNumber, pDisposition);
     }
-    pub fn GetRevocationReason(self: *const ICertAdmin, pReason: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetRevocationReason(self: *const ICertAdmin, pReason: ?*i32) HRESULT {
         return self.vtable.GetRevocationReason(self, pReason);
     }
-    pub fn RevokeCertificate(self: *const ICertAdmin, strConfig: ?BSTR, strSerialNumber: ?BSTR, Reason: i32, Date: f64) callconv(.Inline) HRESULT {
+    pub inline fn RevokeCertificate(self: *const ICertAdmin, strConfig: ?BSTR, strSerialNumber: ?BSTR, Reason: i32, Date: f64) HRESULT {
         return self.vtable.RevokeCertificate(self, strConfig, strSerialNumber, Reason, Date);
     }
-    pub fn SetRequestAttributes(self: *const ICertAdmin, strConfig: ?BSTR, RequestId: i32, strAttributes: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetRequestAttributes(self: *const ICertAdmin, strConfig: ?BSTR, RequestId: i32, strAttributes: ?BSTR) HRESULT {
         return self.vtable.SetRequestAttributes(self, strConfig, RequestId, strAttributes);
     }
-    pub fn SetCertificateExtension(self: *const ICertAdmin, strConfig: ?BSTR, RequestId: i32, strExtensionName: ?BSTR, Type: CERT_PROPERTY_TYPE, Flags: i32, pvarValue: ?*const VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetCertificateExtension(self: *const ICertAdmin, strConfig: ?BSTR, RequestId: i32, strExtensionName: ?BSTR, Type: CERT_PROPERTY_TYPE, Flags: i32, pvarValue: ?*const VARIANT) HRESULT {
         return self.vtable.SetCertificateExtension(self, strConfig, RequestId, strExtensionName, Type, Flags, pvarValue);
     }
-    pub fn DenyRequest(self: *const ICertAdmin, strConfig: ?BSTR, RequestId: i32) callconv(.Inline) HRESULT {
+    pub inline fn DenyRequest(self: *const ICertAdmin, strConfig: ?BSTR, RequestId: i32) HRESULT {
         return self.vtable.DenyRequest(self, strConfig, RequestId);
     }
-    pub fn ResubmitRequest(self: *const ICertAdmin, strConfig: ?BSTR, RequestId: i32, pDisposition: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn ResubmitRequest(self: *const ICertAdmin, strConfig: ?BSTR, RequestId: i32, pDisposition: ?*i32) HRESULT {
         return self.vtable.ResubmitRequest(self, strConfig, RequestId, pDisposition);
     }
-    pub fn PublishCRL(self: *const ICertAdmin, strConfig: ?BSTR, Date: f64) callconv(.Inline) HRESULT {
+    pub inline fn PublishCRL(self: *const ICertAdmin, strConfig: ?BSTR, Date: f64) HRESULT {
         return self.vtable.PublishCRL(self, strConfig, Date);
     }
-    pub fn GetCRL(self: *const ICertAdmin, strConfig: ?BSTR, Flags: i32, pstrCRL: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCRL(self: *const ICertAdmin, strConfig: ?BSTR, Flags: i32, pstrCRL: ?*?BSTR) HRESULT {
         return self.vtable.GetCRL(self, strConfig, Flags, pstrCRL);
     }
-    pub fn ImportCertificate(self: *const ICertAdmin, strConfig: ?BSTR, strCertificate: ?BSTR, Flags: CERT_IMPORT_FLAGS, pRequestId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn ImportCertificate(self: *const ICertAdmin, strConfig: ?BSTR, strCertificate: ?BSTR, Flags: CERT_IMPORT_FLAGS, pRequestId: ?*i32) HRESULT {
         return self.vtable.ImportCertificate(self, strConfig, strCertificate, Flags, pRequestId);
     }
 };
@@ -1797,13 +1797,13 @@ pub const IID_ICertAdmin2 = &IID_ICertAdmin2_Value;
 pub const ICertAdmin2 = extern union {
     pub const VTable = extern struct {
         base: ICertAdmin.VTable,
-        PublishCRLs: *const fn(
+        PublishCRLs: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             Date: f64,
             CRLFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAProperty: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             PropId: i32,
@@ -1811,62 +1811,62 @@ pub const ICertAdmin2 = extern union {
             PropType: i32,
             Flags: i32,
             pvarPropertyValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCAProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCAProperty: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             PropId: i32,
             PropIndex: i32,
             PropType: CERT_PROPERTY_TYPE,
             pvarPropertyValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAPropertyFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAPropertyFlags: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             PropId: i32,
             pPropFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAPropertyDisplayName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAPropertyDisplayName: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             PropId: i32,
             pstrDisplayName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetArchivedKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetArchivedKey: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             RequestId: i32,
             Flags: i32,
             pstrArchivedKey: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConfigEntry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConfigEntry: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             strNodePath: ?BSTR,
             strEntryName: ?BSTR,
             pvarEntry: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetConfigEntry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetConfigEntry: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             strNodePath: ?BSTR,
             strEntryName: ?BSTR,
             pvarEntry: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ImportKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ImportKey: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             RequestId: i32,
             strCertHash: ?BSTR,
             Flags: CERT_IMPORT_FLAGS,
             strKey: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMyRoles: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMyRoles: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             pRoles: ?*CERTADMIN_GET_ROLES_FLAGS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteRow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteRow: *const fn (
             self: *const ICertAdmin2,
             strConfig: ?BSTR,
             Flags: CERT_DELETE_ROW_FLAGS,
@@ -1874,43 +1874,43 @@ pub const ICertAdmin2 = extern union {
             Table: CVRC_TABLE,
             RowId: i32,
             pcDeleted: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertAdmin: ICertAdmin,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn PublishCRLs(self: *const ICertAdmin2, strConfig: ?BSTR, Date: f64, CRLFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn PublishCRLs(self: *const ICertAdmin2, strConfig: ?BSTR, Date: f64, CRLFlags: i32) HRESULT {
         return self.vtable.PublishCRLs(self, strConfig, Date, CRLFlags);
     }
-    pub fn GetCAProperty(self: *const ICertAdmin2, strConfig: ?BSTR, PropId: i32, PropIndex: i32, PropType: i32, Flags: i32, pvarPropertyValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCAProperty(self: *const ICertAdmin2, strConfig: ?BSTR, PropId: i32, PropIndex: i32, PropType: i32, Flags: i32, pvarPropertyValue: ?*VARIANT) HRESULT {
         return self.vtable.GetCAProperty(self, strConfig, PropId, PropIndex, PropType, Flags, pvarPropertyValue);
     }
-    pub fn SetCAProperty(self: *const ICertAdmin2, strConfig: ?BSTR, PropId: i32, PropIndex: i32, PropType: CERT_PROPERTY_TYPE, pvarPropertyValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetCAProperty(self: *const ICertAdmin2, strConfig: ?BSTR, PropId: i32, PropIndex: i32, PropType: CERT_PROPERTY_TYPE, pvarPropertyValue: ?*VARIANT) HRESULT {
         return self.vtable.SetCAProperty(self, strConfig, PropId, PropIndex, PropType, pvarPropertyValue);
     }
-    pub fn GetCAPropertyFlags(self: *const ICertAdmin2, strConfig: ?BSTR, PropId: i32, pPropFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCAPropertyFlags(self: *const ICertAdmin2, strConfig: ?BSTR, PropId: i32, pPropFlags: ?*i32) HRESULT {
         return self.vtable.GetCAPropertyFlags(self, strConfig, PropId, pPropFlags);
     }
-    pub fn GetCAPropertyDisplayName(self: *const ICertAdmin2, strConfig: ?BSTR, PropId: i32, pstrDisplayName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCAPropertyDisplayName(self: *const ICertAdmin2, strConfig: ?BSTR, PropId: i32, pstrDisplayName: ?*?BSTR) HRESULT {
         return self.vtable.GetCAPropertyDisplayName(self, strConfig, PropId, pstrDisplayName);
     }
-    pub fn GetArchivedKey(self: *const ICertAdmin2, strConfig: ?BSTR, RequestId: i32, Flags: i32, pstrArchivedKey: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetArchivedKey(self: *const ICertAdmin2, strConfig: ?BSTR, RequestId: i32, Flags: i32, pstrArchivedKey: ?*?BSTR) HRESULT {
         return self.vtable.GetArchivedKey(self, strConfig, RequestId, Flags, pstrArchivedKey);
     }
-    pub fn GetConfigEntry(self: *const ICertAdmin2, strConfig: ?BSTR, strNodePath: ?BSTR, strEntryName: ?BSTR, pvarEntry: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetConfigEntry(self: *const ICertAdmin2, strConfig: ?BSTR, strNodePath: ?BSTR, strEntryName: ?BSTR, pvarEntry: ?*VARIANT) HRESULT {
         return self.vtable.GetConfigEntry(self, strConfig, strNodePath, strEntryName, pvarEntry);
     }
-    pub fn SetConfigEntry(self: *const ICertAdmin2, strConfig: ?BSTR, strNodePath: ?BSTR, strEntryName: ?BSTR, pvarEntry: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetConfigEntry(self: *const ICertAdmin2, strConfig: ?BSTR, strNodePath: ?BSTR, strEntryName: ?BSTR, pvarEntry: ?*VARIANT) HRESULT {
         return self.vtable.SetConfigEntry(self, strConfig, strNodePath, strEntryName, pvarEntry);
     }
-    pub fn ImportKey(self: *const ICertAdmin2, strConfig: ?BSTR, RequestId: i32, strCertHash: ?BSTR, Flags: CERT_IMPORT_FLAGS, strKey: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn ImportKey(self: *const ICertAdmin2, strConfig: ?BSTR, RequestId: i32, strCertHash: ?BSTR, Flags: CERT_IMPORT_FLAGS, strKey: ?BSTR) HRESULT {
         return self.vtable.ImportKey(self, strConfig, RequestId, strCertHash, Flags, strKey);
     }
-    pub fn GetMyRoles(self: *const ICertAdmin2, strConfig: ?BSTR, pRoles: ?*CERTADMIN_GET_ROLES_FLAGS) callconv(.Inline) HRESULT {
+    pub inline fn GetMyRoles(self: *const ICertAdmin2, strConfig: ?BSTR, pRoles: ?*CERTADMIN_GET_ROLES_FLAGS) HRESULT {
         return self.vtable.GetMyRoles(self, strConfig, pRoles);
     }
-    pub fn DeleteRow(self: *const ICertAdmin2, strConfig: ?BSTR, Flags: CERT_DELETE_ROW_FLAGS, Date: f64, Table: CVRC_TABLE, RowId: i32, pcDeleted: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteRow(self: *const ICertAdmin2, strConfig: ?BSTR, Flags: CERT_DELETE_ROW_FLAGS, Date: f64, Table: CVRC_TABLE, RowId: i32, pcDeleted: ?*i32) HRESULT {
         return self.vtable.DeleteRow(self, strConfig, Flags, Date, Table, RowId, pcDeleted);
     }
 };
@@ -1922,39 +1922,39 @@ pub const IOCSPProperty = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const IOCSPProperty,
             pVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const IOCSPProperty,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Value: *const fn(
+        put_Value: *const fn (
             self: *const IOCSPProperty,
             newVal: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Modified: *const fn(
+        get_Modified: *const fn (
             self: *const IOCSPProperty,
             pVal: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Name(self: *const IOCSPProperty, pVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const IOCSPProperty, pVal: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, pVal);
     }
-    pub fn get_Value(self: *const IOCSPProperty, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const IOCSPProperty, pVal: ?*VARIANT) HRESULT {
         return self.vtable.get_Value(self, pVal);
     }
-    pub fn put_Value(self: *const IOCSPProperty, newVal: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Value(self: *const IOCSPProperty, newVal: VARIANT) HRESULT {
         return self.vtable.put_Value(self, newVal);
     }
-    pub fn get_Modified(self: *const IOCSPProperty, pVal: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Modified(self: *const IOCSPProperty, pVal: ?*i16) HRESULT {
         return self.vtable.get_Modified(self, pVal);
     }
 };
@@ -1966,69 +1966,69 @@ pub const IOCSPPropertyCollection = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IOCSPPropertyCollection,
             ppVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Item: *const fn (
             self: *const IOCSPPropertyCollection,
             Index: i32,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IOCSPPropertyCollection,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByName: *const fn (
             self: *const IOCSPPropertyCollection,
             bstrPropName: ?BSTR,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateProperty: *const fn (
             self: *const IOCSPPropertyCollection,
             bstrPropName: ?BSTR,
             pVarPropValue: ?*const VARIANT,
             ppVal: ?*?*IOCSPProperty,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteProperty: *const fn (
             self: *const IOCSPPropertyCollection,
             bstrPropName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromProperties: *const fn (
             self: *const IOCSPPropertyCollection,
             pVarProperties: ?*const VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAllProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAllProperties: *const fn (
             self: *const IOCSPPropertyCollection,
             pVarProperties: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const IOCSPPropertyCollection, ppVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IOCSPPropertyCollection, ppVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, ppVal);
     }
-    pub fn get_Item(self: *const IOCSPPropertyCollection, Index: i32, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Item(self: *const IOCSPPropertyCollection, Index: i32, pVal: ?*VARIANT) HRESULT {
         return self.vtable.get_Item(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IOCSPPropertyCollection, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IOCSPPropertyCollection, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get_ItemByName(self: *const IOCSPPropertyCollection, bstrPropName: ?BSTR, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByName(self: *const IOCSPPropertyCollection, bstrPropName: ?BSTR, pVal: ?*VARIANT) HRESULT {
         return self.vtable.get_ItemByName(self, bstrPropName, pVal);
     }
-    pub fn CreateProperty(self: *const IOCSPPropertyCollection, bstrPropName: ?BSTR, pVarPropValue: ?*const VARIANT, ppVal: ?*?*IOCSPProperty) callconv(.Inline) HRESULT {
+    pub inline fn CreateProperty(self: *const IOCSPPropertyCollection, bstrPropName: ?BSTR, pVarPropValue: ?*const VARIANT, ppVal: ?*?*IOCSPProperty) HRESULT {
         return self.vtable.CreateProperty(self, bstrPropName, pVarPropValue, ppVal);
     }
-    pub fn DeleteProperty(self: *const IOCSPPropertyCollection, bstrPropName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn DeleteProperty(self: *const IOCSPPropertyCollection, bstrPropName: ?BSTR) HRESULT {
         return self.vtable.DeleteProperty(self, bstrPropName);
     }
-    pub fn InitializeFromProperties(self: *const IOCSPPropertyCollection, pVarProperties: ?*const VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromProperties(self: *const IOCSPPropertyCollection, pVarProperties: ?*const VARIANT) HRESULT {
         return self.vtable.InitializeFromProperties(self, pVarProperties);
     }
-    pub fn GetAllProperties(self: *const IOCSPPropertyCollection, pVarProperties: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetAllProperties(self: *const IOCSPPropertyCollection, pVarProperties: ?*VARIANT) HRESULT {
         return self.vtable.GetAllProperties(self, pVarProperties);
     }
 };
@@ -2040,199 +2040,199 @@ pub const IOCSPCAConfiguration = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Identifier: *const fn(
+        get_Identifier: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CACertificate: *const fn(
+        get_CACertificate: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HashAlgorithm: *const fn(
+        get_HashAlgorithm: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HashAlgorithm: *const fn(
+        put_HashAlgorithm: *const fn (
             self: *const IOCSPCAConfiguration,
             newVal: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SigningFlags: *const fn(
+        get_SigningFlags: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SigningFlags: *const fn(
+        put_SigningFlags: *const fn (
             self: *const IOCSPCAConfiguration,
             newVal: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SigningCertificate: *const fn(
+        get_SigningCertificate: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SigningCertificate: *const fn(
+        put_SigningCertificate: *const fn (
             self: *const IOCSPCAConfiguration,
             newVal: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReminderDuration: *const fn(
+        get_ReminderDuration: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ReminderDuration: *const fn(
+        put_ReminderDuration: *const fn (
             self: *const IOCSPCAConfiguration,
             newVal: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ErrorCode: *const fn(
+        get_ErrorCode: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CSPName: *const fn(
+        get_CSPName: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeySpec: *const fn(
+        get_KeySpec: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderCLSID: *const fn(
+        get_ProviderCLSID: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderCLSID: *const fn(
+        put_ProviderCLSID: *const fn (
             self: *const IOCSPCAConfiguration,
             newVal: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderProperties: *const fn(
+        get_ProviderProperties: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderProperties: *const fn(
+        put_ProviderProperties: *const fn (
             self: *const IOCSPCAConfiguration,
             newVal: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Modified: *const fn(
+        get_Modified: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LocalRevocationInformation: *const fn(
+        get_LocalRevocationInformation: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LocalRevocationInformation: *const fn(
+        put_LocalRevocationInformation: *const fn (
             self: *const IOCSPCAConfiguration,
             newVal: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SigningCertificateTemplate: *const fn(
+        get_SigningCertificateTemplate: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SigningCertificateTemplate: *const fn(
+        put_SigningCertificateTemplate: *const fn (
             self: *const IOCSPCAConfiguration,
             newVal: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAConfig: *const fn(
+        get_CAConfig: *const fn (
             self: *const IOCSPCAConfiguration,
             pVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CAConfig: *const fn(
+        put_CAConfig: *const fn (
             self: *const IOCSPCAConfiguration,
             newVal: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Identifier(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Identifier(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) HRESULT {
         return self.vtable.get_Identifier(self, pVal);
     }
-    pub fn get_CACertificate(self: *const IOCSPCAConfiguration, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_CACertificate(self: *const IOCSPCAConfiguration, pVal: ?*VARIANT) HRESULT {
         return self.vtable.get_CACertificate(self, pVal);
     }
-    pub fn get_HashAlgorithm(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_HashAlgorithm(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) HRESULT {
         return self.vtable.get_HashAlgorithm(self, pVal);
     }
-    pub fn put_HashAlgorithm(self: *const IOCSPCAConfiguration, newVal: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_HashAlgorithm(self: *const IOCSPCAConfiguration, newVal: ?BSTR) HRESULT {
         return self.vtable.put_HashAlgorithm(self, newVal);
     }
-    pub fn get_SigningFlags(self: *const IOCSPCAConfiguration, pVal: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_SigningFlags(self: *const IOCSPCAConfiguration, pVal: ?*u32) HRESULT {
         return self.vtable.get_SigningFlags(self, pVal);
     }
-    pub fn put_SigningFlags(self: *const IOCSPCAConfiguration, newVal: u32) callconv(.Inline) HRESULT {
+    pub inline fn put_SigningFlags(self: *const IOCSPCAConfiguration, newVal: u32) HRESULT {
         return self.vtable.put_SigningFlags(self, newVal);
     }
-    pub fn get_SigningCertificate(self: *const IOCSPCAConfiguration, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_SigningCertificate(self: *const IOCSPCAConfiguration, pVal: ?*VARIANT) HRESULT {
         return self.vtable.get_SigningCertificate(self, pVal);
     }
-    pub fn put_SigningCertificate(self: *const IOCSPCAConfiguration, newVal: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_SigningCertificate(self: *const IOCSPCAConfiguration, newVal: VARIANT) HRESULT {
         return self.vtable.put_SigningCertificate(self, newVal);
     }
-    pub fn get_ReminderDuration(self: *const IOCSPCAConfiguration, pVal: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_ReminderDuration(self: *const IOCSPCAConfiguration, pVal: ?*u32) HRESULT {
         return self.vtable.get_ReminderDuration(self, pVal);
     }
-    pub fn put_ReminderDuration(self: *const IOCSPCAConfiguration, newVal: u32) callconv(.Inline) HRESULT {
+    pub inline fn put_ReminderDuration(self: *const IOCSPCAConfiguration, newVal: u32) HRESULT {
         return self.vtable.put_ReminderDuration(self, newVal);
     }
-    pub fn get_ErrorCode(self: *const IOCSPCAConfiguration, pVal: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_ErrorCode(self: *const IOCSPCAConfiguration, pVal: ?*u32) HRESULT {
         return self.vtable.get_ErrorCode(self, pVal);
     }
-    pub fn get_CSPName(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CSPName(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CSPName(self, pVal);
     }
-    pub fn get_KeySpec(self: *const IOCSPCAConfiguration, pVal: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_KeySpec(self: *const IOCSPCAConfiguration, pVal: ?*u32) HRESULT {
         return self.vtable.get_KeySpec(self, pVal);
     }
-    pub fn get_ProviderCLSID(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderCLSID(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) HRESULT {
         return self.vtable.get_ProviderCLSID(self, pVal);
     }
-    pub fn put_ProviderCLSID(self: *const IOCSPCAConfiguration, newVal: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderCLSID(self: *const IOCSPCAConfiguration, newVal: ?BSTR) HRESULT {
         return self.vtable.put_ProviderCLSID(self, newVal);
     }
-    pub fn get_ProviderProperties(self: *const IOCSPCAConfiguration, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderProperties(self: *const IOCSPCAConfiguration, pVal: ?*VARIANT) HRESULT {
         return self.vtable.get_ProviderProperties(self, pVal);
     }
-    pub fn put_ProviderProperties(self: *const IOCSPCAConfiguration, newVal: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderProperties(self: *const IOCSPCAConfiguration, newVal: VARIANT) HRESULT {
         return self.vtable.put_ProviderProperties(self, newVal);
     }
-    pub fn get_Modified(self: *const IOCSPCAConfiguration, pVal: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Modified(self: *const IOCSPCAConfiguration, pVal: ?*i16) HRESULT {
         return self.vtable.get_Modified(self, pVal);
     }
-    pub fn get_LocalRevocationInformation(self: *const IOCSPCAConfiguration, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_LocalRevocationInformation(self: *const IOCSPCAConfiguration, pVal: ?*VARIANT) HRESULT {
         return self.vtable.get_LocalRevocationInformation(self, pVal);
     }
-    pub fn put_LocalRevocationInformation(self: *const IOCSPCAConfiguration, newVal: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_LocalRevocationInformation(self: *const IOCSPCAConfiguration, newVal: VARIANT) HRESULT {
         return self.vtable.put_LocalRevocationInformation(self, newVal);
     }
-    pub fn get_SigningCertificateTemplate(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SigningCertificateTemplate(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) HRESULT {
         return self.vtable.get_SigningCertificateTemplate(self, pVal);
     }
-    pub fn put_SigningCertificateTemplate(self: *const IOCSPCAConfiguration, newVal: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_SigningCertificateTemplate(self: *const IOCSPCAConfiguration, newVal: ?BSTR) HRESULT {
         return self.vtable.put_SigningCertificateTemplate(self, newVal);
     }
-    pub fn get_CAConfig(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CAConfig(self: *const IOCSPCAConfiguration, pVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CAConfig(self, pVal);
     }
-    pub fn put_CAConfig(self: *const IOCSPCAConfiguration, newVal: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CAConfig(self: *const IOCSPCAConfiguration, newVal: ?BSTR) HRESULT {
         return self.vtable.put_CAConfig(self, newVal);
     }
 };
@@ -2244,55 +2244,55 @@ pub const IOCSPCAConfigurationCollection = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IOCSPCAConfigurationCollection,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Item: *const fn (
             self: *const IOCSPCAConfigurationCollection,
             Index: i32,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IOCSPCAConfigurationCollection,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByName: *const fn (
             self: *const IOCSPCAConfigurationCollection,
             bstrIdentifier: ?BSTR,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateCAConfiguration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateCAConfiguration: *const fn (
             self: *const IOCSPCAConfigurationCollection,
             bstrIdentifier: ?BSTR,
             varCACert: VARIANT,
             ppVal: ?*?*IOCSPCAConfiguration,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteCAConfiguration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteCAConfiguration: *const fn (
             self: *const IOCSPCAConfigurationCollection,
             bstrIdentifier: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const IOCSPCAConfigurationCollection, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IOCSPCAConfigurationCollection, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn get_Item(self: *const IOCSPCAConfigurationCollection, Index: i32, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Item(self: *const IOCSPCAConfigurationCollection, Index: i32, pVal: ?*VARIANT) HRESULT {
         return self.vtable.get_Item(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IOCSPCAConfigurationCollection, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IOCSPCAConfigurationCollection, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get_ItemByName(self: *const IOCSPCAConfigurationCollection, bstrIdentifier: ?BSTR, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByName(self: *const IOCSPCAConfigurationCollection, bstrIdentifier: ?BSTR, pVal: ?*VARIANT) HRESULT {
         return self.vtable.get_ItemByName(self, bstrIdentifier, pVal);
     }
-    pub fn CreateCAConfiguration(self: *const IOCSPCAConfigurationCollection, bstrIdentifier: ?BSTR, varCACert: VARIANT, ppVal: ?*?*IOCSPCAConfiguration) callconv(.Inline) HRESULT {
+    pub inline fn CreateCAConfiguration(self: *const IOCSPCAConfigurationCollection, bstrIdentifier: ?BSTR, varCACert: VARIANT, ppVal: ?*?*IOCSPCAConfiguration) HRESULT {
         return self.vtable.CreateCAConfiguration(self, bstrIdentifier, varCACert, ppVal);
     }
-    pub fn DeleteCAConfiguration(self: *const IOCSPCAConfigurationCollection, bstrIdentifier: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn DeleteCAConfiguration(self: *const IOCSPCAConfigurationCollection, bstrIdentifier: ?BSTR) HRESULT {
         return self.vtable.DeleteCAConfiguration(self, bstrIdentifier);
     }
 };
@@ -2304,88 +2304,88 @@ pub const IOCSPAdmin = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OCSPServiceProperties: *const fn(
+        get_OCSPServiceProperties: *const fn (
             self: *const IOCSPAdmin,
             ppVal: ?*?*IOCSPPropertyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OCSPCAConfigurationCollection: *const fn(
+        get_OCSPCAConfigurationCollection: *const fn (
             self: *const IOCSPAdmin,
             pVal: ?*?*IOCSPCAConfigurationCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConfiguration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConfiguration: *const fn (
             self: *const IOCSPAdmin,
             bstrServerName: ?BSTR,
             bForce: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetConfiguration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetConfiguration: *const fn (
             self: *const IOCSPAdmin,
             bstrServerName: ?BSTR,
             bForce: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMyRoles: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMyRoles: *const fn (
             self: *const IOCSPAdmin,
             bstrServerName: ?BSTR,
             pRoles: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Ping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Ping: *const fn (
             self: *const IOCSPAdmin,
             bstrServerName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSecurity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSecurity: *const fn (
             self: *const IOCSPAdmin,
             bstrServerName: ?BSTR,
             bstrVal: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSecurity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSecurity: *const fn (
             self: *const IOCSPAdmin,
             bstrServerName: ?BSTR,
             pVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSigningCertificates: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSigningCertificates: *const fn (
             self: *const IOCSPAdmin,
             bstrServerName: ?BSTR,
             pCACertVar: ?*const VARIANT,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetHashAlgorithms: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetHashAlgorithms: *const fn (
             self: *const IOCSPAdmin,
             bstrServerName: ?BSTR,
             bstrCAId: ?BSTR,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_OCSPServiceProperties(self: *const IOCSPAdmin, ppVal: ?*?*IOCSPPropertyCollection) callconv(.Inline) HRESULT {
+    pub inline fn get_OCSPServiceProperties(self: *const IOCSPAdmin, ppVal: ?*?*IOCSPPropertyCollection) HRESULT {
         return self.vtable.get_OCSPServiceProperties(self, ppVal);
     }
-    pub fn get_OCSPCAConfigurationCollection(self: *const IOCSPAdmin, pVal: ?*?*IOCSPCAConfigurationCollection) callconv(.Inline) HRESULT {
+    pub inline fn get_OCSPCAConfigurationCollection(self: *const IOCSPAdmin, pVal: ?*?*IOCSPCAConfigurationCollection) HRESULT {
         return self.vtable.get_OCSPCAConfigurationCollection(self, pVal);
     }
-    pub fn GetConfiguration(self: *const IOCSPAdmin, bstrServerName: ?BSTR, bForce: i16) callconv(.Inline) HRESULT {
+    pub inline fn GetConfiguration(self: *const IOCSPAdmin, bstrServerName: ?BSTR, bForce: i16) HRESULT {
         return self.vtable.GetConfiguration(self, bstrServerName, bForce);
     }
-    pub fn SetConfiguration(self: *const IOCSPAdmin, bstrServerName: ?BSTR, bForce: i16) callconv(.Inline) HRESULT {
+    pub inline fn SetConfiguration(self: *const IOCSPAdmin, bstrServerName: ?BSTR, bForce: i16) HRESULT {
         return self.vtable.SetConfiguration(self, bstrServerName, bForce);
     }
-    pub fn GetMyRoles(self: *const IOCSPAdmin, bstrServerName: ?BSTR, pRoles: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetMyRoles(self: *const IOCSPAdmin, bstrServerName: ?BSTR, pRoles: ?*i32) HRESULT {
         return self.vtable.GetMyRoles(self, bstrServerName, pRoles);
     }
-    pub fn Ping(self: *const IOCSPAdmin, bstrServerName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Ping(self: *const IOCSPAdmin, bstrServerName: ?BSTR) HRESULT {
         return self.vtable.Ping(self, bstrServerName);
     }
-    pub fn SetSecurity(self: *const IOCSPAdmin, bstrServerName: ?BSTR, bstrVal: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetSecurity(self: *const IOCSPAdmin, bstrServerName: ?BSTR, bstrVal: ?BSTR) HRESULT {
         return self.vtable.SetSecurity(self, bstrServerName, bstrVal);
     }
-    pub fn GetSecurity(self: *const IOCSPAdmin, bstrServerName: ?BSTR, pVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetSecurity(self: *const IOCSPAdmin, bstrServerName: ?BSTR, pVal: ?*?BSTR) HRESULT {
         return self.vtable.GetSecurity(self, bstrServerName, pVal);
     }
-    pub fn GetSigningCertificates(self: *const IOCSPAdmin, bstrServerName: ?BSTR, pCACertVar: ?*const VARIANT, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetSigningCertificates(self: *const IOCSPAdmin, bstrServerName: ?BSTR, pCACertVar: ?*const VARIANT, pVal: ?*VARIANT) HRESULT {
         return self.vtable.GetSigningCertificates(self, bstrServerName, pCACertVar, pVal);
     }
-    pub fn GetHashAlgorithms(self: *const IOCSPAdmin, bstrServerName: ?BSTR, bstrCAId: ?BSTR, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetHashAlgorithms(self: *const IOCSPAdmin, bstrServerName: ?BSTR, bstrCAId: ?BSTR, pVal: ?*VARIANT) HRESULT {
         return self.vtable.GetHashAlgorithms(self, bstrServerName, bstrCAId, pVal);
     }
 };
@@ -2423,79 +2423,79 @@ pub const CSEDB_RSTMAPW = extern struct {
     pwszNewDatabaseName: ?PWSTR,
 };
 
-pub const FNCERTSRVISSERVERONLINEW = *const fn(
+pub const FNCERTSRVISSERVERONLINEW = *const fn (
     pwszServerName: ?[*:0]const u16,
     pfServerOnline: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPGETDYNAMICFILELISTW = *const fn(
+pub const FNCERTSRVBACKUPGETDYNAMICFILELISTW = *const fn (
     hbc: ?*anyopaque,
     ppwszzFileList: ?*?*u16,
     pcbSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPPREPAREW = *const fn(
+pub const FNCERTSRVBACKUPPREPAREW = *const fn (
     pwszServerName: ?[*:0]const u16,
     grbitJet: u32,
     dwBackupFlags: u32,
     phbc: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPGETDATABASENAMESW = *const fn(
+pub const FNCERTSRVBACKUPGETDATABASENAMESW = *const fn (
     hbc: ?*anyopaque,
     ppwszzAttachmentInformation: ?*?*u16,
     pcbSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPOPENFILEW = *const fn(
+pub const FNCERTSRVBACKUPOPENFILEW = *const fn (
     hbc: ?*anyopaque,
     pwszAttachmentName: ?[*:0]const u16,
     cbReadHintSize: u32,
     pliFileSize: ?*LARGE_INTEGER,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPREAD = *const fn(
+pub const FNCERTSRVBACKUPREAD = *const fn (
     hbc: ?*anyopaque,
     pvBuffer: ?*anyopaque,
     cbBuffer: u32,
     pcbRead: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPCLOSE = *const fn(
+pub const FNCERTSRVBACKUPCLOSE = *const fn (
     hbc: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPGETBACKUPLOGSW = *const fn(
+pub const FNCERTSRVBACKUPGETBACKUPLOGSW = *const fn (
     hbc: ?*anyopaque,
     ppwszzBackupLogFiles: ?*?*u16,
     pcbSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPTRUNCATELOGS = *const fn(
+pub const FNCERTSRVBACKUPTRUNCATELOGS = *const fn (
     hbc: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPEND = *const fn(
+pub const FNCERTSRVBACKUPEND = *const fn (
     hbc: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVBACKUPFREE = *const fn(
+pub const FNCERTSRVBACKUPFREE = *const fn (
     pv: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const FNCERTSRVRESTOREGETDATABASELOCATIONSW = *const fn(
+pub const FNCERTSRVRESTOREGETDATABASELOCATIONSW = *const fn (
     hbc: ?*anyopaque,
     ppwszzDatabaseLocationList: ?*?*u16,
     pcbSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVRESTOREPREPAREW = *const fn(
+pub const FNCERTSRVRESTOREPREPAREW = *const fn (
     pwszServerName: ?[*:0]const u16,
     dwRestoreFlags: u32,
     phbc: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVRESTOREREGISTERW = *const fn(
+pub const FNCERTSRVRESTOREREGISTERW = *const fn (
     hbc: ?*anyopaque,
     pwszCheckPointFilePath: ?[*:0]const u16,
     pwszLogPath: ?[*:0]const u16,
@@ -2504,23 +2504,23 @@ pub const FNCERTSRVRESTOREREGISTERW = *const fn(
     pwszBackupLogPath: ?[*:0]const u16,
     genLow: u32,
     genHigh: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVRESTOREREGISTERCOMPLETE = *const fn(
+pub const FNCERTSRVRESTOREREGISTERCOMPLETE = *const fn (
     hbc: ?*anyopaque,
     hrRestoreState: HRESULT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVRESTOREEND = *const fn(
+pub const FNCERTSRVRESTOREEND = *const fn (
     hbc: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNCERTSRVSERVERCONTROLW = *const fn(
+pub const FNCERTSRVSERVERCONTROLW = *const fn (
     pwszServerName: ?[*:0]const u16,
     dwControlFlags: u32,
     pcbOut: ?*u32,
     ppbOut: ?*?*u8,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 const CLSID_CCertGetConfig_Value = Guid.initString("c6cc49b0-ce17-11d0-8833-00a0c903b83c");
 pub const CLSID_CCertGetConfig = &CLSID_CCertGetConfig_Value;
@@ -2543,116 +2543,116 @@ pub const IID_ICertServerPolicy = &IID_ICertServerPolicy_Value;
 pub const ICertServerPolicy = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        SetContext: *const fn(
+        SetContext: *const fn (
             self: *const ICertServerPolicy,
             Context: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRequestProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRequestProperty: *const fn (
             self: *const ICertServerPolicy,
             strPropertyName: ?BSTR,
             PropertyType: i32,
             pvarPropertyValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRequestAttribute: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRequestAttribute: *const fn (
             self: *const ICertServerPolicy,
             strAttributeName: ?BSTR,
             pstrAttributeValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCertificateProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCertificateProperty: *const fn (
             self: *const ICertServerPolicy,
             strPropertyName: ?BSTR,
             PropertyType: CERT_PROPERTY_TYPE,
             pvarPropertyValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCertificateProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCertificateProperty: *const fn (
             self: *const ICertServerPolicy,
             strPropertyName: ?BSTR,
             PropertyType: i32,
             pvarPropertyValue: ?*const VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCertificateExtension: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCertificateExtension: *const fn (
             self: *const ICertServerPolicy,
             strExtensionName: ?BSTR,
             Type: CERT_PROPERTY_TYPE,
             pvarValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCertificateExtensionFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCertificateExtensionFlags: *const fn (
             self: *const ICertServerPolicy,
             pExtFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCertificateExtension: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCertificateExtension: *const fn (
             self: *const ICertServerPolicy,
             strExtensionName: ?BSTR,
             Type: i32,
             ExtFlags: i32,
             pvarValue: ?*const VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateExtensionsSetup: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateExtensionsSetup: *const fn (
             self: *const ICertServerPolicy,
             Flags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateExtensions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateExtensions: *const fn (
             self: *const ICertServerPolicy,
             pstrExtensionName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateExtensionsClose: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateExtensionsClose: *const fn (
             self: *const ICertServerPolicy,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateAttributesSetup: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateAttributesSetup: *const fn (
             self: *const ICertServerPolicy,
             Flags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateAttributes: *const fn (
             self: *const ICertServerPolicy,
             pstrAttributeName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateAttributesClose: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateAttributesClose: *const fn (
             self: *const ICertServerPolicy,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn SetContext(self: *const ICertServerPolicy, Context: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetContext(self: *const ICertServerPolicy, Context: i32) HRESULT {
         return self.vtable.SetContext(self, Context);
     }
-    pub fn GetRequestProperty(self: *const ICertServerPolicy, strPropertyName: ?BSTR, PropertyType: i32, pvarPropertyValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetRequestProperty(self: *const ICertServerPolicy, strPropertyName: ?BSTR, PropertyType: i32, pvarPropertyValue: ?*VARIANT) HRESULT {
         return self.vtable.GetRequestProperty(self, strPropertyName, PropertyType, pvarPropertyValue);
     }
-    pub fn GetRequestAttribute(self: *const ICertServerPolicy, strAttributeName: ?BSTR, pstrAttributeValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetRequestAttribute(self: *const ICertServerPolicy, strAttributeName: ?BSTR, pstrAttributeValue: ?*?BSTR) HRESULT {
         return self.vtable.GetRequestAttribute(self, strAttributeName, pstrAttributeValue);
     }
-    pub fn GetCertificateProperty(self: *const ICertServerPolicy, strPropertyName: ?BSTR, PropertyType: CERT_PROPERTY_TYPE, pvarPropertyValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCertificateProperty(self: *const ICertServerPolicy, strPropertyName: ?BSTR, PropertyType: CERT_PROPERTY_TYPE, pvarPropertyValue: ?*VARIANT) HRESULT {
         return self.vtable.GetCertificateProperty(self, strPropertyName, PropertyType, pvarPropertyValue);
     }
-    pub fn SetCertificateProperty(self: *const ICertServerPolicy, strPropertyName: ?BSTR, PropertyType: i32, pvarPropertyValue: ?*const VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetCertificateProperty(self: *const ICertServerPolicy, strPropertyName: ?BSTR, PropertyType: i32, pvarPropertyValue: ?*const VARIANT) HRESULT {
         return self.vtable.SetCertificateProperty(self, strPropertyName, PropertyType, pvarPropertyValue);
     }
-    pub fn GetCertificateExtension(self: *const ICertServerPolicy, strExtensionName: ?BSTR, Type: CERT_PROPERTY_TYPE, pvarValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCertificateExtension(self: *const ICertServerPolicy, strExtensionName: ?BSTR, Type: CERT_PROPERTY_TYPE, pvarValue: ?*VARIANT) HRESULT {
         return self.vtable.GetCertificateExtension(self, strExtensionName, Type, pvarValue);
     }
-    pub fn GetCertificateExtensionFlags(self: *const ICertServerPolicy, pExtFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCertificateExtensionFlags(self: *const ICertServerPolicy, pExtFlags: ?*i32) HRESULT {
         return self.vtable.GetCertificateExtensionFlags(self, pExtFlags);
     }
-    pub fn SetCertificateExtension(self: *const ICertServerPolicy, strExtensionName: ?BSTR, Type: i32, ExtFlags: i32, pvarValue: ?*const VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetCertificateExtension(self: *const ICertServerPolicy, strExtensionName: ?BSTR, Type: i32, ExtFlags: i32, pvarValue: ?*const VARIANT) HRESULT {
         return self.vtable.SetCertificateExtension(self, strExtensionName, Type, ExtFlags, pvarValue);
     }
-    pub fn EnumerateExtensionsSetup(self: *const ICertServerPolicy, Flags: i32) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateExtensionsSetup(self: *const ICertServerPolicy, Flags: i32) HRESULT {
         return self.vtable.EnumerateExtensionsSetup(self, Flags);
     }
-    pub fn EnumerateExtensions(self: *const ICertServerPolicy, pstrExtensionName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateExtensions(self: *const ICertServerPolicy, pstrExtensionName: ?*?BSTR) HRESULT {
         return self.vtable.EnumerateExtensions(self, pstrExtensionName);
     }
-    pub fn EnumerateExtensionsClose(self: *const ICertServerPolicy) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateExtensionsClose(self: *const ICertServerPolicy) HRESULT {
         return self.vtable.EnumerateExtensionsClose(self);
     }
-    pub fn EnumerateAttributesSetup(self: *const ICertServerPolicy, Flags: i32) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateAttributesSetup(self: *const ICertServerPolicy, Flags: i32) HRESULT {
         return self.vtable.EnumerateAttributesSetup(self, Flags);
     }
-    pub fn EnumerateAttributes(self: *const ICertServerPolicy, pstrAttributeName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateAttributes(self: *const ICertServerPolicy, pstrAttributeName: ?*?BSTR) HRESULT {
         return self.vtable.EnumerateAttributes(self, pstrAttributeName);
     }
-    pub fn EnumerateAttributesClose(self: *const ICertServerPolicy) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateAttributesClose(self: *const ICertServerPolicy) HRESULT {
         return self.vtable.EnumerateAttributesClose(self);
     }
 };
@@ -2663,97 +2663,97 @@ pub const IID_ICertServerExit = &IID_ICertServerExit_Value;
 pub const ICertServerExit = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        SetContext: *const fn(
+        SetContext: *const fn (
             self: *const ICertServerExit,
             Context: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRequestProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRequestProperty: *const fn (
             self: *const ICertServerExit,
             strPropertyName: ?BSTR,
             PropertyType: i32,
             pvarPropertyValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRequestAttribute: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRequestAttribute: *const fn (
             self: *const ICertServerExit,
             strAttributeName: ?BSTR,
             pstrAttributeValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCertificateProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCertificateProperty: *const fn (
             self: *const ICertServerExit,
             strPropertyName: ?BSTR,
             PropertyType: i32,
             pvarPropertyValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCertificateExtension: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCertificateExtension: *const fn (
             self: *const ICertServerExit,
             strExtensionName: ?BSTR,
             Type: i32,
             pvarValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCertificateExtensionFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCertificateExtensionFlags: *const fn (
             self: *const ICertServerExit,
             pExtFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateExtensionsSetup: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateExtensionsSetup: *const fn (
             self: *const ICertServerExit,
             Flags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateExtensions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateExtensions: *const fn (
             self: *const ICertServerExit,
             pstrExtensionName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateExtensionsClose: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateExtensionsClose: *const fn (
             self: *const ICertServerExit,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateAttributesSetup: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateAttributesSetup: *const fn (
             self: *const ICertServerExit,
             Flags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateAttributes: *const fn (
             self: *const ICertServerExit,
             pstrAttributeName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumerateAttributesClose: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumerateAttributesClose: *const fn (
             self: *const ICertServerExit,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn SetContext(self: *const ICertServerExit, Context: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetContext(self: *const ICertServerExit, Context: i32) HRESULT {
         return self.vtable.SetContext(self, Context);
     }
-    pub fn GetRequestProperty(self: *const ICertServerExit, strPropertyName: ?BSTR, PropertyType: i32, pvarPropertyValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetRequestProperty(self: *const ICertServerExit, strPropertyName: ?BSTR, PropertyType: i32, pvarPropertyValue: ?*VARIANT) HRESULT {
         return self.vtable.GetRequestProperty(self, strPropertyName, PropertyType, pvarPropertyValue);
     }
-    pub fn GetRequestAttribute(self: *const ICertServerExit, strAttributeName: ?BSTR, pstrAttributeValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetRequestAttribute(self: *const ICertServerExit, strAttributeName: ?BSTR, pstrAttributeValue: ?*?BSTR) HRESULT {
         return self.vtable.GetRequestAttribute(self, strAttributeName, pstrAttributeValue);
     }
-    pub fn GetCertificateProperty(self: *const ICertServerExit, strPropertyName: ?BSTR, PropertyType: i32, pvarPropertyValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCertificateProperty(self: *const ICertServerExit, strPropertyName: ?BSTR, PropertyType: i32, pvarPropertyValue: ?*VARIANT) HRESULT {
         return self.vtable.GetCertificateProperty(self, strPropertyName, PropertyType, pvarPropertyValue);
     }
-    pub fn GetCertificateExtension(self: *const ICertServerExit, strExtensionName: ?BSTR, Type: i32, pvarValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCertificateExtension(self: *const ICertServerExit, strExtensionName: ?BSTR, Type: i32, pvarValue: ?*VARIANT) HRESULT {
         return self.vtable.GetCertificateExtension(self, strExtensionName, Type, pvarValue);
     }
-    pub fn GetCertificateExtensionFlags(self: *const ICertServerExit, pExtFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCertificateExtensionFlags(self: *const ICertServerExit, pExtFlags: ?*i32) HRESULT {
         return self.vtable.GetCertificateExtensionFlags(self, pExtFlags);
     }
-    pub fn EnumerateExtensionsSetup(self: *const ICertServerExit, Flags: i32) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateExtensionsSetup(self: *const ICertServerExit, Flags: i32) HRESULT {
         return self.vtable.EnumerateExtensionsSetup(self, Flags);
     }
-    pub fn EnumerateExtensions(self: *const ICertServerExit, pstrExtensionName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateExtensions(self: *const ICertServerExit, pstrExtensionName: ?*?BSTR) HRESULT {
         return self.vtable.EnumerateExtensions(self, pstrExtensionName);
     }
-    pub fn EnumerateExtensionsClose(self: *const ICertServerExit) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateExtensionsClose(self: *const ICertServerExit) HRESULT {
         return self.vtable.EnumerateExtensionsClose(self);
     }
-    pub fn EnumerateAttributesSetup(self: *const ICertServerExit, Flags: i32) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateAttributesSetup(self: *const ICertServerExit, Flags: i32) HRESULT {
         return self.vtable.EnumerateAttributesSetup(self, Flags);
     }
-    pub fn EnumerateAttributes(self: *const ICertServerExit, pstrAttributeName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateAttributes(self: *const ICertServerExit, pstrAttributeName: ?*?BSTR) HRESULT {
         return self.vtable.EnumerateAttributes(self, pstrAttributeName);
     }
-    pub fn EnumerateAttributesClose(self: *const ICertServerExit) callconv(.Inline) HRESULT {
+    pub inline fn EnumerateAttributesClose(self: *const ICertServerExit) HRESULT {
         return self.vtable.EnumerateAttributesClose(self);
     }
 };
@@ -2764,16 +2764,16 @@ pub const IID_ICertGetConfig = &IID_ICertGetConfig_Value;
 pub const ICertGetConfig = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetConfig: *const fn(
+        GetConfig: *const fn (
             self: *const ICertGetConfig,
             Flags: CERT_GET_CONFIG_FLAGS,
             pstrOut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetConfig(self: *const ICertGetConfig, Flags: CERT_GET_CONFIG_FLAGS, pstrOut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetConfig(self: *const ICertGetConfig, Flags: CERT_GET_CONFIG_FLAGS, pstrOut: ?*?BSTR) HRESULT {
         return self.vtable.GetConfig(self, Flags, pstrOut);
     }
 };
@@ -2784,39 +2784,39 @@ pub const IID_ICertConfig = &IID_ICertConfig_Value;
 pub const ICertConfig = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Reset: *const fn(
+        Reset: *const fn (
             self: *const ICertConfig,
             Index: i32,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const ICertConfig,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetField: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetField: *const fn (
             self: *const ICertConfig,
             strFieldName: ?BSTR,
             pstrOut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConfig: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConfig: *const fn (
             self: *const ICertConfig,
             Flags: i32,
             pstrOut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Reset(self: *const ICertConfig, Index: i32, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ICertConfig, Index: i32, pCount: ?*i32) HRESULT {
         return self.vtable.Reset(self, Index, pCount);
     }
-    pub fn Next(self: *const ICertConfig, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const ICertConfig, pIndex: ?*i32) HRESULT {
         return self.vtable.Next(self, pIndex);
     }
-    pub fn GetField(self: *const ICertConfig, strFieldName: ?BSTR, pstrOut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetField(self: *const ICertConfig, strFieldName: ?BSTR, pstrOut: ?*?BSTR) HRESULT {
         return self.vtable.GetField(self, strFieldName, pstrOut);
     }
-    pub fn GetConfig(self: *const ICertConfig, Flags: i32, pstrOut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetConfig(self: *const ICertConfig, Flags: i32, pstrOut: ?*?BSTR) HRESULT {
         return self.vtable.GetConfig(self, Flags, pstrOut);
     }
 };
@@ -2827,16 +2827,16 @@ pub const IID_ICertConfig2 = &IID_ICertConfig2_Value;
 pub const ICertConfig2 = extern union {
     pub const VTable = extern struct {
         base: ICertConfig.VTable,
-        SetSharedFolder: *const fn(
+        SetSharedFolder: *const fn (
             self: *const ICertConfig2,
             strSharedFolder: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertConfig: ICertConfig,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn SetSharedFolder(self: *const ICertConfig2, strSharedFolder: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetSharedFolder(self: *const ICertConfig2, strSharedFolder: ?BSTR) HRESULT {
         return self.vtable.SetSharedFolder(self, strSharedFolder);
     }
 };
@@ -2847,67 +2847,67 @@ pub const IID_ICertRequest = &IID_ICertRequest_Value;
 pub const ICertRequest = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Submit: *const fn(
+        Submit: *const fn (
             self: *const ICertRequest,
             Flags: i32,
             strRequest: ?BSTR,
             strAttributes: ?BSTR,
             strConfig: ?BSTR,
             pDisposition: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RetrievePending: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RetrievePending: *const fn (
             self: *const ICertRequest,
             RequestId: i32,
             strConfig: ?BSTR,
             pDisposition: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLastStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLastStatus: *const fn (
             self: *const ICertRequest,
             pStatus: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRequestId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRequestId: *const fn (
             self: *const ICertRequest,
             pRequestId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDispositionMessage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDispositionMessage: *const fn (
             self: *const ICertRequest,
             pstrDispositionMessage: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCACertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCACertificate: *const fn (
             self: *const ICertRequest,
             fExchangeCertificate: i32,
             strConfig: ?BSTR,
             Flags: i32,
             pstrCertificate: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCertificate: *const fn (
             self: *const ICertRequest,
             Flags: i32,
             pstrCertificate: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Submit(self: *const ICertRequest, Flags: i32, strRequest: ?BSTR, strAttributes: ?BSTR, strConfig: ?BSTR, pDisposition: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Submit(self: *const ICertRequest, Flags: i32, strRequest: ?BSTR, strAttributes: ?BSTR, strConfig: ?BSTR, pDisposition: ?*i32) HRESULT {
         return self.vtable.Submit(self, Flags, strRequest, strAttributes, strConfig, pDisposition);
     }
-    pub fn RetrievePending(self: *const ICertRequest, RequestId: i32, strConfig: ?BSTR, pDisposition: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn RetrievePending(self: *const ICertRequest, RequestId: i32, strConfig: ?BSTR, pDisposition: ?*i32) HRESULT {
         return self.vtable.RetrievePending(self, RequestId, strConfig, pDisposition);
     }
-    pub fn GetLastStatus(self: *const ICertRequest, pStatus: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetLastStatus(self: *const ICertRequest, pStatus: ?*i32) HRESULT {
         return self.vtable.GetLastStatus(self, pStatus);
     }
-    pub fn GetRequestId(self: *const ICertRequest, pRequestId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetRequestId(self: *const ICertRequest, pRequestId: ?*i32) HRESULT {
         return self.vtable.GetRequestId(self, pRequestId);
     }
-    pub fn GetDispositionMessage(self: *const ICertRequest, pstrDispositionMessage: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDispositionMessage(self: *const ICertRequest, pstrDispositionMessage: ?*?BSTR) HRESULT {
         return self.vtable.GetDispositionMessage(self, pstrDispositionMessage);
     }
-    pub fn GetCACertificate(self: *const ICertRequest, fExchangeCertificate: i32, strConfig: ?BSTR, Flags: i32, pstrCertificate: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCACertificate(self: *const ICertRequest, fExchangeCertificate: i32, strConfig: ?BSTR, Flags: i32, pstrCertificate: ?*?BSTR) HRESULT {
         return self.vtable.GetCACertificate(self, fExchangeCertificate, strConfig, Flags, pstrCertificate);
     }
-    pub fn GetCertificate(self: *const ICertRequest, Flags: i32, pstrCertificate: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCertificate(self: *const ICertRequest, Flags: i32, pstrCertificate: ?*?BSTR) HRESULT {
         return self.vtable.GetCertificate(self, Flags, pstrCertificate);
     }
 };
@@ -2918,20 +2918,20 @@ pub const IID_ICertRequest2 = &IID_ICertRequest2_Value;
 pub const ICertRequest2 = extern union {
     pub const VTable = extern struct {
         base: ICertRequest.VTable,
-        GetIssuedCertificate: *const fn(
+        GetIssuedCertificate: *const fn (
             self: *const ICertRequest2,
             strConfig: ?BSTR,
             RequestId: i32,
             strSerialNumber: ?BSTR,
             pDisposition: ?*CR_DISP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetErrorMessageText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetErrorMessageText: *const fn (
             self: *const ICertRequest2,
             hrMessage: i32,
             Flags: i32,
             pstrErrorMessageText: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAProperty: *const fn (
             self: *const ICertRequest2,
             strConfig: ?BSTR,
             PropId: i32,
@@ -2939,48 +2939,48 @@ pub const ICertRequest2 = extern union {
             PropType: i32,
             Flags: i32,
             pvarPropertyValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAPropertyFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAPropertyFlags: *const fn (
             self: *const ICertRequest2,
             strConfig: ?BSTR,
             PropId: i32,
             pPropFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAPropertyDisplayName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAPropertyDisplayName: *const fn (
             self: *const ICertRequest2,
             strConfig: ?BSTR,
             PropId: i32,
             pstrDisplayName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFullResponseProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFullResponseProperty: *const fn (
             self: *const ICertRequest2,
             PropId: FULL_RESPONSE_PROPERTY_ID,
             PropIndex: i32,
             PropType: CERT_PROPERTY_TYPE,
             Flags: CERT_REQUEST_OUT_TYPE,
             pvarPropertyValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertRequest: ICertRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetIssuedCertificate(self: *const ICertRequest2, strConfig: ?BSTR, RequestId: i32, strSerialNumber: ?BSTR, pDisposition: ?*CR_DISP) callconv(.Inline) HRESULT {
+    pub inline fn GetIssuedCertificate(self: *const ICertRequest2, strConfig: ?BSTR, RequestId: i32, strSerialNumber: ?BSTR, pDisposition: ?*CR_DISP) HRESULT {
         return self.vtable.GetIssuedCertificate(self, strConfig, RequestId, strSerialNumber, pDisposition);
     }
-    pub fn GetErrorMessageText(self: *const ICertRequest2, hrMessage: i32, Flags: i32, pstrErrorMessageText: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetErrorMessageText(self: *const ICertRequest2, hrMessage: i32, Flags: i32, pstrErrorMessageText: ?*?BSTR) HRESULT {
         return self.vtable.GetErrorMessageText(self, hrMessage, Flags, pstrErrorMessageText);
     }
-    pub fn GetCAProperty(self: *const ICertRequest2, strConfig: ?BSTR, PropId: i32, PropIndex: i32, PropType: i32, Flags: i32, pvarPropertyValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCAProperty(self: *const ICertRequest2, strConfig: ?BSTR, PropId: i32, PropIndex: i32, PropType: i32, Flags: i32, pvarPropertyValue: ?*VARIANT) HRESULT {
         return self.vtable.GetCAProperty(self, strConfig, PropId, PropIndex, PropType, Flags, pvarPropertyValue);
     }
-    pub fn GetCAPropertyFlags(self: *const ICertRequest2, strConfig: ?BSTR, PropId: i32, pPropFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCAPropertyFlags(self: *const ICertRequest2, strConfig: ?BSTR, PropId: i32, pPropFlags: ?*i32) HRESULT {
         return self.vtable.GetCAPropertyFlags(self, strConfig, PropId, pPropFlags);
     }
-    pub fn GetCAPropertyDisplayName(self: *const ICertRequest2, strConfig: ?BSTR, PropId: i32, pstrDisplayName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCAPropertyDisplayName(self: *const ICertRequest2, strConfig: ?BSTR, PropId: i32, pstrDisplayName: ?*?BSTR) HRESULT {
         return self.vtable.GetCAPropertyDisplayName(self, strConfig, PropId, pstrDisplayName);
     }
-    pub fn GetFullResponseProperty(self: *const ICertRequest2, PropId: FULL_RESPONSE_PROPERTY_ID, PropIndex: i32, PropType: CERT_PROPERTY_TYPE, Flags: CERT_REQUEST_OUT_TYPE, pvarPropertyValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetFullResponseProperty(self: *const ICertRequest2, PropId: FULL_RESPONSE_PROPERTY_ID, PropIndex: i32, PropType: CERT_PROPERTY_TYPE, Flags: CERT_REQUEST_OUT_TYPE, pvarPropertyValue: ?*VARIANT) HRESULT {
         return self.vtable.GetFullResponseProperty(self, PropId, PropIndex, PropType, Flags, pvarPropertyValue);
     }
 };
@@ -3004,44 +3004,44 @@ pub const IID_ICertRequest3 = &IID_ICertRequest3_Value;
 pub const ICertRequest3 = extern union {
     pub const VTable = extern struct {
         base: ICertRequest2.VTable,
-        SetCredential: *const fn(
+        SetCredential: *const fn (
             self: *const ICertRequest3,
             hWnd: i32,
             AuthType: X509EnrollmentAuthFlags,
             strCredential: ?BSTR,
             strPassword: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRequestIdString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRequestIdString: *const fn (
             self: *const ICertRequest3,
             pstrRequestId: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIssuedCertificate2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIssuedCertificate2: *const fn (
             self: *const ICertRequest3,
             strConfig: ?BSTR,
             strRequestId: ?BSTR,
             strSerialNumber: ?BSTR,
             pDisposition: ?*CR_DISP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRefreshPolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRefreshPolicy: *const fn (
             self: *const ICertRequest3,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertRequest2: ICertRequest2,
     ICertRequest: ICertRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn SetCredential(self: *const ICertRequest3, hWnd: i32, AuthType: X509EnrollmentAuthFlags, strCredential: ?BSTR, strPassword: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetCredential(self: *const ICertRequest3, hWnd: i32, AuthType: X509EnrollmentAuthFlags, strCredential: ?BSTR, strPassword: ?BSTR) HRESULT {
         return self.vtable.SetCredential(self, hWnd, AuthType, strCredential, strPassword);
     }
-    pub fn GetRequestIdString(self: *const ICertRequest3, pstrRequestId: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetRequestIdString(self: *const ICertRequest3, pstrRequestId: ?*?BSTR) HRESULT {
         return self.vtable.GetRequestIdString(self, pstrRequestId);
     }
-    pub fn GetIssuedCertificate2(self: *const ICertRequest3, strConfig: ?BSTR, strRequestId: ?BSTR, strSerialNumber: ?BSTR, pDisposition: ?*CR_DISP) callconv(.Inline) HRESULT {
+    pub inline fn GetIssuedCertificate2(self: *const ICertRequest3, strConfig: ?BSTR, strRequestId: ?BSTR, strSerialNumber: ?BSTR, pDisposition: ?*CR_DISP) HRESULT {
         return self.vtable.GetIssuedCertificate2(self, strConfig, strRequestId, strSerialNumber, pDisposition);
     }
-    pub fn GetRefreshPolicy(self: *const ICertRequest3, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn GetRefreshPolicy(self: *const ICertRequest3, pValue: ?*i16) HRESULT {
         return self.vtable.GetRefreshPolicy(self, pValue);
     }
 };
@@ -3301,39 +3301,39 @@ pub const IID_ICertManageModule = &IID_ICertManageModule_Value;
 pub const ICertManageModule = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetProperty: *const fn(
+        GetProperty: *const fn (
             self: *const ICertManageModule,
             strConfig: ?BSTR,
             strStorageLocation: ?BSTR,
             strPropertyName: ?BSTR,
             Flags: i32,
             pvarProperty: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProperty: *const fn (
             self: *const ICertManageModule,
             strConfig: ?BSTR,
             strStorageLocation: ?BSTR,
             strPropertyName: ?BSTR,
             Flags: i32,
             pvarProperty: ?*const VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Configure: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Configure: *const fn (
             self: *const ICertManageModule,
             strConfig: ?BSTR,
             strStorageLocation: ?BSTR,
             Flags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetProperty(self: *const ICertManageModule, strConfig: ?BSTR, strStorageLocation: ?BSTR, strPropertyName: ?BSTR, Flags: i32, pvarProperty: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const ICertManageModule, strConfig: ?BSTR, strStorageLocation: ?BSTR, strPropertyName: ?BSTR, Flags: i32, pvarProperty: ?*VARIANT) HRESULT {
         return self.vtable.GetProperty(self, strConfig, strStorageLocation, strPropertyName, Flags, pvarProperty);
     }
-    pub fn SetProperty(self: *const ICertManageModule, strConfig: ?BSTR, strStorageLocation: ?BSTR, strPropertyName: ?BSTR, Flags: i32, pvarProperty: ?*const VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetProperty(self: *const ICertManageModule, strConfig: ?BSTR, strStorageLocation: ?BSTR, strPropertyName: ?BSTR, Flags: i32, pvarProperty: ?*const VARIANT) HRESULT {
         return self.vtable.SetProperty(self, strConfig, strStorageLocation, strPropertyName, Flags, pvarProperty);
     }
-    pub fn Configure(self: *const ICertManageModule, strConfig: ?BSTR, strStorageLocation: ?BSTR, Flags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Configure(self: *const ICertManageModule, strConfig: ?BSTR, strStorageLocation: ?BSTR, Flags: i32) HRESULT {
         return self.vtable.Configure(self, strConfig, strStorageLocation, Flags);
     }
 };
@@ -3357,39 +3357,39 @@ pub const IID_ICertPolicy = &IID_ICertPolicy_Value;
 pub const ICertPolicy = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPolicy,
             strConfig: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        VerifyRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        VerifyRequest: *const fn (
             self: *const ICertPolicy,
             strConfig: ?BSTR,
             Context: i32,
             bNewRequest: i32,
             Flags: i32,
             pDisposition: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDescription: *const fn (
             self: *const ICertPolicy,
             pstrDescription: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ShutDown: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ShutDown: *const fn (
             self: *const ICertPolicy,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPolicy, strConfig: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPolicy, strConfig: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, strConfig);
     }
-    pub fn VerifyRequest(self: *const ICertPolicy, strConfig: ?BSTR, Context: i32, bNewRequest: i32, Flags: i32, pDisposition: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn VerifyRequest(self: *const ICertPolicy, strConfig: ?BSTR, Context: i32, bNewRequest: i32, Flags: i32, pDisposition: ?*i32) HRESULT {
         return self.vtable.VerifyRequest(self, strConfig, Context, bNewRequest, Flags, pDisposition);
     }
-    pub fn GetDescription(self: *const ICertPolicy, pstrDescription: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDescription(self: *const ICertPolicy, pstrDescription: ?*?BSTR) HRESULT {
         return self.vtable.GetDescription(self, pstrDescription);
     }
-    pub fn ShutDown(self: *const ICertPolicy) callconv(.Inline) HRESULT {
+    pub inline fn ShutDown(self: *const ICertPolicy) HRESULT {
         return self.vtable.ShutDown(self);
     }
 };
@@ -3400,16 +3400,16 @@ pub const IID_ICertPolicy2 = &IID_ICertPolicy2_Value;
 pub const ICertPolicy2 = extern union {
     pub const VTable = extern struct {
         base: ICertPolicy.VTable,
-        GetManageModule: *const fn(
+        GetManageModule: *const fn (
             self: *const ICertPolicy2,
             ppManageModule: ?*?*ICertManageModule,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertPolicy: ICertPolicy,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetManageModule(self: *const ICertPolicy2, ppManageModule: ?*?*ICertManageModule) callconv(.Inline) HRESULT {
+    pub inline fn GetManageModule(self: *const ICertPolicy2, ppManageModule: ?*?*ICertManageModule) HRESULT {
         return self.vtable.GetManageModule(self, ppManageModule);
     }
 };
@@ -3464,50 +3464,50 @@ pub const IID_INDESPolicy = &IID_INDESPolicy_Value;
 pub const INDESPolicy = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const INDESPolicy,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Uninitialize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Uninitialize: *const fn (
             self: *const INDESPolicy,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GenerateChallenge: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GenerateChallenge: *const fn (
             self: *const INDESPolicy,
             pwszTemplate: ?[*:0]const u16,
             pwszParams: ?[*:0]const u16,
             ppwszResponse: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        VerifyRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        VerifyRequest: *const fn (
             self: *const INDESPolicy,
             pctbRequest: ?*CERTTRANSBLOB,
             pctbSigningCertEncoded: ?*CERTTRANSBLOB,
             pwszTemplate: ?[*:0]const u16,
             pwszTransactionId: ?[*:0]const u16,
             pfVerified: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Notify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Notify: *const fn (
             self: *const INDESPolicy,
             pwszChallenge: ?[*:0]const u16,
             pwszTransactionId: ?[*:0]const u16,
             disposition: X509SCEPDisposition,
             lastHResult: i32,
             pctbIssuedCertEncoded: ?*CERTTRANSBLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const INDESPolicy) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const INDESPolicy) HRESULT {
         return self.vtable.Initialize(self);
     }
-    pub fn Uninitialize(self: *const INDESPolicy) callconv(.Inline) HRESULT {
+    pub inline fn Uninitialize(self: *const INDESPolicy) HRESULT {
         return self.vtable.Uninitialize(self);
     }
-    pub fn GenerateChallenge(self: *const INDESPolicy, pwszTemplate: ?[*:0]const u16, pwszParams: ?[*:0]const u16, ppwszResponse: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GenerateChallenge(self: *const INDESPolicy, pwszTemplate: ?[*:0]const u16, pwszParams: ?[*:0]const u16, ppwszResponse: ?*?PWSTR) HRESULT {
         return self.vtable.GenerateChallenge(self, pwszTemplate, pwszParams, ppwszResponse);
     }
-    pub fn VerifyRequest(self: *const INDESPolicy, pctbRequest: ?*CERTTRANSBLOB, pctbSigningCertEncoded: ?*CERTTRANSBLOB, pwszTemplate: ?[*:0]const u16, pwszTransactionId: ?[*:0]const u16, pfVerified: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn VerifyRequest(self: *const INDESPolicy, pctbRequest: ?*CERTTRANSBLOB, pctbSigningCertEncoded: ?*CERTTRANSBLOB, pwszTemplate: ?[*:0]const u16, pwszTransactionId: ?[*:0]const u16, pfVerified: ?*BOOL) HRESULT {
         return self.vtable.VerifyRequest(self, pctbRequest, pctbSigningCertEncoded, pwszTemplate, pwszTransactionId, pfVerified);
     }
-    pub fn Notify(self: *const INDESPolicy, pwszChallenge: ?[*:0]const u16, pwszTransactionId: ?[*:0]const u16, disposition: X509SCEPDisposition, lastHResult: i32, pctbIssuedCertEncoded: ?*CERTTRANSBLOB) callconv(.Inline) HRESULT {
+    pub inline fn Notify(self: *const INDESPolicy, pwszChallenge: ?[*:0]const u16, pwszTransactionId: ?[*:0]const u16, disposition: X509SCEPDisposition, lastHResult: i32, pctbIssuedCertEncoded: ?*CERTTRANSBLOB) HRESULT {
         return self.vtable.Notify(self, pwszChallenge, pwszTransactionId, disposition, lastHResult, pctbIssuedCertEncoded);
     }
 };
@@ -4519,73 +4519,73 @@ pub const IID_IObjectId = &IID_IObjectId_Value;
 pub const IObjectId = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        InitializeFromName: *const fn(
+        InitializeFromName: *const fn (
             self: *const IObjectId,
             Name: CERTENROLL_OBJECTID,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromValue: *const fn (
             self: *const IObjectId,
             strValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromAlgorithmName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromAlgorithmName: *const fn (
             self: *const IObjectId,
             GroupId: ObjectIdGroupId,
             KeyFlags: ObjectIdPublicKeyFlags,
             AlgFlags: AlgorithmFlags,
             strAlgorithmName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const IObjectId,
             pValue: ?*CERTENROLL_OBJECTID,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FriendlyName: *const fn(
+        get_FriendlyName: *const fn (
             self: *const IObjectId,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_FriendlyName: *const fn(
+        put_FriendlyName: *const fn (
             self: *const IObjectId,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const IObjectId,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAlgorithmName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAlgorithmName: *const fn (
             self: *const IObjectId,
             GroupId: ObjectIdGroupId,
             KeyFlags: ObjectIdPublicKeyFlags,
             pstrAlgorithmName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromName(self: *const IObjectId, Name: CERTENROLL_OBJECTID) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromName(self: *const IObjectId, Name: CERTENROLL_OBJECTID) HRESULT {
         return self.vtable.InitializeFromName(self, Name);
     }
-    pub fn InitializeFromValue(self: *const IObjectId, strValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromValue(self: *const IObjectId, strValue: ?BSTR) HRESULT {
         return self.vtable.InitializeFromValue(self, strValue);
     }
-    pub fn InitializeFromAlgorithmName(self: *const IObjectId, GroupId: ObjectIdGroupId, KeyFlags: ObjectIdPublicKeyFlags, AlgFlags: AlgorithmFlags, strAlgorithmName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromAlgorithmName(self: *const IObjectId, GroupId: ObjectIdGroupId, KeyFlags: ObjectIdPublicKeyFlags, AlgFlags: AlgorithmFlags, strAlgorithmName: ?BSTR) HRESULT {
         return self.vtable.InitializeFromAlgorithmName(self, GroupId, KeyFlags, AlgFlags, strAlgorithmName);
     }
-    pub fn get_Name(self: *const IObjectId, pValue: ?*CERTENROLL_OBJECTID) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const IObjectId, pValue: ?*CERTENROLL_OBJECTID) HRESULT {
         return self.vtable.get_Name(self, pValue);
     }
-    pub fn get_FriendlyName(self: *const IObjectId, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_FriendlyName(self: *const IObjectId, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_FriendlyName(self, pValue);
     }
-    pub fn put_FriendlyName(self: *const IObjectId, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_FriendlyName(self: *const IObjectId, Value: ?BSTR) HRESULT {
         return self.vtable.put_FriendlyName(self, Value);
     }
-    pub fn get_Value(self: *const IObjectId, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const IObjectId, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Value(self, pValue);
     }
-    pub fn GetAlgorithmName(self: *const IObjectId, GroupId: ObjectIdGroupId, KeyFlags: ObjectIdPublicKeyFlags, pstrAlgorithmName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetAlgorithmName(self: *const IObjectId, GroupId: ObjectIdGroupId, KeyFlags: ObjectIdPublicKeyFlags, pstrAlgorithmName: ?*?BSTR) HRESULT {
         return self.vtable.GetAlgorithmName(self, GroupId, KeyFlags, pstrAlgorithmName);
     }
 };
@@ -4596,59 +4596,59 @@ pub const IID_IObjectIds = &IID_IObjectIds_Value;
 pub const IObjectIds = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const IObjectIds,
             Index: i32,
             pVal: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IObjectIds,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IObjectIds,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IObjectIds,
             pVal: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IObjectIds,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddRange: *const fn (
             self: *const IObjectIds,
             pValue: ?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const IObjectIds, Index: i32, pVal: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const IObjectIds, Index: i32, pVal: ?*?*IObjectId) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IObjectIds, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IObjectIds, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const IObjectIds, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IObjectIds, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const IObjectIds, pVal: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IObjectIds, pVal: ?*IObjectId) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const IObjectIds, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IObjectIds, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IObjectIds) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn AddRange(self: *const IObjectIds, pValue: ?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn AddRange(self: *const IObjectIds, pValue: ?*IObjectIds) HRESULT {
         return self.vtable.AddRange(self, pValue);
     }
 };
@@ -4659,36 +4659,36 @@ pub const IID_IBinaryConverter = &IID_IBinaryConverter_Value;
 pub const IBinaryConverter = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        StringToString: *const fn(
+        StringToString: *const fn (
             self: *const IBinaryConverter,
             strEncodedIn: ?BSTR,
             EncodingIn: EncodingType,
             Encoding: EncodingType,
             pstrEncoded: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        VariantByteArrayToString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        VariantByteArrayToString: *const fn (
             self: *const IBinaryConverter,
             pvarByteArray: ?*VARIANT,
             Encoding: EncodingType,
             pstrEncoded: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        StringToVariantByteArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        StringToVariantByteArray: *const fn (
             self: *const IBinaryConverter,
             strEncoded: ?BSTR,
             Encoding: EncodingType,
             pvarByteArray: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn StringToString(self: *const IBinaryConverter, strEncodedIn: ?BSTR, EncodingIn: EncodingType, Encoding: EncodingType, pstrEncoded: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn StringToString(self: *const IBinaryConverter, strEncodedIn: ?BSTR, EncodingIn: EncodingType, Encoding: EncodingType, pstrEncoded: ?*?BSTR) HRESULT {
         return self.vtable.StringToString(self, strEncodedIn, EncodingIn, Encoding, pstrEncoded);
     }
-    pub fn VariantByteArrayToString(self: *const IBinaryConverter, pvarByteArray: ?*VARIANT, Encoding: EncodingType, pstrEncoded: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn VariantByteArrayToString(self: *const IBinaryConverter, pvarByteArray: ?*VARIANT, Encoding: EncodingType, pstrEncoded: ?*?BSTR) HRESULT {
         return self.vtable.VariantByteArrayToString(self, pvarByteArray, Encoding, pstrEncoded);
     }
-    pub fn StringToVariantByteArray(self: *const IBinaryConverter, strEncoded: ?BSTR, Encoding: EncodingType, pvarByteArray: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn StringToVariantByteArray(self: *const IBinaryConverter, strEncoded: ?BSTR, Encoding: EncodingType, pvarByteArray: ?*VARIANT) HRESULT {
         return self.vtable.StringToVariantByteArray(self, strEncoded, Encoding, pvarByteArray);
     }
 };
@@ -4698,25 +4698,25 @@ pub const IID_IBinaryConverter2 = &IID_IBinaryConverter2_Value;
 pub const IBinaryConverter2 = extern union {
     pub const VTable = extern struct {
         base: IBinaryConverter.VTable,
-        StringArrayToVariantArray: *const fn(
+        StringArrayToVariantArray: *const fn (
             self: *const IBinaryConverter2,
             pvarStringArray: ?*VARIANT,
             pvarVariantArray: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        VariantArrayToStringArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        VariantArrayToStringArray: *const fn (
             self: *const IBinaryConverter2,
             pvarVariantArray: ?*VARIANT,
             pvarStringArray: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IBinaryConverter: IBinaryConverter,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn StringArrayToVariantArray(self: *const IBinaryConverter2, pvarStringArray: ?*VARIANT, pvarVariantArray: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn StringArrayToVariantArray(self: *const IBinaryConverter2, pvarStringArray: ?*VARIANT, pvarVariantArray: ?*VARIANT) HRESULT {
         return self.vtable.StringArrayToVariantArray(self, pvarStringArray, pvarVariantArray);
     }
-    pub fn VariantArrayToStringArray(self: *const IBinaryConverter2, pvarVariantArray: ?*VARIANT, pvarStringArray: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn VariantArrayToStringArray(self: *const IBinaryConverter2, pvarVariantArray: ?*VARIANT, pvarStringArray: ?*VARIANT) HRESULT {
         return self.vtable.VariantArrayToStringArray(self, pvarVariantArray, pvarStringArray);
     }
 };
@@ -4770,41 +4770,41 @@ pub const IID_IX500DistinguishedName = &IID_IX500DistinguishedName_Value;
 pub const IX500DistinguishedName = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Decode: *const fn(
+        Decode: *const fn (
             self: *const IX500DistinguishedName,
             strEncodedName: ?BSTR,
             Encoding: EncodingType,
             NameFlags: X500NameFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Encode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Encode: *const fn (
             self: *const IX500DistinguishedName,
             strName: ?BSTR,
             NameFlags: X500NameFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const IX500DistinguishedName,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_EncodedName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_EncodedName: *const fn (
             self: *const IX500DistinguishedName,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Decode(self: *const IX500DistinguishedName, strEncodedName: ?BSTR, Encoding: EncodingType, NameFlags: X500NameFlags) callconv(.Inline) HRESULT {
+    pub inline fn Decode(self: *const IX500DistinguishedName, strEncodedName: ?BSTR, Encoding: EncodingType, NameFlags: X500NameFlags) HRESULT {
         return self.vtable.Decode(self, strEncodedName, Encoding, NameFlags);
     }
-    pub fn Encode(self: *const IX500DistinguishedName, strName: ?BSTR, NameFlags: X500NameFlags) callconv(.Inline) HRESULT {
+    pub inline fn Encode(self: *const IX500DistinguishedName, strName: ?BSTR, NameFlags: X500NameFlags) HRESULT {
         return self.vtable.Encode(self, strName, NameFlags);
     }
-    pub fn get_Name(self: *const IX500DistinguishedName, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const IX500DistinguishedName, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, pValue);
     }
-    pub fn get_EncodedName(self: *const IX500DistinguishedName, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_EncodedName(self: *const IX500DistinguishedName, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_EncodedName(self, Encoding, pValue);
     }
 };
@@ -4857,103 +4857,103 @@ pub const IID_IX509EnrollmentStatus = &IID_IX509EnrollmentStatus_Value;
 pub const IX509EnrollmentStatus = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        AppendText: *const fn(
+        AppendText: *const fn (
             self: *const IX509EnrollmentStatus,
             strText: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Text: *const fn(
+        get_Text: *const fn (
             self: *const IX509EnrollmentStatus,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Text: *const fn(
+        put_Text: *const fn (
             self: *const IX509EnrollmentStatus,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Selected: *const fn(
+        get_Selected: *const fn (
             self: *const IX509EnrollmentStatus,
             pValue: ?*EnrollmentSelectionStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Selected: *const fn(
+        put_Selected: *const fn (
             self: *const IX509EnrollmentStatus,
             Value: EnrollmentSelectionStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Display: *const fn(
+        get_Display: *const fn (
             self: *const IX509EnrollmentStatus,
             pValue: ?*EnrollmentDisplayStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Display: *const fn(
+        put_Display: *const fn (
             self: *const IX509EnrollmentStatus,
             Value: EnrollmentDisplayStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Status: *const fn(
+        get_Status: *const fn (
             self: *const IX509EnrollmentStatus,
             pValue: ?*EnrollmentEnrollStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Status: *const fn(
+        put_Status: *const fn (
             self: *const IX509EnrollmentStatus,
             Value: EnrollmentEnrollStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Error: *const fn(
+        get_Error: *const fn (
             self: *const IX509EnrollmentStatus,
             pValue: ?*HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Error: *const fn(
+        put_Error: *const fn (
             self: *const IX509EnrollmentStatus,
             Value: HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ErrorText: *const fn(
+        get_ErrorText: *const fn (
             self: *const IX509EnrollmentStatus,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn AppendText(self: *const IX509EnrollmentStatus, strText: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn AppendText(self: *const IX509EnrollmentStatus, strText: ?BSTR) HRESULT {
         return self.vtable.AppendText(self, strText);
     }
-    pub fn get_Text(self: *const IX509EnrollmentStatus, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Text(self: *const IX509EnrollmentStatus, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Text(self, pValue);
     }
-    pub fn put_Text(self: *const IX509EnrollmentStatus, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Text(self: *const IX509EnrollmentStatus, Value: ?BSTR) HRESULT {
         return self.vtable.put_Text(self, Value);
     }
-    pub fn get_Selected(self: *const IX509EnrollmentStatus, pValue: ?*EnrollmentSelectionStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_Selected(self: *const IX509EnrollmentStatus, pValue: ?*EnrollmentSelectionStatus) HRESULT {
         return self.vtable.get_Selected(self, pValue);
     }
-    pub fn put_Selected(self: *const IX509EnrollmentStatus, Value: EnrollmentSelectionStatus) callconv(.Inline) HRESULT {
+    pub inline fn put_Selected(self: *const IX509EnrollmentStatus, Value: EnrollmentSelectionStatus) HRESULT {
         return self.vtable.put_Selected(self, Value);
     }
-    pub fn get_Display(self: *const IX509EnrollmentStatus, pValue: ?*EnrollmentDisplayStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_Display(self: *const IX509EnrollmentStatus, pValue: ?*EnrollmentDisplayStatus) HRESULT {
         return self.vtable.get_Display(self, pValue);
     }
-    pub fn put_Display(self: *const IX509EnrollmentStatus, Value: EnrollmentDisplayStatus) callconv(.Inline) HRESULT {
+    pub inline fn put_Display(self: *const IX509EnrollmentStatus, Value: EnrollmentDisplayStatus) HRESULT {
         return self.vtable.put_Display(self, Value);
     }
-    pub fn get_Status(self: *const IX509EnrollmentStatus, pValue: ?*EnrollmentEnrollStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_Status(self: *const IX509EnrollmentStatus, pValue: ?*EnrollmentEnrollStatus) HRESULT {
         return self.vtable.get_Status(self, pValue);
     }
-    pub fn put_Status(self: *const IX509EnrollmentStatus, Value: EnrollmentEnrollStatus) callconv(.Inline) HRESULT {
+    pub inline fn put_Status(self: *const IX509EnrollmentStatus, Value: EnrollmentEnrollStatus) HRESULT {
         return self.vtable.put_Status(self, Value);
     }
-    pub fn get_Error(self: *const IX509EnrollmentStatus, pValue: ?*HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn get_Error(self: *const IX509EnrollmentStatus, pValue: ?*HRESULT) HRESULT {
         return self.vtable.get_Error(self, pValue);
     }
-    pub fn put_Error(self: *const IX509EnrollmentStatus, Value: HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn put_Error(self: *const IX509EnrollmentStatus, Value: HRESULT) HRESULT {
         return self.vtable.put_Error(self, Value);
     }
-    pub fn get_ErrorText(self: *const IX509EnrollmentStatus, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ErrorText(self: *const IX509EnrollmentStatus, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ErrorText(self, pValue);
     }
 };
@@ -5053,89 +5053,89 @@ pub const IID_ICspAlgorithm = &IID_ICspAlgorithm_Value;
 pub const ICspAlgorithm = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetAlgorithmOid: *const fn(
+        GetAlgorithmOid: *const fn (
             self: *const ICspAlgorithm,
             Length: i32,
             AlgFlags: AlgorithmFlags,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DefaultLength: *const fn(
+        get_DefaultLength: *const fn (
             self: *const ICspAlgorithm,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IncrementLength: *const fn(
+        get_IncrementLength: *const fn (
             self: *const ICspAlgorithm,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LongName: *const fn(
+        get_LongName: *const fn (
             self: *const ICspAlgorithm,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Valid: *const fn(
+        get_Valid: *const fn (
             self: *const ICspAlgorithm,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MaxLength: *const fn(
+        get_MaxLength: *const fn (
             self: *const ICspAlgorithm,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MinLength: *const fn(
+        get_MinLength: *const fn (
             self: *const ICspAlgorithm,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const ICspAlgorithm,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Type: *const fn(
+        get_Type: *const fn (
             self: *const ICspAlgorithm,
             pValue: ?*AlgorithmType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Operations: *const fn(
+        get_Operations: *const fn (
             self: *const ICspAlgorithm,
             pValue: ?*AlgorithmOperationFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetAlgorithmOid(self: *const ICspAlgorithm, Length: i32, AlgFlags: AlgorithmFlags, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn GetAlgorithmOid(self: *const ICspAlgorithm, Length: i32, AlgFlags: AlgorithmFlags, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.GetAlgorithmOid(self, Length, AlgFlags, ppValue);
     }
-    pub fn get_DefaultLength(self: *const ICspAlgorithm, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_DefaultLength(self: *const ICspAlgorithm, pValue: ?*i32) HRESULT {
         return self.vtable.get_DefaultLength(self, pValue);
     }
-    pub fn get_IncrementLength(self: *const ICspAlgorithm, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_IncrementLength(self: *const ICspAlgorithm, pValue: ?*i32) HRESULT {
         return self.vtable.get_IncrementLength(self, pValue);
     }
-    pub fn get_LongName(self: *const ICspAlgorithm, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LongName(self: *const ICspAlgorithm, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_LongName(self, pValue);
     }
-    pub fn get_Valid(self: *const ICspAlgorithm, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Valid(self: *const ICspAlgorithm, pValue: ?*i16) HRESULT {
         return self.vtable.get_Valid(self, pValue);
     }
-    pub fn get_MaxLength(self: *const ICspAlgorithm, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MaxLength(self: *const ICspAlgorithm, pValue: ?*i32) HRESULT {
         return self.vtable.get_MaxLength(self, pValue);
     }
-    pub fn get_MinLength(self: *const ICspAlgorithm, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MinLength(self: *const ICspAlgorithm, pValue: ?*i32) HRESULT {
         return self.vtable.get_MinLength(self, pValue);
     }
-    pub fn get_Name(self: *const ICspAlgorithm, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const ICspAlgorithm, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, pValue);
     }
-    pub fn get_Type(self: *const ICspAlgorithm, pValue: ?*AlgorithmType) callconv(.Inline) HRESULT {
+    pub inline fn get_Type(self: *const ICspAlgorithm, pValue: ?*AlgorithmType) HRESULT {
         return self.vtable.get_Type(self, pValue);
     }
-    pub fn get_Operations(self: *const ICspAlgorithm, pValue: ?*AlgorithmOperationFlags) callconv(.Inline) HRESULT {
+    pub inline fn get_Operations(self: *const ICspAlgorithm, pValue: ?*AlgorithmOperationFlags) HRESULT {
         return self.vtable.get_Operations(self, pValue);
     }
 };
@@ -5146,68 +5146,68 @@ pub const IID_ICspAlgorithms = &IID_ICspAlgorithms_Value;
 pub const ICspAlgorithms = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const ICspAlgorithms,
             Index: i32,
             pVal: ?*?*ICspAlgorithm,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ICspAlgorithms,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ICspAlgorithms,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ICspAlgorithms,
             pVal: ?*ICspAlgorithm,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ICspAlgorithms,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const ICspAlgorithms,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByName: *const fn (
             self: *const ICspAlgorithms,
             strName: ?BSTR,
             ppValue: ?*?*ICspAlgorithm,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_IndexByObjectId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_IndexByObjectId: *const fn (
             self: *const ICspAlgorithms,
             pObjectId: ?*IObjectId,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const ICspAlgorithms, Index: i32, pVal: ?*?*ICspAlgorithm) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const ICspAlgorithms, Index: i32, pVal: ?*?*ICspAlgorithm) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const ICspAlgorithms, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ICspAlgorithms, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const ICspAlgorithms, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ICspAlgorithms, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const ICspAlgorithms, pVal: ?*ICspAlgorithm) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ICspAlgorithms, pVal: ?*ICspAlgorithm) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const ICspAlgorithms, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ICspAlgorithms, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const ICspAlgorithms) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const ICspAlgorithms) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn get_ItemByName(self: *const ICspAlgorithms, strName: ?BSTR, ppValue: ?*?*ICspAlgorithm) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByName(self: *const ICspAlgorithms, strName: ?BSTR, ppValue: ?*?*ICspAlgorithm) HRESULT {
         return self.vtable.get_ItemByName(self, strName, ppValue);
     }
-    pub fn get_IndexByObjectId(self: *const ICspAlgorithms, pObjectId: ?*IObjectId, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_IndexByObjectId(self: *const ICspAlgorithms, pObjectId: ?*IObjectId, pIndex: ?*i32) HRESULT {
         return self.vtable.get_IndexByObjectId(self, pObjectId, pIndex);
     }
 };
@@ -5227,145 +5227,145 @@ pub const IID_ICspInformation = &IID_ICspInformation_Value;
 pub const ICspInformation = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        InitializeFromName: *const fn(
+        InitializeFromName: *const fn (
             self: *const ICspInformation,
             strName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromType: *const fn (
             self: *const ICspInformation,
             Type: X509ProviderType,
             pAlgorithm: ?*IObjectId,
             MachineContext: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CspAlgorithms: *const fn(
+        get_CspAlgorithms: *const fn (
             self: *const ICspInformation,
             ppValue: ?*?*ICspAlgorithms,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HasHardwareRandomNumberGenerator: *const fn(
+        get_HasHardwareRandomNumberGenerator: *const fn (
             self: *const ICspInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsHardwareDevice: *const fn(
+        get_IsHardwareDevice: *const fn (
             self: *const ICspInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsRemovable: *const fn(
+        get_IsRemovable: *const fn (
             self: *const ICspInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsSoftwareDevice: *const fn(
+        get_IsSoftwareDevice: *const fn (
             self: *const ICspInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Valid: *const fn(
+        get_Valid: *const fn (
             self: *const ICspInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MaxKeyContainerNameLength: *const fn(
+        get_MaxKeyContainerNameLength: *const fn (
             self: *const ICspInformation,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const ICspInformation,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Type: *const fn(
+        get_Type: *const fn (
             self: *const ICspInformation,
             pValue: ?*X509ProviderType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Version: *const fn(
+        get_Version: *const fn (
             self: *const ICspInformation,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeySpec: *const fn(
+        get_KeySpec: *const fn (
             self: *const ICspInformation,
             pValue: ?*X509KeySpec,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsSmartCard: *const fn(
+        get_IsSmartCard: *const fn (
             self: *const ICspInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDefaultSecurityDescriptor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDefaultSecurityDescriptor: *const fn (
             self: *const ICspInformation,
             MachineContext: i16,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LegacyCsp: *const fn(
+        get_LegacyCsp: *const fn (
             self: *const ICspInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCspStatusFromOperations: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCspStatusFromOperations: *const fn (
             self: *const ICspInformation,
             pAlgorithm: ?*IObjectId,
             Operations: AlgorithmOperationFlags,
             ppValue: ?*?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromName(self: *const ICspInformation, strName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromName(self: *const ICspInformation, strName: ?BSTR) HRESULT {
         return self.vtable.InitializeFromName(self, strName);
     }
-    pub fn InitializeFromType(self: *const ICspInformation, Type: X509ProviderType, pAlgorithm: ?*IObjectId, MachineContext: i16) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromType(self: *const ICspInformation, Type: X509ProviderType, pAlgorithm: ?*IObjectId, MachineContext: i16) HRESULT {
         return self.vtable.InitializeFromType(self, Type, pAlgorithm, MachineContext);
     }
-    pub fn get_CspAlgorithms(self: *const ICspInformation, ppValue: ?*?*ICspAlgorithms) callconv(.Inline) HRESULT {
+    pub inline fn get_CspAlgorithms(self: *const ICspInformation, ppValue: ?*?*ICspAlgorithms) HRESULT {
         return self.vtable.get_CspAlgorithms(self, ppValue);
     }
-    pub fn get_HasHardwareRandomNumberGenerator(self: *const ICspInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_HasHardwareRandomNumberGenerator(self: *const ICspInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_HasHardwareRandomNumberGenerator(self, pValue);
     }
-    pub fn get_IsHardwareDevice(self: *const ICspInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsHardwareDevice(self: *const ICspInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_IsHardwareDevice(self, pValue);
     }
-    pub fn get_IsRemovable(self: *const ICspInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsRemovable(self: *const ICspInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_IsRemovable(self, pValue);
     }
-    pub fn get_IsSoftwareDevice(self: *const ICspInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsSoftwareDevice(self: *const ICspInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_IsSoftwareDevice(self, pValue);
     }
-    pub fn get_Valid(self: *const ICspInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Valid(self: *const ICspInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_Valid(self, pValue);
     }
-    pub fn get_MaxKeyContainerNameLength(self: *const ICspInformation, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MaxKeyContainerNameLength(self: *const ICspInformation, pValue: ?*i32) HRESULT {
         return self.vtable.get_MaxKeyContainerNameLength(self, pValue);
     }
-    pub fn get_Name(self: *const ICspInformation, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const ICspInformation, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, pValue);
     }
-    pub fn get_Type(self: *const ICspInformation, pValue: ?*X509ProviderType) callconv(.Inline) HRESULT {
+    pub inline fn get_Type(self: *const ICspInformation, pValue: ?*X509ProviderType) HRESULT {
         return self.vtable.get_Type(self, pValue);
     }
-    pub fn get_Version(self: *const ICspInformation, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Version(self: *const ICspInformation, pValue: ?*i32) HRESULT {
         return self.vtable.get_Version(self, pValue);
     }
-    pub fn get_KeySpec(self: *const ICspInformation, pValue: ?*X509KeySpec) callconv(.Inline) HRESULT {
+    pub inline fn get_KeySpec(self: *const ICspInformation, pValue: ?*X509KeySpec) HRESULT {
         return self.vtable.get_KeySpec(self, pValue);
     }
-    pub fn get_IsSmartCard(self: *const ICspInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsSmartCard(self: *const ICspInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_IsSmartCard(self, pValue);
     }
-    pub fn GetDefaultSecurityDescriptor(self: *const ICspInformation, MachineContext: i16, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDefaultSecurityDescriptor(self: *const ICspInformation, MachineContext: i16, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetDefaultSecurityDescriptor(self, MachineContext, pValue);
     }
-    pub fn get_LegacyCsp(self: *const ICspInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_LegacyCsp(self: *const ICspInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_LegacyCsp(self, pValue);
     }
-    pub fn GetCspStatusFromOperations(self: *const ICspInformation, pAlgorithm: ?*IObjectId, Operations: AlgorithmOperationFlags, ppValue: ?*?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn GetCspStatusFromOperations(self: *const ICspInformation, pAlgorithm: ?*IObjectId, Operations: AlgorithmOperationFlags, ppValue: ?*?*ICspStatus) HRESULT {
         return self.vtable.GetCspStatusFromOperations(self, pAlgorithm, Operations, ppValue);
     }
 };
@@ -5376,100 +5376,100 @@ pub const IID_ICspInformations = &IID_ICspInformations_Value;
 pub const ICspInformations = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const ICspInformations,
             Index: i32,
             pVal: ?*?*ICspInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ICspInformations,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ICspInformations,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ICspInformations,
             pVal: ?*ICspInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ICspInformations,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const ICspInformations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddAvailableCsps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddAvailableCsps: *const fn (
             self: *const ICspInformations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByName: *const fn (
             self: *const ICspInformations,
             strName: ?BSTR,
             ppCspInformation: ?*?*ICspInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCspStatusFromProviderName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCspStatusFromProviderName: *const fn (
             self: *const ICspInformations,
             strProviderName: ?BSTR,
             LegacyKeySpec: X509KeySpec,
             ppValue: ?*?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCspStatusesFromOperations: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCspStatusesFromOperations: *const fn (
             self: *const ICspInformations,
             Operations: AlgorithmOperationFlags,
             pCspInformation: ?*ICspInformation,
             ppValue: ?*?*ICspStatuses,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEncryptionCspAlgorithms: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEncryptionCspAlgorithms: *const fn (
             self: *const ICspInformations,
             pCspInformation: ?*ICspInformation,
             ppValue: ?*?*ICspAlgorithms,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetHashAlgorithms: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetHashAlgorithms: *const fn (
             self: *const ICspInformations,
             pCspInformation: ?*ICspInformation,
             ppValue: ?*?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const ICspInformations, Index: i32, pVal: ?*?*ICspInformation) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const ICspInformations, Index: i32, pVal: ?*?*ICspInformation) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const ICspInformations, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ICspInformations, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const ICspInformations, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ICspInformations, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const ICspInformations, pVal: ?*ICspInformation) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ICspInformations, pVal: ?*ICspInformation) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const ICspInformations, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ICspInformations, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const ICspInformations) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const ICspInformations) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn AddAvailableCsps(self: *const ICspInformations) callconv(.Inline) HRESULT {
+    pub inline fn AddAvailableCsps(self: *const ICspInformations) HRESULT {
         return self.vtable.AddAvailableCsps(self);
     }
-    pub fn get_ItemByName(self: *const ICspInformations, strName: ?BSTR, ppCspInformation: ?*?*ICspInformation) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByName(self: *const ICspInformations, strName: ?BSTR, ppCspInformation: ?*?*ICspInformation) HRESULT {
         return self.vtable.get_ItemByName(self, strName, ppCspInformation);
     }
-    pub fn GetCspStatusFromProviderName(self: *const ICspInformations, strProviderName: ?BSTR, LegacyKeySpec: X509KeySpec, ppValue: ?*?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn GetCspStatusFromProviderName(self: *const ICspInformations, strProviderName: ?BSTR, LegacyKeySpec: X509KeySpec, ppValue: ?*?*ICspStatus) HRESULT {
         return self.vtable.GetCspStatusFromProviderName(self, strProviderName, LegacyKeySpec, ppValue);
     }
-    pub fn GetCspStatusesFromOperations(self: *const ICspInformations, Operations: AlgorithmOperationFlags, pCspInformation: ?*ICspInformation, ppValue: ?*?*ICspStatuses) callconv(.Inline) HRESULT {
+    pub inline fn GetCspStatusesFromOperations(self: *const ICspInformations, Operations: AlgorithmOperationFlags, pCspInformation: ?*ICspInformation, ppValue: ?*?*ICspStatuses) HRESULT {
         return self.vtable.GetCspStatusesFromOperations(self, Operations, pCspInformation, ppValue);
     }
-    pub fn GetEncryptionCspAlgorithms(self: *const ICspInformations, pCspInformation: ?*ICspInformation, ppValue: ?*?*ICspAlgorithms) callconv(.Inline) HRESULT {
+    pub inline fn GetEncryptionCspAlgorithms(self: *const ICspInformations, pCspInformation: ?*ICspInformation, ppValue: ?*?*ICspAlgorithms) HRESULT {
         return self.vtable.GetEncryptionCspAlgorithms(self, pCspInformation, ppValue);
     }
-    pub fn GetHashAlgorithms(self: *const ICspInformations, pCspInformation: ?*ICspInformation, ppValue: ?*?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn GetHashAlgorithms(self: *const ICspInformations, pCspInformation: ?*ICspInformation, ppValue: ?*?*IObjectIds) HRESULT {
         return self.vtable.GetHashAlgorithms(self, pCspInformation, ppValue);
     }
 };
@@ -5480,64 +5480,64 @@ pub const IID_ICspStatus = &IID_ICspStatus_Value;
 pub const ICspStatus = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICspStatus,
             pCsp: ?*ICspInformation,
             pAlgorithm: ?*ICspAlgorithm,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Ordinal: *const fn(
+        get_Ordinal: *const fn (
             self: *const ICspStatus,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Ordinal: *const fn(
+        put_Ordinal: *const fn (
             self: *const ICspStatus,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CspAlgorithm: *const fn(
+        get_CspAlgorithm: *const fn (
             self: *const ICspStatus,
             ppValue: ?*?*ICspAlgorithm,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CspInformation: *const fn(
+        get_CspInformation: *const fn (
             self: *const ICspStatus,
             ppValue: ?*?*ICspInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EnrollmentStatus: *const fn(
+        get_EnrollmentStatus: *const fn (
             self: *const ICspStatus,
             ppValue: ?*?*IX509EnrollmentStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DisplayName: *const fn(
+        get_DisplayName: *const fn (
             self: *const ICspStatus,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICspStatus, pCsp: ?*ICspInformation, pAlgorithm: ?*ICspAlgorithm) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICspStatus, pCsp: ?*ICspInformation, pAlgorithm: ?*ICspAlgorithm) HRESULT {
         return self.vtable.Initialize(self, pCsp, pAlgorithm);
     }
-    pub fn get_Ordinal(self: *const ICspStatus, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Ordinal(self: *const ICspStatus, pValue: ?*i32) HRESULT {
         return self.vtable.get_Ordinal(self, pValue);
     }
-    pub fn put_Ordinal(self: *const ICspStatus, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Ordinal(self: *const ICspStatus, Value: i32) HRESULT {
         return self.vtable.put_Ordinal(self, Value);
     }
-    pub fn get_CspAlgorithm(self: *const ICspStatus, ppValue: ?*?*ICspAlgorithm) callconv(.Inline) HRESULT {
+    pub inline fn get_CspAlgorithm(self: *const ICspStatus, ppValue: ?*?*ICspAlgorithm) HRESULT {
         return self.vtable.get_CspAlgorithm(self, ppValue);
     }
-    pub fn get_CspInformation(self: *const ICspStatus, ppValue: ?*?*ICspInformation) callconv(.Inline) HRESULT {
+    pub inline fn get_CspInformation(self: *const ICspStatus, ppValue: ?*?*ICspInformation) HRESULT {
         return self.vtable.get_CspInformation(self, ppValue);
     }
-    pub fn get_EnrollmentStatus(self: *const ICspStatus, ppValue: ?*?*IX509EnrollmentStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_EnrollmentStatus(self: *const ICspStatus, ppValue: ?*?*IX509EnrollmentStatus) HRESULT {
         return self.vtable.get_EnrollmentStatus(self, ppValue);
     }
-    pub fn get_DisplayName(self: *const ICspStatus, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DisplayName(self: *const ICspStatus, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_DisplayName(self, pValue);
     }
 };
@@ -5548,87 +5548,87 @@ pub const IID_ICspStatuses = &IID_ICspStatuses_Value;
 pub const ICspStatuses = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const ICspStatuses,
             Index: i32,
             pVal: ?*?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ICspStatuses,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ICspStatuses,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ICspStatuses,
             pVal: ?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ICspStatuses,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const ICspStatuses,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByName: *const fn (
             self: *const ICspStatuses,
             strCspName: ?BSTR,
             strAlgorithmName: ?BSTR,
             ppValue: ?*?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByOrdinal: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByOrdinal: *const fn (
             self: *const ICspStatuses,
             Ordinal: i32,
             ppValue: ?*?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByOperations: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByOperations: *const fn (
             self: *const ICspStatuses,
             strCspName: ?BSTR,
             strAlgorithmName: ?BSTR,
             Operations: AlgorithmOperationFlags,
             ppValue: ?*?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByProvider: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByProvider: *const fn (
             self: *const ICspStatuses,
             pCspStatus: ?*ICspStatus,
             ppValue: ?*?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const ICspStatuses, Index: i32, pVal: ?*?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const ICspStatuses, Index: i32, pVal: ?*?*ICspStatus) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const ICspStatuses, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ICspStatuses, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const ICspStatuses, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ICspStatuses, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const ICspStatuses, pVal: ?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ICspStatuses, pVal: ?*ICspStatus) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const ICspStatuses, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ICspStatuses, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const ICspStatuses) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const ICspStatuses) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn get_ItemByName(self: *const ICspStatuses, strCspName: ?BSTR, strAlgorithmName: ?BSTR, ppValue: ?*?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByName(self: *const ICspStatuses, strCspName: ?BSTR, strAlgorithmName: ?BSTR, ppValue: ?*?*ICspStatus) HRESULT {
         return self.vtable.get_ItemByName(self, strCspName, strAlgorithmName, ppValue);
     }
-    pub fn get_ItemByOrdinal(self: *const ICspStatuses, Ordinal: i32, ppValue: ?*?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByOrdinal(self: *const ICspStatuses, Ordinal: i32, ppValue: ?*?*ICspStatus) HRESULT {
         return self.vtable.get_ItemByOrdinal(self, Ordinal, ppValue);
     }
-    pub fn get_ItemByOperations(self: *const ICspStatuses, strCspName: ?BSTR, strAlgorithmName: ?BSTR, Operations: AlgorithmOperationFlags, ppValue: ?*?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByOperations(self: *const ICspStatuses, strCspName: ?BSTR, strAlgorithmName: ?BSTR, Operations: AlgorithmOperationFlags, ppValue: ?*?*ICspStatus) HRESULT {
         return self.vtable.get_ItemByOperations(self, strCspName, strAlgorithmName, Operations, ppValue);
     }
-    pub fn get_ItemByProvider(self: *const ICspStatuses, pCspStatus: ?*ICspStatus, ppValue: ?*?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByProvider(self: *const ICspStatuses, pCspStatus: ?*ICspStatus, ppValue: ?*?*ICspStatus) HRESULT {
         return self.vtable.get_ItemByProvider(self, pCspStatus, ppValue);
     }
 };
@@ -5652,67 +5652,67 @@ pub const IID_IX509PublicKey = &IID_IX509PublicKey_Value;
 pub const IX509PublicKey = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509PublicKey,
             pObjectId: ?*IObjectId,
             strEncodedKey: ?BSTR,
             strEncodedParameters: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromEncodedPublicKeyInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromEncodedPublicKeyInfo: *const fn (
             self: *const IX509PublicKey,
             strEncodedPublicKeyInfo: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Algorithm: *const fn(
+        get_Algorithm: *const fn (
             self: *const IX509PublicKey,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Length: *const fn(
+        get_Length: *const fn (
             self: *const IX509PublicKey,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_EncodedKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_EncodedKey: *const fn (
             self: *const IX509PublicKey,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_EncodedParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_EncodedParameters: *const fn (
             self: *const IX509PublicKey,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ComputeKeyIdentifier: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ComputeKeyIdentifier: *const fn (
             self: *const IX509PublicKey,
             Algorithm: KeyIdentifierHashAlgorithm,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509PublicKey, pObjectId: ?*IObjectId, strEncodedKey: ?BSTR, strEncodedParameters: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509PublicKey, pObjectId: ?*IObjectId, strEncodedKey: ?BSTR, strEncodedParameters: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.Initialize(self, pObjectId, strEncodedKey, strEncodedParameters, Encoding);
     }
-    pub fn InitializeFromEncodedPublicKeyInfo(self: *const IX509PublicKey, strEncodedPublicKeyInfo: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromEncodedPublicKeyInfo(self: *const IX509PublicKey, strEncodedPublicKeyInfo: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.InitializeFromEncodedPublicKeyInfo(self, strEncodedPublicKeyInfo, Encoding);
     }
-    pub fn get_Algorithm(self: *const IX509PublicKey, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_Algorithm(self: *const IX509PublicKey, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_Algorithm(self, ppValue);
     }
-    pub fn get_Length(self: *const IX509PublicKey, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Length(self: *const IX509PublicKey, pValue: ?*i32) HRESULT {
         return self.vtable.get_Length(self, pValue);
     }
-    pub fn get_EncodedKey(self: *const IX509PublicKey, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_EncodedKey(self: *const IX509PublicKey, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_EncodedKey(self, Encoding, pValue);
     }
-    pub fn get_EncodedParameters(self: *const IX509PublicKey, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_EncodedParameters(self: *const IX509PublicKey, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_EncodedParameters(self, Encoding, pValue);
     }
-    pub fn ComputeKeyIdentifier(self: *const IX509PublicKey, Algorithm: KeyIdentifierHashAlgorithm, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn ComputeKeyIdentifier(self: *const IX509PublicKey, Algorithm: KeyIdentifierHashAlgorithm, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.ComputeKeyIdentifier(self, Algorithm, Encoding, pValue);
     }
 };
@@ -5777,464 +5777,464 @@ pub const IID_IX509PrivateKey = &IID_IX509PrivateKey_Value;
 pub const IX509PrivateKey = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Open: *const fn(
+        Open: *const fn (
             self: *const IX509PrivateKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Create: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Create: *const fn (
             self: *const IX509PrivateKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Close: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Close: *const fn (
             self: *const IX509PrivateKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IX509PrivateKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Verify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Verify: *const fn (
             self: *const IX509PrivateKey,
             VerifyType: X509PrivateKeyVerify,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Import: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Import: *const fn (
             self: *const IX509PrivateKey,
             strExportType: ?BSTR,
             strEncodedKey: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Export: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Export: *const fn (
             self: *const IX509PrivateKey,
             strExportType: ?BSTR,
             Encoding: EncodingType,
             pstrEncodedKey: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExportPublicKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExportPublicKey: *const fn (
             self: *const IX509PrivateKey,
             ppPublicKey: ?*?*IX509PublicKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ContainerName: *const fn(
+        get_ContainerName: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ContainerName: *const fn(
+        put_ContainerName: *const fn (
             self: *const IX509PrivateKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ContainerNamePrefix: *const fn(
+        get_ContainerNamePrefix: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ContainerNamePrefix: *const fn(
+        put_ContainerNamePrefix: *const fn (
             self: *const IX509PrivateKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReaderName: *const fn(
+        get_ReaderName: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ReaderName: *const fn(
+        put_ReaderName: *const fn (
             self: *const IX509PrivateKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CspInformations: *const fn(
+        get_CspInformations: *const fn (
             self: *const IX509PrivateKey,
             ppValue: ?*?*ICspInformations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CspInformations: *const fn(
+        put_CspInformations: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*ICspInformations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CspStatus: *const fn(
+        get_CspStatus: *const fn (
             self: *const IX509PrivateKey,
             ppValue: ?*?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CspStatus: *const fn(
+        put_CspStatus: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*ICspStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderName: *const fn(
+        get_ProviderName: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderName: *const fn(
+        put_ProviderName: *const fn (
             self: *const IX509PrivateKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderType: *const fn(
+        get_ProviderType: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*X509ProviderType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderType: *const fn(
+        put_ProviderType: *const fn (
             self: *const IX509PrivateKey,
             Value: X509ProviderType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LegacyCsp: *const fn(
+        get_LegacyCsp: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LegacyCsp: *const fn(
+        put_LegacyCsp: *const fn (
             self: *const IX509PrivateKey,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Algorithm: *const fn(
+        get_Algorithm: *const fn (
             self: *const IX509PrivateKey,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Algorithm: *const fn(
+        put_Algorithm: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeySpec: *const fn(
+        get_KeySpec: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*X509KeySpec,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_KeySpec: *const fn(
+        put_KeySpec: *const fn (
             self: *const IX509PrivateKey,
             Value: X509KeySpec,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Length: *const fn(
+        get_Length: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Length: *const fn(
+        put_Length: *const fn (
             self: *const IX509PrivateKey,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ExportPolicy: *const fn(
+        get_ExportPolicy: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*X509PrivateKeyExportFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ExportPolicy: *const fn(
+        put_ExportPolicy: *const fn (
             self: *const IX509PrivateKey,
             Value: X509PrivateKeyExportFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeyUsage: *const fn(
+        get_KeyUsage: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*X509PrivateKeyUsageFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_KeyUsage: *const fn(
+        put_KeyUsage: *const fn (
             self: *const IX509PrivateKey,
             Value: X509PrivateKeyUsageFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeyProtection: *const fn(
+        get_KeyProtection: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*X509PrivateKeyProtection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_KeyProtection: *const fn(
+        put_KeyProtection: *const fn (
             self: *const IX509PrivateKey,
             Value: X509PrivateKeyProtection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MachineContext: *const fn(
+        get_MachineContext: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MachineContext: *const fn(
+        put_MachineContext: *const fn (
             self: *const IX509PrivateKey,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SecurityDescriptor: *const fn(
+        get_SecurityDescriptor: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SecurityDescriptor: *const fn(
+        put_SecurityDescriptor: *const fn (
             self: *const IX509PrivateKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Certificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Certificate: *const fn (
             self: *const IX509PrivateKey,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_Certificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_Certificate: *const fn (
             self: *const IX509PrivateKey,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UniqueContainerName: *const fn(
+        get_UniqueContainerName: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Opened: *const fn(
+        get_Opened: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DefaultContainer: *const fn(
+        get_DefaultContainer: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Existing: *const fn(
+        get_Existing: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Existing: *const fn(
+        put_Existing: *const fn (
             self: *const IX509PrivateKey,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Silent: *const fn(
+        get_Silent: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Silent: *const fn(
+        put_Silent: *const fn (
             self: *const IX509PrivateKey,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ParentWindow: *const fn(
+        get_ParentWindow: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ParentWindow: *const fn(
+        put_ParentWindow: *const fn (
             self: *const IX509PrivateKey,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UIContextMessage: *const fn(
+        get_UIContextMessage: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UIContextMessage: *const fn(
+        put_UIContextMessage: *const fn (
             self: *const IX509PrivateKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Pin: *const fn(
+        put_Pin: *const fn (
             self: *const IX509PrivateKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FriendlyName: *const fn(
+        get_FriendlyName: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_FriendlyName: *const fn(
+        put_FriendlyName: *const fn (
             self: *const IX509PrivateKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IX509PrivateKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IX509PrivateKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Open(self: *const IX509PrivateKey) callconv(.Inline) HRESULT {
+    pub inline fn Open(self: *const IX509PrivateKey) HRESULT {
         return self.vtable.Open(self);
     }
-    pub fn Create(self: *const IX509PrivateKey) callconv(.Inline) HRESULT {
+    pub inline fn Create(self: *const IX509PrivateKey) HRESULT {
         return self.vtable.Create(self);
     }
-    pub fn Close(self: *const IX509PrivateKey) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const IX509PrivateKey) HRESULT {
         return self.vtable.Close(self);
     }
-    pub fn Delete(self: *const IX509PrivateKey) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IX509PrivateKey) HRESULT {
         return self.vtable.Delete(self);
     }
-    pub fn Verify(self: *const IX509PrivateKey, VerifyType: X509PrivateKeyVerify) callconv(.Inline) HRESULT {
+    pub inline fn Verify(self: *const IX509PrivateKey, VerifyType: X509PrivateKeyVerify) HRESULT {
         return self.vtable.Verify(self, VerifyType);
     }
-    pub fn Import(self: *const IX509PrivateKey, strExportType: ?BSTR, strEncodedKey: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn Import(self: *const IX509PrivateKey, strExportType: ?BSTR, strEncodedKey: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.Import(self, strExportType, strEncodedKey, Encoding);
     }
-    pub fn Export(self: *const IX509PrivateKey, strExportType: ?BSTR, Encoding: EncodingType, pstrEncodedKey: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Export(self: *const IX509PrivateKey, strExportType: ?BSTR, Encoding: EncodingType, pstrEncodedKey: ?*?BSTR) HRESULT {
         return self.vtable.Export(self, strExportType, Encoding, pstrEncodedKey);
     }
-    pub fn ExportPublicKey(self: *const IX509PrivateKey, ppPublicKey: ?*?*IX509PublicKey) callconv(.Inline) HRESULT {
+    pub inline fn ExportPublicKey(self: *const IX509PrivateKey, ppPublicKey: ?*?*IX509PublicKey) HRESULT {
         return self.vtable.ExportPublicKey(self, ppPublicKey);
     }
-    pub fn get_ContainerName(self: *const IX509PrivateKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ContainerName(self: *const IX509PrivateKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ContainerName(self, pValue);
     }
-    pub fn put_ContainerName(self: *const IX509PrivateKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ContainerName(self: *const IX509PrivateKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_ContainerName(self, Value);
     }
-    pub fn get_ContainerNamePrefix(self: *const IX509PrivateKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ContainerNamePrefix(self: *const IX509PrivateKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ContainerNamePrefix(self, pValue);
     }
-    pub fn put_ContainerNamePrefix(self: *const IX509PrivateKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ContainerNamePrefix(self: *const IX509PrivateKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_ContainerNamePrefix(self, Value);
     }
-    pub fn get_ReaderName(self: *const IX509PrivateKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ReaderName(self: *const IX509PrivateKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ReaderName(self, pValue);
     }
-    pub fn put_ReaderName(self: *const IX509PrivateKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ReaderName(self: *const IX509PrivateKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_ReaderName(self, Value);
     }
-    pub fn get_CspInformations(self: *const IX509PrivateKey, ppValue: ?*?*ICspInformations) callconv(.Inline) HRESULT {
+    pub inline fn get_CspInformations(self: *const IX509PrivateKey, ppValue: ?*?*ICspInformations) HRESULT {
         return self.vtable.get_CspInformations(self, ppValue);
     }
-    pub fn put_CspInformations(self: *const IX509PrivateKey, pValue: ?*ICspInformations) callconv(.Inline) HRESULT {
+    pub inline fn put_CspInformations(self: *const IX509PrivateKey, pValue: ?*ICspInformations) HRESULT {
         return self.vtable.put_CspInformations(self, pValue);
     }
-    pub fn get_CspStatus(self: *const IX509PrivateKey, ppValue: ?*?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_CspStatus(self: *const IX509PrivateKey, ppValue: ?*?*ICspStatus) HRESULT {
         return self.vtable.get_CspStatus(self, ppValue);
     }
-    pub fn put_CspStatus(self: *const IX509PrivateKey, pValue: ?*ICspStatus) callconv(.Inline) HRESULT {
+    pub inline fn put_CspStatus(self: *const IX509PrivateKey, pValue: ?*ICspStatus) HRESULT {
         return self.vtable.put_CspStatus(self, pValue);
     }
-    pub fn get_ProviderName(self: *const IX509PrivateKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderName(self: *const IX509PrivateKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ProviderName(self, pValue);
     }
-    pub fn put_ProviderName(self: *const IX509PrivateKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderName(self: *const IX509PrivateKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_ProviderName(self, Value);
     }
-    pub fn get_ProviderType(self: *const IX509PrivateKey, pValue: ?*X509ProviderType) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderType(self: *const IX509PrivateKey, pValue: ?*X509ProviderType) HRESULT {
         return self.vtable.get_ProviderType(self, pValue);
     }
-    pub fn put_ProviderType(self: *const IX509PrivateKey, Value: X509ProviderType) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderType(self: *const IX509PrivateKey, Value: X509ProviderType) HRESULT {
         return self.vtable.put_ProviderType(self, Value);
     }
-    pub fn get_LegacyCsp(self: *const IX509PrivateKey, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_LegacyCsp(self: *const IX509PrivateKey, pValue: ?*i16) HRESULT {
         return self.vtable.get_LegacyCsp(self, pValue);
     }
-    pub fn put_LegacyCsp(self: *const IX509PrivateKey, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_LegacyCsp(self: *const IX509PrivateKey, Value: i16) HRESULT {
         return self.vtable.put_LegacyCsp(self, Value);
     }
-    pub fn get_Algorithm(self: *const IX509PrivateKey, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_Algorithm(self: *const IX509PrivateKey, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_Algorithm(self, ppValue);
     }
-    pub fn put_Algorithm(self: *const IX509PrivateKey, pValue: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn put_Algorithm(self: *const IX509PrivateKey, pValue: ?*IObjectId) HRESULT {
         return self.vtable.put_Algorithm(self, pValue);
     }
-    pub fn get_KeySpec(self: *const IX509PrivateKey, pValue: ?*X509KeySpec) callconv(.Inline) HRESULT {
+    pub inline fn get_KeySpec(self: *const IX509PrivateKey, pValue: ?*X509KeySpec) HRESULT {
         return self.vtable.get_KeySpec(self, pValue);
     }
-    pub fn put_KeySpec(self: *const IX509PrivateKey, Value: X509KeySpec) callconv(.Inline) HRESULT {
+    pub inline fn put_KeySpec(self: *const IX509PrivateKey, Value: X509KeySpec) HRESULT {
         return self.vtable.put_KeySpec(self, Value);
     }
-    pub fn get_Length(self: *const IX509PrivateKey, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Length(self: *const IX509PrivateKey, pValue: ?*i32) HRESULT {
         return self.vtable.get_Length(self, pValue);
     }
-    pub fn put_Length(self: *const IX509PrivateKey, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Length(self: *const IX509PrivateKey, Value: i32) HRESULT {
         return self.vtable.put_Length(self, Value);
     }
-    pub fn get_ExportPolicy(self: *const IX509PrivateKey, pValue: ?*X509PrivateKeyExportFlags) callconv(.Inline) HRESULT {
+    pub inline fn get_ExportPolicy(self: *const IX509PrivateKey, pValue: ?*X509PrivateKeyExportFlags) HRESULT {
         return self.vtable.get_ExportPolicy(self, pValue);
     }
-    pub fn put_ExportPolicy(self: *const IX509PrivateKey, Value: X509PrivateKeyExportFlags) callconv(.Inline) HRESULT {
+    pub inline fn put_ExportPolicy(self: *const IX509PrivateKey, Value: X509PrivateKeyExportFlags) HRESULT {
         return self.vtable.put_ExportPolicy(self, Value);
     }
-    pub fn get_KeyUsage(self: *const IX509PrivateKey, pValue: ?*X509PrivateKeyUsageFlags) callconv(.Inline) HRESULT {
+    pub inline fn get_KeyUsage(self: *const IX509PrivateKey, pValue: ?*X509PrivateKeyUsageFlags) HRESULT {
         return self.vtable.get_KeyUsage(self, pValue);
     }
-    pub fn put_KeyUsage(self: *const IX509PrivateKey, Value: X509PrivateKeyUsageFlags) callconv(.Inline) HRESULT {
+    pub inline fn put_KeyUsage(self: *const IX509PrivateKey, Value: X509PrivateKeyUsageFlags) HRESULT {
         return self.vtable.put_KeyUsage(self, Value);
     }
-    pub fn get_KeyProtection(self: *const IX509PrivateKey, pValue: ?*X509PrivateKeyProtection) callconv(.Inline) HRESULT {
+    pub inline fn get_KeyProtection(self: *const IX509PrivateKey, pValue: ?*X509PrivateKeyProtection) HRESULT {
         return self.vtable.get_KeyProtection(self, pValue);
     }
-    pub fn put_KeyProtection(self: *const IX509PrivateKey, Value: X509PrivateKeyProtection) callconv(.Inline) HRESULT {
+    pub inline fn put_KeyProtection(self: *const IX509PrivateKey, Value: X509PrivateKeyProtection) HRESULT {
         return self.vtable.put_KeyProtection(self, Value);
     }
-    pub fn get_MachineContext(self: *const IX509PrivateKey, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_MachineContext(self: *const IX509PrivateKey, pValue: ?*i16) HRESULT {
         return self.vtable.get_MachineContext(self, pValue);
     }
-    pub fn put_MachineContext(self: *const IX509PrivateKey, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_MachineContext(self: *const IX509PrivateKey, Value: i16) HRESULT {
         return self.vtable.put_MachineContext(self, Value);
     }
-    pub fn get_SecurityDescriptor(self: *const IX509PrivateKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SecurityDescriptor(self: *const IX509PrivateKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_SecurityDescriptor(self, pValue);
     }
-    pub fn put_SecurityDescriptor(self: *const IX509PrivateKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_SecurityDescriptor(self: *const IX509PrivateKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_SecurityDescriptor(self, Value);
     }
-    pub fn get_Certificate(self: *const IX509PrivateKey, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Certificate(self: *const IX509PrivateKey, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Certificate(self, Encoding, pValue);
     }
-    pub fn put_Certificate(self: *const IX509PrivateKey, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Certificate(self: *const IX509PrivateKey, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_Certificate(self, Encoding, Value);
     }
-    pub fn get_UniqueContainerName(self: *const IX509PrivateKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UniqueContainerName(self: *const IX509PrivateKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_UniqueContainerName(self, pValue);
     }
-    pub fn get_Opened(self: *const IX509PrivateKey, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Opened(self: *const IX509PrivateKey, pValue: ?*i16) HRESULT {
         return self.vtable.get_Opened(self, pValue);
     }
-    pub fn get_DefaultContainer(self: *const IX509PrivateKey, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_DefaultContainer(self: *const IX509PrivateKey, pValue: ?*i16) HRESULT {
         return self.vtable.get_DefaultContainer(self, pValue);
     }
-    pub fn get_Existing(self: *const IX509PrivateKey, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Existing(self: *const IX509PrivateKey, pValue: ?*i16) HRESULT {
         return self.vtable.get_Existing(self, pValue);
     }
-    pub fn put_Existing(self: *const IX509PrivateKey, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Existing(self: *const IX509PrivateKey, Value: i16) HRESULT {
         return self.vtable.put_Existing(self, Value);
     }
-    pub fn get_Silent(self: *const IX509PrivateKey, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Silent(self: *const IX509PrivateKey, pValue: ?*i16) HRESULT {
         return self.vtable.get_Silent(self, pValue);
     }
-    pub fn put_Silent(self: *const IX509PrivateKey, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Silent(self: *const IX509PrivateKey, Value: i16) HRESULT {
         return self.vtable.put_Silent(self, Value);
     }
-    pub fn get_ParentWindow(self: *const IX509PrivateKey, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ParentWindow(self: *const IX509PrivateKey, pValue: ?*i32) HRESULT {
         return self.vtable.get_ParentWindow(self, pValue);
     }
-    pub fn put_ParentWindow(self: *const IX509PrivateKey, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ParentWindow(self: *const IX509PrivateKey, Value: i32) HRESULT {
         return self.vtable.put_ParentWindow(self, Value);
     }
-    pub fn get_UIContextMessage(self: *const IX509PrivateKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UIContextMessage(self: *const IX509PrivateKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_UIContextMessage(self, pValue);
     }
-    pub fn put_UIContextMessage(self: *const IX509PrivateKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_UIContextMessage(self: *const IX509PrivateKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_UIContextMessage(self, Value);
     }
-    pub fn put_Pin(self: *const IX509PrivateKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Pin(self: *const IX509PrivateKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_Pin(self, Value);
     }
-    pub fn get_FriendlyName(self: *const IX509PrivateKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_FriendlyName(self: *const IX509PrivateKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_FriendlyName(self, pValue);
     }
-    pub fn put_FriendlyName(self: *const IX509PrivateKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_FriendlyName(self: *const IX509PrivateKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_FriendlyName(self, Value);
     }
-    pub fn get_Description(self: *const IX509PrivateKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IX509PrivateKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, pValue);
     }
-    pub fn put_Description(self: *const IX509PrivateKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IX509PrivateKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, Value);
     }
 };
@@ -6271,88 +6271,88 @@ pub const IX509PrivateKey2 = extern union {
     pub const VTable = extern struct {
         base: IX509PrivateKey.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HardwareKeyUsage: *const fn(
+        get_HardwareKeyUsage: *const fn (
             self: *const IX509PrivateKey2,
             pValue: ?*X509HardwareKeyUsageFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HardwareKeyUsage: *const fn(
+        put_HardwareKeyUsage: *const fn (
             self: *const IX509PrivateKey2,
             Value: X509HardwareKeyUsageFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AlternateStorageLocation: *const fn(
+        get_AlternateStorageLocation: *const fn (
             self: *const IX509PrivateKey2,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AlternateStorageLocation: *const fn(
+        put_AlternateStorageLocation: *const fn (
             self: *const IX509PrivateKey2,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AlgorithmName: *const fn(
+        get_AlgorithmName: *const fn (
             self: *const IX509PrivateKey2,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AlgorithmName: *const fn(
+        put_AlgorithmName: *const fn (
             self: *const IX509PrivateKey2,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_AlgorithmParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_AlgorithmParameters: *const fn (
             self: *const IX509PrivateKey2,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_AlgorithmParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_AlgorithmParameters: *const fn (
             self: *const IX509PrivateKey2,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ParametersExportType: *const fn(
+        get_ParametersExportType: *const fn (
             self: *const IX509PrivateKey2,
             pValue: ?*X509KeyParametersExportType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ParametersExportType: *const fn(
+        put_ParametersExportType: *const fn (
             self: *const IX509PrivateKey2,
             Value: X509KeyParametersExportType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509PrivateKey: IX509PrivateKey,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_HardwareKeyUsage(self: *const IX509PrivateKey2, pValue: ?*X509HardwareKeyUsageFlags) callconv(.Inline) HRESULT {
+    pub inline fn get_HardwareKeyUsage(self: *const IX509PrivateKey2, pValue: ?*X509HardwareKeyUsageFlags) HRESULT {
         return self.vtable.get_HardwareKeyUsage(self, pValue);
     }
-    pub fn put_HardwareKeyUsage(self: *const IX509PrivateKey2, Value: X509HardwareKeyUsageFlags) callconv(.Inline) HRESULT {
+    pub inline fn put_HardwareKeyUsage(self: *const IX509PrivateKey2, Value: X509HardwareKeyUsageFlags) HRESULT {
         return self.vtable.put_HardwareKeyUsage(self, Value);
     }
-    pub fn get_AlternateStorageLocation(self: *const IX509PrivateKey2, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_AlternateStorageLocation(self: *const IX509PrivateKey2, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_AlternateStorageLocation(self, pValue);
     }
-    pub fn put_AlternateStorageLocation(self: *const IX509PrivateKey2, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_AlternateStorageLocation(self: *const IX509PrivateKey2, Value: ?BSTR) HRESULT {
         return self.vtable.put_AlternateStorageLocation(self, Value);
     }
-    pub fn get_AlgorithmName(self: *const IX509PrivateKey2, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_AlgorithmName(self: *const IX509PrivateKey2, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_AlgorithmName(self, pValue);
     }
-    pub fn put_AlgorithmName(self: *const IX509PrivateKey2, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_AlgorithmName(self: *const IX509PrivateKey2, Value: ?BSTR) HRESULT {
         return self.vtable.put_AlgorithmName(self, Value);
     }
-    pub fn get_AlgorithmParameters(self: *const IX509PrivateKey2, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_AlgorithmParameters(self: *const IX509PrivateKey2, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_AlgorithmParameters(self, Encoding, pValue);
     }
-    pub fn put_AlgorithmParameters(self: *const IX509PrivateKey2, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_AlgorithmParameters(self: *const IX509PrivateKey2, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_AlgorithmParameters(self, Encoding, Value);
     }
-    pub fn get_ParametersExportType(self: *const IX509PrivateKey2, pValue: ?*X509KeyParametersExportType) callconv(.Inline) HRESULT {
+    pub inline fn get_ParametersExportType(self: *const IX509PrivateKey2, pValue: ?*X509KeyParametersExportType) HRESULT {
         return self.vtable.get_ParametersExportType(self, pValue);
     }
-    pub fn put_ParametersExportType(self: *const IX509PrivateKey2, Value: X509KeyParametersExportType) callconv(.Inline) HRESULT {
+    pub inline fn put_ParametersExportType(self: *const IX509PrivateKey2, Value: X509KeyParametersExportType) HRESULT {
         return self.vtable.put_ParametersExportType(self, Value);
     }
 };
@@ -6363,92 +6363,92 @@ pub const IX509EndorsementKey = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderName: *const fn(
+        get_ProviderName: *const fn (
             self: *const IX509EndorsementKey,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderName: *const fn(
+        put_ProviderName: *const fn (
             self: *const IX509EndorsementKey,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Length: *const fn(
+        get_Length: *const fn (
             self: *const IX509EndorsementKey,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Opened: *const fn(
+        get_Opened: *const fn (
             self: *const IX509EndorsementKey,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddCertificate: *const fn (
             self: *const IX509EndorsementKey,
             Encoding: EncodingType,
             strCertificate: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveCertificate: *const fn (
             self: *const IX509EndorsementKey,
             Encoding: EncodingType,
             strCertificate: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCertificateByIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCertificateByIndex: *const fn (
             self: *const IX509EndorsementKey,
             ManufacturerOnly: i16,
             dwIndex: i32,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCertificateCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCertificateCount: *const fn (
             self: *const IX509EndorsementKey,
             ManufacturerOnly: i16,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExportPublicKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExportPublicKey: *const fn (
             self: *const IX509EndorsementKey,
             ppPublicKey: ?*?*IX509PublicKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Open: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Open: *const fn (
             self: *const IX509EndorsementKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Close: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Close: *const fn (
             self: *const IX509EndorsementKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ProviderName(self: *const IX509EndorsementKey, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderName(self: *const IX509EndorsementKey, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ProviderName(self, pValue);
     }
-    pub fn put_ProviderName(self: *const IX509EndorsementKey, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderName(self: *const IX509EndorsementKey, Value: ?BSTR) HRESULT {
         return self.vtable.put_ProviderName(self, Value);
     }
-    pub fn get_Length(self: *const IX509EndorsementKey, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Length(self: *const IX509EndorsementKey, pValue: ?*i32) HRESULT {
         return self.vtable.get_Length(self, pValue);
     }
-    pub fn get_Opened(self: *const IX509EndorsementKey, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Opened(self: *const IX509EndorsementKey, pValue: ?*i16) HRESULT {
         return self.vtable.get_Opened(self, pValue);
     }
-    pub fn AddCertificate(self: *const IX509EndorsementKey, Encoding: EncodingType, strCertificate: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn AddCertificate(self: *const IX509EndorsementKey, Encoding: EncodingType, strCertificate: ?BSTR) HRESULT {
         return self.vtable.AddCertificate(self, Encoding, strCertificate);
     }
-    pub fn RemoveCertificate(self: *const IX509EndorsementKey, Encoding: EncodingType, strCertificate: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn RemoveCertificate(self: *const IX509EndorsementKey, Encoding: EncodingType, strCertificate: ?BSTR) HRESULT {
         return self.vtable.RemoveCertificate(self, Encoding, strCertificate);
     }
-    pub fn GetCertificateByIndex(self: *const IX509EndorsementKey, ManufacturerOnly: i16, dwIndex: i32, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCertificateByIndex(self: *const IX509EndorsementKey, ManufacturerOnly: i16, dwIndex: i32, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetCertificateByIndex(self, ManufacturerOnly, dwIndex, Encoding, pValue);
     }
-    pub fn GetCertificateCount(self: *const IX509EndorsementKey, ManufacturerOnly: i16, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCertificateCount(self: *const IX509EndorsementKey, ManufacturerOnly: i16, pCount: ?*i32) HRESULT {
         return self.vtable.GetCertificateCount(self, ManufacturerOnly, pCount);
     }
-    pub fn ExportPublicKey(self: *const IX509EndorsementKey, ppPublicKey: ?*?*IX509PublicKey) callconv(.Inline) HRESULT {
+    pub inline fn ExportPublicKey(self: *const IX509EndorsementKey, ppPublicKey: ?*?*IX509PublicKey) HRESULT {
         return self.vtable.ExportPublicKey(self, ppPublicKey);
     }
-    pub fn Open(self: *const IX509EndorsementKey) callconv(.Inline) HRESULT {
+    pub inline fn Open(self: *const IX509EndorsementKey) HRESULT {
         return self.vtable.Open(self);
     }
-    pub fn Close(self: *const IX509EndorsementKey) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const IX509EndorsementKey) HRESULT {
         return self.vtable.Close(self);
     }
 };
@@ -6459,49 +6459,49 @@ pub const IID_IX509Extension = &IID_IX509Extension_Value;
 pub const IX509Extension = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509Extension,
             pObjectId: ?*IObjectId,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectId: *const fn(
+        get_ObjectId: *const fn (
             self: *const IX509Extension,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RawData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RawData: *const fn (
             self: *const IX509Extension,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Critical: *const fn(
+        get_Critical: *const fn (
             self: *const IX509Extension,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Critical: *const fn(
+        put_Critical: *const fn (
             self: *const IX509Extension,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509Extension, pObjectId: ?*IObjectId, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509Extension, pObjectId: ?*IObjectId, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, pObjectId, Encoding, strEncodedData);
     }
-    pub fn get_ObjectId(self: *const IX509Extension, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectId(self: *const IX509Extension, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_ObjectId(self, ppValue);
     }
-    pub fn get_RawData(self: *const IX509Extension, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RawData(self: *const IX509Extension, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RawData(self, Encoding, pValue);
     }
-    pub fn get_Critical(self: *const IX509Extension, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Critical(self: *const IX509Extension, pValue: ?*i16) HRESULT {
         return self.vtable.get_Critical(self, pValue);
     }
-    pub fn put_Critical(self: *const IX509Extension, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Critical(self: *const IX509Extension, Value: i16) HRESULT {
         return self.vtable.put_Critical(self, Value);
     }
 };
@@ -6512,67 +6512,67 @@ pub const IID_IX509Extensions = &IID_IX509Extensions_Value;
 pub const IX509Extensions = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const IX509Extensions,
             Index: i32,
             pVal: ?*?*IX509Extension,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IX509Extensions,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IX509Extensions,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IX509Extensions,
             pVal: ?*IX509Extension,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IX509Extensions,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IX509Extensions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_IndexByObjectId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_IndexByObjectId: *const fn (
             self: *const IX509Extensions,
             pObjectId: ?*IObjectId,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddRange: *const fn (
             self: *const IX509Extensions,
             pValue: ?*IX509Extensions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const IX509Extensions, Index: i32, pVal: ?*?*IX509Extension) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const IX509Extensions, Index: i32, pVal: ?*?*IX509Extension) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IX509Extensions, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IX509Extensions, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const IX509Extensions, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IX509Extensions, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const IX509Extensions, pVal: ?*IX509Extension) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IX509Extensions, pVal: ?*IX509Extension) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const IX509Extensions, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IX509Extensions, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const IX509Extensions) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IX509Extensions) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn get_IndexByObjectId(self: *const IX509Extensions, pObjectId: ?*IObjectId, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_IndexByObjectId(self: *const IX509Extensions, pObjectId: ?*IObjectId, pIndex: ?*i32) HRESULT {
         return self.vtable.get_IndexByObjectId(self, pObjectId, pIndex);
     }
-    pub fn AddRange(self: *const IX509Extensions, pValue: ?*IX509Extensions) callconv(.Inline) HRESULT {
+    pub inline fn AddRange(self: *const IX509Extensions, pValue: ?*IX509Extensions) HRESULT {
         return self.vtable.AddRange(self, pValue);
     }
 };
@@ -6608,32 +6608,32 @@ pub const IID_IX509ExtensionKeyUsage = &IID_IX509ExtensionKeyUsage_Value;
 pub const IX509ExtensionKeyUsage = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionKeyUsage,
             UsageFlags: X509KeyUsageFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionKeyUsage,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeyUsage: *const fn(
+        get_KeyUsage: *const fn (
             self: *const IX509ExtensionKeyUsage,
             pValue: ?*X509KeyUsageFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionKeyUsage, UsageFlags: X509KeyUsageFlags) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionKeyUsage, UsageFlags: X509KeyUsageFlags) HRESULT {
         return self.vtable.InitializeEncode(self, UsageFlags);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionKeyUsage, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionKeyUsage, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_KeyUsage(self: *const IX509ExtensionKeyUsage, pValue: ?*X509KeyUsageFlags) callconv(.Inline) HRESULT {
+    pub inline fn get_KeyUsage(self: *const IX509ExtensionKeyUsage, pValue: ?*X509KeyUsageFlags) HRESULT {
         return self.vtable.get_KeyUsage(self, pValue);
     }
 };
@@ -6644,32 +6644,32 @@ pub const IID_IX509ExtensionEnhancedKeyUsage = &IID_IX509ExtensionEnhancedKeyUsa
 pub const IX509ExtensionEnhancedKeyUsage = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionEnhancedKeyUsage,
             pValue: ?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionEnhancedKeyUsage,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EnhancedKeyUsage: *const fn(
+        get_EnhancedKeyUsage: *const fn (
             self: *const IX509ExtensionEnhancedKeyUsage,
             ppValue: ?*?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionEnhancedKeyUsage, pValue: ?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionEnhancedKeyUsage, pValue: ?*IObjectIds) HRESULT {
         return self.vtable.InitializeEncode(self, pValue);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionEnhancedKeyUsage, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionEnhancedKeyUsage, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_EnhancedKeyUsage(self: *const IX509ExtensionEnhancedKeyUsage, ppValue: ?*?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn get_EnhancedKeyUsage(self: *const IX509ExtensionEnhancedKeyUsage, ppValue: ?*?*IObjectIds) HRESULT {
         return self.vtable.get_EnhancedKeyUsage(self, ppValue);
     }
 };
@@ -6680,32 +6680,32 @@ pub const IID_IX509ExtensionTemplateName = &IID_IX509ExtensionTemplateName_Value
 pub const IX509ExtensionTemplateName = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionTemplateName,
             strTemplateName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionTemplateName,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TemplateName: *const fn(
+        get_TemplateName: *const fn (
             self: *const IX509ExtensionTemplateName,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionTemplateName, strTemplateName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionTemplateName, strTemplateName: ?BSTR) HRESULT {
         return self.vtable.InitializeEncode(self, strTemplateName);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionTemplateName, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionTemplateName, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_TemplateName(self: *const IX509ExtensionTemplateName, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_TemplateName(self: *const IX509ExtensionTemplateName, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_TemplateName(self, pValue);
     }
 };
@@ -6716,50 +6716,50 @@ pub const IID_IX509ExtensionTemplate = &IID_IX509ExtensionTemplate_Value;
 pub const IX509ExtensionTemplate = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionTemplate,
             pTemplateOid: ?*IObjectId,
             MajorVersion: i32,
             MinorVersion: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionTemplate,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TemplateOid: *const fn(
+        get_TemplateOid: *const fn (
             self: *const IX509ExtensionTemplate,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MajorVersion: *const fn(
+        get_MajorVersion: *const fn (
             self: *const IX509ExtensionTemplate,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MinorVersion: *const fn(
+        get_MinorVersion: *const fn (
             self: *const IX509ExtensionTemplate,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionTemplate, pTemplateOid: ?*IObjectId, MajorVersion: i32, MinorVersion: i32) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionTemplate, pTemplateOid: ?*IObjectId, MajorVersion: i32, MinorVersion: i32) HRESULT {
         return self.vtable.InitializeEncode(self, pTemplateOid, MajorVersion, MinorVersion);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionTemplate, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionTemplate, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_TemplateOid(self: *const IX509ExtensionTemplate, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_TemplateOid(self: *const IX509ExtensionTemplate, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_TemplateOid(self, ppValue);
     }
-    pub fn get_MajorVersion(self: *const IX509ExtensionTemplate, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MajorVersion(self: *const IX509ExtensionTemplate, pValue: ?*i32) HRESULT {
         return self.vtable.get_MajorVersion(self, pValue);
     }
-    pub fn get_MinorVersion(self: *const IX509ExtensionTemplate, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MinorVersion(self: *const IX509ExtensionTemplate, pValue: ?*i32) HRESULT {
         return self.vtable.get_MinorVersion(self, pValue);
     }
 };
@@ -6797,67 +6797,67 @@ pub const IID_IAlternativeName = &IID_IAlternativeName_Value;
 pub const IAlternativeName = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        InitializeFromString: *const fn(
+        InitializeFromString: *const fn (
             self: *const IAlternativeName,
             Type: AlternativeNameType,
             strValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromRawData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromRawData: *const fn (
             self: *const IAlternativeName,
             Type: AlternativeNameType,
             Encoding: EncodingType,
             strRawData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromOtherName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromOtherName: *const fn (
             self: *const IAlternativeName,
             pObjectId: ?*IObjectId,
             Encoding: EncodingType,
             strRawData: ?BSTR,
             ToBeWrapped: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Type: *const fn(
+        get_Type: *const fn (
             self: *const IAlternativeName,
             pValue: ?*AlternativeNameType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StrValue: *const fn(
+        get_StrValue: *const fn (
             self: *const IAlternativeName,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectId: *const fn(
+        get_ObjectId: *const fn (
             self: *const IAlternativeName,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RawData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RawData: *const fn (
             self: *const IAlternativeName,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromString(self: *const IAlternativeName, Type: AlternativeNameType, strValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromString(self: *const IAlternativeName, Type: AlternativeNameType, strValue: ?BSTR) HRESULT {
         return self.vtable.InitializeFromString(self, Type, strValue);
     }
-    pub fn InitializeFromRawData(self: *const IAlternativeName, Type: AlternativeNameType, Encoding: EncodingType, strRawData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromRawData(self: *const IAlternativeName, Type: AlternativeNameType, Encoding: EncodingType, strRawData: ?BSTR) HRESULT {
         return self.vtable.InitializeFromRawData(self, Type, Encoding, strRawData);
     }
-    pub fn InitializeFromOtherName(self: *const IAlternativeName, pObjectId: ?*IObjectId, Encoding: EncodingType, strRawData: ?BSTR, ToBeWrapped: i16) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromOtherName(self: *const IAlternativeName, pObjectId: ?*IObjectId, Encoding: EncodingType, strRawData: ?BSTR, ToBeWrapped: i16) HRESULT {
         return self.vtable.InitializeFromOtherName(self, pObjectId, Encoding, strRawData, ToBeWrapped);
     }
-    pub fn get_Type(self: *const IAlternativeName, pValue: ?*AlternativeNameType) callconv(.Inline) HRESULT {
+    pub inline fn get_Type(self: *const IAlternativeName, pValue: ?*AlternativeNameType) HRESULT {
         return self.vtable.get_Type(self, pValue);
     }
-    pub fn get_StrValue(self: *const IAlternativeName, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_StrValue(self: *const IAlternativeName, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_StrValue(self, pValue);
     }
-    pub fn get_ObjectId(self: *const IAlternativeName, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectId(self: *const IAlternativeName, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_ObjectId(self, ppValue);
     }
-    pub fn get_RawData(self: *const IAlternativeName, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RawData(self: *const IAlternativeName, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RawData(self, Encoding, pValue);
     }
 };
@@ -6868,52 +6868,52 @@ pub const IID_IAlternativeNames = &IID_IAlternativeNames_Value;
 pub const IAlternativeNames = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const IAlternativeNames,
             Index: i32,
             pVal: ?*?*IAlternativeName,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IAlternativeNames,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IAlternativeNames,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IAlternativeNames,
             pVal: ?*IAlternativeName,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IAlternativeNames,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IAlternativeNames,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const IAlternativeNames, Index: i32, pVal: ?*?*IAlternativeName) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const IAlternativeNames, Index: i32, pVal: ?*?*IAlternativeName) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IAlternativeNames, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IAlternativeNames, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const IAlternativeNames, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IAlternativeNames, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const IAlternativeNames, pVal: ?*IAlternativeName) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IAlternativeNames, pVal: ?*IAlternativeName) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const IAlternativeNames, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IAlternativeNames, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const IAlternativeNames) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IAlternativeNames) HRESULT {
         return self.vtable.Clear(self);
     }
 };
@@ -6924,32 +6924,32 @@ pub const IID_IX509ExtensionAlternativeNames = &IID_IX509ExtensionAlternativeNam
 pub const IX509ExtensionAlternativeNames = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionAlternativeNames,
             pValue: ?*IAlternativeNames,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionAlternativeNames,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AlternativeNames: *const fn(
+        get_AlternativeNames: *const fn (
             self: *const IX509ExtensionAlternativeNames,
             ppValue: ?*?*IAlternativeNames,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionAlternativeNames, pValue: ?*IAlternativeNames) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionAlternativeNames, pValue: ?*IAlternativeNames) HRESULT {
         return self.vtable.InitializeEncode(self, pValue);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionAlternativeNames, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionAlternativeNames, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_AlternativeNames(self: *const IX509ExtensionAlternativeNames, ppValue: ?*?*IAlternativeNames) callconv(.Inline) HRESULT {
+    pub inline fn get_AlternativeNames(self: *const IX509ExtensionAlternativeNames, ppValue: ?*?*IAlternativeNames) HRESULT {
         return self.vtable.get_AlternativeNames(self, ppValue);
     }
 };
@@ -6960,41 +6960,41 @@ pub const IID_IX509ExtensionBasicConstraints = &IID_IX509ExtensionBasicConstrain
 pub const IX509ExtensionBasicConstraints = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionBasicConstraints,
             IsCA: i16,
             PathLenConstraint: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionBasicConstraints,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsCA: *const fn(
+        get_IsCA: *const fn (
             self: *const IX509ExtensionBasicConstraints,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PathLenConstraint: *const fn(
+        get_PathLenConstraint: *const fn (
             self: *const IX509ExtensionBasicConstraints,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionBasicConstraints, IsCA: i16, PathLenConstraint: i32) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionBasicConstraints, IsCA: i16, PathLenConstraint: i32) HRESULT {
         return self.vtable.InitializeEncode(self, IsCA, PathLenConstraint);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionBasicConstraints, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionBasicConstraints, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_IsCA(self: *const IX509ExtensionBasicConstraints, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsCA(self: *const IX509ExtensionBasicConstraints, pValue: ?*i16) HRESULT {
         return self.vtable.get_IsCA(self, pValue);
     }
-    pub fn get_PathLenConstraint(self: *const IX509ExtensionBasicConstraints, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_PathLenConstraint(self: *const IX509ExtensionBasicConstraints, pValue: ?*i32) HRESULT {
         return self.vtable.get_PathLenConstraint(self, pValue);
     }
 };
@@ -7005,33 +7005,33 @@ pub const IID_IX509ExtensionSubjectKeyIdentifier = &IID_IX509ExtensionSubjectKey
 pub const IX509ExtensionSubjectKeyIdentifier = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionSubjectKeyIdentifier,
             Encoding: EncodingType,
             strKeyIdentifier: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionSubjectKeyIdentifier,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_SubjectKeyIdentifier: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_SubjectKeyIdentifier: *const fn (
             self: *const IX509ExtensionSubjectKeyIdentifier,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionSubjectKeyIdentifier, Encoding: EncodingType, strKeyIdentifier: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionSubjectKeyIdentifier, Encoding: EncodingType, strKeyIdentifier: ?BSTR) HRESULT {
         return self.vtable.InitializeEncode(self, Encoding, strKeyIdentifier);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionSubjectKeyIdentifier, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionSubjectKeyIdentifier, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_SubjectKeyIdentifier(self: *const IX509ExtensionSubjectKeyIdentifier, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SubjectKeyIdentifier(self: *const IX509ExtensionSubjectKeyIdentifier, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_SubjectKeyIdentifier(self, Encoding, pValue);
     }
 };
@@ -7042,33 +7042,33 @@ pub const IID_IX509ExtensionAuthorityKeyIdentifier = &IID_IX509ExtensionAuthorit
 pub const IX509ExtensionAuthorityKeyIdentifier = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionAuthorityKeyIdentifier,
             Encoding: EncodingType,
             strKeyIdentifier: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionAuthorityKeyIdentifier,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_AuthorityKeyIdentifier: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_AuthorityKeyIdentifier: *const fn (
             self: *const IX509ExtensionAuthorityKeyIdentifier,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionAuthorityKeyIdentifier, Encoding: EncodingType, strKeyIdentifier: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionAuthorityKeyIdentifier, Encoding: EncodingType, strKeyIdentifier: ?BSTR) HRESULT {
         return self.vtable.InitializeEncode(self, Encoding, strKeyIdentifier);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionAuthorityKeyIdentifier, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionAuthorityKeyIdentifier, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_AuthorityKeyIdentifier(self: *const IX509ExtensionAuthorityKeyIdentifier, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_AuthorityKeyIdentifier(self: *const IX509ExtensionAuthorityKeyIdentifier, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_AuthorityKeyIdentifier(self, Encoding, pValue);
     }
 };
@@ -7079,32 +7079,32 @@ pub const IID_ISmimeCapability = &IID_ISmimeCapability_Value;
 pub const ISmimeCapability = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ISmimeCapability,
             pObjectId: ?*IObjectId,
             BitCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectId: *const fn(
+        get_ObjectId: *const fn (
             self: *const ISmimeCapability,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BitCount: *const fn(
+        get_BitCount: *const fn (
             self: *const ISmimeCapability,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ISmimeCapability, pObjectId: ?*IObjectId, BitCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ISmimeCapability, pObjectId: ?*IObjectId, BitCount: i32) HRESULT {
         return self.vtable.Initialize(self, pObjectId, BitCount);
     }
-    pub fn get_ObjectId(self: *const ISmimeCapability, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectId(self: *const ISmimeCapability, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_ObjectId(self, ppValue);
     }
-    pub fn get_BitCount(self: *const ISmimeCapability, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_BitCount(self: *const ISmimeCapability, pValue: ?*i32) HRESULT {
         return self.vtable.get_BitCount(self, pValue);
     }
 };
@@ -7115,66 +7115,66 @@ pub const IID_ISmimeCapabilities = &IID_ISmimeCapabilities_Value;
 pub const ISmimeCapabilities = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const ISmimeCapabilities,
             Index: i32,
             pVal: ?*?*ISmimeCapability,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ISmimeCapabilities,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ISmimeCapabilities,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ISmimeCapabilities,
             pVal: ?*ISmimeCapability,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ISmimeCapabilities,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const ISmimeCapabilities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddFromCsp: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddFromCsp: *const fn (
             self: *const ISmimeCapabilities,
             pValue: ?*ICspInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddAvailableSmimeCapabilities: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddAvailableSmimeCapabilities: *const fn (
             self: *const ISmimeCapabilities,
             MachineContext: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const ISmimeCapabilities, Index: i32, pVal: ?*?*ISmimeCapability) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const ISmimeCapabilities, Index: i32, pVal: ?*?*ISmimeCapability) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const ISmimeCapabilities, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ISmimeCapabilities, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const ISmimeCapabilities, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ISmimeCapabilities, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const ISmimeCapabilities, pVal: ?*ISmimeCapability) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ISmimeCapabilities, pVal: ?*ISmimeCapability) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const ISmimeCapabilities, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ISmimeCapabilities, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const ISmimeCapabilities) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const ISmimeCapabilities) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn AddFromCsp(self: *const ISmimeCapabilities, pValue: ?*ICspInformation) callconv(.Inline) HRESULT {
+    pub inline fn AddFromCsp(self: *const ISmimeCapabilities, pValue: ?*ICspInformation) HRESULT {
         return self.vtable.AddFromCsp(self, pValue);
     }
-    pub fn AddAvailableSmimeCapabilities(self: *const ISmimeCapabilities, MachineContext: i16) callconv(.Inline) HRESULT {
+    pub inline fn AddAvailableSmimeCapabilities(self: *const ISmimeCapabilities, MachineContext: i16) HRESULT {
         return self.vtable.AddAvailableSmimeCapabilities(self, MachineContext);
     }
 };
@@ -7185,32 +7185,32 @@ pub const IID_IX509ExtensionSmimeCapabilities = &IID_IX509ExtensionSmimeCapabili
 pub const IX509ExtensionSmimeCapabilities = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionSmimeCapabilities,
             pValue: ?*ISmimeCapabilities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionSmimeCapabilities,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SmimeCapabilities: *const fn(
+        get_SmimeCapabilities: *const fn (
             self: *const IX509ExtensionSmimeCapabilities,
             ppValue: ?*?*ISmimeCapabilities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionSmimeCapabilities, pValue: ?*ISmimeCapabilities) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionSmimeCapabilities, pValue: ?*ISmimeCapabilities) HRESULT {
         return self.vtable.InitializeEncode(self, pValue);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionSmimeCapabilities, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionSmimeCapabilities, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_SmimeCapabilities(self: *const IX509ExtensionSmimeCapabilities, ppValue: ?*?*ISmimeCapabilities) callconv(.Inline) HRESULT {
+    pub inline fn get_SmimeCapabilities(self: *const IX509ExtensionSmimeCapabilities, ppValue: ?*?*ISmimeCapabilities) HRESULT {
         return self.vtable.get_SmimeCapabilities(self, ppValue);
     }
 };
@@ -7232,48 +7232,48 @@ pub const IID_IPolicyQualifier = &IID_IPolicyQualifier_Value;
 pub const IPolicyQualifier = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IPolicyQualifier,
             strQualifier: ?BSTR,
             Type: PolicyQualifierType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectId: *const fn(
+        get_ObjectId: *const fn (
             self: *const IPolicyQualifier,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Qualifier: *const fn(
+        get_Qualifier: *const fn (
             self: *const IPolicyQualifier,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Type: *const fn(
+        get_Type: *const fn (
             self: *const IPolicyQualifier,
             pValue: ?*PolicyQualifierType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RawData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RawData: *const fn (
             self: *const IPolicyQualifier,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IPolicyQualifier, strQualifier: ?BSTR, Type: PolicyQualifierType) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IPolicyQualifier, strQualifier: ?BSTR, Type: PolicyQualifierType) HRESULT {
         return self.vtable.InitializeEncode(self, strQualifier, Type);
     }
-    pub fn get_ObjectId(self: *const IPolicyQualifier, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectId(self: *const IPolicyQualifier, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_ObjectId(self, ppValue);
     }
-    pub fn get_Qualifier(self: *const IPolicyQualifier, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Qualifier(self: *const IPolicyQualifier, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Qualifier(self, pValue);
     }
-    pub fn get_Type(self: *const IPolicyQualifier, pValue: ?*PolicyQualifierType) callconv(.Inline) HRESULT {
+    pub inline fn get_Type(self: *const IPolicyQualifier, pValue: ?*PolicyQualifierType) HRESULT {
         return self.vtable.get_Type(self, pValue);
     }
-    pub fn get_RawData(self: *const IPolicyQualifier, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RawData(self: *const IPolicyQualifier, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RawData(self, Encoding, pValue);
     }
 };
@@ -7284,52 +7284,52 @@ pub const IID_IPolicyQualifiers = &IID_IPolicyQualifiers_Value;
 pub const IPolicyQualifiers = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const IPolicyQualifiers,
             Index: i32,
             pVal: ?*?*IPolicyQualifier,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IPolicyQualifiers,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IPolicyQualifiers,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IPolicyQualifiers,
             pVal: ?*IPolicyQualifier,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IPolicyQualifiers,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IPolicyQualifiers,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const IPolicyQualifiers, Index: i32, pVal: ?*?*IPolicyQualifier) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const IPolicyQualifiers, Index: i32, pVal: ?*?*IPolicyQualifier) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IPolicyQualifiers, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IPolicyQualifiers, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const IPolicyQualifiers, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IPolicyQualifiers, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const IPolicyQualifiers, pVal: ?*IPolicyQualifier) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IPolicyQualifiers, pVal: ?*IPolicyQualifier) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const IPolicyQualifiers, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IPolicyQualifiers, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const IPolicyQualifiers) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IPolicyQualifiers) HRESULT {
         return self.vtable.Clear(self);
     }
 };
@@ -7340,31 +7340,31 @@ pub const IID_ICertificatePolicy = &IID_ICertificatePolicy_Value;
 pub const ICertificatePolicy = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertificatePolicy,
             pValue: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectId: *const fn(
+        get_ObjectId: *const fn (
             self: *const ICertificatePolicy,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PolicyQualifiers: *const fn(
+        get_PolicyQualifiers: *const fn (
             self: *const ICertificatePolicy,
             ppValue: ?*?*IPolicyQualifiers,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertificatePolicy, pValue: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertificatePolicy, pValue: ?*IObjectId) HRESULT {
         return self.vtable.Initialize(self, pValue);
     }
-    pub fn get_ObjectId(self: *const ICertificatePolicy, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectId(self: *const ICertificatePolicy, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_ObjectId(self, ppValue);
     }
-    pub fn get_PolicyQualifiers(self: *const ICertificatePolicy, ppValue: ?*?*IPolicyQualifiers) callconv(.Inline) HRESULT {
+    pub inline fn get_PolicyQualifiers(self: *const ICertificatePolicy, ppValue: ?*?*IPolicyQualifiers) HRESULT {
         return self.vtable.get_PolicyQualifiers(self, ppValue);
     }
 };
@@ -7375,52 +7375,52 @@ pub const IID_ICertificatePolicies = &IID_ICertificatePolicies_Value;
 pub const ICertificatePolicies = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const ICertificatePolicies,
             Index: i32,
             pVal: ?*?*ICertificatePolicy,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ICertificatePolicies,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ICertificatePolicies,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ICertificatePolicies,
             pVal: ?*ICertificatePolicy,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ICertificatePolicies,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const ICertificatePolicies,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const ICertificatePolicies, Index: i32, pVal: ?*?*ICertificatePolicy) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const ICertificatePolicies, Index: i32, pVal: ?*?*ICertificatePolicy) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const ICertificatePolicies, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ICertificatePolicies, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const ICertificatePolicies, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ICertificatePolicies, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const ICertificatePolicies, pVal: ?*ICertificatePolicy) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ICertificatePolicies, pVal: ?*ICertificatePolicy) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const ICertificatePolicies, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ICertificatePolicies, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const ICertificatePolicies) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const ICertificatePolicies) HRESULT {
         return self.vtable.Clear(self);
     }
 };
@@ -7431,32 +7431,32 @@ pub const IID_IX509ExtensionCertificatePolicies = &IID_IX509ExtensionCertificate
 pub const IX509ExtensionCertificatePolicies = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionCertificatePolicies,
             pValue: ?*ICertificatePolicies,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionCertificatePolicies,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Policies: *const fn(
+        get_Policies: *const fn (
             self: *const IX509ExtensionCertificatePolicies,
             ppValue: ?*?*ICertificatePolicies,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionCertificatePolicies, pValue: ?*ICertificatePolicies) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionCertificatePolicies, pValue: ?*ICertificatePolicies) HRESULT {
         return self.vtable.InitializeEncode(self, pValue);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionCertificatePolicies, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionCertificatePolicies, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_Policies(self: *const IX509ExtensionCertificatePolicies, ppValue: ?*?*ICertificatePolicies) callconv(.Inline) HRESULT {
+    pub inline fn get_Policies(self: *const IX509ExtensionCertificatePolicies, ppValue: ?*?*ICertificatePolicies) HRESULT {
         return self.vtable.get_Policies(self, ppValue);
     }
 };
@@ -7467,32 +7467,32 @@ pub const IID_IX509ExtensionMSApplicationPolicies = &IID_IX509ExtensionMSApplica
 pub const IX509ExtensionMSApplicationPolicies = extern union {
     pub const VTable = extern struct {
         base: IX509Extension.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509ExtensionMSApplicationPolicies,
             pValue: ?*ICertificatePolicies,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509ExtensionMSApplicationPolicies,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Policies: *const fn(
+        get_Policies: *const fn (
             self: *const IX509ExtensionMSApplicationPolicies,
             ppValue: ?*?*ICertificatePolicies,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Extension: IX509Extension,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509ExtensionMSApplicationPolicies, pValue: ?*ICertificatePolicies) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509ExtensionMSApplicationPolicies, pValue: ?*ICertificatePolicies) HRESULT {
         return self.vtable.InitializeEncode(self, pValue);
     }
-    pub fn InitializeDecode(self: *const IX509ExtensionMSApplicationPolicies, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509ExtensionMSApplicationPolicies, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_Policies(self: *const IX509ExtensionMSApplicationPolicies, ppValue: ?*?*ICertificatePolicies) callconv(.Inline) HRESULT {
+    pub inline fn get_Policies(self: *const IX509ExtensionMSApplicationPolicies, ppValue: ?*?*ICertificatePolicies) HRESULT {
         return self.vtable.get_Policies(self, ppValue);
     }
 };
@@ -7503,33 +7503,33 @@ pub const IID_IX509Attribute = &IID_IX509Attribute_Value;
 pub const IX509Attribute = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509Attribute,
             pObjectId: ?*IObjectId,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectId: *const fn(
+        get_ObjectId: *const fn (
             self: *const IX509Attribute,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RawData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RawData: *const fn (
             self: *const IX509Attribute,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509Attribute, pObjectId: ?*IObjectId, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509Attribute, pObjectId: ?*IObjectId, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, pObjectId, Encoding, strEncodedData);
     }
-    pub fn get_ObjectId(self: *const IX509Attribute, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectId(self: *const IX509Attribute, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_ObjectId(self, ppValue);
     }
-    pub fn get_RawData(self: *const IX509Attribute, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RawData(self: *const IX509Attribute, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RawData(self, Encoding, pValue);
     }
 };
@@ -7540,52 +7540,52 @@ pub const IID_IX509Attributes = &IID_IX509Attributes_Value;
 pub const IX509Attributes = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const IX509Attributes,
             Index: i32,
             pVal: ?*?*IX509Attribute,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IX509Attributes,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IX509Attributes,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IX509Attributes,
             pVal: ?*IX509Attribute,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IX509Attributes,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IX509Attributes,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const IX509Attributes, Index: i32, pVal: ?*?*IX509Attribute) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const IX509Attributes, Index: i32, pVal: ?*?*IX509Attribute) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IX509Attributes, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IX509Attributes, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const IX509Attributes, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IX509Attributes, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const IX509Attributes, pVal: ?*IX509Attribute) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IX509Attributes, pVal: ?*IX509Attribute) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const IX509Attributes, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IX509Attributes, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const IX509Attributes) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IX509Attributes) HRESULT {
         return self.vtable.Clear(self);
     }
 };
@@ -7596,32 +7596,32 @@ pub const IID_IX509AttributeExtensions = &IID_IX509AttributeExtensions_Value;
 pub const IX509AttributeExtensions = extern union {
     pub const VTable = extern struct {
         base: IX509Attribute.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509AttributeExtensions,
             pExtensions: ?*IX509Extensions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509AttributeExtensions,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_X509Extensions: *const fn(
+        get_X509Extensions: *const fn (
             self: *const IX509AttributeExtensions,
             ppValue: ?*?*IX509Extensions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Attribute: IX509Attribute,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509AttributeExtensions, pExtensions: ?*IX509Extensions) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509AttributeExtensions, pExtensions: ?*IX509Extensions) HRESULT {
         return self.vtable.InitializeEncode(self, pExtensions);
     }
-    pub fn InitializeDecode(self: *const IX509AttributeExtensions, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509AttributeExtensions, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_X509Extensions(self: *const IX509AttributeExtensions, ppValue: ?*?*IX509Extensions) callconv(.Inline) HRESULT {
+    pub inline fn get_X509Extensions(self: *const IX509AttributeExtensions, ppValue: ?*?*IX509Extensions) HRESULT {
         return self.vtable.get_X509Extensions(self, ppValue);
     }
 };
@@ -7661,59 +7661,59 @@ pub const IID_IX509AttributeClientId = &IID_IX509AttributeClientId_Value;
 pub const IX509AttributeClientId = extern union {
     pub const VTable = extern struct {
         base: IX509Attribute.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509AttributeClientId,
             ClientId: RequestClientInfoClientId,
             strMachineDnsName: ?BSTR,
             strUserSamName: ?BSTR,
             strProcessName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509AttributeClientId,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ClientId: *const fn(
+        get_ClientId: *const fn (
             self: *const IX509AttributeClientId,
             pValue: ?*RequestClientInfoClientId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MachineDnsName: *const fn(
+        get_MachineDnsName: *const fn (
             self: *const IX509AttributeClientId,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UserSamName: *const fn(
+        get_UserSamName: *const fn (
             self: *const IX509AttributeClientId,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProcessName: *const fn(
+        get_ProcessName: *const fn (
             self: *const IX509AttributeClientId,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Attribute: IX509Attribute,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509AttributeClientId, ClientId: RequestClientInfoClientId, strMachineDnsName: ?BSTR, strUserSamName: ?BSTR, strProcessName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509AttributeClientId, ClientId: RequestClientInfoClientId, strMachineDnsName: ?BSTR, strUserSamName: ?BSTR, strProcessName: ?BSTR) HRESULT {
         return self.vtable.InitializeEncode(self, ClientId, strMachineDnsName, strUserSamName, strProcessName);
     }
-    pub fn InitializeDecode(self: *const IX509AttributeClientId, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509AttributeClientId, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_ClientId(self: *const IX509AttributeClientId, pValue: ?*RequestClientInfoClientId) callconv(.Inline) HRESULT {
+    pub inline fn get_ClientId(self: *const IX509AttributeClientId, pValue: ?*RequestClientInfoClientId) HRESULT {
         return self.vtable.get_ClientId(self, pValue);
     }
-    pub fn get_MachineDnsName(self: *const IX509AttributeClientId, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_MachineDnsName(self: *const IX509AttributeClientId, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_MachineDnsName(self, pValue);
     }
-    pub fn get_UserSamName(self: *const IX509AttributeClientId, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UserSamName(self: *const IX509AttributeClientId, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_UserSamName(self, pValue);
     }
-    pub fn get_ProcessName(self: *const IX509AttributeClientId, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProcessName(self: *const IX509AttributeClientId, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ProcessName(self, pValue);
     }
 };
@@ -7724,33 +7724,33 @@ pub const IID_IX509AttributeRenewalCertificate = &IID_IX509AttributeRenewalCerti
 pub const IX509AttributeRenewalCertificate = extern union {
     pub const VTable = extern struct {
         base: IX509Attribute.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509AttributeRenewalCertificate,
             Encoding: EncodingType,
             strCert: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509AttributeRenewalCertificate,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RenewalCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RenewalCertificate: *const fn (
             self: *const IX509AttributeRenewalCertificate,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Attribute: IX509Attribute,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509AttributeRenewalCertificate, Encoding: EncodingType, strCert: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509AttributeRenewalCertificate, Encoding: EncodingType, strCert: ?BSTR) HRESULT {
         return self.vtable.InitializeEncode(self, Encoding, strCert);
     }
-    pub fn InitializeDecode(self: *const IX509AttributeRenewalCertificate, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509AttributeRenewalCertificate, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_RenewalCertificate(self: *const IX509AttributeRenewalCertificate, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RenewalCertificate(self: *const IX509AttributeRenewalCertificate, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RenewalCertificate(self, Encoding, pValue);
     }
 };
@@ -7761,52 +7761,52 @@ pub const IID_IX509AttributeArchiveKey = &IID_IX509AttributeArchiveKey_Value;
 pub const IX509AttributeArchiveKey = extern union {
     pub const VTable = extern struct {
         base: IX509Attribute.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509AttributeArchiveKey,
             pKey: ?*IX509PrivateKey,
             Encoding: EncodingType,
             strCAXCert: ?BSTR,
             pAlgorithm: ?*IObjectId,
             EncryptionStrength: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509AttributeArchiveKey,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_EncryptedKeyBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_EncryptedKeyBlob: *const fn (
             self: *const IX509AttributeArchiveKey,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EncryptionAlgorithm: *const fn(
+        get_EncryptionAlgorithm: *const fn (
             self: *const IX509AttributeArchiveKey,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EncryptionStrength: *const fn(
+        get_EncryptionStrength: *const fn (
             self: *const IX509AttributeArchiveKey,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Attribute: IX509Attribute,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509AttributeArchiveKey, pKey: ?*IX509PrivateKey, Encoding: EncodingType, strCAXCert: ?BSTR, pAlgorithm: ?*IObjectId, EncryptionStrength: i32) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509AttributeArchiveKey, pKey: ?*IX509PrivateKey, Encoding: EncodingType, strCAXCert: ?BSTR, pAlgorithm: ?*IObjectId, EncryptionStrength: i32) HRESULT {
         return self.vtable.InitializeEncode(self, pKey, Encoding, strCAXCert, pAlgorithm, EncryptionStrength);
     }
-    pub fn InitializeDecode(self: *const IX509AttributeArchiveKey, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509AttributeArchiveKey, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_EncryptedKeyBlob(self: *const IX509AttributeArchiveKey, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_EncryptedKeyBlob(self: *const IX509AttributeArchiveKey, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_EncryptedKeyBlob(self, Encoding, pValue);
     }
-    pub fn get_EncryptionAlgorithm(self: *const IX509AttributeArchiveKey, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_EncryptionAlgorithm(self: *const IX509AttributeArchiveKey, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_EncryptionAlgorithm(self, ppValue);
     }
-    pub fn get_EncryptionStrength(self: *const IX509AttributeArchiveKey, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_EncryptionStrength(self: *const IX509AttributeArchiveKey, pValue: ?*i32) HRESULT {
         return self.vtable.get_EncryptionStrength(self, pValue);
     }
 };
@@ -7817,33 +7817,33 @@ pub const IID_IX509AttributeArchiveKeyHash = &IID_IX509AttributeArchiveKeyHash_V
 pub const IX509AttributeArchiveKeyHash = extern union {
     pub const VTable = extern struct {
         base: IX509Attribute.VTable,
-        InitializeEncodeFromEncryptedKeyBlob: *const fn(
+        InitializeEncodeFromEncryptedKeyBlob: *const fn (
             self: *const IX509AttributeArchiveKeyHash,
             Encoding: EncodingType,
             strEncryptedKeyBlob: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509AttributeArchiveKeyHash,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_EncryptedKeyHashBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_EncryptedKeyHashBlob: *const fn (
             self: *const IX509AttributeArchiveKeyHash,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Attribute: IX509Attribute,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncodeFromEncryptedKeyBlob(self: *const IX509AttributeArchiveKeyHash, Encoding: EncodingType, strEncryptedKeyBlob: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncodeFromEncryptedKeyBlob(self: *const IX509AttributeArchiveKeyHash, Encoding: EncodingType, strEncryptedKeyBlob: ?BSTR) HRESULT {
         return self.vtable.InitializeEncodeFromEncryptedKeyBlob(self, Encoding, strEncryptedKeyBlob);
     }
-    pub fn InitializeDecode(self: *const IX509AttributeArchiveKeyHash, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509AttributeArchiveKeyHash, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_EncryptedKeyHashBlob(self: *const IX509AttributeArchiveKeyHash, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_EncryptedKeyHashBlob(self: *const IX509AttributeArchiveKeyHash, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_EncryptedKeyHashBlob(self, Encoding, pValue);
     }
 };
@@ -7854,32 +7854,32 @@ pub const IID_IX509AttributeOSVersion = &IID_IX509AttributeOSVersion_Value;
 pub const IX509AttributeOSVersion = extern union {
     pub const VTable = extern struct {
         base: IX509Attribute.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509AttributeOSVersion,
             strOSVersion: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509AttributeOSVersion,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OSVersion: *const fn(
+        get_OSVersion: *const fn (
             self: *const IX509AttributeOSVersion,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Attribute: IX509Attribute,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509AttributeOSVersion, strOSVersion: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509AttributeOSVersion, strOSVersion: ?BSTR) HRESULT {
         return self.vtable.InitializeEncode(self, strOSVersion);
     }
-    pub fn InitializeDecode(self: *const IX509AttributeOSVersion, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509AttributeOSVersion, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_OSVersion(self: *const IX509AttributeOSVersion, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_OSVersion(self: *const IX509AttributeOSVersion, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_OSVersion(self, pValue);
     }
 };
@@ -7890,51 +7890,51 @@ pub const IID_IX509AttributeCspProvider = &IID_IX509AttributeCspProvider_Value;
 pub const IX509AttributeCspProvider = extern union {
     pub const VTable = extern struct {
         base: IX509Attribute.VTable,
-        InitializeEncode: *const fn(
+        InitializeEncode: *const fn (
             self: *const IX509AttributeCspProvider,
             KeySpec: X509KeySpec,
             strProviderName: ?BSTR,
             Encoding: EncodingType,
             strSignature: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509AttributeCspProvider,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeySpec: *const fn(
+        get_KeySpec: *const fn (
             self: *const IX509AttributeCspProvider,
             pValue: ?*X509KeySpec,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderName: *const fn(
+        get_ProviderName: *const fn (
             self: *const IX509AttributeCspProvider,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Signature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Signature: *const fn (
             self: *const IX509AttributeCspProvider,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Attribute: IX509Attribute,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeEncode(self: *const IX509AttributeCspProvider, KeySpec: X509KeySpec, strProviderName: ?BSTR, Encoding: EncodingType, strSignature: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeEncode(self: *const IX509AttributeCspProvider, KeySpec: X509KeySpec, strProviderName: ?BSTR, Encoding: EncodingType, strSignature: ?BSTR) HRESULT {
         return self.vtable.InitializeEncode(self, KeySpec, strProviderName, Encoding, strSignature);
     }
-    pub fn InitializeDecode(self: *const IX509AttributeCspProvider, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509AttributeCspProvider, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_KeySpec(self: *const IX509AttributeCspProvider, pValue: ?*X509KeySpec) callconv(.Inline) HRESULT {
+    pub inline fn get_KeySpec(self: *const IX509AttributeCspProvider, pValue: ?*X509KeySpec) HRESULT {
         return self.vtable.get_KeySpec(self, pValue);
     }
-    pub fn get_ProviderName(self: *const IX509AttributeCspProvider, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderName(self: *const IX509AttributeCspProvider, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ProviderName(self, pValue);
     }
-    pub fn get_Signature(self: *const IX509AttributeCspProvider, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Signature(self: *const IX509AttributeCspProvider, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Signature(self, Encoding, pValue);
     }
 };
@@ -7945,38 +7945,38 @@ pub const IID_ICryptAttribute = &IID_ICryptAttribute_Value;
 pub const ICryptAttribute = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        InitializeFromObjectId: *const fn(
+        InitializeFromObjectId: *const fn (
             self: *const ICryptAttribute,
             pObjectId: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromValues: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromValues: *const fn (
             self: *const ICryptAttribute,
             pAttributes: ?*IX509Attributes,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectId: *const fn(
+        get_ObjectId: *const fn (
             self: *const ICryptAttribute,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Values: *const fn(
+        get_Values: *const fn (
             self: *const ICryptAttribute,
             ppValue: ?*?*IX509Attributes,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromObjectId(self: *const ICryptAttribute, pObjectId: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromObjectId(self: *const ICryptAttribute, pObjectId: ?*IObjectId) HRESULT {
         return self.vtable.InitializeFromObjectId(self, pObjectId);
     }
-    pub fn InitializeFromValues(self: *const ICryptAttribute, pAttributes: ?*IX509Attributes) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromValues(self: *const ICryptAttribute, pAttributes: ?*IX509Attributes) HRESULT {
         return self.vtable.InitializeFromValues(self, pAttributes);
     }
-    pub fn get_ObjectId(self: *const ICryptAttribute, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectId(self: *const ICryptAttribute, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_ObjectId(self, ppValue);
     }
-    pub fn get_Values(self: *const ICryptAttribute, ppValue: ?*?*IX509Attributes) callconv(.Inline) HRESULT {
+    pub inline fn get_Values(self: *const ICryptAttribute, ppValue: ?*?*IX509Attributes) HRESULT {
         return self.vtable.get_Values(self, ppValue);
     }
 };
@@ -7987,67 +7987,67 @@ pub const IID_ICryptAttributes = &IID_ICryptAttributes_Value;
 pub const ICryptAttributes = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const ICryptAttributes,
             Index: i32,
             pVal: ?*?*ICryptAttribute,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ICryptAttributes,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ICryptAttributes,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ICryptAttributes,
             pVal: ?*ICryptAttribute,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ICryptAttributes,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const ICryptAttributes,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_IndexByObjectId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_IndexByObjectId: *const fn (
             self: *const ICryptAttributes,
             pObjectId: ?*IObjectId,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddRange: *const fn (
             self: *const ICryptAttributes,
             pValue: ?*ICryptAttributes,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const ICryptAttributes, Index: i32, pVal: ?*?*ICryptAttribute) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const ICryptAttributes, Index: i32, pVal: ?*?*ICryptAttribute) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const ICryptAttributes, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ICryptAttributes, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const ICryptAttributes, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ICryptAttributes, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const ICryptAttributes, pVal: ?*ICryptAttribute) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ICryptAttributes, pVal: ?*ICryptAttribute) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const ICryptAttributes, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ICryptAttributes, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const ICryptAttributes) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const ICryptAttributes) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn get_IndexByObjectId(self: *const ICryptAttributes, pObjectId: ?*IObjectId, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_IndexByObjectId(self: *const ICryptAttributes, pObjectId: ?*IObjectId, pIndex: ?*i32) HRESULT {
         return self.vtable.get_IndexByObjectId(self, pObjectId, pIndex);
     }
-    pub fn AddRange(self: *const ICryptAttributes, pValue: ?*ICryptAttributes) callconv(.Inline) HRESULT {
+    pub inline fn AddRange(self: *const ICryptAttributes, pValue: ?*ICryptAttributes) HRESULT {
         return self.vtable.AddRange(self, pValue);
     }
 };
@@ -8261,67 +8261,67 @@ pub const IID_ICertProperty = &IID_ICertProperty_Value;
 pub const ICertProperty = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        InitializeFromCertificate: *const fn(
+        InitializeFromCertificate: *const fn (
             self: *const ICertProperty,
             MachineContext: i16,
             Encoding: EncodingType,
             strCertificate: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const ICertProperty,
             Encoding: EncodingType,
             strEncodedData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PropertyId: *const fn(
+        get_PropertyId: *const fn (
             self: *const ICertProperty,
             pValue: ?*CERTENROLL_PROPERTYID,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PropertyId: *const fn(
+        put_PropertyId: *const fn (
             self: *const ICertProperty,
             Value: CERTENROLL_PROPERTYID,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RawData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RawData: *const fn (
             self: *const ICertProperty,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveFromCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveFromCertificate: *const fn (
             self: *const ICertProperty,
             MachineContext: i16,
             Encoding: EncodingType,
             strCertificate: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValueOnCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValueOnCertificate: *const fn (
             self: *const ICertProperty,
             MachineContext: i16,
             Encoding: EncodingType,
             strCertificate: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromCertificate(self: *const ICertProperty, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromCertificate(self: *const ICertProperty, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) HRESULT {
         return self.vtable.InitializeFromCertificate(self, MachineContext, Encoding, strCertificate);
     }
-    pub fn InitializeDecode(self: *const ICertProperty, Encoding: EncodingType, strEncodedData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const ICertProperty, Encoding: EncodingType, strEncodedData: ?BSTR) HRESULT {
         return self.vtable.InitializeDecode(self, Encoding, strEncodedData);
     }
-    pub fn get_PropertyId(self: *const ICertProperty, pValue: ?*CERTENROLL_PROPERTYID) callconv(.Inline) HRESULT {
+    pub inline fn get_PropertyId(self: *const ICertProperty, pValue: ?*CERTENROLL_PROPERTYID) HRESULT {
         return self.vtable.get_PropertyId(self, pValue);
     }
-    pub fn put_PropertyId(self: *const ICertProperty, Value: CERTENROLL_PROPERTYID) callconv(.Inline) HRESULT {
+    pub inline fn put_PropertyId(self: *const ICertProperty, Value: CERTENROLL_PROPERTYID) HRESULT {
         return self.vtable.put_PropertyId(self, Value);
     }
-    pub fn get_RawData(self: *const ICertProperty, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RawData(self: *const ICertProperty, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RawData(self, Encoding, pValue);
     }
-    pub fn RemoveFromCertificate(self: *const ICertProperty, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn RemoveFromCertificate(self: *const ICertProperty, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) HRESULT {
         return self.vtable.RemoveFromCertificate(self, MachineContext, Encoding, strCertificate);
     }
-    pub fn SetValueOnCertificate(self: *const ICertProperty, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetValueOnCertificate(self: *const ICertProperty, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) HRESULT {
         return self.vtable.SetValueOnCertificate(self, MachineContext, Encoding, strCertificate);
     }
 };
@@ -8332,61 +8332,61 @@ pub const IID_ICertProperties = &IID_ICertProperties_Value;
 pub const ICertProperties = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const ICertProperties,
             Index: i32,
             pVal: ?*?*ICertProperty,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ICertProperties,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ICertProperties,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ICertProperties,
             pVal: ?*ICertProperty,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ICertProperties,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const ICertProperties,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromCertificate: *const fn (
             self: *const ICertProperties,
             MachineContext: i16,
             Encoding: EncodingType,
             strCertificate: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const ICertProperties, Index: i32, pVal: ?*?*ICertProperty) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const ICertProperties, Index: i32, pVal: ?*?*ICertProperty) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const ICertProperties, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ICertProperties, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const ICertProperties, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ICertProperties, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const ICertProperties, pVal: ?*ICertProperty) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ICertProperties, pVal: ?*ICertProperty) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const ICertProperties, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ICertProperties, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const ICertProperties) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const ICertProperties) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn InitializeFromCertificate(self: *const ICertProperties, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromCertificate(self: *const ICertProperties, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) HRESULT {
         return self.vtable.InitializeFromCertificate(self, MachineContext, Encoding, strCertificate);
     }
 };
@@ -8397,24 +8397,24 @@ pub const IID_ICertPropertyFriendlyName = &IID_ICertPropertyFriendlyName_Value;
 pub const ICertPropertyFriendlyName = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyFriendlyName,
             strFriendlyName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FriendlyName: *const fn(
+        get_FriendlyName: *const fn (
             self: *const ICertPropertyFriendlyName,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyFriendlyName, strFriendlyName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyFriendlyName, strFriendlyName: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, strFriendlyName);
     }
-    pub fn get_FriendlyName(self: *const ICertPropertyFriendlyName, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_FriendlyName(self: *const ICertPropertyFriendlyName, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_FriendlyName(self, pValue);
     }
 };
@@ -8425,24 +8425,24 @@ pub const IID_ICertPropertyDescription = &IID_ICertPropertyDescription_Value;
 pub const ICertPropertyDescription = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyDescription,
             strDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const ICertPropertyDescription,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyDescription, strDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyDescription, strDescription: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, strDescription);
     }
-    pub fn get_Description(self: *const ICertPropertyDescription, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const ICertPropertyDescription, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, pValue);
     }
 };
@@ -8453,24 +8453,24 @@ pub const IID_ICertPropertyAutoEnroll = &IID_ICertPropertyAutoEnroll_Value;
 pub const ICertPropertyAutoEnroll = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyAutoEnroll,
             strTemplateName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TemplateName: *const fn(
+        get_TemplateName: *const fn (
             self: *const ICertPropertyAutoEnroll,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyAutoEnroll, strTemplateName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyAutoEnroll, strTemplateName: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, strTemplateName);
     }
-    pub fn get_TemplateName(self: *const ICertPropertyAutoEnroll, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_TemplateName(self: *const ICertPropertyAutoEnroll, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_TemplateName(self, pValue);
     }
 };
@@ -8481,30 +8481,30 @@ pub const IID_ICertPropertyRequestOriginator = &IID_ICertPropertyRequestOriginat
 pub const ICertPropertyRequestOriginator = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyRequestOriginator,
             strRequestOriginator: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromLocalRequestOriginator: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromLocalRequestOriginator: *const fn (
             self: *const ICertPropertyRequestOriginator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestOriginator: *const fn(
+        get_RequestOriginator: *const fn (
             self: *const ICertPropertyRequestOriginator,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyRequestOriginator, strRequestOriginator: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyRequestOriginator, strRequestOriginator: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, strRequestOriginator);
     }
-    pub fn InitializeFromLocalRequestOriginator(self: *const ICertPropertyRequestOriginator) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromLocalRequestOriginator(self: *const ICertPropertyRequestOriginator) HRESULT {
         return self.vtable.InitializeFromLocalRequestOriginator(self);
     }
-    pub fn get_RequestOriginator(self: *const ICertPropertyRequestOriginator, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestOriginator(self: *const ICertPropertyRequestOriginator, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RequestOriginator(self, pValue);
     }
 };
@@ -8515,25 +8515,25 @@ pub const IID_ICertPropertySHA1Hash = &IID_ICertPropertySHA1Hash_Value;
 pub const ICertPropertySHA1Hash = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertySHA1Hash,
             Encoding: EncodingType,
             strRenewalValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_SHA1Hash: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_SHA1Hash: *const fn (
             self: *const ICertPropertySHA1Hash,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertySHA1Hash, Encoding: EncodingType, strRenewalValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertySHA1Hash, Encoding: EncodingType, strRenewalValue: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, Encoding, strRenewalValue);
     }
-    pub fn get_SHA1Hash(self: *const ICertPropertySHA1Hash, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SHA1Hash(self: *const ICertPropertySHA1Hash, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_SHA1Hash(self, Encoding, pValue);
     }
 };
@@ -8544,24 +8544,24 @@ pub const IID_ICertPropertyKeyProvInfo = &IID_ICertPropertyKeyProvInfo_Value;
 pub const ICertPropertyKeyProvInfo = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyKeyProvInfo,
             pValue: ?*IX509PrivateKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrivateKey: *const fn(
+        get_PrivateKey: *const fn (
             self: *const ICertPropertyKeyProvInfo,
             ppValue: ?*?*IX509PrivateKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyKeyProvInfo, pValue: ?*IX509PrivateKey) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyKeyProvInfo, pValue: ?*IX509PrivateKey) HRESULT {
         return self.vtable.Initialize(self, pValue);
     }
-    pub fn get_PrivateKey(self: *const ICertPropertyKeyProvInfo, ppValue: ?*?*IX509PrivateKey) callconv(.Inline) HRESULT {
+    pub inline fn get_PrivateKey(self: *const ICertPropertyKeyProvInfo, ppValue: ?*?*IX509PrivateKey) HRESULT {
         return self.vtable.get_PrivateKey(self, ppValue);
     }
 };
@@ -8572,24 +8572,24 @@ pub const IID_ICertPropertyArchived = &IID_ICertPropertyArchived_Value;
 pub const ICertPropertyArchived = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyArchived,
             ArchivedValue: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Archived: *const fn(
+        get_Archived: *const fn (
             self: *const ICertPropertyArchived,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyArchived, ArchivedValue: i16) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyArchived, ArchivedValue: i16) HRESULT {
         return self.vtable.Initialize(self, ArchivedValue);
     }
-    pub fn get_Archived(self: *const ICertPropertyArchived, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Archived(self: *const ICertPropertyArchived, pValue: ?*i16) HRESULT {
         return self.vtable.get_Archived(self, pValue);
     }
 };
@@ -8600,40 +8600,40 @@ pub const IID_ICertPropertyBackedUp = &IID_ICertPropertyBackedUp_Value;
 pub const ICertPropertyBackedUp = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        InitializeFromCurrentTime: *const fn(
+        InitializeFromCurrentTime: *const fn (
             self: *const ICertPropertyBackedUp,
             BackedUpValue: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Initialize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Initialize: *const fn (
             self: *const ICertPropertyBackedUp,
             BackedUpValue: i16,
             Date: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BackedUpValue: *const fn(
+        get_BackedUpValue: *const fn (
             self: *const ICertPropertyBackedUp,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BackedUpTime: *const fn(
+        get_BackedUpTime: *const fn (
             self: *const ICertPropertyBackedUp,
             pDate: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromCurrentTime(self: *const ICertPropertyBackedUp, BackedUpValue: i16) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromCurrentTime(self: *const ICertPropertyBackedUp, BackedUpValue: i16) HRESULT {
         return self.vtable.InitializeFromCurrentTime(self, BackedUpValue);
     }
-    pub fn Initialize(self: *const ICertPropertyBackedUp, BackedUpValue: i16, Date: f64) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyBackedUp, BackedUpValue: i16, Date: f64) HRESULT {
         return self.vtable.Initialize(self, BackedUpValue, Date);
     }
-    pub fn get_BackedUpValue(self: *const ICertPropertyBackedUp, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_BackedUpValue(self: *const ICertPropertyBackedUp, pValue: ?*i16) HRESULT {
         return self.vtable.get_BackedUpValue(self, pValue);
     }
-    pub fn get_BackedUpTime(self: *const ICertPropertyBackedUp, pDate: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_BackedUpTime(self: *const ICertPropertyBackedUp, pDate: ?*f64) HRESULT {
         return self.vtable.get_BackedUpTime(self, pDate);
     }
 };
@@ -8644,51 +8644,51 @@ pub const IID_ICertPropertyEnrollment = &IID_ICertPropertyEnrollment_Value;
 pub const ICertPropertyEnrollment = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyEnrollment,
             RequestId: i32,
             strCADnsName: ?BSTR,
             strCAName: ?BSTR,
             strFriendlyName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestId: *const fn(
+        get_RequestId: *const fn (
             self: *const ICertPropertyEnrollment,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CADnsName: *const fn(
+        get_CADnsName: *const fn (
             self: *const ICertPropertyEnrollment,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAName: *const fn(
+        get_CAName: *const fn (
             self: *const ICertPropertyEnrollment,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FriendlyName: *const fn(
+        get_FriendlyName: *const fn (
             self: *const ICertPropertyEnrollment,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyEnrollment, RequestId: i32, strCADnsName: ?BSTR, strCAName: ?BSTR, strFriendlyName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyEnrollment, RequestId: i32, strCADnsName: ?BSTR, strCAName: ?BSTR, strFriendlyName: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, RequestId, strCADnsName, strCAName, strFriendlyName);
     }
-    pub fn get_RequestId(self: *const ICertPropertyEnrollment, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestId(self: *const ICertPropertyEnrollment, pValue: ?*i32) HRESULT {
         return self.vtable.get_RequestId(self, pValue);
     }
-    pub fn get_CADnsName(self: *const ICertPropertyEnrollment, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CADnsName(self: *const ICertPropertyEnrollment, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_CADnsName(self, pValue);
     }
-    pub fn get_CAName(self: *const ICertPropertyEnrollment, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CAName(self: *const ICertPropertyEnrollment, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_CAName(self, pValue);
     }
-    pub fn get_FriendlyName(self: *const ICertPropertyEnrollment, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_FriendlyName(self: *const ICertPropertyEnrollment, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_FriendlyName(self, pValue);
     }
 };
@@ -8699,34 +8699,34 @@ pub const IID_ICertPropertyRenewal = &IID_ICertPropertyRenewal_Value;
 pub const ICertPropertyRenewal = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyRenewal,
             Encoding: EncodingType,
             strRenewalValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromCertificateHash: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromCertificateHash: *const fn (
             self: *const ICertPropertyRenewal,
             MachineContext: i16,
             Encoding: EncodingType,
             strCertificate: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Renewal: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Renewal: *const fn (
             self: *const ICertPropertyRenewal,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyRenewal, Encoding: EncodingType, strRenewalValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyRenewal, Encoding: EncodingType, strRenewalValue: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, Encoding, strRenewalValue);
     }
-    pub fn InitializeFromCertificateHash(self: *const ICertPropertyRenewal, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromCertificateHash(self: *const ICertPropertyRenewal, MachineContext: i16, Encoding: EncodingType, strCertificate: ?BSTR) HRESULT {
         return self.vtable.InitializeFromCertificateHash(self, MachineContext, Encoding, strCertificate);
     }
-    pub fn get_Renewal(self: *const ICertPropertyRenewal, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Renewal(self: *const ICertPropertyRenewal, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Renewal(self, Encoding, pValue);
     }
 };
@@ -8737,25 +8737,25 @@ pub const IID_ICertPropertyArchivedKeyHash = &IID_ICertPropertyArchivedKeyHash_V
 pub const ICertPropertyArchivedKeyHash = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyArchivedKeyHash,
             Encoding: EncodingType,
             strArchivedKeyHashValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ArchivedKeyHash: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ArchivedKeyHash: *const fn (
             self: *const ICertPropertyArchivedKeyHash,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyArchivedKeyHash, Encoding: EncodingType, strArchivedKeyHashValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyArchivedKeyHash, Encoding: EncodingType, strArchivedKeyHashValue: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, Encoding, strArchivedKeyHashValue);
     }
-    pub fn get_ArchivedKeyHash(self: *const ICertPropertyArchivedKeyHash, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ArchivedKeyHash(self: *const ICertPropertyArchivedKeyHash, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ArchivedKeyHash(self, Encoding, pValue);
     }
 };
@@ -8788,7 +8788,7 @@ pub const IID_ICertPropertyEnrollmentPolicyServer = &IID_ICertPropertyEnrollment
 pub const ICertPropertyEnrollmentPolicyServer = extern union {
     pub const VTable = extern struct {
         base: ICertProperty.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertPropertyEnrollmentPolicyServer,
             PropertyFlags: EnrollmentPolicyServerPropertyFlags,
             AuthFlags: X509EnrollmentAuthFlags,
@@ -8798,69 +8798,69 @@ pub const ICertPropertyEnrollmentPolicyServer = extern union {
             strUrl: ?BSTR,
             strId: ?BSTR,
             strEnrollmentServerUrl: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPolicyServerUrl: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPolicyServerUrl: *const fn (
             self: *const ICertPropertyEnrollmentPolicyServer,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPolicyServerId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPolicyServerId: *const fn (
             self: *const ICertPropertyEnrollmentPolicyServer,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEnrollmentServerUrl: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEnrollmentServerUrl: *const fn (
             self: *const ICertPropertyEnrollmentPolicyServer,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRequestIdString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRequestIdString: *const fn (
             self: *const ICertPropertyEnrollmentPolicyServer,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyFlags: *const fn (
             self: *const ICertPropertyEnrollmentPolicyServer,
             pValue: ?*EnrollmentPolicyServerPropertyFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetUrlFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetUrlFlags: *const fn (
             self: *const ICertPropertyEnrollmentPolicyServer,
             pValue: ?*PolicyServerUrlFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAuthentication: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAuthentication: *const fn (
             self: *const ICertPropertyEnrollmentPolicyServer,
             pValue: ?*X509EnrollmentAuthFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEnrollmentServerAuthentication: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEnrollmentServerAuthentication: *const fn (
             self: *const ICertPropertyEnrollmentPolicyServer,
             pValue: ?*X509EnrollmentAuthFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertProperty: ICertProperty,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertPropertyEnrollmentPolicyServer, PropertyFlags: EnrollmentPolicyServerPropertyFlags, AuthFlags: X509EnrollmentAuthFlags, EnrollmentServerAuthFlags: X509EnrollmentAuthFlags, UrlFlags: PolicyServerUrlFlags, strRequestId: ?BSTR, strUrl: ?BSTR, strId: ?BSTR, strEnrollmentServerUrl: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertPropertyEnrollmentPolicyServer, PropertyFlags: EnrollmentPolicyServerPropertyFlags, AuthFlags: X509EnrollmentAuthFlags, EnrollmentServerAuthFlags: X509EnrollmentAuthFlags, UrlFlags: PolicyServerUrlFlags, strRequestId: ?BSTR, strUrl: ?BSTR, strId: ?BSTR, strEnrollmentServerUrl: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, PropertyFlags, AuthFlags, EnrollmentServerAuthFlags, UrlFlags, strRequestId, strUrl, strId, strEnrollmentServerUrl);
     }
-    pub fn GetPolicyServerUrl(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPolicyServerUrl(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetPolicyServerUrl(self, pValue);
     }
-    pub fn GetPolicyServerId(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPolicyServerId(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetPolicyServerId(self, pValue);
     }
-    pub fn GetEnrollmentServerUrl(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetEnrollmentServerUrl(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetEnrollmentServerUrl(self, pValue);
     }
-    pub fn GetRequestIdString(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetRequestIdString(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetRequestIdString(self, pValue);
     }
-    pub fn GetPropertyFlags(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*EnrollmentPolicyServerPropertyFlags) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyFlags(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*EnrollmentPolicyServerPropertyFlags) HRESULT {
         return self.vtable.GetPropertyFlags(self, pValue);
     }
-    pub fn GetUrlFlags(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*PolicyServerUrlFlags) callconv(.Inline) HRESULT {
+    pub inline fn GetUrlFlags(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*PolicyServerUrlFlags) HRESULT {
         return self.vtable.GetUrlFlags(self, pValue);
     }
-    pub fn GetAuthentication(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*X509EnrollmentAuthFlags) callconv(.Inline) HRESULT {
+    pub inline fn GetAuthentication(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*X509EnrollmentAuthFlags) HRESULT {
         return self.vtable.GetAuthentication(self, pValue);
     }
-    pub fn GetEnrollmentServerAuthentication(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*X509EnrollmentAuthFlags) callconv(.Inline) HRESULT {
+    pub inline fn GetEnrollmentServerAuthentication(self: *const ICertPropertyEnrollmentPolicyServer, pValue: ?*X509EnrollmentAuthFlags) HRESULT {
         return self.vtable.GetEnrollmentServerAuthentication(self, pValue);
     }
 };
@@ -8872,110 +8872,110 @@ pub const IX509SignatureInformation = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HashAlgorithm: *const fn(
+        get_HashAlgorithm: *const fn (
             self: *const IX509SignatureInformation,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HashAlgorithm: *const fn(
+        put_HashAlgorithm: *const fn (
             self: *const IX509SignatureInformation,
             pValue: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PublicKeyAlgorithm: *const fn(
+        get_PublicKeyAlgorithm: *const fn (
             self: *const IX509SignatureInformation,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PublicKeyAlgorithm: *const fn(
+        put_PublicKeyAlgorithm: *const fn (
             self: *const IX509SignatureInformation,
             pValue: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Parameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Parameters: *const fn (
             self: *const IX509SignatureInformation,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_Parameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_Parameters: *const fn (
             self: *const IX509SignatureInformation,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AlternateSignatureAlgorithm: *const fn(
+        get_AlternateSignatureAlgorithm: *const fn (
             self: *const IX509SignatureInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AlternateSignatureAlgorithm: *const fn(
+        put_AlternateSignatureAlgorithm: *const fn (
             self: *const IX509SignatureInformation,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AlternateSignatureAlgorithmSet: *const fn(
+        get_AlternateSignatureAlgorithmSet: *const fn (
             self: *const IX509SignatureInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NullSigned: *const fn(
+        get_NullSigned: *const fn (
             self: *const IX509SignatureInformation,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NullSigned: *const fn(
+        put_NullSigned: *const fn (
             self: *const IX509SignatureInformation,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSignatureAlgorithm: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSignatureAlgorithm: *const fn (
             self: *const IX509SignatureInformation,
             Pkcs7Signature: i16,
             SignatureKey: i16,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDefaultValues: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDefaultValues: *const fn (
             self: *const IX509SignatureInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_HashAlgorithm(self: *const IX509SignatureInformation, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_HashAlgorithm(self: *const IX509SignatureInformation, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_HashAlgorithm(self, ppValue);
     }
-    pub fn put_HashAlgorithm(self: *const IX509SignatureInformation, pValue: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn put_HashAlgorithm(self: *const IX509SignatureInformation, pValue: ?*IObjectId) HRESULT {
         return self.vtable.put_HashAlgorithm(self, pValue);
     }
-    pub fn get_PublicKeyAlgorithm(self: *const IX509SignatureInformation, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_PublicKeyAlgorithm(self: *const IX509SignatureInformation, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_PublicKeyAlgorithm(self, ppValue);
     }
-    pub fn put_PublicKeyAlgorithm(self: *const IX509SignatureInformation, pValue: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn put_PublicKeyAlgorithm(self: *const IX509SignatureInformation, pValue: ?*IObjectId) HRESULT {
         return self.vtable.put_PublicKeyAlgorithm(self, pValue);
     }
-    pub fn get_Parameters(self: *const IX509SignatureInformation, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Parameters(self: *const IX509SignatureInformation, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Parameters(self, Encoding, pValue);
     }
-    pub fn put_Parameters(self: *const IX509SignatureInformation, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Parameters(self: *const IX509SignatureInformation, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_Parameters(self, Encoding, Value);
     }
-    pub fn get_AlternateSignatureAlgorithm(self: *const IX509SignatureInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_AlternateSignatureAlgorithm(self: *const IX509SignatureInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_AlternateSignatureAlgorithm(self, pValue);
     }
-    pub fn put_AlternateSignatureAlgorithm(self: *const IX509SignatureInformation, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_AlternateSignatureAlgorithm(self: *const IX509SignatureInformation, Value: i16) HRESULT {
         return self.vtable.put_AlternateSignatureAlgorithm(self, Value);
     }
-    pub fn get_AlternateSignatureAlgorithmSet(self: *const IX509SignatureInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_AlternateSignatureAlgorithmSet(self: *const IX509SignatureInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_AlternateSignatureAlgorithmSet(self, pValue);
     }
-    pub fn get_NullSigned(self: *const IX509SignatureInformation, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_NullSigned(self: *const IX509SignatureInformation, pValue: ?*i16) HRESULT {
         return self.vtable.get_NullSigned(self, pValue);
     }
-    pub fn put_NullSigned(self: *const IX509SignatureInformation, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_NullSigned(self: *const IX509SignatureInformation, Value: i16) HRESULT {
         return self.vtable.put_NullSigned(self, Value);
     }
-    pub fn GetSignatureAlgorithm(self: *const IX509SignatureInformation, Pkcs7Signature: i16, SignatureKey: i16, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn GetSignatureAlgorithm(self: *const IX509SignatureInformation, Pkcs7Signature: i16, SignatureKey: i16, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.GetSignatureAlgorithm(self, Pkcs7Signature, SignatureKey, ppValue);
     }
-    pub fn SetDefaultValues(self: *const IX509SignatureInformation) callconv(.Inline) HRESULT {
+    pub inline fn SetDefaultValues(self: *const IX509SignatureInformation) HRESULT {
         return self.vtable.SetDefaultValues(self);
     }
 };
@@ -8986,98 +8986,98 @@ pub const IID_ISignerCertificate = &IID_ISignerCertificate_Value;
 pub const ISignerCertificate = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ISignerCertificate,
             MachineContext: i16,
             VerifyType: X509PrivateKeyVerify,
             Encoding: EncodingType,
             strCertificate: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Certificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Certificate: *const fn (
             self: *const ISignerCertificate,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrivateKey: *const fn(
+        get_PrivateKey: *const fn (
             self: *const ISignerCertificate,
             ppValue: ?*?*IX509PrivateKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Silent: *const fn(
+        get_Silent: *const fn (
             self: *const ISignerCertificate,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Silent: *const fn(
+        put_Silent: *const fn (
             self: *const ISignerCertificate,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ParentWindow: *const fn(
+        get_ParentWindow: *const fn (
             self: *const ISignerCertificate,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ParentWindow: *const fn(
+        put_ParentWindow: *const fn (
             self: *const ISignerCertificate,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UIContextMessage: *const fn(
+        get_UIContextMessage: *const fn (
             self: *const ISignerCertificate,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UIContextMessage: *const fn(
+        put_UIContextMessage: *const fn (
             self: *const ISignerCertificate,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Pin: *const fn(
+        put_Pin: *const fn (
             self: *const ISignerCertificate,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SignatureInformation: *const fn(
+        get_SignatureInformation: *const fn (
             self: *const ISignerCertificate,
             ppValue: ?*?*IX509SignatureInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ISignerCertificate, MachineContext: i16, VerifyType: X509PrivateKeyVerify, Encoding: EncodingType, strCertificate: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ISignerCertificate, MachineContext: i16, VerifyType: X509PrivateKeyVerify, Encoding: EncodingType, strCertificate: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, MachineContext, VerifyType, Encoding, strCertificate);
     }
-    pub fn get_Certificate(self: *const ISignerCertificate, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Certificate(self: *const ISignerCertificate, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Certificate(self, Encoding, pValue);
     }
-    pub fn get_PrivateKey(self: *const ISignerCertificate, ppValue: ?*?*IX509PrivateKey) callconv(.Inline) HRESULT {
+    pub inline fn get_PrivateKey(self: *const ISignerCertificate, ppValue: ?*?*IX509PrivateKey) HRESULT {
         return self.vtable.get_PrivateKey(self, ppValue);
     }
-    pub fn get_Silent(self: *const ISignerCertificate, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Silent(self: *const ISignerCertificate, pValue: ?*i16) HRESULT {
         return self.vtable.get_Silent(self, pValue);
     }
-    pub fn put_Silent(self: *const ISignerCertificate, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Silent(self: *const ISignerCertificate, Value: i16) HRESULT {
         return self.vtable.put_Silent(self, Value);
     }
-    pub fn get_ParentWindow(self: *const ISignerCertificate, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ParentWindow(self: *const ISignerCertificate, pValue: ?*i32) HRESULT {
         return self.vtable.get_ParentWindow(self, pValue);
     }
-    pub fn put_ParentWindow(self: *const ISignerCertificate, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ParentWindow(self: *const ISignerCertificate, Value: i32) HRESULT {
         return self.vtable.put_ParentWindow(self, Value);
     }
-    pub fn get_UIContextMessage(self: *const ISignerCertificate, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UIContextMessage(self: *const ISignerCertificate, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_UIContextMessage(self, pValue);
     }
-    pub fn put_UIContextMessage(self: *const ISignerCertificate, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_UIContextMessage(self: *const ISignerCertificate, Value: ?BSTR) HRESULT {
         return self.vtable.put_UIContextMessage(self, Value);
     }
-    pub fn put_Pin(self: *const ISignerCertificate, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Pin(self: *const ISignerCertificate, Value: ?BSTR) HRESULT {
         return self.vtable.put_Pin(self, Value);
     }
-    pub fn get_SignatureInformation(self: *const ISignerCertificate, ppValue: ?*?*IX509SignatureInformation) callconv(.Inline) HRESULT {
+    pub inline fn get_SignatureInformation(self: *const ISignerCertificate, ppValue: ?*?*IX509SignatureInformation) HRESULT {
         return self.vtable.get_SignatureInformation(self, ppValue);
     }
 };
@@ -9088,60 +9088,60 @@ pub const IID_ISignerCertificates = &IID_ISignerCertificates_Value;
 pub const ISignerCertificates = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const ISignerCertificates,
             Index: i32,
             pVal: ?*?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ISignerCertificates,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ISignerCertificates,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ISignerCertificates,
             pVal: ?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ISignerCertificates,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const ISignerCertificates,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Find: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Find: *const fn (
             self: *const ISignerCertificates,
             pSignerCert: ?*ISignerCertificate,
             piSignerCert: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const ISignerCertificates, Index: i32, pVal: ?*?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const ISignerCertificates, Index: i32, pVal: ?*?*ISignerCertificate) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const ISignerCertificates, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ISignerCertificates, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const ISignerCertificates, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ISignerCertificates, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const ISignerCertificates, pVal: ?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ISignerCertificates, pVal: ?*ISignerCertificate) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const ISignerCertificates, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ISignerCertificates, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const ISignerCertificates) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const ISignerCertificates) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn Find(self: *const ISignerCertificates, pSignerCert: ?*ISignerCertificate, piSignerCert: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Find(self: *const ISignerCertificates, pSignerCert: ?*ISignerCertificate, piSignerCert: ?*i32) HRESULT {
         return self.vtable.Find(self, pSignerCert, piSignerCert);
     }
 };
@@ -9152,32 +9152,32 @@ pub const IID_IX509NameValuePair = &IID_IX509NameValuePair_Value;
 pub const IX509NameValuePair = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509NameValuePair,
             strName: ?BSTR,
             strValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const IX509NameValuePair,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const IX509NameValuePair,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509NameValuePair, strName: ?BSTR, strValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509NameValuePair, strName: ?BSTR, strValue: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, strName, strValue);
     }
-    pub fn get_Value(self: *const IX509NameValuePair, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const IX509NameValuePair, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Value(self, pValue);
     }
-    pub fn get_Name(self: *const IX509NameValuePair, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const IX509NameValuePair, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, pValue);
     }
 };
@@ -9188,52 +9188,52 @@ pub const IID_IX509NameValuePairs = &IID_IX509NameValuePairs_Value;
 pub const IX509NameValuePairs = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const IX509NameValuePairs,
             Index: i32,
             pVal: ?*?*IX509NameValuePair,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IX509NameValuePairs,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IX509NameValuePairs,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IX509NameValuePairs,
             pVal: ?*IX509NameValuePair,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IX509NameValuePairs,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IX509NameValuePairs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const IX509NameValuePairs, Index: i32, pVal: ?*?*IX509NameValuePair) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const IX509NameValuePairs, Index: i32, pVal: ?*?*IX509NameValuePair) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IX509NameValuePairs, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IX509NameValuePairs, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const IX509NameValuePairs, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IX509NameValuePairs, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const IX509NameValuePairs, pVal: ?*IX509NameValuePair) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IX509NameValuePairs, pVal: ?*IX509NameValuePair) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const IX509NameValuePairs, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IX509NameValuePairs, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const IX509NameValuePairs) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IX509NameValuePairs) HRESULT {
         return self.vtable.Clear(self);
     }
 };
@@ -9309,16 +9309,16 @@ pub const IID_IX509CertificateTemplate = &IID_IX509CertificateTemplate_Value;
 pub const IX509CertificateTemplate = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_Property: *const fn(
+        get_Property: *const fn (
             self: *const IX509CertificateTemplate,
             property: EnrollmentTemplateProperty,
             pValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Property(self: *const IX509CertificateTemplate, property: EnrollmentTemplateProperty, pValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Property(self: *const IX509CertificateTemplate, property: EnrollmentTemplateProperty, pValue: ?*VARIANT) HRESULT {
         return self.vtable.get_Property(self, property, pValue);
     }
 };
@@ -9329,68 +9329,68 @@ pub const IID_IX509CertificateTemplates = &IID_IX509CertificateTemplates_Value;
 pub const IX509CertificateTemplates = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const IX509CertificateTemplates,
             Index: i32,
             pVal: ?*?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IX509CertificateTemplates,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IX509CertificateTemplates,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IX509CertificateTemplates,
             pVal: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IX509CertificateTemplates,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IX509CertificateTemplates,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByName: *const fn (
             self: *const IX509CertificateTemplates,
             bstrName: ?BSTR,
             ppValue: ?*?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByOid: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByOid: *const fn (
             self: *const IX509CertificateTemplates,
             pOid: ?*IObjectId,
             ppValue: ?*?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const IX509CertificateTemplates, Index: i32, pVal: ?*?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const IX509CertificateTemplates, Index: i32, pVal: ?*?*IX509CertificateTemplate) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IX509CertificateTemplates, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IX509CertificateTemplates, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const IX509CertificateTemplates, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IX509CertificateTemplates, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const IX509CertificateTemplates, pVal: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IX509CertificateTemplates, pVal: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const IX509CertificateTemplates, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IX509CertificateTemplates, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const IX509CertificateTemplates) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IX509CertificateTemplates) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn get_ItemByName(self: *const IX509CertificateTemplates, bstrName: ?BSTR, ppValue: ?*?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByName(self: *const IX509CertificateTemplates, bstrName: ?BSTR, ppValue: ?*?*IX509CertificateTemplate) HRESULT {
         return self.vtable.get_ItemByName(self, bstrName, ppValue);
     }
-    pub fn get_ItemByOid(self: *const IX509CertificateTemplates, pOid: ?*IObjectId, ppValue: ?*?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByOid(self: *const IX509CertificateTemplates, pOid: ?*IObjectId, ppValue: ?*?*IX509CertificateTemplate) HRESULT {
         return self.vtable.get_ItemByOid(self, pOid, ppValue);
     }
 };
@@ -9412,47 +9412,47 @@ pub const IID_IX509CertificateTemplateWritable = &IID_IX509CertificateTemplateWr
 pub const IX509CertificateTemplateWritable = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509CertificateTemplateWritable,
             pValue: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Commit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Commit: *const fn (
             self: *const IX509CertificateTemplateWritable,
             commitFlags: CommitTemplateFlags,
             strServerContext: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Property: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Property: *const fn (
             self: *const IX509CertificateTemplateWritable,
             property: EnrollmentTemplateProperty,
             pValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_Property: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_Property: *const fn (
             self: *const IX509CertificateTemplateWritable,
             property: EnrollmentTemplateProperty,
             value: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Template: *const fn(
+        get_Template: *const fn (
             self: *const IX509CertificateTemplateWritable,
             ppValue: ?*?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509CertificateTemplateWritable, pValue: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509CertificateTemplateWritable, pValue: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.Initialize(self, pValue);
     }
-    pub fn Commit(self: *const IX509CertificateTemplateWritable, commitFlags: CommitTemplateFlags, strServerContext: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Commit(self: *const IX509CertificateTemplateWritable, commitFlags: CommitTemplateFlags, strServerContext: ?BSTR) HRESULT {
         return self.vtable.Commit(self, commitFlags, strServerContext);
     }
-    pub fn get_Property(self: *const IX509CertificateTemplateWritable, property: EnrollmentTemplateProperty, pValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Property(self: *const IX509CertificateTemplateWritable, property: EnrollmentTemplateProperty, pValue: ?*VARIANT) HRESULT {
         return self.vtable.get_Property(self, property, pValue);
     }
-    pub fn put_Property(self: *const IX509CertificateTemplateWritable, property: EnrollmentTemplateProperty, value: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Property(self: *const IX509CertificateTemplateWritable, property: EnrollmentTemplateProperty, value: VARIANT) HRESULT {
         return self.vtable.put_Property(self, property, value);
     }
-    pub fn get_Template(self: *const IX509CertificateTemplateWritable, ppValue: ?*?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn get_Template(self: *const IX509CertificateTemplateWritable, ppValue: ?*?*IX509CertificateTemplate) HRESULT {
         return self.vtable.get_Template(self, ppValue);
     }
 };
@@ -9490,16 +9490,16 @@ pub const IID_ICertificationAuthority = &IID_ICertificationAuthority_Value;
 pub const ICertificationAuthority = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_Property: *const fn(
+        get_Property: *const fn (
             self: *const ICertificationAuthority,
             property: EnrollmentCAProperty,
             pValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Property(self: *const ICertificationAuthority, property: EnrollmentCAProperty, pValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Property(self: *const ICertificationAuthority, property: EnrollmentCAProperty, pValue: ?*VARIANT) HRESULT {
         return self.vtable.get_Property(self, property, pValue);
     }
 };
@@ -9510,66 +9510,66 @@ pub const IID_ICertificationAuthorities = &IID_ICertificationAuthorities_Value;
 pub const ICertificationAuthorities = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const ICertificationAuthorities,
             Index: i32,
             pVal: ?*?*ICertificationAuthority,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ICertificationAuthorities,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ICertificationAuthorities,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ICertificationAuthorities,
             pVal: ?*ICertificationAuthority,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ICertificationAuthorities,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const ICertificationAuthorities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ComputeSiteCosts: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ComputeSiteCosts: *const fn (
             self: *const ICertificationAuthorities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_ItemByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_ItemByName: *const fn (
             self: *const ICertificationAuthorities,
             strName: ?BSTR,
             ppValue: ?*?*ICertificationAuthority,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const ICertificationAuthorities, Index: i32, pVal: ?*?*ICertificationAuthority) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const ICertificationAuthorities, Index: i32, pVal: ?*?*ICertificationAuthority) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const ICertificationAuthorities, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ICertificationAuthorities, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const ICertificationAuthorities, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ICertificationAuthorities, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const ICertificationAuthorities, pVal: ?*ICertificationAuthority) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ICertificationAuthorities, pVal: ?*ICertificationAuthority) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const ICertificationAuthorities, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ICertificationAuthorities, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const ICertificationAuthorities) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const ICertificationAuthorities) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn ComputeSiteCosts(self: *const ICertificationAuthorities) callconv(.Inline) HRESULT {
+    pub inline fn ComputeSiteCosts(self: *const ICertificationAuthorities) HRESULT {
         return self.vtable.ComputeSiteCosts(self);
     }
-    pub fn get_ItemByName(self: *const ICertificationAuthorities, strName: ?BSTR, ppValue: ?*?*ICertificationAuthority) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByName(self: *const ICertificationAuthorities, strName: ?BSTR, ppValue: ?*?*ICertificationAuthority) HRESULT {
         return self.vtable.get_ItemByName(self, strName, ppValue);
     }
 };
@@ -9614,186 +9614,186 @@ pub const IID_IX509EnrollmentPolicyServer = &IID_IX509EnrollmentPolicyServer_Val
 pub const IX509EnrollmentPolicyServer = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             bstrPolicyServerUrl: ?BSTR,
             bstrPolicyServerId: ?BSTR,
             authFlags: X509EnrollmentAuthFlags,
             fIsUnTrusted: i16,
             context: X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LoadPolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LoadPolicy: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             option: X509EnrollmentPolicyLoadOption,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTemplates: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTemplates: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pTemplates: ?*?*IX509CertificateTemplates,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAsForTemplate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAsForTemplate: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
             ppCAs: ?*?*ICertificationAuthorities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAs: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             ppCAs: ?*?*ICertificationAuthorities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Validate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Validate: *const fn (
             self: *const IX509EnrollmentPolicyServer,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCustomOids: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCustomOids: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             ppObjectIds: ?*?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNextUpdateTime: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNextUpdateTime: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pDate: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLastUpdateTime: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLastUpdateTime: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pDate: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPolicyServerUrl: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPolicyServerUrl: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPolicyServerId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPolicyServerId: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFriendlyName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFriendlyName: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIsDefaultCEP: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIsDefaultCEP: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetUseClientId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetUseClientId: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAllowUnTrustedCA: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAllowUnTrustedCA: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachePath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachePath: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCacheDir: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCacheDir: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAuthFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAuthFlags: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*X509EnrollmentAuthFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCredential: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCredential: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             hWndParent: i32,
             flag: X509EnrollmentAuthFlags,
             strCredential: ?BSTR,
             strPassword: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryChanges: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryChanges: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeImport: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeImport: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             val: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Export: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Export: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             exportFlags: X509EnrollmentPolicyExportFlags,
             pVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Cost: *const fn(
+        get_Cost: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             pValue: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Cost: *const fn(
+        put_Cost: *const fn (
             self: *const IX509EnrollmentPolicyServer,
             value: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509EnrollmentPolicyServer, bstrPolicyServerUrl: ?BSTR, bstrPolicyServerId: ?BSTR, authFlags: X509EnrollmentAuthFlags, fIsUnTrusted: i16, context: X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509EnrollmentPolicyServer, bstrPolicyServerUrl: ?BSTR, bstrPolicyServerId: ?BSTR, authFlags: X509EnrollmentAuthFlags, fIsUnTrusted: i16, context: X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.Initialize(self, bstrPolicyServerUrl, bstrPolicyServerId, authFlags, fIsUnTrusted, context);
     }
-    pub fn LoadPolicy(self: *const IX509EnrollmentPolicyServer, option: X509EnrollmentPolicyLoadOption) callconv(.Inline) HRESULT {
+    pub inline fn LoadPolicy(self: *const IX509EnrollmentPolicyServer, option: X509EnrollmentPolicyLoadOption) HRESULT {
         return self.vtable.LoadPolicy(self, option);
     }
-    pub fn GetTemplates(self: *const IX509EnrollmentPolicyServer, pTemplates: ?*?*IX509CertificateTemplates) callconv(.Inline) HRESULT {
+    pub inline fn GetTemplates(self: *const IX509EnrollmentPolicyServer, pTemplates: ?*?*IX509CertificateTemplates) HRESULT {
         return self.vtable.GetTemplates(self, pTemplates);
     }
-    pub fn GetCAsForTemplate(self: *const IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate, ppCAs: ?*?*ICertificationAuthorities) callconv(.Inline) HRESULT {
+    pub inline fn GetCAsForTemplate(self: *const IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate, ppCAs: ?*?*ICertificationAuthorities) HRESULT {
         return self.vtable.GetCAsForTemplate(self, pTemplate, ppCAs);
     }
-    pub fn GetCAs(self: *const IX509EnrollmentPolicyServer, ppCAs: ?*?*ICertificationAuthorities) callconv(.Inline) HRESULT {
+    pub inline fn GetCAs(self: *const IX509EnrollmentPolicyServer, ppCAs: ?*?*ICertificationAuthorities) HRESULT {
         return self.vtable.GetCAs(self, ppCAs);
     }
-    pub fn Validate(self: *const IX509EnrollmentPolicyServer) callconv(.Inline) HRESULT {
+    pub inline fn Validate(self: *const IX509EnrollmentPolicyServer) HRESULT {
         return self.vtable.Validate(self);
     }
-    pub fn GetCustomOids(self: *const IX509EnrollmentPolicyServer, ppObjectIds: ?*?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn GetCustomOids(self: *const IX509EnrollmentPolicyServer, ppObjectIds: ?*?*IObjectIds) HRESULT {
         return self.vtable.GetCustomOids(self, ppObjectIds);
     }
-    pub fn GetNextUpdateTime(self: *const IX509EnrollmentPolicyServer, pDate: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn GetNextUpdateTime(self: *const IX509EnrollmentPolicyServer, pDate: ?*f64) HRESULT {
         return self.vtable.GetNextUpdateTime(self, pDate);
     }
-    pub fn GetLastUpdateTime(self: *const IX509EnrollmentPolicyServer, pDate: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn GetLastUpdateTime(self: *const IX509EnrollmentPolicyServer, pDate: ?*f64) HRESULT {
         return self.vtable.GetLastUpdateTime(self, pDate);
     }
-    pub fn GetPolicyServerUrl(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPolicyServerUrl(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetPolicyServerUrl(self, pValue);
     }
-    pub fn GetPolicyServerId(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPolicyServerId(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetPolicyServerId(self, pValue);
     }
-    pub fn GetFriendlyName(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetFriendlyName(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetFriendlyName(self, pValue);
     }
-    pub fn GetIsDefaultCEP(self: *const IX509EnrollmentPolicyServer, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn GetIsDefaultCEP(self: *const IX509EnrollmentPolicyServer, pValue: ?*i16) HRESULT {
         return self.vtable.GetIsDefaultCEP(self, pValue);
     }
-    pub fn GetUseClientId(self: *const IX509EnrollmentPolicyServer, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn GetUseClientId(self: *const IX509EnrollmentPolicyServer, pValue: ?*i16) HRESULT {
         return self.vtable.GetUseClientId(self, pValue);
     }
-    pub fn GetAllowUnTrustedCA(self: *const IX509EnrollmentPolicyServer, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn GetAllowUnTrustedCA(self: *const IX509EnrollmentPolicyServer, pValue: ?*i16) HRESULT {
         return self.vtable.GetAllowUnTrustedCA(self, pValue);
     }
-    pub fn GetCachePath(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCachePath(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetCachePath(self, pValue);
     }
-    pub fn GetCacheDir(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCacheDir(self: *const IX509EnrollmentPolicyServer, pValue: ?*?BSTR) HRESULT {
         return self.vtable.GetCacheDir(self, pValue);
     }
-    pub fn GetAuthFlags(self: *const IX509EnrollmentPolicyServer, pValue: ?*X509EnrollmentAuthFlags) callconv(.Inline) HRESULT {
+    pub inline fn GetAuthFlags(self: *const IX509EnrollmentPolicyServer, pValue: ?*X509EnrollmentAuthFlags) HRESULT {
         return self.vtable.GetAuthFlags(self, pValue);
     }
-    pub fn SetCredential(self: *const IX509EnrollmentPolicyServer, hWndParent: i32, flag: X509EnrollmentAuthFlags, strCredential: ?BSTR, strPassword: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetCredential(self: *const IX509EnrollmentPolicyServer, hWndParent: i32, flag: X509EnrollmentAuthFlags, strCredential: ?BSTR, strPassword: ?BSTR) HRESULT {
         return self.vtable.SetCredential(self, hWndParent, flag, strCredential, strPassword);
     }
-    pub fn QueryChanges(self: *const IX509EnrollmentPolicyServer, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn QueryChanges(self: *const IX509EnrollmentPolicyServer, pValue: ?*i16) HRESULT {
         return self.vtable.QueryChanges(self, pValue);
     }
-    pub fn InitializeImport(self: *const IX509EnrollmentPolicyServer, val: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn InitializeImport(self: *const IX509EnrollmentPolicyServer, val: VARIANT) HRESULT {
         return self.vtable.InitializeImport(self, val);
     }
-    pub fn Export(self: *const IX509EnrollmentPolicyServer, exportFlags: X509EnrollmentPolicyExportFlags, pVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Export(self: *const IX509EnrollmentPolicyServer, exportFlags: X509EnrollmentPolicyExportFlags, pVal: ?*VARIANT) HRESULT {
         return self.vtable.Export(self, exportFlags, pVal);
     }
-    pub fn get_Cost(self: *const IX509EnrollmentPolicyServer, pValue: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_Cost(self: *const IX509EnrollmentPolicyServer, pValue: ?*u32) HRESULT {
         return self.vtable.get_Cost(self, pValue);
     }
-    pub fn put_Cost(self: *const IX509EnrollmentPolicyServer, value: u32) callconv(.Inline) HRESULT {
+    pub inline fn put_Cost(self: *const IX509EnrollmentPolicyServer, value: u32) HRESULT {
         return self.vtable.put_Cost(self, value);
     }
 };
@@ -9804,125 +9804,125 @@ pub const IID_IX509PolicyServerUrl = &IID_IX509PolicyServerUrl_Value;
 pub const IX509PolicyServerUrl = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509PolicyServerUrl,
             context: X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Url: *const fn(
+        get_Url: *const fn (
             self: *const IX509PolicyServerUrl,
             ppValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Url: *const fn(
+        put_Url: *const fn (
             self: *const IX509PolicyServerUrl,
             pValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Default: *const fn(
+        get_Default: *const fn (
             self: *const IX509PolicyServerUrl,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Default: *const fn(
+        put_Default: *const fn (
             self: *const IX509PolicyServerUrl,
             value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Flags: *const fn(
+        get_Flags: *const fn (
             self: *const IX509PolicyServerUrl,
             pValue: ?*PolicyServerUrlFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Flags: *const fn(
+        put_Flags: *const fn (
             self: *const IX509PolicyServerUrl,
             Flags: PolicyServerUrlFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AuthFlags: *const fn(
+        get_AuthFlags: *const fn (
             self: *const IX509PolicyServerUrl,
             pValue: ?*X509EnrollmentAuthFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AuthFlags: *const fn(
+        put_AuthFlags: *const fn (
             self: *const IX509PolicyServerUrl,
             Flags: X509EnrollmentAuthFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Cost: *const fn(
+        get_Cost: *const fn (
             self: *const IX509PolicyServerUrl,
             pValue: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Cost: *const fn(
+        put_Cost: *const fn (
             self: *const IX509PolicyServerUrl,
             value: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStringProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStringProperty: *const fn (
             self: *const IX509PolicyServerUrl,
             propertyId: PolicyServerUrlPropertyID,
             ppValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStringProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStringProperty: *const fn (
             self: *const IX509PolicyServerUrl,
             propertyId: PolicyServerUrlPropertyID,
             pValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UpdateRegistry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UpdateRegistry: *const fn (
             self: *const IX509PolicyServerUrl,
             context: X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveFromRegistry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveFromRegistry: *const fn (
             self: *const IX509PolicyServerUrl,
             context: X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509PolicyServerUrl, context: X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509PolicyServerUrl, context: X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.Initialize(self, context);
     }
-    pub fn get_Url(self: *const IX509PolicyServerUrl, ppValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Url(self: *const IX509PolicyServerUrl, ppValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Url(self, ppValue);
     }
-    pub fn put_Url(self: *const IX509PolicyServerUrl, pValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Url(self: *const IX509PolicyServerUrl, pValue: ?BSTR) HRESULT {
         return self.vtable.put_Url(self, pValue);
     }
-    pub fn get_Default(self: *const IX509PolicyServerUrl, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Default(self: *const IX509PolicyServerUrl, pValue: ?*i16) HRESULT {
         return self.vtable.get_Default(self, pValue);
     }
-    pub fn put_Default(self: *const IX509PolicyServerUrl, value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Default(self: *const IX509PolicyServerUrl, value: i16) HRESULT {
         return self.vtable.put_Default(self, value);
     }
-    pub fn get_Flags(self: *const IX509PolicyServerUrl, pValue: ?*PolicyServerUrlFlags) callconv(.Inline) HRESULT {
+    pub inline fn get_Flags(self: *const IX509PolicyServerUrl, pValue: ?*PolicyServerUrlFlags) HRESULT {
         return self.vtable.get_Flags(self, pValue);
     }
-    pub fn put_Flags(self: *const IX509PolicyServerUrl, Flags: PolicyServerUrlFlags) callconv(.Inline) HRESULT {
+    pub inline fn put_Flags(self: *const IX509PolicyServerUrl, Flags: PolicyServerUrlFlags) HRESULT {
         return self.vtable.put_Flags(self, Flags);
     }
-    pub fn get_AuthFlags(self: *const IX509PolicyServerUrl, pValue: ?*X509EnrollmentAuthFlags) callconv(.Inline) HRESULT {
+    pub inline fn get_AuthFlags(self: *const IX509PolicyServerUrl, pValue: ?*X509EnrollmentAuthFlags) HRESULT {
         return self.vtable.get_AuthFlags(self, pValue);
     }
-    pub fn put_AuthFlags(self: *const IX509PolicyServerUrl, Flags: X509EnrollmentAuthFlags) callconv(.Inline) HRESULT {
+    pub inline fn put_AuthFlags(self: *const IX509PolicyServerUrl, Flags: X509EnrollmentAuthFlags) HRESULT {
         return self.vtable.put_AuthFlags(self, Flags);
     }
-    pub fn get_Cost(self: *const IX509PolicyServerUrl, pValue: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_Cost(self: *const IX509PolicyServerUrl, pValue: ?*u32) HRESULT {
         return self.vtable.get_Cost(self, pValue);
     }
-    pub fn put_Cost(self: *const IX509PolicyServerUrl, value: u32) callconv(.Inline) HRESULT {
+    pub inline fn put_Cost(self: *const IX509PolicyServerUrl, value: u32) HRESULT {
         return self.vtable.put_Cost(self, value);
     }
-    pub fn GetStringProperty(self: *const IX509PolicyServerUrl, propertyId: PolicyServerUrlPropertyID, ppValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetStringProperty(self: *const IX509PolicyServerUrl, propertyId: PolicyServerUrlPropertyID, ppValue: ?*?BSTR) HRESULT {
         return self.vtable.GetStringProperty(self, propertyId, ppValue);
     }
-    pub fn SetStringProperty(self: *const IX509PolicyServerUrl, propertyId: PolicyServerUrlPropertyID, pValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetStringProperty(self: *const IX509PolicyServerUrl, propertyId: PolicyServerUrlPropertyID, pValue: ?BSTR) HRESULT {
         return self.vtable.SetStringProperty(self, propertyId, pValue);
     }
-    pub fn UpdateRegistry(self: *const IX509PolicyServerUrl, context: X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn UpdateRegistry(self: *const IX509PolicyServerUrl, context: X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.UpdateRegistry(self, context);
     }
-    pub fn RemoveFromRegistry(self: *const IX509PolicyServerUrl, context: X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn RemoveFromRegistry(self: *const IX509PolicyServerUrl, context: X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.RemoveFromRegistry(self, context);
     }
 };
@@ -9933,60 +9933,60 @@ pub const IID_IX509PolicyServerListManager = &IID_IX509PolicyServerListManager_V
 pub const IX509PolicyServerListManager = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const IX509PolicyServerListManager,
             Index: i32,
             pVal: ?*?*IX509PolicyServerUrl,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IX509PolicyServerListManager,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IX509PolicyServerListManager,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IX509PolicyServerListManager,
             pVal: ?*IX509PolicyServerUrl,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IX509PolicyServerListManager,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IX509PolicyServerListManager,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Initialize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Initialize: *const fn (
             self: *const IX509PolicyServerListManager,
             context: X509CertificateEnrollmentContext,
             Flags: PolicyServerUrlFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const IX509PolicyServerListManager, Index: i32, pVal: ?*?*IX509PolicyServerUrl) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const IX509PolicyServerListManager, Index: i32, pVal: ?*?*IX509PolicyServerUrl) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IX509PolicyServerListManager, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IX509PolicyServerListManager, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const IX509PolicyServerListManager, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IX509PolicyServerListManager, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const IX509PolicyServerListManager, pVal: ?*IX509PolicyServerUrl) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IX509PolicyServerListManager, pVal: ?*IX509PolicyServerUrl) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const IX509PolicyServerListManager, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IX509PolicyServerListManager, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const IX509PolicyServerListManager) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IX509PolicyServerListManager) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn Initialize(self: *const IX509PolicyServerListManager, context: X509CertificateEnrollmentContext, Flags: PolicyServerUrlFlags) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509PolicyServerListManager, context: X509CertificateEnrollmentContext, Flags: PolicyServerUrlFlags) HRESULT {
         return self.vtable.Initialize(self, context, Flags);
     }
 };
@@ -10048,203 +10048,203 @@ pub const IID_IX509CertificateRequest = &IID_IX509CertificateRequest_Value;
 pub const IX509CertificateRequest = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509CertificateRequest,
             Context: X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Encode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Encode: *const fn (
             self: *const IX509CertificateRequest,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ResetForEncode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ResetForEncode: *const fn (
             self: *const IX509CertificateRequest,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInnerRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInnerRequest: *const fn (
             self: *const IX509CertificateRequest,
             Level: InnerRequestLevel,
             ppValue: ?*?*IX509CertificateRequest,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Type: *const fn(
+        get_Type: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*X509RequestType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EnrollmentContext: *const fn(
+        get_EnrollmentContext: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Silent: *const fn(
+        get_Silent: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Silent: *const fn(
+        put_Silent: *const fn (
             self: *const IX509CertificateRequest,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ParentWindow: *const fn(
+        get_ParentWindow: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ParentWindow: *const fn(
+        put_ParentWindow: *const fn (
             self: *const IX509CertificateRequest,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UIContextMessage: *const fn(
+        get_UIContextMessage: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UIContextMessage: *const fn(
+        put_UIContextMessage: *const fn (
             self: *const IX509CertificateRequest,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SuppressDefaults: *const fn(
+        get_SuppressDefaults: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SuppressDefaults: *const fn(
+        put_SuppressDefaults: *const fn (
             self: *const IX509CertificateRequest,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RenewalCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RenewalCertificate: *const fn (
             self: *const IX509CertificateRequest,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_RenewalCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_RenewalCertificate: *const fn (
             self: *const IX509CertificateRequest,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ClientId: *const fn(
+        get_ClientId: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*RequestClientInfoClientId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ClientId: *const fn(
+        put_ClientId: *const fn (
             self: *const IX509CertificateRequest,
             Value: RequestClientInfoClientId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CspInformations: *const fn(
+        get_CspInformations: *const fn (
             self: *const IX509CertificateRequest,
             ppValue: ?*?*ICspInformations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CspInformations: *const fn(
+        put_CspInformations: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*ICspInformations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HashAlgorithm: *const fn(
+        get_HashAlgorithm: *const fn (
             self: *const IX509CertificateRequest,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HashAlgorithm: *const fn(
+        put_HashAlgorithm: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AlternateSignatureAlgorithm: *const fn(
+        get_AlternateSignatureAlgorithm: *const fn (
             self: *const IX509CertificateRequest,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AlternateSignatureAlgorithm: *const fn(
+        put_AlternateSignatureAlgorithm: *const fn (
             self: *const IX509CertificateRequest,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RawData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RawData: *const fn (
             self: *const IX509CertificateRequest,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509CertificateRequest, Context: X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509CertificateRequest, Context: X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.Initialize(self, Context);
     }
-    pub fn Encode(self: *const IX509CertificateRequest) callconv(.Inline) HRESULT {
+    pub inline fn Encode(self: *const IX509CertificateRequest) HRESULT {
         return self.vtable.Encode(self);
     }
-    pub fn ResetForEncode(self: *const IX509CertificateRequest) callconv(.Inline) HRESULT {
+    pub inline fn ResetForEncode(self: *const IX509CertificateRequest) HRESULT {
         return self.vtable.ResetForEncode(self);
     }
-    pub fn GetInnerRequest(self: *const IX509CertificateRequest, Level: InnerRequestLevel, ppValue: ?*?*IX509CertificateRequest) callconv(.Inline) HRESULT {
+    pub inline fn GetInnerRequest(self: *const IX509CertificateRequest, Level: InnerRequestLevel, ppValue: ?*?*IX509CertificateRequest) HRESULT {
         return self.vtable.GetInnerRequest(self, Level, ppValue);
     }
-    pub fn get_Type(self: *const IX509CertificateRequest, pValue: ?*X509RequestType) callconv(.Inline) HRESULT {
+    pub inline fn get_Type(self: *const IX509CertificateRequest, pValue: ?*X509RequestType) HRESULT {
         return self.vtable.get_Type(self, pValue);
     }
-    pub fn get_EnrollmentContext(self: *const IX509CertificateRequest, pValue: ?*X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn get_EnrollmentContext(self: *const IX509CertificateRequest, pValue: ?*X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.get_EnrollmentContext(self, pValue);
     }
-    pub fn get_Silent(self: *const IX509CertificateRequest, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Silent(self: *const IX509CertificateRequest, pValue: ?*i16) HRESULT {
         return self.vtable.get_Silent(self, pValue);
     }
-    pub fn put_Silent(self: *const IX509CertificateRequest, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Silent(self: *const IX509CertificateRequest, Value: i16) HRESULT {
         return self.vtable.put_Silent(self, Value);
     }
-    pub fn get_ParentWindow(self: *const IX509CertificateRequest, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ParentWindow(self: *const IX509CertificateRequest, pValue: ?*i32) HRESULT {
         return self.vtable.get_ParentWindow(self, pValue);
     }
-    pub fn put_ParentWindow(self: *const IX509CertificateRequest, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ParentWindow(self: *const IX509CertificateRequest, Value: i32) HRESULT {
         return self.vtable.put_ParentWindow(self, Value);
     }
-    pub fn get_UIContextMessage(self: *const IX509CertificateRequest, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UIContextMessage(self: *const IX509CertificateRequest, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_UIContextMessage(self, pValue);
     }
-    pub fn put_UIContextMessage(self: *const IX509CertificateRequest, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_UIContextMessage(self: *const IX509CertificateRequest, Value: ?BSTR) HRESULT {
         return self.vtable.put_UIContextMessage(self, Value);
     }
-    pub fn get_SuppressDefaults(self: *const IX509CertificateRequest, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_SuppressDefaults(self: *const IX509CertificateRequest, pValue: ?*i16) HRESULT {
         return self.vtable.get_SuppressDefaults(self, pValue);
     }
-    pub fn put_SuppressDefaults(self: *const IX509CertificateRequest, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_SuppressDefaults(self: *const IX509CertificateRequest, Value: i16) HRESULT {
         return self.vtable.put_SuppressDefaults(self, Value);
     }
-    pub fn get_RenewalCertificate(self: *const IX509CertificateRequest, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RenewalCertificate(self: *const IX509CertificateRequest, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RenewalCertificate(self, Encoding, pValue);
     }
-    pub fn put_RenewalCertificate(self: *const IX509CertificateRequest, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RenewalCertificate(self: *const IX509CertificateRequest, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_RenewalCertificate(self, Encoding, Value);
     }
-    pub fn get_ClientId(self: *const IX509CertificateRequest, pValue: ?*RequestClientInfoClientId) callconv(.Inline) HRESULT {
+    pub inline fn get_ClientId(self: *const IX509CertificateRequest, pValue: ?*RequestClientInfoClientId) HRESULT {
         return self.vtable.get_ClientId(self, pValue);
     }
-    pub fn put_ClientId(self: *const IX509CertificateRequest, Value: RequestClientInfoClientId) callconv(.Inline) HRESULT {
+    pub inline fn put_ClientId(self: *const IX509CertificateRequest, Value: RequestClientInfoClientId) HRESULT {
         return self.vtable.put_ClientId(self, Value);
     }
-    pub fn get_CspInformations(self: *const IX509CertificateRequest, ppValue: ?*?*ICspInformations) callconv(.Inline) HRESULT {
+    pub inline fn get_CspInformations(self: *const IX509CertificateRequest, ppValue: ?*?*ICspInformations) HRESULT {
         return self.vtable.get_CspInformations(self, ppValue);
     }
-    pub fn put_CspInformations(self: *const IX509CertificateRequest, pValue: ?*ICspInformations) callconv(.Inline) HRESULT {
+    pub inline fn put_CspInformations(self: *const IX509CertificateRequest, pValue: ?*ICspInformations) HRESULT {
         return self.vtable.put_CspInformations(self, pValue);
     }
-    pub fn get_HashAlgorithm(self: *const IX509CertificateRequest, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_HashAlgorithm(self: *const IX509CertificateRequest, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_HashAlgorithm(self, ppValue);
     }
-    pub fn put_HashAlgorithm(self: *const IX509CertificateRequest, pValue: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn put_HashAlgorithm(self: *const IX509CertificateRequest, pValue: ?*IObjectId) HRESULT {
         return self.vtable.put_HashAlgorithm(self, pValue);
     }
-    pub fn get_AlternateSignatureAlgorithm(self: *const IX509CertificateRequest, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_AlternateSignatureAlgorithm(self: *const IX509CertificateRequest, pValue: ?*i16) HRESULT {
         return self.vtable.get_AlternateSignatureAlgorithm(self, pValue);
     }
-    pub fn put_AlternateSignatureAlgorithm(self: *const IX509CertificateRequest, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_AlternateSignatureAlgorithm(self: *const IX509CertificateRequest, Value: i16) HRESULT {
         return self.vtable.put_AlternateSignatureAlgorithm(self, Value);
     }
-    pub fn get_RawData(self: *const IX509CertificateRequest, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RawData(self: *const IX509CertificateRequest, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RawData(self, Encoding, pValue);
     }
 };
@@ -10262,235 +10262,235 @@ pub const IID_IX509CertificateRequestPkcs10 = &IID_IX509CertificateRequestPkcs10
 pub const IX509CertificateRequestPkcs10 = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequest.VTable,
-        InitializeFromTemplateName: *const fn(
+        InitializeFromTemplateName: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             Context: X509CertificateEnrollmentContext,
             strTemplateName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromPrivateKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromPrivateKey: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             Context: X509CertificateEnrollmentContext,
             pPrivateKey: ?*IX509PrivateKey,
             strTemplateName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromPublicKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromPublicKey: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             Context: X509CertificateEnrollmentContext,
             pPublicKey: ?*IX509PublicKey,
             strTemplateName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromCertificate: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             Context: X509CertificateEnrollmentContext,
             strCertificate: ?BSTR,
             Encoding: EncodingType,
             InheritOptions: X509RequestInheritOptions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             strEncodedData: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckSignature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckSignature: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             AllowedSignatureTypes: Pkcs10AllowedSignatureTypes,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsSmartCard: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsSmartCard: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TemplateObjectId: *const fn(
+        get_TemplateObjectId: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PublicKey: *const fn(
+        get_PublicKey: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*IX509PublicKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrivateKey: *const fn(
+        get_PrivateKey: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*IX509PrivateKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NullSigned: *const fn(
+        get_NullSigned: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReuseKey: *const fn(
+        get_ReuseKey: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_OldCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_OldCertificate: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Subject: *const fn(
+        get_Subject: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*IX500DistinguishedName,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Subject: *const fn(
+        put_Subject: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             pValue: ?*IX500DistinguishedName,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CspStatuses: *const fn(
+        get_CspStatuses: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*ICspStatuses,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SmimeCapabilities: *const fn(
+        get_SmimeCapabilities: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SmimeCapabilities: *const fn(
+        put_SmimeCapabilities: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SignatureInformation: *const fn(
+        get_SignatureInformation: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*IX509SignatureInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeyContainerNamePrefix: *const fn(
+        get_KeyContainerNamePrefix: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_KeyContainerNamePrefix: *const fn(
+        put_KeyContainerNamePrefix: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CryptAttributes: *const fn(
+        get_CryptAttributes: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*ICryptAttributes,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_X509Extensions: *const fn(
+        get_X509Extensions: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*IX509Extensions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CriticalExtensions: *const fn(
+        get_CriticalExtensions: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SuppressOids: *const fn(
+        get_SuppressOids: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             ppValue: ?*?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RawDataToBeSigned: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RawDataToBeSigned: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Signature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Signature: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCspStatuses: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCspStatuses: *const fn (
             self: *const IX509CertificateRequestPkcs10,
             KeySpec: X509KeySpec,
             ppCspStatuses: ?*?*ICspStatuses,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromTemplateName(self: *const IX509CertificateRequestPkcs10, Context: X509CertificateEnrollmentContext, strTemplateName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromTemplateName(self: *const IX509CertificateRequestPkcs10, Context: X509CertificateEnrollmentContext, strTemplateName: ?BSTR) HRESULT {
         return self.vtable.InitializeFromTemplateName(self, Context, strTemplateName);
     }
-    pub fn InitializeFromPrivateKey(self: *const IX509CertificateRequestPkcs10, Context: X509CertificateEnrollmentContext, pPrivateKey: ?*IX509PrivateKey, strTemplateName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromPrivateKey(self: *const IX509CertificateRequestPkcs10, Context: X509CertificateEnrollmentContext, pPrivateKey: ?*IX509PrivateKey, strTemplateName: ?BSTR) HRESULT {
         return self.vtable.InitializeFromPrivateKey(self, Context, pPrivateKey, strTemplateName);
     }
-    pub fn InitializeFromPublicKey(self: *const IX509CertificateRequestPkcs10, Context: X509CertificateEnrollmentContext, pPublicKey: ?*IX509PublicKey, strTemplateName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromPublicKey(self: *const IX509CertificateRequestPkcs10, Context: X509CertificateEnrollmentContext, pPublicKey: ?*IX509PublicKey, strTemplateName: ?BSTR) HRESULT {
         return self.vtable.InitializeFromPublicKey(self, Context, pPublicKey, strTemplateName);
     }
-    pub fn InitializeFromCertificate(self: *const IX509CertificateRequestPkcs10, Context: X509CertificateEnrollmentContext, strCertificate: ?BSTR, Encoding: EncodingType, InheritOptions: X509RequestInheritOptions) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromCertificate(self: *const IX509CertificateRequestPkcs10, Context: X509CertificateEnrollmentContext, strCertificate: ?BSTR, Encoding: EncodingType, InheritOptions: X509RequestInheritOptions) HRESULT {
         return self.vtable.InitializeFromCertificate(self, Context, strCertificate, Encoding, InheritOptions);
     }
-    pub fn InitializeDecode(self: *const IX509CertificateRequestPkcs10, strEncodedData: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509CertificateRequestPkcs10, strEncodedData: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.InitializeDecode(self, strEncodedData, Encoding);
     }
-    pub fn CheckSignature(self: *const IX509CertificateRequestPkcs10, AllowedSignatureTypes: Pkcs10AllowedSignatureTypes) callconv(.Inline) HRESULT {
+    pub inline fn CheckSignature(self: *const IX509CertificateRequestPkcs10, AllowedSignatureTypes: Pkcs10AllowedSignatureTypes) HRESULT {
         return self.vtable.CheckSignature(self, AllowedSignatureTypes);
     }
-    pub fn IsSmartCard(self: *const IX509CertificateRequestPkcs10, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn IsSmartCard(self: *const IX509CertificateRequestPkcs10, pValue: ?*i16) HRESULT {
         return self.vtable.IsSmartCard(self, pValue);
     }
-    pub fn get_TemplateObjectId(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_TemplateObjectId(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_TemplateObjectId(self, ppValue);
     }
-    pub fn get_PublicKey(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX509PublicKey) callconv(.Inline) HRESULT {
+    pub inline fn get_PublicKey(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX509PublicKey) HRESULT {
         return self.vtable.get_PublicKey(self, ppValue);
     }
-    pub fn get_PrivateKey(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX509PrivateKey) callconv(.Inline) HRESULT {
+    pub inline fn get_PrivateKey(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX509PrivateKey) HRESULT {
         return self.vtable.get_PrivateKey(self, ppValue);
     }
-    pub fn get_NullSigned(self: *const IX509CertificateRequestPkcs10, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_NullSigned(self: *const IX509CertificateRequestPkcs10, pValue: ?*i16) HRESULT {
         return self.vtable.get_NullSigned(self, pValue);
     }
-    pub fn get_ReuseKey(self: *const IX509CertificateRequestPkcs10, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_ReuseKey(self: *const IX509CertificateRequestPkcs10, pValue: ?*i16) HRESULT {
         return self.vtable.get_ReuseKey(self, pValue);
     }
-    pub fn get_OldCertificate(self: *const IX509CertificateRequestPkcs10, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_OldCertificate(self: *const IX509CertificateRequestPkcs10, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_OldCertificate(self, Encoding, pValue);
     }
-    pub fn get_Subject(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX500DistinguishedName) callconv(.Inline) HRESULT {
+    pub inline fn get_Subject(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX500DistinguishedName) HRESULT {
         return self.vtable.get_Subject(self, ppValue);
     }
-    pub fn put_Subject(self: *const IX509CertificateRequestPkcs10, pValue: ?*IX500DistinguishedName) callconv(.Inline) HRESULT {
+    pub inline fn put_Subject(self: *const IX509CertificateRequestPkcs10, pValue: ?*IX500DistinguishedName) HRESULT {
         return self.vtable.put_Subject(self, pValue);
     }
-    pub fn get_CspStatuses(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*ICspStatuses) callconv(.Inline) HRESULT {
+    pub inline fn get_CspStatuses(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*ICspStatuses) HRESULT {
         return self.vtable.get_CspStatuses(self, ppValue);
     }
-    pub fn get_SmimeCapabilities(self: *const IX509CertificateRequestPkcs10, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_SmimeCapabilities(self: *const IX509CertificateRequestPkcs10, pValue: ?*i16) HRESULT {
         return self.vtable.get_SmimeCapabilities(self, pValue);
     }
-    pub fn put_SmimeCapabilities(self: *const IX509CertificateRequestPkcs10, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_SmimeCapabilities(self: *const IX509CertificateRequestPkcs10, Value: i16) HRESULT {
         return self.vtable.put_SmimeCapabilities(self, Value);
     }
-    pub fn get_SignatureInformation(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX509SignatureInformation) callconv(.Inline) HRESULT {
+    pub inline fn get_SignatureInformation(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX509SignatureInformation) HRESULT {
         return self.vtable.get_SignatureInformation(self, ppValue);
     }
-    pub fn get_KeyContainerNamePrefix(self: *const IX509CertificateRequestPkcs10, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_KeyContainerNamePrefix(self: *const IX509CertificateRequestPkcs10, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_KeyContainerNamePrefix(self, pValue);
     }
-    pub fn put_KeyContainerNamePrefix(self: *const IX509CertificateRequestPkcs10, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_KeyContainerNamePrefix(self: *const IX509CertificateRequestPkcs10, Value: ?BSTR) HRESULT {
         return self.vtable.put_KeyContainerNamePrefix(self, Value);
     }
-    pub fn get_CryptAttributes(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*ICryptAttributes) callconv(.Inline) HRESULT {
+    pub inline fn get_CryptAttributes(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*ICryptAttributes) HRESULT {
         return self.vtable.get_CryptAttributes(self, ppValue);
     }
-    pub fn get_X509Extensions(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX509Extensions) callconv(.Inline) HRESULT {
+    pub inline fn get_X509Extensions(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IX509Extensions) HRESULT {
         return self.vtable.get_X509Extensions(self, ppValue);
     }
-    pub fn get_CriticalExtensions(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn get_CriticalExtensions(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IObjectIds) HRESULT {
         return self.vtable.get_CriticalExtensions(self, ppValue);
     }
-    pub fn get_SuppressOids(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn get_SuppressOids(self: *const IX509CertificateRequestPkcs10, ppValue: ?*?*IObjectIds) HRESULT {
         return self.vtable.get_SuppressOids(self, ppValue);
     }
-    pub fn get_RawDataToBeSigned(self: *const IX509CertificateRequestPkcs10, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RawDataToBeSigned(self: *const IX509CertificateRequestPkcs10, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RawDataToBeSigned(self, Encoding, pValue);
     }
-    pub fn get_Signature(self: *const IX509CertificateRequestPkcs10, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Signature(self: *const IX509CertificateRequestPkcs10, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Signature(self, Encoding, pValue);
     }
-    pub fn GetCspStatuses(self: *const IX509CertificateRequestPkcs10, KeySpec: X509KeySpec, ppCspStatuses: ?*?*ICspStatuses) callconv(.Inline) HRESULT {
+    pub inline fn GetCspStatuses(self: *const IX509CertificateRequestPkcs10, KeySpec: X509KeySpec, ppCspStatuses: ?*?*ICspStatuses) HRESULT {
         return self.vtable.GetCspStatuses(self, KeySpec, ppCspStatuses);
     }
 };
@@ -10501,55 +10501,55 @@ pub const IID_IX509CertificateRequestPkcs10V2 = &IID_IX509CertificateRequestPkcs
 pub const IX509CertificateRequestPkcs10V2 = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequestPkcs10.VTable,
-        InitializeFromTemplate: *const fn(
+        InitializeFromTemplate: *const fn (
             self: *const IX509CertificateRequestPkcs10V2,
             context: X509CertificateEnrollmentContext,
             pPolicyServer: ?*IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromPrivateKeyTemplate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromPrivateKeyTemplate: *const fn (
             self: *const IX509CertificateRequestPkcs10V2,
             Context: X509CertificateEnrollmentContext,
             pPrivateKey: ?*IX509PrivateKey,
             pPolicyServer: ?*IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromPublicKeyTemplate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromPublicKeyTemplate: *const fn (
             self: *const IX509CertificateRequestPkcs10V2,
             Context: X509CertificateEnrollmentContext,
             pPublicKey: ?*IX509PublicKey,
             pPolicyServer: ?*IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PolicyServer: *const fn(
+        get_PolicyServer: *const fn (
             self: *const IX509CertificateRequestPkcs10V2,
             ppPolicyServer: ?*?*IX509EnrollmentPolicyServer,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Template: *const fn(
+        get_Template: *const fn (
             self: *const IX509CertificateRequestPkcs10V2,
             ppTemplate: ?*?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequestPkcs10: IX509CertificateRequestPkcs10,
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromTemplate(self: *const IX509CertificateRequestPkcs10V2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromTemplate(self: *const IX509CertificateRequestPkcs10V2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.InitializeFromTemplate(self, context, pPolicyServer, pTemplate);
     }
-    pub fn InitializeFromPrivateKeyTemplate(self: *const IX509CertificateRequestPkcs10V2, Context: X509CertificateEnrollmentContext, pPrivateKey: ?*IX509PrivateKey, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromPrivateKeyTemplate(self: *const IX509CertificateRequestPkcs10V2, Context: X509CertificateEnrollmentContext, pPrivateKey: ?*IX509PrivateKey, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.InitializeFromPrivateKeyTemplate(self, Context, pPrivateKey, pPolicyServer, pTemplate);
     }
-    pub fn InitializeFromPublicKeyTemplate(self: *const IX509CertificateRequestPkcs10V2, Context: X509CertificateEnrollmentContext, pPublicKey: ?*IX509PublicKey, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromPublicKeyTemplate(self: *const IX509CertificateRequestPkcs10V2, Context: X509CertificateEnrollmentContext, pPublicKey: ?*IX509PublicKey, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.InitializeFromPublicKeyTemplate(self, Context, pPublicKey, pPolicyServer, pTemplate);
     }
-    pub fn get_PolicyServer(self: *const IX509CertificateRequestPkcs10V2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) callconv(.Inline) HRESULT {
+    pub inline fn get_PolicyServer(self: *const IX509CertificateRequestPkcs10V2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) HRESULT {
         return self.vtable.get_PolicyServer(self, ppPolicyServer);
     }
-    pub fn get_Template(self: *const IX509CertificateRequestPkcs10V2, ppTemplate: ?*?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn get_Template(self: *const IX509CertificateRequestPkcs10V2, ppTemplate: ?*?*IX509CertificateTemplate) HRESULT {
         return self.vtable.get_Template(self, ppTemplate);
     }
 };
@@ -10560,60 +10560,60 @@ pub const IX509CertificateRequestPkcs10V3 = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequestPkcs10V2.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AttestPrivateKey: *const fn(
+        get_AttestPrivateKey: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AttestPrivateKey: *const fn(
+        put_AttestPrivateKey: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_AttestationEncryptionCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_AttestationEncryptionCertificate: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_AttestationEncryptionCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_AttestationEncryptionCertificate: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EncryptionAlgorithm: *const fn(
+        get_EncryptionAlgorithm: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EncryptionAlgorithm: *const fn(
+        put_EncryptionAlgorithm: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             pValue: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EncryptionStrength: *const fn(
+        get_EncryptionStrength: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EncryptionStrength: *const fn(
+        put_EncryptionStrength: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ChallengePassword: *const fn(
+        get_ChallengePassword: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ChallengePassword: *const fn(
+        put_ChallengePassword: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NameValuePairs: *const fn(
+        get_NameValuePairs: *const fn (
             self: *const IX509CertificateRequestPkcs10V3,
             ppValue: ?*?*IX509NameValuePairs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequestPkcs10V2: IX509CertificateRequestPkcs10V2,
@@ -10621,37 +10621,37 @@ pub const IX509CertificateRequestPkcs10V3 = extern union {
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_AttestPrivateKey(self: *const IX509CertificateRequestPkcs10V3, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_AttestPrivateKey(self: *const IX509CertificateRequestPkcs10V3, pValue: ?*i16) HRESULT {
         return self.vtable.get_AttestPrivateKey(self, pValue);
     }
-    pub fn put_AttestPrivateKey(self: *const IX509CertificateRequestPkcs10V3, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_AttestPrivateKey(self: *const IX509CertificateRequestPkcs10V3, Value: i16) HRESULT {
         return self.vtable.put_AttestPrivateKey(self, Value);
     }
-    pub fn get_AttestationEncryptionCertificate(self: *const IX509CertificateRequestPkcs10V3, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_AttestationEncryptionCertificate(self: *const IX509CertificateRequestPkcs10V3, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_AttestationEncryptionCertificate(self, Encoding, pValue);
     }
-    pub fn put_AttestationEncryptionCertificate(self: *const IX509CertificateRequestPkcs10V3, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_AttestationEncryptionCertificate(self: *const IX509CertificateRequestPkcs10V3, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_AttestationEncryptionCertificate(self, Encoding, Value);
     }
-    pub fn get_EncryptionAlgorithm(self: *const IX509CertificateRequestPkcs10V3, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_EncryptionAlgorithm(self: *const IX509CertificateRequestPkcs10V3, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_EncryptionAlgorithm(self, ppValue);
     }
-    pub fn put_EncryptionAlgorithm(self: *const IX509CertificateRequestPkcs10V3, pValue: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn put_EncryptionAlgorithm(self: *const IX509CertificateRequestPkcs10V3, pValue: ?*IObjectId) HRESULT {
         return self.vtable.put_EncryptionAlgorithm(self, pValue);
     }
-    pub fn get_EncryptionStrength(self: *const IX509CertificateRequestPkcs10V3, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_EncryptionStrength(self: *const IX509CertificateRequestPkcs10V3, pValue: ?*i32) HRESULT {
         return self.vtable.get_EncryptionStrength(self, pValue);
     }
-    pub fn put_EncryptionStrength(self: *const IX509CertificateRequestPkcs10V3, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_EncryptionStrength(self: *const IX509CertificateRequestPkcs10V3, Value: i32) HRESULT {
         return self.vtable.put_EncryptionStrength(self, Value);
     }
-    pub fn get_ChallengePassword(self: *const IX509CertificateRequestPkcs10V3, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ChallengePassword(self: *const IX509CertificateRequestPkcs10V3, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ChallengePassword(self, pValue);
     }
-    pub fn put_ChallengePassword(self: *const IX509CertificateRequestPkcs10V3, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ChallengePassword(self: *const IX509CertificateRequestPkcs10V3, Value: ?BSTR) HRESULT {
         return self.vtable.put_ChallengePassword(self, Value);
     }
-    pub fn get_NameValuePairs(self: *const IX509CertificateRequestPkcs10V3, ppValue: ?*?*IX509NameValuePairs) callconv(.Inline) HRESULT {
+    pub inline fn get_NameValuePairs(self: *const IX509CertificateRequestPkcs10V3, ppValue: ?*?*IX509NameValuePairs) HRESULT {
         return self.vtable.get_NameValuePairs(self, ppValue);
     }
 };
@@ -10675,25 +10675,25 @@ pub const IX509CertificateRequestPkcs10V4 = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequestPkcs10V3.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ClaimType: *const fn(
+        get_ClaimType: *const fn (
             self: *const IX509CertificateRequestPkcs10V4,
             pValue: ?*KeyAttestationClaimType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ClaimType: *const fn(
+        put_ClaimType: *const fn (
             self: *const IX509CertificateRequestPkcs10V4,
             Value: KeyAttestationClaimType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AttestPrivateKeyPreferred: *const fn(
+        get_AttestPrivateKeyPreferred: *const fn (
             self: *const IX509CertificateRequestPkcs10V4,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AttestPrivateKeyPreferred: *const fn(
+        put_AttestPrivateKeyPreferred: *const fn (
             self: *const IX509CertificateRequestPkcs10V4,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequestPkcs10V3: IX509CertificateRequestPkcs10V3,
@@ -10702,16 +10702,16 @@ pub const IX509CertificateRequestPkcs10V4 = extern union {
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ClaimType(self: *const IX509CertificateRequestPkcs10V4, pValue: ?*KeyAttestationClaimType) callconv(.Inline) HRESULT {
+    pub inline fn get_ClaimType(self: *const IX509CertificateRequestPkcs10V4, pValue: ?*KeyAttestationClaimType) HRESULT {
         return self.vtable.get_ClaimType(self, pValue);
     }
-    pub fn put_ClaimType(self: *const IX509CertificateRequestPkcs10V4, Value: KeyAttestationClaimType) callconv(.Inline) HRESULT {
+    pub inline fn put_ClaimType(self: *const IX509CertificateRequestPkcs10V4, Value: KeyAttestationClaimType) HRESULT {
         return self.vtable.put_ClaimType(self, Value);
     }
-    pub fn get_AttestPrivateKeyPreferred(self: *const IX509CertificateRequestPkcs10V4, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_AttestPrivateKeyPreferred(self: *const IX509CertificateRequestPkcs10V4, pValue: ?*i16) HRESULT {
         return self.vtable.get_AttestPrivateKeyPreferred(self, pValue);
     }
-    pub fn put_AttestPrivateKeyPreferred(self: *const IX509CertificateRequestPkcs10V4, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_AttestPrivateKeyPreferred(self: *const IX509CertificateRequestPkcs10V4, Value: i16) HRESULT {
         return self.vtable.put_AttestPrivateKeyPreferred(self, Value);
     }
 };
@@ -10722,97 +10722,97 @@ pub const IID_IX509CertificateRequestCertificate = &IID_IX509CertificateRequestC
 pub const IX509CertificateRequestCertificate = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequestPkcs10.VTable,
-        CheckPublicKeySignature: *const fn(
+        CheckPublicKeySignature: *const fn (
             self: *const IX509CertificateRequestCertificate,
             pPublicKey: ?*IX509PublicKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Issuer: *const fn(
+        get_Issuer: *const fn (
             self: *const IX509CertificateRequestCertificate,
             ppValue: ?*?*IX500DistinguishedName,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Issuer: *const fn(
+        put_Issuer: *const fn (
             self: *const IX509CertificateRequestCertificate,
             pValue: ?*IX500DistinguishedName,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NotBefore: *const fn(
+        get_NotBefore: *const fn (
             self: *const IX509CertificateRequestCertificate,
             pValue: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NotBefore: *const fn(
+        put_NotBefore: *const fn (
             self: *const IX509CertificateRequestCertificate,
             Value: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NotAfter: *const fn(
+        get_NotAfter: *const fn (
             self: *const IX509CertificateRequestCertificate,
             pValue: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NotAfter: *const fn(
+        put_NotAfter: *const fn (
             self: *const IX509CertificateRequestCertificate,
             Value: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_SerialNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_SerialNumber: *const fn (
             self: *const IX509CertificateRequestCertificate,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_SerialNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_SerialNumber: *const fn (
             self: *const IX509CertificateRequestCertificate,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SignerCertificate: *const fn(
+        get_SignerCertificate: *const fn (
             self: *const IX509CertificateRequestCertificate,
             ppValue: ?*?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SignerCertificate: *const fn(
+        put_SignerCertificate: *const fn (
             self: *const IX509CertificateRequestCertificate,
             pValue: ?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequestPkcs10: IX509CertificateRequestPkcs10,
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn CheckPublicKeySignature(self: *const IX509CertificateRequestCertificate, pPublicKey: ?*IX509PublicKey) callconv(.Inline) HRESULT {
+    pub inline fn CheckPublicKeySignature(self: *const IX509CertificateRequestCertificate, pPublicKey: ?*IX509PublicKey) HRESULT {
         return self.vtable.CheckPublicKeySignature(self, pPublicKey);
     }
-    pub fn get_Issuer(self: *const IX509CertificateRequestCertificate, ppValue: ?*?*IX500DistinguishedName) callconv(.Inline) HRESULT {
+    pub inline fn get_Issuer(self: *const IX509CertificateRequestCertificate, ppValue: ?*?*IX500DistinguishedName) HRESULT {
         return self.vtable.get_Issuer(self, ppValue);
     }
-    pub fn put_Issuer(self: *const IX509CertificateRequestCertificate, pValue: ?*IX500DistinguishedName) callconv(.Inline) HRESULT {
+    pub inline fn put_Issuer(self: *const IX509CertificateRequestCertificate, pValue: ?*IX500DistinguishedName) HRESULT {
         return self.vtable.put_Issuer(self, pValue);
     }
-    pub fn get_NotBefore(self: *const IX509CertificateRequestCertificate, pValue: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_NotBefore(self: *const IX509CertificateRequestCertificate, pValue: ?*f64) HRESULT {
         return self.vtable.get_NotBefore(self, pValue);
     }
-    pub fn put_NotBefore(self: *const IX509CertificateRequestCertificate, Value: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_NotBefore(self: *const IX509CertificateRequestCertificate, Value: f64) HRESULT {
         return self.vtable.put_NotBefore(self, Value);
     }
-    pub fn get_NotAfter(self: *const IX509CertificateRequestCertificate, pValue: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_NotAfter(self: *const IX509CertificateRequestCertificate, pValue: ?*f64) HRESULT {
         return self.vtable.get_NotAfter(self, pValue);
     }
-    pub fn put_NotAfter(self: *const IX509CertificateRequestCertificate, Value: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_NotAfter(self: *const IX509CertificateRequestCertificate, Value: f64) HRESULT {
         return self.vtable.put_NotAfter(self, Value);
     }
-    pub fn get_SerialNumber(self: *const IX509CertificateRequestCertificate, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SerialNumber(self: *const IX509CertificateRequestCertificate, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_SerialNumber(self, Encoding, pValue);
     }
-    pub fn put_SerialNumber(self: *const IX509CertificateRequestCertificate, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_SerialNumber(self: *const IX509CertificateRequestCertificate, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_SerialNumber(self, Encoding, Value);
     }
-    pub fn get_SignerCertificate(self: *const IX509CertificateRequestCertificate, ppValue: ?*?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn get_SignerCertificate(self: *const IX509CertificateRequestCertificate, ppValue: ?*?*ISignerCertificate) HRESULT {
         return self.vtable.get_SignerCertificate(self, ppValue);
     }
-    pub fn put_SignerCertificate(self: *const IX509CertificateRequestCertificate, pValue: ?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn put_SignerCertificate(self: *const IX509CertificateRequestCertificate, pValue: ?*ISignerCertificate) HRESULT {
         return self.vtable.put_SignerCertificate(self, pValue);
     }
 };
@@ -10823,29 +10823,29 @@ pub const IID_IX509CertificateRequestCertificate2 = &IID_IX509CertificateRequest
 pub const IX509CertificateRequestCertificate2 = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequestCertificate.VTable,
-        InitializeFromTemplate: *const fn(
+        InitializeFromTemplate: *const fn (
             self: *const IX509CertificateRequestCertificate2,
             context: X509CertificateEnrollmentContext,
             pPolicyServer: ?*IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromPrivateKeyTemplate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromPrivateKeyTemplate: *const fn (
             self: *const IX509CertificateRequestCertificate2,
             Context: X509CertificateEnrollmentContext,
             pPrivateKey: ?*IX509PrivateKey,
             pPolicyServer: ?*IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PolicyServer: *const fn(
+        get_PolicyServer: *const fn (
             self: *const IX509CertificateRequestCertificate2,
             ppPolicyServer: ?*?*IX509EnrollmentPolicyServer,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Template: *const fn(
+        get_Template: *const fn (
             self: *const IX509CertificateRequestCertificate2,
             ppTemplate: ?*?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequestCertificate: IX509CertificateRequestCertificate,
@@ -10853,16 +10853,16 @@ pub const IX509CertificateRequestCertificate2 = extern union {
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromTemplate(self: *const IX509CertificateRequestCertificate2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromTemplate(self: *const IX509CertificateRequestCertificate2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.InitializeFromTemplate(self, context, pPolicyServer, pTemplate);
     }
-    pub fn InitializeFromPrivateKeyTemplate(self: *const IX509CertificateRequestCertificate2, Context: X509CertificateEnrollmentContext, pPrivateKey: ?*IX509PrivateKey, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromPrivateKeyTemplate(self: *const IX509CertificateRequestCertificate2, Context: X509CertificateEnrollmentContext, pPrivateKey: ?*IX509PrivateKey, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.InitializeFromPrivateKeyTemplate(self, Context, pPrivateKey, pPolicyServer, pTemplate);
     }
-    pub fn get_PolicyServer(self: *const IX509CertificateRequestCertificate2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) callconv(.Inline) HRESULT {
+    pub inline fn get_PolicyServer(self: *const IX509CertificateRequestCertificate2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) HRESULT {
         return self.vtable.get_PolicyServer(self, ppPolicyServer);
     }
-    pub fn get_Template(self: *const IX509CertificateRequestCertificate2, ppTemplate: ?*?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn get_Template(self: *const IX509CertificateRequestCertificate2, ppTemplate: ?*?*IX509CertificateTemplate) HRESULT {
         return self.vtable.get_Template(self, ppTemplate);
     }
 };
@@ -10873,75 +10873,75 @@ pub const IID_IX509CertificateRequestPkcs7 = &IID_IX509CertificateRequestPkcs7_V
 pub const IX509CertificateRequestPkcs7 = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequest.VTable,
-        InitializeFromTemplateName: *const fn(
+        InitializeFromTemplateName: *const fn (
             self: *const IX509CertificateRequestPkcs7,
             Context: X509CertificateEnrollmentContext,
             strTemplateName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromCertificate: *const fn (
             self: *const IX509CertificateRequestPkcs7,
             Context: X509CertificateEnrollmentContext,
             RenewalRequest: i16,
             strCertificate: ?BSTR,
             Encoding: EncodingType,
             InheritOptions: X509RequestInheritOptions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromInnerRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromInnerRequest: *const fn (
             self: *const IX509CertificateRequestPkcs7,
             pInnerRequest: ?*IX509CertificateRequest,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509CertificateRequestPkcs7,
             strEncodedData: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequesterName: *const fn(
+        get_RequesterName: *const fn (
             self: *const IX509CertificateRequestPkcs7,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RequesterName: *const fn(
+        put_RequesterName: *const fn (
             self: *const IX509CertificateRequestPkcs7,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SignerCertificate: *const fn(
+        get_SignerCertificate: *const fn (
             self: *const IX509CertificateRequestPkcs7,
             ppValue: ?*?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SignerCertificate: *const fn(
+        put_SignerCertificate: *const fn (
             self: *const IX509CertificateRequestPkcs7,
             pValue: ?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromTemplateName(self: *const IX509CertificateRequestPkcs7, Context: X509CertificateEnrollmentContext, strTemplateName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromTemplateName(self: *const IX509CertificateRequestPkcs7, Context: X509CertificateEnrollmentContext, strTemplateName: ?BSTR) HRESULT {
         return self.vtable.InitializeFromTemplateName(self, Context, strTemplateName);
     }
-    pub fn InitializeFromCertificate(self: *const IX509CertificateRequestPkcs7, Context: X509CertificateEnrollmentContext, RenewalRequest: i16, strCertificate: ?BSTR, Encoding: EncodingType, InheritOptions: X509RequestInheritOptions) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromCertificate(self: *const IX509CertificateRequestPkcs7, Context: X509CertificateEnrollmentContext, RenewalRequest: i16, strCertificate: ?BSTR, Encoding: EncodingType, InheritOptions: X509RequestInheritOptions) HRESULT {
         return self.vtable.InitializeFromCertificate(self, Context, RenewalRequest, strCertificate, Encoding, InheritOptions);
     }
-    pub fn InitializeFromInnerRequest(self: *const IX509CertificateRequestPkcs7, pInnerRequest: ?*IX509CertificateRequest) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromInnerRequest(self: *const IX509CertificateRequestPkcs7, pInnerRequest: ?*IX509CertificateRequest) HRESULT {
         return self.vtable.InitializeFromInnerRequest(self, pInnerRequest);
     }
-    pub fn InitializeDecode(self: *const IX509CertificateRequestPkcs7, strEncodedData: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509CertificateRequestPkcs7, strEncodedData: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.InitializeDecode(self, strEncodedData, Encoding);
     }
-    pub fn get_RequesterName(self: *const IX509CertificateRequestPkcs7, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RequesterName(self: *const IX509CertificateRequestPkcs7, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RequesterName(self, pValue);
     }
-    pub fn put_RequesterName(self: *const IX509CertificateRequestPkcs7, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RequesterName(self: *const IX509CertificateRequestPkcs7, Value: ?BSTR) HRESULT {
         return self.vtable.put_RequesterName(self, Value);
     }
-    pub fn get_SignerCertificate(self: *const IX509CertificateRequestPkcs7, ppValue: ?*?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn get_SignerCertificate(self: *const IX509CertificateRequestPkcs7, ppValue: ?*?*ISignerCertificate) HRESULT {
         return self.vtable.get_SignerCertificate(self, ppValue);
     }
-    pub fn put_SignerCertificate(self: *const IX509CertificateRequestPkcs7, pValue: ?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn put_SignerCertificate(self: *const IX509CertificateRequestPkcs7, pValue: ?*ISignerCertificate) HRESULT {
         return self.vtable.put_SignerCertificate(self, pValue);
     }
 };
@@ -10952,42 +10952,42 @@ pub const IID_IX509CertificateRequestPkcs7V2 = &IID_IX509CertificateRequestPkcs7
 pub const IX509CertificateRequestPkcs7V2 = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequestPkcs7.VTable,
-        InitializeFromTemplate: *const fn(
+        InitializeFromTemplate: *const fn (
             self: *const IX509CertificateRequestPkcs7V2,
             context: X509CertificateEnrollmentContext,
             pPolicyServer: ?*IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PolicyServer: *const fn(
+        get_PolicyServer: *const fn (
             self: *const IX509CertificateRequestPkcs7V2,
             ppPolicyServer: ?*?*IX509EnrollmentPolicyServer,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Template: *const fn(
+        get_Template: *const fn (
             self: *const IX509CertificateRequestPkcs7V2,
             ppTemplate: ?*?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckCertificateSignature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckCertificateSignature: *const fn (
             self: *const IX509CertificateRequestPkcs7V2,
             ValidateCertificateChain: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequestPkcs7: IX509CertificateRequestPkcs7,
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromTemplate(self: *const IX509CertificateRequestPkcs7V2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromTemplate(self: *const IX509CertificateRequestPkcs7V2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.InitializeFromTemplate(self, context, pPolicyServer, pTemplate);
     }
-    pub fn get_PolicyServer(self: *const IX509CertificateRequestPkcs7V2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) callconv(.Inline) HRESULT {
+    pub inline fn get_PolicyServer(self: *const IX509CertificateRequestPkcs7V2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) HRESULT {
         return self.vtable.get_PolicyServer(self, ppPolicyServer);
     }
-    pub fn get_Template(self: *const IX509CertificateRequestPkcs7V2, ppTemplate: ?*?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn get_Template(self: *const IX509CertificateRequestPkcs7V2, ppTemplate: ?*?*IX509CertificateTemplate) HRESULT {
         return self.vtable.get_Template(self, ppTemplate);
     }
-    pub fn CheckCertificateSignature(self: *const IX509CertificateRequestPkcs7V2, ValidateCertificateChain: i16) callconv(.Inline) HRESULT {
+    pub inline fn CheckCertificateSignature(self: *const IX509CertificateRequestPkcs7V2, ValidateCertificateChain: i16) HRESULT {
         return self.vtable.CheckCertificateSignature(self, ValidateCertificateChain);
     }
 };
@@ -10998,194 +10998,194 @@ pub const IID_IX509CertificateRequestCmc = &IID_IX509CertificateRequestCmc_Value
 pub const IX509CertificateRequestCmc = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequestPkcs7.VTable,
-        InitializeFromInnerRequestTemplateName: *const fn(
+        InitializeFromInnerRequestTemplateName: *const fn (
             self: *const IX509CertificateRequestCmc,
             pInnerRequest: ?*IX509CertificateRequest,
             strTemplateName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TemplateObjectId: *const fn(
+        get_TemplateObjectId: *const fn (
             self: *const IX509CertificateRequestCmc,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NullSigned: *const fn(
+        get_NullSigned: *const fn (
             self: *const IX509CertificateRequestCmc,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CryptAttributes: *const fn(
+        get_CryptAttributes: *const fn (
             self: *const IX509CertificateRequestCmc,
             ppValue: ?*?*ICryptAttributes,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NameValuePairs: *const fn(
+        get_NameValuePairs: *const fn (
             self: *const IX509CertificateRequestCmc,
             ppValue: ?*?*IX509NameValuePairs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_X509Extensions: *const fn(
+        get_X509Extensions: *const fn (
             self: *const IX509CertificateRequestCmc,
             ppValue: ?*?*IX509Extensions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CriticalExtensions: *const fn(
+        get_CriticalExtensions: *const fn (
             self: *const IX509CertificateRequestCmc,
             ppValue: ?*?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SuppressOids: *const fn(
+        get_SuppressOids: *const fn (
             self: *const IX509CertificateRequestCmc,
             ppValue: ?*?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TransactionId: *const fn(
+        get_TransactionId: *const fn (
             self: *const IX509CertificateRequestCmc,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TransactionId: *const fn(
+        put_TransactionId: *const fn (
             self: *const IX509CertificateRequestCmc,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_SenderNonce: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_SenderNonce: *const fn (
             self: *const IX509CertificateRequestCmc,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_SenderNonce: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_SenderNonce: *const fn (
             self: *const IX509CertificateRequestCmc,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SignatureInformation: *const fn(
+        get_SignatureInformation: *const fn (
             self: *const IX509CertificateRequestCmc,
             ppValue: ?*?*IX509SignatureInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ArchivePrivateKey: *const fn(
+        get_ArchivePrivateKey: *const fn (
             self: *const IX509CertificateRequestCmc,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ArchivePrivateKey: *const fn(
+        put_ArchivePrivateKey: *const fn (
             self: *const IX509CertificateRequestCmc,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_KeyArchivalCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_KeyArchivalCertificate: *const fn (
             self: *const IX509CertificateRequestCmc,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_KeyArchivalCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_KeyArchivalCertificate: *const fn (
             self: *const IX509CertificateRequestCmc,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EncryptionAlgorithm: *const fn(
+        get_EncryptionAlgorithm: *const fn (
             self: *const IX509CertificateRequestCmc,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EncryptionAlgorithm: *const fn(
+        put_EncryptionAlgorithm: *const fn (
             self: *const IX509CertificateRequestCmc,
             pValue: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EncryptionStrength: *const fn(
+        get_EncryptionStrength: *const fn (
             self: *const IX509CertificateRequestCmc,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EncryptionStrength: *const fn(
+        put_EncryptionStrength: *const fn (
             self: *const IX509CertificateRequestCmc,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_EncryptedKeyHash: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_EncryptedKeyHash: *const fn (
             self: *const IX509CertificateRequestCmc,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SignerCertificates: *const fn(
+        get_SignerCertificates: *const fn (
             self: *const IX509CertificateRequestCmc,
             ppValue: ?*?*ISignerCertificates,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequestPkcs7: IX509CertificateRequestPkcs7,
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromInnerRequestTemplateName(self: *const IX509CertificateRequestCmc, pInnerRequest: ?*IX509CertificateRequest, strTemplateName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromInnerRequestTemplateName(self: *const IX509CertificateRequestCmc, pInnerRequest: ?*IX509CertificateRequest, strTemplateName: ?BSTR) HRESULT {
         return self.vtable.InitializeFromInnerRequestTemplateName(self, pInnerRequest, strTemplateName);
     }
-    pub fn get_TemplateObjectId(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_TemplateObjectId(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_TemplateObjectId(self, ppValue);
     }
-    pub fn get_NullSigned(self: *const IX509CertificateRequestCmc, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_NullSigned(self: *const IX509CertificateRequestCmc, pValue: ?*i16) HRESULT {
         return self.vtable.get_NullSigned(self, pValue);
     }
-    pub fn get_CryptAttributes(self: *const IX509CertificateRequestCmc, ppValue: ?*?*ICryptAttributes) callconv(.Inline) HRESULT {
+    pub inline fn get_CryptAttributes(self: *const IX509CertificateRequestCmc, ppValue: ?*?*ICryptAttributes) HRESULT {
         return self.vtable.get_CryptAttributes(self, ppValue);
     }
-    pub fn get_NameValuePairs(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IX509NameValuePairs) callconv(.Inline) HRESULT {
+    pub inline fn get_NameValuePairs(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IX509NameValuePairs) HRESULT {
         return self.vtable.get_NameValuePairs(self, ppValue);
     }
-    pub fn get_X509Extensions(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IX509Extensions) callconv(.Inline) HRESULT {
+    pub inline fn get_X509Extensions(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IX509Extensions) HRESULT {
         return self.vtable.get_X509Extensions(self, ppValue);
     }
-    pub fn get_CriticalExtensions(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn get_CriticalExtensions(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IObjectIds) HRESULT {
         return self.vtable.get_CriticalExtensions(self, ppValue);
     }
-    pub fn get_SuppressOids(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn get_SuppressOids(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IObjectIds) HRESULT {
         return self.vtable.get_SuppressOids(self, ppValue);
     }
-    pub fn get_TransactionId(self: *const IX509CertificateRequestCmc, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_TransactionId(self: *const IX509CertificateRequestCmc, pValue: ?*i32) HRESULT {
         return self.vtable.get_TransactionId(self, pValue);
     }
-    pub fn put_TransactionId(self: *const IX509CertificateRequestCmc, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_TransactionId(self: *const IX509CertificateRequestCmc, Value: i32) HRESULT {
         return self.vtable.put_TransactionId(self, Value);
     }
-    pub fn get_SenderNonce(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SenderNonce(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_SenderNonce(self, Encoding, pValue);
     }
-    pub fn put_SenderNonce(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_SenderNonce(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_SenderNonce(self, Encoding, Value);
     }
-    pub fn get_SignatureInformation(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IX509SignatureInformation) callconv(.Inline) HRESULT {
+    pub inline fn get_SignatureInformation(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IX509SignatureInformation) HRESULT {
         return self.vtable.get_SignatureInformation(self, ppValue);
     }
-    pub fn get_ArchivePrivateKey(self: *const IX509CertificateRequestCmc, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_ArchivePrivateKey(self: *const IX509CertificateRequestCmc, pValue: ?*i16) HRESULT {
         return self.vtable.get_ArchivePrivateKey(self, pValue);
     }
-    pub fn put_ArchivePrivateKey(self: *const IX509CertificateRequestCmc, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_ArchivePrivateKey(self: *const IX509CertificateRequestCmc, Value: i16) HRESULT {
         return self.vtable.put_ArchivePrivateKey(self, Value);
     }
-    pub fn get_KeyArchivalCertificate(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_KeyArchivalCertificate(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_KeyArchivalCertificate(self, Encoding, pValue);
     }
-    pub fn put_KeyArchivalCertificate(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_KeyArchivalCertificate(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_KeyArchivalCertificate(self, Encoding, Value);
     }
-    pub fn get_EncryptionAlgorithm(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_EncryptionAlgorithm(self: *const IX509CertificateRequestCmc, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_EncryptionAlgorithm(self, ppValue);
     }
-    pub fn put_EncryptionAlgorithm(self: *const IX509CertificateRequestCmc, pValue: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn put_EncryptionAlgorithm(self: *const IX509CertificateRequestCmc, pValue: ?*IObjectId) HRESULT {
         return self.vtable.put_EncryptionAlgorithm(self, pValue);
     }
-    pub fn get_EncryptionStrength(self: *const IX509CertificateRequestCmc, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_EncryptionStrength(self: *const IX509CertificateRequestCmc, pValue: ?*i32) HRESULT {
         return self.vtable.get_EncryptionStrength(self, pValue);
     }
-    pub fn put_EncryptionStrength(self: *const IX509CertificateRequestCmc, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_EncryptionStrength(self: *const IX509CertificateRequestCmc, Value: i32) HRESULT {
         return self.vtable.put_EncryptionStrength(self, Value);
     }
-    pub fn get_EncryptedKeyHash(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_EncryptedKeyHash(self: *const IX509CertificateRequestCmc, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_EncryptedKeyHash(self, Encoding, pValue);
     }
-    pub fn get_SignerCertificates(self: *const IX509CertificateRequestCmc, ppValue: ?*?*ISignerCertificates) callconv(.Inline) HRESULT {
+    pub inline fn get_SignerCertificates(self: *const IX509CertificateRequestCmc, ppValue: ?*?*ISignerCertificates) HRESULT {
         return self.vtable.get_SignerCertificates(self, ppValue);
     }
 };
@@ -11196,37 +11196,37 @@ pub const IID_IX509CertificateRequestCmc2 = &IID_IX509CertificateRequestCmc2_Val
 pub const IX509CertificateRequestCmc2 = extern union {
     pub const VTable = extern struct {
         base: IX509CertificateRequestCmc.VTable,
-        InitializeFromTemplate: *const fn(
+        InitializeFromTemplate: *const fn (
             self: *const IX509CertificateRequestCmc2,
             context: X509CertificateEnrollmentContext,
             pPolicyServer: ?*IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromInnerRequestTemplate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromInnerRequestTemplate: *const fn (
             self: *const IX509CertificateRequestCmc2,
             pInnerRequest: ?*IX509CertificateRequest,
             pPolicyServer: ?*IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PolicyServer: *const fn(
+        get_PolicyServer: *const fn (
             self: *const IX509CertificateRequestCmc2,
             ppPolicyServer: ?*?*IX509EnrollmentPolicyServer,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Template: *const fn(
+        get_Template: *const fn (
             self: *const IX509CertificateRequestCmc2,
             ppTemplate: ?*?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckSignature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckSignature: *const fn (
             self: *const IX509CertificateRequestCmc2,
             AllowedSignatureTypes: Pkcs10AllowedSignatureTypes,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckCertificateSignature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckCertificateSignature: *const fn (
             self: *const IX509CertificateRequestCmc2,
             pSignerCertificate: ?*ISignerCertificate,
             ValidateCertificateChain: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509CertificateRequestCmc: IX509CertificateRequestCmc,
@@ -11234,22 +11234,22 @@ pub const IX509CertificateRequestCmc2 = extern union {
     IX509CertificateRequest: IX509CertificateRequest,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromTemplate(self: *const IX509CertificateRequestCmc2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromTemplate(self: *const IX509CertificateRequestCmc2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.InitializeFromTemplate(self, context, pPolicyServer, pTemplate);
     }
-    pub fn InitializeFromInnerRequestTemplate(self: *const IX509CertificateRequestCmc2, pInnerRequest: ?*IX509CertificateRequest, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromInnerRequestTemplate(self: *const IX509CertificateRequestCmc2, pInnerRequest: ?*IX509CertificateRequest, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.InitializeFromInnerRequestTemplate(self, pInnerRequest, pPolicyServer, pTemplate);
     }
-    pub fn get_PolicyServer(self: *const IX509CertificateRequestCmc2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) callconv(.Inline) HRESULT {
+    pub inline fn get_PolicyServer(self: *const IX509CertificateRequestCmc2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) HRESULT {
         return self.vtable.get_PolicyServer(self, ppPolicyServer);
     }
-    pub fn get_Template(self: *const IX509CertificateRequestCmc2, ppTemplate: ?*?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn get_Template(self: *const IX509CertificateRequestCmc2, ppTemplate: ?*?*IX509CertificateTemplate) HRESULT {
         return self.vtable.get_Template(self, ppTemplate);
     }
-    pub fn CheckSignature(self: *const IX509CertificateRequestCmc2, AllowedSignatureTypes: Pkcs10AllowedSignatureTypes) callconv(.Inline) HRESULT {
+    pub inline fn CheckSignature(self: *const IX509CertificateRequestCmc2, AllowedSignatureTypes: Pkcs10AllowedSignatureTypes) HRESULT {
         return self.vtable.CheckSignature(self, AllowedSignatureTypes);
     }
-    pub fn CheckCertificateSignature(self: *const IX509CertificateRequestCmc2, pSignerCertificate: ?*ISignerCertificate, ValidateCertificateChain: i16) callconv(.Inline) HRESULT {
+    pub inline fn CheckCertificateSignature(self: *const IX509CertificateRequestCmc2, pSignerCertificate: ?*ISignerCertificate, ValidateCertificateChain: i16) HRESULT {
         return self.vtable.CheckCertificateSignature(self, pSignerCertificate, ValidateCertificateChain);
     }
 };
@@ -11271,192 +11271,192 @@ pub const IID_IX509Enrollment = &IID_IX509Enrollment_Value;
 pub const IX509Enrollment = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509Enrollment,
             Context: X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromTemplateName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromTemplateName: *const fn (
             self: *const IX509Enrollment,
             Context: X509CertificateEnrollmentContext,
             strTemplateName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeFromRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeFromRequest: *const fn (
             self: *const IX509Enrollment,
             pRequest: ?*IX509CertificateRequest,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateRequest: *const fn (
             self: *const IX509Enrollment,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Enroll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Enroll: *const fn (
             self: *const IX509Enrollment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstallResponse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstallResponse: *const fn (
             self: *const IX509Enrollment,
             Restrictions: InstallResponseRestrictionFlags,
             strResponse: ?BSTR,
             Encoding: EncodingType,
             strPassword: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreatePFX: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreatePFX: *const fn (
             self: *const IX509Enrollment,
             strPassword: ?BSTR,
             ExportOptions: PFXExportOptions,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Request: *const fn(
+        get_Request: *const fn (
             self: *const IX509Enrollment,
             pValue: ?*?*IX509CertificateRequest,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Silent: *const fn(
+        get_Silent: *const fn (
             self: *const IX509Enrollment,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Silent: *const fn(
+        put_Silent: *const fn (
             self: *const IX509Enrollment,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ParentWindow: *const fn(
+        get_ParentWindow: *const fn (
             self: *const IX509Enrollment,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ParentWindow: *const fn(
+        put_ParentWindow: *const fn (
             self: *const IX509Enrollment,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NameValuePairs: *const fn(
+        get_NameValuePairs: *const fn (
             self: *const IX509Enrollment,
             ppValue: ?*?*IX509NameValuePairs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EnrollmentContext: *const fn(
+        get_EnrollmentContext: *const fn (
             self: *const IX509Enrollment,
             pValue: ?*X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Status: *const fn(
+        get_Status: *const fn (
             self: *const IX509Enrollment,
             ppValue: ?*?*IX509EnrollmentStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Certificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Certificate: *const fn (
             self: *const IX509Enrollment,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Response: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Response: *const fn (
             self: *const IX509Enrollment,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CertificateFriendlyName: *const fn(
+        get_CertificateFriendlyName: *const fn (
             self: *const IX509Enrollment,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CertificateFriendlyName: *const fn(
+        put_CertificateFriendlyName: *const fn (
             self: *const IX509Enrollment,
             strValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CertificateDescription: *const fn(
+        get_CertificateDescription: *const fn (
             self: *const IX509Enrollment,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CertificateDescription: *const fn(
+        put_CertificateDescription: *const fn (
             self: *const IX509Enrollment,
             strValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestId: *const fn(
+        get_RequestId: *const fn (
             self: *const IX509Enrollment,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAConfigString: *const fn(
+        get_CAConfigString: *const fn (
             self: *const IX509Enrollment,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509Enrollment, Context: X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509Enrollment, Context: X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.Initialize(self, Context);
     }
-    pub fn InitializeFromTemplateName(self: *const IX509Enrollment, Context: X509CertificateEnrollmentContext, strTemplateName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromTemplateName(self: *const IX509Enrollment, Context: X509CertificateEnrollmentContext, strTemplateName: ?BSTR) HRESULT {
         return self.vtable.InitializeFromTemplateName(self, Context, strTemplateName);
     }
-    pub fn InitializeFromRequest(self: *const IX509Enrollment, pRequest: ?*IX509CertificateRequest) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromRequest(self: *const IX509Enrollment, pRequest: ?*IX509CertificateRequest) HRESULT {
         return self.vtable.InitializeFromRequest(self, pRequest);
     }
-    pub fn CreateRequest(self: *const IX509Enrollment, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn CreateRequest(self: *const IX509Enrollment, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.CreateRequest(self, Encoding, pValue);
     }
-    pub fn Enroll(self: *const IX509Enrollment) callconv(.Inline) HRESULT {
+    pub inline fn Enroll(self: *const IX509Enrollment) HRESULT {
         return self.vtable.Enroll(self);
     }
-    pub fn InstallResponse(self: *const IX509Enrollment, Restrictions: InstallResponseRestrictionFlags, strResponse: ?BSTR, Encoding: EncodingType, strPassword: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InstallResponse(self: *const IX509Enrollment, Restrictions: InstallResponseRestrictionFlags, strResponse: ?BSTR, Encoding: EncodingType, strPassword: ?BSTR) HRESULT {
         return self.vtable.InstallResponse(self, Restrictions, strResponse, Encoding, strPassword);
     }
-    pub fn CreatePFX(self: *const IX509Enrollment, strPassword: ?BSTR, ExportOptions: PFXExportOptions, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn CreatePFX(self: *const IX509Enrollment, strPassword: ?BSTR, ExportOptions: PFXExportOptions, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.CreatePFX(self, strPassword, ExportOptions, Encoding, pValue);
     }
-    pub fn get_Request(self: *const IX509Enrollment, pValue: ?*?*IX509CertificateRequest) callconv(.Inline) HRESULT {
+    pub inline fn get_Request(self: *const IX509Enrollment, pValue: ?*?*IX509CertificateRequest) HRESULT {
         return self.vtable.get_Request(self, pValue);
     }
-    pub fn get_Silent(self: *const IX509Enrollment, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Silent(self: *const IX509Enrollment, pValue: ?*i16) HRESULT {
         return self.vtable.get_Silent(self, pValue);
     }
-    pub fn put_Silent(self: *const IX509Enrollment, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Silent(self: *const IX509Enrollment, Value: i16) HRESULT {
         return self.vtable.put_Silent(self, Value);
     }
-    pub fn get_ParentWindow(self: *const IX509Enrollment, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ParentWindow(self: *const IX509Enrollment, pValue: ?*i32) HRESULT {
         return self.vtable.get_ParentWindow(self, pValue);
     }
-    pub fn put_ParentWindow(self: *const IX509Enrollment, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ParentWindow(self: *const IX509Enrollment, Value: i32) HRESULT {
         return self.vtable.put_ParentWindow(self, Value);
     }
-    pub fn get_NameValuePairs(self: *const IX509Enrollment, ppValue: ?*?*IX509NameValuePairs) callconv(.Inline) HRESULT {
+    pub inline fn get_NameValuePairs(self: *const IX509Enrollment, ppValue: ?*?*IX509NameValuePairs) HRESULT {
         return self.vtable.get_NameValuePairs(self, ppValue);
     }
-    pub fn get_EnrollmentContext(self: *const IX509Enrollment, pValue: ?*X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn get_EnrollmentContext(self: *const IX509Enrollment, pValue: ?*X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.get_EnrollmentContext(self, pValue);
     }
-    pub fn get_Status(self: *const IX509Enrollment, ppValue: ?*?*IX509EnrollmentStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_Status(self: *const IX509Enrollment, ppValue: ?*?*IX509EnrollmentStatus) HRESULT {
         return self.vtable.get_Status(self, ppValue);
     }
-    pub fn get_Certificate(self: *const IX509Enrollment, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Certificate(self: *const IX509Enrollment, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Certificate(self, Encoding, pValue);
     }
-    pub fn get_Response(self: *const IX509Enrollment, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Response(self: *const IX509Enrollment, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Response(self, Encoding, pValue);
     }
-    pub fn get_CertificateFriendlyName(self: *const IX509Enrollment, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CertificateFriendlyName(self: *const IX509Enrollment, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_CertificateFriendlyName(self, pValue);
     }
-    pub fn put_CertificateFriendlyName(self: *const IX509Enrollment, strValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CertificateFriendlyName(self: *const IX509Enrollment, strValue: ?BSTR) HRESULT {
         return self.vtable.put_CertificateFriendlyName(self, strValue);
     }
-    pub fn get_CertificateDescription(self: *const IX509Enrollment, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CertificateDescription(self: *const IX509Enrollment, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_CertificateDescription(self, pValue);
     }
-    pub fn put_CertificateDescription(self: *const IX509Enrollment, strValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CertificateDescription(self: *const IX509Enrollment, strValue: ?BSTR) HRESULT {
         return self.vtable.put_CertificateDescription(self, strValue);
     }
-    pub fn get_RequestId(self: *const IX509Enrollment, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestId(self: *const IX509Enrollment, pValue: ?*i32) HRESULT {
         return self.vtable.get_RequestId(self, pValue);
     }
-    pub fn get_CAConfigString(self: *const IX509Enrollment, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CAConfigString(self: *const IX509Enrollment, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_CAConfigString(self, pValue);
     }
 };
@@ -11467,13 +11467,13 @@ pub const IID_IX509Enrollment2 = &IID_IX509Enrollment2_Value;
 pub const IX509Enrollment2 = extern union {
     pub const VTable = extern struct {
         base: IX509Enrollment.VTable,
-        InitializeFromTemplate: *const fn(
+        InitializeFromTemplate: *const fn (
             self: *const IX509Enrollment2,
             context: X509CertificateEnrollmentContext,
             pPolicyServer: ?*IX509EnrollmentPolicyServer,
             pTemplate: ?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstallResponse2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstallResponse2: *const fn (
             self: *const IX509Enrollment2,
             Restrictions: InstallResponseRestrictionFlags,
             strResponse: ?BSTR,
@@ -11483,40 +11483,40 @@ pub const IX509Enrollment2 = extern union {
             strEnrollmentPolicyServerID: ?BSTR,
             EnrollmentPolicyServerFlags: PolicyServerUrlFlags,
             authFlags: X509EnrollmentAuthFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PolicyServer: *const fn(
+        get_PolicyServer: *const fn (
             self: *const IX509Enrollment2,
             ppPolicyServer: ?*?*IX509EnrollmentPolicyServer,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Template: *const fn(
+        get_Template: *const fn (
             self: *const IX509Enrollment2,
             ppTemplate: ?*?*IX509CertificateTemplate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestIdString: *const fn(
+        get_RequestIdString: *const fn (
             self: *const IX509Enrollment2,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509Enrollment: IX509Enrollment,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InitializeFromTemplate(self: *const IX509Enrollment2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn InitializeFromTemplate(self: *const IX509Enrollment2, context: X509CertificateEnrollmentContext, pPolicyServer: ?*IX509EnrollmentPolicyServer, pTemplate: ?*IX509CertificateTemplate) HRESULT {
         return self.vtable.InitializeFromTemplate(self, context, pPolicyServer, pTemplate);
     }
-    pub fn InstallResponse2(self: *const IX509Enrollment2, Restrictions: InstallResponseRestrictionFlags, strResponse: ?BSTR, Encoding: EncodingType, strPassword: ?BSTR, strEnrollmentPolicyServerUrl: ?BSTR, strEnrollmentPolicyServerID: ?BSTR, EnrollmentPolicyServerFlags: PolicyServerUrlFlags, authFlags: X509EnrollmentAuthFlags) callconv(.Inline) HRESULT {
+    pub inline fn InstallResponse2(self: *const IX509Enrollment2, Restrictions: InstallResponseRestrictionFlags, strResponse: ?BSTR, Encoding: EncodingType, strPassword: ?BSTR, strEnrollmentPolicyServerUrl: ?BSTR, strEnrollmentPolicyServerID: ?BSTR, EnrollmentPolicyServerFlags: PolicyServerUrlFlags, authFlags: X509EnrollmentAuthFlags) HRESULT {
         return self.vtable.InstallResponse2(self, Restrictions, strResponse, Encoding, strPassword, strEnrollmentPolicyServerUrl, strEnrollmentPolicyServerID, EnrollmentPolicyServerFlags, authFlags);
     }
-    pub fn get_PolicyServer(self: *const IX509Enrollment2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) callconv(.Inline) HRESULT {
+    pub inline fn get_PolicyServer(self: *const IX509Enrollment2, ppPolicyServer: ?*?*IX509EnrollmentPolicyServer) HRESULT {
         return self.vtable.get_PolicyServer(self, ppPolicyServer);
     }
-    pub fn get_Template(self: *const IX509Enrollment2, ppTemplate: ?*?*IX509CertificateTemplate) callconv(.Inline) HRESULT {
+    pub inline fn get_Template(self: *const IX509Enrollment2, ppTemplate: ?*?*IX509CertificateTemplate) HRESULT {
         return self.vtable.get_Template(self, ppTemplate);
     }
-    pub fn get_RequestIdString(self: *const IX509Enrollment2, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestIdString(self: *const IX509Enrollment2, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RequestIdString(self, pValue);
     }
 };
@@ -11532,7 +11532,7 @@ pub const IID_IX509EnrollmentHelper = &IID_IX509EnrollmentHelper_Value;
 pub const IX509EnrollmentHelper = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        AddPolicyServer: *const fn(
+        AddPolicyServer: *const fn (
             self: *const IX509EnrollmentHelper,
             strEnrollmentPolicyServerURI: ?BSTR,
             strEnrollmentPolicyID: ?BSTR,
@@ -11540,40 +11540,40 @@ pub const IX509EnrollmentHelper = extern union {
             authFlags: X509EnrollmentAuthFlags,
             strCredential: ?BSTR,
             strPassword: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddEnrollmentServer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddEnrollmentServer: *const fn (
             self: *const IX509EnrollmentHelper,
             strEnrollmentServerURI: ?BSTR,
             authFlags: X509EnrollmentAuthFlags,
             strCredential: ?BSTR,
             strPassword: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Enroll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Enroll: *const fn (
             self: *const IX509EnrollmentHelper,
             strEnrollmentPolicyServerURI: ?BSTR,
             strTemplateName: ?BSTR,
             Encoding: EncodingType,
             enrollFlags: WebEnrollmentFlags,
             pstrCertificate: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Initialize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Initialize: *const fn (
             self: *const IX509EnrollmentHelper,
             Context: X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn AddPolicyServer(self: *const IX509EnrollmentHelper, strEnrollmentPolicyServerURI: ?BSTR, strEnrollmentPolicyID: ?BSTR, EnrollmentPolicyServerFlags: PolicyServerUrlFlags, authFlags: X509EnrollmentAuthFlags, strCredential: ?BSTR, strPassword: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn AddPolicyServer(self: *const IX509EnrollmentHelper, strEnrollmentPolicyServerURI: ?BSTR, strEnrollmentPolicyID: ?BSTR, EnrollmentPolicyServerFlags: PolicyServerUrlFlags, authFlags: X509EnrollmentAuthFlags, strCredential: ?BSTR, strPassword: ?BSTR) HRESULT {
         return self.vtable.AddPolicyServer(self, strEnrollmentPolicyServerURI, strEnrollmentPolicyID, EnrollmentPolicyServerFlags, authFlags, strCredential, strPassword);
     }
-    pub fn AddEnrollmentServer(self: *const IX509EnrollmentHelper, strEnrollmentServerURI: ?BSTR, authFlags: X509EnrollmentAuthFlags, strCredential: ?BSTR, strPassword: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn AddEnrollmentServer(self: *const IX509EnrollmentHelper, strEnrollmentServerURI: ?BSTR, authFlags: X509EnrollmentAuthFlags, strCredential: ?BSTR, strPassword: ?BSTR) HRESULT {
         return self.vtable.AddEnrollmentServer(self, strEnrollmentServerURI, authFlags, strCredential, strPassword);
     }
-    pub fn Enroll(self: *const IX509EnrollmentHelper, strEnrollmentPolicyServerURI: ?BSTR, strTemplateName: ?BSTR, Encoding: EncodingType, enrollFlags: WebEnrollmentFlags, pstrCertificate: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Enroll(self: *const IX509EnrollmentHelper, strEnrollmentPolicyServerURI: ?BSTR, strTemplateName: ?BSTR, Encoding: EncodingType, enrollFlags: WebEnrollmentFlags, pstrCertificate: ?*?BSTR) HRESULT {
         return self.vtable.Enroll(self, strEnrollmentPolicyServerURI, strTemplateName, Encoding, enrollFlags, pstrCertificate);
     }
-    pub fn Initialize(self: *const IX509EnrollmentHelper, Context: X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509EnrollmentHelper, Context: X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.Initialize(self, Context);
     }
 };
@@ -11584,16 +11584,16 @@ pub const IID_IX509EnrollmentWebClassFactory = &IID_IX509EnrollmentWebClassFacto
 pub const IX509EnrollmentWebClassFactory = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        CreateObject: *const fn(
+        CreateObject: *const fn (
             self: *const IX509EnrollmentWebClassFactory,
             strProgID: ?BSTR,
             ppIUnknown: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn CreateObject(self: *const IX509EnrollmentWebClassFactory, strProgID: ?BSTR, ppIUnknown: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn CreateObject(self: *const IX509EnrollmentWebClassFactory, strProgID: ?BSTR, ppIUnknown: ?*?*IUnknown) HRESULT {
         return self.vtable.CreateObject(self, strProgID, ppIUnknown);
     }
 };
@@ -11604,16 +11604,16 @@ pub const IID_IX509MachineEnrollmentFactory = &IID_IX509MachineEnrollmentFactory
 pub const IX509MachineEnrollmentFactory = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        CreateObject: *const fn(
+        CreateObject: *const fn (
             self: *const IX509MachineEnrollmentFactory,
             strProgID: ?BSTR,
             ppIHelper: ?*?*IX509EnrollmentHelper,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn CreateObject(self: *const IX509MachineEnrollmentFactory, strProgID: ?BSTR, ppIHelper: ?*?*IX509EnrollmentHelper) callconv(.Inline) HRESULT {
+    pub inline fn CreateObject(self: *const IX509MachineEnrollmentFactory, strProgID: ?BSTR, ppIHelper: ?*?*IX509EnrollmentHelper) HRESULT {
         return self.vtable.CreateObject(self, strProgID, ppIHelper);
     }
 };
@@ -11646,65 +11646,65 @@ pub const IID_IX509CertificateRevocationListEntry = &IID_IX509CertificateRevocat
 pub const IX509CertificateRevocationListEntry = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509CertificateRevocationListEntry,
             Encoding: EncodingType,
             SerialNumber: ?BSTR,
             RevocationDate: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_SerialNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_SerialNumber: *const fn (
             self: *const IX509CertificateRevocationListEntry,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RevocationDate: *const fn(
+        get_RevocationDate: *const fn (
             self: *const IX509CertificateRevocationListEntry,
             pValue: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RevocationReason: *const fn(
+        get_RevocationReason: *const fn (
             self: *const IX509CertificateRevocationListEntry,
             pValue: ?*CRLRevocationReason,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RevocationReason: *const fn(
+        put_RevocationReason: *const fn (
             self: *const IX509CertificateRevocationListEntry,
             Value: CRLRevocationReason,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_X509Extensions: *const fn(
+        get_X509Extensions: *const fn (
             self: *const IX509CertificateRevocationListEntry,
             ppValue: ?*?*IX509Extensions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CriticalExtensions: *const fn(
+        get_CriticalExtensions: *const fn (
             self: *const IX509CertificateRevocationListEntry,
             ppValue: ?*?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509CertificateRevocationListEntry, Encoding: EncodingType, SerialNumber: ?BSTR, RevocationDate: f64) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509CertificateRevocationListEntry, Encoding: EncodingType, SerialNumber: ?BSTR, RevocationDate: f64) HRESULT {
         return self.vtable.Initialize(self, Encoding, SerialNumber, RevocationDate);
     }
-    pub fn get_SerialNumber(self: *const IX509CertificateRevocationListEntry, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SerialNumber(self: *const IX509CertificateRevocationListEntry, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_SerialNumber(self, Encoding, pValue);
     }
-    pub fn get_RevocationDate(self: *const IX509CertificateRevocationListEntry, pValue: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_RevocationDate(self: *const IX509CertificateRevocationListEntry, pValue: ?*f64) HRESULT {
         return self.vtable.get_RevocationDate(self, pValue);
     }
-    pub fn get_RevocationReason(self: *const IX509CertificateRevocationListEntry, pValue: ?*CRLRevocationReason) callconv(.Inline) HRESULT {
+    pub inline fn get_RevocationReason(self: *const IX509CertificateRevocationListEntry, pValue: ?*CRLRevocationReason) HRESULT {
         return self.vtable.get_RevocationReason(self, pValue);
     }
-    pub fn put_RevocationReason(self: *const IX509CertificateRevocationListEntry, Value: CRLRevocationReason) callconv(.Inline) HRESULT {
+    pub inline fn put_RevocationReason(self: *const IX509CertificateRevocationListEntry, Value: CRLRevocationReason) HRESULT {
         return self.vtable.put_RevocationReason(self, Value);
     }
-    pub fn get_X509Extensions(self: *const IX509CertificateRevocationListEntry, ppValue: ?*?*IX509Extensions) callconv(.Inline) HRESULT {
+    pub inline fn get_X509Extensions(self: *const IX509CertificateRevocationListEntry, ppValue: ?*?*IX509Extensions) HRESULT {
         return self.vtable.get_X509Extensions(self, ppValue);
     }
-    pub fn get_CriticalExtensions(self: *const IX509CertificateRevocationListEntry, ppValue: ?*?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn get_CriticalExtensions(self: *const IX509CertificateRevocationListEntry, ppValue: ?*?*IObjectIds) HRESULT {
         return self.vtable.get_CriticalExtensions(self, ppValue);
     }
 };
@@ -11714,68 +11714,68 @@ pub const IID_IX509CertificateRevocationListEntries = &IID_IX509CertificateRevoc
 pub const IX509CertificateRevocationListEntries = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_ItemByIndex: *const fn(
+        get_ItemByIndex: *const fn (
             self: *const IX509CertificateRevocationListEntries,
             Index: i32,
             pVal: ?*?*IX509CertificateRevocationListEntry,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IX509CertificateRevocationListEntries,
             pVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IX509CertificateRevocationListEntries,
             pVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IX509CertificateRevocationListEntries,
             pVal: ?*IX509CertificateRevocationListEntry,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IX509CertificateRevocationListEntries,
             Index: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IX509CertificateRevocationListEntries,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_IndexBySerialNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_IndexBySerialNumber: *const fn (
             self: *const IX509CertificateRevocationListEntries,
             Encoding: EncodingType,
             SerialNumber: ?BSTR,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddRange: *const fn (
             self: *const IX509CertificateRevocationListEntries,
             pValue: ?*IX509CertificateRevocationListEntries,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ItemByIndex(self: *const IX509CertificateRevocationListEntries, Index: i32, pVal: ?*?*IX509CertificateRevocationListEntry) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemByIndex(self: *const IX509CertificateRevocationListEntries, Index: i32, pVal: ?*?*IX509CertificateRevocationListEntry) HRESULT {
         return self.vtable.get_ItemByIndex(self, Index, pVal);
     }
-    pub fn get_Count(self: *const IX509CertificateRevocationListEntries, pVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IX509CertificateRevocationListEntries, pVal: ?*i32) HRESULT {
         return self.vtable.get_Count(self, pVal);
     }
-    pub fn get__NewEnum(self: *const IX509CertificateRevocationListEntries, pVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IX509CertificateRevocationListEntries, pVal: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pVal);
     }
-    pub fn Add(self: *const IX509CertificateRevocationListEntries, pVal: ?*IX509CertificateRevocationListEntry) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IX509CertificateRevocationListEntries, pVal: ?*IX509CertificateRevocationListEntry) HRESULT {
         return self.vtable.Add(self, pVal);
     }
-    pub fn Remove(self: *const IX509CertificateRevocationListEntries, Index: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IX509CertificateRevocationListEntries, Index: i32) HRESULT {
         return self.vtable.Remove(self, Index);
     }
-    pub fn Clear(self: *const IX509CertificateRevocationListEntries) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IX509CertificateRevocationListEntries) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn get_IndexBySerialNumber(self: *const IX509CertificateRevocationListEntries, Encoding: EncodingType, SerialNumber: ?BSTR, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_IndexBySerialNumber(self: *const IX509CertificateRevocationListEntries, Encoding: EncodingType, SerialNumber: ?BSTR, pIndex: ?*i32) HRESULT {
         return self.vtable.get_IndexBySerialNumber(self, Encoding, SerialNumber, pIndex);
     }
-    pub fn AddRange(self: *const IX509CertificateRevocationListEntries, pValue: ?*IX509CertificateRevocationListEntries) callconv(.Inline) HRESULT {
+    pub inline fn AddRange(self: *const IX509CertificateRevocationListEntries, pValue: ?*IX509CertificateRevocationListEntries) HRESULT {
         return self.vtable.AddRange(self, pValue);
     }
 };
@@ -11785,247 +11785,247 @@ pub const IID_IX509CertificateRevocationList = &IID_IX509CertificateRevocationLi
 pub const IX509CertificateRevocationList = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509CertificateRevocationList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeDecode: *const fn (
             self: *const IX509CertificateRevocationList,
             strEncodedData: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Encode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Encode: *const fn (
             self: *const IX509CertificateRevocationList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ResetForEncode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ResetForEncode: *const fn (
             self: *const IX509CertificateRevocationList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckPublicKeySignature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckPublicKeySignature: *const fn (
             self: *const IX509CertificateRevocationList,
             pPublicKey: ?*IX509PublicKey,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckSignature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckSignature: *const fn (
             self: *const IX509CertificateRevocationList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Issuer: *const fn(
+        get_Issuer: *const fn (
             self: *const IX509CertificateRevocationList,
             ppValue: ?*?*IX500DistinguishedName,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Issuer: *const fn(
+        put_Issuer: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: ?*IX500DistinguishedName,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ThisUpdate: *const fn(
+        get_ThisUpdate: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ThisUpdate: *const fn(
+        put_ThisUpdate: *const fn (
             self: *const IX509CertificateRevocationList,
             Value: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NextUpdate: *const fn(
+        get_NextUpdate: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NextUpdate: *const fn(
+        put_NextUpdate: *const fn (
             self: *const IX509CertificateRevocationList,
             Value: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_X509CRLEntries: *const fn(
+        get_X509CRLEntries: *const fn (
             self: *const IX509CertificateRevocationList,
             ppValue: ?*?*IX509CertificateRevocationListEntries,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_X509Extensions: *const fn(
+        get_X509Extensions: *const fn (
             self: *const IX509CertificateRevocationList,
             ppValue: ?*?*IX509Extensions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CriticalExtensions: *const fn(
+        get_CriticalExtensions: *const fn (
             self: *const IX509CertificateRevocationList,
             ppValue: ?*?*IObjectIds,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SignerCertificate: *const fn(
+        get_SignerCertificate: *const fn (
             self: *const IX509CertificateRevocationList,
             ppValue: ?*?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SignerCertificate: *const fn(
+        put_SignerCertificate: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: ?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_CRLNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_CRLNumber: *const fn (
             self: *const IX509CertificateRevocationList,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_CRLNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_CRLNumber: *const fn (
             self: *const IX509CertificateRevocationList,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAVersion: *const fn(
+        get_CAVersion: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CAVersion: *const fn(
+        put_CAVersion: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BaseCRL: *const fn(
+        get_BaseCRL: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NullSigned: *const fn(
+        get_NullSigned: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HashAlgorithm: *const fn(
+        get_HashAlgorithm: *const fn (
             self: *const IX509CertificateRevocationList,
             ppValue: ?*?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HashAlgorithm: *const fn(
+        put_HashAlgorithm: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: ?*IObjectId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AlternateSignatureAlgorithm: *const fn(
+        get_AlternateSignatureAlgorithm: *const fn (
             self: *const IX509CertificateRevocationList,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AlternateSignatureAlgorithm: *const fn(
+        put_AlternateSignatureAlgorithm: *const fn (
             self: *const IX509CertificateRevocationList,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SignatureInformation: *const fn(
+        get_SignatureInformation: *const fn (
             self: *const IX509CertificateRevocationList,
             ppValue: ?*?*IX509SignatureInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RawData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RawData: *const fn (
             self: *const IX509CertificateRevocationList,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_RawDataToBeSigned: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_RawDataToBeSigned: *const fn (
             self: *const IX509CertificateRevocationList,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Signature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Signature: *const fn (
             self: *const IX509CertificateRevocationList,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509CertificateRevocationList) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509CertificateRevocationList) HRESULT {
         return self.vtable.Initialize(self);
     }
-    pub fn InitializeDecode(self: *const IX509CertificateRevocationList, strEncodedData: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn InitializeDecode(self: *const IX509CertificateRevocationList, strEncodedData: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.InitializeDecode(self, strEncodedData, Encoding);
     }
-    pub fn Encode(self: *const IX509CertificateRevocationList) callconv(.Inline) HRESULT {
+    pub inline fn Encode(self: *const IX509CertificateRevocationList) HRESULT {
         return self.vtable.Encode(self);
     }
-    pub fn ResetForEncode(self: *const IX509CertificateRevocationList) callconv(.Inline) HRESULT {
+    pub inline fn ResetForEncode(self: *const IX509CertificateRevocationList) HRESULT {
         return self.vtable.ResetForEncode(self);
     }
-    pub fn CheckPublicKeySignature(self: *const IX509CertificateRevocationList, pPublicKey: ?*IX509PublicKey) callconv(.Inline) HRESULT {
+    pub inline fn CheckPublicKeySignature(self: *const IX509CertificateRevocationList, pPublicKey: ?*IX509PublicKey) HRESULT {
         return self.vtable.CheckPublicKeySignature(self, pPublicKey);
     }
-    pub fn CheckSignature(self: *const IX509CertificateRevocationList) callconv(.Inline) HRESULT {
+    pub inline fn CheckSignature(self: *const IX509CertificateRevocationList) HRESULT {
         return self.vtable.CheckSignature(self);
     }
-    pub fn get_Issuer(self: *const IX509CertificateRevocationList, ppValue: ?*?*IX500DistinguishedName) callconv(.Inline) HRESULT {
+    pub inline fn get_Issuer(self: *const IX509CertificateRevocationList, ppValue: ?*?*IX500DistinguishedName) HRESULT {
         return self.vtable.get_Issuer(self, ppValue);
     }
-    pub fn put_Issuer(self: *const IX509CertificateRevocationList, pValue: ?*IX500DistinguishedName) callconv(.Inline) HRESULT {
+    pub inline fn put_Issuer(self: *const IX509CertificateRevocationList, pValue: ?*IX500DistinguishedName) HRESULT {
         return self.vtable.put_Issuer(self, pValue);
     }
-    pub fn get_ThisUpdate(self: *const IX509CertificateRevocationList, pValue: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_ThisUpdate(self: *const IX509CertificateRevocationList, pValue: ?*f64) HRESULT {
         return self.vtable.get_ThisUpdate(self, pValue);
     }
-    pub fn put_ThisUpdate(self: *const IX509CertificateRevocationList, Value: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_ThisUpdate(self: *const IX509CertificateRevocationList, Value: f64) HRESULT {
         return self.vtable.put_ThisUpdate(self, Value);
     }
-    pub fn get_NextUpdate(self: *const IX509CertificateRevocationList, pValue: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_NextUpdate(self: *const IX509CertificateRevocationList, pValue: ?*f64) HRESULT {
         return self.vtable.get_NextUpdate(self, pValue);
     }
-    pub fn put_NextUpdate(self: *const IX509CertificateRevocationList, Value: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_NextUpdate(self: *const IX509CertificateRevocationList, Value: f64) HRESULT {
         return self.vtable.put_NextUpdate(self, Value);
     }
-    pub fn get_X509CRLEntries(self: *const IX509CertificateRevocationList, ppValue: ?*?*IX509CertificateRevocationListEntries) callconv(.Inline) HRESULT {
+    pub inline fn get_X509CRLEntries(self: *const IX509CertificateRevocationList, ppValue: ?*?*IX509CertificateRevocationListEntries) HRESULT {
         return self.vtable.get_X509CRLEntries(self, ppValue);
     }
-    pub fn get_X509Extensions(self: *const IX509CertificateRevocationList, ppValue: ?*?*IX509Extensions) callconv(.Inline) HRESULT {
+    pub inline fn get_X509Extensions(self: *const IX509CertificateRevocationList, ppValue: ?*?*IX509Extensions) HRESULT {
         return self.vtable.get_X509Extensions(self, ppValue);
     }
-    pub fn get_CriticalExtensions(self: *const IX509CertificateRevocationList, ppValue: ?*?*IObjectIds) callconv(.Inline) HRESULT {
+    pub inline fn get_CriticalExtensions(self: *const IX509CertificateRevocationList, ppValue: ?*?*IObjectIds) HRESULT {
         return self.vtable.get_CriticalExtensions(self, ppValue);
     }
-    pub fn get_SignerCertificate(self: *const IX509CertificateRevocationList, ppValue: ?*?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn get_SignerCertificate(self: *const IX509CertificateRevocationList, ppValue: ?*?*ISignerCertificate) HRESULT {
         return self.vtable.get_SignerCertificate(self, ppValue);
     }
-    pub fn put_SignerCertificate(self: *const IX509CertificateRevocationList, pValue: ?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn put_SignerCertificate(self: *const IX509CertificateRevocationList, pValue: ?*ISignerCertificate) HRESULT {
         return self.vtable.put_SignerCertificate(self, pValue);
     }
-    pub fn get_CRLNumber(self: *const IX509CertificateRevocationList, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CRLNumber(self: *const IX509CertificateRevocationList, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_CRLNumber(self, Encoding, pValue);
     }
-    pub fn put_CRLNumber(self: *const IX509CertificateRevocationList, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CRLNumber(self: *const IX509CertificateRevocationList, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_CRLNumber(self, Encoding, Value);
     }
-    pub fn get_CAVersion(self: *const IX509CertificateRevocationList, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CAVersion(self: *const IX509CertificateRevocationList, pValue: ?*i32) HRESULT {
         return self.vtable.get_CAVersion(self, pValue);
     }
-    pub fn put_CAVersion(self: *const IX509CertificateRevocationList, pValue: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_CAVersion(self: *const IX509CertificateRevocationList, pValue: i32) HRESULT {
         return self.vtable.put_CAVersion(self, pValue);
     }
-    pub fn get_BaseCRL(self: *const IX509CertificateRevocationList, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_BaseCRL(self: *const IX509CertificateRevocationList, pValue: ?*i16) HRESULT {
         return self.vtable.get_BaseCRL(self, pValue);
     }
-    pub fn get_NullSigned(self: *const IX509CertificateRevocationList, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_NullSigned(self: *const IX509CertificateRevocationList, pValue: ?*i16) HRESULT {
         return self.vtable.get_NullSigned(self, pValue);
     }
-    pub fn get_HashAlgorithm(self: *const IX509CertificateRevocationList, ppValue: ?*?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn get_HashAlgorithm(self: *const IX509CertificateRevocationList, ppValue: ?*?*IObjectId) HRESULT {
         return self.vtable.get_HashAlgorithm(self, ppValue);
     }
-    pub fn put_HashAlgorithm(self: *const IX509CertificateRevocationList, pValue: ?*IObjectId) callconv(.Inline) HRESULT {
+    pub inline fn put_HashAlgorithm(self: *const IX509CertificateRevocationList, pValue: ?*IObjectId) HRESULT {
         return self.vtable.put_HashAlgorithm(self, pValue);
     }
-    pub fn get_AlternateSignatureAlgorithm(self: *const IX509CertificateRevocationList, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_AlternateSignatureAlgorithm(self: *const IX509CertificateRevocationList, pValue: ?*i16) HRESULT {
         return self.vtable.get_AlternateSignatureAlgorithm(self, pValue);
     }
-    pub fn put_AlternateSignatureAlgorithm(self: *const IX509CertificateRevocationList, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_AlternateSignatureAlgorithm(self: *const IX509CertificateRevocationList, Value: i16) HRESULT {
         return self.vtable.put_AlternateSignatureAlgorithm(self, Value);
     }
-    pub fn get_SignatureInformation(self: *const IX509CertificateRevocationList, ppValue: ?*?*IX509SignatureInformation) callconv(.Inline) HRESULT {
+    pub inline fn get_SignatureInformation(self: *const IX509CertificateRevocationList, ppValue: ?*?*IX509SignatureInformation) HRESULT {
         return self.vtable.get_SignatureInformation(self, ppValue);
     }
-    pub fn get_RawData(self: *const IX509CertificateRevocationList, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RawData(self: *const IX509CertificateRevocationList, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RawData(self, Encoding, pValue);
     }
-    pub fn get_RawDataToBeSigned(self: *const IX509CertificateRevocationList, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RawDataToBeSigned(self: *const IX509CertificateRevocationList, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_RawDataToBeSigned(self, Encoding, pValue);
     }
-    pub fn get_Signature(self: *const IX509CertificateRevocationList, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Signature(self: *const IX509CertificateRevocationList, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Signature(self, Encoding, pValue);
     }
 };
@@ -12035,32 +12035,32 @@ pub const IID_ICertificateAttestationChallenge = &IID_ICertificateAttestationCha
 pub const ICertificateAttestationChallenge = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertificateAttestationChallenge,
             Encoding: EncodingType,
             strPendingFullCmcResponseWithChallenge: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DecryptChallenge: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DecryptChallenge: *const fn (
             self: *const ICertificateAttestationChallenge,
             Encoding: EncodingType,
             pstrEnvelopedPkcs7ReencryptedToCA: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestID: *const fn(
+        get_RequestID: *const fn (
             self: *const ICertificateAttestationChallenge,
             pstrRequestID: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertificateAttestationChallenge, Encoding: EncodingType, strPendingFullCmcResponseWithChallenge: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertificateAttestationChallenge, Encoding: EncodingType, strPendingFullCmcResponseWithChallenge: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, Encoding, strPendingFullCmcResponseWithChallenge);
     }
-    pub fn DecryptChallenge(self: *const ICertificateAttestationChallenge, Encoding: EncodingType, pstrEnvelopedPkcs7ReencryptedToCA: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn DecryptChallenge(self: *const ICertificateAttestationChallenge, Encoding: EncodingType, pstrEnvelopedPkcs7ReencryptedToCA: ?*?BSTR) HRESULT {
         return self.vtable.DecryptChallenge(self, Encoding, pstrEnvelopedPkcs7ReencryptedToCA);
     }
-    pub fn get_RequestID(self: *const ICertificateAttestationChallenge, pstrRequestID: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestID(self: *const ICertificateAttestationChallenge, pstrRequestID: ?*?BSTR) HRESULT {
         return self.vtable.get_RequestID(self, pstrRequestID);
     }
 };
@@ -12071,24 +12071,24 @@ pub const ICertificateAttestationChallenge2 = extern union {
     pub const VTable = extern struct {
         base: ICertificateAttestationChallenge.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_KeyContainerName: *const fn(
+        put_KeyContainerName: *const fn (
             self: *const ICertificateAttestationChallenge2,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_KeyBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_KeyBlob: *const fn (
             self: *const ICertificateAttestationChallenge2,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertificateAttestationChallenge: ICertificateAttestationChallenge,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn put_KeyContainerName(self: *const ICertificateAttestationChallenge2, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_KeyContainerName(self: *const ICertificateAttestationChallenge2, Value: ?BSTR) HRESULT {
         return self.vtable.put_KeyContainerName(self, Value);
     }
-    pub fn put_KeyBlob(self: *const ICertificateAttestationChallenge2, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_KeyBlob(self: *const ICertificateAttestationChallenge2, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_KeyBlob(self, Encoding, Value);
     }
 };
@@ -12098,29 +12098,29 @@ pub const IID_IX509SCEPEnrollment = &IID_IX509SCEPEnrollment_Value;
 pub const IX509SCEPEnrollment = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509SCEPEnrollment,
             pRequest: ?*IX509CertificateRequestPkcs10,
             strThumbprint: ?BSTR,
             ThumprintEncoding: EncodingType,
             strServerCertificates: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeForPending: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeForPending: *const fn (
             self: *const IX509SCEPEnrollment,
             Context: X509CertificateEnrollmentContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateRequestMessage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateRequestMessage: *const fn (
             self: *const IX509SCEPEnrollment,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateRetrievePendingMessage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateRetrievePendingMessage: *const fn (
             self: *const IX509SCEPEnrollment,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateRetrieveCertificateMessage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateRetrieveCertificateMessage: *const fn (
             self: *const IX509SCEPEnrollment,
             Context: X509CertificateEnrollmentContext,
             strIssuer: ?BSTR,
@@ -12129,159 +12129,159 @@ pub const IX509SCEPEnrollment = extern union {
             SerialNumberEncoding: EncodingType,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ProcessResponseMessage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ProcessResponseMessage: *const fn (
             self: *const IX509SCEPEnrollment,
             strResponse: ?BSTR,
             Encoding: EncodingType,
             pDisposition: ?*X509SCEPDisposition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ServerCapabilities: *const fn(
+        put_ServerCapabilities: *const fn (
             self: *const IX509SCEPEnrollment,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FailInfo: *const fn(
+        get_FailInfo: *const fn (
             self: *const IX509SCEPEnrollment,
             pValue: ?*X509SCEPFailInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SignerCertificate: *const fn(
+        get_SignerCertificate: *const fn (
             self: *const IX509SCEPEnrollment,
             ppValue: ?*?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SignerCertificate: *const fn(
+        put_SignerCertificate: *const fn (
             self: *const IX509SCEPEnrollment,
             pValue: ?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OldCertificate: *const fn(
+        get_OldCertificate: *const fn (
             self: *const IX509SCEPEnrollment,
             ppValue: ?*?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OldCertificate: *const fn(
+        put_OldCertificate: *const fn (
             self: *const IX509SCEPEnrollment,
             pValue: ?*ISignerCertificate,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_TransactionId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_TransactionId: *const fn (
             self: *const IX509SCEPEnrollment,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_TransactionId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_TransactionId: *const fn (
             self: *const IX509SCEPEnrollment,
             Encoding: EncodingType,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Request: *const fn(
+        get_Request: *const fn (
             self: *const IX509SCEPEnrollment,
             ppValue: ?*?*IX509CertificateRequestPkcs10,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CertificateFriendlyName: *const fn(
+        get_CertificateFriendlyName: *const fn (
             self: *const IX509SCEPEnrollment,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CertificateFriendlyName: *const fn(
+        put_CertificateFriendlyName: *const fn (
             self: *const IX509SCEPEnrollment,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Status: *const fn(
+        get_Status: *const fn (
             self: *const IX509SCEPEnrollment,
             ppValue: ?*?*IX509EnrollmentStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_Certificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_Certificate: *const fn (
             self: *const IX509SCEPEnrollment,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Silent: *const fn(
+        get_Silent: *const fn (
             self: *const IX509SCEPEnrollment,
             pValue: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Silent: *const fn(
+        put_Silent: *const fn (
             self: *const IX509SCEPEnrollment,
             Value: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteRequest: *const fn (
             self: *const IX509SCEPEnrollment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509SCEPEnrollment, pRequest: ?*IX509CertificateRequestPkcs10, strThumbprint: ?BSTR, ThumprintEncoding: EncodingType, strServerCertificates: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509SCEPEnrollment, pRequest: ?*IX509CertificateRequestPkcs10, strThumbprint: ?BSTR, ThumprintEncoding: EncodingType, strServerCertificates: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.Initialize(self, pRequest, strThumbprint, ThumprintEncoding, strServerCertificates, Encoding);
     }
-    pub fn InitializeForPending(self: *const IX509SCEPEnrollment, Context: X509CertificateEnrollmentContext) callconv(.Inline) HRESULT {
+    pub inline fn InitializeForPending(self: *const IX509SCEPEnrollment, Context: X509CertificateEnrollmentContext) HRESULT {
         return self.vtable.InitializeForPending(self, Context);
     }
-    pub fn CreateRequestMessage(self: *const IX509SCEPEnrollment, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn CreateRequestMessage(self: *const IX509SCEPEnrollment, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.CreateRequestMessage(self, Encoding, pValue);
     }
-    pub fn CreateRetrievePendingMessage(self: *const IX509SCEPEnrollment, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn CreateRetrievePendingMessage(self: *const IX509SCEPEnrollment, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.CreateRetrievePendingMessage(self, Encoding, pValue);
     }
-    pub fn CreateRetrieveCertificateMessage(self: *const IX509SCEPEnrollment, Context: X509CertificateEnrollmentContext, strIssuer: ?BSTR, IssuerEncoding: EncodingType, strSerialNumber: ?BSTR, SerialNumberEncoding: EncodingType, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn CreateRetrieveCertificateMessage(self: *const IX509SCEPEnrollment, Context: X509CertificateEnrollmentContext, strIssuer: ?BSTR, IssuerEncoding: EncodingType, strSerialNumber: ?BSTR, SerialNumberEncoding: EncodingType, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.CreateRetrieveCertificateMessage(self, Context, strIssuer, IssuerEncoding, strSerialNumber, SerialNumberEncoding, Encoding, pValue);
     }
-    pub fn ProcessResponseMessage(self: *const IX509SCEPEnrollment, strResponse: ?BSTR, Encoding: EncodingType, pDisposition: ?*X509SCEPDisposition) callconv(.Inline) HRESULT {
+    pub inline fn ProcessResponseMessage(self: *const IX509SCEPEnrollment, strResponse: ?BSTR, Encoding: EncodingType, pDisposition: ?*X509SCEPDisposition) HRESULT {
         return self.vtable.ProcessResponseMessage(self, strResponse, Encoding, pDisposition);
     }
-    pub fn put_ServerCapabilities(self: *const IX509SCEPEnrollment, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ServerCapabilities(self: *const IX509SCEPEnrollment, Value: ?BSTR) HRESULT {
         return self.vtable.put_ServerCapabilities(self, Value);
     }
-    pub fn get_FailInfo(self: *const IX509SCEPEnrollment, pValue: ?*X509SCEPFailInfo) callconv(.Inline) HRESULT {
+    pub inline fn get_FailInfo(self: *const IX509SCEPEnrollment, pValue: ?*X509SCEPFailInfo) HRESULT {
         return self.vtable.get_FailInfo(self, pValue);
     }
-    pub fn get_SignerCertificate(self: *const IX509SCEPEnrollment, ppValue: ?*?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn get_SignerCertificate(self: *const IX509SCEPEnrollment, ppValue: ?*?*ISignerCertificate) HRESULT {
         return self.vtable.get_SignerCertificate(self, ppValue);
     }
-    pub fn put_SignerCertificate(self: *const IX509SCEPEnrollment, pValue: ?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn put_SignerCertificate(self: *const IX509SCEPEnrollment, pValue: ?*ISignerCertificate) HRESULT {
         return self.vtable.put_SignerCertificate(self, pValue);
     }
-    pub fn get_OldCertificate(self: *const IX509SCEPEnrollment, ppValue: ?*?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn get_OldCertificate(self: *const IX509SCEPEnrollment, ppValue: ?*?*ISignerCertificate) HRESULT {
         return self.vtable.get_OldCertificate(self, ppValue);
     }
-    pub fn put_OldCertificate(self: *const IX509SCEPEnrollment, pValue: ?*ISignerCertificate) callconv(.Inline) HRESULT {
+    pub inline fn put_OldCertificate(self: *const IX509SCEPEnrollment, pValue: ?*ISignerCertificate) HRESULT {
         return self.vtable.put_OldCertificate(self, pValue);
     }
-    pub fn get_TransactionId(self: *const IX509SCEPEnrollment, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_TransactionId(self: *const IX509SCEPEnrollment, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_TransactionId(self, Encoding, pValue);
     }
-    pub fn put_TransactionId(self: *const IX509SCEPEnrollment, Encoding: EncodingType, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_TransactionId(self: *const IX509SCEPEnrollment, Encoding: EncodingType, Value: ?BSTR) HRESULT {
         return self.vtable.put_TransactionId(self, Encoding, Value);
     }
-    pub fn get_Request(self: *const IX509SCEPEnrollment, ppValue: ?*?*IX509CertificateRequestPkcs10) callconv(.Inline) HRESULT {
+    pub inline fn get_Request(self: *const IX509SCEPEnrollment, ppValue: ?*?*IX509CertificateRequestPkcs10) HRESULT {
         return self.vtable.get_Request(self, ppValue);
     }
-    pub fn get_CertificateFriendlyName(self: *const IX509SCEPEnrollment, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CertificateFriendlyName(self: *const IX509SCEPEnrollment, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_CertificateFriendlyName(self, pValue);
     }
-    pub fn put_CertificateFriendlyName(self: *const IX509SCEPEnrollment, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CertificateFriendlyName(self: *const IX509SCEPEnrollment, Value: ?BSTR) HRESULT {
         return self.vtable.put_CertificateFriendlyName(self, Value);
     }
-    pub fn get_Status(self: *const IX509SCEPEnrollment, ppValue: ?*?*IX509EnrollmentStatus) callconv(.Inline) HRESULT {
+    pub inline fn get_Status(self: *const IX509SCEPEnrollment, ppValue: ?*?*IX509EnrollmentStatus) HRESULT {
         return self.vtable.get_Status(self, ppValue);
     }
-    pub fn get_Certificate(self: *const IX509SCEPEnrollment, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Certificate(self: *const IX509SCEPEnrollment, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Certificate(self, Encoding, pValue);
     }
-    pub fn get_Silent(self: *const IX509SCEPEnrollment, pValue: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Silent(self: *const IX509SCEPEnrollment, pValue: ?*i16) HRESULT {
         return self.vtable.get_Silent(self, pValue);
     }
-    pub fn put_Silent(self: *const IX509SCEPEnrollment, Value: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Silent(self: *const IX509SCEPEnrollment, Value: i16) HRESULT {
         return self.vtable.put_Silent(self, Value);
     }
-    pub fn DeleteRequest(self: *const IX509SCEPEnrollment) callconv(.Inline) HRESULT {
+    pub inline fn DeleteRequest(self: *const IX509SCEPEnrollment) HRESULT {
         return self.vtable.DeleteRequest(self);
     }
 };
@@ -12313,59 +12313,59 @@ pub const IID_IX509SCEPEnrollment2 = &IID_IX509SCEPEnrollment2_Value;
 pub const IX509SCEPEnrollment2 = extern union {
     pub const VTable = extern struct {
         base: IX509SCEPEnrollment.VTable,
-        CreateChallengeAnswerMessage: *const fn(
+        CreateChallengeAnswerMessage: *const fn (
             self: *const IX509SCEPEnrollment2,
             Encoding: EncodingType,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ProcessResponseMessage2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ProcessResponseMessage2: *const fn (
             self: *const IX509SCEPEnrollment2,
             Flags: X509SCEPProcessMessageFlags,
             strResponse: ?BSTR,
             Encoding: EncodingType,
             pDisposition: ?*X509SCEPDisposition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ResultMessageText: *const fn(
+        get_ResultMessageText: *const fn (
             self: *const IX509SCEPEnrollment2,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DelayRetry: *const fn(
+        get_DelayRetry: *const fn (
             self: *const IX509SCEPEnrollment2,
             pValue: ?*DelayRetryAction,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ActivityId: *const fn(
+        get_ActivityId: *const fn (
             self: *const IX509SCEPEnrollment2,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ActivityId: *const fn(
+        put_ActivityId: *const fn (
             self: *const IX509SCEPEnrollment2,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IX509SCEPEnrollment: IX509SCEPEnrollment,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn CreateChallengeAnswerMessage(self: *const IX509SCEPEnrollment2, Encoding: EncodingType, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn CreateChallengeAnswerMessage(self: *const IX509SCEPEnrollment2, Encoding: EncodingType, pValue: ?*?BSTR) HRESULT {
         return self.vtable.CreateChallengeAnswerMessage(self, Encoding, pValue);
     }
-    pub fn ProcessResponseMessage2(self: *const IX509SCEPEnrollment2, Flags: X509SCEPProcessMessageFlags, strResponse: ?BSTR, Encoding: EncodingType, pDisposition: ?*X509SCEPDisposition) callconv(.Inline) HRESULT {
+    pub inline fn ProcessResponseMessage2(self: *const IX509SCEPEnrollment2, Flags: X509SCEPProcessMessageFlags, strResponse: ?BSTR, Encoding: EncodingType, pDisposition: ?*X509SCEPDisposition) HRESULT {
         return self.vtable.ProcessResponseMessage2(self, Flags, strResponse, Encoding, pDisposition);
     }
-    pub fn get_ResultMessageText(self: *const IX509SCEPEnrollment2, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ResultMessageText(self: *const IX509SCEPEnrollment2, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ResultMessageText(self, pValue);
     }
-    pub fn get_DelayRetry(self: *const IX509SCEPEnrollment2, pValue: ?*DelayRetryAction) callconv(.Inline) HRESULT {
+    pub inline fn get_DelayRetry(self: *const IX509SCEPEnrollment2, pValue: ?*DelayRetryAction) HRESULT {
         return self.vtable.get_DelayRetry(self, pValue);
     }
-    pub fn get_ActivityId(self: *const IX509SCEPEnrollment2, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ActivityId(self: *const IX509SCEPEnrollment2, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ActivityId(self, pValue);
     }
-    pub fn put_ActivityId(self: *const IX509SCEPEnrollment2, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ActivityId(self: *const IX509SCEPEnrollment2, Value: ?BSTR) HRESULT {
         return self.vtable.put_ActivityId(self, Value);
     }
 };
@@ -12375,60 +12375,60 @@ pub const IID_IX509SCEPEnrollmentHelper = &IID_IX509SCEPEnrollmentHelper_Value;
 pub const IX509SCEPEnrollmentHelper = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IX509SCEPEnrollmentHelper,
             strServerUrl: ?BSTR,
             strRequestHeaders: ?BSTR,
             pRequest: ?*IX509CertificateRequestPkcs10,
             strCACertificateThumbprint: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeForPending: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeForPending: *const fn (
             self: *const IX509SCEPEnrollmentHelper,
             strServerUrl: ?BSTR,
             strRequestHeaders: ?BSTR,
             Context: X509CertificateEnrollmentContext,
             strTransactionId: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Enroll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Enroll: *const fn (
             self: *const IX509SCEPEnrollmentHelper,
             ProcessFlags: X509SCEPProcessMessageFlags,
             pDisposition: ?*X509SCEPDisposition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FetchPending: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FetchPending: *const fn (
             self: *const IX509SCEPEnrollmentHelper,
             ProcessFlags: X509SCEPProcessMessageFlags,
             pDisposition: ?*X509SCEPDisposition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_X509SCEPEnrollment: *const fn(
+        get_X509SCEPEnrollment: *const fn (
             self: *const IX509SCEPEnrollmentHelper,
             ppValue: ?*?*IX509SCEPEnrollment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ResultMessageText: *const fn(
+        get_ResultMessageText: *const fn (
             self: *const IX509SCEPEnrollmentHelper,
             pValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IX509SCEPEnrollmentHelper, strServerUrl: ?BSTR, strRequestHeaders: ?BSTR, pRequest: ?*IX509CertificateRequestPkcs10, strCACertificateThumbprint: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IX509SCEPEnrollmentHelper, strServerUrl: ?BSTR, strRequestHeaders: ?BSTR, pRequest: ?*IX509CertificateRequestPkcs10, strCACertificateThumbprint: ?BSTR) HRESULT {
         return self.vtable.Initialize(self, strServerUrl, strRequestHeaders, pRequest, strCACertificateThumbprint);
     }
-    pub fn InitializeForPending(self: *const IX509SCEPEnrollmentHelper, strServerUrl: ?BSTR, strRequestHeaders: ?BSTR, Context: X509CertificateEnrollmentContext, strTransactionId: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitializeForPending(self: *const IX509SCEPEnrollmentHelper, strServerUrl: ?BSTR, strRequestHeaders: ?BSTR, Context: X509CertificateEnrollmentContext, strTransactionId: ?BSTR) HRESULT {
         return self.vtable.InitializeForPending(self, strServerUrl, strRequestHeaders, Context, strTransactionId);
     }
-    pub fn Enroll(self: *const IX509SCEPEnrollmentHelper, ProcessFlags: X509SCEPProcessMessageFlags, pDisposition: ?*X509SCEPDisposition) callconv(.Inline) HRESULT {
+    pub inline fn Enroll(self: *const IX509SCEPEnrollmentHelper, ProcessFlags: X509SCEPProcessMessageFlags, pDisposition: ?*X509SCEPDisposition) HRESULT {
         return self.vtable.Enroll(self, ProcessFlags, pDisposition);
     }
-    pub fn FetchPending(self: *const IX509SCEPEnrollmentHelper, ProcessFlags: X509SCEPProcessMessageFlags, pDisposition: ?*X509SCEPDisposition) callconv(.Inline) HRESULT {
+    pub inline fn FetchPending(self: *const IX509SCEPEnrollmentHelper, ProcessFlags: X509SCEPProcessMessageFlags, pDisposition: ?*X509SCEPDisposition) HRESULT {
         return self.vtable.FetchPending(self, ProcessFlags, pDisposition);
     }
-    pub fn get_X509SCEPEnrollment(self: *const IX509SCEPEnrollmentHelper, ppValue: ?*?*IX509SCEPEnrollment) callconv(.Inline) HRESULT {
+    pub inline fn get_X509SCEPEnrollment(self: *const IX509SCEPEnrollmentHelper, ppValue: ?*?*IX509SCEPEnrollment) HRESULT {
         return self.vtable.get_X509SCEPEnrollment(self, ppValue);
     }
-    pub fn get_ResultMessageText(self: *const IX509SCEPEnrollmentHelper, pValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ResultMessageText(self: *const IX509SCEPEnrollmentHelper, pValue: ?*?BSTR) HRESULT {
         return self.vtable.get_ResultMessageText(self, pValue);
     }
 };
@@ -12590,7 +12590,7 @@ pub const ImportInstallCertificate = ImportPFXFlags.InstallCertificate;
 pub const ImportInstallChain = ImportPFXFlags.InstallChain;
 pub const ImportInstallChainAndRoot = ImportPFXFlags.InstallChainAndRoot;
 
-pub const FNIMPORTPFXTOPROVIDER = *const fn(
+pub const FNIMPORTPFXTOPROVIDER = *const fn (
     hWndParent: ?HWND,
     // TODO: what to do with BytesParamIndex 2?
     pbPFX: ?*const u8,
@@ -12604,12 +12604,12 @@ pub const FNIMPORTPFXTOPROVIDER = *const fn(
     pwszFriendlyName: ?[*:0]const u16,
     pcCertOut: ?*u32,
     prgpCertOut: ?*?*?*CERT_CONTEXT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const FNIMPORTPFXTOPROVIDERFREEDATA = *const fn(
+pub const FNIMPORTPFXTOPROVIDERFREEDATA = *const fn (
     cCert: u32,
     rgpCert: ?[*]?*CERT_CONTEXT,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 const IID_ICertEncodeStringArray_Value = Guid.initString("12a88820-7494-11d0-8816-00a0c903b83c");
@@ -12617,60 +12617,60 @@ pub const IID_ICertEncodeStringArray = &IID_ICertEncodeStringArray_Value;
 pub const ICertEncodeStringArray = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Decode: *const fn(
+        Decode: *const fn (
             self: *const ICertEncodeStringArray,
             strBinary: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStringType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStringType: *const fn (
             self: *const ICertEncodeStringArray,
             pStringType: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCount: *const fn (
             self: *const ICertEncodeStringArray,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const ICertEncodeStringArray,
             Index: i32,
             pstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const ICertEncodeStringArray,
             Count: i32,
             StringType: CERT_RDN_ATTR_VALUE_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const ICertEncodeStringArray,
             Index: i32,
             str: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Encode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Encode: *const fn (
             self: *const ICertEncodeStringArray,
             pstrBinary: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Decode(self: *const ICertEncodeStringArray, strBinary: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Decode(self: *const ICertEncodeStringArray, strBinary: ?BSTR) HRESULT {
         return self.vtable.Decode(self, strBinary);
     }
-    pub fn GetStringType(self: *const ICertEncodeStringArray, pStringType: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStringType(self: *const ICertEncodeStringArray, pStringType: ?*i32) HRESULT {
         return self.vtable.GetStringType(self, pStringType);
     }
-    pub fn GetCount(self: *const ICertEncodeStringArray, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const ICertEncodeStringArray, pCount: ?*i32) HRESULT {
         return self.vtable.GetCount(self, pCount);
     }
-    pub fn GetValue(self: *const ICertEncodeStringArray, Index: i32, pstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const ICertEncodeStringArray, Index: i32, pstr: ?*?BSTR) HRESULT {
         return self.vtable.GetValue(self, Index, pstr);
     }
-    pub fn Reset(self: *const ICertEncodeStringArray, Count: i32, StringType: CERT_RDN_ATTR_VALUE_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ICertEncodeStringArray, Count: i32, StringType: CERT_RDN_ATTR_VALUE_TYPE) HRESULT {
         return self.vtable.Reset(self, Count, StringType);
     }
-    pub fn SetValue(self: *const ICertEncodeStringArray, Index: i32, str: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const ICertEncodeStringArray, Index: i32, str: ?BSTR) HRESULT {
         return self.vtable.SetValue(self, Index, str);
     }
-    pub fn Encode(self: *const ICertEncodeStringArray, pstrBinary: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Encode(self: *const ICertEncodeStringArray, pstrBinary: ?*?BSTR) HRESULT {
         return self.vtable.Encode(self, pstrBinary);
     }
 };
@@ -12680,25 +12680,25 @@ pub const IID_ICertEncodeStringArray2 = &IID_ICertEncodeStringArray2_Value;
 pub const ICertEncodeStringArray2 = extern union {
     pub const VTable = extern struct {
         base: ICertEncodeStringArray.VTable,
-        DecodeBlob: *const fn(
+        DecodeBlob: *const fn (
             self: *const ICertEncodeStringArray2,
             strEncodedData: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EncodeBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EncodeBlob: *const fn (
             self: *const ICertEncodeStringArray2,
             Encoding: EncodingType,
             pstrEncodedData: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertEncodeStringArray: ICertEncodeStringArray,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn DecodeBlob(self: *const ICertEncodeStringArray2, strEncodedData: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn DecodeBlob(self: *const ICertEncodeStringArray2, strEncodedData: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.DecodeBlob(self, strEncodedData, Encoding);
     }
-    pub fn EncodeBlob(self: *const ICertEncodeStringArray2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EncodeBlob(self: *const ICertEncodeStringArray2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) HRESULT {
         return self.vtable.EncodeBlob(self, Encoding, pstrEncodedData);
     }
 };
@@ -12709,52 +12709,52 @@ pub const IID_ICertEncodeLongArray = &IID_ICertEncodeLongArray_Value;
 pub const ICertEncodeLongArray = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Decode: *const fn(
+        Decode: *const fn (
             self: *const ICertEncodeLongArray,
             strBinary: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCount: *const fn (
             self: *const ICertEncodeLongArray,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const ICertEncodeLongArray,
             Index: i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const ICertEncodeLongArray,
             Count: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const ICertEncodeLongArray,
             Index: i32,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Encode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Encode: *const fn (
             self: *const ICertEncodeLongArray,
             pstrBinary: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Decode(self: *const ICertEncodeLongArray, strBinary: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Decode(self: *const ICertEncodeLongArray, strBinary: ?BSTR) HRESULT {
         return self.vtable.Decode(self, strBinary);
     }
-    pub fn GetCount(self: *const ICertEncodeLongArray, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const ICertEncodeLongArray, pCount: ?*i32) HRESULT {
         return self.vtable.GetCount(self, pCount);
     }
-    pub fn GetValue(self: *const ICertEncodeLongArray, Index: i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const ICertEncodeLongArray, Index: i32, pValue: ?*i32) HRESULT {
         return self.vtable.GetValue(self, Index, pValue);
     }
-    pub fn Reset(self: *const ICertEncodeLongArray, Count: i32) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ICertEncodeLongArray, Count: i32) HRESULT {
         return self.vtable.Reset(self, Count);
     }
-    pub fn SetValue(self: *const ICertEncodeLongArray, Index: i32, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const ICertEncodeLongArray, Index: i32, Value: i32) HRESULT {
         return self.vtable.SetValue(self, Index, Value);
     }
-    pub fn Encode(self: *const ICertEncodeLongArray, pstrBinary: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Encode(self: *const ICertEncodeLongArray, pstrBinary: ?*?BSTR) HRESULT {
         return self.vtable.Encode(self, pstrBinary);
     }
 };
@@ -12764,25 +12764,25 @@ pub const IID_ICertEncodeLongArray2 = &IID_ICertEncodeLongArray2_Value;
 pub const ICertEncodeLongArray2 = extern union {
     pub const VTable = extern struct {
         base: ICertEncodeLongArray.VTable,
-        DecodeBlob: *const fn(
+        DecodeBlob: *const fn (
             self: *const ICertEncodeLongArray2,
             strEncodedData: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EncodeBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EncodeBlob: *const fn (
             self: *const ICertEncodeLongArray2,
             Encoding: EncodingType,
             pstrEncodedData: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertEncodeLongArray: ICertEncodeLongArray,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn DecodeBlob(self: *const ICertEncodeLongArray2, strEncodedData: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn DecodeBlob(self: *const ICertEncodeLongArray2, strEncodedData: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.DecodeBlob(self, strEncodedData, Encoding);
     }
-    pub fn EncodeBlob(self: *const ICertEncodeLongArray2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EncodeBlob(self: *const ICertEncodeLongArray2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) HRESULT {
         return self.vtable.EncodeBlob(self, Encoding, pstrEncodedData);
     }
 };
@@ -12793,52 +12793,52 @@ pub const IID_ICertEncodeDateArray = &IID_ICertEncodeDateArray_Value;
 pub const ICertEncodeDateArray = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Decode: *const fn(
+        Decode: *const fn (
             self: *const ICertEncodeDateArray,
             strBinary: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCount: *const fn (
             self: *const ICertEncodeDateArray,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const ICertEncodeDateArray,
             Index: i32,
             pValue: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const ICertEncodeDateArray,
             Count: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const ICertEncodeDateArray,
             Index: i32,
             Value: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Encode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Encode: *const fn (
             self: *const ICertEncodeDateArray,
             pstrBinary: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Decode(self: *const ICertEncodeDateArray, strBinary: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Decode(self: *const ICertEncodeDateArray, strBinary: ?BSTR) HRESULT {
         return self.vtable.Decode(self, strBinary);
     }
-    pub fn GetCount(self: *const ICertEncodeDateArray, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const ICertEncodeDateArray, pCount: ?*i32) HRESULT {
         return self.vtable.GetCount(self, pCount);
     }
-    pub fn GetValue(self: *const ICertEncodeDateArray, Index: i32, pValue: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const ICertEncodeDateArray, Index: i32, pValue: ?*f64) HRESULT {
         return self.vtable.GetValue(self, Index, pValue);
     }
-    pub fn Reset(self: *const ICertEncodeDateArray, Count: i32) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ICertEncodeDateArray, Count: i32) HRESULT {
         return self.vtable.Reset(self, Count);
     }
-    pub fn SetValue(self: *const ICertEncodeDateArray, Index: i32, Value: f64) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const ICertEncodeDateArray, Index: i32, Value: f64) HRESULT {
         return self.vtable.SetValue(self, Index, Value);
     }
-    pub fn Encode(self: *const ICertEncodeDateArray, pstrBinary: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Encode(self: *const ICertEncodeDateArray, pstrBinary: ?*?BSTR) HRESULT {
         return self.vtable.Encode(self, pstrBinary);
     }
 };
@@ -12848,25 +12848,25 @@ pub const IID_ICertEncodeDateArray2 = &IID_ICertEncodeDateArray2_Value;
 pub const ICertEncodeDateArray2 = extern union {
     pub const VTable = extern struct {
         base: ICertEncodeDateArray.VTable,
-        DecodeBlob: *const fn(
+        DecodeBlob: *const fn (
             self: *const ICertEncodeDateArray2,
             strEncodedData: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EncodeBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EncodeBlob: *const fn (
             self: *const ICertEncodeDateArray2,
             Encoding: EncodingType,
             pstrEncodedData: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertEncodeDateArray: ICertEncodeDateArray,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn DecodeBlob(self: *const ICertEncodeDateArray2, strEncodedData: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn DecodeBlob(self: *const ICertEncodeDateArray2, strEncodedData: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.DecodeBlob(self, strEncodedData, Encoding);
     }
-    pub fn EncodeBlob(self: *const ICertEncodeDateArray2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EncodeBlob(self: *const ICertEncodeDateArray2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) HRESULT {
         return self.vtable.EncodeBlob(self, Encoding, pstrEncodedData);
     }
 };
@@ -12877,80 +12877,80 @@ pub const IID_ICertEncodeCRLDistInfo = &IID_ICertEncodeCRLDistInfo_Value;
 pub const ICertEncodeCRLDistInfo = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Decode: *const fn(
+        Decode: *const fn (
             self: *const ICertEncodeCRLDistInfo,
             strBinary: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDistPointCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDistPointCount: *const fn (
             self: *const ICertEncodeCRLDistInfo,
             pDistPointCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNameCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNameCount: *const fn (
             self: *const ICertEncodeCRLDistInfo,
             DistPointIndex: i32,
             pNameCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNameChoice: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNameChoice: *const fn (
             self: *const ICertEncodeCRLDistInfo,
             DistPointIndex: i32,
             NameIndex: i32,
             pNameChoice: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetName: *const fn (
             self: *const ICertEncodeCRLDistInfo,
             DistPointIndex: i32,
             NameIndex: i32,
             pstrName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const ICertEncodeCRLDistInfo,
             DistPointCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetNameCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetNameCount: *const fn (
             self: *const ICertEncodeCRLDistInfo,
             DistPointIndex: i32,
             NameCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetNameEntry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetNameEntry: *const fn (
             self: *const ICertEncodeCRLDistInfo,
             DistPointIndex: i32,
             NameIndex: i32,
             NameChoice: CERT_ALT_NAME,
             strName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Encode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Encode: *const fn (
             self: *const ICertEncodeCRLDistInfo,
             pstrBinary: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Decode(self: *const ICertEncodeCRLDistInfo, strBinary: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Decode(self: *const ICertEncodeCRLDistInfo, strBinary: ?BSTR) HRESULT {
         return self.vtable.Decode(self, strBinary);
     }
-    pub fn GetDistPointCount(self: *const ICertEncodeCRLDistInfo, pDistPointCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetDistPointCount(self: *const ICertEncodeCRLDistInfo, pDistPointCount: ?*i32) HRESULT {
         return self.vtable.GetDistPointCount(self, pDistPointCount);
     }
-    pub fn GetNameCount(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, pNameCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetNameCount(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, pNameCount: ?*i32) HRESULT {
         return self.vtable.GetNameCount(self, DistPointIndex, pNameCount);
     }
-    pub fn GetNameChoice(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, NameIndex: i32, pNameChoice: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetNameChoice(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, NameIndex: i32, pNameChoice: ?*i32) HRESULT {
         return self.vtable.GetNameChoice(self, DistPointIndex, NameIndex, pNameChoice);
     }
-    pub fn GetName(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, NameIndex: i32, pstrName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetName(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, NameIndex: i32, pstrName: ?*?BSTR) HRESULT {
         return self.vtable.GetName(self, DistPointIndex, NameIndex, pstrName);
     }
-    pub fn Reset(self: *const ICertEncodeCRLDistInfo, DistPointCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ICertEncodeCRLDistInfo, DistPointCount: i32) HRESULT {
         return self.vtable.Reset(self, DistPointCount);
     }
-    pub fn SetNameCount(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, NameCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetNameCount(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, NameCount: i32) HRESULT {
         return self.vtable.SetNameCount(self, DistPointIndex, NameCount);
     }
-    pub fn SetNameEntry(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, NameIndex: i32, NameChoice: CERT_ALT_NAME, strName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetNameEntry(self: *const ICertEncodeCRLDistInfo, DistPointIndex: i32, NameIndex: i32, NameChoice: CERT_ALT_NAME, strName: ?BSTR) HRESULT {
         return self.vtable.SetNameEntry(self, DistPointIndex, NameIndex, NameChoice, strName);
     }
-    pub fn Encode(self: *const ICertEncodeCRLDistInfo, pstrBinary: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Encode(self: *const ICertEncodeCRLDistInfo, pstrBinary: ?*?BSTR) HRESULT {
         return self.vtable.Encode(self, pstrBinary);
     }
 };
@@ -12960,25 +12960,25 @@ pub const IID_ICertEncodeCRLDistInfo2 = &IID_ICertEncodeCRLDistInfo2_Value;
 pub const ICertEncodeCRLDistInfo2 = extern union {
     pub const VTable = extern struct {
         base: ICertEncodeCRLDistInfo.VTable,
-        DecodeBlob: *const fn(
+        DecodeBlob: *const fn (
             self: *const ICertEncodeCRLDistInfo2,
             strEncodedData: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EncodeBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EncodeBlob: *const fn (
             self: *const ICertEncodeCRLDistInfo2,
             Encoding: EncodingType,
             pstrEncodedData: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertEncodeCRLDistInfo: ICertEncodeCRLDistInfo,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn DecodeBlob(self: *const ICertEncodeCRLDistInfo2, strEncodedData: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn DecodeBlob(self: *const ICertEncodeCRLDistInfo2, strEncodedData: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.DecodeBlob(self, strEncodedData, Encoding);
     }
-    pub fn EncodeBlob(self: *const ICertEncodeCRLDistInfo2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EncodeBlob(self: *const ICertEncodeCRLDistInfo2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) HRESULT {
         return self.vtable.EncodeBlob(self, Encoding, pstrEncodedData);
     }
 };
@@ -12989,61 +12989,61 @@ pub const IID_ICertEncodeAltName = &IID_ICertEncodeAltName_Value;
 pub const ICertEncodeAltName = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Decode: *const fn(
+        Decode: *const fn (
             self: *const ICertEncodeAltName,
             strBinary: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNameCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNameCount: *const fn (
             self: *const ICertEncodeAltName,
             pNameCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNameChoice: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNameChoice: *const fn (
             self: *const ICertEncodeAltName,
             NameIndex: i32,
             pNameChoice: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetName: *const fn (
             self: *const ICertEncodeAltName,
             NameIndex: i32,
             pstrName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const ICertEncodeAltName,
             NameCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetNameEntry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetNameEntry: *const fn (
             self: *const ICertEncodeAltName,
             NameIndex: i32,
             NameChoice: CERT_ALT_NAME,
             strName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Encode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Encode: *const fn (
             self: *const ICertEncodeAltName,
             pstrBinary: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Decode(self: *const ICertEncodeAltName, strBinary: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Decode(self: *const ICertEncodeAltName, strBinary: ?BSTR) HRESULT {
         return self.vtable.Decode(self, strBinary);
     }
-    pub fn GetNameCount(self: *const ICertEncodeAltName, pNameCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetNameCount(self: *const ICertEncodeAltName, pNameCount: ?*i32) HRESULT {
         return self.vtable.GetNameCount(self, pNameCount);
     }
-    pub fn GetNameChoice(self: *const ICertEncodeAltName, NameIndex: i32, pNameChoice: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetNameChoice(self: *const ICertEncodeAltName, NameIndex: i32, pNameChoice: ?*i32) HRESULT {
         return self.vtable.GetNameChoice(self, NameIndex, pNameChoice);
     }
-    pub fn GetName(self: *const ICertEncodeAltName, NameIndex: i32, pstrName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetName(self: *const ICertEncodeAltName, NameIndex: i32, pstrName: ?*?BSTR) HRESULT {
         return self.vtable.GetName(self, NameIndex, pstrName);
     }
-    pub fn Reset(self: *const ICertEncodeAltName, NameCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ICertEncodeAltName, NameCount: i32) HRESULT {
         return self.vtable.Reset(self, NameCount);
     }
-    pub fn SetNameEntry(self: *const ICertEncodeAltName, NameIndex: i32, NameChoice: CERT_ALT_NAME, strName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetNameEntry(self: *const ICertEncodeAltName, NameIndex: i32, NameChoice: CERT_ALT_NAME, strName: ?BSTR) HRESULT {
         return self.vtable.SetNameEntry(self, NameIndex, NameChoice, strName);
     }
-    pub fn Encode(self: *const ICertEncodeAltName, pstrBinary: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Encode(self: *const ICertEncodeAltName, pstrBinary: ?*?BSTR) HRESULT {
         return self.vtable.Encode(self, pstrBinary);
     }
 };
@@ -13053,44 +13053,44 @@ pub const IID_ICertEncodeAltName2 = &IID_ICertEncodeAltName2_Value;
 pub const ICertEncodeAltName2 = extern union {
     pub const VTable = extern struct {
         base: ICertEncodeAltName.VTable,
-        DecodeBlob: *const fn(
+        DecodeBlob: *const fn (
             self: *const ICertEncodeAltName2,
             strEncodedData: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EncodeBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EncodeBlob: *const fn (
             self: *const ICertEncodeAltName2,
             Encoding: EncodingType,
             pstrEncodedData: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNameBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNameBlob: *const fn (
             self: *const ICertEncodeAltName2,
             NameIndex: i32,
             Encoding: EncodingType,
             pstrName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetNameEntryBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetNameEntryBlob: *const fn (
             self: *const ICertEncodeAltName2,
             NameIndex: i32,
             NameChoice: i32,
             strName: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertEncodeAltName: ICertEncodeAltName,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn DecodeBlob(self: *const ICertEncodeAltName2, strEncodedData: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn DecodeBlob(self: *const ICertEncodeAltName2, strEncodedData: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.DecodeBlob(self, strEncodedData, Encoding);
     }
-    pub fn EncodeBlob(self: *const ICertEncodeAltName2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EncodeBlob(self: *const ICertEncodeAltName2, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) HRESULT {
         return self.vtable.EncodeBlob(self, Encoding, pstrEncodedData);
     }
-    pub fn GetNameBlob(self: *const ICertEncodeAltName2, NameIndex: i32, Encoding: EncodingType, pstrName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetNameBlob(self: *const ICertEncodeAltName2, NameIndex: i32, Encoding: EncodingType, pstrName: ?*?BSTR) HRESULT {
         return self.vtable.GetNameBlob(self, NameIndex, Encoding, pstrName);
     }
-    pub fn SetNameEntryBlob(self: *const ICertEncodeAltName2, NameIndex: i32, NameChoice: i32, strName: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn SetNameEntryBlob(self: *const ICertEncodeAltName2, NameIndex: i32, NameChoice: i32, strName: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.SetNameEntryBlob(self, NameIndex, NameChoice, strName, Encoding);
     }
 };
@@ -13101,38 +13101,38 @@ pub const IID_ICertEncodeBitString = &IID_ICertEncodeBitString_Value;
 pub const ICertEncodeBitString = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Decode: *const fn(
+        Decode: *const fn (
             self: *const ICertEncodeBitString,
             strBinary: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBitCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBitCount: *const fn (
             self: *const ICertEncodeBitString,
             pBitCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBitString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBitString: *const fn (
             self: *const ICertEncodeBitString,
             pstrBitString: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Encode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Encode: *const fn (
             self: *const ICertEncodeBitString,
             BitCount: i32,
             strBitString: ?BSTR,
             pstrBinary: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Decode(self: *const ICertEncodeBitString, strBinary: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Decode(self: *const ICertEncodeBitString, strBinary: ?BSTR) HRESULT {
         return self.vtable.Decode(self, strBinary);
     }
-    pub fn GetBitCount(self: *const ICertEncodeBitString, pBitCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetBitCount(self: *const ICertEncodeBitString, pBitCount: ?*i32) HRESULT {
         return self.vtable.GetBitCount(self, pBitCount);
     }
-    pub fn GetBitString(self: *const ICertEncodeBitString, pstrBitString: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetBitString(self: *const ICertEncodeBitString, pstrBitString: ?*?BSTR) HRESULT {
         return self.vtable.GetBitString(self, pstrBitString);
     }
-    pub fn Encode(self: *const ICertEncodeBitString, BitCount: i32, strBitString: ?BSTR, pstrBinary: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Encode(self: *const ICertEncodeBitString, BitCount: i32, strBitString: ?BSTR, pstrBinary: ?*?BSTR) HRESULT {
         return self.vtable.Encode(self, BitCount, strBitString, pstrBinary);
     }
 };
@@ -13142,36 +13142,36 @@ pub const IID_ICertEncodeBitString2 = &IID_ICertEncodeBitString2_Value;
 pub const ICertEncodeBitString2 = extern union {
     pub const VTable = extern struct {
         base: ICertEncodeBitString.VTable,
-        DecodeBlob: *const fn(
+        DecodeBlob: *const fn (
             self: *const ICertEncodeBitString2,
             strEncodedData: ?BSTR,
             Encoding: EncodingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EncodeBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EncodeBlob: *const fn (
             self: *const ICertEncodeBitString2,
             BitCount: i32,
             strBitString: ?BSTR,
             EncodingIn: EncodingType,
             Encoding: EncodingType,
             pstrEncodedData: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBitStringBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBitStringBlob: *const fn (
             self: *const ICertEncodeBitString2,
             Encoding: EncodingType,
             pstrBitString: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertEncodeBitString: ICertEncodeBitString,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn DecodeBlob(self: *const ICertEncodeBitString2, strEncodedData: ?BSTR, Encoding: EncodingType) callconv(.Inline) HRESULT {
+    pub inline fn DecodeBlob(self: *const ICertEncodeBitString2, strEncodedData: ?BSTR, Encoding: EncodingType) HRESULT {
         return self.vtable.DecodeBlob(self, strEncodedData, Encoding);
     }
-    pub fn EncodeBlob(self: *const ICertEncodeBitString2, BitCount: i32, strBitString: ?BSTR, EncodingIn: EncodingType, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn EncodeBlob(self: *const ICertEncodeBitString2, BitCount: i32, strBitString: ?BSTR, EncodingIn: EncodingType, Encoding: EncodingType, pstrEncodedData: ?*?BSTR) HRESULT {
         return self.vtable.EncodeBlob(self, BitCount, strBitString, EncodingIn, Encoding, pstrEncodedData);
     }
-    pub fn GetBitStringBlob(self: *const ICertEncodeBitString2, Encoding: EncodingType, pstrBitString: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetBitStringBlob(self: *const ICertEncodeBitString2, Encoding: EncodingType, pstrBitString: ?*?BSTR) HRESULT {
         return self.vtable.GetBitStringBlob(self, Encoding, pstrBitString);
     }
 };
@@ -13182,31 +13182,31 @@ pub const IID_ICertExit = &IID_ICertExit_Value;
 pub const ICertExit = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const ICertExit,
             strConfig: ?BSTR,
             pEventMask: ?*CERT_EXIT_EVENT_MASK,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Notify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Notify: *const fn (
             self: *const ICertExit,
             ExitEvent: i32,
             Context: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDescription: *const fn (
             self: *const ICertExit,
             pstrDescription: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const ICertExit, strConfig: ?BSTR, pEventMask: ?*CERT_EXIT_EVENT_MASK) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ICertExit, strConfig: ?BSTR, pEventMask: ?*CERT_EXIT_EVENT_MASK) HRESULT {
         return self.vtable.Initialize(self, strConfig, pEventMask);
     }
-    pub fn Notify(self: *const ICertExit, ExitEvent: i32, Context: i32) callconv(.Inline) HRESULT {
+    pub inline fn Notify(self: *const ICertExit, ExitEvent: i32, Context: i32) HRESULT {
         return self.vtable.Notify(self, ExitEvent, Context);
     }
-    pub fn GetDescription(self: *const ICertExit, pstrDescription: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDescription(self: *const ICertExit, pstrDescription: ?*?BSTR) HRESULT {
         return self.vtable.GetDescription(self, pstrDescription);
     }
 };
@@ -13217,16 +13217,16 @@ pub const IID_ICertExit2 = &IID_ICertExit2_Value;
 pub const ICertExit2 = extern union {
     pub const VTable = extern struct {
         base: ICertExit.VTable,
-        GetManageModule: *const fn(
+        GetManageModule: *const fn (
             self: *const ICertExit2,
             ppManageModule: ?*?*ICertManageModule,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertExit: ICertExit,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetManageModule(self: *const ICertExit2, ppManageModule: ?*?*ICertManageModule) callconv(.Inline) HRESULT {
+    pub inline fn GetManageModule(self: *const ICertExit2, ppManageModule: ?*?*ICertManageModule) HRESULT {
         return self.vtable.GetManageModule(self, ppManageModule);
     }
 };
@@ -13269,456 +13269,456 @@ pub const IID_ICEnroll = &IID_ICEnroll_Value;
 pub const ICEnroll = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        createFilePKCS10: *const fn(
+        createFilePKCS10: *const fn (
             self: *const ICEnroll,
             DNName: ?BSTR,
             Usage: ?BSTR,
             wszPKCS10FileName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        acceptFilePKCS7: *const fn(
+        ) callconv(.winapi) HRESULT,
+        acceptFilePKCS7: *const fn (
             self: *const ICEnroll,
             wszPKCS7FileName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createPKCS10: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createPKCS10: *const fn (
             self: *const ICEnroll,
             DNName: ?BSTR,
             Usage: ?BSTR,
             pPKCS10: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        acceptPKCS7: *const fn(
+        ) callconv(.winapi) HRESULT,
+        acceptPKCS7: *const fn (
             self: *const ICEnroll,
             PKCS7: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        getCertFromPKCS7: *const fn(
+        ) callconv(.winapi) HRESULT,
+        getCertFromPKCS7: *const fn (
             self: *const ICEnroll,
             wszPKCS7: ?BSTR,
             pbstrCert: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        enumProviders: *const fn(
+        ) callconv(.winapi) HRESULT,
+        enumProviders: *const fn (
             self: *const ICEnroll,
             dwIndex: i32,
             dwFlags: i32,
             pbstrProvName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        enumContainers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        enumContainers: *const fn (
             self: *const ICEnroll,
             dwIndex: i32,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        freeRequestInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        freeRequestInfo: *const fn (
             self: *const ICEnroll,
             PKCS7OrPKCS10: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MyStoreName: *const fn(
+        get_MyStoreName: *const fn (
             self: *const ICEnroll,
             pbstrName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MyStoreName: *const fn(
+        put_MyStoreName: *const fn (
             self: *const ICEnroll,
             bstrName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MyStoreType: *const fn(
+        get_MyStoreType: *const fn (
             self: *const ICEnroll,
             pbstrType: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MyStoreType: *const fn(
+        put_MyStoreType: *const fn (
             self: *const ICEnroll,
             bstrType: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MyStoreFlags: *const fn(
+        get_MyStoreFlags: *const fn (
             self: *const ICEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MyStoreFlags: *const fn(
+        put_MyStoreFlags: *const fn (
             self: *const ICEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAStoreName: *const fn(
+        get_CAStoreName: *const fn (
             self: *const ICEnroll,
             pbstrName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CAStoreName: *const fn(
+        put_CAStoreName: *const fn (
             self: *const ICEnroll,
             bstrName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAStoreType: *const fn(
+        get_CAStoreType: *const fn (
             self: *const ICEnroll,
             pbstrType: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CAStoreType: *const fn(
+        put_CAStoreType: *const fn (
             self: *const ICEnroll,
             bstrType: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAStoreFlags: *const fn(
+        get_CAStoreFlags: *const fn (
             self: *const ICEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CAStoreFlags: *const fn(
+        put_CAStoreFlags: *const fn (
             self: *const ICEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RootStoreName: *const fn(
+        get_RootStoreName: *const fn (
             self: *const ICEnroll,
             pbstrName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RootStoreName: *const fn(
+        put_RootStoreName: *const fn (
             self: *const ICEnroll,
             bstrName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RootStoreType: *const fn(
+        get_RootStoreType: *const fn (
             self: *const ICEnroll,
             pbstrType: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RootStoreType: *const fn(
+        put_RootStoreType: *const fn (
             self: *const ICEnroll,
             bstrType: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RootStoreFlags: *const fn(
+        get_RootStoreFlags: *const fn (
             self: *const ICEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RootStoreFlags: *const fn(
+        put_RootStoreFlags: *const fn (
             self: *const ICEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestStoreName: *const fn(
+        get_RequestStoreName: *const fn (
             self: *const ICEnroll,
             pbstrName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RequestStoreName: *const fn(
+        put_RequestStoreName: *const fn (
             self: *const ICEnroll,
             bstrName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestStoreType: *const fn(
+        get_RequestStoreType: *const fn (
             self: *const ICEnroll,
             pbstrType: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RequestStoreType: *const fn(
+        put_RequestStoreType: *const fn (
             self: *const ICEnroll,
             bstrType: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestStoreFlags: *const fn(
+        get_RequestStoreFlags: *const fn (
             self: *const ICEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RequestStoreFlags: *const fn(
+        put_RequestStoreFlags: *const fn (
             self: *const ICEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ContainerName: *const fn(
+        get_ContainerName: *const fn (
             self: *const ICEnroll,
             pbstrContainer: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ContainerName: *const fn(
+        put_ContainerName: *const fn (
             self: *const ICEnroll,
             bstrContainer: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderName: *const fn(
+        get_ProviderName: *const fn (
             self: *const ICEnroll,
             pbstrProvider: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderName: *const fn(
+        put_ProviderName: *const fn (
             self: *const ICEnroll,
             bstrProvider: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderType: *const fn(
+        get_ProviderType: *const fn (
             self: *const ICEnroll,
             pdwType: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderType: *const fn(
+        put_ProviderType: *const fn (
             self: *const ICEnroll,
             dwType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeySpec: *const fn(
+        get_KeySpec: *const fn (
             self: *const ICEnroll,
             pdw: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_KeySpec: *const fn(
+        put_KeySpec: *const fn (
             self: *const ICEnroll,
             dw: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderFlags: *const fn(
+        get_ProviderFlags: *const fn (
             self: *const ICEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderFlags: *const fn(
+        put_ProviderFlags: *const fn (
             self: *const ICEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UseExistingKeySet: *const fn(
+        get_UseExistingKeySet: *const fn (
             self: *const ICEnroll,
             fUseExistingKeys: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UseExistingKeySet: *const fn(
+        put_UseExistingKeySet: *const fn (
             self: *const ICEnroll,
             fUseExistingKeys: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_GenKeyFlags: *const fn(
+        get_GenKeyFlags: *const fn (
             self: *const ICEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_GenKeyFlags: *const fn(
+        put_GenKeyFlags: *const fn (
             self: *const ICEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DeleteRequestCert: *const fn(
+        get_DeleteRequestCert: *const fn (
             self: *const ICEnroll,
             fDelete: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DeleteRequestCert: *const fn(
+        put_DeleteRequestCert: *const fn (
             self: *const ICEnroll,
             fDelete: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_WriteCertToCSP: *const fn(
+        get_WriteCertToCSP: *const fn (
             self: *const ICEnroll,
             fBool: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_WriteCertToCSP: *const fn(
+        put_WriteCertToCSP: *const fn (
             self: *const ICEnroll,
             fBool: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SPCFileName: *const fn(
+        get_SPCFileName: *const fn (
             self: *const ICEnroll,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SPCFileName: *const fn(
+        put_SPCFileName: *const fn (
             self: *const ICEnroll,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PVKFileName: *const fn(
+        get_PVKFileName: *const fn (
             self: *const ICEnroll,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PVKFileName: *const fn(
+        put_PVKFileName: *const fn (
             self: *const ICEnroll,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HashAlgorithm: *const fn(
+        get_HashAlgorithm: *const fn (
             self: *const ICEnroll,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HashAlgorithm: *const fn(
+        put_HashAlgorithm: *const fn (
             self: *const ICEnroll,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn createFilePKCS10(self: *const ICEnroll, DNName: ?BSTR, Usage: ?BSTR, wszPKCS10FileName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn createFilePKCS10(self: *const ICEnroll, DNName: ?BSTR, Usage: ?BSTR, wszPKCS10FileName: ?BSTR) HRESULT {
         return self.vtable.createFilePKCS10(self, DNName, Usage, wszPKCS10FileName);
     }
-    pub fn acceptFilePKCS7(self: *const ICEnroll, wszPKCS7FileName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn acceptFilePKCS7(self: *const ICEnroll, wszPKCS7FileName: ?BSTR) HRESULT {
         return self.vtable.acceptFilePKCS7(self, wszPKCS7FileName);
     }
-    pub fn createPKCS10(self: *const ICEnroll, DNName: ?BSTR, Usage: ?BSTR, pPKCS10: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn createPKCS10(self: *const ICEnroll, DNName: ?BSTR, Usage: ?BSTR, pPKCS10: ?*?BSTR) HRESULT {
         return self.vtable.createPKCS10(self, DNName, Usage, pPKCS10);
     }
-    pub fn acceptPKCS7(self: *const ICEnroll, PKCS7: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn acceptPKCS7(self: *const ICEnroll, PKCS7: ?BSTR) HRESULT {
         return self.vtable.acceptPKCS7(self, PKCS7);
     }
-    pub fn getCertFromPKCS7(self: *const ICEnroll, wszPKCS7: ?BSTR, pbstrCert: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn getCertFromPKCS7(self: *const ICEnroll, wszPKCS7: ?BSTR, pbstrCert: ?*?BSTR) HRESULT {
         return self.vtable.getCertFromPKCS7(self, wszPKCS7, pbstrCert);
     }
-    pub fn enumProviders(self: *const ICEnroll, dwIndex: i32, dwFlags: i32, pbstrProvName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn enumProviders(self: *const ICEnroll, dwIndex: i32, dwFlags: i32, pbstrProvName: ?*?BSTR) HRESULT {
         return self.vtable.enumProviders(self, dwIndex, dwFlags, pbstrProvName);
     }
-    pub fn enumContainers(self: *const ICEnroll, dwIndex: i32, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn enumContainers(self: *const ICEnroll, dwIndex: i32, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.enumContainers(self, dwIndex, pbstr);
     }
-    pub fn freeRequestInfo(self: *const ICEnroll, PKCS7OrPKCS10: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn freeRequestInfo(self: *const ICEnroll, PKCS7OrPKCS10: ?BSTR) HRESULT {
         return self.vtable.freeRequestInfo(self, PKCS7OrPKCS10);
     }
-    pub fn get_MyStoreName(self: *const ICEnroll, pbstrName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_MyStoreName(self: *const ICEnroll, pbstrName: ?*?BSTR) HRESULT {
         return self.vtable.get_MyStoreName(self, pbstrName);
     }
-    pub fn put_MyStoreName(self: *const ICEnroll, bstrName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_MyStoreName(self: *const ICEnroll, bstrName: ?BSTR) HRESULT {
         return self.vtable.put_MyStoreName(self, bstrName);
     }
-    pub fn get_MyStoreType(self: *const ICEnroll, pbstrType: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_MyStoreType(self: *const ICEnroll, pbstrType: ?*?BSTR) HRESULT {
         return self.vtable.get_MyStoreType(self, pbstrType);
     }
-    pub fn put_MyStoreType(self: *const ICEnroll, bstrType: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_MyStoreType(self: *const ICEnroll, bstrType: ?BSTR) HRESULT {
         return self.vtable.put_MyStoreType(self, bstrType);
     }
-    pub fn get_MyStoreFlags(self: *const ICEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MyStoreFlags(self: *const ICEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_MyStoreFlags(self, pdwFlags);
     }
-    pub fn put_MyStoreFlags(self: *const ICEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MyStoreFlags(self: *const ICEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_MyStoreFlags(self, dwFlags);
     }
-    pub fn get_CAStoreName(self: *const ICEnroll, pbstrName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CAStoreName(self: *const ICEnroll, pbstrName: ?*?BSTR) HRESULT {
         return self.vtable.get_CAStoreName(self, pbstrName);
     }
-    pub fn put_CAStoreName(self: *const ICEnroll, bstrName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CAStoreName(self: *const ICEnroll, bstrName: ?BSTR) HRESULT {
         return self.vtable.put_CAStoreName(self, bstrName);
     }
-    pub fn get_CAStoreType(self: *const ICEnroll, pbstrType: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CAStoreType(self: *const ICEnroll, pbstrType: ?*?BSTR) HRESULT {
         return self.vtable.get_CAStoreType(self, pbstrType);
     }
-    pub fn put_CAStoreType(self: *const ICEnroll, bstrType: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CAStoreType(self: *const ICEnroll, bstrType: ?BSTR) HRESULT {
         return self.vtable.put_CAStoreType(self, bstrType);
     }
-    pub fn get_CAStoreFlags(self: *const ICEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CAStoreFlags(self: *const ICEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_CAStoreFlags(self, pdwFlags);
     }
-    pub fn put_CAStoreFlags(self: *const ICEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_CAStoreFlags(self: *const ICEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_CAStoreFlags(self, dwFlags);
     }
-    pub fn get_RootStoreName(self: *const ICEnroll, pbstrName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RootStoreName(self: *const ICEnroll, pbstrName: ?*?BSTR) HRESULT {
         return self.vtable.get_RootStoreName(self, pbstrName);
     }
-    pub fn put_RootStoreName(self: *const ICEnroll, bstrName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RootStoreName(self: *const ICEnroll, bstrName: ?BSTR) HRESULT {
         return self.vtable.put_RootStoreName(self, bstrName);
     }
-    pub fn get_RootStoreType(self: *const ICEnroll, pbstrType: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RootStoreType(self: *const ICEnroll, pbstrType: ?*?BSTR) HRESULT {
         return self.vtable.get_RootStoreType(self, pbstrType);
     }
-    pub fn put_RootStoreType(self: *const ICEnroll, bstrType: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RootStoreType(self: *const ICEnroll, bstrType: ?BSTR) HRESULT {
         return self.vtable.put_RootStoreType(self, bstrType);
     }
-    pub fn get_RootStoreFlags(self: *const ICEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_RootStoreFlags(self: *const ICEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_RootStoreFlags(self, pdwFlags);
     }
-    pub fn put_RootStoreFlags(self: *const ICEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_RootStoreFlags(self: *const ICEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_RootStoreFlags(self, dwFlags);
     }
-    pub fn get_RequestStoreName(self: *const ICEnroll, pbstrName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestStoreName(self: *const ICEnroll, pbstrName: ?*?BSTR) HRESULT {
         return self.vtable.get_RequestStoreName(self, pbstrName);
     }
-    pub fn put_RequestStoreName(self: *const ICEnroll, bstrName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RequestStoreName(self: *const ICEnroll, bstrName: ?BSTR) HRESULT {
         return self.vtable.put_RequestStoreName(self, bstrName);
     }
-    pub fn get_RequestStoreType(self: *const ICEnroll, pbstrType: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestStoreType(self: *const ICEnroll, pbstrType: ?*?BSTR) HRESULT {
         return self.vtable.get_RequestStoreType(self, pbstrType);
     }
-    pub fn put_RequestStoreType(self: *const ICEnroll, bstrType: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RequestStoreType(self: *const ICEnroll, bstrType: ?BSTR) HRESULT {
         return self.vtable.put_RequestStoreType(self, bstrType);
     }
-    pub fn get_RequestStoreFlags(self: *const ICEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestStoreFlags(self: *const ICEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_RequestStoreFlags(self, pdwFlags);
     }
-    pub fn put_RequestStoreFlags(self: *const ICEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_RequestStoreFlags(self: *const ICEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_RequestStoreFlags(self, dwFlags);
     }
-    pub fn get_ContainerName(self: *const ICEnroll, pbstrContainer: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ContainerName(self: *const ICEnroll, pbstrContainer: ?*?BSTR) HRESULT {
         return self.vtable.get_ContainerName(self, pbstrContainer);
     }
-    pub fn put_ContainerName(self: *const ICEnroll, bstrContainer: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ContainerName(self: *const ICEnroll, bstrContainer: ?BSTR) HRESULT {
         return self.vtable.put_ContainerName(self, bstrContainer);
     }
-    pub fn get_ProviderName(self: *const ICEnroll, pbstrProvider: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderName(self: *const ICEnroll, pbstrProvider: ?*?BSTR) HRESULT {
         return self.vtable.get_ProviderName(self, pbstrProvider);
     }
-    pub fn put_ProviderName(self: *const ICEnroll, bstrProvider: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderName(self: *const ICEnroll, bstrProvider: ?BSTR) HRESULT {
         return self.vtable.put_ProviderName(self, bstrProvider);
     }
-    pub fn get_ProviderType(self: *const ICEnroll, pdwType: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderType(self: *const ICEnroll, pdwType: ?*i32) HRESULT {
         return self.vtable.get_ProviderType(self, pdwType);
     }
-    pub fn put_ProviderType(self: *const ICEnroll, dwType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderType(self: *const ICEnroll, dwType: i32) HRESULT {
         return self.vtable.put_ProviderType(self, dwType);
     }
-    pub fn get_KeySpec(self: *const ICEnroll, pdw: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_KeySpec(self: *const ICEnroll, pdw: ?*i32) HRESULT {
         return self.vtable.get_KeySpec(self, pdw);
     }
-    pub fn put_KeySpec(self: *const ICEnroll, dw: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_KeySpec(self: *const ICEnroll, dw: i32) HRESULT {
         return self.vtable.put_KeySpec(self, dw);
     }
-    pub fn get_ProviderFlags(self: *const ICEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderFlags(self: *const ICEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_ProviderFlags(self, pdwFlags);
     }
-    pub fn put_ProviderFlags(self: *const ICEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderFlags(self: *const ICEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_ProviderFlags(self, dwFlags);
     }
-    pub fn get_UseExistingKeySet(self: *const ICEnroll, fUseExistingKeys: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_UseExistingKeySet(self: *const ICEnroll, fUseExistingKeys: ?*BOOL) HRESULT {
         return self.vtable.get_UseExistingKeySet(self, fUseExistingKeys);
     }
-    pub fn put_UseExistingKeySet(self: *const ICEnroll, fUseExistingKeys: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_UseExistingKeySet(self: *const ICEnroll, fUseExistingKeys: BOOL) HRESULT {
         return self.vtable.put_UseExistingKeySet(self, fUseExistingKeys);
     }
-    pub fn get_GenKeyFlags(self: *const ICEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_GenKeyFlags(self: *const ICEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_GenKeyFlags(self, pdwFlags);
     }
-    pub fn put_GenKeyFlags(self: *const ICEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_GenKeyFlags(self: *const ICEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_GenKeyFlags(self, dwFlags);
     }
-    pub fn get_DeleteRequestCert(self: *const ICEnroll, fDelete: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_DeleteRequestCert(self: *const ICEnroll, fDelete: ?*BOOL) HRESULT {
         return self.vtable.get_DeleteRequestCert(self, fDelete);
     }
-    pub fn put_DeleteRequestCert(self: *const ICEnroll, fDelete: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_DeleteRequestCert(self: *const ICEnroll, fDelete: BOOL) HRESULT {
         return self.vtable.put_DeleteRequestCert(self, fDelete);
     }
-    pub fn get_WriteCertToCSP(self: *const ICEnroll, fBool: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_WriteCertToCSP(self: *const ICEnroll, fBool: ?*BOOL) HRESULT {
         return self.vtable.get_WriteCertToCSP(self, fBool);
     }
-    pub fn put_WriteCertToCSP(self: *const ICEnroll, fBool: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_WriteCertToCSP(self: *const ICEnroll, fBool: BOOL) HRESULT {
         return self.vtable.put_WriteCertToCSP(self, fBool);
     }
-    pub fn get_SPCFileName(self: *const ICEnroll, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SPCFileName(self: *const ICEnroll, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.get_SPCFileName(self, pbstr);
     }
-    pub fn put_SPCFileName(self: *const ICEnroll, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_SPCFileName(self: *const ICEnroll, bstr: ?BSTR) HRESULT {
         return self.vtable.put_SPCFileName(self, bstr);
     }
-    pub fn get_PVKFileName(self: *const ICEnroll, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PVKFileName(self: *const ICEnroll, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.get_PVKFileName(self, pbstr);
     }
-    pub fn put_PVKFileName(self: *const ICEnroll, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PVKFileName(self: *const ICEnroll, bstr: ?BSTR) HRESULT {
         return self.vtable.put_PVKFileName(self, bstr);
     }
-    pub fn get_HashAlgorithm(self: *const ICEnroll, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_HashAlgorithm(self: *const ICEnroll, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.get_HashAlgorithm(self, pbstr);
     }
-    pub fn put_HashAlgorithm(self: *const ICEnroll, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_HashAlgorithm(self: *const ICEnroll, bstr: ?BSTR) HRESULT {
         return self.vtable.put_HashAlgorithm(self, bstr);
     }
 };
@@ -13729,56 +13729,56 @@ pub const IID_ICEnroll2 = &IID_ICEnroll2_Value;
 pub const ICEnroll2 = extern union {
     pub const VTable = extern struct {
         base: ICEnroll.VTable,
-        addCertTypeToRequest: *const fn(
+        addCertTypeToRequest: *const fn (
             self: *const ICEnroll2,
             CertType: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addNameValuePairToSignature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addNameValuePairToSignature: *const fn (
             self: *const ICEnroll2,
             Name: ?BSTR,
             Value: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_WriteCertToUserDS: *const fn(
+        get_WriteCertToUserDS: *const fn (
             self: *const ICEnroll2,
             fBool: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_WriteCertToUserDS: *const fn(
+        put_WriteCertToUserDS: *const fn (
             self: *const ICEnroll2,
             fBool: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EnableT61DNEncoding: *const fn(
+        get_EnableT61DNEncoding: *const fn (
             self: *const ICEnroll2,
             fBool: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EnableT61DNEncoding: *const fn(
+        put_EnableT61DNEncoding: *const fn (
             self: *const ICEnroll2,
             fBool: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICEnroll: ICEnroll,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn addCertTypeToRequest(self: *const ICEnroll2, CertType: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn addCertTypeToRequest(self: *const ICEnroll2, CertType: ?BSTR) HRESULT {
         return self.vtable.addCertTypeToRequest(self, CertType);
     }
-    pub fn addNameValuePairToSignature(self: *const ICEnroll2, Name: ?BSTR, Value: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn addNameValuePairToSignature(self: *const ICEnroll2, Name: ?BSTR, Value: ?BSTR) HRESULT {
         return self.vtable.addNameValuePairToSignature(self, Name, Value);
     }
-    pub fn get_WriteCertToUserDS(self: *const ICEnroll2, fBool: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_WriteCertToUserDS(self: *const ICEnroll2, fBool: ?*BOOL) HRESULT {
         return self.vtable.get_WriteCertToUserDS(self, fBool);
     }
-    pub fn put_WriteCertToUserDS(self: *const ICEnroll2, fBool: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_WriteCertToUserDS(self: *const ICEnroll2, fBool: BOOL) HRESULT {
         return self.vtable.put_WriteCertToUserDS(self, fBool);
     }
-    pub fn get_EnableT61DNEncoding(self: *const ICEnroll2, fBool: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_EnableT61DNEncoding(self: *const ICEnroll2, fBool: ?*BOOL) HRESULT {
         return self.vtable.get_EnableT61DNEncoding(self, fBool);
     }
-    pub fn put_EnableT61DNEncoding(self: *const ICEnroll2, fBool: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_EnableT61DNEncoding(self: *const ICEnroll2, fBool: BOOL) HRESULT {
         return self.vtable.put_EnableT61DNEncoding(self, fBool);
     }
 };
@@ -13789,120 +13789,120 @@ pub const IID_ICEnroll3 = &IID_ICEnroll3_Value;
 pub const ICEnroll3 = extern union {
     pub const VTable = extern struct {
         base: ICEnroll2.VTable,
-        InstallPKCS7: *const fn(
+        InstallPKCS7: *const fn (
             self: *const ICEnroll3,
             PKCS7: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const ICEnroll3,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedKeySpec: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedKeySpec: *const fn (
             self: *const ICEnroll3,
             pdwKeySpec: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeyLen: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeyLen: *const fn (
             self: *const ICEnroll3,
             fMin: BOOL,
             fExchange: BOOL,
             pdwKeySize: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumAlgs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumAlgs: *const fn (
             self: *const ICEnroll3,
             dwIndex: i32,
             algClass: i32,
             pdwAlgID: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAlgName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAlgName: *const fn (
             self: *const ICEnroll3,
             algID: i32,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ReuseHardwareKeyIfUnableToGenNew: *const fn(
+        put_ReuseHardwareKeyIfUnableToGenNew: *const fn (
             self: *const ICEnroll3,
             fReuseHardwareKeyIfUnableToGenNew: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReuseHardwareKeyIfUnableToGenNew: *const fn(
+        get_ReuseHardwareKeyIfUnableToGenNew: *const fn (
             self: *const ICEnroll3,
             fReuseHardwareKeyIfUnableToGenNew: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HashAlgID: *const fn(
+        put_HashAlgID: *const fn (
             self: *const ICEnroll3,
             hashAlgID: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HashAlgID: *const fn(
+        get_HashAlgID: *const fn (
             self: *const ICEnroll3,
             hashAlgID: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LimitExchangeKeyToEncipherment: *const fn(
+        put_LimitExchangeKeyToEncipherment: *const fn (
             self: *const ICEnroll3,
             fLimitExchangeKeyToEncipherment: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LimitExchangeKeyToEncipherment: *const fn(
+        get_LimitExchangeKeyToEncipherment: *const fn (
             self: *const ICEnroll3,
             fLimitExchangeKeyToEncipherment: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EnableSMIMECapabilities: *const fn(
+        put_EnableSMIMECapabilities: *const fn (
             self: *const ICEnroll3,
             fEnableSMIMECapabilities: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EnableSMIMECapabilities: *const fn(
+        get_EnableSMIMECapabilities: *const fn (
             self: *const ICEnroll3,
             fEnableSMIMECapabilities: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICEnroll2: ICEnroll2,
     ICEnroll: ICEnroll,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InstallPKCS7(self: *const ICEnroll3, PKCS7: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InstallPKCS7(self: *const ICEnroll3, PKCS7: ?BSTR) HRESULT {
         return self.vtable.InstallPKCS7(self, PKCS7);
     }
-    pub fn Reset(self: *const ICEnroll3) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ICEnroll3) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn GetSupportedKeySpec(self: *const ICEnroll3, pdwKeySpec: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedKeySpec(self: *const ICEnroll3, pdwKeySpec: ?*i32) HRESULT {
         return self.vtable.GetSupportedKeySpec(self, pdwKeySpec);
     }
-    pub fn GetKeyLen(self: *const ICEnroll3, fMin: BOOL, fExchange: BOOL, pdwKeySize: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetKeyLen(self: *const ICEnroll3, fMin: BOOL, fExchange: BOOL, pdwKeySize: ?*i32) HRESULT {
         return self.vtable.GetKeyLen(self, fMin, fExchange, pdwKeySize);
     }
-    pub fn EnumAlgs(self: *const ICEnroll3, dwIndex: i32, algClass: i32, pdwAlgID: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn EnumAlgs(self: *const ICEnroll3, dwIndex: i32, algClass: i32, pdwAlgID: ?*i32) HRESULT {
         return self.vtable.EnumAlgs(self, dwIndex, algClass, pdwAlgID);
     }
-    pub fn GetAlgName(self: *const ICEnroll3, algID: i32, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetAlgName(self: *const ICEnroll3, algID: i32, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.GetAlgName(self, algID, pbstr);
     }
-    pub fn put_ReuseHardwareKeyIfUnableToGenNew(self: *const ICEnroll3, fReuseHardwareKeyIfUnableToGenNew: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_ReuseHardwareKeyIfUnableToGenNew(self: *const ICEnroll3, fReuseHardwareKeyIfUnableToGenNew: BOOL) HRESULT {
         return self.vtable.put_ReuseHardwareKeyIfUnableToGenNew(self, fReuseHardwareKeyIfUnableToGenNew);
     }
-    pub fn get_ReuseHardwareKeyIfUnableToGenNew(self: *const ICEnroll3, fReuseHardwareKeyIfUnableToGenNew: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_ReuseHardwareKeyIfUnableToGenNew(self: *const ICEnroll3, fReuseHardwareKeyIfUnableToGenNew: ?*BOOL) HRESULT {
         return self.vtable.get_ReuseHardwareKeyIfUnableToGenNew(self, fReuseHardwareKeyIfUnableToGenNew);
     }
-    pub fn put_HashAlgID(self: *const ICEnroll3, hashAlgID: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_HashAlgID(self: *const ICEnroll3, hashAlgID: i32) HRESULT {
         return self.vtable.put_HashAlgID(self, hashAlgID);
     }
-    pub fn get_HashAlgID(self: *const ICEnroll3, hashAlgID: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_HashAlgID(self: *const ICEnroll3, hashAlgID: ?*i32) HRESULT {
         return self.vtable.get_HashAlgID(self, hashAlgID);
     }
-    pub fn put_LimitExchangeKeyToEncipherment(self: *const ICEnroll3, fLimitExchangeKeyToEncipherment: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_LimitExchangeKeyToEncipherment(self: *const ICEnroll3, fLimitExchangeKeyToEncipherment: BOOL) HRESULT {
         return self.vtable.put_LimitExchangeKeyToEncipherment(self, fLimitExchangeKeyToEncipherment);
     }
-    pub fn get_LimitExchangeKeyToEncipherment(self: *const ICEnroll3, fLimitExchangeKeyToEncipherment: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_LimitExchangeKeyToEncipherment(self: *const ICEnroll3, fLimitExchangeKeyToEncipherment: ?*BOOL) HRESULT {
         return self.vtable.get_LimitExchangeKeyToEncipherment(self, fLimitExchangeKeyToEncipherment);
     }
-    pub fn put_EnableSMIMECapabilities(self: *const ICEnroll3, fEnableSMIMECapabilities: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_EnableSMIMECapabilities(self: *const ICEnroll3, fEnableSMIMECapabilities: BOOL) HRESULT {
         return self.vtable.put_EnableSMIMECapabilities(self, fEnableSMIMECapabilities);
     }
-    pub fn get_EnableSMIMECapabilities(self: *const ICEnroll3, fEnableSMIMECapabilities: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_EnableSMIMECapabilities(self: *const ICEnroll3, fEnableSMIMECapabilities: ?*BOOL) HRESULT {
         return self.vtable.get_EnableSMIMECapabilities(self, fEnableSMIMECapabilities);
     }
 };
@@ -13914,178 +13914,178 @@ pub const ICEnroll4 = extern union {
     pub const VTable = extern struct {
         base: ICEnroll3.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PrivateKeyArchiveCertificate: *const fn(
+        put_PrivateKeyArchiveCertificate: *const fn (
             self: *const ICEnroll4,
             bstrCert: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrivateKeyArchiveCertificate: *const fn(
+        get_PrivateKeyArchiveCertificate: *const fn (
             self: *const ICEnroll4,
             pbstrCert: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ThumbPrint: *const fn(
+        put_ThumbPrint: *const fn (
             self: *const ICEnroll4,
             bstrThumbPrint: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ThumbPrint: *const fn(
+        get_ThumbPrint: *const fn (
             self: *const ICEnroll4,
             pbstrThumbPrint: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        binaryToString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        binaryToString: *const fn (
             self: *const ICEnroll4,
             Flags: i32,
             strBinary: ?BSTR,
             pstrEncoded: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        stringToBinary: *const fn(
+        ) callconv(.winapi) HRESULT,
+        stringToBinary: *const fn (
             self: *const ICEnroll4,
             Flags: i32,
             strEncoded: ?BSTR,
             pstrBinary: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addExtensionToRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addExtensionToRequest: *const fn (
             self: *const ICEnroll4,
             Flags: i32,
             strName: ?BSTR,
             strValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addAttributeToRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addAttributeToRequest: *const fn (
             self: *const ICEnroll4,
             Flags: i32,
             strName: ?BSTR,
             strValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addNameValuePairToRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addNameValuePairToRequest: *const fn (
             self: *const ICEnroll4,
             Flags: i32,
             strName: ?BSTR,
             strValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        resetExtensions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        resetExtensions: *const fn (
             self: *const ICEnroll4,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        resetAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        resetAttributes: *const fn (
             self: *const ICEnroll4,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createRequest: *const fn (
             self: *const ICEnroll4,
             Flags: CERT_CREATE_REQUEST_FLAGS,
             strDNName: ?BSTR,
             Usage: ?BSTR,
             pstrRequest: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createFileRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createFileRequest: *const fn (
             self: *const ICEnroll4,
             Flags: CERT_CREATE_REQUEST_FLAGS,
             strDNName: ?BSTR,
             strUsage: ?BSTR,
             strRequestFileName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        acceptResponse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        acceptResponse: *const fn (
             self: *const ICEnroll4,
             strResponse: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        acceptFileResponse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        acceptFileResponse: *const fn (
             self: *const ICEnroll4,
             strResponseFileName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        getCertFromResponse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        getCertFromResponse: *const fn (
             self: *const ICEnroll4,
             strResponse: ?BSTR,
             pstrCert: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        getCertFromFileResponse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        getCertFromFileResponse: *const fn (
             self: *const ICEnroll4,
             strResponseFileName: ?BSTR,
             pstrCert: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createPFX: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createPFX: *const fn (
             self: *const ICEnroll4,
             strPassword: ?BSTR,
             pstrPFX: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createFilePFX: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createFilePFX: *const fn (
             self: *const ICEnroll4,
             strPassword: ?BSTR,
             strPFXFileName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        setPendingRequestInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        setPendingRequestInfo: *const fn (
             self: *const ICEnroll4,
             lRequestID: i32,
             strCADNS: ?BSTR,
             strCAName: ?BSTR,
             strFriendlyName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        enumPendingRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        enumPendingRequest: *const fn (
             self: *const ICEnroll4,
             lIndex: i32,
             lDesiredProperty: PENDING_REQUEST_DESIRED_PROPERTY,
             pvarProperty: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        removePendingRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        removePendingRequest: *const fn (
             self: *const ICEnroll4,
             strThumbprint: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeyLenEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeyLenEx: *const fn (
             self: *const ICEnroll4,
             lSizeSpec: XEKL_KEYSIZE,
             lKeySpec: XEKL_KEYSPEC,
             pdwKeySize: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstallPKCS7Ex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstallPKCS7Ex: *const fn (
             self: *const ICEnroll4,
             PKCS7: ?BSTR,
             plCertInstalled: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addCertTypeToRequestEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addCertTypeToRequestEx: *const fn (
             self: *const ICEnroll4,
             lType: ADDED_CERT_TYPE,
             bstrOIDOrName: ?BSTR,
             lMajorVersion: i32,
             fMinorVersion: BOOL,
             lMinorVersion: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        getProviderType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        getProviderType: *const fn (
             self: *const ICEnroll4,
             strProvName: ?BSTR,
             plProvType: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SignerCertificate: *const fn(
+        put_SignerCertificate: *const fn (
             self: *const ICEnroll4,
             bstrCert: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ClientId: *const fn(
+        put_ClientId: *const fn (
             self: *const ICEnroll4,
             lClientId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ClientId: *const fn(
+        get_ClientId: *const fn (
             self: *const ICEnroll4,
             plClientId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addBlobPropertyToCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addBlobPropertyToCertificate: *const fn (
             self: *const ICEnroll4,
             lPropertyId: i32,
             lReserved: i32,
             bstrProperty: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        resetBlobProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        resetBlobProperties: *const fn (
             self: *const ICEnroll4,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_IncludeSubjectKeyID: *const fn(
+        put_IncludeSubjectKeyID: *const fn (
             self: *const ICEnroll4,
             fInclude: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IncludeSubjectKeyID: *const fn(
+        get_IncludeSubjectKeyID: *const fn (
             self: *const ICEnroll4,
             pfInclude: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICEnroll3: ICEnroll3,
@@ -14093,103 +14093,103 @@ pub const ICEnroll4 = extern union {
     ICEnroll: ICEnroll,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn put_PrivateKeyArchiveCertificate(self: *const ICEnroll4, bstrCert: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PrivateKeyArchiveCertificate(self: *const ICEnroll4, bstrCert: ?BSTR) HRESULT {
         return self.vtable.put_PrivateKeyArchiveCertificate(self, bstrCert);
     }
-    pub fn get_PrivateKeyArchiveCertificate(self: *const ICEnroll4, pbstrCert: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PrivateKeyArchiveCertificate(self: *const ICEnroll4, pbstrCert: ?*?BSTR) HRESULT {
         return self.vtable.get_PrivateKeyArchiveCertificate(self, pbstrCert);
     }
-    pub fn put_ThumbPrint(self: *const ICEnroll4, bstrThumbPrint: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ThumbPrint(self: *const ICEnroll4, bstrThumbPrint: ?BSTR) HRESULT {
         return self.vtable.put_ThumbPrint(self, bstrThumbPrint);
     }
-    pub fn get_ThumbPrint(self: *const ICEnroll4, pbstrThumbPrint: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ThumbPrint(self: *const ICEnroll4, pbstrThumbPrint: ?*?BSTR) HRESULT {
         return self.vtable.get_ThumbPrint(self, pbstrThumbPrint);
     }
-    pub fn binaryToString(self: *const ICEnroll4, Flags: i32, strBinary: ?BSTR, pstrEncoded: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn binaryToString(self: *const ICEnroll4, Flags: i32, strBinary: ?BSTR, pstrEncoded: ?*?BSTR) HRESULT {
         return self.vtable.binaryToString(self, Flags, strBinary, pstrEncoded);
     }
-    pub fn stringToBinary(self: *const ICEnroll4, Flags: i32, strEncoded: ?BSTR, pstrBinary: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn stringToBinary(self: *const ICEnroll4, Flags: i32, strEncoded: ?BSTR, pstrBinary: ?*?BSTR) HRESULT {
         return self.vtable.stringToBinary(self, Flags, strEncoded, pstrBinary);
     }
-    pub fn addExtensionToRequest(self: *const ICEnroll4, Flags: i32, strName: ?BSTR, strValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn addExtensionToRequest(self: *const ICEnroll4, Flags: i32, strName: ?BSTR, strValue: ?BSTR) HRESULT {
         return self.vtable.addExtensionToRequest(self, Flags, strName, strValue);
     }
-    pub fn addAttributeToRequest(self: *const ICEnroll4, Flags: i32, strName: ?BSTR, strValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn addAttributeToRequest(self: *const ICEnroll4, Flags: i32, strName: ?BSTR, strValue: ?BSTR) HRESULT {
         return self.vtable.addAttributeToRequest(self, Flags, strName, strValue);
     }
-    pub fn addNameValuePairToRequest(self: *const ICEnroll4, Flags: i32, strName: ?BSTR, strValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn addNameValuePairToRequest(self: *const ICEnroll4, Flags: i32, strName: ?BSTR, strValue: ?BSTR) HRESULT {
         return self.vtable.addNameValuePairToRequest(self, Flags, strName, strValue);
     }
-    pub fn resetExtensions(self: *const ICEnroll4) callconv(.Inline) HRESULT {
+    pub inline fn resetExtensions(self: *const ICEnroll4) HRESULT {
         return self.vtable.resetExtensions(self);
     }
-    pub fn resetAttributes(self: *const ICEnroll4) callconv(.Inline) HRESULT {
+    pub inline fn resetAttributes(self: *const ICEnroll4) HRESULT {
         return self.vtable.resetAttributes(self);
     }
-    pub fn createRequest(self: *const ICEnroll4, Flags: CERT_CREATE_REQUEST_FLAGS, strDNName: ?BSTR, Usage: ?BSTR, pstrRequest: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn createRequest(self: *const ICEnroll4, Flags: CERT_CREATE_REQUEST_FLAGS, strDNName: ?BSTR, Usage: ?BSTR, pstrRequest: ?*?BSTR) HRESULT {
         return self.vtable.createRequest(self, Flags, strDNName, Usage, pstrRequest);
     }
-    pub fn createFileRequest(self: *const ICEnroll4, Flags: CERT_CREATE_REQUEST_FLAGS, strDNName: ?BSTR, strUsage: ?BSTR, strRequestFileName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn createFileRequest(self: *const ICEnroll4, Flags: CERT_CREATE_REQUEST_FLAGS, strDNName: ?BSTR, strUsage: ?BSTR, strRequestFileName: ?BSTR) HRESULT {
         return self.vtable.createFileRequest(self, Flags, strDNName, strUsage, strRequestFileName);
     }
-    pub fn acceptResponse(self: *const ICEnroll4, strResponse: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn acceptResponse(self: *const ICEnroll4, strResponse: ?BSTR) HRESULT {
         return self.vtable.acceptResponse(self, strResponse);
     }
-    pub fn acceptFileResponse(self: *const ICEnroll4, strResponseFileName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn acceptFileResponse(self: *const ICEnroll4, strResponseFileName: ?BSTR) HRESULT {
         return self.vtable.acceptFileResponse(self, strResponseFileName);
     }
-    pub fn getCertFromResponse(self: *const ICEnroll4, strResponse: ?BSTR, pstrCert: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn getCertFromResponse(self: *const ICEnroll4, strResponse: ?BSTR, pstrCert: ?*?BSTR) HRESULT {
         return self.vtable.getCertFromResponse(self, strResponse, pstrCert);
     }
-    pub fn getCertFromFileResponse(self: *const ICEnroll4, strResponseFileName: ?BSTR, pstrCert: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn getCertFromFileResponse(self: *const ICEnroll4, strResponseFileName: ?BSTR, pstrCert: ?*?BSTR) HRESULT {
         return self.vtable.getCertFromFileResponse(self, strResponseFileName, pstrCert);
     }
-    pub fn createPFX(self: *const ICEnroll4, strPassword: ?BSTR, pstrPFX: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn createPFX(self: *const ICEnroll4, strPassword: ?BSTR, pstrPFX: ?*?BSTR) HRESULT {
         return self.vtable.createPFX(self, strPassword, pstrPFX);
     }
-    pub fn createFilePFX(self: *const ICEnroll4, strPassword: ?BSTR, strPFXFileName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn createFilePFX(self: *const ICEnroll4, strPassword: ?BSTR, strPFXFileName: ?BSTR) HRESULT {
         return self.vtable.createFilePFX(self, strPassword, strPFXFileName);
     }
-    pub fn setPendingRequestInfo(self: *const ICEnroll4, lRequestID: i32, strCADNS: ?BSTR, strCAName: ?BSTR, strFriendlyName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn setPendingRequestInfo(self: *const ICEnroll4, lRequestID: i32, strCADNS: ?BSTR, strCAName: ?BSTR, strFriendlyName: ?BSTR) HRESULT {
         return self.vtable.setPendingRequestInfo(self, lRequestID, strCADNS, strCAName, strFriendlyName);
     }
-    pub fn enumPendingRequest(self: *const ICEnroll4, lIndex: i32, lDesiredProperty: PENDING_REQUEST_DESIRED_PROPERTY, pvarProperty: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn enumPendingRequest(self: *const ICEnroll4, lIndex: i32, lDesiredProperty: PENDING_REQUEST_DESIRED_PROPERTY, pvarProperty: ?*VARIANT) HRESULT {
         return self.vtable.enumPendingRequest(self, lIndex, lDesiredProperty, pvarProperty);
     }
-    pub fn removePendingRequest(self: *const ICEnroll4, strThumbprint: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn removePendingRequest(self: *const ICEnroll4, strThumbprint: ?BSTR) HRESULT {
         return self.vtable.removePendingRequest(self, strThumbprint);
     }
-    pub fn GetKeyLenEx(self: *const ICEnroll4, lSizeSpec: XEKL_KEYSIZE, lKeySpec: XEKL_KEYSPEC, pdwKeySize: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetKeyLenEx(self: *const ICEnroll4, lSizeSpec: XEKL_KEYSIZE, lKeySpec: XEKL_KEYSPEC, pdwKeySize: ?*i32) HRESULT {
         return self.vtable.GetKeyLenEx(self, lSizeSpec, lKeySpec, pdwKeySize);
     }
-    pub fn InstallPKCS7Ex(self: *const ICEnroll4, PKCS7: ?BSTR, plCertInstalled: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn InstallPKCS7Ex(self: *const ICEnroll4, PKCS7: ?BSTR, plCertInstalled: ?*i32) HRESULT {
         return self.vtable.InstallPKCS7Ex(self, PKCS7, plCertInstalled);
     }
-    pub fn addCertTypeToRequestEx(self: *const ICEnroll4, lType: ADDED_CERT_TYPE, bstrOIDOrName: ?BSTR, lMajorVersion: i32, fMinorVersion: BOOL, lMinorVersion: i32) callconv(.Inline) HRESULT {
+    pub inline fn addCertTypeToRequestEx(self: *const ICEnroll4, lType: ADDED_CERT_TYPE, bstrOIDOrName: ?BSTR, lMajorVersion: i32, fMinorVersion: BOOL, lMinorVersion: i32) HRESULT {
         return self.vtable.addCertTypeToRequestEx(self, lType, bstrOIDOrName, lMajorVersion, fMinorVersion, lMinorVersion);
     }
-    pub fn getProviderType(self: *const ICEnroll4, strProvName: ?BSTR, plProvType: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn getProviderType(self: *const ICEnroll4, strProvName: ?BSTR, plProvType: ?*i32) HRESULT {
         return self.vtable.getProviderType(self, strProvName, plProvType);
     }
-    pub fn put_SignerCertificate(self: *const ICEnroll4, bstrCert: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_SignerCertificate(self: *const ICEnroll4, bstrCert: ?BSTR) HRESULT {
         return self.vtable.put_SignerCertificate(self, bstrCert);
     }
-    pub fn put_ClientId(self: *const ICEnroll4, lClientId: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ClientId(self: *const ICEnroll4, lClientId: i32) HRESULT {
         return self.vtable.put_ClientId(self, lClientId);
     }
-    pub fn get_ClientId(self: *const ICEnroll4, plClientId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ClientId(self: *const ICEnroll4, plClientId: ?*i32) HRESULT {
         return self.vtable.get_ClientId(self, plClientId);
     }
-    pub fn addBlobPropertyToCertificate(self: *const ICEnroll4, lPropertyId: i32, lReserved: i32, bstrProperty: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn addBlobPropertyToCertificate(self: *const ICEnroll4, lPropertyId: i32, lReserved: i32, bstrProperty: ?BSTR) HRESULT {
         return self.vtable.addBlobPropertyToCertificate(self, lPropertyId, lReserved, bstrProperty);
     }
-    pub fn resetBlobProperties(self: *const ICEnroll4) callconv(.Inline) HRESULT {
+    pub inline fn resetBlobProperties(self: *const ICEnroll4) HRESULT {
         return self.vtable.resetBlobProperties(self);
     }
-    pub fn put_IncludeSubjectKeyID(self: *const ICEnroll4, fInclude: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_IncludeSubjectKeyID(self: *const ICEnroll4, fInclude: BOOL) HRESULT {
         return self.vtable.put_IncludeSubjectKeyID(self, fInclude);
     }
-    pub fn get_IncludeSubjectKeyID(self: *const ICEnroll4, pfInclude: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_IncludeSubjectKeyID(self: *const ICEnroll4, pfInclude: ?*BOOL) HRESULT {
         return self.vtable.get_IncludeSubjectKeyID(self, pfInclude);
     }
 };
@@ -14200,558 +14200,558 @@ pub const IID_IEnroll = &IID_IEnroll_Value;
 pub const IEnroll = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        createFilePKCS10WStr: *const fn(
+        createFilePKCS10WStr: *const fn (
             self: *const IEnroll,
             DNName: ?[*:0]const u16,
             Usage: ?[*:0]const u16,
             wszPKCS10FileName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        acceptFilePKCS7WStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        acceptFilePKCS7WStr: *const fn (
             self: *const IEnroll,
             wszPKCS7FileName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createPKCS10WStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createPKCS10WStr: *const fn (
             self: *const IEnroll,
             DNName: ?[*:0]const u16,
             Usage: ?[*:0]const u16,
             pPkcs10Blob: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        acceptPKCS7Blob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        acceptPKCS7Blob: *const fn (
             self: *const IEnroll,
             pBlobPKCS7: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        getCertContextFromPKCS7: *const fn(
+        ) callconv(.winapi) HRESULT,
+        getCertContextFromPKCS7: *const fn (
             self: *const IEnroll,
             pBlobPKCS7: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) ?*CERT_CONTEXT,
-        getMyStore: *const fn(
+        ) callconv(.winapi) ?*CERT_CONTEXT,
+        getMyStore: *const fn (
             self: *const IEnroll,
-        ) callconv(@import("std").os.windows.WINAPI) ?HCERTSTORE,
-        getCAStore: *const fn(
+        ) callconv(.winapi) ?HCERTSTORE,
+        getCAStore: *const fn (
             self: *const IEnroll,
-        ) callconv(@import("std").os.windows.WINAPI) ?HCERTSTORE,
-        getROOTHStore: *const fn(
+        ) callconv(.winapi) ?HCERTSTORE,
+        getROOTHStore: *const fn (
             self: *const IEnroll,
-        ) callconv(@import("std").os.windows.WINAPI) ?HCERTSTORE,
-        enumProvidersWStr: *const fn(
+        ) callconv(.winapi) ?HCERTSTORE,
+        enumProvidersWStr: *const fn (
             self: *const IEnroll,
             dwIndex: i32,
             dwFlags: i32,
             pbstrProvName: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        enumContainersWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        enumContainersWStr: *const fn (
             self: *const IEnroll,
             dwIndex: i32,
             pbstr: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        freeRequestInfoBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        freeRequestInfoBlob: *const fn (
             self: *const IEnroll,
             pkcs7OrPkcs10: CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MyStoreNameWStr: *const fn(
+        get_MyStoreNameWStr: *const fn (
             self: *const IEnroll,
             szwName: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MyStoreNameWStr: *const fn(
+        put_MyStoreNameWStr: *const fn (
             self: *const IEnroll,
             szwName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MyStoreTypeWStr: *const fn(
+        get_MyStoreTypeWStr: *const fn (
             self: *const IEnroll,
             szwType: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MyStoreTypeWStr: *const fn(
+        put_MyStoreTypeWStr: *const fn (
             self: *const IEnroll,
             szwType: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MyStoreFlags: *const fn(
+        get_MyStoreFlags: *const fn (
             self: *const IEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MyStoreFlags: *const fn(
+        put_MyStoreFlags: *const fn (
             self: *const IEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAStoreNameWStr: *const fn(
+        get_CAStoreNameWStr: *const fn (
             self: *const IEnroll,
             szwName: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CAStoreNameWStr: *const fn(
+        put_CAStoreNameWStr: *const fn (
             self: *const IEnroll,
             szwName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAStoreTypeWStr: *const fn(
+        get_CAStoreTypeWStr: *const fn (
             self: *const IEnroll,
             szwType: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CAStoreTypeWStr: *const fn(
+        put_CAStoreTypeWStr: *const fn (
             self: *const IEnroll,
             szwType: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CAStoreFlags: *const fn(
+        get_CAStoreFlags: *const fn (
             self: *const IEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CAStoreFlags: *const fn(
+        put_CAStoreFlags: *const fn (
             self: *const IEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RootStoreNameWStr: *const fn(
+        get_RootStoreNameWStr: *const fn (
             self: *const IEnroll,
             szwName: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RootStoreNameWStr: *const fn(
+        put_RootStoreNameWStr: *const fn (
             self: *const IEnroll,
             szwName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RootStoreTypeWStr: *const fn(
+        get_RootStoreTypeWStr: *const fn (
             self: *const IEnroll,
             szwType: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RootStoreTypeWStr: *const fn(
+        put_RootStoreTypeWStr: *const fn (
             self: *const IEnroll,
             szwType: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RootStoreFlags: *const fn(
+        get_RootStoreFlags: *const fn (
             self: *const IEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RootStoreFlags: *const fn(
+        put_RootStoreFlags: *const fn (
             self: *const IEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestStoreNameWStr: *const fn(
+        get_RequestStoreNameWStr: *const fn (
             self: *const IEnroll,
             szwName: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RequestStoreNameWStr: *const fn(
+        put_RequestStoreNameWStr: *const fn (
             self: *const IEnroll,
             szwName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestStoreTypeWStr: *const fn(
+        get_RequestStoreTypeWStr: *const fn (
             self: *const IEnroll,
             szwType: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RequestStoreTypeWStr: *const fn(
+        put_RequestStoreTypeWStr: *const fn (
             self: *const IEnroll,
             szwType: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequestStoreFlags: *const fn(
+        get_RequestStoreFlags: *const fn (
             self: *const IEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RequestStoreFlags: *const fn(
+        put_RequestStoreFlags: *const fn (
             self: *const IEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ContainerNameWStr: *const fn(
+        get_ContainerNameWStr: *const fn (
             self: *const IEnroll,
             szwContainer: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ContainerNameWStr: *const fn(
+        put_ContainerNameWStr: *const fn (
             self: *const IEnroll,
             szwContainer: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderNameWStr: *const fn(
+        get_ProviderNameWStr: *const fn (
             self: *const IEnroll,
             szwProvider: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderNameWStr: *const fn(
+        put_ProviderNameWStr: *const fn (
             self: *const IEnroll,
             szwProvider: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderType: *const fn(
+        get_ProviderType: *const fn (
             self: *const IEnroll,
             pdwType: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderType: *const fn(
+        put_ProviderType: *const fn (
             self: *const IEnroll,
             dwType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeySpec: *const fn(
+        get_KeySpec: *const fn (
             self: *const IEnroll,
             pdw: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_KeySpec: *const fn(
+        put_KeySpec: *const fn (
             self: *const IEnroll,
             dw: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderFlags: *const fn(
+        get_ProviderFlags: *const fn (
             self: *const IEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProviderFlags: *const fn(
+        put_ProviderFlags: *const fn (
             self: *const IEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UseExistingKeySet: *const fn(
+        get_UseExistingKeySet: *const fn (
             self: *const IEnroll,
             fUseExistingKeys: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UseExistingKeySet: *const fn(
+        put_UseExistingKeySet: *const fn (
             self: *const IEnroll,
             fUseExistingKeys: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_GenKeyFlags: *const fn(
+        get_GenKeyFlags: *const fn (
             self: *const IEnroll,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_GenKeyFlags: *const fn(
+        put_GenKeyFlags: *const fn (
             self: *const IEnroll,
             dwFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DeleteRequestCert: *const fn(
+        get_DeleteRequestCert: *const fn (
             self: *const IEnroll,
             fDelete: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DeleteRequestCert: *const fn(
+        put_DeleteRequestCert: *const fn (
             self: *const IEnroll,
             fDelete: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_WriteCertToUserDS: *const fn(
+        get_WriteCertToUserDS: *const fn (
             self: *const IEnroll,
             fBool: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_WriteCertToUserDS: *const fn(
+        put_WriteCertToUserDS: *const fn (
             self: *const IEnroll,
             fBool: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EnableT61DNEncoding: *const fn(
+        get_EnableT61DNEncoding: *const fn (
             self: *const IEnroll,
             fBool: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EnableT61DNEncoding: *const fn(
+        put_EnableT61DNEncoding: *const fn (
             self: *const IEnroll,
             fBool: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_WriteCertToCSP: *const fn(
+        get_WriteCertToCSP: *const fn (
             self: *const IEnroll,
             fBool: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_WriteCertToCSP: *const fn(
+        put_WriteCertToCSP: *const fn (
             self: *const IEnroll,
             fBool: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SPCFileNameWStr: *const fn(
+        get_SPCFileNameWStr: *const fn (
             self: *const IEnroll,
             szw: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SPCFileNameWStr: *const fn(
+        put_SPCFileNameWStr: *const fn (
             self: *const IEnroll,
             szw: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PVKFileNameWStr: *const fn(
+        get_PVKFileNameWStr: *const fn (
             self: *const IEnroll,
             szw: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PVKFileNameWStr: *const fn(
+        put_PVKFileNameWStr: *const fn (
             self: *const IEnroll,
             szw: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HashAlgorithmWStr: *const fn(
+        get_HashAlgorithmWStr: *const fn (
             self: *const IEnroll,
             szw: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HashAlgorithmWStr: *const fn(
+        put_HashAlgorithmWStr: *const fn (
             self: *const IEnroll,
             szw: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RenewalCertificate: *const fn(
+        get_RenewalCertificate: *const fn (
             self: *const IEnroll,
             ppCertContext: ?*?*CERT_CONTEXT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RenewalCertificate: *const fn(
+        put_RenewalCertificate: *const fn (
             self: *const IEnroll,
             pCertContext: ?*const CERT_CONTEXT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddCertTypeToRequestWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddCertTypeToRequestWStr: *const fn (
             self: *const IEnroll,
             szw: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddNameValuePairToSignatureWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddNameValuePairToSignatureWStr: *const fn (
             self: *const IEnroll,
             Name: ?PWSTR,
             Value: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddExtensionsToRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddExtensionsToRequest: *const fn (
             self: *const IEnroll,
             pCertExtensions: ?*CERT_EXTENSIONS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddAuthenticatedAttributesToPKCS7Request: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddAuthenticatedAttributesToPKCS7Request: *const fn (
             self: *const IEnroll,
             pAttributes: ?*CRYPT_ATTRIBUTES,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreatePKCS7RequestFromRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreatePKCS7RequestFromRequest: *const fn (
             self: *const IEnroll,
             pRequest: ?*CRYPTOAPI_BLOB,
             pSigningCertContext: ?*const CERT_CONTEXT,
             pPkcs7Blob: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn createFilePKCS10WStr(self: *const IEnroll, DNName: ?[*:0]const u16, Usage: ?[*:0]const u16, wszPKCS10FileName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn createFilePKCS10WStr(self: *const IEnroll, DNName: ?[*:0]const u16, Usage: ?[*:0]const u16, wszPKCS10FileName: ?[*:0]const u16) HRESULT {
         return self.vtable.createFilePKCS10WStr(self, DNName, Usage, wszPKCS10FileName);
     }
-    pub fn acceptFilePKCS7WStr(self: *const IEnroll, wszPKCS7FileName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn acceptFilePKCS7WStr(self: *const IEnroll, wszPKCS7FileName: ?[*:0]const u16) HRESULT {
         return self.vtable.acceptFilePKCS7WStr(self, wszPKCS7FileName);
     }
-    pub fn createPKCS10WStr(self: *const IEnroll, DNName: ?[*:0]const u16, Usage: ?[*:0]const u16, pPkcs10Blob: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn createPKCS10WStr(self: *const IEnroll, DNName: ?[*:0]const u16, Usage: ?[*:0]const u16, pPkcs10Blob: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.createPKCS10WStr(self, DNName, Usage, pPkcs10Blob);
     }
-    pub fn acceptPKCS7Blob(self: *const IEnroll, pBlobPKCS7: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn acceptPKCS7Blob(self: *const IEnroll, pBlobPKCS7: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.acceptPKCS7Blob(self, pBlobPKCS7);
     }
-    pub fn getCertContextFromPKCS7(self: *const IEnroll, pBlobPKCS7: ?*CRYPTOAPI_BLOB) callconv(.Inline) ?*CERT_CONTEXT {
+    pub inline fn getCertContextFromPKCS7(self: *const IEnroll, pBlobPKCS7: ?*CRYPTOAPI_BLOB) ?*CERT_CONTEXT {
         return self.vtable.getCertContextFromPKCS7(self, pBlobPKCS7);
     }
-    pub fn getMyStore(self: *const IEnroll) callconv(.Inline) ?HCERTSTORE {
+    pub inline fn getMyStore(self: *const IEnroll) ?HCERTSTORE {
         return self.vtable.getMyStore(self);
     }
-    pub fn getCAStore(self: *const IEnroll) callconv(.Inline) ?HCERTSTORE {
+    pub inline fn getCAStore(self: *const IEnroll) ?HCERTSTORE {
         return self.vtable.getCAStore(self);
     }
-    pub fn getROOTHStore(self: *const IEnroll) callconv(.Inline) ?HCERTSTORE {
+    pub inline fn getROOTHStore(self: *const IEnroll) ?HCERTSTORE {
         return self.vtable.getROOTHStore(self);
     }
-    pub fn enumProvidersWStr(self: *const IEnroll, dwIndex: i32, dwFlags: i32, pbstrProvName: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn enumProvidersWStr(self: *const IEnroll, dwIndex: i32, dwFlags: i32, pbstrProvName: ?*?PWSTR) HRESULT {
         return self.vtable.enumProvidersWStr(self, dwIndex, dwFlags, pbstrProvName);
     }
-    pub fn enumContainersWStr(self: *const IEnroll, dwIndex: i32, pbstr: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn enumContainersWStr(self: *const IEnroll, dwIndex: i32, pbstr: ?*?PWSTR) HRESULT {
         return self.vtable.enumContainersWStr(self, dwIndex, pbstr);
     }
-    pub fn freeRequestInfoBlob(self: *const IEnroll, pkcs7OrPkcs10: CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn freeRequestInfoBlob(self: *const IEnroll, pkcs7OrPkcs10: CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.freeRequestInfoBlob(self, pkcs7OrPkcs10);
     }
-    pub fn get_MyStoreNameWStr(self: *const IEnroll, szwName: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_MyStoreNameWStr(self: *const IEnroll, szwName: ?*?PWSTR) HRESULT {
         return self.vtable.get_MyStoreNameWStr(self, szwName);
     }
-    pub fn put_MyStoreNameWStr(self: *const IEnroll, szwName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_MyStoreNameWStr(self: *const IEnroll, szwName: ?PWSTR) HRESULT {
         return self.vtable.put_MyStoreNameWStr(self, szwName);
     }
-    pub fn get_MyStoreTypeWStr(self: *const IEnroll, szwType: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_MyStoreTypeWStr(self: *const IEnroll, szwType: ?*?PWSTR) HRESULT {
         return self.vtable.get_MyStoreTypeWStr(self, szwType);
     }
-    pub fn put_MyStoreTypeWStr(self: *const IEnroll, szwType: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_MyStoreTypeWStr(self: *const IEnroll, szwType: ?PWSTR) HRESULT {
         return self.vtable.put_MyStoreTypeWStr(self, szwType);
     }
-    pub fn get_MyStoreFlags(self: *const IEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MyStoreFlags(self: *const IEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_MyStoreFlags(self, pdwFlags);
     }
-    pub fn put_MyStoreFlags(self: *const IEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MyStoreFlags(self: *const IEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_MyStoreFlags(self, dwFlags);
     }
-    pub fn get_CAStoreNameWStr(self: *const IEnroll, szwName: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CAStoreNameWStr(self: *const IEnroll, szwName: ?*?PWSTR) HRESULT {
         return self.vtable.get_CAStoreNameWStr(self, szwName);
     }
-    pub fn put_CAStoreNameWStr(self: *const IEnroll, szwName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CAStoreNameWStr(self: *const IEnroll, szwName: ?PWSTR) HRESULT {
         return self.vtable.put_CAStoreNameWStr(self, szwName);
     }
-    pub fn get_CAStoreTypeWStr(self: *const IEnroll, szwType: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CAStoreTypeWStr(self: *const IEnroll, szwType: ?*?PWSTR) HRESULT {
         return self.vtable.get_CAStoreTypeWStr(self, szwType);
     }
-    pub fn put_CAStoreTypeWStr(self: *const IEnroll, szwType: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CAStoreTypeWStr(self: *const IEnroll, szwType: ?PWSTR) HRESULT {
         return self.vtable.put_CAStoreTypeWStr(self, szwType);
     }
-    pub fn get_CAStoreFlags(self: *const IEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CAStoreFlags(self: *const IEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_CAStoreFlags(self, pdwFlags);
     }
-    pub fn put_CAStoreFlags(self: *const IEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_CAStoreFlags(self: *const IEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_CAStoreFlags(self, dwFlags);
     }
-    pub fn get_RootStoreNameWStr(self: *const IEnroll, szwName: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RootStoreNameWStr(self: *const IEnroll, szwName: ?*?PWSTR) HRESULT {
         return self.vtable.get_RootStoreNameWStr(self, szwName);
     }
-    pub fn put_RootStoreNameWStr(self: *const IEnroll, szwName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RootStoreNameWStr(self: *const IEnroll, szwName: ?PWSTR) HRESULT {
         return self.vtable.put_RootStoreNameWStr(self, szwName);
     }
-    pub fn get_RootStoreTypeWStr(self: *const IEnroll, szwType: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RootStoreTypeWStr(self: *const IEnroll, szwType: ?*?PWSTR) HRESULT {
         return self.vtable.get_RootStoreTypeWStr(self, szwType);
     }
-    pub fn put_RootStoreTypeWStr(self: *const IEnroll, szwType: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RootStoreTypeWStr(self: *const IEnroll, szwType: ?PWSTR) HRESULT {
         return self.vtable.put_RootStoreTypeWStr(self, szwType);
     }
-    pub fn get_RootStoreFlags(self: *const IEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_RootStoreFlags(self: *const IEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_RootStoreFlags(self, pdwFlags);
     }
-    pub fn put_RootStoreFlags(self: *const IEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_RootStoreFlags(self: *const IEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_RootStoreFlags(self, dwFlags);
     }
-    pub fn get_RequestStoreNameWStr(self: *const IEnroll, szwName: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestStoreNameWStr(self: *const IEnroll, szwName: ?*?PWSTR) HRESULT {
         return self.vtable.get_RequestStoreNameWStr(self, szwName);
     }
-    pub fn put_RequestStoreNameWStr(self: *const IEnroll, szwName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RequestStoreNameWStr(self: *const IEnroll, szwName: ?PWSTR) HRESULT {
         return self.vtable.put_RequestStoreNameWStr(self, szwName);
     }
-    pub fn get_RequestStoreTypeWStr(self: *const IEnroll, szwType: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestStoreTypeWStr(self: *const IEnroll, szwType: ?*?PWSTR) HRESULT {
         return self.vtable.get_RequestStoreTypeWStr(self, szwType);
     }
-    pub fn put_RequestStoreTypeWStr(self: *const IEnroll, szwType: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RequestStoreTypeWStr(self: *const IEnroll, szwType: ?PWSTR) HRESULT {
         return self.vtable.put_RequestStoreTypeWStr(self, szwType);
     }
-    pub fn get_RequestStoreFlags(self: *const IEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_RequestStoreFlags(self: *const IEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_RequestStoreFlags(self, pdwFlags);
     }
-    pub fn put_RequestStoreFlags(self: *const IEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_RequestStoreFlags(self: *const IEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_RequestStoreFlags(self, dwFlags);
     }
-    pub fn get_ContainerNameWStr(self: *const IEnroll, szwContainer: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ContainerNameWStr(self: *const IEnroll, szwContainer: ?*?PWSTR) HRESULT {
         return self.vtable.get_ContainerNameWStr(self, szwContainer);
     }
-    pub fn put_ContainerNameWStr(self: *const IEnroll, szwContainer: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ContainerNameWStr(self: *const IEnroll, szwContainer: ?PWSTR) HRESULT {
         return self.vtable.put_ContainerNameWStr(self, szwContainer);
     }
-    pub fn get_ProviderNameWStr(self: *const IEnroll, szwProvider: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderNameWStr(self: *const IEnroll, szwProvider: ?*?PWSTR) HRESULT {
         return self.vtable.get_ProviderNameWStr(self, szwProvider);
     }
-    pub fn put_ProviderNameWStr(self: *const IEnroll, szwProvider: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderNameWStr(self: *const IEnroll, szwProvider: ?PWSTR) HRESULT {
         return self.vtable.put_ProviderNameWStr(self, szwProvider);
     }
-    pub fn get_ProviderType(self: *const IEnroll, pdwType: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderType(self: *const IEnroll, pdwType: ?*i32) HRESULT {
         return self.vtable.get_ProviderType(self, pdwType);
     }
-    pub fn put_ProviderType(self: *const IEnroll, dwType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderType(self: *const IEnroll, dwType: i32) HRESULT {
         return self.vtable.put_ProviderType(self, dwType);
     }
-    pub fn get_KeySpec(self: *const IEnroll, pdw: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_KeySpec(self: *const IEnroll, pdw: ?*i32) HRESULT {
         return self.vtable.get_KeySpec(self, pdw);
     }
-    pub fn put_KeySpec(self: *const IEnroll, dw: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_KeySpec(self: *const IEnroll, dw: i32) HRESULT {
         return self.vtable.put_KeySpec(self, dw);
     }
-    pub fn get_ProviderFlags(self: *const IEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderFlags(self: *const IEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_ProviderFlags(self, pdwFlags);
     }
-    pub fn put_ProviderFlags(self: *const IEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ProviderFlags(self: *const IEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_ProviderFlags(self, dwFlags);
     }
-    pub fn get_UseExistingKeySet(self: *const IEnroll, fUseExistingKeys: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_UseExistingKeySet(self: *const IEnroll, fUseExistingKeys: ?*BOOL) HRESULT {
         return self.vtable.get_UseExistingKeySet(self, fUseExistingKeys);
     }
-    pub fn put_UseExistingKeySet(self: *const IEnroll, fUseExistingKeys: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_UseExistingKeySet(self: *const IEnroll, fUseExistingKeys: BOOL) HRESULT {
         return self.vtable.put_UseExistingKeySet(self, fUseExistingKeys);
     }
-    pub fn get_GenKeyFlags(self: *const IEnroll, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_GenKeyFlags(self: *const IEnroll, pdwFlags: ?*i32) HRESULT {
         return self.vtable.get_GenKeyFlags(self, pdwFlags);
     }
-    pub fn put_GenKeyFlags(self: *const IEnroll, dwFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_GenKeyFlags(self: *const IEnroll, dwFlags: i32) HRESULT {
         return self.vtable.put_GenKeyFlags(self, dwFlags);
     }
-    pub fn get_DeleteRequestCert(self: *const IEnroll, fDelete: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_DeleteRequestCert(self: *const IEnroll, fDelete: ?*BOOL) HRESULT {
         return self.vtable.get_DeleteRequestCert(self, fDelete);
     }
-    pub fn put_DeleteRequestCert(self: *const IEnroll, fDelete: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_DeleteRequestCert(self: *const IEnroll, fDelete: BOOL) HRESULT {
         return self.vtable.put_DeleteRequestCert(self, fDelete);
     }
-    pub fn get_WriteCertToUserDS(self: *const IEnroll, fBool: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_WriteCertToUserDS(self: *const IEnroll, fBool: ?*BOOL) HRESULT {
         return self.vtable.get_WriteCertToUserDS(self, fBool);
     }
-    pub fn put_WriteCertToUserDS(self: *const IEnroll, fBool: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_WriteCertToUserDS(self: *const IEnroll, fBool: BOOL) HRESULT {
         return self.vtable.put_WriteCertToUserDS(self, fBool);
     }
-    pub fn get_EnableT61DNEncoding(self: *const IEnroll, fBool: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_EnableT61DNEncoding(self: *const IEnroll, fBool: ?*BOOL) HRESULT {
         return self.vtable.get_EnableT61DNEncoding(self, fBool);
     }
-    pub fn put_EnableT61DNEncoding(self: *const IEnroll, fBool: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_EnableT61DNEncoding(self: *const IEnroll, fBool: BOOL) HRESULT {
         return self.vtable.put_EnableT61DNEncoding(self, fBool);
     }
-    pub fn get_WriteCertToCSP(self: *const IEnroll, fBool: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_WriteCertToCSP(self: *const IEnroll, fBool: ?*BOOL) HRESULT {
         return self.vtable.get_WriteCertToCSP(self, fBool);
     }
-    pub fn put_WriteCertToCSP(self: *const IEnroll, fBool: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_WriteCertToCSP(self: *const IEnroll, fBool: BOOL) HRESULT {
         return self.vtable.put_WriteCertToCSP(self, fBool);
     }
-    pub fn get_SPCFileNameWStr(self: *const IEnroll, szw: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SPCFileNameWStr(self: *const IEnroll, szw: ?*?PWSTR) HRESULT {
         return self.vtable.get_SPCFileNameWStr(self, szw);
     }
-    pub fn put_SPCFileNameWStr(self: *const IEnroll, szw: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_SPCFileNameWStr(self: *const IEnroll, szw: ?PWSTR) HRESULT {
         return self.vtable.put_SPCFileNameWStr(self, szw);
     }
-    pub fn get_PVKFileNameWStr(self: *const IEnroll, szw: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PVKFileNameWStr(self: *const IEnroll, szw: ?*?PWSTR) HRESULT {
         return self.vtable.get_PVKFileNameWStr(self, szw);
     }
-    pub fn put_PVKFileNameWStr(self: *const IEnroll, szw: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PVKFileNameWStr(self: *const IEnroll, szw: ?PWSTR) HRESULT {
         return self.vtable.put_PVKFileNameWStr(self, szw);
     }
-    pub fn get_HashAlgorithmWStr(self: *const IEnroll, szw: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_HashAlgorithmWStr(self: *const IEnroll, szw: ?*?PWSTR) HRESULT {
         return self.vtable.get_HashAlgorithmWStr(self, szw);
     }
-    pub fn put_HashAlgorithmWStr(self: *const IEnroll, szw: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_HashAlgorithmWStr(self: *const IEnroll, szw: ?PWSTR) HRESULT {
         return self.vtable.put_HashAlgorithmWStr(self, szw);
     }
-    pub fn get_RenewalCertificate(self: *const IEnroll, ppCertContext: ?*?*CERT_CONTEXT) callconv(.Inline) HRESULT {
+    pub inline fn get_RenewalCertificate(self: *const IEnroll, ppCertContext: ?*?*CERT_CONTEXT) HRESULT {
         return self.vtable.get_RenewalCertificate(self, ppCertContext);
     }
-    pub fn put_RenewalCertificate(self: *const IEnroll, pCertContext: ?*const CERT_CONTEXT) callconv(.Inline) HRESULT {
+    pub inline fn put_RenewalCertificate(self: *const IEnroll, pCertContext: ?*const CERT_CONTEXT) HRESULT {
         return self.vtable.put_RenewalCertificate(self, pCertContext);
     }
-    pub fn AddCertTypeToRequestWStr(self: *const IEnroll, szw: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn AddCertTypeToRequestWStr(self: *const IEnroll, szw: ?PWSTR) HRESULT {
         return self.vtable.AddCertTypeToRequestWStr(self, szw);
     }
-    pub fn AddNameValuePairToSignatureWStr(self: *const IEnroll, Name: ?PWSTR, Value: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn AddNameValuePairToSignatureWStr(self: *const IEnroll, Name: ?PWSTR, Value: ?PWSTR) HRESULT {
         return self.vtable.AddNameValuePairToSignatureWStr(self, Name, Value);
     }
-    pub fn AddExtensionsToRequest(self: *const IEnroll, pCertExtensions: ?*CERT_EXTENSIONS) callconv(.Inline) HRESULT {
+    pub inline fn AddExtensionsToRequest(self: *const IEnroll, pCertExtensions: ?*CERT_EXTENSIONS) HRESULT {
         return self.vtable.AddExtensionsToRequest(self, pCertExtensions);
     }
-    pub fn AddAuthenticatedAttributesToPKCS7Request(self: *const IEnroll, pAttributes: ?*CRYPT_ATTRIBUTES) callconv(.Inline) HRESULT {
+    pub inline fn AddAuthenticatedAttributesToPKCS7Request(self: *const IEnroll, pAttributes: ?*CRYPT_ATTRIBUTES) HRESULT {
         return self.vtable.AddAuthenticatedAttributesToPKCS7Request(self, pAttributes);
     }
-    pub fn CreatePKCS7RequestFromRequest(self: *const IEnroll, pRequest: ?*CRYPTOAPI_BLOB, pSigningCertContext: ?*const CERT_CONTEXT, pPkcs7Blob: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn CreatePKCS7RequestFromRequest(self: *const IEnroll, pRequest: ?*CRYPTOAPI_BLOB, pSigningCertContext: ?*const CERT_CONTEXT, pPkcs7Blob: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.CreatePKCS7RequestFromRequest(self, pRequest, pSigningCertContext, pPkcs7Blob);
     }
 };
@@ -14762,146 +14762,146 @@ pub const IID_IEnroll2 = &IID_IEnroll2_Value;
 pub const IEnroll2 = extern union {
     pub const VTable = extern struct {
         base: IEnroll.VTable,
-        InstallPKCS7Blob: *const fn(
+        InstallPKCS7Blob: *const fn (
             self: *const IEnroll2,
             pBlobPKCS7: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnroll2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedKeySpec: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedKeySpec: *const fn (
             self: *const IEnroll2,
             pdwKeySpec: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeyLen: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeyLen: *const fn (
             self: *const IEnroll2,
             fMin: BOOL,
             fExchange: BOOL,
             pdwKeySize: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumAlgs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumAlgs: *const fn (
             self: *const IEnroll2,
             dwIndex: i32,
             algClass: i32,
             pdwAlgID: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAlgNameWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAlgNameWStr: *const fn (
             self: *const IEnroll2,
             algID: i32,
             ppwsz: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ReuseHardwareKeyIfUnableToGenNew: *const fn(
+        put_ReuseHardwareKeyIfUnableToGenNew: *const fn (
             self: *const IEnroll2,
             fReuseHardwareKeyIfUnableToGenNew: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReuseHardwareKeyIfUnableToGenNew: *const fn(
+        get_ReuseHardwareKeyIfUnableToGenNew: *const fn (
             self: *const IEnroll2,
             fReuseHardwareKeyIfUnableToGenNew: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HashAlgID: *const fn(
+        put_HashAlgID: *const fn (
             self: *const IEnroll2,
             hashAlgID: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HashAlgID: *const fn(
+        get_HashAlgID: *const fn (
             self: *const IEnroll2,
             hashAlgID: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHStoreMy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHStoreMy: *const fn (
             self: *const IEnroll2,
             hStore: ?HCERTSTORE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHStoreCA: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHStoreCA: *const fn (
             self: *const IEnroll2,
             hStore: ?HCERTSTORE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHStoreROOT: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHStoreROOT: *const fn (
             self: *const IEnroll2,
             hStore: ?HCERTSTORE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHStoreRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHStoreRequest: *const fn (
             self: *const IEnroll2,
             hStore: ?HCERTSTORE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LimitExchangeKeyToEncipherment: *const fn(
+        put_LimitExchangeKeyToEncipherment: *const fn (
             self: *const IEnroll2,
             fLimitExchangeKeyToEncipherment: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LimitExchangeKeyToEncipherment: *const fn(
+        get_LimitExchangeKeyToEncipherment: *const fn (
             self: *const IEnroll2,
             fLimitExchangeKeyToEncipherment: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EnableSMIMECapabilities: *const fn(
+        put_EnableSMIMECapabilities: *const fn (
             self: *const IEnroll2,
             fEnableSMIMECapabilities: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EnableSMIMECapabilities: *const fn(
+        get_EnableSMIMECapabilities: *const fn (
             self: *const IEnroll2,
             fEnableSMIMECapabilities: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IEnroll: IEnroll,
     IUnknown: IUnknown,
-    pub fn InstallPKCS7Blob(self: *const IEnroll2, pBlobPKCS7: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn InstallPKCS7Blob(self: *const IEnroll2, pBlobPKCS7: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.InstallPKCS7Blob(self, pBlobPKCS7);
     }
-    pub fn Reset(self: *const IEnroll2) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnroll2) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn GetSupportedKeySpec(self: *const IEnroll2, pdwKeySpec: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedKeySpec(self: *const IEnroll2, pdwKeySpec: ?*i32) HRESULT {
         return self.vtable.GetSupportedKeySpec(self, pdwKeySpec);
     }
-    pub fn GetKeyLen(self: *const IEnroll2, fMin: BOOL, fExchange: BOOL, pdwKeySize: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetKeyLen(self: *const IEnroll2, fMin: BOOL, fExchange: BOOL, pdwKeySize: ?*i32) HRESULT {
         return self.vtable.GetKeyLen(self, fMin, fExchange, pdwKeySize);
     }
-    pub fn EnumAlgs(self: *const IEnroll2, dwIndex: i32, algClass: i32, pdwAlgID: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn EnumAlgs(self: *const IEnroll2, dwIndex: i32, algClass: i32, pdwAlgID: ?*i32) HRESULT {
         return self.vtable.EnumAlgs(self, dwIndex, algClass, pdwAlgID);
     }
-    pub fn GetAlgNameWStr(self: *const IEnroll2, algID: i32, ppwsz: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetAlgNameWStr(self: *const IEnroll2, algID: i32, ppwsz: ?*?PWSTR) HRESULT {
         return self.vtable.GetAlgNameWStr(self, algID, ppwsz);
     }
-    pub fn put_ReuseHardwareKeyIfUnableToGenNew(self: *const IEnroll2, fReuseHardwareKeyIfUnableToGenNew: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_ReuseHardwareKeyIfUnableToGenNew(self: *const IEnroll2, fReuseHardwareKeyIfUnableToGenNew: BOOL) HRESULT {
         return self.vtable.put_ReuseHardwareKeyIfUnableToGenNew(self, fReuseHardwareKeyIfUnableToGenNew);
     }
-    pub fn get_ReuseHardwareKeyIfUnableToGenNew(self: *const IEnroll2, fReuseHardwareKeyIfUnableToGenNew: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_ReuseHardwareKeyIfUnableToGenNew(self: *const IEnroll2, fReuseHardwareKeyIfUnableToGenNew: ?*BOOL) HRESULT {
         return self.vtable.get_ReuseHardwareKeyIfUnableToGenNew(self, fReuseHardwareKeyIfUnableToGenNew);
     }
-    pub fn put_HashAlgID(self: *const IEnroll2, hashAlgID: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_HashAlgID(self: *const IEnroll2, hashAlgID: i32) HRESULT {
         return self.vtable.put_HashAlgID(self, hashAlgID);
     }
-    pub fn get_HashAlgID(self: *const IEnroll2, hashAlgID: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_HashAlgID(self: *const IEnroll2, hashAlgID: ?*i32) HRESULT {
         return self.vtable.get_HashAlgID(self, hashAlgID);
     }
-    pub fn SetHStoreMy(self: *const IEnroll2, hStore: ?HCERTSTORE) callconv(.Inline) HRESULT {
+    pub inline fn SetHStoreMy(self: *const IEnroll2, hStore: ?HCERTSTORE) HRESULT {
         return self.vtable.SetHStoreMy(self, hStore);
     }
-    pub fn SetHStoreCA(self: *const IEnroll2, hStore: ?HCERTSTORE) callconv(.Inline) HRESULT {
+    pub inline fn SetHStoreCA(self: *const IEnroll2, hStore: ?HCERTSTORE) HRESULT {
         return self.vtable.SetHStoreCA(self, hStore);
     }
-    pub fn SetHStoreROOT(self: *const IEnroll2, hStore: ?HCERTSTORE) callconv(.Inline) HRESULT {
+    pub inline fn SetHStoreROOT(self: *const IEnroll2, hStore: ?HCERTSTORE) HRESULT {
         return self.vtable.SetHStoreROOT(self, hStore);
     }
-    pub fn SetHStoreRequest(self: *const IEnroll2, hStore: ?HCERTSTORE) callconv(.Inline) HRESULT {
+    pub inline fn SetHStoreRequest(self: *const IEnroll2, hStore: ?HCERTSTORE) HRESULT {
         return self.vtable.SetHStoreRequest(self, hStore);
     }
-    pub fn put_LimitExchangeKeyToEncipherment(self: *const IEnroll2, fLimitExchangeKeyToEncipherment: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_LimitExchangeKeyToEncipherment(self: *const IEnroll2, fLimitExchangeKeyToEncipherment: BOOL) HRESULT {
         return self.vtable.put_LimitExchangeKeyToEncipherment(self, fLimitExchangeKeyToEncipherment);
     }
-    pub fn get_LimitExchangeKeyToEncipherment(self: *const IEnroll2, fLimitExchangeKeyToEncipherment: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_LimitExchangeKeyToEncipherment(self: *const IEnroll2, fLimitExchangeKeyToEncipherment: ?*BOOL) HRESULT {
         return self.vtable.get_LimitExchangeKeyToEncipherment(self, fLimitExchangeKeyToEncipherment);
     }
-    pub fn put_EnableSMIMECapabilities(self: *const IEnroll2, fEnableSMIMECapabilities: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_EnableSMIMECapabilities(self: *const IEnroll2, fEnableSMIMECapabilities: BOOL) HRESULT {
         return self.vtable.put_EnableSMIMECapabilities(self, fEnableSMIMECapabilities);
     }
-    pub fn get_EnableSMIMECapabilities(self: *const IEnroll2, fEnableSMIMECapabilities: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_EnableSMIMECapabilities(self: *const IEnroll2, fEnableSMIMECapabilities: ?*BOOL) HRESULT {
         return self.vtable.get_EnableSMIMECapabilities(self, fEnableSMIMECapabilities);
     }
 };
@@ -14913,272 +14913,272 @@ pub const IEnroll4 = extern union {
     pub const VTable = extern struct {
         base: IEnroll2.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ThumbPrintWStr: *const fn(
+        put_ThumbPrintWStr: *const fn (
             self: *const IEnroll4,
             thumbPrintBlob: CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ThumbPrintWStr: *const fn(
+        get_ThumbPrintWStr: *const fn (
             self: *const IEnroll4,
             thumbPrintBlob: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPrivateKeyArchiveCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPrivateKeyArchiveCertificate: *const fn (
             self: *const IEnroll4,
             pPrivateKeyArchiveCert: ?*const CERT_CONTEXT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPrivateKeyArchiveCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPrivateKeyArchiveCertificate: *const fn (
             self: *const IEnroll4,
-        ) callconv(@import("std").os.windows.WINAPI) ?*CERT_CONTEXT,
-        binaryBlobToString: *const fn(
+        ) callconv(.winapi) ?*CERT_CONTEXT,
+        binaryBlobToString: *const fn (
             self: *const IEnroll4,
             Flags: i32,
             pblobBinary: ?*CRYPTOAPI_BLOB,
             ppwszString: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        stringToBinaryBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        stringToBinaryBlob: *const fn (
             self: *const IEnroll4,
             Flags: i32,
             pwszString: ?[*:0]const u16,
             pblobBinary: ?*CRYPTOAPI_BLOB,
             pdwSkip: ?*i32,
             pdwFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addExtensionToRequestWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addExtensionToRequestWStr: *const fn (
             self: *const IEnroll4,
             Flags: i32,
             pwszName: ?[*:0]const u16,
             pblobValue: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addAttributeToRequestWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addAttributeToRequestWStr: *const fn (
             self: *const IEnroll4,
             Flags: i32,
             pwszName: ?[*:0]const u16,
             pblobValue: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addNameValuePairToRequestWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addNameValuePairToRequestWStr: *const fn (
             self: *const IEnroll4,
             Flags: i32,
             pwszName: ?[*:0]const u16,
             pwszValue: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        resetExtensions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        resetExtensions: *const fn (
             self: *const IEnroll4,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        resetAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        resetAttributes: *const fn (
             self: *const IEnroll4,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createRequestWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createRequestWStr: *const fn (
             self: *const IEnroll4,
             Flags: CERT_CREATE_REQUEST_FLAGS,
             pwszDNName: ?[*:0]const u16,
             pwszUsage: ?[*:0]const u16,
             pblobRequest: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createFileRequestWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createFileRequestWStr: *const fn (
             self: *const IEnroll4,
             Flags: CERT_CREATE_REQUEST_FLAGS,
             pwszDNName: ?[*:0]const u16,
             pwszUsage: ?[*:0]const u16,
             pwszRequestFileName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        acceptResponseBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        acceptResponseBlob: *const fn (
             self: *const IEnroll4,
             pblobResponse: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        acceptFileResponseWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        acceptFileResponseWStr: *const fn (
             self: *const IEnroll4,
             pwszResponseFileName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        getCertContextFromResponseBlob: *const fn(
+        ) callconv(.winapi) HRESULT,
+        getCertContextFromResponseBlob: *const fn (
             self: *const IEnroll4,
             pblobResponse: ?*CRYPTOAPI_BLOB,
             ppCertContext: ?*?*CERT_CONTEXT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        getCertContextFromFileResponseWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        getCertContextFromFileResponseWStr: *const fn (
             self: *const IEnroll4,
             pwszResponseFileName: ?[*:0]const u16,
             ppCertContext: ?*?*CERT_CONTEXT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createPFXWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createPFXWStr: *const fn (
             self: *const IEnroll4,
             pwszPassword: ?[*:0]const u16,
             pblobPFX: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        createFilePFXWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        createFilePFXWStr: *const fn (
             self: *const IEnroll4,
             pwszPassword: ?[*:0]const u16,
             pwszPFXFileName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        setPendingRequestInfoWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        setPendingRequestInfoWStr: *const fn (
             self: *const IEnroll4,
             lRequestID: i32,
             pwszCADNS: ?[*:0]const u16,
             pwszCAName: ?[*:0]const u16,
             pwszFriendlyName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        enumPendingRequestWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        enumPendingRequestWStr: *const fn (
             self: *const IEnroll4,
             lIndex: i32,
             lDesiredProperty: PENDING_REQUEST_DESIRED_PROPERTY,
             ppProperty: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        removePendingRequestWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        removePendingRequestWStr: *const fn (
             self: *const IEnroll4,
             thumbPrintBlob: CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeyLenEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeyLenEx: *const fn (
             self: *const IEnroll4,
             lSizeSpec: XEKL_KEYSIZE,
             lKeySpec: XEKL_KEYSPEC,
             pdwKeySize: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstallPKCS7BlobEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstallPKCS7BlobEx: *const fn (
             self: *const IEnroll4,
             pBlobPKCS7: ?*CRYPTOAPI_BLOB,
             plCertInstalled: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddCertTypeToRequestWStrEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddCertTypeToRequestWStrEx: *const fn (
             self: *const IEnroll4,
             lType: ADDED_CERT_TYPE,
             pwszOIDOrName: ?[*:0]const u16,
             lMajorVersion: i32,
             fMinorVersion: BOOL,
             lMinorVersion: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        getProviderTypeWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        getProviderTypeWStr: *const fn (
             self: *const IEnroll4,
             pwszProvName: ?[*:0]const u16,
             plProvType: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        addBlobPropertyToCertificateWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        addBlobPropertyToCertificateWStr: *const fn (
             self: *const IEnroll4,
             lPropertyId: i32,
             lReserved: i32,
             pBlobProperty: ?*CRYPTOAPI_BLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSignerCertificate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSignerCertificate: *const fn (
             self: *const IEnroll4,
             pSignerCert: ?*const CERT_CONTEXT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ClientId: *const fn(
+        put_ClientId: *const fn (
             self: *const IEnroll4,
             lClientId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ClientId: *const fn(
+        get_ClientId: *const fn (
             self: *const IEnroll4,
             plClientId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_IncludeSubjectKeyID: *const fn(
+        put_IncludeSubjectKeyID: *const fn (
             self: *const IEnroll4,
             fInclude: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IncludeSubjectKeyID: *const fn(
+        get_IncludeSubjectKeyID: *const fn (
             self: *const IEnroll4,
             pfInclude: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IEnroll2: IEnroll2,
     IEnroll: IEnroll,
     IUnknown: IUnknown,
-    pub fn put_ThumbPrintWStr(self: *const IEnroll4, thumbPrintBlob: CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn put_ThumbPrintWStr(self: *const IEnroll4, thumbPrintBlob: CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.put_ThumbPrintWStr(self, thumbPrintBlob);
     }
-    pub fn get_ThumbPrintWStr(self: *const IEnroll4, thumbPrintBlob: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn get_ThumbPrintWStr(self: *const IEnroll4, thumbPrintBlob: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.get_ThumbPrintWStr(self, thumbPrintBlob);
     }
-    pub fn SetPrivateKeyArchiveCertificate(self: *const IEnroll4, pPrivateKeyArchiveCert: ?*const CERT_CONTEXT) callconv(.Inline) HRESULT {
+    pub inline fn SetPrivateKeyArchiveCertificate(self: *const IEnroll4, pPrivateKeyArchiveCert: ?*const CERT_CONTEXT) HRESULT {
         return self.vtable.SetPrivateKeyArchiveCertificate(self, pPrivateKeyArchiveCert);
     }
-    pub fn GetPrivateKeyArchiveCertificate(self: *const IEnroll4) callconv(.Inline) ?*CERT_CONTEXT {
+    pub inline fn GetPrivateKeyArchiveCertificate(self: *const IEnroll4) ?*CERT_CONTEXT {
         return self.vtable.GetPrivateKeyArchiveCertificate(self);
     }
-    pub fn binaryBlobToString(self: *const IEnroll4, Flags: i32, pblobBinary: ?*CRYPTOAPI_BLOB, ppwszString: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn binaryBlobToString(self: *const IEnroll4, Flags: i32, pblobBinary: ?*CRYPTOAPI_BLOB, ppwszString: ?*?PWSTR) HRESULT {
         return self.vtable.binaryBlobToString(self, Flags, pblobBinary, ppwszString);
     }
-    pub fn stringToBinaryBlob(self: *const IEnroll4, Flags: i32, pwszString: ?[*:0]const u16, pblobBinary: ?*CRYPTOAPI_BLOB, pdwSkip: ?*i32, pdwFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn stringToBinaryBlob(self: *const IEnroll4, Flags: i32, pwszString: ?[*:0]const u16, pblobBinary: ?*CRYPTOAPI_BLOB, pdwSkip: ?*i32, pdwFlags: ?*i32) HRESULT {
         return self.vtable.stringToBinaryBlob(self, Flags, pwszString, pblobBinary, pdwSkip, pdwFlags);
     }
-    pub fn addExtensionToRequestWStr(self: *const IEnroll4, Flags: i32, pwszName: ?[*:0]const u16, pblobValue: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn addExtensionToRequestWStr(self: *const IEnroll4, Flags: i32, pwszName: ?[*:0]const u16, pblobValue: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.addExtensionToRequestWStr(self, Flags, pwszName, pblobValue);
     }
-    pub fn addAttributeToRequestWStr(self: *const IEnroll4, Flags: i32, pwszName: ?[*:0]const u16, pblobValue: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn addAttributeToRequestWStr(self: *const IEnroll4, Flags: i32, pwszName: ?[*:0]const u16, pblobValue: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.addAttributeToRequestWStr(self, Flags, pwszName, pblobValue);
     }
-    pub fn addNameValuePairToRequestWStr(self: *const IEnroll4, Flags: i32, pwszName: ?[*:0]const u16, pwszValue: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn addNameValuePairToRequestWStr(self: *const IEnroll4, Flags: i32, pwszName: ?[*:0]const u16, pwszValue: ?[*:0]const u16) HRESULT {
         return self.vtable.addNameValuePairToRequestWStr(self, Flags, pwszName, pwszValue);
     }
-    pub fn resetExtensions(self: *const IEnroll4) callconv(.Inline) HRESULT {
+    pub inline fn resetExtensions(self: *const IEnroll4) HRESULT {
         return self.vtable.resetExtensions(self);
     }
-    pub fn resetAttributes(self: *const IEnroll4) callconv(.Inline) HRESULT {
+    pub inline fn resetAttributes(self: *const IEnroll4) HRESULT {
         return self.vtable.resetAttributes(self);
     }
-    pub fn createRequestWStr(self: *const IEnroll4, Flags: CERT_CREATE_REQUEST_FLAGS, pwszDNName: ?[*:0]const u16, pwszUsage: ?[*:0]const u16, pblobRequest: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn createRequestWStr(self: *const IEnroll4, Flags: CERT_CREATE_REQUEST_FLAGS, pwszDNName: ?[*:0]const u16, pwszUsage: ?[*:0]const u16, pblobRequest: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.createRequestWStr(self, Flags, pwszDNName, pwszUsage, pblobRequest);
     }
-    pub fn createFileRequestWStr(self: *const IEnroll4, Flags: CERT_CREATE_REQUEST_FLAGS, pwszDNName: ?[*:0]const u16, pwszUsage: ?[*:0]const u16, pwszRequestFileName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn createFileRequestWStr(self: *const IEnroll4, Flags: CERT_CREATE_REQUEST_FLAGS, pwszDNName: ?[*:0]const u16, pwszUsage: ?[*:0]const u16, pwszRequestFileName: ?[*:0]const u16) HRESULT {
         return self.vtable.createFileRequestWStr(self, Flags, pwszDNName, pwszUsage, pwszRequestFileName);
     }
-    pub fn acceptResponseBlob(self: *const IEnroll4, pblobResponse: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn acceptResponseBlob(self: *const IEnroll4, pblobResponse: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.acceptResponseBlob(self, pblobResponse);
     }
-    pub fn acceptFileResponseWStr(self: *const IEnroll4, pwszResponseFileName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn acceptFileResponseWStr(self: *const IEnroll4, pwszResponseFileName: ?[*:0]const u16) HRESULT {
         return self.vtable.acceptFileResponseWStr(self, pwszResponseFileName);
     }
-    pub fn getCertContextFromResponseBlob(self: *const IEnroll4, pblobResponse: ?*CRYPTOAPI_BLOB, ppCertContext: ?*?*CERT_CONTEXT) callconv(.Inline) HRESULT {
+    pub inline fn getCertContextFromResponseBlob(self: *const IEnroll4, pblobResponse: ?*CRYPTOAPI_BLOB, ppCertContext: ?*?*CERT_CONTEXT) HRESULT {
         return self.vtable.getCertContextFromResponseBlob(self, pblobResponse, ppCertContext);
     }
-    pub fn getCertContextFromFileResponseWStr(self: *const IEnroll4, pwszResponseFileName: ?[*:0]const u16, ppCertContext: ?*?*CERT_CONTEXT) callconv(.Inline) HRESULT {
+    pub inline fn getCertContextFromFileResponseWStr(self: *const IEnroll4, pwszResponseFileName: ?[*:0]const u16, ppCertContext: ?*?*CERT_CONTEXT) HRESULT {
         return self.vtable.getCertContextFromFileResponseWStr(self, pwszResponseFileName, ppCertContext);
     }
-    pub fn createPFXWStr(self: *const IEnroll4, pwszPassword: ?[*:0]const u16, pblobPFX: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn createPFXWStr(self: *const IEnroll4, pwszPassword: ?[*:0]const u16, pblobPFX: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.createPFXWStr(self, pwszPassword, pblobPFX);
     }
-    pub fn createFilePFXWStr(self: *const IEnroll4, pwszPassword: ?[*:0]const u16, pwszPFXFileName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn createFilePFXWStr(self: *const IEnroll4, pwszPassword: ?[*:0]const u16, pwszPFXFileName: ?[*:0]const u16) HRESULT {
         return self.vtable.createFilePFXWStr(self, pwszPassword, pwszPFXFileName);
     }
-    pub fn setPendingRequestInfoWStr(self: *const IEnroll4, lRequestID: i32, pwszCADNS: ?[*:0]const u16, pwszCAName: ?[*:0]const u16, pwszFriendlyName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn setPendingRequestInfoWStr(self: *const IEnroll4, lRequestID: i32, pwszCADNS: ?[*:0]const u16, pwszCAName: ?[*:0]const u16, pwszFriendlyName: ?[*:0]const u16) HRESULT {
         return self.vtable.setPendingRequestInfoWStr(self, lRequestID, pwszCADNS, pwszCAName, pwszFriendlyName);
     }
-    pub fn enumPendingRequestWStr(self: *const IEnroll4, lIndex: i32, lDesiredProperty: PENDING_REQUEST_DESIRED_PROPERTY, ppProperty: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn enumPendingRequestWStr(self: *const IEnroll4, lIndex: i32, lDesiredProperty: PENDING_REQUEST_DESIRED_PROPERTY, ppProperty: ?*anyopaque) HRESULT {
         return self.vtable.enumPendingRequestWStr(self, lIndex, lDesiredProperty, ppProperty);
     }
-    pub fn removePendingRequestWStr(self: *const IEnroll4, thumbPrintBlob: CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn removePendingRequestWStr(self: *const IEnroll4, thumbPrintBlob: CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.removePendingRequestWStr(self, thumbPrintBlob);
     }
-    pub fn GetKeyLenEx(self: *const IEnroll4, lSizeSpec: XEKL_KEYSIZE, lKeySpec: XEKL_KEYSPEC, pdwKeySize: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetKeyLenEx(self: *const IEnroll4, lSizeSpec: XEKL_KEYSIZE, lKeySpec: XEKL_KEYSPEC, pdwKeySize: ?*i32) HRESULT {
         return self.vtable.GetKeyLenEx(self, lSizeSpec, lKeySpec, pdwKeySize);
     }
-    pub fn InstallPKCS7BlobEx(self: *const IEnroll4, pBlobPKCS7: ?*CRYPTOAPI_BLOB, plCertInstalled: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn InstallPKCS7BlobEx(self: *const IEnroll4, pBlobPKCS7: ?*CRYPTOAPI_BLOB, plCertInstalled: ?*i32) HRESULT {
         return self.vtable.InstallPKCS7BlobEx(self, pBlobPKCS7, plCertInstalled);
     }
-    pub fn AddCertTypeToRequestWStrEx(self: *const IEnroll4, lType: ADDED_CERT_TYPE, pwszOIDOrName: ?[*:0]const u16, lMajorVersion: i32, fMinorVersion: BOOL, lMinorVersion: i32) callconv(.Inline) HRESULT {
+    pub inline fn AddCertTypeToRequestWStrEx(self: *const IEnroll4, lType: ADDED_CERT_TYPE, pwszOIDOrName: ?[*:0]const u16, lMajorVersion: i32, fMinorVersion: BOOL, lMinorVersion: i32) HRESULT {
         return self.vtable.AddCertTypeToRequestWStrEx(self, lType, pwszOIDOrName, lMajorVersion, fMinorVersion, lMinorVersion);
     }
-    pub fn getProviderTypeWStr(self: *const IEnroll4, pwszProvName: ?[*:0]const u16, plProvType: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn getProviderTypeWStr(self: *const IEnroll4, pwszProvName: ?[*:0]const u16, plProvType: ?*i32) HRESULT {
         return self.vtable.getProviderTypeWStr(self, pwszProvName, plProvType);
     }
-    pub fn addBlobPropertyToCertificateWStr(self: *const IEnroll4, lPropertyId: i32, lReserved: i32, pBlobProperty: ?*CRYPTOAPI_BLOB) callconv(.Inline) HRESULT {
+    pub inline fn addBlobPropertyToCertificateWStr(self: *const IEnroll4, lPropertyId: i32, lReserved: i32, pBlobProperty: ?*CRYPTOAPI_BLOB) HRESULT {
         return self.vtable.addBlobPropertyToCertificateWStr(self, lPropertyId, lReserved, pBlobProperty);
     }
-    pub fn SetSignerCertificate(self: *const IEnroll4, pSignerCert: ?*const CERT_CONTEXT) callconv(.Inline) HRESULT {
+    pub inline fn SetSignerCertificate(self: *const IEnroll4, pSignerCert: ?*const CERT_CONTEXT) HRESULT {
         return self.vtable.SetSignerCertificate(self, pSignerCert);
     }
-    pub fn put_ClientId(self: *const IEnroll4, lClientId: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ClientId(self: *const IEnroll4, lClientId: i32) HRESULT {
         return self.vtable.put_ClientId(self, lClientId);
     }
-    pub fn get_ClientId(self: *const IEnroll4, plClientId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ClientId(self: *const IEnroll4, plClientId: ?*i32) HRESULT {
         return self.vtable.get_ClientId(self, plClientId);
     }
-    pub fn put_IncludeSubjectKeyID(self: *const IEnroll4, fInclude: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_IncludeSubjectKeyID(self: *const IEnroll4, fInclude: BOOL) HRESULT {
         return self.vtable.put_IncludeSubjectKeyID(self, fInclude);
     }
-    pub fn get_IncludeSubjectKeyID(self: *const IEnroll4, pfInclude: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_IncludeSubjectKeyID(self: *const IEnroll4, pfInclude: ?*BOOL) HRESULT {
         return self.vtable.get_IncludeSubjectKeyID(self, pfInclude);
     }
 };
@@ -15188,7 +15188,7 @@ pub const IID_ICertRequestD = &IID_ICertRequestD_Value;
 pub const ICertRequestD = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Request: *const fn(
+        Request: *const fn (
             self: *const ICertRequestD,
             dwFlags: u32,
             pwszAuthority: ?[*:0]const u16,
@@ -15199,27 +15199,27 @@ pub const ICertRequestD = extern union {
             pctbCertChain: ?*CERTTRANSBLOB,
             pctbEncodedCert: ?*CERTTRANSBLOB,
             pctbDispositionMessage: ?*CERTTRANSBLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCACert: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCACert: *const fn (
             self: *const ICertRequestD,
             fchain: u32,
             pwszAuthority: ?[*:0]const u16,
             pctbOut: ?*CERTTRANSBLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Ping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Ping: *const fn (
             self: *const ICertRequestD,
             pwszAuthority: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Request(self: *const ICertRequestD, dwFlags: u32, pwszAuthority: ?[*:0]const u16, pdwRequestId: ?*u32, pdwDisposition: ?*u32, pwszAttributes: ?[*:0]const u16, pctbRequest: ?*const CERTTRANSBLOB, pctbCertChain: ?*CERTTRANSBLOB, pctbEncodedCert: ?*CERTTRANSBLOB, pctbDispositionMessage: ?*CERTTRANSBLOB) callconv(.Inline) HRESULT {
+    pub inline fn Request(self: *const ICertRequestD, dwFlags: u32, pwszAuthority: ?[*:0]const u16, pdwRequestId: ?*u32, pdwDisposition: ?*u32, pwszAttributes: ?[*:0]const u16, pctbRequest: ?*const CERTTRANSBLOB, pctbCertChain: ?*CERTTRANSBLOB, pctbEncodedCert: ?*CERTTRANSBLOB, pctbDispositionMessage: ?*CERTTRANSBLOB) HRESULT {
         return self.vtable.Request(self, dwFlags, pwszAuthority, pdwRequestId, pdwDisposition, pwszAttributes, pctbRequest, pctbCertChain, pctbEncodedCert, pctbDispositionMessage);
     }
-    pub fn GetCACert(self: *const ICertRequestD, fchain: u32, pwszAuthority: ?[*:0]const u16, pctbOut: ?*CERTTRANSBLOB) callconv(.Inline) HRESULT {
+    pub inline fn GetCACert(self: *const ICertRequestD, fchain: u32, pwszAuthority: ?[*:0]const u16, pctbOut: ?*CERTTRANSBLOB) HRESULT {
         return self.vtable.GetCACert(self, fchain, pwszAuthority, pctbOut);
     }
-    pub fn Ping(self: *const ICertRequestD, pwszAuthority: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Ping(self: *const ICertRequestD, pwszAuthority: ?[*:0]const u16) HRESULT {
         return self.vtable.Ping(self, pwszAuthority);
     }
 };
@@ -15229,7 +15229,7 @@ pub const IID_ICertRequestD2 = &IID_ICertRequestD2_Value;
 pub const ICertRequestD2 = extern union {
     pub const VTable = extern struct {
         base: ICertRequestD.VTable,
-        Request2: *const fn(
+        Request2: *const fn (
             self: *const ICertRequestD2,
             pwszAuthority: ?[*:0]const u16,
             dwFlags: u32,
@@ -15241,43 +15241,42 @@ pub const ICertRequestD2 = extern union {
             pctbFullResponse: ?*CERTTRANSBLOB,
             pctbEncodedCert: ?*CERTTRANSBLOB,
             pctbDispositionMessage: ?*CERTTRANSBLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAProperty: *const fn (
             self: *const ICertRequestD2,
             pwszAuthority: ?[*:0]const u16,
             PropId: i32,
             PropIndex: i32,
             PropType: i32,
             pctbPropertyValue: ?*CERTTRANSBLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCAPropertyInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCAPropertyInfo: *const fn (
             self: *const ICertRequestD2,
             pwszAuthority: ?[*:0]const u16,
             pcProperty: ?*i32,
             pctbPropInfo: ?*CERTTRANSBLOB,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Ping2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Ping2: *const fn (
             self: *const ICertRequestD2,
             pwszAuthority: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ICertRequestD: ICertRequestD,
     IUnknown: IUnknown,
-    pub fn Request2(self: *const ICertRequestD2, pwszAuthority: ?[*:0]const u16, dwFlags: u32, pwszSerialNumber: ?[*:0]const u16, pdwRequestId: ?*u32, pdwDisposition: ?*u32, pwszAttributes: ?[*:0]const u16, pctbRequest: ?*const CERTTRANSBLOB, pctbFullResponse: ?*CERTTRANSBLOB, pctbEncodedCert: ?*CERTTRANSBLOB, pctbDispositionMessage: ?*CERTTRANSBLOB) callconv(.Inline) HRESULT {
+    pub inline fn Request2(self: *const ICertRequestD2, pwszAuthority: ?[*:0]const u16, dwFlags: u32, pwszSerialNumber: ?[*:0]const u16, pdwRequestId: ?*u32, pdwDisposition: ?*u32, pwszAttributes: ?[*:0]const u16, pctbRequest: ?*const CERTTRANSBLOB, pctbFullResponse: ?*CERTTRANSBLOB, pctbEncodedCert: ?*CERTTRANSBLOB, pctbDispositionMessage: ?*CERTTRANSBLOB) HRESULT {
         return self.vtable.Request2(self, pwszAuthority, dwFlags, pwszSerialNumber, pdwRequestId, pdwDisposition, pwszAttributes, pctbRequest, pctbFullResponse, pctbEncodedCert, pctbDispositionMessage);
     }
-    pub fn GetCAProperty(self: *const ICertRequestD2, pwszAuthority: ?[*:0]const u16, PropId: i32, PropIndex: i32, PropType: i32, pctbPropertyValue: ?*CERTTRANSBLOB) callconv(.Inline) HRESULT {
+    pub inline fn GetCAProperty(self: *const ICertRequestD2, pwszAuthority: ?[*:0]const u16, PropId: i32, PropIndex: i32, PropType: i32, pctbPropertyValue: ?*CERTTRANSBLOB) HRESULT {
         return self.vtable.GetCAProperty(self, pwszAuthority, PropId, PropIndex, PropType, pctbPropertyValue);
     }
-    pub fn GetCAPropertyInfo(self: *const ICertRequestD2, pwszAuthority: ?[*:0]const u16, pcProperty: ?*i32, pctbPropInfo: ?*CERTTRANSBLOB) callconv(.Inline) HRESULT {
+    pub inline fn GetCAPropertyInfo(self: *const ICertRequestD2, pwszAuthority: ?[*:0]const u16, pcProperty: ?*i32, pctbPropInfo: ?*CERTTRANSBLOB) HRESULT {
         return self.vtable.GetCAPropertyInfo(self, pwszAuthority, pcProperty, pctbPropInfo);
     }
-    pub fn Ping2(self: *const ICertRequestD2, pwszAuthority: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Ping2(self: *const ICertRequestD2, pwszAuthority: ?[*:0]const u16) HRESULT {
         return self.vtable.Ping2(self, pwszAuthority);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (26)
@@ -15286,14 +15285,14 @@ pub const ICertRequestD2 = extern union {
 pub extern "certadm" fn CertSrvIsServerOnlineW(
     pwszServerName: ?[*:0]const u16,
     pfServerOnline: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupGetDynamicFileListW(
     hbc: ?*anyopaque,
     ppwszzFileList: ?*?PWSTR,
     pcbSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupPrepareW(
@@ -15301,14 +15300,14 @@ pub extern "certadm" fn CertSrvBackupPrepareW(
     grbitJet: u32,
     dwBackupFlags: CSBACKUP_TYPE,
     phbc: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupGetDatabaseNamesW(
     hbc: ?*anyopaque,
     ppwszzAttachmentInformation: ?*?PWSTR,
     pcbSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupOpenFileW(
@@ -15316,7 +15315,7 @@ pub extern "certadm" fn CertSrvBackupOpenFileW(
     pwszAttachmentName: ?[*:0]const u16,
     cbReadHintSize: u32,
     pliFileSize: ?*LARGE_INTEGER,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupRead(
@@ -15324,48 +15323,48 @@ pub extern "certadm" fn CertSrvBackupRead(
     pvBuffer: ?*anyopaque,
     cbBuffer: u32,
     pcbRead: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupClose(
     hbc: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupGetBackupLogsW(
     hbc: ?*anyopaque,
     ppwszzBackupLogFiles: ?*?PWSTR,
     pcbSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupTruncateLogs(
     hbc: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupEnd(
     hbc: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvBackupFree(
     pv: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvRestoreGetDatabaseLocationsW(
     hbc: ?*anyopaque,
     ppwszzDatabaseLocationList: ?*?PWSTR,
     pcbSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvRestorePrepareW(
     pwszServerName: ?[*:0]const u16,
     dwRestoreFlags: u32,
     phbc: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvRestoreRegisterW(
@@ -15377,7 +15376,7 @@ pub extern "certadm" fn CertSrvRestoreRegisterW(
     pwszBackupLogPath: ?[*:0]const u16,
     genLow: u32,
     genHigh: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvRestoreRegisterThroughFile(
@@ -15389,18 +15388,18 @@ pub extern "certadm" fn CertSrvRestoreRegisterThroughFile(
     pwszBackupLogPath: ?[*:0]const u16,
     genLow: u32,
     genHigh: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvRestoreRegisterComplete(
     hbc: ?*anyopaque,
     hrRestoreState: HRESULT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvRestoreEnd(
     hbc: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "certadm" fn CertSrvServerControlW(
@@ -15408,7 +15407,7 @@ pub extern "certadm" fn CertSrvServerControlW(
     dwControlFlags: u32,
     pcbOut: ?*u32,
     ppbOut: ?*?*u8,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "certpoleng" fn PstGetTrustAnchors(
@@ -15416,7 +15415,7 @@ pub extern "certpoleng" fn PstGetTrustAnchors(
     cCriteria: u32,
     rgpCriteria: ?[*]CERT_SELECT_CRITERIA,
     ppTrustedIssuers: ?*?*SecPkgContext_IssuerListInfoEx,
-) callconv(@import("std").os.windows.WINAPI) NTSTATUS;
+) callconv(.winapi) NTSTATUS;
 
 pub extern "certpoleng" fn PstGetTrustAnchorsEx(
     pTargetName: ?*UNICODE_STRING,
@@ -15424,13 +15423,13 @@ pub extern "certpoleng" fn PstGetTrustAnchorsEx(
     rgpCriteria: ?[*]CERT_SELECT_CRITERIA,
     pCertContext: ?*const CERT_CONTEXT,
     ppTrustedIssuers: ?*?*SecPkgContext_IssuerListInfoEx,
-) callconv(@import("std").os.windows.WINAPI) NTSTATUS;
+) callconv(.winapi) NTSTATUS;
 
 pub extern "certpoleng" fn PstGetCertificateChain(
     pCert: ?*const CERT_CONTEXT,
     pTrustedIssuers: ?*SecPkgContext_IssuerListInfoEx,
     ppCertChainContext: ?*?*CERT_CHAIN_CONTEXT,
-) callconv(@import("std").os.windows.WINAPI) NTSTATUS;
+) callconv(.winapi) NTSTATUS;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "certpoleng" fn PstGetCertificates(
@@ -15440,12 +15439,12 @@ pub extern "certpoleng" fn PstGetCertificates(
     bIsClient: BOOL,
     pdwCertChainContextCount: ?*u32,
     ppCertChainContexts: ?*?*?*CERT_CHAIN_CONTEXT,
-) callconv(@import("std").os.windows.WINAPI) NTSTATUS;
+) callconv(.winapi) NTSTATUS;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "certpoleng" fn PstAcquirePrivateKey(
     pCert: ?*const CERT_CONTEXT,
-) callconv(@import("std").os.windows.WINAPI) NTSTATUS;
+) callconv(.winapi) NTSTATUS;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "certpoleng" fn PstValidate(
@@ -15455,21 +15454,20 @@ pub extern "certpoleng" fn PstValidate(
     phAdditionalCertStore: ?*?HCERTSTORE,
     pCert: ?*const CERT_CONTEXT,
     pProvGUID: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) NTSTATUS;
+) callconv(.winapi) NTSTATUS;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "certpoleng" fn PstMapCertificate(
     pCert: ?*const CERT_CONTEXT,
     pTokenInformationType: ?*LSA_TOKEN_INFORMATION_TYPE,
     ppTokenInformation: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) NTSTATUS;
+) callconv(.winapi) NTSTATUS;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "certpoleng" fn PstGetUserNameForCertificate(
     pCertContext: ?*const CERT_CONTEXT,
     UserName: ?*UNICODE_STRING,
-) callconv(@import("std").os.windows.WINAPI) NTSTATUS;
-
+) callconv(.winapi) NTSTATUS;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -15503,29 +15501,65 @@ const VARIANT = @import("../../system/com.zig").VARIANT;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "FNCERTSRVISSERVERONLINEW")) { _ = FNCERTSRVISSERVERONLINEW; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPGETDYNAMICFILELISTW")) { _ = FNCERTSRVBACKUPGETDYNAMICFILELISTW; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPPREPAREW")) { _ = FNCERTSRVBACKUPPREPAREW; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPGETDATABASENAMESW")) { _ = FNCERTSRVBACKUPGETDATABASENAMESW; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPOPENFILEW")) { _ = FNCERTSRVBACKUPOPENFILEW; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPREAD")) { _ = FNCERTSRVBACKUPREAD; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPCLOSE")) { _ = FNCERTSRVBACKUPCLOSE; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPGETBACKUPLOGSW")) { _ = FNCERTSRVBACKUPGETBACKUPLOGSW; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPTRUNCATELOGS")) { _ = FNCERTSRVBACKUPTRUNCATELOGS; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPEND")) { _ = FNCERTSRVBACKUPEND; }
-    if (@hasDecl(@This(), "FNCERTSRVBACKUPFREE")) { _ = FNCERTSRVBACKUPFREE; }
-    if (@hasDecl(@This(), "FNCERTSRVRESTOREGETDATABASELOCATIONSW")) { _ = FNCERTSRVRESTOREGETDATABASELOCATIONSW; }
-    if (@hasDecl(@This(), "FNCERTSRVRESTOREPREPAREW")) { _ = FNCERTSRVRESTOREPREPAREW; }
-    if (@hasDecl(@This(), "FNCERTSRVRESTOREREGISTERW")) { _ = FNCERTSRVRESTOREREGISTERW; }
-    if (@hasDecl(@This(), "FNCERTSRVRESTOREREGISTERCOMPLETE")) { _ = FNCERTSRVRESTOREREGISTERCOMPLETE; }
-    if (@hasDecl(@This(), "FNCERTSRVRESTOREEND")) { _ = FNCERTSRVRESTOREEND; }
-    if (@hasDecl(@This(), "FNCERTSRVSERVERCONTROLW")) { _ = FNCERTSRVSERVERCONTROLW; }
-    if (@hasDecl(@This(), "FNIMPORTPFXTOPROVIDER")) { _ = FNIMPORTPFXTOPROVIDER; }
-    if (@hasDecl(@This(), "FNIMPORTPFXTOPROVIDERFREEDATA")) { _ = FNIMPORTPFXTOPROVIDERFREEDATA; }
+    if (@hasDecl(@This(), "FNCERTSRVISSERVERONLINEW")) {
+        _ = FNCERTSRVISSERVERONLINEW;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPGETDYNAMICFILELISTW")) {
+        _ = FNCERTSRVBACKUPGETDYNAMICFILELISTW;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPPREPAREW")) {
+        _ = FNCERTSRVBACKUPPREPAREW;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPGETDATABASENAMESW")) {
+        _ = FNCERTSRVBACKUPGETDATABASENAMESW;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPOPENFILEW")) {
+        _ = FNCERTSRVBACKUPOPENFILEW;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPREAD")) {
+        _ = FNCERTSRVBACKUPREAD;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPCLOSE")) {
+        _ = FNCERTSRVBACKUPCLOSE;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPGETBACKUPLOGSW")) {
+        _ = FNCERTSRVBACKUPGETBACKUPLOGSW;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPTRUNCATELOGS")) {
+        _ = FNCERTSRVBACKUPTRUNCATELOGS;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPEND")) {
+        _ = FNCERTSRVBACKUPEND;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVBACKUPFREE")) {
+        _ = FNCERTSRVBACKUPFREE;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVRESTOREGETDATABASELOCATIONSW")) {
+        _ = FNCERTSRVRESTOREGETDATABASELOCATIONSW;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVRESTOREPREPAREW")) {
+        _ = FNCERTSRVRESTOREPREPAREW;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVRESTOREREGISTERW")) {
+        _ = FNCERTSRVRESTOREREGISTERW;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVRESTOREREGISTERCOMPLETE")) {
+        _ = FNCERTSRVRESTOREREGISTERCOMPLETE;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVRESTOREEND")) {
+        _ = FNCERTSRVRESTOREEND;
+    }
+    if (@hasDecl(@This(), "FNCERTSRVSERVERCONTROLW")) {
+        _ = FNCERTSRVSERVERCONTROLW;
+    }
+    if (@hasDecl(@This(), "FNIMPORTPFXTOPROVIDER")) {
+        _ = FNIMPORTPFXTOPROVIDER;
+    }
+    if (@hasDecl(@This(), "FNIMPORTPFXTOPROVIDERFREEDATA")) {
+        _ = FNIMPORTPFXTOPROVIDERFREEDATA;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

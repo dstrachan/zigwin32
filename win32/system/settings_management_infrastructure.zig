@@ -158,27 +158,27 @@ pub const IID_IItemEnumerator = &IID_IItemEnumerator_Value;
 pub const IItemEnumerator = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Current: *const fn(
+        Current: *const fn (
             self: *const IItemEnumerator,
             Item: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveNext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveNext: *const fn (
             self: *const IItemEnumerator,
             ItemValid: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IItemEnumerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Current(self: *const IItemEnumerator, Item: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Current(self: *const IItemEnumerator, Item: ?*VARIANT) HRESULT {
         return self.vtable.Current(self, Item);
     }
-    pub fn MoveNext(self: *const IItemEnumerator, ItemValid: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn MoveNext(self: *const IItemEnumerator, ItemValid: ?*BOOL) HRESULT {
         return self.vtable.MoveNext(self, ItemValid);
     }
-    pub fn Reset(self: *const IItemEnumerator) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IItemEnumerator) HRESULT {
         return self.vtable.Reset(self);
     }
 };
@@ -189,39 +189,39 @@ pub const IID_ISettingsIdentity = &IID_ISettingsIdentity_Value;
 pub const ISettingsIdentity = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetAttribute: *const fn(
+        GetAttribute: *const fn (
             self: *const ISettingsIdentity,
             Reserved: ?*anyopaque,
             Name: ?[*:0]const u16,
             Value: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAttribute: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAttribute: *const fn (
             self: *const ISettingsIdentity,
             Reserved: ?*anyopaque,
             Name: ?[*:0]const u16,
             Value: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFlags: *const fn (
             self: *const ISettingsIdentity,
             Flags: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFlags: *const fn (
             self: *const ISettingsIdentity,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetAttribute(self: *const ISettingsIdentity, Reserved: ?*anyopaque, Name: ?[*:0]const u16, Value: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetAttribute(self: *const ISettingsIdentity, Reserved: ?*anyopaque, Name: ?[*:0]const u16, Value: ?*?BSTR) HRESULT {
         return self.vtable.GetAttribute(self, Reserved, Name, Value);
     }
-    pub fn SetAttribute(self: *const ISettingsIdentity, Reserved: ?*anyopaque, Name: ?[*:0]const u16, Value: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetAttribute(self: *const ISettingsIdentity, Reserved: ?*anyopaque, Name: ?[*:0]const u16, Value: ?[*:0]const u16) HRESULT {
         return self.vtable.SetAttribute(self, Reserved, Name, Value);
     }
-    pub fn GetFlags(self: *const ISettingsIdentity, Flags: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFlags(self: *const ISettingsIdentity, Flags: ?*u32) HRESULT {
         return self.vtable.GetFlags(self, Flags);
     }
-    pub fn SetFlags(self: *const ISettingsIdentity, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetFlags(self: *const ISettingsIdentity, Flags: u32) HRESULT {
         return self.vtable.SetFlags(self, Flags);
     }
 };
@@ -232,167 +232,167 @@ pub const IID_ITargetInfo = &IID_ITargetInfo_Value;
 pub const ITargetInfo = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetTargetMode: *const fn(
+        GetTargetMode: *const fn (
             self: *const ITargetInfo,
             TargetMode: ?*WcmTargetMode,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTargetMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTargetMode: *const fn (
             self: *const ITargetInfo,
             TargetMode: WcmTargetMode,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTemporaryStoreLocation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTemporaryStoreLocation: *const fn (
             self: *const ITargetInfo,
             TemporaryStoreLocation: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTemporaryStoreLocation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTemporaryStoreLocation: *const fn (
             self: *const ITargetInfo,
             TemporaryStoreLocation: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTargetID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTargetID: *const fn (
             self: *const ITargetInfo,
             TargetID: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTargetID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTargetID: *const fn (
             self: *const ITargetInfo,
             TargetID: Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTargetProcessorArchitecture: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTargetProcessorArchitecture: *const fn (
             self: *const ITargetInfo,
             ProcessorArchitecture: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTargetProcessorArchitecture: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTargetProcessorArchitecture: *const fn (
             self: *const ITargetInfo,
             ProcessorArchitecture: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const ITargetInfo,
             Offline: BOOL,
             Property: ?[*:0]const u16,
             Value: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProperty: *const fn (
             self: *const ITargetInfo,
             Offline: BOOL,
             Property: ?[*:0]const u16,
             Value: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEnumerator: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEnumerator: *const fn (
             self: *const ITargetInfo,
             Enumerator: ?*?*IItemEnumerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExpandTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExpandTarget: *const fn (
             self: *const ITargetInfo,
             Offline: BOOL,
             Location: ?[*:0]const u16,
             ExpandedLocation: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExpandTargetPath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExpandTargetPath: *const fn (
             self: *const ITargetInfo,
             Offline: BOOL,
             Location: ?[*:0]const u16,
             ExpandedLocation: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetModulePath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetModulePath: *const fn (
             self: *const ITargetInfo,
             Module: ?[*:0]const u16,
             Path: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LoadModule: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LoadModule: *const fn (
             self: *const ITargetInfo,
             Module: ?[*:0]const u16,
             ModuleHandle: ?*?HINSTANCE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetWow64Context: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetWow64Context: *const fn (
             self: *const ITargetInfo,
             InstallerModule: ?[*:0]const u16,
             Wow64Context: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TranslateWow64: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TranslateWow64: *const fn (
             self: *const ITargetInfo,
             ClientArchitecture: ?[*:0]const u16,
             Value: ?[*:0]const u16,
             TranslatedValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSchemaHiveLocation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSchemaHiveLocation: *const fn (
             self: *const ITargetInfo,
             pwzHiveDir: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSchemaHiveLocation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSchemaHiveLocation: *const fn (
             self: *const ITargetInfo,
             pHiveLocation: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSchemaHiveMountName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSchemaHiveMountName: *const fn (
             self: *const ITargetInfo,
             pwzMountName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSchemaHiveMountName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSchemaHiveMountName: *const fn (
             self: *const ITargetInfo,
             pMountName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetTargetMode(self: *const ITargetInfo, TargetMode: ?*WcmTargetMode) callconv(.Inline) HRESULT {
+    pub inline fn GetTargetMode(self: *const ITargetInfo, TargetMode: ?*WcmTargetMode) HRESULT {
         return self.vtable.GetTargetMode(self, TargetMode);
     }
-    pub fn SetTargetMode(self: *const ITargetInfo, TargetMode: WcmTargetMode) callconv(.Inline) HRESULT {
+    pub inline fn SetTargetMode(self: *const ITargetInfo, TargetMode: WcmTargetMode) HRESULT {
         return self.vtable.SetTargetMode(self, TargetMode);
     }
-    pub fn GetTemporaryStoreLocation(self: *const ITargetInfo, TemporaryStoreLocation: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetTemporaryStoreLocation(self: *const ITargetInfo, TemporaryStoreLocation: ?*?BSTR) HRESULT {
         return self.vtable.GetTemporaryStoreLocation(self, TemporaryStoreLocation);
     }
-    pub fn SetTemporaryStoreLocation(self: *const ITargetInfo, TemporaryStoreLocation: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetTemporaryStoreLocation(self: *const ITargetInfo, TemporaryStoreLocation: ?[*:0]const u16) HRESULT {
         return self.vtable.SetTemporaryStoreLocation(self, TemporaryStoreLocation);
     }
-    pub fn GetTargetID(self: *const ITargetInfo, TargetID: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetTargetID(self: *const ITargetInfo, TargetID: ?*?BSTR) HRESULT {
         return self.vtable.GetTargetID(self, TargetID);
     }
-    pub fn SetTargetID(self: *const ITargetInfo, TargetID: Guid) callconv(.Inline) HRESULT {
+    pub inline fn SetTargetID(self: *const ITargetInfo, TargetID: Guid) HRESULT {
         return self.vtable.SetTargetID(self, TargetID);
     }
-    pub fn GetTargetProcessorArchitecture(self: *const ITargetInfo, ProcessorArchitecture: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetTargetProcessorArchitecture(self: *const ITargetInfo, ProcessorArchitecture: ?*?BSTR) HRESULT {
         return self.vtable.GetTargetProcessorArchitecture(self, ProcessorArchitecture);
     }
-    pub fn SetTargetProcessorArchitecture(self: *const ITargetInfo, ProcessorArchitecture: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetTargetProcessorArchitecture(self: *const ITargetInfo, ProcessorArchitecture: ?[*:0]const u16) HRESULT {
         return self.vtable.SetTargetProcessorArchitecture(self, ProcessorArchitecture);
     }
-    pub fn GetProperty(self: *const ITargetInfo, Offline: BOOL, Property: ?[*:0]const u16, Value: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const ITargetInfo, Offline: BOOL, Property: ?[*:0]const u16, Value: ?*?BSTR) HRESULT {
         return self.vtable.GetProperty(self, Offline, Property, Value);
     }
-    pub fn SetProperty(self: *const ITargetInfo, Offline: BOOL, Property: ?[*:0]const u16, Value: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetProperty(self: *const ITargetInfo, Offline: BOOL, Property: ?[*:0]const u16, Value: ?[*:0]const u16) HRESULT {
         return self.vtable.SetProperty(self, Offline, Property, Value);
     }
-    pub fn GetEnumerator(self: *const ITargetInfo, Enumerator: ?*?*IItemEnumerator) callconv(.Inline) HRESULT {
+    pub inline fn GetEnumerator(self: *const ITargetInfo, Enumerator: ?*?*IItemEnumerator) HRESULT {
         return self.vtable.GetEnumerator(self, Enumerator);
     }
-    pub fn ExpandTarget(self: *const ITargetInfo, Offline: BOOL, Location: ?[*:0]const u16, ExpandedLocation: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn ExpandTarget(self: *const ITargetInfo, Offline: BOOL, Location: ?[*:0]const u16, ExpandedLocation: ?*?BSTR) HRESULT {
         return self.vtable.ExpandTarget(self, Offline, Location, ExpandedLocation);
     }
-    pub fn ExpandTargetPath(self: *const ITargetInfo, Offline: BOOL, Location: ?[*:0]const u16, ExpandedLocation: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn ExpandTargetPath(self: *const ITargetInfo, Offline: BOOL, Location: ?[*:0]const u16, ExpandedLocation: ?*?BSTR) HRESULT {
         return self.vtable.ExpandTargetPath(self, Offline, Location, ExpandedLocation);
     }
-    pub fn SetModulePath(self: *const ITargetInfo, Module: ?[*:0]const u16, Path: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetModulePath(self: *const ITargetInfo, Module: ?[*:0]const u16, Path: ?[*:0]const u16) HRESULT {
         return self.vtable.SetModulePath(self, Module, Path);
     }
-    pub fn LoadModule(self: *const ITargetInfo, Module: ?[*:0]const u16, ModuleHandle: ?*?HINSTANCE) callconv(.Inline) HRESULT {
+    pub inline fn LoadModule(self: *const ITargetInfo, Module: ?[*:0]const u16, ModuleHandle: ?*?HINSTANCE) HRESULT {
         return self.vtable.LoadModule(self, Module, ModuleHandle);
     }
-    pub fn SetWow64Context(self: *const ITargetInfo, InstallerModule: ?[*:0]const u16, Wow64Context: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn SetWow64Context(self: *const ITargetInfo, InstallerModule: ?[*:0]const u16, Wow64Context: ?*u8) HRESULT {
         return self.vtable.SetWow64Context(self, InstallerModule, Wow64Context);
     }
-    pub fn TranslateWow64(self: *const ITargetInfo, ClientArchitecture: ?[*:0]const u16, Value: ?[*:0]const u16, TranslatedValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn TranslateWow64(self: *const ITargetInfo, ClientArchitecture: ?[*:0]const u16, Value: ?[*:0]const u16, TranslatedValue: ?*?BSTR) HRESULT {
         return self.vtable.TranslateWow64(self, ClientArchitecture, Value, TranslatedValue);
     }
-    pub fn SetSchemaHiveLocation(self: *const ITargetInfo, pwzHiveDir: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetSchemaHiveLocation(self: *const ITargetInfo, pwzHiveDir: ?[*:0]const u16) HRESULT {
         return self.vtable.SetSchemaHiveLocation(self, pwzHiveDir);
     }
-    pub fn GetSchemaHiveLocation(self: *const ITargetInfo, pHiveLocation: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetSchemaHiveLocation(self: *const ITargetInfo, pHiveLocation: ?*?BSTR) HRESULT {
         return self.vtable.GetSchemaHiveLocation(self, pHiveLocation);
     }
-    pub fn SetSchemaHiveMountName(self: *const ITargetInfo, pwzMountName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetSchemaHiveMountName(self: *const ITargetInfo, pwzMountName: ?[*:0]const u16) HRESULT {
         return self.vtable.SetSchemaHiveMountName(self, pwzMountName);
     }
-    pub fn GetSchemaHiveMountName(self: *const ITargetInfo, pMountName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetSchemaHiveMountName(self: *const ITargetInfo, pMountName: ?*?BSTR) HRESULT {
         return self.vtable.GetSchemaHiveMountName(self, pMountName);
     }
 };
@@ -403,134 +403,134 @@ pub const IID_ISettingsEngine = &IID_ISettingsEngine_Value;
 pub const ISettingsEngine = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetNamespaces: *const fn(
+        GetNamespaces: *const fn (
             self: *const ISettingsEngine,
             Flags: WcmNamespaceEnumerationFlags,
             Reserved: ?*anyopaque,
             Namespaces: ?*?*IItemEnumerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNamespace: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNamespace: *const fn (
             self: *const ISettingsEngine,
             SettingsID: ?*ISettingsIdentity,
             Access: WcmNamespaceAccess,
             Reserved: ?*anyopaque,
             NamespaceItem: ?*?*ISettingsNamespace,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetErrorDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetErrorDescription: *const fn (
             self: *const ISettingsEngine,
             HResult: i32,
             Message: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateSettingsIdentity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateSettingsIdentity: *const fn (
             self: *const ISettingsEngine,
             SettingsID: ?*?*ISettingsIdentity,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStoreStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStoreStatus: *const fn (
             self: *const ISettingsEngine,
             Reserved: ?*anyopaque,
             Status: ?*WcmUserStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LoadStore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LoadStore: *const fn (
             self: *const ISettingsEngine,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnloadStore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnloadStore: *const fn (
             self: *const ISettingsEngine,
             Reserved: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RegisterNamespace: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RegisterNamespace: *const fn (
             self: *const ISettingsEngine,
             SettingsID: ?*ISettingsIdentity,
             Stream: ?*IStream,
             PushSettings: BOOL,
             Results: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnregisterNamespace: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnregisterNamespace: *const fn (
             self: *const ISettingsEngine,
             SettingsID: ?*ISettingsIdentity,
             RemoveSettings: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateTargetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateTargetInfo: *const fn (
             self: *const ISettingsEngine,
             Target: ?*?*ITargetInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTargetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTargetInfo: *const fn (
             self: *const ISettingsEngine,
             Target: ?*?*ITargetInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTargetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTargetInfo: *const fn (
             self: *const ISettingsEngine,
             Target: ?*ITargetInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateSettingsContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateSettingsContext: *const fn (
             self: *const ISettingsEngine,
             Flags: u32,
             Reserved: ?*anyopaque,
             SettingsContext: ?*?*ISettingsContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSettingsContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSettingsContext: *const fn (
             self: *const ISettingsEngine,
             SettingsContext: ?*ISettingsContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ApplySettingsContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ApplySettingsContext: *const fn (
             self: *const ISettingsEngine,
             SettingsContext: ?*ISettingsContext,
             pppwzIdentities: ?*?*?PWSTR,
             pcIdentities: ?*usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSettingsContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSettingsContext: *const fn (
             self: *const ISettingsEngine,
             SettingsContext: ?*?*ISettingsContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetNamespaces(self: *const ISettingsEngine, Flags: WcmNamespaceEnumerationFlags, Reserved: ?*anyopaque, Namespaces: ?*?*IItemEnumerator) callconv(.Inline) HRESULT {
+    pub inline fn GetNamespaces(self: *const ISettingsEngine, Flags: WcmNamespaceEnumerationFlags, Reserved: ?*anyopaque, Namespaces: ?*?*IItemEnumerator) HRESULT {
         return self.vtable.GetNamespaces(self, Flags, Reserved, Namespaces);
     }
-    pub fn GetNamespace(self: *const ISettingsEngine, SettingsID: ?*ISettingsIdentity, Access: WcmNamespaceAccess, Reserved: ?*anyopaque, NamespaceItem: ?*?*ISettingsNamespace) callconv(.Inline) HRESULT {
+    pub inline fn GetNamespace(self: *const ISettingsEngine, SettingsID: ?*ISettingsIdentity, Access: WcmNamespaceAccess, Reserved: ?*anyopaque, NamespaceItem: ?*?*ISettingsNamespace) HRESULT {
         return self.vtable.GetNamespace(self, SettingsID, Access, Reserved, NamespaceItem);
     }
-    pub fn GetErrorDescription(self: *const ISettingsEngine, HResult: i32, Message: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetErrorDescription(self: *const ISettingsEngine, HResult: i32, Message: ?*?BSTR) HRESULT {
         return self.vtable.GetErrorDescription(self, HResult, Message);
     }
-    pub fn CreateSettingsIdentity(self: *const ISettingsEngine, SettingsID: ?*?*ISettingsIdentity) callconv(.Inline) HRESULT {
+    pub inline fn CreateSettingsIdentity(self: *const ISettingsEngine, SettingsID: ?*?*ISettingsIdentity) HRESULT {
         return self.vtable.CreateSettingsIdentity(self, SettingsID);
     }
-    pub fn GetStoreStatus(self: *const ISettingsEngine, Reserved: ?*anyopaque, Status: ?*WcmUserStatus) callconv(.Inline) HRESULT {
+    pub inline fn GetStoreStatus(self: *const ISettingsEngine, Reserved: ?*anyopaque, Status: ?*WcmUserStatus) HRESULT {
         return self.vtable.GetStoreStatus(self, Reserved, Status);
     }
-    pub fn LoadStore(self: *const ISettingsEngine, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn LoadStore(self: *const ISettingsEngine, Flags: u32) HRESULT {
         return self.vtable.LoadStore(self, Flags);
     }
-    pub fn UnloadStore(self: *const ISettingsEngine, Reserved: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn UnloadStore(self: *const ISettingsEngine, Reserved: ?*anyopaque) HRESULT {
         return self.vtable.UnloadStore(self, Reserved);
     }
-    pub fn RegisterNamespace(self: *const ISettingsEngine, SettingsID: ?*ISettingsIdentity, Stream: ?*IStream, PushSettings: BOOL, Results: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn RegisterNamespace(self: *const ISettingsEngine, SettingsID: ?*ISettingsIdentity, Stream: ?*IStream, PushSettings: BOOL, Results: ?*VARIANT) HRESULT {
         return self.vtable.RegisterNamespace(self, SettingsID, Stream, PushSettings, Results);
     }
-    pub fn UnregisterNamespace(self: *const ISettingsEngine, SettingsID: ?*ISettingsIdentity, RemoveSettings: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn UnregisterNamespace(self: *const ISettingsEngine, SettingsID: ?*ISettingsIdentity, RemoveSettings: BOOL) HRESULT {
         return self.vtable.UnregisterNamespace(self, SettingsID, RemoveSettings);
     }
-    pub fn CreateTargetInfo(self: *const ISettingsEngine, Target: ?*?*ITargetInfo) callconv(.Inline) HRESULT {
+    pub inline fn CreateTargetInfo(self: *const ISettingsEngine, Target: ?*?*ITargetInfo) HRESULT {
         return self.vtable.CreateTargetInfo(self, Target);
     }
-    pub fn GetTargetInfo(self: *const ISettingsEngine, Target: ?*?*ITargetInfo) callconv(.Inline) HRESULT {
+    pub inline fn GetTargetInfo(self: *const ISettingsEngine, Target: ?*?*ITargetInfo) HRESULT {
         return self.vtable.GetTargetInfo(self, Target);
     }
-    pub fn SetTargetInfo(self: *const ISettingsEngine, Target: ?*ITargetInfo) callconv(.Inline) HRESULT {
+    pub inline fn SetTargetInfo(self: *const ISettingsEngine, Target: ?*ITargetInfo) HRESULT {
         return self.vtable.SetTargetInfo(self, Target);
     }
-    pub fn CreateSettingsContext(self: *const ISettingsEngine, Flags: u32, Reserved: ?*anyopaque, SettingsContext: ?*?*ISettingsContext) callconv(.Inline) HRESULT {
+    pub inline fn CreateSettingsContext(self: *const ISettingsEngine, Flags: u32, Reserved: ?*anyopaque, SettingsContext: ?*?*ISettingsContext) HRESULT {
         return self.vtable.CreateSettingsContext(self, Flags, Reserved, SettingsContext);
     }
-    pub fn SetSettingsContext(self: *const ISettingsEngine, SettingsContext: ?*ISettingsContext) callconv(.Inline) HRESULT {
+    pub inline fn SetSettingsContext(self: *const ISettingsEngine, SettingsContext: ?*ISettingsContext) HRESULT {
         return self.vtable.SetSettingsContext(self, SettingsContext);
     }
-    pub fn ApplySettingsContext(self: *const ISettingsEngine, SettingsContext: ?*ISettingsContext, pppwzIdentities: ?*?*?PWSTR, pcIdentities: ?*usize) callconv(.Inline) HRESULT {
+    pub inline fn ApplySettingsContext(self: *const ISettingsEngine, SettingsContext: ?*ISettingsContext, pppwzIdentities: ?*?*?PWSTR, pcIdentities: ?*usize) HRESULT {
         return self.vtable.ApplySettingsContext(self, SettingsContext, pppwzIdentities, pcIdentities);
     }
-    pub fn GetSettingsContext(self: *const ISettingsEngine, SettingsContext: ?*?*ISettingsContext) callconv(.Inline) HRESULT {
+    pub inline fn GetSettingsContext(self: *const ISettingsEngine, SettingsContext: ?*?*ISettingsContext) HRESULT {
         return self.vtable.GetSettingsContext(self, SettingsContext);
     }
 };
@@ -541,171 +541,171 @@ pub const IID_ISettingsItem = &IID_ISettingsItem_Value;
 pub const ISettingsItem = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetName: *const fn(
+        GetName: *const fn (
             self: *const ISettingsItem,
             Name: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const ISettingsItem,
             Value: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const ISettingsItem,
             Value: ?*const VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSettingType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSettingType: *const fn (
             self: *const ISettingsItem,
             Type: ?*WcmSettingType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDataType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDataType: *const fn (
             self: *const ISettingsItem,
             Type: ?*WcmDataType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValueRaw: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValueRaw: *const fn (
             self: *const ISettingsItem,
             Data: [*]?*u8,
             DataSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValueRaw: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValueRaw: *const fn (
             self: *const ISettingsItem,
             DataType: i32,
             Data: [*:0]const u8,
             DataSize: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        HasChild: *const fn(
+        ) callconv(.winapi) HRESULT,
+        HasChild: *const fn (
             self: *const ISettingsItem,
             ItemHasChild: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Children: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Children: *const fn (
             self: *const ISettingsItem,
             Children: ?*?*IItemEnumerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChild: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChild: *const fn (
             self: *const ISettingsItem,
             Name: ?[*:0]const u16,
             Child: ?*?*ISettingsItem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSettingByPath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSettingByPath: *const fn (
             self: *const ISettingsItem,
             Path: ?[*:0]const u16,
             Setting: ?*?*ISettingsItem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateSettingByPath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateSettingByPath: *const fn (
             self: *const ISettingsItem,
             Path: ?[*:0]const u16,
             Setting: ?*?*ISettingsItem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveSettingByPath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveSettingByPath: *const fn (
             self: *const ISettingsItem,
             Path: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetListKeyInformation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetListKeyInformation: *const fn (
             self: *const ISettingsItem,
             KeyName: ?*?BSTR,
             DataType: ?*WcmDataType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateListElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateListElement: *const fn (
             self: *const ISettingsItem,
             KeyData: ?*const VARIANT,
             Child: ?*?*ISettingsItem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveListElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveListElement: *const fn (
             self: *const ISettingsItem,
             ElementName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Attributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Attributes: *const fn (
             self: *const ISettingsItem,
             Attributes: ?*?*IItemEnumerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAttribute: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAttribute: *const fn (
             self: *const ISettingsItem,
             Name: ?[*:0]const u16,
             Value: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPath: *const fn (
             self: *const ISettingsItem,
             Path: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRestrictionFacets: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRestrictionFacets: *const fn (
             self: *const ISettingsItem,
             RestrictionFacets: ?*WcmRestrictionFacets,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRestriction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRestriction: *const fn (
             self: *const ISettingsItem,
             RestrictionFacet: WcmRestrictionFacets,
             FacetData: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeyValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeyValue: *const fn (
             self: *const ISettingsItem,
             Value: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetName(self: *const ISettingsItem, Name: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetName(self: *const ISettingsItem, Name: ?*?BSTR) HRESULT {
         return self.vtable.GetName(self, Name);
     }
-    pub fn GetValue(self: *const ISettingsItem, Value: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const ISettingsItem, Value: ?*VARIANT) HRESULT {
         return self.vtable.GetValue(self, Value);
     }
-    pub fn SetValue(self: *const ISettingsItem, Value: ?*const VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const ISettingsItem, Value: ?*const VARIANT) HRESULT {
         return self.vtable.SetValue(self, Value);
     }
-    pub fn GetSettingType(self: *const ISettingsItem, Type: ?*WcmSettingType) callconv(.Inline) HRESULT {
+    pub inline fn GetSettingType(self: *const ISettingsItem, Type: ?*WcmSettingType) HRESULT {
         return self.vtable.GetSettingType(self, Type);
     }
-    pub fn GetDataType(self: *const ISettingsItem, Type: ?*WcmDataType) callconv(.Inline) HRESULT {
+    pub inline fn GetDataType(self: *const ISettingsItem, Type: ?*WcmDataType) HRESULT {
         return self.vtable.GetDataType(self, Type);
     }
-    pub fn GetValueRaw(self: *const ISettingsItem, Data: [*]?*u8, DataSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetValueRaw(self: *const ISettingsItem, Data: [*]?*u8, DataSize: ?*u32) HRESULT {
         return self.vtable.GetValueRaw(self, Data, DataSize);
     }
-    pub fn SetValueRaw(self: *const ISettingsItem, DataType: i32, Data: [*:0]const u8, DataSize: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetValueRaw(self: *const ISettingsItem, DataType: i32, Data: [*:0]const u8, DataSize: u32) HRESULT {
         return self.vtable.SetValueRaw(self, DataType, Data, DataSize);
     }
-    pub fn HasChild(self: *const ISettingsItem, ItemHasChild: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn HasChild(self: *const ISettingsItem, ItemHasChild: ?*BOOL) HRESULT {
         return self.vtable.HasChild(self, ItemHasChild);
     }
-    pub fn Children(self: *const ISettingsItem, _param_Children: ?*?*IItemEnumerator) callconv(.Inline) HRESULT {
+    pub inline fn Children(self: *const ISettingsItem, _param_Children: ?*?*IItemEnumerator) HRESULT {
         return self.vtable.Children(self, _param_Children);
     }
-    pub fn GetChild(self: *const ISettingsItem, Name: ?[*:0]const u16, Child: ?*?*ISettingsItem) callconv(.Inline) HRESULT {
+    pub inline fn GetChild(self: *const ISettingsItem, Name: ?[*:0]const u16, Child: ?*?*ISettingsItem) HRESULT {
         return self.vtable.GetChild(self, Name, Child);
     }
-    pub fn GetSettingByPath(self: *const ISettingsItem, Path: ?[*:0]const u16, Setting: ?*?*ISettingsItem) callconv(.Inline) HRESULT {
+    pub inline fn GetSettingByPath(self: *const ISettingsItem, Path: ?[*:0]const u16, Setting: ?*?*ISettingsItem) HRESULT {
         return self.vtable.GetSettingByPath(self, Path, Setting);
     }
-    pub fn CreateSettingByPath(self: *const ISettingsItem, Path: ?[*:0]const u16, Setting: ?*?*ISettingsItem) callconv(.Inline) HRESULT {
+    pub inline fn CreateSettingByPath(self: *const ISettingsItem, Path: ?[*:0]const u16, Setting: ?*?*ISettingsItem) HRESULT {
         return self.vtable.CreateSettingByPath(self, Path, Setting);
     }
-    pub fn RemoveSettingByPath(self: *const ISettingsItem, Path: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RemoveSettingByPath(self: *const ISettingsItem, Path: ?[*:0]const u16) HRESULT {
         return self.vtable.RemoveSettingByPath(self, Path);
     }
-    pub fn GetListKeyInformation(self: *const ISettingsItem, KeyName: ?*?BSTR, DataType: ?*WcmDataType) callconv(.Inline) HRESULT {
+    pub inline fn GetListKeyInformation(self: *const ISettingsItem, KeyName: ?*?BSTR, DataType: ?*WcmDataType) HRESULT {
         return self.vtable.GetListKeyInformation(self, KeyName, DataType);
     }
-    pub fn CreateListElement(self: *const ISettingsItem, KeyData: ?*const VARIANT, Child: ?*?*ISettingsItem) callconv(.Inline) HRESULT {
+    pub inline fn CreateListElement(self: *const ISettingsItem, KeyData: ?*const VARIANT, Child: ?*?*ISettingsItem) HRESULT {
         return self.vtable.CreateListElement(self, KeyData, Child);
     }
-    pub fn RemoveListElement(self: *const ISettingsItem, ElementName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RemoveListElement(self: *const ISettingsItem, ElementName: ?[*:0]const u16) HRESULT {
         return self.vtable.RemoveListElement(self, ElementName);
     }
-    pub fn Attributes(self: *const ISettingsItem, _param_Attributes: ?*?*IItemEnumerator) callconv(.Inline) HRESULT {
+    pub inline fn Attributes(self: *const ISettingsItem, _param_Attributes: ?*?*IItemEnumerator) HRESULT {
         return self.vtable.Attributes(self, _param_Attributes);
     }
-    pub fn GetAttribute(self: *const ISettingsItem, Name: ?[*:0]const u16, Value: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetAttribute(self: *const ISettingsItem, Name: ?[*:0]const u16, Value: ?*VARIANT) HRESULT {
         return self.vtable.GetAttribute(self, Name, Value);
     }
-    pub fn GetPath(self: *const ISettingsItem, Path: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPath(self: *const ISettingsItem, Path: ?*?BSTR) HRESULT {
         return self.vtable.GetPath(self, Path);
     }
-    pub fn GetRestrictionFacets(self: *const ISettingsItem, RestrictionFacets: ?*WcmRestrictionFacets) callconv(.Inline) HRESULT {
+    pub inline fn GetRestrictionFacets(self: *const ISettingsItem, RestrictionFacets: ?*WcmRestrictionFacets) HRESULT {
         return self.vtable.GetRestrictionFacets(self, RestrictionFacets);
     }
-    pub fn GetRestriction(self: *const ISettingsItem, RestrictionFacet: WcmRestrictionFacets, FacetData: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetRestriction(self: *const ISettingsItem, RestrictionFacet: WcmRestrictionFacets, FacetData: ?*VARIANT) HRESULT {
         return self.vtable.GetRestriction(self, RestrictionFacet, FacetData);
     }
-    pub fn GetKeyValue(self: *const ISettingsItem, Value: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetKeyValue(self: *const ISettingsItem, Value: ?*VARIANT) HRESULT {
         return self.vtable.GetKeyValue(self, Value);
     }
 };
@@ -716,60 +716,60 @@ pub const IID_ISettingsNamespace = &IID_ISettingsNamespace_Value;
 pub const ISettingsNamespace = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetIdentity: *const fn(
+        GetIdentity: *const fn (
             self: *const ISettingsNamespace,
             SettingsID: ?*?*ISettingsIdentity,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Settings: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Settings: *const fn (
             self: *const ISettingsNamespace,
             Settings: ?*?*IItemEnumerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Save: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Save: *const fn (
             self: *const ISettingsNamespace,
             PushSettings: BOOL,
             Result: ?*?*ISettingsResult,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSettingByPath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSettingByPath: *const fn (
             self: *const ISettingsNamespace,
             Path: ?[*:0]const u16,
             Setting: ?*?*ISettingsItem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateSettingByPath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateSettingByPath: *const fn (
             self: *const ISettingsNamespace,
             Path: ?[*:0]const u16,
             Setting: ?*?*ISettingsItem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveSettingByPath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveSettingByPath: *const fn (
             self: *const ISettingsNamespace,
             Path: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAttribute: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAttribute: *const fn (
             self: *const ISettingsNamespace,
             Name: ?[*:0]const u16,
             Value: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetIdentity(self: *const ISettingsNamespace, SettingsID: ?*?*ISettingsIdentity) callconv(.Inline) HRESULT {
+    pub inline fn GetIdentity(self: *const ISettingsNamespace, SettingsID: ?*?*ISettingsIdentity) HRESULT {
         return self.vtable.GetIdentity(self, SettingsID);
     }
-    pub fn Settings(self: *const ISettingsNamespace, _param_Settings: ?*?*IItemEnumerator) callconv(.Inline) HRESULT {
+    pub inline fn Settings(self: *const ISettingsNamespace, _param_Settings: ?*?*IItemEnumerator) HRESULT {
         return self.vtable.Settings(self, _param_Settings);
     }
-    pub fn Save(self: *const ISettingsNamespace, PushSettings: BOOL, Result: ?*?*ISettingsResult) callconv(.Inline) HRESULT {
+    pub inline fn Save(self: *const ISettingsNamespace, PushSettings: BOOL, Result: ?*?*ISettingsResult) HRESULT {
         return self.vtable.Save(self, PushSettings, Result);
     }
-    pub fn GetSettingByPath(self: *const ISettingsNamespace, Path: ?[*:0]const u16, Setting: ?*?*ISettingsItem) callconv(.Inline) HRESULT {
+    pub inline fn GetSettingByPath(self: *const ISettingsNamespace, Path: ?[*:0]const u16, Setting: ?*?*ISettingsItem) HRESULT {
         return self.vtable.GetSettingByPath(self, Path, Setting);
     }
-    pub fn CreateSettingByPath(self: *const ISettingsNamespace, Path: ?[*:0]const u16, Setting: ?*?*ISettingsItem) callconv(.Inline) HRESULT {
+    pub inline fn CreateSettingByPath(self: *const ISettingsNamespace, Path: ?[*:0]const u16, Setting: ?*?*ISettingsItem) HRESULT {
         return self.vtable.CreateSettingByPath(self, Path, Setting);
     }
-    pub fn RemoveSettingByPath(self: *const ISettingsNamespace, Path: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RemoveSettingByPath(self: *const ISettingsNamespace, Path: ?[*:0]const u16) HRESULT {
         return self.vtable.RemoveSettingByPath(self, Path);
     }
-    pub fn GetAttribute(self: *const ISettingsNamespace, Name: ?[*:0]const u16, Value: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetAttribute(self: *const ISettingsNamespace, Name: ?[*:0]const u16, Value: ?*VARIANT) HRESULT {
         return self.vtable.GetAttribute(self, Name, Value);
     }
 };
@@ -780,49 +780,49 @@ pub const IID_ISettingsResult = &IID_ISettingsResult_Value;
 pub const ISettingsResult = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDescription: *const fn(
+        GetDescription: *const fn (
             self: *const ISettingsResult,
             description: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetErrorCode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetErrorCode: *const fn (
             self: *const ISettingsResult,
             hrOut: ?*HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetContextDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetContextDescription: *const fn (
             self: *const ISettingsResult,
             description: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLine: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLine: *const fn (
             self: *const ISettingsResult,
             dwLine: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetColumn: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetColumn: *const fn (
             self: *const ISettingsResult,
             dwColumn: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSource: *const fn (
             self: *const ISettingsResult,
             file: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDescription(self: *const ISettingsResult, description: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDescription(self: *const ISettingsResult, description: ?*?BSTR) HRESULT {
         return self.vtable.GetDescription(self, description);
     }
-    pub fn GetErrorCode(self: *const ISettingsResult, hrOut: ?*HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn GetErrorCode(self: *const ISettingsResult, hrOut: ?*HRESULT) HRESULT {
         return self.vtable.GetErrorCode(self, hrOut);
     }
-    pub fn GetContextDescription(self: *const ISettingsResult, description: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetContextDescription(self: *const ISettingsResult, description: ?*?BSTR) HRESULT {
         return self.vtable.GetContextDescription(self, description);
     }
-    pub fn GetLine(self: *const ISettingsResult, dwLine: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetLine(self: *const ISettingsResult, dwLine: ?*u32) HRESULT {
         return self.vtable.GetLine(self, dwLine);
     }
-    pub fn GetColumn(self: *const ISettingsResult, dwColumn: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetColumn(self: *const ISettingsResult, dwColumn: ?*u32) HRESULT {
         return self.vtable.GetColumn(self, dwColumn);
     }
-    pub fn GetSource(self: *const ISettingsResult, file: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetSource(self: *const ISettingsResult, file: ?*?BSTR) HRESULT {
         return self.vtable.GetSource(self, file);
     }
 };
@@ -833,68 +833,67 @@ pub const IID_ISettingsContext = &IID_ISettingsContext_Value;
 pub const ISettingsContext = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Serialize: *const fn(
+        Serialize: *const fn (
             self: *const ISettingsContext,
             pStream: ?*IStream,
             pTarget: ?*ITargetInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Deserialize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Deserialize: *const fn (
             self: *const ISettingsContext,
             pStream: ?*IStream,
             pTarget: ?*ITargetInfo,
             pppResults: [*]?*?*ISettingsResult,
             pcResultCount: ?*usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetUserData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetUserData: *const fn (
             self: *const ISettingsContext,
             pUserData: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetUserData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetUserData: *const fn (
             self: *const ISettingsContext,
             pUserData: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNamespaces: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNamespaces: *const fn (
             self: *const ISettingsContext,
             ppNamespaceIds: ?*?*IItemEnumerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStoredSettings: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStoredSettings: *const fn (
             self: *const ISettingsContext,
             pIdentity: ?*ISettingsIdentity,
             ppAddedSettings: ?*?*IItemEnumerator,
             ppModifiedSettings: ?*?*IItemEnumerator,
             ppDeletedSettings: ?*?*IItemEnumerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RevertSetting: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RevertSetting: *const fn (
             self: *const ISettingsContext,
             pIdentity: ?*ISettingsIdentity,
             pwzSetting: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Serialize(self: *const ISettingsContext, pStream: ?*IStream, pTarget: ?*ITargetInfo) callconv(.Inline) HRESULT {
+    pub inline fn Serialize(self: *const ISettingsContext, pStream: ?*IStream, pTarget: ?*ITargetInfo) HRESULT {
         return self.vtable.Serialize(self, pStream, pTarget);
     }
-    pub fn Deserialize(self: *const ISettingsContext, pStream: ?*IStream, pTarget: ?*ITargetInfo, pppResults: [*]?*?*ISettingsResult, pcResultCount: ?*usize) callconv(.Inline) HRESULT {
+    pub inline fn Deserialize(self: *const ISettingsContext, pStream: ?*IStream, pTarget: ?*ITargetInfo, pppResults: [*]?*?*ISettingsResult, pcResultCount: ?*usize) HRESULT {
         return self.vtable.Deserialize(self, pStream, pTarget, pppResults, pcResultCount);
     }
-    pub fn SetUserData(self: *const ISettingsContext, pUserData: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn SetUserData(self: *const ISettingsContext, pUserData: ?*anyopaque) HRESULT {
         return self.vtable.SetUserData(self, pUserData);
     }
-    pub fn GetUserData(self: *const ISettingsContext, pUserData: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetUserData(self: *const ISettingsContext, pUserData: ?*?*anyopaque) HRESULT {
         return self.vtable.GetUserData(self, pUserData);
     }
-    pub fn GetNamespaces(self: *const ISettingsContext, ppNamespaceIds: ?*?*IItemEnumerator) callconv(.Inline) HRESULT {
+    pub inline fn GetNamespaces(self: *const ISettingsContext, ppNamespaceIds: ?*?*IItemEnumerator) HRESULT {
         return self.vtable.GetNamespaces(self, ppNamespaceIds);
     }
-    pub fn GetStoredSettings(self: *const ISettingsContext, pIdentity: ?*ISettingsIdentity, ppAddedSettings: ?*?*IItemEnumerator, ppModifiedSettings: ?*?*IItemEnumerator, ppDeletedSettings: ?*?*IItemEnumerator) callconv(.Inline) HRESULT {
+    pub inline fn GetStoredSettings(self: *const ISettingsContext, pIdentity: ?*ISettingsIdentity, ppAddedSettings: ?*?*IItemEnumerator, ppModifiedSettings: ?*?*IItemEnumerator, ppDeletedSettings: ?*?*IItemEnumerator) HRESULT {
         return self.vtable.GetStoredSettings(self, pIdentity, ppAddedSettings, ppModifiedSettings, ppDeletedSettings);
     }
-    pub fn RevertSetting(self: *const ISettingsContext, pIdentity: ?*ISettingsIdentity, pwzSetting: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RevertSetting(self: *const ISettingsContext, pIdentity: ?*ISettingsIdentity, pwzSetting: ?[*:0]const u16) HRESULT {
         return self.vtable.RevertSetting(self, pIdentity, pwzSetting);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -917,9 +916,7 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 const VARIANT = @import("../system/com.zig").VARIANT;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -78,7 +78,6 @@ pub const STATEMGRSTATUS = extern struct {
     llSequenceNumber: i64 align(1),
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (2)
 //--------------------------------------------------------------------------------
@@ -86,14 +85,13 @@ pub const STATEMGRSTATUS = extern struct {
 pub extern "sfc" fn SRSetRestorePointA(
     pRestorePtSpec: ?*RESTOREPOINTINFOA,
     pSMgrStatus: ?*STATEMGRSTATUS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "sfc" fn SRSetRestorePointW(
     pRestorePtSpec: ?*RESTOREPOINTINFOW,
     pSMgrStatus: ?*STATEMGRSTATUS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (2)
@@ -120,9 +118,7 @@ const CHAR = @import("../foundation.zig").CHAR;
 const FILETIME = @import("../foundation.zig").FILETIME;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

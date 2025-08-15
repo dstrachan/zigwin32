@@ -22,7 +22,6 @@ pub const ENCRYPTED_LM_OWF_PASSWORD = extern struct {
     data: [2]CYPHER_BLOCK,
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (2)
 //--------------------------------------------------------------------------------
@@ -35,7 +34,7 @@ pub extern "advapi32" fn MSChapSrvChangePassword(
     LmNewOwfPassword: ?*LM_OWF_PASSWORD,
     NtOldOwfPassword: ?*LM_OWF_PASSWORD,
     NtNewOwfPassword: ?*LM_OWF_PASSWORD,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "advapi32" fn MSChapSrvChangePassword2(
@@ -46,8 +45,7 @@ pub extern "advapi32" fn MSChapSrvChangePassword2(
     LmPresent: BOOLEAN,
     NewPasswordEncryptedWithOldLm: ?*SAMPR_ENCRYPTED_USER_PASSWORD,
     OldLmOwfPasswordEncryptedWithNewLmOrNt: ?*ENCRYPTED_LM_OWF_PASSWORD,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -60,9 +58,7 @@ const CHAR = @import("../foundation.zig").CHAR;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

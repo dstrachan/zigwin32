@@ -158,7 +158,7 @@ pub const JOB_OBJECT_UILIMIT = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const JOB_OBJECT_UILIMIT_NONE = JOB_OBJECT_UILIMIT{ };
+pub const JOB_OBJECT_UILIMIT_NONE = JOB_OBJECT_UILIMIT{};
 pub const JOB_OBJECT_UILIMIT_HANDLES = JOB_OBJECT_UILIMIT{ .HANDLES = 1 };
 pub const JOB_OBJECT_UILIMIT_READCLIPBOARD = JOB_OBJECT_UILIMIT{ .READCLIPBOARD = 1 };
 pub const JOB_OBJECT_UILIMIT_WRITECLIPBOARD = JOB_OBJECT_UILIMIT{ .WRITECLIPBOARD = 1 };
@@ -687,7 +687,6 @@ pub const JobObjectReserved24Information = JOBOBJECTINFOCLASS.JobObjectReserved2
 pub const JobObjectReserved25Information = JOBOBJECTINFOCLASS.JobObjectReserved25Information;
 pub const MaxJobObjectInfoClass = JOBOBJECTINFOCLASS.MaxJobObjectInfoClass;
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (14)
 //--------------------------------------------------------------------------------
@@ -696,37 +695,37 @@ pub extern "kernel32" fn IsProcessInJob(
     ProcessHandle: ?HANDLE,
     JobHandle: ?HANDLE,
     Result: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn CreateJobObjectW(
     lpJobAttributes: ?*SECURITY_ATTRIBUTES,
     lpName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "kernel32" fn FreeMemoryJobObject(
     Buffer: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn OpenJobObjectW(
     dwDesiredAccess: u32,
     bInheritHandle: BOOL,
     lpName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn AssignProcessToJobObject(
     hJob: ?HANDLE,
     hProcess: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn TerminateJobObject(
     hJob: ?HANDLE,
     uExitCode: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn SetInformationJobObject(
@@ -735,13 +734,13 @@ pub extern "kernel32" fn SetInformationJobObject(
     // TODO: what to do with BytesParamIndex 3?
     lpJobObjectInformation: ?*anyopaque,
     cbJobObjectInformationLength: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "kernel32" fn SetIoRateControlInformationJobObject(
     hJob: ?HANDLE,
     IoRateControlInfo: ?*JOBOBJECT_IO_RATE_CONTROL_INFORMATION,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn QueryInformationJobObject(
@@ -751,7 +750,7 @@ pub extern "kernel32" fn QueryInformationJobObject(
     lpJobObjectInformation: ?*anyopaque,
     cbJobObjectInformationLength: u32,
     lpReturnLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "kernel32" fn QueryIoRateControlInformationJobObject(
@@ -759,34 +758,33 @@ pub extern "kernel32" fn QueryIoRateControlInformationJobObject(
     VolumeName: ?[*:0]const u16,
     InfoBlocks: ?*?*JOBOBJECT_IO_RATE_CONTROL_INFORMATION,
     InfoBlockCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "user32" fn UserHandleGrantAccess(
     hUserHandle: ?HANDLE,
     hJob: ?HANDLE,
     bGrant: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn CreateJobObjectA(
     lpJobAttributes: ?*SECURITY_ATTRIBUTES,
     lpName: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn OpenJobObjectA(
     dwDesiredAccess: u32,
     bInheritHandle: BOOL,
     lpName: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 pub extern "kernel32" fn CreateJobSet(
     NumJob: u32,
     UserJobSet: [*]JOB_SET_ARRAY,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (2)
@@ -819,9 +817,7 @@ const TOKEN_GROUPS = @import("../security.zig").TOKEN_GROUPS;
 const TOKEN_PRIVILEGES = @import("../security.zig").TOKEN_PRIVILEGES;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

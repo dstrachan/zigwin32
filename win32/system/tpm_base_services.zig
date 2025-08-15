@@ -85,7 +85,6 @@ pub const TPM_DEVICE_INFO = extern struct {
     tpmImpRevision: u32,
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (13)
 //--------------------------------------------------------------------------------
@@ -93,12 +92,12 @@ pub const TPM_DEVICE_INFO = extern struct {
 pub extern "tbs" fn Tbsi_Context_Create(
     pContextParams: ?*TBS_CONTEXT_PARAMS,
     phContext: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "tbs" fn Tbsip_Context_Close(
     hContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "tbs" fn Tbsip_Submit_Command(
@@ -111,12 +110,12 @@ pub extern "tbs" fn Tbsip_Submit_Command(
     // TODO: what to do with BytesParamIndex 6?
     pabResult: ?*u8,
     pcbResult: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "tbs" fn Tbsip_Cancel_Commands(
     hContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "tbs" fn Tbsi_Physical_Presence_Command(
@@ -127,7 +126,7 @@ pub extern "tbs" fn Tbsi_Physical_Presence_Command(
     // TODO: what to do with BytesParamIndex 4?
     pabOutput: ?*u8,
     pcbOutput: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "tbs" fn Tbsi_Get_TCG_Log(
@@ -135,14 +134,14 @@ pub extern "tbs" fn Tbsi_Get_TCG_Log(
     // TODO: what to do with BytesParamIndex 2?
     pOutputBuf: ?*u8,
     pOutputBufLen: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "tbs" fn Tbsi_GetDeviceInfo(
     Size: u32,
     // TODO: what to do with BytesParamIndex 0?
     Info: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "tbs" fn Tbsi_Get_OwnerAuth(
@@ -151,11 +150,10 @@ pub extern "tbs" fn Tbsi_Get_OwnerAuth(
     // TODO: what to do with BytesParamIndex 3?
     pOutputBuf: ?*u8,
     pOutputBufLen: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows8.0'
-pub extern "tbs" fn Tbsi_Revoke_Attestation(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "tbs" fn Tbsi_Revoke_Attestation() callconv(.winapi) u32;
 
 pub extern "tbs" fn GetDeviceID(
     // TODO: what to do with BytesParamIndex 1?
@@ -163,18 +161,18 @@ pub extern "tbs" fn GetDeviceID(
     cbWindowsAIK: u32,
     pcbResult: ?*u32,
     pfProtectedByTPM: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "tbs" fn GetDeviceIDString(
     pszWindowsAIK: ?[*:0]u16,
     cchWindowsAIK: u32,
     pcchResult: ?*u32,
     pfProtectedByTPM: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "tbs" fn Tbsi_Create_Windows_Key(
     keyHandle: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows10.0.17134'
 pub extern "tbs" fn Tbsi_Get_TCG_Log_Ex(
@@ -182,8 +180,7 @@ pub extern "tbs" fn Tbsi_Get_TCG_Log_Ex(
     // TODO: what to do with BytesParamIndex 2?
     pbOutput: ?*u8,
     pcbOutput: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -195,9 +192,7 @@ const BOOL = @import("../foundation.zig").BOOL;
 const HRESULT = @import("../foundation.zig").HRESULT;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

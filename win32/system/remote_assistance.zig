@@ -54,45 +54,45 @@ pub const IRendezvousSession = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_State: *const fn(
+        get_State: *const fn (
             self: *const IRendezvousSession,
             pSessionState: ?*RENDEZVOUS_SESSION_STATE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RemoteUser: *const fn(
+        get_RemoteUser: *const fn (
             self: *const IRendezvousSession,
             bstrUserName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Flags: *const fn(
+        get_Flags: *const fn (
             self: *const IRendezvousSession,
             pFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SendContextData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SendContextData: *const fn (
             self: *const IRendezvousSession,
             bstrData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Terminate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Terminate: *const fn (
             self: *const IRendezvousSession,
             hr: HRESULT,
             bstrAppData: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_State(self: *const IRendezvousSession, pSessionState: ?*RENDEZVOUS_SESSION_STATE) callconv(.Inline) HRESULT {
+    pub inline fn get_State(self: *const IRendezvousSession, pSessionState: ?*RENDEZVOUS_SESSION_STATE) HRESULT {
         return self.vtable.get_State(self, pSessionState);
     }
-    pub fn get_RemoteUser(self: *const IRendezvousSession, bstrUserName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RemoteUser(self: *const IRendezvousSession, bstrUserName: ?*?BSTR) HRESULT {
         return self.vtable.get_RemoteUser(self, bstrUserName);
     }
-    pub fn get_Flags(self: *const IRendezvousSession, pFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Flags(self: *const IRendezvousSession, pFlags: ?*i32) HRESULT {
         return self.vtable.get_Flags(self, pFlags);
     }
-    pub fn SendContextData(self: *const IRendezvousSession, bstrData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SendContextData(self: *const IRendezvousSession, bstrData: ?BSTR) HRESULT {
         return self.vtable.SendContextData(self, bstrData);
     }
-    pub fn Terminate(self: *const IRendezvousSession, hr: HRESULT, bstrAppData: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Terminate(self: *const IRendezvousSession, hr: HRESULT, bstrAppData: ?BSTR) HRESULT {
         return self.vtable.Terminate(self, hr, bstrAppData);
     }
 };
@@ -115,18 +115,17 @@ pub const IID_IRendezvousApplication = &IID_IRendezvousApplication_Value;
 pub const IRendezvousApplication = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetRendezvousSession: *const fn(
+        SetRendezvousSession: *const fn (
             self: *const IRendezvousApplication,
             pRendezvousSession: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetRendezvousSession(self: *const IRendezvousApplication, pRendezvousSession: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn SetRendezvousSession(self: *const IRendezvousApplication, pRendezvousSession: ?*IUnknown) HRESULT {
         return self.vtable.SetRendezvousSession(self, pRendezvousSession);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -145,9 +144,7 @@ const IDispatch = @import("../system/com.zig").IDispatch;
 const IUnknown = @import("../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

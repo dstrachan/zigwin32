@@ -2,7 +2,7 @@
 //--------------------------------------------------------------------------------
 // Section: Constants (1215)
 //--------------------------------------------------------------------------------
-pub const DEVPKEY_MTPBTH_IsConnected = DEVPROPKEY { .fmtid = Guid.initString("ea1237fa-589d-4472-84e4-0abe36fd62ef"), .pid = 2 };
+pub const DEVPKEY_MTPBTH_IsConnected = DEVPROPKEY{ .fmtid = Guid.initString("ea1237fa-589d-4472-84e4-0abe36fd62ef"), .pid = 2 };
 pub const GUID_DEVINTERFACE_WPD = Guid.initString("6ac27878-a6fa-4155-ba85-f98f491d4f33");
 pub const GUID_DEVINTERFACE_WPD_PRIVATE = Guid.initString("ba0c718f-4ded-49b7-bdd3-fabe28661211");
 pub const GUID_DEVINTERFACE_WPD_SERVICE = Guid.initString("9ef44f80-3d64-4246-a6aa-206f328d1edc");
@@ -90,413 +90,413 @@ pub const WPD_OBJECT_FORMAT_3GPA = Guid.initString("e5172730-f971-41ef-a10b-2271
 pub const WPD_OBJECT_FORMAT_3G2A = Guid.initString("1a11202d-8759-4e34-ba5e-b1211087eee4");
 pub const WPD_OBJECT_FORMAT_ALL = Guid.initString("c1f62eb2-4bb3-479c-9cfa-05b5f3a57b22");
 pub const WPD_CATEGORY_NULL = Guid.initString("00000000-0000-0000-0000-000000000000");
-pub const WPD_PROPERTY_NULL = PROPERTYKEY { .fmtid = Guid.initString("00000000-0000-0000-0000-000000000000"), .pid = 0 };
+pub const WPD_PROPERTY_NULL = PROPERTYKEY{ .fmtid = Guid.initString("00000000-0000-0000-0000-000000000000"), .pid = 0 };
 pub const WPD_OBJECT_PROPERTIES_V1 = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c");
-pub const WPD_OBJECT_CONTENT_TYPE = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 7 };
-pub const WPD_OBJECT_REFERENCES = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 14 };
-pub const WPD_OBJECT_CONTAINER_FUNCTIONAL_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 23 };
-pub const WPD_OBJECT_GENERATE_THUMBNAIL_FROM_RESOURCE = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 24 };
-pub const WPD_OBJECT_HINT_LOCATION_DISPLAY_NAME = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 25 };
+pub const WPD_OBJECT_CONTENT_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 7 };
+pub const WPD_OBJECT_REFERENCES = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 14 };
+pub const WPD_OBJECT_CONTAINER_FUNCTIONAL_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 23 };
+pub const WPD_OBJECT_GENERATE_THUMBNAIL_FROM_RESOURCE = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 24 };
+pub const WPD_OBJECT_HINT_LOCATION_DISPLAY_NAME = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 25 };
 pub const WPD_OBJECT_PROPERTIES_V2 = Guid.initString("0373cd3d-4a46-40d7-b4d8-73e8da74e775");
-pub const WPD_OBJECT_SUPPORTED_UNITS = PROPERTYKEY { .fmtid = Guid.initString("0373cd3d-4a46-40d7-b4d8-73e8da74e775"), .pid = 2 };
+pub const WPD_OBJECT_SUPPORTED_UNITS = PROPERTYKEY{ .fmtid = Guid.initString("0373cd3d-4a46-40d7-b4d8-73e8da74e775"), .pid = 2 };
 pub const WPD_FUNCTIONAL_OBJECT_PROPERTIES_V1 = Guid.initString("8f052d93-abca-4fc5-a5ac-b01df4dbe598");
-pub const WPD_FUNCTIONAL_OBJECT_CATEGORY = PROPERTYKEY { .fmtid = Guid.initString("8f052d93-abca-4fc5-a5ac-b01df4dbe598"), .pid = 2 };
+pub const WPD_FUNCTIONAL_OBJECT_CATEGORY = PROPERTYKEY{ .fmtid = Guid.initString("8f052d93-abca-4fc5-a5ac-b01df4dbe598"), .pid = 2 };
 pub const WPD_STORAGE_OBJECT_PROPERTIES_V1 = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a");
-pub const WPD_STORAGE_TYPE = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 2 };
-pub const WPD_STORAGE_FILE_SYSTEM_TYPE = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 3 };
-pub const WPD_STORAGE_CAPACITY = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 4 };
-pub const WPD_STORAGE_FREE_SPACE_IN_BYTES = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 5 };
-pub const WPD_STORAGE_FREE_SPACE_IN_OBJECTS = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 6 };
-pub const WPD_STORAGE_DESCRIPTION = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 7 };
-pub const WPD_STORAGE_SERIAL_NUMBER = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 8 };
-pub const WPD_STORAGE_MAX_OBJECT_SIZE = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 9 };
-pub const WPD_STORAGE_CAPACITY_IN_OBJECTS = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 10 };
-pub const WPD_STORAGE_ACCESS_CAPABILITY = PROPERTYKEY { .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 11 };
+pub const WPD_STORAGE_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 2 };
+pub const WPD_STORAGE_FILE_SYSTEM_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 3 };
+pub const WPD_STORAGE_CAPACITY = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 4 };
+pub const WPD_STORAGE_FREE_SPACE_IN_BYTES = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 5 };
+pub const WPD_STORAGE_FREE_SPACE_IN_OBJECTS = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 6 };
+pub const WPD_STORAGE_DESCRIPTION = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 7 };
+pub const WPD_STORAGE_SERIAL_NUMBER = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 8 };
+pub const WPD_STORAGE_MAX_OBJECT_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 9 };
+pub const WPD_STORAGE_CAPACITY_IN_OBJECTS = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 10 };
+pub const WPD_STORAGE_ACCESS_CAPABILITY = PROPERTYKEY{ .fmtid = Guid.initString("01a3057a-74d6-4e80-bea7-dc4c212ce50a"), .pid = 11 };
 pub const WPD_NETWORK_ASSOCIATION_PROPERTIES_V1 = Guid.initString("e4c93c1f-b203-43f1-a100-5a07d11b0274");
-pub const WPD_NETWORK_ASSOCIATION_HOST_NETWORK_IDENTIFIERS = PROPERTYKEY { .fmtid = Guid.initString("e4c93c1f-b203-43f1-a100-5a07d11b0274"), .pid = 2 };
-pub const WPD_NETWORK_ASSOCIATION_X509V3SEQUENCE = PROPERTYKEY { .fmtid = Guid.initString("e4c93c1f-b203-43f1-a100-5a07d11b0274"), .pid = 3 };
+pub const WPD_NETWORK_ASSOCIATION_HOST_NETWORK_IDENTIFIERS = PROPERTYKEY{ .fmtid = Guid.initString("e4c93c1f-b203-43f1-a100-5a07d11b0274"), .pid = 2 };
+pub const WPD_NETWORK_ASSOCIATION_X509V3SEQUENCE = PROPERTYKEY{ .fmtid = Guid.initString("e4c93c1f-b203-43f1-a100-5a07d11b0274"), .pid = 3 };
 pub const WPD_STILL_IMAGE_CAPTURE_OBJECT_PROPERTIES_V1 = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260");
-pub const WPD_STILL_IMAGE_CAPTURE_RESOLUTION = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 2 };
-pub const WPD_STILL_IMAGE_CAPTURE_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 3 };
-pub const WPD_STILL_IMAGE_COMPRESSION_SETTING = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 4 };
-pub const WPD_STILL_IMAGE_WHITE_BALANCE = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 5 };
-pub const WPD_STILL_IMAGE_RGB_GAIN = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 6 };
-pub const WPD_STILL_IMAGE_FNUMBER = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 7 };
-pub const WPD_STILL_IMAGE_FOCAL_LENGTH = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 8 };
-pub const WPD_STILL_IMAGE_FOCUS_DISTANCE = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 9 };
-pub const WPD_STILL_IMAGE_FOCUS_MODE = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 10 };
-pub const WPD_STILL_IMAGE_EXPOSURE_METERING_MODE = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 11 };
-pub const WPD_STILL_IMAGE_FLASH_MODE = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 12 };
-pub const WPD_STILL_IMAGE_EXPOSURE_TIME = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 13 };
-pub const WPD_STILL_IMAGE_EXPOSURE_PROGRAM_MODE = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 14 };
-pub const WPD_STILL_IMAGE_EXPOSURE_INDEX = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 15 };
-pub const WPD_STILL_IMAGE_EXPOSURE_BIAS_COMPENSATION = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 16 };
-pub const WPD_STILL_IMAGE_CAPTURE_DELAY = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 17 };
-pub const WPD_STILL_IMAGE_CAPTURE_MODE = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 18 };
-pub const WPD_STILL_IMAGE_CONTRAST = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 19 };
-pub const WPD_STILL_IMAGE_SHARPNESS = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 20 };
-pub const WPD_STILL_IMAGE_DIGITAL_ZOOM = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 21 };
-pub const WPD_STILL_IMAGE_EFFECT_MODE = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 22 };
-pub const WPD_STILL_IMAGE_BURST_NUMBER = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 23 };
-pub const WPD_STILL_IMAGE_BURST_INTERVAL = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 24 };
-pub const WPD_STILL_IMAGE_TIMELAPSE_NUMBER = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 25 };
-pub const WPD_STILL_IMAGE_TIMELAPSE_INTERVAL = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 26 };
-pub const WPD_STILL_IMAGE_FOCUS_METERING_MODE = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 27 };
-pub const WPD_STILL_IMAGE_UPLOAD_URL = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 28 };
-pub const WPD_STILL_IMAGE_ARTIST = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 29 };
-pub const WPD_STILL_IMAGE_CAMERA_MODEL = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 30 };
-pub const WPD_STILL_IMAGE_CAMERA_MANUFACTURER = PROPERTYKEY { .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 31 };
+pub const WPD_STILL_IMAGE_CAPTURE_RESOLUTION = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 2 };
+pub const WPD_STILL_IMAGE_CAPTURE_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 3 };
+pub const WPD_STILL_IMAGE_COMPRESSION_SETTING = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 4 };
+pub const WPD_STILL_IMAGE_WHITE_BALANCE = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 5 };
+pub const WPD_STILL_IMAGE_RGB_GAIN = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 6 };
+pub const WPD_STILL_IMAGE_FNUMBER = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 7 };
+pub const WPD_STILL_IMAGE_FOCAL_LENGTH = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 8 };
+pub const WPD_STILL_IMAGE_FOCUS_DISTANCE = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 9 };
+pub const WPD_STILL_IMAGE_FOCUS_MODE = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 10 };
+pub const WPD_STILL_IMAGE_EXPOSURE_METERING_MODE = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 11 };
+pub const WPD_STILL_IMAGE_FLASH_MODE = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 12 };
+pub const WPD_STILL_IMAGE_EXPOSURE_TIME = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 13 };
+pub const WPD_STILL_IMAGE_EXPOSURE_PROGRAM_MODE = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 14 };
+pub const WPD_STILL_IMAGE_EXPOSURE_INDEX = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 15 };
+pub const WPD_STILL_IMAGE_EXPOSURE_BIAS_COMPENSATION = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 16 };
+pub const WPD_STILL_IMAGE_CAPTURE_DELAY = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 17 };
+pub const WPD_STILL_IMAGE_CAPTURE_MODE = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 18 };
+pub const WPD_STILL_IMAGE_CONTRAST = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 19 };
+pub const WPD_STILL_IMAGE_SHARPNESS = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 20 };
+pub const WPD_STILL_IMAGE_DIGITAL_ZOOM = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 21 };
+pub const WPD_STILL_IMAGE_EFFECT_MODE = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 22 };
+pub const WPD_STILL_IMAGE_BURST_NUMBER = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 23 };
+pub const WPD_STILL_IMAGE_BURST_INTERVAL = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 24 };
+pub const WPD_STILL_IMAGE_TIMELAPSE_NUMBER = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 25 };
+pub const WPD_STILL_IMAGE_TIMELAPSE_INTERVAL = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 26 };
+pub const WPD_STILL_IMAGE_FOCUS_METERING_MODE = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 27 };
+pub const WPD_STILL_IMAGE_UPLOAD_URL = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 28 };
+pub const WPD_STILL_IMAGE_ARTIST = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 29 };
+pub const WPD_STILL_IMAGE_CAMERA_MODEL = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 30 };
+pub const WPD_STILL_IMAGE_CAMERA_MANUFACTURER = PROPERTYKEY{ .fmtid = Guid.initString("58c571ec-1bcb-42a7-8ac5-bb291573a260"), .pid = 31 };
 pub const WPD_RENDERING_INFORMATION_OBJECT_PROPERTIES_V1 = Guid.initString("c53d039f-ee23-4a31-8590-7639879870b4");
-pub const WPD_RENDERING_INFORMATION_PROFILES = PROPERTYKEY { .fmtid = Guid.initString("c53d039f-ee23-4a31-8590-7639879870b4"), .pid = 2 };
-pub const WPD_RENDERING_INFORMATION_PROFILE_ENTRY_TYPE = PROPERTYKEY { .fmtid = Guid.initString("c53d039f-ee23-4a31-8590-7639879870b4"), .pid = 3 };
-pub const WPD_RENDERING_INFORMATION_PROFILE_ENTRY_CREATABLE_RESOURCES = PROPERTYKEY { .fmtid = Guid.initString("c53d039f-ee23-4a31-8590-7639879870b4"), .pid = 4 };
+pub const WPD_RENDERING_INFORMATION_PROFILES = PROPERTYKEY{ .fmtid = Guid.initString("c53d039f-ee23-4a31-8590-7639879870b4"), .pid = 2 };
+pub const WPD_RENDERING_INFORMATION_PROFILE_ENTRY_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("c53d039f-ee23-4a31-8590-7639879870b4"), .pid = 3 };
+pub const WPD_RENDERING_INFORMATION_PROFILE_ENTRY_CREATABLE_RESOURCES = PROPERTYKEY{ .fmtid = Guid.initString("c53d039f-ee23-4a31-8590-7639879870b4"), .pid = 4 };
 pub const WPD_CLIENT_INFORMATION_PROPERTIES_V1 = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859");
-pub const WPD_CLIENT_NAME = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 2 };
-pub const WPD_CLIENT_MAJOR_VERSION = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 3 };
-pub const WPD_CLIENT_MINOR_VERSION = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 4 };
-pub const WPD_CLIENT_REVISION = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 5 };
-pub const WPD_CLIENT_WMDRM_APPLICATION_PRIVATE_KEY = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 6 };
-pub const WPD_CLIENT_WMDRM_APPLICATION_CERTIFICATE = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 7 };
-pub const WPD_CLIENT_SECURITY_QUALITY_OF_SERVICE = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 8 };
-pub const WPD_CLIENT_DESIRED_ACCESS = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 9 };
-pub const WPD_CLIENT_SHARE_MODE = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 10 };
-pub const WPD_CLIENT_EVENT_COOKIE = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 11 };
-pub const WPD_CLIENT_MINIMUM_RESULTS_BUFFER_SIZE = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 12 };
-pub const WPD_CLIENT_MANUAL_CLOSE_ON_DISCONNECT = PROPERTYKEY { .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 13 };
+pub const WPD_CLIENT_NAME = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 2 };
+pub const WPD_CLIENT_MAJOR_VERSION = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 3 };
+pub const WPD_CLIENT_MINOR_VERSION = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 4 };
+pub const WPD_CLIENT_REVISION = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 5 };
+pub const WPD_CLIENT_WMDRM_APPLICATION_PRIVATE_KEY = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 6 };
+pub const WPD_CLIENT_WMDRM_APPLICATION_CERTIFICATE = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 7 };
+pub const WPD_CLIENT_SECURITY_QUALITY_OF_SERVICE = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 8 };
+pub const WPD_CLIENT_DESIRED_ACCESS = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 9 };
+pub const WPD_CLIENT_SHARE_MODE = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 10 };
+pub const WPD_CLIENT_EVENT_COOKIE = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 11 };
+pub const WPD_CLIENT_MINIMUM_RESULTS_BUFFER_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 12 };
+pub const WPD_CLIENT_MANUAL_CLOSE_ON_DISCONNECT = PROPERTYKEY{ .fmtid = Guid.initString("204d9f0c-2292-4080-9f42-40664e70f859"), .pid = 13 };
 pub const WPD_PROPERTY_ATTRIBUTES_V1 = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37");
-pub const WPD_PROPERTY_ATTRIBUTE_FORM = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 2 };
-pub const WPD_PROPERTY_ATTRIBUTE_CAN_READ = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 3 };
-pub const WPD_PROPERTY_ATTRIBUTE_CAN_WRITE = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 4 };
-pub const WPD_PROPERTY_ATTRIBUTE_CAN_DELETE = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 5 };
-pub const WPD_PROPERTY_ATTRIBUTE_DEFAULT_VALUE = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 6 };
-pub const WPD_PROPERTY_ATTRIBUTE_FAST_PROPERTY = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 7 };
-pub const WPD_PROPERTY_ATTRIBUTE_RANGE_MIN = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 8 };
-pub const WPD_PROPERTY_ATTRIBUTE_RANGE_MAX = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 9 };
-pub const WPD_PROPERTY_ATTRIBUTE_RANGE_STEP = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 10 };
-pub const WPD_PROPERTY_ATTRIBUTE_ENUMERATION_ELEMENTS = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 11 };
-pub const WPD_PROPERTY_ATTRIBUTE_REGULAR_EXPRESSION = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 12 };
-pub const WPD_PROPERTY_ATTRIBUTE_MAX_SIZE = PROPERTYKEY { .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 13 };
+pub const WPD_PROPERTY_ATTRIBUTE_FORM = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 2 };
+pub const WPD_PROPERTY_ATTRIBUTE_CAN_READ = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 3 };
+pub const WPD_PROPERTY_ATTRIBUTE_CAN_WRITE = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 4 };
+pub const WPD_PROPERTY_ATTRIBUTE_CAN_DELETE = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 5 };
+pub const WPD_PROPERTY_ATTRIBUTE_DEFAULT_VALUE = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 6 };
+pub const WPD_PROPERTY_ATTRIBUTE_FAST_PROPERTY = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 7 };
+pub const WPD_PROPERTY_ATTRIBUTE_RANGE_MIN = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 8 };
+pub const WPD_PROPERTY_ATTRIBUTE_RANGE_MAX = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 9 };
+pub const WPD_PROPERTY_ATTRIBUTE_RANGE_STEP = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 10 };
+pub const WPD_PROPERTY_ATTRIBUTE_ENUMERATION_ELEMENTS = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 11 };
+pub const WPD_PROPERTY_ATTRIBUTE_REGULAR_EXPRESSION = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 12 };
+pub const WPD_PROPERTY_ATTRIBUTE_MAX_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("ab7943d8-6332-445f-a00d-8d5ef1e96f37"), .pid = 13 };
 pub const WPD_PROPERTY_ATTRIBUTES_V2 = Guid.initString("5d9da160-74ae-43cc-85a9-fe555a80798e");
-pub const WPD_PROPERTY_ATTRIBUTE_NAME = PROPERTYKEY { .fmtid = Guid.initString("5d9da160-74ae-43cc-85a9-fe555a80798e"), .pid = 2 };
-pub const WPD_PROPERTY_ATTRIBUTE_VARTYPE = PROPERTYKEY { .fmtid = Guid.initString("5d9da160-74ae-43cc-85a9-fe555a80798e"), .pid = 3 };
+pub const WPD_PROPERTY_ATTRIBUTE_NAME = PROPERTYKEY{ .fmtid = Guid.initString("5d9da160-74ae-43cc-85a9-fe555a80798e"), .pid = 2 };
+pub const WPD_PROPERTY_ATTRIBUTE_VARTYPE = PROPERTYKEY{ .fmtid = Guid.initString("5d9da160-74ae-43cc-85a9-fe555a80798e"), .pid = 3 };
 pub const WPD_CLASS_EXTENSION_OPTIONS_V1 = Guid.initString("6309ffef-a87c-4ca7-8434-797576e40a96");
-pub const WPD_CLASS_EXTENSION_OPTIONS_SUPPORTED_CONTENT_TYPES = PROPERTYKEY { .fmtid = Guid.initString("6309ffef-a87c-4ca7-8434-797576e40a96"), .pid = 2 };
-pub const WPD_CLASS_EXTENSION_OPTIONS_DONT_REGISTER_WPD_DEVICE_INTERFACE = PROPERTYKEY { .fmtid = Guid.initString("6309ffef-a87c-4ca7-8434-797576e40a96"), .pid = 3 };
-pub const WPD_CLASS_EXTENSION_OPTIONS_REGISTER_WPD_PRIVATE_DEVICE_INTERFACE = PROPERTYKEY { .fmtid = Guid.initString("6309ffef-a87c-4ca7-8434-797576e40a96"), .pid = 4 };
+pub const WPD_CLASS_EXTENSION_OPTIONS_SUPPORTED_CONTENT_TYPES = PROPERTYKEY{ .fmtid = Guid.initString("6309ffef-a87c-4ca7-8434-797576e40a96"), .pid = 2 };
+pub const WPD_CLASS_EXTENSION_OPTIONS_DONT_REGISTER_WPD_DEVICE_INTERFACE = PROPERTYKEY{ .fmtid = Guid.initString("6309ffef-a87c-4ca7-8434-797576e40a96"), .pid = 3 };
+pub const WPD_CLASS_EXTENSION_OPTIONS_REGISTER_WPD_PRIVATE_DEVICE_INTERFACE = PROPERTYKEY{ .fmtid = Guid.initString("6309ffef-a87c-4ca7-8434-797576e40a96"), .pid = 4 };
 pub const WPD_CLASS_EXTENSION_OPTIONS_V2 = Guid.initString("3e3595da-4d71-49fe-a0b4-d4406c3ae93f");
-pub const WPD_CLASS_EXTENSION_OPTIONS_MULTITRANSPORT_MODE = PROPERTYKEY { .fmtid = Guid.initString("3e3595da-4d71-49fe-a0b4-d4406c3ae93f"), .pid = 2 };
-pub const WPD_CLASS_EXTENSION_OPTIONS_DEVICE_IDENTIFICATION_VALUES = PROPERTYKEY { .fmtid = Guid.initString("3e3595da-4d71-49fe-a0b4-d4406c3ae93f"), .pid = 3 };
-pub const WPD_CLASS_EXTENSION_OPTIONS_TRANSPORT_BANDWIDTH = PROPERTYKEY { .fmtid = Guid.initString("3e3595da-4d71-49fe-a0b4-d4406c3ae93f"), .pid = 4 };
+pub const WPD_CLASS_EXTENSION_OPTIONS_MULTITRANSPORT_MODE = PROPERTYKEY{ .fmtid = Guid.initString("3e3595da-4d71-49fe-a0b4-d4406c3ae93f"), .pid = 2 };
+pub const WPD_CLASS_EXTENSION_OPTIONS_DEVICE_IDENTIFICATION_VALUES = PROPERTYKEY{ .fmtid = Guid.initString("3e3595da-4d71-49fe-a0b4-d4406c3ae93f"), .pid = 3 };
+pub const WPD_CLASS_EXTENSION_OPTIONS_TRANSPORT_BANDWIDTH = PROPERTYKEY{ .fmtid = Guid.initString("3e3595da-4d71-49fe-a0b4-d4406c3ae93f"), .pid = 4 };
 pub const WPD_CLASS_EXTENSION_OPTIONS_V3 = Guid.initString("65c160f8-1367-4ce2-939d-8310839f0d30");
-pub const WPD_CLASS_EXTENSION_OPTIONS_SILENCE_AUTOPLAY = PROPERTYKEY { .fmtid = Guid.initString("65c160f8-1367-4ce2-939d-8310839f0d30"), .pid = 2 };
+pub const WPD_CLASS_EXTENSION_OPTIONS_SILENCE_AUTOPLAY = PROPERTYKEY{ .fmtid = Guid.initString("65c160f8-1367-4ce2-939d-8310839f0d30"), .pid = 2 };
 pub const WPD_RESOURCE_ATTRIBUTES_V1 = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6");
-pub const WPD_RESOURCE_ATTRIBUTE_TOTAL_SIZE = PROPERTYKEY { .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 2 };
-pub const WPD_RESOURCE_ATTRIBUTE_CAN_READ = PROPERTYKEY { .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 3 };
-pub const WPD_RESOURCE_ATTRIBUTE_CAN_WRITE = PROPERTYKEY { .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 4 };
-pub const WPD_RESOURCE_ATTRIBUTE_CAN_DELETE = PROPERTYKEY { .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 5 };
-pub const WPD_RESOURCE_ATTRIBUTE_OPTIMAL_READ_BUFFER_SIZE = PROPERTYKEY { .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 6 };
-pub const WPD_RESOURCE_ATTRIBUTE_OPTIMAL_WRITE_BUFFER_SIZE = PROPERTYKEY { .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 7 };
-pub const WPD_RESOURCE_ATTRIBUTE_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 8 };
-pub const WPD_RESOURCE_ATTRIBUTE_RESOURCE_KEY = PROPERTYKEY { .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 9 };
+pub const WPD_RESOURCE_ATTRIBUTE_TOTAL_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 2 };
+pub const WPD_RESOURCE_ATTRIBUTE_CAN_READ = PROPERTYKEY{ .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 3 };
+pub const WPD_RESOURCE_ATTRIBUTE_CAN_WRITE = PROPERTYKEY{ .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 4 };
+pub const WPD_RESOURCE_ATTRIBUTE_CAN_DELETE = PROPERTYKEY{ .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 5 };
+pub const WPD_RESOURCE_ATTRIBUTE_OPTIMAL_READ_BUFFER_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 6 };
+pub const WPD_RESOURCE_ATTRIBUTE_OPTIMAL_WRITE_BUFFER_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 7 };
+pub const WPD_RESOURCE_ATTRIBUTE_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 8 };
+pub const WPD_RESOURCE_ATTRIBUTE_RESOURCE_KEY = PROPERTYKEY{ .fmtid = Guid.initString("1eb6f604-9278-429f-93cc-5bb8c06656b6"), .pid = 9 };
 pub const WPD_DEVICE_PROPERTIES_V1 = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc");
-pub const WPD_DEVICE_SYNC_PARTNER = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 2 };
-pub const WPD_DEVICE_FIRMWARE_VERSION = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 3 };
-pub const WPD_DEVICE_POWER_LEVEL = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 4 };
-pub const WPD_DEVICE_POWER_SOURCE = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 5 };
-pub const WPD_DEVICE_PROTOCOL = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 6 };
-pub const WPD_DEVICE_MANUFACTURER = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 7 };
-pub const WPD_DEVICE_MODEL = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 8 };
-pub const WPD_DEVICE_SERIAL_NUMBER = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 9 };
-pub const WPD_DEVICE_SUPPORTS_NON_CONSUMABLE = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 10 };
-pub const WPD_DEVICE_DATETIME = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 11 };
-pub const WPD_DEVICE_FRIENDLY_NAME = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 12 };
-pub const WPD_DEVICE_SUPPORTED_DRM_SCHEMES = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 13 };
-pub const WPD_DEVICE_SUPPORTED_FORMATS_ARE_ORDERED = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 14 };
-pub const WPD_DEVICE_TYPE = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 15 };
-pub const WPD_DEVICE_NETWORK_IDENTIFIER = PROPERTYKEY { .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 16 };
+pub const WPD_DEVICE_SYNC_PARTNER = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 2 };
+pub const WPD_DEVICE_FIRMWARE_VERSION = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 3 };
+pub const WPD_DEVICE_POWER_LEVEL = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 4 };
+pub const WPD_DEVICE_POWER_SOURCE = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 5 };
+pub const WPD_DEVICE_PROTOCOL = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 6 };
+pub const WPD_DEVICE_MANUFACTURER = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 7 };
+pub const WPD_DEVICE_MODEL = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 8 };
+pub const WPD_DEVICE_SERIAL_NUMBER = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 9 };
+pub const WPD_DEVICE_SUPPORTS_NON_CONSUMABLE = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 10 };
+pub const WPD_DEVICE_DATETIME = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 11 };
+pub const WPD_DEVICE_FRIENDLY_NAME = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 12 };
+pub const WPD_DEVICE_SUPPORTED_DRM_SCHEMES = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 13 };
+pub const WPD_DEVICE_SUPPORTED_FORMATS_ARE_ORDERED = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 14 };
+pub const WPD_DEVICE_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 15 };
+pub const WPD_DEVICE_NETWORK_IDENTIFIER = PROPERTYKEY{ .fmtid = Guid.initString("26d4979a-e643-4626-9e2b-736dc0c92fdc"), .pid = 16 };
 pub const WPD_DEVICE_PROPERTIES_V2 = Guid.initString("463dd662-7fc4-4291-911c-7f4c9cca9799");
-pub const WPD_DEVICE_FUNCTIONAL_UNIQUE_ID = PROPERTYKEY { .fmtid = Guid.initString("463dd662-7fc4-4291-911c-7f4c9cca9799"), .pid = 2 };
-pub const WPD_DEVICE_MODEL_UNIQUE_ID = PROPERTYKEY { .fmtid = Guid.initString("463dd662-7fc4-4291-911c-7f4c9cca9799"), .pid = 3 };
-pub const WPD_DEVICE_TRANSPORT = PROPERTYKEY { .fmtid = Guid.initString("463dd662-7fc4-4291-911c-7f4c9cca9799"), .pid = 4 };
-pub const WPD_DEVICE_USE_DEVICE_STAGE = PROPERTYKEY { .fmtid = Guid.initString("463dd662-7fc4-4291-911c-7f4c9cca9799"), .pid = 5 };
+pub const WPD_DEVICE_FUNCTIONAL_UNIQUE_ID = PROPERTYKEY{ .fmtid = Guid.initString("463dd662-7fc4-4291-911c-7f4c9cca9799"), .pid = 2 };
+pub const WPD_DEVICE_MODEL_UNIQUE_ID = PROPERTYKEY{ .fmtid = Guid.initString("463dd662-7fc4-4291-911c-7f4c9cca9799"), .pid = 3 };
+pub const WPD_DEVICE_TRANSPORT = PROPERTYKEY{ .fmtid = Guid.initString("463dd662-7fc4-4291-911c-7f4c9cca9799"), .pid = 4 };
+pub const WPD_DEVICE_USE_DEVICE_STAGE = PROPERTYKEY{ .fmtid = Guid.initString("463dd662-7fc4-4291-911c-7f4c9cca9799"), .pid = 5 };
 pub const WPD_DEVICE_PROPERTIES_V3 = Guid.initString("6c2b878c-c2ec-490d-b425-d7a75e23e5ed");
-pub const WPD_DEVICE_EDP_IDENTITY = PROPERTYKEY { .fmtid = Guid.initString("6c2b878c-c2ec-490d-b425-d7a75e23e5ed"), .pid = 1 };
+pub const WPD_DEVICE_EDP_IDENTITY = PROPERTYKEY{ .fmtid = Guid.initString("6c2b878c-c2ec-490d-b425-d7a75e23e5ed"), .pid = 1 };
 pub const WPD_SERVICE_PROPERTIES_V1 = Guid.initString("7510698a-cb54-481c-b8db-0d75c93f1c06");
-pub const WPD_SERVICE_VERSION = PROPERTYKEY { .fmtid = Guid.initString("7510698a-cb54-481c-b8db-0d75c93f1c06"), .pid = 2 };
+pub const WPD_SERVICE_VERSION = PROPERTYKEY{ .fmtid = Guid.initString("7510698a-cb54-481c-b8db-0d75c93f1c06"), .pid = 2 };
 pub const WPD_EVENT_PROPERTIES_V1 = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0");
-pub const WPD_EVENT_PARAMETER_PNP_DEVICE_ID = PROPERTYKEY { .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 2 };
-pub const WPD_EVENT_PARAMETER_EVENT_ID = PROPERTYKEY { .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 3 };
-pub const WPD_EVENT_PARAMETER_OPERATION_STATE = PROPERTYKEY { .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 4 };
-pub const WPD_EVENT_PARAMETER_OPERATION_PROGRESS = PROPERTYKEY { .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 5 };
-pub const WPD_EVENT_PARAMETER_OBJECT_PARENT_PERSISTENT_UNIQUE_ID = PROPERTYKEY { .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 6 };
-pub const WPD_EVENT_PARAMETER_OBJECT_CREATION_COOKIE = PROPERTYKEY { .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 7 };
-pub const WPD_EVENT_PARAMETER_CHILD_HIERARCHY_CHANGED = PROPERTYKEY { .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 8 };
+pub const WPD_EVENT_PARAMETER_PNP_DEVICE_ID = PROPERTYKEY{ .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 2 };
+pub const WPD_EVENT_PARAMETER_EVENT_ID = PROPERTYKEY{ .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 3 };
+pub const WPD_EVENT_PARAMETER_OPERATION_STATE = PROPERTYKEY{ .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 4 };
+pub const WPD_EVENT_PARAMETER_OPERATION_PROGRESS = PROPERTYKEY{ .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 5 };
+pub const WPD_EVENT_PARAMETER_OBJECT_PARENT_PERSISTENT_UNIQUE_ID = PROPERTYKEY{ .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 6 };
+pub const WPD_EVENT_PARAMETER_OBJECT_CREATION_COOKIE = PROPERTYKEY{ .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 7 };
+pub const WPD_EVENT_PARAMETER_CHILD_HIERARCHY_CHANGED = PROPERTYKEY{ .fmtid = Guid.initString("15ab1953-f817-4fef-a921-5676e838f6e0"), .pid = 8 };
 pub const WPD_EVENT_PROPERTIES_V2 = Guid.initString("52807b8a-4914-4323-9b9a-74f654b2b846");
-pub const WPD_EVENT_PARAMETER_SERVICE_METHOD_CONTEXT = PROPERTYKEY { .fmtid = Guid.initString("52807b8a-4914-4323-9b9a-74f654b2b846"), .pid = 2 };
+pub const WPD_EVENT_PARAMETER_SERVICE_METHOD_CONTEXT = PROPERTYKEY{ .fmtid = Guid.initString("52807b8a-4914-4323-9b9a-74f654b2b846"), .pid = 2 };
 pub const WPD_EVENT_OPTIONS_V1 = Guid.initString("b3d8dad7-a361-4b83-8a48-5b02ce10713b");
-pub const WPD_EVENT_OPTION_IS_BROADCAST_EVENT = PROPERTYKEY { .fmtid = Guid.initString("b3d8dad7-a361-4b83-8a48-5b02ce10713b"), .pid = 2 };
-pub const WPD_EVENT_OPTION_IS_AUTOPLAY_EVENT = PROPERTYKEY { .fmtid = Guid.initString("b3d8dad7-a361-4b83-8a48-5b02ce10713b"), .pid = 3 };
+pub const WPD_EVENT_OPTION_IS_BROADCAST_EVENT = PROPERTYKEY{ .fmtid = Guid.initString("b3d8dad7-a361-4b83-8a48-5b02ce10713b"), .pid = 2 };
+pub const WPD_EVENT_OPTION_IS_AUTOPLAY_EVENT = PROPERTYKEY{ .fmtid = Guid.initString("b3d8dad7-a361-4b83-8a48-5b02ce10713b"), .pid = 3 };
 pub const WPD_EVENT_ATTRIBUTES_V1 = Guid.initString("10c96578-2e81-4111-adde-e08ca6138f6d");
-pub const WPD_EVENT_ATTRIBUTE_NAME = PROPERTYKEY { .fmtid = Guid.initString("10c96578-2e81-4111-adde-e08ca6138f6d"), .pid = 2 };
-pub const WPD_EVENT_ATTRIBUTE_PARAMETERS = PROPERTYKEY { .fmtid = Guid.initString("10c96578-2e81-4111-adde-e08ca6138f6d"), .pid = 3 };
-pub const WPD_EVENT_ATTRIBUTE_OPTIONS = PROPERTYKEY { .fmtid = Guid.initString("10c96578-2e81-4111-adde-e08ca6138f6d"), .pid = 4 };
+pub const WPD_EVENT_ATTRIBUTE_NAME = PROPERTYKEY{ .fmtid = Guid.initString("10c96578-2e81-4111-adde-e08ca6138f6d"), .pid = 2 };
+pub const WPD_EVENT_ATTRIBUTE_PARAMETERS = PROPERTYKEY{ .fmtid = Guid.initString("10c96578-2e81-4111-adde-e08ca6138f6d"), .pid = 3 };
+pub const WPD_EVENT_ATTRIBUTE_OPTIONS = PROPERTYKEY{ .fmtid = Guid.initString("10c96578-2e81-4111-adde-e08ca6138f6d"), .pid = 4 };
 pub const WPD_API_OPTIONS_V1 = Guid.initString("10e54a3e-052d-4777-a13c-de7614be2bc4");
-pub const WPD_API_OPTION_USE_CLEAR_DATA_STREAM = PROPERTYKEY { .fmtid = Guid.initString("10e54a3e-052d-4777-a13c-de7614be2bc4"), .pid = 2 };
-pub const WPD_API_OPTION_IOCTL_ACCESS = PROPERTYKEY { .fmtid = Guid.initString("10e54a3e-052d-4777-a13c-de7614be2bc4"), .pid = 3 };
+pub const WPD_API_OPTION_USE_CLEAR_DATA_STREAM = PROPERTYKEY{ .fmtid = Guid.initString("10e54a3e-052d-4777-a13c-de7614be2bc4"), .pid = 2 };
+pub const WPD_API_OPTION_IOCTL_ACCESS = PROPERTYKEY{ .fmtid = Guid.initString("10e54a3e-052d-4777-a13c-de7614be2bc4"), .pid = 3 };
 pub const WPD_FORMAT_ATTRIBUTES_V1 = Guid.initString("a0a02000-bcaf-4be8-b3f5-233f231cf58f");
-pub const WPD_FORMAT_ATTRIBUTE_NAME = PROPERTYKEY { .fmtid = Guid.initString("a0a02000-bcaf-4be8-b3f5-233f231cf58f"), .pid = 2 };
-pub const WPD_FORMAT_ATTRIBUTE_MIMETYPE = PROPERTYKEY { .fmtid = Guid.initString("a0a02000-bcaf-4be8-b3f5-233f231cf58f"), .pid = 3 };
+pub const WPD_FORMAT_ATTRIBUTE_NAME = PROPERTYKEY{ .fmtid = Guid.initString("a0a02000-bcaf-4be8-b3f5-233f231cf58f"), .pid = 2 };
+pub const WPD_FORMAT_ATTRIBUTE_MIMETYPE = PROPERTYKEY{ .fmtid = Guid.initString("a0a02000-bcaf-4be8-b3f5-233f231cf58f"), .pid = 3 };
 pub const WPD_METHOD_ATTRIBUTES_V1 = Guid.initString("f17a5071-f039-44af-8efe-432cf32e432a");
-pub const WPD_METHOD_ATTRIBUTE_NAME = PROPERTYKEY { .fmtid = Guid.initString("f17a5071-f039-44af-8efe-432cf32e432a"), .pid = 2 };
-pub const WPD_METHOD_ATTRIBUTE_ASSOCIATED_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("f17a5071-f039-44af-8efe-432cf32e432a"), .pid = 3 };
-pub const WPD_METHOD_ATTRIBUTE_ACCESS = PROPERTYKEY { .fmtid = Guid.initString("f17a5071-f039-44af-8efe-432cf32e432a"), .pid = 4 };
-pub const WPD_METHOD_ATTRIBUTE_PARAMETERS = PROPERTYKEY { .fmtid = Guid.initString("f17a5071-f039-44af-8efe-432cf32e432a"), .pid = 5 };
+pub const WPD_METHOD_ATTRIBUTE_NAME = PROPERTYKEY{ .fmtid = Guid.initString("f17a5071-f039-44af-8efe-432cf32e432a"), .pid = 2 };
+pub const WPD_METHOD_ATTRIBUTE_ASSOCIATED_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("f17a5071-f039-44af-8efe-432cf32e432a"), .pid = 3 };
+pub const WPD_METHOD_ATTRIBUTE_ACCESS = PROPERTYKEY{ .fmtid = Guid.initString("f17a5071-f039-44af-8efe-432cf32e432a"), .pid = 4 };
+pub const WPD_METHOD_ATTRIBUTE_PARAMETERS = PROPERTYKEY{ .fmtid = Guid.initString("f17a5071-f039-44af-8efe-432cf32e432a"), .pid = 5 };
 pub const WPD_PARAMETER_ATTRIBUTES_V1 = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58");
-pub const WPD_PARAMETER_ATTRIBUTE_ORDER = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 2 };
-pub const WPD_PARAMETER_ATTRIBUTE_USAGE = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 3 };
-pub const WPD_PARAMETER_ATTRIBUTE_FORM = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 4 };
-pub const WPD_PARAMETER_ATTRIBUTE_DEFAULT_VALUE = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 5 };
-pub const WPD_PARAMETER_ATTRIBUTE_RANGE_MIN = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 6 };
-pub const WPD_PARAMETER_ATTRIBUTE_RANGE_MAX = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 7 };
-pub const WPD_PARAMETER_ATTRIBUTE_RANGE_STEP = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 8 };
-pub const WPD_PARAMETER_ATTRIBUTE_ENUMERATION_ELEMENTS = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 9 };
-pub const WPD_PARAMETER_ATTRIBUTE_REGULAR_EXPRESSION = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 10 };
-pub const WPD_PARAMETER_ATTRIBUTE_MAX_SIZE = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 11 };
-pub const WPD_PARAMETER_ATTRIBUTE_VARTYPE = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 12 };
-pub const WPD_PARAMETER_ATTRIBUTE_NAME = PROPERTYKEY { .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 13 };
+pub const WPD_PARAMETER_ATTRIBUTE_ORDER = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 2 };
+pub const WPD_PARAMETER_ATTRIBUTE_USAGE = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 3 };
+pub const WPD_PARAMETER_ATTRIBUTE_FORM = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 4 };
+pub const WPD_PARAMETER_ATTRIBUTE_DEFAULT_VALUE = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 5 };
+pub const WPD_PARAMETER_ATTRIBUTE_RANGE_MIN = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 6 };
+pub const WPD_PARAMETER_ATTRIBUTE_RANGE_MAX = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 7 };
+pub const WPD_PARAMETER_ATTRIBUTE_RANGE_STEP = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 8 };
+pub const WPD_PARAMETER_ATTRIBUTE_ENUMERATION_ELEMENTS = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 9 };
+pub const WPD_PARAMETER_ATTRIBUTE_REGULAR_EXPRESSION = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 10 };
+pub const WPD_PARAMETER_ATTRIBUTE_MAX_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 11 };
+pub const WPD_PARAMETER_ATTRIBUTE_VARTYPE = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 12 };
+pub const WPD_PARAMETER_ATTRIBUTE_NAME = PROPERTYKEY{ .fmtid = Guid.initString("e6864dd7-f325-45ea-a1d5-97cf73b6ca58"), .pid = 13 };
 pub const WPD_CATEGORY_COMMON = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a");
-pub const WPD_COMMAND_COMMON_RESET_DEVICE = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 2 };
-pub const WPD_COMMAND_COMMON_GET_OBJECT_IDS_FROM_PERSISTENT_UNIQUE_IDS = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 3 };
-pub const WPD_COMMAND_COMMON_SAVE_CLIENT_INFORMATION = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 4 };
-pub const WPD_PROPERTY_COMMON_COMMAND_CATEGORY = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1001 };
-pub const WPD_PROPERTY_COMMON_COMMAND_ID = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1002 };
-pub const WPD_PROPERTY_COMMON_HRESULT = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1003 };
-pub const WPD_PROPERTY_COMMON_DRIVER_ERROR_CODE = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1004 };
-pub const WPD_PROPERTY_COMMON_COMMAND_TARGET = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1006 };
-pub const WPD_PROPERTY_COMMON_PERSISTENT_UNIQUE_IDS = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1007 };
-pub const WPD_PROPERTY_COMMON_OBJECT_IDS = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1008 };
-pub const WPD_PROPERTY_COMMON_CLIENT_INFORMATION = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1009 };
-pub const WPD_PROPERTY_COMMON_CLIENT_INFORMATION_CONTEXT = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1010 };
-pub const WPD_PROPERTY_COMMON_ACTIVITY_ID = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1011 };
-pub const WPD_OPTION_VALID_OBJECT_IDS = PROPERTYKEY { .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 5001 };
+pub const WPD_COMMAND_COMMON_RESET_DEVICE = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 2 };
+pub const WPD_COMMAND_COMMON_GET_OBJECT_IDS_FROM_PERSISTENT_UNIQUE_IDS = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 3 };
+pub const WPD_COMMAND_COMMON_SAVE_CLIENT_INFORMATION = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 4 };
+pub const WPD_PROPERTY_COMMON_COMMAND_CATEGORY = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1001 };
+pub const WPD_PROPERTY_COMMON_COMMAND_ID = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1002 };
+pub const WPD_PROPERTY_COMMON_HRESULT = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1003 };
+pub const WPD_PROPERTY_COMMON_DRIVER_ERROR_CODE = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1004 };
+pub const WPD_PROPERTY_COMMON_COMMAND_TARGET = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1006 };
+pub const WPD_PROPERTY_COMMON_PERSISTENT_UNIQUE_IDS = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1007 };
+pub const WPD_PROPERTY_COMMON_OBJECT_IDS = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1008 };
+pub const WPD_PROPERTY_COMMON_CLIENT_INFORMATION = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1009 };
+pub const WPD_PROPERTY_COMMON_CLIENT_INFORMATION_CONTEXT = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1010 };
+pub const WPD_PROPERTY_COMMON_ACTIVITY_ID = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 1011 };
+pub const WPD_OPTION_VALID_OBJECT_IDS = PROPERTYKEY{ .fmtid = Guid.initString("f0422a9c-5dc8-4440-b5bd-5df28835658a"), .pid = 5001 };
 pub const WPD_CATEGORY_OBJECT_ENUMERATION = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec");
-pub const WPD_COMMAND_OBJECT_ENUMERATION_START_FIND = PROPERTYKEY { .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 2 };
-pub const WPD_COMMAND_OBJECT_ENUMERATION_FIND_NEXT = PROPERTYKEY { .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 3 };
-pub const WPD_COMMAND_OBJECT_ENUMERATION_END_FIND = PROPERTYKEY { .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 4 };
-pub const WPD_PROPERTY_OBJECT_ENUMERATION_PARENT_ID = PROPERTYKEY { .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1001 };
-pub const WPD_PROPERTY_OBJECT_ENUMERATION_FILTER = PROPERTYKEY { .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1002 };
-pub const WPD_PROPERTY_OBJECT_ENUMERATION_OBJECT_IDS = PROPERTYKEY { .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1003 };
-pub const WPD_PROPERTY_OBJECT_ENUMERATION_CONTEXT = PROPERTYKEY { .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1004 };
-pub const WPD_PROPERTY_OBJECT_ENUMERATION_NUM_OBJECTS_REQUESTED = PROPERTYKEY { .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1005 };
+pub const WPD_COMMAND_OBJECT_ENUMERATION_START_FIND = PROPERTYKEY{ .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 2 };
+pub const WPD_COMMAND_OBJECT_ENUMERATION_FIND_NEXT = PROPERTYKEY{ .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 3 };
+pub const WPD_COMMAND_OBJECT_ENUMERATION_END_FIND = PROPERTYKEY{ .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 4 };
+pub const WPD_PROPERTY_OBJECT_ENUMERATION_PARENT_ID = PROPERTYKEY{ .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1001 };
+pub const WPD_PROPERTY_OBJECT_ENUMERATION_FILTER = PROPERTYKEY{ .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1002 };
+pub const WPD_PROPERTY_OBJECT_ENUMERATION_OBJECT_IDS = PROPERTYKEY{ .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1003 };
+pub const WPD_PROPERTY_OBJECT_ENUMERATION_CONTEXT = PROPERTYKEY{ .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1004 };
+pub const WPD_PROPERTY_OBJECT_ENUMERATION_NUM_OBJECTS_REQUESTED = PROPERTYKEY{ .fmtid = Guid.initString("b7474e91-e7f8-4ad9-b400-ad1a4b58eeec"), .pid = 1005 };
 pub const WPD_CATEGORY_OBJECT_PROPERTIES = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804");
-pub const WPD_COMMAND_OBJECT_PROPERTIES_GET_SUPPORTED = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 2 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_GET_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 3 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_GET = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 4 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_SET = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 5 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_GET_ALL = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 6 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_DELETE = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 7 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1001 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_KEYS = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1002 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1003 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_VALUES = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1004 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_WRITE_RESULTS = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1005 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_DELETE_RESULTS = PROPERTYKEY { .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1006 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_GET_SUPPORTED = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 2 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_GET_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 3 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_GET = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 4 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_SET = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 5 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_GET_ALL = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 6 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_DELETE = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 7 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1001 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_KEYS = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1002 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1003 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_VALUES = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1004 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_WRITE_RESULTS = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1005 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_PROPERTY_DELETE_RESULTS = PROPERTYKEY{ .fmtid = Guid.initString("9e5582e4-0814-44e6-981a-b2998d583804"), .pid = 1006 };
 pub const WPD_CATEGORY_OBJECT_PROPERTIES_BULK = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e");
-pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_LIST_START = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 2 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_LIST_NEXT = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 3 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_LIST_END = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 4 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_FORMAT_START = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 5 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_FORMAT_NEXT = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 6 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_FORMAT_END = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 7 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_SET_VALUES_BY_OBJECT_LIST_START = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 8 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_SET_VALUES_BY_OBJECT_LIST_NEXT = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 9 };
-pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_SET_VALUES_BY_OBJECT_LIST_END = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 10 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_OBJECT_IDS = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1001 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_CONTEXT = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1002 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_VALUES = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1003 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_PROPERTY_KEYS = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1004 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_DEPTH = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1005 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_PARENT_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1006 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_OBJECT_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1007 };
-pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_WRITE_RESULTS = PROPERTYKEY { .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1008 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_LIST_START = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 2 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_LIST_NEXT = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 3 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_LIST_END = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 4 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_FORMAT_START = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 5 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_FORMAT_NEXT = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 6 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_GET_VALUES_BY_OBJECT_FORMAT_END = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 7 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_SET_VALUES_BY_OBJECT_LIST_START = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 8 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_SET_VALUES_BY_OBJECT_LIST_NEXT = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 9 };
+pub const WPD_COMMAND_OBJECT_PROPERTIES_BULK_SET_VALUES_BY_OBJECT_LIST_END = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 10 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_OBJECT_IDS = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1001 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_CONTEXT = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1002 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_VALUES = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1003 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_PROPERTY_KEYS = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1004 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_DEPTH = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1005 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_PARENT_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1006 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_OBJECT_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1007 };
+pub const WPD_PROPERTY_OBJECT_PROPERTIES_BULK_WRITE_RESULTS = PROPERTYKEY{ .fmtid = Guid.initString("11c824dd-04cd-4e4e-8c7b-f6efb794d84e"), .pid = 1008 };
 pub const WPD_CATEGORY_OBJECT_RESOURCES = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a");
-pub const WPD_COMMAND_OBJECT_RESOURCES_GET_SUPPORTED = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 2 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_GET_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 3 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_OPEN = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 4 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_READ = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 5 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_WRITE = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 6 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_CLOSE = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 7 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_DELETE = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 8 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_CREATE_RESOURCE = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 9 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_REVERT = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 10 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_SEEK = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 11 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_COMMIT = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 12 };
-pub const WPD_COMMAND_OBJECT_RESOURCES_SEEK_IN_UNITS = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 13 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1001 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_ACCESS_MODE = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1002 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_RESOURCE_KEYS = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1003 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_RESOURCE_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1004 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_CONTEXT = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1005 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_NUM_BYTES_TO_READ = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1006 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_NUM_BYTES_READ = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1007 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_NUM_BYTES_TO_WRITE = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1008 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_NUM_BYTES_WRITTEN = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1009 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_DATA = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1010 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_OPTIMAL_TRANSFER_BUFFER_SIZE = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1011 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_SEEK_OFFSET = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1012 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_SEEK_ORIGIN_FLAG = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1013 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_POSITION_FROM_START = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1014 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_SUPPORTS_UNITS = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1015 };
-pub const WPD_PROPERTY_OBJECT_RESOURCES_STREAM_UNITS = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1016 };
-pub const WPD_OPTION_OBJECT_RESOURCES_SEEK_ON_READ_SUPPORTED = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 5001 };
-pub const WPD_OPTION_OBJECT_RESOURCES_SEEK_ON_WRITE_SUPPORTED = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 5002 };
-pub const WPD_OPTION_OBJECT_RESOURCES_NO_INPUT_BUFFER_ON_READ = PROPERTYKEY { .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 5003 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_GET_SUPPORTED = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 2 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_GET_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 3 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_OPEN = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 4 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_READ = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 5 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_WRITE = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 6 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_CLOSE = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 7 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_DELETE = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 8 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_CREATE_RESOURCE = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 9 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_REVERT = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 10 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_SEEK = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 11 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_COMMIT = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 12 };
+pub const WPD_COMMAND_OBJECT_RESOURCES_SEEK_IN_UNITS = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 13 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1001 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_ACCESS_MODE = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1002 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_RESOURCE_KEYS = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1003 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_RESOURCE_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1004 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_CONTEXT = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1005 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_NUM_BYTES_TO_READ = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1006 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_NUM_BYTES_READ = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1007 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_NUM_BYTES_TO_WRITE = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1008 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_NUM_BYTES_WRITTEN = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1009 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_DATA = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1010 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_OPTIMAL_TRANSFER_BUFFER_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1011 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_SEEK_OFFSET = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1012 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_SEEK_ORIGIN_FLAG = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1013 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_POSITION_FROM_START = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1014 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_SUPPORTS_UNITS = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1015 };
+pub const WPD_PROPERTY_OBJECT_RESOURCES_STREAM_UNITS = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 1016 };
+pub const WPD_OPTION_OBJECT_RESOURCES_SEEK_ON_READ_SUPPORTED = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 5001 };
+pub const WPD_OPTION_OBJECT_RESOURCES_SEEK_ON_WRITE_SUPPORTED = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 5002 };
+pub const WPD_OPTION_OBJECT_RESOURCES_NO_INPUT_BUFFER_ON_READ = PROPERTYKEY{ .fmtid = Guid.initString("b3a2b22d-a595-4108-be0a-fc3c965f3d4a"), .pid = 5003 };
 pub const WPD_CATEGORY_OBJECT_MANAGEMENT = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089");
-pub const WPD_COMMAND_OBJECT_MANAGEMENT_CREATE_OBJECT_WITH_PROPERTIES_ONLY = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 2 };
-pub const WPD_COMMAND_OBJECT_MANAGEMENT_CREATE_OBJECT_WITH_PROPERTIES_AND_DATA = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 3 };
-pub const WPD_COMMAND_OBJECT_MANAGEMENT_WRITE_OBJECT_DATA = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 4 };
-pub const WPD_COMMAND_OBJECT_MANAGEMENT_COMMIT_OBJECT = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 5 };
-pub const WPD_COMMAND_OBJECT_MANAGEMENT_REVERT_OBJECT = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 6 };
-pub const WPD_COMMAND_OBJECT_MANAGEMENT_DELETE_OBJECTS = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 7 };
-pub const WPD_COMMAND_OBJECT_MANAGEMENT_MOVE_OBJECTS = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 8 };
-pub const WPD_COMMAND_OBJECT_MANAGEMENT_COPY_OBJECTS = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 9 };
-pub const WPD_COMMAND_OBJECT_MANAGEMENT_UPDATE_OBJECT_WITH_PROPERTIES_AND_DATA = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 10 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_CREATION_PROPERTIES = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1001 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_CONTEXT = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1002 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_NUM_BYTES_TO_WRITE = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1003 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_NUM_BYTES_WRITTEN = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1004 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_DATA = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1005 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1006 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_DELETE_OPTIONS = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1007 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_OPTIMAL_TRANSFER_BUFFER_SIZE = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1008 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_OBJECT_IDS = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1009 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_DELETE_RESULTS = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1010 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_DESTINATION_FOLDER_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1011 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_MOVE_RESULTS = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1012 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_COPY_RESULTS = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1013 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_UPDATE_PROPERTIES = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1014 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_PROPERTY_KEYS = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1015 };
-pub const WPD_PROPERTY_OBJECT_MANAGEMENT_OBJECT_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1016 };
-pub const WPD_OPTION_OBJECT_MANAGEMENT_RECURSIVE_DELETE_SUPPORTED = PROPERTYKEY { .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 5001 };
+pub const WPD_COMMAND_OBJECT_MANAGEMENT_CREATE_OBJECT_WITH_PROPERTIES_ONLY = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 2 };
+pub const WPD_COMMAND_OBJECT_MANAGEMENT_CREATE_OBJECT_WITH_PROPERTIES_AND_DATA = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 3 };
+pub const WPD_COMMAND_OBJECT_MANAGEMENT_WRITE_OBJECT_DATA = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 4 };
+pub const WPD_COMMAND_OBJECT_MANAGEMENT_COMMIT_OBJECT = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 5 };
+pub const WPD_COMMAND_OBJECT_MANAGEMENT_REVERT_OBJECT = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 6 };
+pub const WPD_COMMAND_OBJECT_MANAGEMENT_DELETE_OBJECTS = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 7 };
+pub const WPD_COMMAND_OBJECT_MANAGEMENT_MOVE_OBJECTS = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 8 };
+pub const WPD_COMMAND_OBJECT_MANAGEMENT_COPY_OBJECTS = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 9 };
+pub const WPD_COMMAND_OBJECT_MANAGEMENT_UPDATE_OBJECT_WITH_PROPERTIES_AND_DATA = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 10 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_CREATION_PROPERTIES = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1001 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_CONTEXT = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1002 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_NUM_BYTES_TO_WRITE = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1003 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_NUM_BYTES_WRITTEN = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1004 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_DATA = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1005 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1006 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_DELETE_OPTIONS = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1007 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_OPTIMAL_TRANSFER_BUFFER_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1008 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_OBJECT_IDS = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1009 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_DELETE_RESULTS = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1010 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_DESTINATION_FOLDER_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1011 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_MOVE_RESULTS = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1012 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_COPY_RESULTS = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1013 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_UPDATE_PROPERTIES = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1014 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_PROPERTY_KEYS = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1015 };
+pub const WPD_PROPERTY_OBJECT_MANAGEMENT_OBJECT_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 1016 };
+pub const WPD_OPTION_OBJECT_MANAGEMENT_RECURSIVE_DELETE_SUPPORTED = PROPERTYKEY{ .fmtid = Guid.initString("ef1e43dd-a9ed-4341-8bcc-186192aea089"), .pid = 5001 };
 pub const WPD_CATEGORY_CAPABILITIES = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356");
-pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_COMMANDS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 2 };
-pub const WPD_COMMAND_CAPABILITIES_GET_COMMAND_OPTIONS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 3 };
-pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_FUNCTIONAL_CATEGORIES = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 4 };
-pub const WPD_COMMAND_CAPABILITIES_GET_FUNCTIONAL_OBJECTS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 5 };
-pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_CONTENT_TYPES = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 6 };
-pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_FORMATS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 7 };
-pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_FORMAT_PROPERTIES = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 8 };
-pub const WPD_COMMAND_CAPABILITIES_GET_FIXED_PROPERTY_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 9 };
-pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_EVENTS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 10 };
-pub const WPD_COMMAND_CAPABILITIES_GET_EVENT_OPTIONS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 11 };
-pub const WPD_PROPERTY_CAPABILITIES_SUPPORTED_COMMANDS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1001 };
-pub const WPD_PROPERTY_CAPABILITIES_COMMAND = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1002 };
-pub const WPD_PROPERTY_CAPABILITIES_COMMAND_OPTIONS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1003 };
-pub const WPD_PROPERTY_CAPABILITIES_FUNCTIONAL_CATEGORIES = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1004 };
-pub const WPD_PROPERTY_CAPABILITIES_FUNCTIONAL_CATEGORY = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1005 };
-pub const WPD_PROPERTY_CAPABILITIES_FUNCTIONAL_OBJECTS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1006 };
-pub const WPD_PROPERTY_CAPABILITIES_CONTENT_TYPES = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1007 };
-pub const WPD_PROPERTY_CAPABILITIES_CONTENT_TYPE = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1008 };
-pub const WPD_PROPERTY_CAPABILITIES_FORMATS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1009 };
-pub const WPD_PROPERTY_CAPABILITIES_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1010 };
-pub const WPD_PROPERTY_CAPABILITIES_PROPERTY_KEYS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1011 };
-pub const WPD_PROPERTY_CAPABILITIES_PROPERTY_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1012 };
-pub const WPD_PROPERTY_CAPABILITIES_SUPPORTED_EVENTS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1013 };
-pub const WPD_PROPERTY_CAPABILITIES_EVENT = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1014 };
-pub const WPD_PROPERTY_CAPABILITIES_EVENT_OPTIONS = PROPERTYKEY { .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1015 };
+pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_COMMANDS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 2 };
+pub const WPD_COMMAND_CAPABILITIES_GET_COMMAND_OPTIONS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 3 };
+pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_FUNCTIONAL_CATEGORIES = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 4 };
+pub const WPD_COMMAND_CAPABILITIES_GET_FUNCTIONAL_OBJECTS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 5 };
+pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_CONTENT_TYPES = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 6 };
+pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_FORMATS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 7 };
+pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_FORMAT_PROPERTIES = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 8 };
+pub const WPD_COMMAND_CAPABILITIES_GET_FIXED_PROPERTY_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 9 };
+pub const WPD_COMMAND_CAPABILITIES_GET_SUPPORTED_EVENTS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 10 };
+pub const WPD_COMMAND_CAPABILITIES_GET_EVENT_OPTIONS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 11 };
+pub const WPD_PROPERTY_CAPABILITIES_SUPPORTED_COMMANDS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1001 };
+pub const WPD_PROPERTY_CAPABILITIES_COMMAND = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1002 };
+pub const WPD_PROPERTY_CAPABILITIES_COMMAND_OPTIONS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1003 };
+pub const WPD_PROPERTY_CAPABILITIES_FUNCTIONAL_CATEGORIES = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1004 };
+pub const WPD_PROPERTY_CAPABILITIES_FUNCTIONAL_CATEGORY = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1005 };
+pub const WPD_PROPERTY_CAPABILITIES_FUNCTIONAL_OBJECTS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1006 };
+pub const WPD_PROPERTY_CAPABILITIES_CONTENT_TYPES = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1007 };
+pub const WPD_PROPERTY_CAPABILITIES_CONTENT_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1008 };
+pub const WPD_PROPERTY_CAPABILITIES_FORMATS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1009 };
+pub const WPD_PROPERTY_CAPABILITIES_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1010 };
+pub const WPD_PROPERTY_CAPABILITIES_PROPERTY_KEYS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1011 };
+pub const WPD_PROPERTY_CAPABILITIES_PROPERTY_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1012 };
+pub const WPD_PROPERTY_CAPABILITIES_SUPPORTED_EVENTS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1013 };
+pub const WPD_PROPERTY_CAPABILITIES_EVENT = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1014 };
+pub const WPD_PROPERTY_CAPABILITIES_EVENT_OPTIONS = PROPERTYKEY{ .fmtid = Guid.initString("0cabec78-6b74-41c6-9216-2639d1fce356"), .pid = 1015 };
 pub const WPD_CATEGORY_STORAGE = Guid.initString("d8f907a6-34cc-45fa-97fb-d007fa47ec94");
-pub const WPD_COMMAND_STORAGE_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("d8f907a6-34cc-45fa-97fb-d007fa47ec94"), .pid = 2 };
-pub const WPD_COMMAND_STORAGE_EJECT = PROPERTYKEY { .fmtid = Guid.initString("d8f907a6-34cc-45fa-97fb-d007fa47ec94"), .pid = 4 };
-pub const WPD_PROPERTY_STORAGE_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("d8f907a6-34cc-45fa-97fb-d007fa47ec94"), .pid = 1001 };
-pub const WPD_PROPERTY_STORAGE_DESTINATION_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("d8f907a6-34cc-45fa-97fb-d007fa47ec94"), .pid = 1002 };
+pub const WPD_COMMAND_STORAGE_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("d8f907a6-34cc-45fa-97fb-d007fa47ec94"), .pid = 2 };
+pub const WPD_COMMAND_STORAGE_EJECT = PROPERTYKEY{ .fmtid = Guid.initString("d8f907a6-34cc-45fa-97fb-d007fa47ec94"), .pid = 4 };
+pub const WPD_PROPERTY_STORAGE_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("d8f907a6-34cc-45fa-97fb-d007fa47ec94"), .pid = 1001 };
+pub const WPD_PROPERTY_STORAGE_DESTINATION_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("d8f907a6-34cc-45fa-97fb-d007fa47ec94"), .pid = 1002 };
 pub const WPD_CATEGORY_SMS = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1");
-pub const WPD_COMMAND_SMS_SEND = PROPERTYKEY { .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 2 };
-pub const WPD_PROPERTY_SMS_RECIPIENT = PROPERTYKEY { .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 1001 };
-pub const WPD_PROPERTY_SMS_MESSAGE_TYPE = PROPERTYKEY { .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 1002 };
-pub const WPD_PROPERTY_SMS_TEXT_MESSAGE = PROPERTYKEY { .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 1003 };
-pub const WPD_PROPERTY_SMS_BINARY_MESSAGE = PROPERTYKEY { .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 1004 };
-pub const WPD_OPTION_SMS_BINARY_MESSAGE_SUPPORTED = PROPERTYKEY { .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 5001 };
+pub const WPD_COMMAND_SMS_SEND = PROPERTYKEY{ .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 2 };
+pub const WPD_PROPERTY_SMS_RECIPIENT = PROPERTYKEY{ .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 1001 };
+pub const WPD_PROPERTY_SMS_MESSAGE_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 1002 };
+pub const WPD_PROPERTY_SMS_TEXT_MESSAGE = PROPERTYKEY{ .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 1003 };
+pub const WPD_PROPERTY_SMS_BINARY_MESSAGE = PROPERTYKEY{ .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 1004 };
+pub const WPD_OPTION_SMS_BINARY_MESSAGE_SUPPORTED = PROPERTYKEY{ .fmtid = Guid.initString("afc25d66-fe0d-4114-9097-970c93e920d1"), .pid = 5001 };
 pub const WPD_CATEGORY_STILL_IMAGE_CAPTURE = Guid.initString("4fcd6982-22a2-4b05-a48b-62d38bf27b32");
-pub const WPD_COMMAND_STILL_IMAGE_CAPTURE_INITIATE = PROPERTYKEY { .fmtid = Guid.initString("4fcd6982-22a2-4b05-a48b-62d38bf27b32"), .pid = 2 };
+pub const WPD_COMMAND_STILL_IMAGE_CAPTURE_INITIATE = PROPERTYKEY{ .fmtid = Guid.initString("4fcd6982-22a2-4b05-a48b-62d38bf27b32"), .pid = 2 };
 pub const WPD_CATEGORY_MEDIA_CAPTURE = Guid.initString("59b433ba-fe44-4d8d-808c-6bcb9b0f15e8");
-pub const WPD_COMMAND_MEDIA_CAPTURE_START = PROPERTYKEY { .fmtid = Guid.initString("59b433ba-fe44-4d8d-808c-6bcb9b0f15e8"), .pid = 2 };
-pub const WPD_COMMAND_MEDIA_CAPTURE_STOP = PROPERTYKEY { .fmtid = Guid.initString("59b433ba-fe44-4d8d-808c-6bcb9b0f15e8"), .pid = 3 };
-pub const WPD_COMMAND_MEDIA_CAPTURE_PAUSE = PROPERTYKEY { .fmtid = Guid.initString("59b433ba-fe44-4d8d-808c-6bcb9b0f15e8"), .pid = 4 };
+pub const WPD_COMMAND_MEDIA_CAPTURE_START = PROPERTYKEY{ .fmtid = Guid.initString("59b433ba-fe44-4d8d-808c-6bcb9b0f15e8"), .pid = 2 };
+pub const WPD_COMMAND_MEDIA_CAPTURE_STOP = PROPERTYKEY{ .fmtid = Guid.initString("59b433ba-fe44-4d8d-808c-6bcb9b0f15e8"), .pid = 3 };
+pub const WPD_COMMAND_MEDIA_CAPTURE_PAUSE = PROPERTYKEY{ .fmtid = Guid.initString("59b433ba-fe44-4d8d-808c-6bcb9b0f15e8"), .pid = 4 };
 pub const WPD_CATEGORY_DEVICE_HINTS = Guid.initString("0d5fb92b-cb46-4c4f-8343-0bc3d3f17c84");
-pub const WPD_COMMAND_DEVICE_HINTS_GET_CONTENT_LOCATION = PROPERTYKEY { .fmtid = Guid.initString("0d5fb92b-cb46-4c4f-8343-0bc3d3f17c84"), .pid = 2 };
-pub const WPD_PROPERTY_DEVICE_HINTS_CONTENT_TYPE = PROPERTYKEY { .fmtid = Guid.initString("0d5fb92b-cb46-4c4f-8343-0bc3d3f17c84"), .pid = 1001 };
-pub const WPD_PROPERTY_DEVICE_HINTS_CONTENT_LOCATIONS = PROPERTYKEY { .fmtid = Guid.initString("0d5fb92b-cb46-4c4f-8343-0bc3d3f17c84"), .pid = 1002 };
+pub const WPD_COMMAND_DEVICE_HINTS_GET_CONTENT_LOCATION = PROPERTYKEY{ .fmtid = Guid.initString("0d5fb92b-cb46-4c4f-8343-0bc3d3f17c84"), .pid = 2 };
+pub const WPD_PROPERTY_DEVICE_HINTS_CONTENT_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("0d5fb92b-cb46-4c4f-8343-0bc3d3f17c84"), .pid = 1001 };
+pub const WPD_PROPERTY_DEVICE_HINTS_CONTENT_LOCATIONS = PROPERTYKEY{ .fmtid = Guid.initString("0d5fb92b-cb46-4c4f-8343-0bc3d3f17c84"), .pid = 1002 };
 pub const WPD_CLASS_EXTENSION_V1 = Guid.initString("33fb0d11-64a3-4fac-b4c7-3dfeaa99b051");
-pub const WPD_COMMAND_CLASS_EXTENSION_WRITE_DEVICE_INFORMATION = PROPERTYKEY { .fmtid = Guid.initString("33fb0d11-64a3-4fac-b4c7-3dfeaa99b051"), .pid = 2 };
-pub const WPD_PROPERTY_CLASS_EXTENSION_DEVICE_INFORMATION_VALUES = PROPERTYKEY { .fmtid = Guid.initString("33fb0d11-64a3-4fac-b4c7-3dfeaa99b051"), .pid = 1001 };
-pub const WPD_PROPERTY_CLASS_EXTENSION_DEVICE_INFORMATION_WRITE_RESULTS = PROPERTYKEY { .fmtid = Guid.initString("33fb0d11-64a3-4fac-b4c7-3dfeaa99b051"), .pid = 1002 };
+pub const WPD_COMMAND_CLASS_EXTENSION_WRITE_DEVICE_INFORMATION = PROPERTYKEY{ .fmtid = Guid.initString("33fb0d11-64a3-4fac-b4c7-3dfeaa99b051"), .pid = 2 };
+pub const WPD_PROPERTY_CLASS_EXTENSION_DEVICE_INFORMATION_VALUES = PROPERTYKEY{ .fmtid = Guid.initString("33fb0d11-64a3-4fac-b4c7-3dfeaa99b051"), .pid = 1001 };
+pub const WPD_PROPERTY_CLASS_EXTENSION_DEVICE_INFORMATION_WRITE_RESULTS = PROPERTYKEY{ .fmtid = Guid.initString("33fb0d11-64a3-4fac-b4c7-3dfeaa99b051"), .pid = 1002 };
 pub const WPD_CLASS_EXTENSION_V2 = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758");
-pub const WPD_COMMAND_CLASS_EXTENSION_REGISTER_SERVICE_INTERFACES = PROPERTYKEY { .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 2 };
-pub const WPD_COMMAND_CLASS_EXTENSION_UNREGISTER_SERVICE_INTERFACES = PROPERTYKEY { .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 3 };
-pub const WPD_PROPERTY_CLASS_EXTENSION_SERVICE_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 1001 };
-pub const WPD_PROPERTY_CLASS_EXTENSION_SERVICE_INTERFACES = PROPERTYKEY { .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 1002 };
-pub const WPD_PROPERTY_CLASS_EXTENSION_SERVICE_REGISTRATION_RESULTS = PROPERTYKEY { .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 1003 };
+pub const WPD_COMMAND_CLASS_EXTENSION_REGISTER_SERVICE_INTERFACES = PROPERTYKEY{ .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 2 };
+pub const WPD_COMMAND_CLASS_EXTENSION_UNREGISTER_SERVICE_INTERFACES = PROPERTYKEY{ .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 3 };
+pub const WPD_PROPERTY_CLASS_EXTENSION_SERVICE_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 1001 };
+pub const WPD_PROPERTY_CLASS_EXTENSION_SERVICE_INTERFACES = PROPERTYKEY{ .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 1002 };
+pub const WPD_PROPERTY_CLASS_EXTENSION_SERVICE_REGISTRATION_RESULTS = PROPERTYKEY{ .fmtid = Guid.initString("7f0779b5-fa2b-4766-9cb2-f73ba30b6758"), .pid = 1003 };
 pub const WPD_CATEGORY_NETWORK_CONFIGURATION = Guid.initString("78f9c6fc-79b8-473c-9060-6bd23dd072c4");
-pub const WPD_COMMAND_GENERATE_KEYPAIR = PROPERTYKEY { .fmtid = Guid.initString("78f9c6fc-79b8-473c-9060-6bd23dd072c4"), .pid = 2 };
-pub const WPD_COMMAND_COMMIT_KEYPAIR = PROPERTYKEY { .fmtid = Guid.initString("78f9c6fc-79b8-473c-9060-6bd23dd072c4"), .pid = 3 };
-pub const WPD_COMMAND_PROCESS_WIRELESS_PROFILE = PROPERTYKEY { .fmtid = Guid.initString("78f9c6fc-79b8-473c-9060-6bd23dd072c4"), .pid = 4 };
-pub const WPD_PROPERTY_PUBLIC_KEY = PROPERTYKEY { .fmtid = Guid.initString("78f9c6fc-79b8-473c-9060-6bd23dd072c4"), .pid = 1001 };
+pub const WPD_COMMAND_GENERATE_KEYPAIR = PROPERTYKEY{ .fmtid = Guid.initString("78f9c6fc-79b8-473c-9060-6bd23dd072c4"), .pid = 2 };
+pub const WPD_COMMAND_COMMIT_KEYPAIR = PROPERTYKEY{ .fmtid = Guid.initString("78f9c6fc-79b8-473c-9060-6bd23dd072c4"), .pid = 3 };
+pub const WPD_COMMAND_PROCESS_WIRELESS_PROFILE = PROPERTYKEY{ .fmtid = Guid.initString("78f9c6fc-79b8-473c-9060-6bd23dd072c4"), .pid = 4 };
+pub const WPD_PROPERTY_PUBLIC_KEY = PROPERTYKEY{ .fmtid = Guid.initString("78f9c6fc-79b8-473c-9060-6bd23dd072c4"), .pid = 1001 };
 pub const WPD_CATEGORY_SERVICE_COMMON = Guid.initString("322f071d-36ef-477f-b4b5-6f52d734baee");
-pub const WPD_COMMAND_SERVICE_COMMON_GET_SERVICE_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("322f071d-36ef-477f-b4b5-6f52d734baee"), .pid = 2 };
-pub const WPD_PROPERTY_SERVICE_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("322f071d-36ef-477f-b4b5-6f52d734baee"), .pid = 1001 };
+pub const WPD_COMMAND_SERVICE_COMMON_GET_SERVICE_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("322f071d-36ef-477f-b4b5-6f52d734baee"), .pid = 2 };
+pub const WPD_PROPERTY_SERVICE_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("322f071d-36ef-477f-b4b5-6f52d734baee"), .pid = 1001 };
 pub const WPD_CATEGORY_SERVICE_CAPABILITIES = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89");
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_METHODS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 2 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_METHODS_BY_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 3 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_METHOD_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 4 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_METHOD_PARAMETER_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 5 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_FORMATS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 6 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_FORMAT_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 7 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_FORMAT_PROPERTIES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 8 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_FORMAT_PROPERTY_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 9 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_EVENTS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 10 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_EVENT_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 11 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_EVENT_PARAMETER_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 12 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_INHERITED_SERVICES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 13 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_FORMAT_RENDERING_PROFILES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 14 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_COMMANDS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 15 };
-pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_COMMAND_OPTIONS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 16 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_SUPPORTED_METHODS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1001 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1002 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_METHOD = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1003 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_METHOD_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1004 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_PARAMETER = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1005 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_PARAMETER_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1006 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_FORMATS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1007 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_FORMAT_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1008 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_PROPERTY_KEYS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1009 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_PROPERTY_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1010 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_SUPPORTED_EVENTS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1011 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_EVENT = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1012 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_EVENT_ATTRIBUTES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1013 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_INHERITANCE_TYPE = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1014 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_INHERITED_SERVICES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1015 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_RENDERING_PROFILES = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1016 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_SUPPORTED_COMMANDS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1017 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_COMMAND = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1018 };
-pub const WPD_PROPERTY_SERVICE_CAPABILITIES_COMMAND_OPTIONS = PROPERTYKEY { .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1019 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_METHODS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 2 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_METHODS_BY_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 3 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_METHOD_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 4 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_METHOD_PARAMETER_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 5 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_FORMATS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 6 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_FORMAT_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 7 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_FORMAT_PROPERTIES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 8 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_FORMAT_PROPERTY_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 9 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_EVENTS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 10 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_EVENT_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 11 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_EVENT_PARAMETER_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 12 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_INHERITED_SERVICES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 13 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_FORMAT_RENDERING_PROFILES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 14 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_SUPPORTED_COMMANDS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 15 };
+pub const WPD_COMMAND_SERVICE_CAPABILITIES_GET_COMMAND_OPTIONS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 16 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_SUPPORTED_METHODS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1001 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1002 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_METHOD = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1003 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_METHOD_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1004 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_PARAMETER = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1005 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_PARAMETER_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1006 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_FORMATS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1007 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_FORMAT_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1008 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_PROPERTY_KEYS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1009 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_PROPERTY_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1010 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_SUPPORTED_EVENTS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1011 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_EVENT = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1012 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_EVENT_ATTRIBUTES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1013 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_INHERITANCE_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1014 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_INHERITED_SERVICES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1015 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_RENDERING_PROFILES = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1016 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_SUPPORTED_COMMANDS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1017 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_COMMAND = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1018 };
+pub const WPD_PROPERTY_SERVICE_CAPABILITIES_COMMAND_OPTIONS = PROPERTYKEY{ .fmtid = Guid.initString("24457e74-2e9f-44f9-8c57-1d1bcb170b89"), .pid = 1019 };
 pub const WPD_CATEGORY_SERVICE_METHODS = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc");
-pub const WPD_COMMAND_SERVICE_METHODS_START_INVOKE = PROPERTYKEY { .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 2 };
-pub const WPD_COMMAND_SERVICE_METHODS_CANCEL_INVOKE = PROPERTYKEY { .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 3 };
-pub const WPD_COMMAND_SERVICE_METHODS_END_INVOKE = PROPERTYKEY { .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 4 };
-pub const WPD_PROPERTY_SERVICE_METHOD = PROPERTYKEY { .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1001 };
-pub const WPD_PROPERTY_SERVICE_METHOD_PARAMETER_VALUES = PROPERTYKEY { .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1002 };
-pub const WPD_PROPERTY_SERVICE_METHOD_RESULT_VALUES = PROPERTYKEY { .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1003 };
-pub const WPD_PROPERTY_SERVICE_METHOD_CONTEXT = PROPERTYKEY { .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1004 };
-pub const WPD_PROPERTY_SERVICE_METHOD_HRESULT = PROPERTYKEY { .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1005 };
-pub const WPD_RESOURCE_DEFAULT = PROPERTYKEY { .fmtid = Guid.initString("e81e79be-34f0-41bf-b53f-f1a06ae87842"), .pid = 0 };
-pub const WPD_RESOURCE_CONTACT_PHOTO = PROPERTYKEY { .fmtid = Guid.initString("2c4d6803-80ea-4580-af9a-5be1a23eddcb"), .pid = 0 };
-pub const WPD_RESOURCE_THUMBNAIL = PROPERTYKEY { .fmtid = Guid.initString("c7c407ba-98fa-46b5-9960-23fec124cfde"), .pid = 0 };
-pub const WPD_RESOURCE_ICON = PROPERTYKEY { .fmtid = Guid.initString("f195fed8-aa28-4ee3-b153-e182dd5edc39"), .pid = 0 };
-pub const WPD_RESOURCE_AUDIO_CLIP = PROPERTYKEY { .fmtid = Guid.initString("3bc13982-85b1-48e0-95a6-8d3ad06be117"), .pid = 0 };
-pub const WPD_RESOURCE_ALBUM_ART = PROPERTYKEY { .fmtid = Guid.initString("f02aa354-2300-4e2d-a1b9-3b6730f7fa21"), .pid = 0 };
-pub const WPD_RESOURCE_GENERIC = PROPERTYKEY { .fmtid = Guid.initString("b9b9f515-ba70-4647-94dc-fa4925e95a07"), .pid = 0 };
-pub const WPD_RESOURCE_VIDEO_CLIP = PROPERTYKEY { .fmtid = Guid.initString("b566ee42-6368-4290-8662-70182fb79f20"), .pid = 0 };
-pub const WPD_RESOURCE_BRANDING_ART = PROPERTYKEY { .fmtid = Guid.initString("b633b1ae-6caf-4a87-9589-22ded6dd5899"), .pid = 0 };
+pub const WPD_COMMAND_SERVICE_METHODS_START_INVOKE = PROPERTYKEY{ .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 2 };
+pub const WPD_COMMAND_SERVICE_METHODS_CANCEL_INVOKE = PROPERTYKEY{ .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 3 };
+pub const WPD_COMMAND_SERVICE_METHODS_END_INVOKE = PROPERTYKEY{ .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 4 };
+pub const WPD_PROPERTY_SERVICE_METHOD = PROPERTYKEY{ .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1001 };
+pub const WPD_PROPERTY_SERVICE_METHOD_PARAMETER_VALUES = PROPERTYKEY{ .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1002 };
+pub const WPD_PROPERTY_SERVICE_METHOD_RESULT_VALUES = PROPERTYKEY{ .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1003 };
+pub const WPD_PROPERTY_SERVICE_METHOD_CONTEXT = PROPERTYKEY{ .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1004 };
+pub const WPD_PROPERTY_SERVICE_METHOD_HRESULT = PROPERTYKEY{ .fmtid = Guid.initString("2d521ca8-c1b0-4268-a342-cf19321569bc"), .pid = 1005 };
+pub const WPD_RESOURCE_DEFAULT = PROPERTYKEY{ .fmtid = Guid.initString("e81e79be-34f0-41bf-b53f-f1a06ae87842"), .pid = 0 };
+pub const WPD_RESOURCE_CONTACT_PHOTO = PROPERTYKEY{ .fmtid = Guid.initString("2c4d6803-80ea-4580-af9a-5be1a23eddcb"), .pid = 0 };
+pub const WPD_RESOURCE_THUMBNAIL = PROPERTYKEY{ .fmtid = Guid.initString("c7c407ba-98fa-46b5-9960-23fec124cfde"), .pid = 0 };
+pub const WPD_RESOURCE_ICON = PROPERTYKEY{ .fmtid = Guid.initString("f195fed8-aa28-4ee3-b153-e182dd5edc39"), .pid = 0 };
+pub const WPD_RESOURCE_AUDIO_CLIP = PROPERTYKEY{ .fmtid = Guid.initString("3bc13982-85b1-48e0-95a6-8d3ad06be117"), .pid = 0 };
+pub const WPD_RESOURCE_ALBUM_ART = PROPERTYKEY{ .fmtid = Guid.initString("f02aa354-2300-4e2d-a1b9-3b6730f7fa21"), .pid = 0 };
+pub const WPD_RESOURCE_GENERIC = PROPERTYKEY{ .fmtid = Guid.initString("b9b9f515-ba70-4647-94dc-fa4925e95a07"), .pid = 0 };
+pub const WPD_RESOURCE_VIDEO_CLIP = PROPERTYKEY{ .fmtid = Guid.initString("b566ee42-6368-4290-8662-70182fb79f20"), .pid = 0 };
+pub const WPD_RESOURCE_BRANDING_ART = PROPERTYKEY{ .fmtid = Guid.initString("b633b1ae-6caf-4a87-9589-22ded6dd5899"), .pid = 0 };
 pub const WPD_OBJECT_FORMAT_PROPERTIES_ONLY = Guid.initString("30010000-ae6c-4804-98ba-c57b46965fe7");
 pub const WPD_OBJECT_FORMAT_UNSPECIFIED = Guid.initString("30000000-ae6c-4804-98ba-c57b46965fe7");
 pub const WPD_OBJECT_FORMAT_SCRIPT = Guid.initString("30020000-ae6c-4804-98ba-c57b46965fe7");
@@ -560,203 +560,203 @@ pub const WPD_OBJECT_FORMAT_AVCHD = Guid.initString("b9860000-ae6c-4804-98ba-c57
 pub const WPD_OBJECT_FORMAT_ATSCTS = Guid.initString("b9870000-ae6c-4804-98ba-c57b46965fe7");
 pub const WPD_OBJECT_FORMAT_DVBTS = Guid.initString("b9880000-ae6c-4804-98ba-c57b46965fe7");
 pub const WPD_OBJECT_FORMAT_MKV = Guid.initString("b9900000-ae6c-4804-98ba-c57b46965fe7");
-pub const WPD_OBJECT_ID = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 2 };
-pub const WPD_OBJECT_PARENT_ID = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 3 };
-pub const WPD_OBJECT_NAME = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 4 };
-pub const WPD_OBJECT_PERSISTENT_UNIQUE_ID = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 5 };
-pub const WPD_OBJECT_FORMAT = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 6 };
-pub const WPD_OBJECT_ISHIDDEN = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 9 };
-pub const WPD_OBJECT_ISSYSTEM = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 10 };
-pub const WPD_OBJECT_SIZE = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 11 };
-pub const WPD_OBJECT_ORIGINAL_FILE_NAME = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 12 };
-pub const WPD_OBJECT_NON_CONSUMABLE = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 13 };
-pub const WPD_OBJECT_KEYWORDS = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 15 };
-pub const WPD_OBJECT_SYNC_ID = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 16 };
-pub const WPD_OBJECT_IS_DRM_PROTECTED = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 17 };
-pub const WPD_OBJECT_DATE_CREATED = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 18 };
-pub const WPD_OBJECT_DATE_MODIFIED = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 19 };
-pub const WPD_OBJECT_DATE_AUTHORED = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 20 };
-pub const WPD_OBJECT_BACK_REFERENCES = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 21 };
-pub const WPD_OBJECT_CAN_DELETE = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 26 };
-pub const WPD_OBJECT_LANGUAGE_LOCALE = PROPERTYKEY { .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 27 };
+pub const WPD_OBJECT_ID = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 2 };
+pub const WPD_OBJECT_PARENT_ID = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 3 };
+pub const WPD_OBJECT_NAME = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 4 };
+pub const WPD_OBJECT_PERSISTENT_UNIQUE_ID = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 5 };
+pub const WPD_OBJECT_FORMAT = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 6 };
+pub const WPD_OBJECT_ISHIDDEN = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 9 };
+pub const WPD_OBJECT_ISSYSTEM = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 10 };
+pub const WPD_OBJECT_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 11 };
+pub const WPD_OBJECT_ORIGINAL_FILE_NAME = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 12 };
+pub const WPD_OBJECT_NON_CONSUMABLE = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 13 };
+pub const WPD_OBJECT_KEYWORDS = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 15 };
+pub const WPD_OBJECT_SYNC_ID = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 16 };
+pub const WPD_OBJECT_IS_DRM_PROTECTED = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 17 };
+pub const WPD_OBJECT_DATE_CREATED = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 18 };
+pub const WPD_OBJECT_DATE_MODIFIED = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 19 };
+pub const WPD_OBJECT_DATE_AUTHORED = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 20 };
+pub const WPD_OBJECT_BACK_REFERENCES = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 21 };
+pub const WPD_OBJECT_CAN_DELETE = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 26 };
+pub const WPD_OBJECT_LANGUAGE_LOCALE = PROPERTYKEY{ .fmtid = Guid.initString("ef6b490d-5cd8-437a-affc-da8b60ee4a3c"), .pid = 27 };
 pub const WPD_FOLDER_OBJECT_PROPERTIES_V1 = Guid.initString("7e9a7abf-e568-4b34-aa2f-13bb12ab177d");
-pub const WPD_FOLDER_CONTENT_TYPES_ALLOWED = PROPERTYKEY { .fmtid = Guid.initString("7e9a7abf-e568-4b34-aa2f-13bb12ab177d"), .pid = 2 };
+pub const WPD_FOLDER_CONTENT_TYPES_ALLOWED = PROPERTYKEY{ .fmtid = Guid.initString("7e9a7abf-e568-4b34-aa2f-13bb12ab177d"), .pid = 2 };
 pub const WPD_IMAGE_OBJECT_PROPERTIES_V1 = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db");
-pub const WPD_IMAGE_BITDEPTH = PROPERTYKEY { .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 3 };
-pub const WPD_IMAGE_CROPPED_STATUS = PROPERTYKEY { .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 4 };
-pub const WPD_IMAGE_COLOR_CORRECTED_STATUS = PROPERTYKEY { .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 5 };
-pub const WPD_IMAGE_FNUMBER = PROPERTYKEY { .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 6 };
-pub const WPD_IMAGE_EXPOSURE_TIME = PROPERTYKEY { .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 7 };
-pub const WPD_IMAGE_EXPOSURE_INDEX = PROPERTYKEY { .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 8 };
-pub const WPD_IMAGE_HORIZONTAL_RESOLUTION = PROPERTYKEY { .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 9 };
-pub const WPD_IMAGE_VERTICAL_RESOLUTION = PROPERTYKEY { .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 10 };
+pub const WPD_IMAGE_BITDEPTH = PROPERTYKEY{ .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 3 };
+pub const WPD_IMAGE_CROPPED_STATUS = PROPERTYKEY{ .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 4 };
+pub const WPD_IMAGE_COLOR_CORRECTED_STATUS = PROPERTYKEY{ .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 5 };
+pub const WPD_IMAGE_FNUMBER = PROPERTYKEY{ .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 6 };
+pub const WPD_IMAGE_EXPOSURE_TIME = PROPERTYKEY{ .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 7 };
+pub const WPD_IMAGE_EXPOSURE_INDEX = PROPERTYKEY{ .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 8 };
+pub const WPD_IMAGE_HORIZONTAL_RESOLUTION = PROPERTYKEY{ .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 9 };
+pub const WPD_IMAGE_VERTICAL_RESOLUTION = PROPERTYKEY{ .fmtid = Guid.initString("63d64908-9fa1-479f-85ba-9952216447db"), .pid = 10 };
 pub const WPD_DOCUMENT_OBJECT_PROPERTIES_V1 = Guid.initString("0b110203-eb95-4f02-93e0-97c631493ad5");
 pub const WPD_MEDIA_PROPERTIES_V1 = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8");
-pub const WPD_MEDIA_TOTAL_BITRATE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 2 };
-pub const WPD_MEDIA_BITRATE_TYPE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 3 };
-pub const WPD_MEDIA_COPYRIGHT = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 4 };
-pub const WPD_MEDIA_SUBSCRIPTION_CONTENT_ID = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 5 };
-pub const WPD_MEDIA_USE_COUNT = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 6 };
-pub const WPD_MEDIA_SKIP_COUNT = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 7 };
-pub const WPD_MEDIA_LAST_ACCESSED_TIME = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 8 };
-pub const WPD_MEDIA_PARENTAL_RATING = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 9 };
-pub const WPD_MEDIA_META_GENRE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 10 };
-pub const WPD_MEDIA_COMPOSER = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 11 };
-pub const WPD_MEDIA_EFFECTIVE_RATING = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 12 };
-pub const WPD_MEDIA_SUB_TITLE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 13 };
-pub const WPD_MEDIA_RELEASE_DATE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 14 };
-pub const WPD_MEDIA_SAMPLE_RATE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 15 };
-pub const WPD_MEDIA_STAR_RATING = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 16 };
-pub const WPD_MEDIA_USER_EFFECTIVE_RATING = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 17 };
-pub const WPD_MEDIA_TITLE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 18 };
-pub const WPD_MEDIA_DURATION = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 19 };
-pub const WPD_MEDIA_BUY_NOW = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 20 };
-pub const WPD_MEDIA_ENCODING_PROFILE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 21 };
-pub const WPD_MEDIA_WIDTH = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 22 };
-pub const WPD_MEDIA_HEIGHT = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 23 };
-pub const WPD_MEDIA_ARTIST = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 24 };
-pub const WPD_MEDIA_ALBUM_ARTIST = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 25 };
-pub const WPD_MEDIA_OWNER = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 26 };
-pub const WPD_MEDIA_MANAGING_EDITOR = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 27 };
-pub const WPD_MEDIA_WEBMASTER = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 28 };
-pub const WPD_MEDIA_SOURCE_URL = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 29 };
-pub const WPD_MEDIA_DESTINATION_URL = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 30 };
-pub const WPD_MEDIA_DESCRIPTION = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 31 };
-pub const WPD_MEDIA_GENRE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 32 };
-pub const WPD_MEDIA_TIME_BOOKMARK = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 33 };
-pub const WPD_MEDIA_OBJECT_BOOKMARK = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 34 };
-pub const WPD_MEDIA_LAST_BUILD_DATE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 35 };
-pub const WPD_MEDIA_BYTE_BOOKMARK = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 36 };
-pub const WPD_MEDIA_TIME_TO_LIVE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 37 };
-pub const WPD_MEDIA_GUID = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 38 };
-pub const WPD_MEDIA_SUB_DESCRIPTION = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 39 };
-pub const WPD_MEDIA_AUDIO_ENCODING_PROFILE = PROPERTYKEY { .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 49 };
+pub const WPD_MEDIA_TOTAL_BITRATE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 2 };
+pub const WPD_MEDIA_BITRATE_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 3 };
+pub const WPD_MEDIA_COPYRIGHT = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 4 };
+pub const WPD_MEDIA_SUBSCRIPTION_CONTENT_ID = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 5 };
+pub const WPD_MEDIA_USE_COUNT = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 6 };
+pub const WPD_MEDIA_SKIP_COUNT = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 7 };
+pub const WPD_MEDIA_LAST_ACCESSED_TIME = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 8 };
+pub const WPD_MEDIA_PARENTAL_RATING = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 9 };
+pub const WPD_MEDIA_META_GENRE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 10 };
+pub const WPD_MEDIA_COMPOSER = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 11 };
+pub const WPD_MEDIA_EFFECTIVE_RATING = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 12 };
+pub const WPD_MEDIA_SUB_TITLE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 13 };
+pub const WPD_MEDIA_RELEASE_DATE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 14 };
+pub const WPD_MEDIA_SAMPLE_RATE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 15 };
+pub const WPD_MEDIA_STAR_RATING = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 16 };
+pub const WPD_MEDIA_USER_EFFECTIVE_RATING = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 17 };
+pub const WPD_MEDIA_TITLE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 18 };
+pub const WPD_MEDIA_DURATION = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 19 };
+pub const WPD_MEDIA_BUY_NOW = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 20 };
+pub const WPD_MEDIA_ENCODING_PROFILE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 21 };
+pub const WPD_MEDIA_WIDTH = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 22 };
+pub const WPD_MEDIA_HEIGHT = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 23 };
+pub const WPD_MEDIA_ARTIST = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 24 };
+pub const WPD_MEDIA_ALBUM_ARTIST = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 25 };
+pub const WPD_MEDIA_OWNER = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 26 };
+pub const WPD_MEDIA_MANAGING_EDITOR = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 27 };
+pub const WPD_MEDIA_WEBMASTER = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 28 };
+pub const WPD_MEDIA_SOURCE_URL = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 29 };
+pub const WPD_MEDIA_DESTINATION_URL = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 30 };
+pub const WPD_MEDIA_DESCRIPTION = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 31 };
+pub const WPD_MEDIA_GENRE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 32 };
+pub const WPD_MEDIA_TIME_BOOKMARK = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 33 };
+pub const WPD_MEDIA_OBJECT_BOOKMARK = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 34 };
+pub const WPD_MEDIA_LAST_BUILD_DATE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 35 };
+pub const WPD_MEDIA_BYTE_BOOKMARK = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 36 };
+pub const WPD_MEDIA_TIME_TO_LIVE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 37 };
+pub const WPD_MEDIA_GUID = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 38 };
+pub const WPD_MEDIA_SUB_DESCRIPTION = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 39 };
+pub const WPD_MEDIA_AUDIO_ENCODING_PROFILE = PROPERTYKEY{ .fmtid = Guid.initString("2ed8ba05-0ad3-42dc-b0d0-bc95ac396ac8"), .pid = 49 };
 pub const WPD_CONTACT_OBJECT_PROPERTIES_V1 = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b");
-pub const WPD_CONTACT_DISPLAY_NAME = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 2 };
-pub const WPD_CONTACT_FIRST_NAME = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 3 };
-pub const WPD_CONTACT_MIDDLE_NAMES = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 4 };
-pub const WPD_CONTACT_LAST_NAME = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 5 };
-pub const WPD_CONTACT_PREFIX = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 6 };
-pub const WPD_CONTACT_SUFFIX = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 7 };
-pub const WPD_CONTACT_PHONETIC_FIRST_NAME = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 8 };
-pub const WPD_CONTACT_PHONETIC_LAST_NAME = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 9 };
-pub const WPD_CONTACT_PERSONAL_FULL_POSTAL_ADDRESS = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 10 };
-pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_LINE1 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 11 };
-pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_LINE2 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 12 };
-pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_CITY = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 13 };
-pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_REGION = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 14 };
-pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_POSTAL_CODE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 15 };
-pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_COUNTRY = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 16 };
-pub const WPD_CONTACT_BUSINESS_FULL_POSTAL_ADDRESS = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 17 };
-pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_LINE1 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 18 };
-pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_LINE2 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 19 };
-pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_CITY = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 20 };
-pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_REGION = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 21 };
-pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_POSTAL_CODE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 22 };
-pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_COUNTRY = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 23 };
-pub const WPD_CONTACT_OTHER_FULL_POSTAL_ADDRESS = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 24 };
-pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_LINE1 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 25 };
-pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_LINE2 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 26 };
-pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_CITY = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 27 };
-pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_REGION = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 28 };
-pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_POSTAL_CODE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 29 };
-pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_POSTAL_COUNTRY = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 30 };
-pub const WPD_CONTACT_PRIMARY_EMAIL_ADDRESS = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 31 };
-pub const WPD_CONTACT_PERSONAL_EMAIL = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 32 };
-pub const WPD_CONTACT_PERSONAL_EMAIL2 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 33 };
-pub const WPD_CONTACT_BUSINESS_EMAIL = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 34 };
-pub const WPD_CONTACT_BUSINESS_EMAIL2 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 35 };
-pub const WPD_CONTACT_OTHER_EMAILS = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 36 };
-pub const WPD_CONTACT_PRIMARY_PHONE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 37 };
-pub const WPD_CONTACT_PERSONAL_PHONE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 38 };
-pub const WPD_CONTACT_PERSONAL_PHONE2 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 39 };
-pub const WPD_CONTACT_BUSINESS_PHONE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 40 };
-pub const WPD_CONTACT_BUSINESS_PHONE2 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 41 };
-pub const WPD_CONTACT_MOBILE_PHONE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 42 };
-pub const WPD_CONTACT_MOBILE_PHONE2 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 43 };
-pub const WPD_CONTACT_PERSONAL_FAX = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 44 };
-pub const WPD_CONTACT_BUSINESS_FAX = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 45 };
-pub const WPD_CONTACT_PAGER = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 46 };
-pub const WPD_CONTACT_OTHER_PHONES = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 47 };
-pub const WPD_CONTACT_PRIMARY_WEB_ADDRESS = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 48 };
-pub const WPD_CONTACT_PERSONAL_WEB_ADDRESS = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 49 };
-pub const WPD_CONTACT_BUSINESS_WEB_ADDRESS = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 50 };
-pub const WPD_CONTACT_INSTANT_MESSENGER = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 51 };
-pub const WPD_CONTACT_INSTANT_MESSENGER2 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 52 };
-pub const WPD_CONTACT_INSTANT_MESSENGER3 = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 53 };
-pub const WPD_CONTACT_COMPANY_NAME = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 54 };
-pub const WPD_CONTACT_PHONETIC_COMPANY_NAME = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 55 };
-pub const WPD_CONTACT_ROLE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 56 };
-pub const WPD_CONTACT_BIRTHDATE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 57 };
-pub const WPD_CONTACT_PRIMARY_FAX = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 58 };
-pub const WPD_CONTACT_SPOUSE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 59 };
-pub const WPD_CONTACT_CHILDREN = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 60 };
-pub const WPD_CONTACT_ASSISTANT = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 61 };
-pub const WPD_CONTACT_ANNIVERSARY_DATE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 62 };
-pub const WPD_CONTACT_RINGTONE = PROPERTYKEY { .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 63 };
+pub const WPD_CONTACT_DISPLAY_NAME = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 2 };
+pub const WPD_CONTACT_FIRST_NAME = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 3 };
+pub const WPD_CONTACT_MIDDLE_NAMES = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 4 };
+pub const WPD_CONTACT_LAST_NAME = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 5 };
+pub const WPD_CONTACT_PREFIX = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 6 };
+pub const WPD_CONTACT_SUFFIX = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 7 };
+pub const WPD_CONTACT_PHONETIC_FIRST_NAME = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 8 };
+pub const WPD_CONTACT_PHONETIC_LAST_NAME = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 9 };
+pub const WPD_CONTACT_PERSONAL_FULL_POSTAL_ADDRESS = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 10 };
+pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_LINE1 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 11 };
+pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_LINE2 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 12 };
+pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_CITY = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 13 };
+pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_REGION = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 14 };
+pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_POSTAL_CODE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 15 };
+pub const WPD_CONTACT_PERSONAL_POSTAL_ADDRESS_COUNTRY = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 16 };
+pub const WPD_CONTACT_BUSINESS_FULL_POSTAL_ADDRESS = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 17 };
+pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_LINE1 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 18 };
+pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_LINE2 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 19 };
+pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_CITY = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 20 };
+pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_REGION = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 21 };
+pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_POSTAL_CODE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 22 };
+pub const WPD_CONTACT_BUSINESS_POSTAL_ADDRESS_COUNTRY = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 23 };
+pub const WPD_CONTACT_OTHER_FULL_POSTAL_ADDRESS = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 24 };
+pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_LINE1 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 25 };
+pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_LINE2 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 26 };
+pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_CITY = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 27 };
+pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_REGION = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 28 };
+pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_POSTAL_CODE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 29 };
+pub const WPD_CONTACT_OTHER_POSTAL_ADDRESS_POSTAL_COUNTRY = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 30 };
+pub const WPD_CONTACT_PRIMARY_EMAIL_ADDRESS = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 31 };
+pub const WPD_CONTACT_PERSONAL_EMAIL = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 32 };
+pub const WPD_CONTACT_PERSONAL_EMAIL2 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 33 };
+pub const WPD_CONTACT_BUSINESS_EMAIL = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 34 };
+pub const WPD_CONTACT_BUSINESS_EMAIL2 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 35 };
+pub const WPD_CONTACT_OTHER_EMAILS = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 36 };
+pub const WPD_CONTACT_PRIMARY_PHONE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 37 };
+pub const WPD_CONTACT_PERSONAL_PHONE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 38 };
+pub const WPD_CONTACT_PERSONAL_PHONE2 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 39 };
+pub const WPD_CONTACT_BUSINESS_PHONE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 40 };
+pub const WPD_CONTACT_BUSINESS_PHONE2 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 41 };
+pub const WPD_CONTACT_MOBILE_PHONE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 42 };
+pub const WPD_CONTACT_MOBILE_PHONE2 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 43 };
+pub const WPD_CONTACT_PERSONAL_FAX = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 44 };
+pub const WPD_CONTACT_BUSINESS_FAX = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 45 };
+pub const WPD_CONTACT_PAGER = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 46 };
+pub const WPD_CONTACT_OTHER_PHONES = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 47 };
+pub const WPD_CONTACT_PRIMARY_WEB_ADDRESS = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 48 };
+pub const WPD_CONTACT_PERSONAL_WEB_ADDRESS = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 49 };
+pub const WPD_CONTACT_BUSINESS_WEB_ADDRESS = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 50 };
+pub const WPD_CONTACT_INSTANT_MESSENGER = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 51 };
+pub const WPD_CONTACT_INSTANT_MESSENGER2 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 52 };
+pub const WPD_CONTACT_INSTANT_MESSENGER3 = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 53 };
+pub const WPD_CONTACT_COMPANY_NAME = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 54 };
+pub const WPD_CONTACT_PHONETIC_COMPANY_NAME = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 55 };
+pub const WPD_CONTACT_ROLE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 56 };
+pub const WPD_CONTACT_BIRTHDATE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 57 };
+pub const WPD_CONTACT_PRIMARY_FAX = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 58 };
+pub const WPD_CONTACT_SPOUSE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 59 };
+pub const WPD_CONTACT_CHILDREN = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 60 };
+pub const WPD_CONTACT_ASSISTANT = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 61 };
+pub const WPD_CONTACT_ANNIVERSARY_DATE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 62 };
+pub const WPD_CONTACT_RINGTONE = PROPERTYKEY{ .fmtid = Guid.initString("fbd4fdab-987d-4777-b3f9-726185a9312b"), .pid = 63 };
 pub const WPD_MUSIC_OBJECT_PROPERTIES_V1 = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6");
-pub const WPD_MUSIC_ALBUM = PROPERTYKEY { .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 3 };
-pub const WPD_MUSIC_TRACK = PROPERTYKEY { .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 4 };
-pub const WPD_MUSIC_LYRICS = PROPERTYKEY { .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 6 };
-pub const WPD_MUSIC_MOOD = PROPERTYKEY { .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 8 };
-pub const WPD_AUDIO_BITRATE = PROPERTYKEY { .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 9 };
-pub const WPD_AUDIO_CHANNEL_COUNT = PROPERTYKEY { .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 10 };
-pub const WPD_AUDIO_FORMAT_CODE = PROPERTYKEY { .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 11 };
-pub const WPD_AUDIO_BIT_DEPTH = PROPERTYKEY { .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 12 };
-pub const WPD_AUDIO_BLOCK_ALIGNMENT = PROPERTYKEY { .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 13 };
+pub const WPD_MUSIC_ALBUM = PROPERTYKEY{ .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 3 };
+pub const WPD_MUSIC_TRACK = PROPERTYKEY{ .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 4 };
+pub const WPD_MUSIC_LYRICS = PROPERTYKEY{ .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 6 };
+pub const WPD_MUSIC_MOOD = PROPERTYKEY{ .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 8 };
+pub const WPD_AUDIO_BITRATE = PROPERTYKEY{ .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 9 };
+pub const WPD_AUDIO_CHANNEL_COUNT = PROPERTYKEY{ .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 10 };
+pub const WPD_AUDIO_FORMAT_CODE = PROPERTYKEY{ .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 11 };
+pub const WPD_AUDIO_BIT_DEPTH = PROPERTYKEY{ .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 12 };
+pub const WPD_AUDIO_BLOCK_ALIGNMENT = PROPERTYKEY{ .fmtid = Guid.initString("b324f56a-dc5d-46e5-b6df-d2ea414888c6"), .pid = 13 };
 pub const WPD_VIDEO_OBJECT_PROPERTIES_V1 = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a");
-pub const WPD_VIDEO_AUTHOR = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 2 };
-pub const WPD_VIDEO_RECORDEDTV_STATION_NAME = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 4 };
-pub const WPD_VIDEO_RECORDEDTV_CHANNEL_NUMBER = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 5 };
-pub const WPD_VIDEO_RECORDEDTV_REPEAT = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 7 };
-pub const WPD_VIDEO_BUFFER_SIZE = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 8 };
-pub const WPD_VIDEO_CREDITS = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 9 };
-pub const WPD_VIDEO_KEY_FRAME_DISTANCE = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 10 };
-pub const WPD_VIDEO_QUALITY_SETTING = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 11 };
-pub const WPD_VIDEO_SCAN_TYPE = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 12 };
-pub const WPD_VIDEO_BITRATE = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 13 };
-pub const WPD_VIDEO_FOURCC_CODE = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 14 };
-pub const WPD_VIDEO_FRAMERATE = PROPERTYKEY { .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 15 };
+pub const WPD_VIDEO_AUTHOR = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 2 };
+pub const WPD_VIDEO_RECORDEDTV_STATION_NAME = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 4 };
+pub const WPD_VIDEO_RECORDEDTV_CHANNEL_NUMBER = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 5 };
+pub const WPD_VIDEO_RECORDEDTV_REPEAT = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 7 };
+pub const WPD_VIDEO_BUFFER_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 8 };
+pub const WPD_VIDEO_CREDITS = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 9 };
+pub const WPD_VIDEO_KEY_FRAME_DISTANCE = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 10 };
+pub const WPD_VIDEO_QUALITY_SETTING = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 11 };
+pub const WPD_VIDEO_SCAN_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 12 };
+pub const WPD_VIDEO_BITRATE = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 13 };
+pub const WPD_VIDEO_FOURCC_CODE = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 14 };
+pub const WPD_VIDEO_FRAMERATE = PROPERTYKEY{ .fmtid = Guid.initString("346f2163-f998-4146-8b01-d19b4c00de9a"), .pid = 15 };
 pub const WPD_COMMON_INFORMATION_OBJECT_PROPERTIES_V1 = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f");
-pub const WPD_COMMON_INFORMATION_SUBJECT = PROPERTYKEY { .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 2 };
-pub const WPD_COMMON_INFORMATION_BODY_TEXT = PROPERTYKEY { .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 3 };
-pub const WPD_COMMON_INFORMATION_PRIORITY = PROPERTYKEY { .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 4 };
-pub const WPD_COMMON_INFORMATION_START_DATETIME = PROPERTYKEY { .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 5 };
-pub const WPD_COMMON_INFORMATION_END_DATETIME = PROPERTYKEY { .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 6 };
-pub const WPD_COMMON_INFORMATION_NOTES = PROPERTYKEY { .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 7 };
+pub const WPD_COMMON_INFORMATION_SUBJECT = PROPERTYKEY{ .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 2 };
+pub const WPD_COMMON_INFORMATION_BODY_TEXT = PROPERTYKEY{ .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 3 };
+pub const WPD_COMMON_INFORMATION_PRIORITY = PROPERTYKEY{ .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 4 };
+pub const WPD_COMMON_INFORMATION_START_DATETIME = PROPERTYKEY{ .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 5 };
+pub const WPD_COMMON_INFORMATION_END_DATETIME = PROPERTYKEY{ .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 6 };
+pub const WPD_COMMON_INFORMATION_NOTES = PROPERTYKEY{ .fmtid = Guid.initString("b28ae94b-05a4-4e8e-be01-72cc7e099d8f"), .pid = 7 };
 pub const WPD_MEMO_OBJECT_PROPERTIES_V1 = Guid.initString("5ffbfc7b-7483-41ad-afb9-da3f4e592b8d");
 pub const WPD_EMAIL_OBJECT_PROPERTIES_V1 = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5");
-pub const WPD_EMAIL_TO_LINE = PROPERTYKEY { .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 2 };
-pub const WPD_EMAIL_CC_LINE = PROPERTYKEY { .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 3 };
-pub const WPD_EMAIL_BCC_LINE = PROPERTYKEY { .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 4 };
-pub const WPD_EMAIL_HAS_BEEN_READ = PROPERTYKEY { .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 7 };
-pub const WPD_EMAIL_RECEIVED_TIME = PROPERTYKEY { .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 8 };
-pub const WPD_EMAIL_HAS_ATTACHMENTS = PROPERTYKEY { .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 9 };
-pub const WPD_EMAIL_SENDER_ADDRESS = PROPERTYKEY { .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 10 };
+pub const WPD_EMAIL_TO_LINE = PROPERTYKEY{ .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 2 };
+pub const WPD_EMAIL_CC_LINE = PROPERTYKEY{ .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 3 };
+pub const WPD_EMAIL_BCC_LINE = PROPERTYKEY{ .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 4 };
+pub const WPD_EMAIL_HAS_BEEN_READ = PROPERTYKEY{ .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 7 };
+pub const WPD_EMAIL_RECEIVED_TIME = PROPERTYKEY{ .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 8 };
+pub const WPD_EMAIL_HAS_ATTACHMENTS = PROPERTYKEY{ .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 9 };
+pub const WPD_EMAIL_SENDER_ADDRESS = PROPERTYKEY{ .fmtid = Guid.initString("41f8f65a-5484-4782-b13d-4740dd7c37c5"), .pid = 10 };
 pub const WPD_APPOINTMENT_OBJECT_PROPERTIES_V1 = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3");
-pub const WPD_APPOINTMENT_LOCATION = PROPERTYKEY { .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 3 };
-pub const WPD_APPOINTMENT_TYPE = PROPERTYKEY { .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 7 };
-pub const WPD_APPOINTMENT_REQUIRED_ATTENDEES = PROPERTYKEY { .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 8 };
-pub const WPD_APPOINTMENT_OPTIONAL_ATTENDEES = PROPERTYKEY { .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 9 };
-pub const WPD_APPOINTMENT_ACCEPTED_ATTENDEES = PROPERTYKEY { .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 10 };
-pub const WPD_APPOINTMENT_RESOURCES = PROPERTYKEY { .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 11 };
-pub const WPD_APPOINTMENT_TENTATIVE_ATTENDEES = PROPERTYKEY { .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 12 };
-pub const WPD_APPOINTMENT_DECLINED_ATTENDEES = PROPERTYKEY { .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 13 };
+pub const WPD_APPOINTMENT_LOCATION = PROPERTYKEY{ .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 3 };
+pub const WPD_APPOINTMENT_TYPE = PROPERTYKEY{ .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 7 };
+pub const WPD_APPOINTMENT_REQUIRED_ATTENDEES = PROPERTYKEY{ .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 8 };
+pub const WPD_APPOINTMENT_OPTIONAL_ATTENDEES = PROPERTYKEY{ .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 9 };
+pub const WPD_APPOINTMENT_ACCEPTED_ATTENDEES = PROPERTYKEY{ .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 10 };
+pub const WPD_APPOINTMENT_RESOURCES = PROPERTYKEY{ .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 11 };
+pub const WPD_APPOINTMENT_TENTATIVE_ATTENDEES = PROPERTYKEY{ .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 12 };
+pub const WPD_APPOINTMENT_DECLINED_ATTENDEES = PROPERTYKEY{ .fmtid = Guid.initString("f99efd03-431d-40d8-a1c9-4e220d9c88d3"), .pid = 13 };
 pub const WPD_TASK_OBJECT_PROPERTIES_V1 = Guid.initString("e354e95e-d8a0-4637-a03a-0cb26838dbc7");
-pub const WPD_TASK_STATUS = PROPERTYKEY { .fmtid = Guid.initString("e354e95e-d8a0-4637-a03a-0cb26838dbc7"), .pid = 6 };
-pub const WPD_TASK_PERCENT_COMPLETE = PROPERTYKEY { .fmtid = Guid.initString("e354e95e-d8a0-4637-a03a-0cb26838dbc7"), .pid = 8 };
-pub const WPD_TASK_REMINDER_DATE = PROPERTYKEY { .fmtid = Guid.initString("e354e95e-d8a0-4637-a03a-0cb26838dbc7"), .pid = 10 };
-pub const WPD_TASK_OWNER = PROPERTYKEY { .fmtid = Guid.initString("e354e95e-d8a0-4637-a03a-0cb26838dbc7"), .pid = 11 };
+pub const WPD_TASK_STATUS = PROPERTYKEY{ .fmtid = Guid.initString("e354e95e-d8a0-4637-a03a-0cb26838dbc7"), .pid = 6 };
+pub const WPD_TASK_PERCENT_COMPLETE = PROPERTYKEY{ .fmtid = Guid.initString("e354e95e-d8a0-4637-a03a-0cb26838dbc7"), .pid = 8 };
+pub const WPD_TASK_REMINDER_DATE = PROPERTYKEY{ .fmtid = Guid.initString("e354e95e-d8a0-4637-a03a-0cb26838dbc7"), .pid = 10 };
+pub const WPD_TASK_OWNER = PROPERTYKEY{ .fmtid = Guid.initString("e354e95e-d8a0-4637-a03a-0cb26838dbc7"), .pid = 11 };
 pub const WPD_SMS_OBJECT_PROPERTIES_V1 = Guid.initString("7e1074cc-50ff-4dd1-a742-53be6f093a0d");
-pub const WPD_SMS_PROVIDER = PROPERTYKEY { .fmtid = Guid.initString("7e1074cc-50ff-4dd1-a742-53be6f093a0d"), .pid = 2 };
-pub const WPD_SMS_TIMEOUT = PROPERTYKEY { .fmtid = Guid.initString("7e1074cc-50ff-4dd1-a742-53be6f093a0d"), .pid = 3 };
-pub const WPD_SMS_MAX_PAYLOAD = PROPERTYKEY { .fmtid = Guid.initString("7e1074cc-50ff-4dd1-a742-53be6f093a0d"), .pid = 4 };
-pub const WPD_SMS_ENCODING = PROPERTYKEY { .fmtid = Guid.initString("7e1074cc-50ff-4dd1-a742-53be6f093a0d"), .pid = 5 };
+pub const WPD_SMS_PROVIDER = PROPERTYKEY{ .fmtid = Guid.initString("7e1074cc-50ff-4dd1-a742-53be6f093a0d"), .pid = 2 };
+pub const WPD_SMS_TIMEOUT = PROPERTYKEY{ .fmtid = Guid.initString("7e1074cc-50ff-4dd1-a742-53be6f093a0d"), .pid = 3 };
+pub const WPD_SMS_MAX_PAYLOAD = PROPERTYKEY{ .fmtid = Guid.initString("7e1074cc-50ff-4dd1-a742-53be6f093a0d"), .pid = 4 };
+pub const WPD_SMS_ENCODING = PROPERTYKEY{ .fmtid = Guid.initString("7e1074cc-50ff-4dd1-a742-53be6f093a0d"), .pid = 5 };
 pub const WPD_SECTION_OBJECT_PROPERTIES_V1 = Guid.initString("516afd2b-c64e-44f0-98dc-bee1c88f7d66");
-pub const WPD_SECTION_DATA_OFFSET = PROPERTYKEY { .fmtid = Guid.initString("516afd2b-c64e-44f0-98dc-bee1c88f7d66"), .pid = 2 };
-pub const WPD_SECTION_DATA_LENGTH = PROPERTYKEY { .fmtid = Guid.initString("516afd2b-c64e-44f0-98dc-bee1c88f7d66"), .pid = 3 };
-pub const WPD_SECTION_DATA_UNITS = PROPERTYKEY { .fmtid = Guid.initString("516afd2b-c64e-44f0-98dc-bee1c88f7d66"), .pid = 4 };
-pub const WPD_SECTION_DATA_REFERENCED_OBJECT_RESOURCE = PROPERTYKEY { .fmtid = Guid.initString("516afd2b-c64e-44f0-98dc-bee1c88f7d66"), .pid = 5 };
+pub const WPD_SECTION_DATA_OFFSET = PROPERTYKEY{ .fmtid = Guid.initString("516afd2b-c64e-44f0-98dc-bee1c88f7d66"), .pid = 2 };
+pub const WPD_SECTION_DATA_LENGTH = PROPERTYKEY{ .fmtid = Guid.initString("516afd2b-c64e-44f0-98dc-bee1c88f7d66"), .pid = 3 };
+pub const WPD_SECTION_DATA_UNITS = PROPERTYKEY{ .fmtid = Guid.initString("516afd2b-c64e-44f0-98dc-bee1c88f7d66"), .pid = 4 };
+pub const WPD_SECTION_DATA_REFERENCED_OBJECT_RESOURCE = PROPERTYKEY{ .fmtid = Guid.initString("516afd2b-c64e-44f0-98dc-bee1c88f7d66"), .pid = 5 };
 pub const NAME_Undefined = "Undefined";
 pub const NAME_Association = "Association";
 pub const NAME_DeviceScript = "DeviceScript";
@@ -1064,40 +1064,40 @@ pub const ENUM_TaskObj_CompleteTrue = @as(u32, 255);
 pub const NAME_TaskObj_BeginDate = "BeginDate";
 pub const NAME_TaskObj_EndDate = "EndDate";
 pub const WPD_CATEGORY_MTP_EXT_VENDOR_OPERATIONS = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56");
-pub const WPD_COMMAND_MTP_EXT_GET_SUPPORTED_VENDOR_OPCODES = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 11 };
-pub const WPD_COMMAND_MTP_EXT_EXECUTE_COMMAND_WITHOUT_DATA_PHASE = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 12 };
-pub const WPD_COMMAND_MTP_EXT_EXECUTE_COMMAND_WITH_DATA_TO_READ = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 13 };
-pub const WPD_COMMAND_MTP_EXT_EXECUTE_COMMAND_WITH_DATA_TO_WRITE = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 14 };
-pub const WPD_COMMAND_MTP_EXT_READ_DATA = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 15 };
-pub const WPD_COMMAND_MTP_EXT_WRITE_DATA = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 16 };
-pub const WPD_COMMAND_MTP_EXT_END_DATA_TRANSFER = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 17 };
-pub const WPD_COMMAND_MTP_EXT_GET_VENDOR_EXTENSION_DESCRIPTION = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 18 };
-pub const WPD_PROPERTY_MTP_EXT_OPERATION_CODE = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1001 };
-pub const WPD_PROPERTY_MTP_EXT_OPERATION_PARAMS = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1002 };
-pub const WPD_PROPERTY_MTP_EXT_RESPONSE_CODE = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1003 };
-pub const WPD_PROPERTY_MTP_EXT_RESPONSE_PARAMS = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1004 };
-pub const WPD_PROPERTY_MTP_EXT_VENDOR_OPERATION_CODES = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1005 };
-pub const WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1006 };
-pub const WPD_PROPERTY_MTP_EXT_TRANSFER_TOTAL_DATA_SIZE = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1007 };
-pub const WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_TO_READ = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1008 };
-pub const WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_READ = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1009 };
-pub const WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_TO_WRITE = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1010 };
-pub const WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_WRITTEN = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1011 };
-pub const WPD_PROPERTY_MTP_EXT_TRANSFER_DATA = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1012 };
-pub const WPD_PROPERTY_MTP_EXT_OPTIMAL_TRANSFER_BUFFER_SIZE = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1013 };
-pub const WPD_PROPERTY_MTP_EXT_VENDOR_EXTENSION_DESCRIPTION = PROPERTYKEY { .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1014 };
+pub const WPD_COMMAND_MTP_EXT_GET_SUPPORTED_VENDOR_OPCODES = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 11 };
+pub const WPD_COMMAND_MTP_EXT_EXECUTE_COMMAND_WITHOUT_DATA_PHASE = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 12 };
+pub const WPD_COMMAND_MTP_EXT_EXECUTE_COMMAND_WITH_DATA_TO_READ = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 13 };
+pub const WPD_COMMAND_MTP_EXT_EXECUTE_COMMAND_WITH_DATA_TO_WRITE = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 14 };
+pub const WPD_COMMAND_MTP_EXT_READ_DATA = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 15 };
+pub const WPD_COMMAND_MTP_EXT_WRITE_DATA = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 16 };
+pub const WPD_COMMAND_MTP_EXT_END_DATA_TRANSFER = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 17 };
+pub const WPD_COMMAND_MTP_EXT_GET_VENDOR_EXTENSION_DESCRIPTION = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 18 };
+pub const WPD_PROPERTY_MTP_EXT_OPERATION_CODE = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1001 };
+pub const WPD_PROPERTY_MTP_EXT_OPERATION_PARAMS = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1002 };
+pub const WPD_PROPERTY_MTP_EXT_RESPONSE_CODE = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1003 };
+pub const WPD_PROPERTY_MTP_EXT_RESPONSE_PARAMS = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1004 };
+pub const WPD_PROPERTY_MTP_EXT_VENDOR_OPERATION_CODES = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1005 };
+pub const WPD_PROPERTY_MTP_EXT_TRANSFER_CONTEXT = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1006 };
+pub const WPD_PROPERTY_MTP_EXT_TRANSFER_TOTAL_DATA_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1007 };
+pub const WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_TO_READ = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1008 };
+pub const WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_READ = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1009 };
+pub const WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_TO_WRITE = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1010 };
+pub const WPD_PROPERTY_MTP_EXT_TRANSFER_NUM_BYTES_WRITTEN = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1011 };
+pub const WPD_PROPERTY_MTP_EXT_TRANSFER_DATA = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1012 };
+pub const WPD_PROPERTY_MTP_EXT_OPTIMAL_TRANSFER_BUFFER_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1013 };
+pub const WPD_PROPERTY_MTP_EXT_VENDOR_EXTENSION_DESCRIPTION = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-1a2e-4106-a357-771e0819fc56"), .pid = 1014 };
 pub const WPD_PROPERTIES_MTP_VENDOR_EXTENDED_OBJECT_PROPS = Guid.initString("4d545058-4fce-4578-95c8-8698a9bc0f49");
 pub const WPD_PROPERTIES_MTP_VENDOR_EXTENDED_DEVICE_PROPS = Guid.initString("4d545058-8900-40b3-8f1d-dc246e1e8370");
 pub const WPD_EVENT_MTP_VENDOR_EXTENDED_EVENTS = Guid.initString("00000000-5738-4ff2-8445-be3126691059");
-pub const WPD_PROPERTY_MTP_EXT_EVENT_PARAMS = PROPERTYKEY { .fmtid = Guid.initString("4d545058-ef88-4e4d-95c3-4f327f728a96"), .pid = 1011 };
+pub const WPD_PROPERTY_MTP_EXT_EVENT_PARAMS = PROPERTYKEY{ .fmtid = Guid.initString("4d545058-ef88-4e4d-95c3-4f327f728a96"), .pid = 1011 };
 pub const CLSID_WPD_NAMESPACE_EXTENSION = Guid.initString("35786d3c-b075-49b9-88dd-029876e11c01");
 pub const WPDNSE_OBJECT_PROPERTIES_V1 = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6");
-pub const WPDNSE_OBJECT_HAS_CONTACT_PHOTO = PROPERTYKEY { .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 2 };
-pub const WPDNSE_OBJECT_HAS_THUMBNAIL = PROPERTYKEY { .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 3 };
-pub const WPDNSE_OBJECT_HAS_ICON = PROPERTYKEY { .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 4 };
-pub const WPDNSE_OBJECT_HAS_AUDIO_CLIP = PROPERTYKEY { .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 5 };
-pub const WPDNSE_OBJECT_HAS_ALBUM_ART = PROPERTYKEY { .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 6 };
-pub const WPDNSE_OBJECT_OPTIMAL_READ_BLOCK_SIZE = PROPERTYKEY { .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 7 };
+pub const WPDNSE_OBJECT_HAS_CONTACT_PHOTO = PROPERTYKEY{ .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 2 };
+pub const WPDNSE_OBJECT_HAS_THUMBNAIL = PROPERTYKEY{ .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 3 };
+pub const WPDNSE_OBJECT_HAS_ICON = PROPERTYKEY{ .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 4 };
+pub const WPDNSE_OBJECT_HAS_AUDIO_CLIP = PROPERTYKEY{ .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 5 };
+pub const WPDNSE_OBJECT_HAS_ALBUM_ART = PROPERTYKEY{ .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 6 };
+pub const WPDNSE_OBJECT_OPTIMAL_READ_BLOCK_SIZE = PROPERTYKEY{ .fmtid = Guid.initString("34d71409-4b47-4d80-aaac-3a28a4a3b3e6"), .pid = 7 };
 pub const WPDNSE_PROPSHEET_DEVICE_GENERAL = @as(u32, 1);
 pub const WPDNSE_PROPSHEET_STORAGE_GENERAL = @as(u32, 2);
 pub const WPDNSE_PROPSHEET_CONTENT_GENERAL = @as(u32, 4);
@@ -1625,43 +1625,43 @@ pub const IID_IWpdSerializer = &IID_IWpdSerializer_Value;
 pub const IWpdSerializer = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetIPortableDeviceValuesFromBuffer: *const fn(
+        GetIPortableDeviceValuesFromBuffer: *const fn (
             self: *const IWpdSerializer,
             pBuffer: [*:0]u8,
             dwInputBufferLength: u32,
             ppParams: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteIPortableDeviceValuesToBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteIPortableDeviceValuesToBuffer: *const fn (
             self: *const IWpdSerializer,
             dwOutputBufferLength: u32,
             pResults: ?*IPortableDeviceValues,
             pBuffer: [*:0]u8,
             pdwBytesWritten: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBufferFromIPortableDeviceValues: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBufferFromIPortableDeviceValues: *const fn (
             self: *const IWpdSerializer,
             pSource: ?*IPortableDeviceValues,
             ppBuffer: [*]?*u8,
             pdwBufferSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSerializedSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSerializedSize: *const fn (
             self: *const IWpdSerializer,
             pSource: ?*IPortableDeviceValues,
             pdwSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetIPortableDeviceValuesFromBuffer(self: *const IWpdSerializer, pBuffer: [*:0]u8, dwInputBufferLength: u32, ppParams: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetIPortableDeviceValuesFromBuffer(self: *const IWpdSerializer, pBuffer: [*:0]u8, dwInputBufferLength: u32, ppParams: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetIPortableDeviceValuesFromBuffer(self, pBuffer, dwInputBufferLength, ppParams);
     }
-    pub fn WriteIPortableDeviceValuesToBuffer(self: *const IWpdSerializer, dwOutputBufferLength: u32, pResults: ?*IPortableDeviceValues, pBuffer: [*:0]u8, pdwBytesWritten: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn WriteIPortableDeviceValuesToBuffer(self: *const IWpdSerializer, dwOutputBufferLength: u32, pResults: ?*IPortableDeviceValues, pBuffer: [*:0]u8, pdwBytesWritten: ?*u32) HRESULT {
         return self.vtable.WriteIPortableDeviceValuesToBuffer(self, dwOutputBufferLength, pResults, pBuffer, pdwBytesWritten);
     }
-    pub fn GetBufferFromIPortableDeviceValues(self: *const IWpdSerializer, pSource: ?*IPortableDeviceValues, ppBuffer: [*]?*u8, pdwBufferSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetBufferFromIPortableDeviceValues(self: *const IWpdSerializer, pSource: ?*IPortableDeviceValues, ppBuffer: [*]?*u8, pdwBufferSize: ?*u32) HRESULT {
         return self.vtable.GetBufferFromIPortableDeviceValues(self, pSource, ppBuffer, pdwBufferSize);
     }
-    pub fn GetSerializedSize(self: *const IWpdSerializer, pSource: ?*IPortableDeviceValues, pdwSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSerializedSize(self: *const IWpdSerializer, pSource: ?*IPortableDeviceValues, pdwSize: ?*u32) HRESULT {
         return self.vtable.GetSerializedSize(self, pSource, pdwSize);
     }
 };
@@ -1671,324 +1671,324 @@ pub const IID_IPortableDeviceValues = &IID_IPortableDeviceValues_Value;
 pub const IPortableDeviceValues = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IPortableDeviceValues,
             pcelt: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IPortableDeviceValues,
             index: u32,
             pKey: ?*PROPERTYKEY,
             pValue: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*const PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStringValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStringValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStringValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStringValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetUnsignedIntegerValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetUnsignedIntegerValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetUnsignedIntegerValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetUnsignedIntegerValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSignedIntegerValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSignedIntegerValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSignedIntegerValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSignedIntegerValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetUnsignedLargeIntegerValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetUnsignedLargeIntegerValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetUnsignedLargeIntegerValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetUnsignedLargeIntegerValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSignedLargeIntegerValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSignedLargeIntegerValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSignedLargeIntegerValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSignedLargeIntegerValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFloatValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFloatValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFloatValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFloatValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetErrorValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetErrorValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetErrorValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetErrorValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetKeyValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetKeyValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: ?*const PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeyValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeyValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetBoolValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetBoolValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBoolValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBoolValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIUnknownValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIUnknownValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIUnknownValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIUnknownValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             ppValue: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetGuidValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetGuidValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             Value: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetGuidValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetGuidValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetBufferValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetBufferValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: [*:0]u8,
             cbValue: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBufferValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBufferValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             ppValue: [*]?*u8,
             pcbValue: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIPortableDeviceValuesValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIPortableDeviceValuesValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIPortableDeviceValuesValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIPortableDeviceValuesValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             ppValue: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIPortableDevicePropVariantCollectionValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIPortableDevicePropVariantCollectionValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIPortableDevicePropVariantCollectionValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIPortableDevicePropVariantCollectionValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             ppValue: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIPortableDeviceKeyCollectionValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIPortableDeviceKeyCollectionValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIPortableDeviceKeyCollectionValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIPortableDeviceKeyCollectionValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             ppValue: ?*?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIPortableDeviceValuesCollectionValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIPortableDeviceValuesCollectionValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             pValue: ?*IPortableDeviceValuesCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIPortableDeviceValuesCollectionValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIPortableDeviceValuesCollectionValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
             ppValue: ?*?*IPortableDeviceValuesCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveValue: *const fn (
             self: *const IPortableDeviceValues,
             key: ?*const PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyValuesFromPropertyStore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyValuesFromPropertyStore: *const fn (
             self: *const IPortableDeviceValues,
             pStore: ?*IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyValuesToPropertyStore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyValuesToPropertyStore: *const fn (
             self: *const IPortableDeviceValues,
             pStore: ?*IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IPortableDeviceValues, pcelt: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IPortableDeviceValues, pcelt: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pcelt);
     }
-    pub fn GetAt(self: *const IPortableDeviceValues, index: u32, pKey: ?*PROPERTYKEY, pValue: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IPortableDeviceValues, index: u32, pKey: ?*PROPERTYKEY, pValue: ?*PROPVARIANT) HRESULT {
         return self.vtable.GetAt(self, index, pKey, pValue);
     }
-    pub fn SetValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*const PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*const PROPVARIANT) HRESULT {
         return self.vtable.SetValue(self, key, pValue);
     }
-    pub fn GetValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*PROPVARIANT) HRESULT {
         return self.vtable.GetValue(self, key, pValue);
     }
-    pub fn SetStringValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetStringValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: ?[*:0]const u16) HRESULT {
         return self.vtable.SetStringValue(self, key, Value);
     }
-    pub fn GetStringValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetStringValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*?PWSTR) HRESULT {
         return self.vtable.GetStringValue(self, key, pValue);
     }
-    pub fn SetUnsignedIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetUnsignedIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: u32) HRESULT {
         return self.vtable.SetUnsignedIntegerValue(self, key, Value);
     }
-    pub fn GetUnsignedIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetUnsignedIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*u32) HRESULT {
         return self.vtable.GetUnsignedIntegerValue(self, key, pValue);
     }
-    pub fn SetSignedIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetSignedIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: i32) HRESULT {
         return self.vtable.SetSignedIntegerValue(self, key, Value);
     }
-    pub fn GetSignedIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetSignedIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*i32) HRESULT {
         return self.vtable.GetSignedIntegerValue(self, key, pValue);
     }
-    pub fn SetUnsignedLargeIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: u64) callconv(.Inline) HRESULT {
+    pub inline fn SetUnsignedLargeIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: u64) HRESULT {
         return self.vtable.SetUnsignedLargeIntegerValue(self, key, Value);
     }
-    pub fn GetUnsignedLargeIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn GetUnsignedLargeIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*u64) HRESULT {
         return self.vtable.GetUnsignedLargeIntegerValue(self, key, pValue);
     }
-    pub fn SetSignedLargeIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: i64) callconv(.Inline) HRESULT {
+    pub inline fn SetSignedLargeIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: i64) HRESULT {
         return self.vtable.SetSignedLargeIntegerValue(self, key, Value);
     }
-    pub fn GetSignedLargeIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*i64) callconv(.Inline) HRESULT {
+    pub inline fn GetSignedLargeIntegerValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*i64) HRESULT {
         return self.vtable.GetSignedLargeIntegerValue(self, key, pValue);
     }
-    pub fn SetFloatValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetFloatValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: f32) HRESULT {
         return self.vtable.SetFloatValue(self, key, Value);
     }
-    pub fn GetFloatValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetFloatValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*f32) HRESULT {
         return self.vtable.GetFloatValue(self, key, pValue);
     }
-    pub fn SetErrorValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn SetErrorValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: HRESULT) HRESULT {
         return self.vtable.SetErrorValue(self, key, Value);
     }
-    pub fn GetErrorValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn GetErrorValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*HRESULT) HRESULT {
         return self.vtable.GetErrorValue(self, key, pValue);
     }
-    pub fn SetKeyValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: ?*const PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn SetKeyValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: ?*const PROPERTYKEY) HRESULT {
         return self.vtable.SetKeyValue(self, key, Value);
     }
-    pub fn GetKeyValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn GetKeyValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*PROPERTYKEY) HRESULT {
         return self.vtable.GetKeyValue(self, key, pValue);
     }
-    pub fn SetBoolValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn SetBoolValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: BOOL) HRESULT {
         return self.vtable.SetBoolValue(self, key, Value);
     }
-    pub fn GetBoolValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn GetBoolValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*BOOL) HRESULT {
         return self.vtable.GetBoolValue(self, key, pValue);
     }
-    pub fn SetIUnknownValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn SetIUnknownValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IUnknown) HRESULT {
         return self.vtable.SetIUnknownValue(self, key, pValue);
     }
-    pub fn GetIUnknownValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetIUnknownValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IUnknown) HRESULT {
         return self.vtable.GetIUnknownValue(self, key, ppValue);
     }
-    pub fn SetGuidValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn SetGuidValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, Value: ?*const Guid) HRESULT {
         return self.vtable.SetGuidValue(self, key, Value);
     }
-    pub fn GetGuidValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn GetGuidValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*Guid) HRESULT {
         return self.vtable.GetGuidValue(self, key, pValue);
     }
-    pub fn SetBufferValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: [*:0]u8, cbValue: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetBufferValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: [*:0]u8, cbValue: u32) HRESULT {
         return self.vtable.SetBufferValue(self, key, pValue, cbValue);
     }
-    pub fn GetBufferValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: [*]?*u8, pcbValue: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetBufferValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: [*]?*u8, pcbValue: ?*u32) HRESULT {
         return self.vtable.GetBufferValue(self, key, ppValue, pcbValue);
     }
-    pub fn SetIPortableDeviceValuesValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn SetIPortableDeviceValuesValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IPortableDeviceValues) HRESULT {
         return self.vtable.SetIPortableDeviceValuesValue(self, key, pValue);
     }
-    pub fn GetIPortableDeviceValuesValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetIPortableDeviceValuesValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetIPortableDeviceValuesValue(self, key, ppValue);
     }
-    pub fn SetIPortableDevicePropVariantCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn SetIPortableDevicePropVariantCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.SetIPortableDevicePropVariantCollectionValue(self, key, pValue);
     }
-    pub fn GetIPortableDevicePropVariantCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetIPortableDevicePropVariantCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetIPortableDevicePropVariantCollectionValue(self, key, ppValue);
     }
-    pub fn SetIPortableDeviceKeyCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn SetIPortableDeviceKeyCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.SetIPortableDeviceKeyCollectionValue(self, key, pValue);
     }
-    pub fn GetIPortableDeviceKeyCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetIPortableDeviceKeyCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.GetIPortableDeviceKeyCollectionValue(self, key, ppValue);
     }
-    pub fn SetIPortableDeviceValuesCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IPortableDeviceValuesCollection) callconv(.Inline) HRESULT {
+    pub inline fn SetIPortableDeviceValuesCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, pValue: ?*IPortableDeviceValuesCollection) HRESULT {
         return self.vtable.SetIPortableDeviceValuesCollectionValue(self, key, pValue);
     }
-    pub fn GetIPortableDeviceValuesCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IPortableDeviceValuesCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetIPortableDeviceValuesCollectionValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY, ppValue: ?*?*IPortableDeviceValuesCollection) HRESULT {
         return self.vtable.GetIPortableDeviceValuesCollectionValue(self, key, ppValue);
     }
-    pub fn RemoveValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn RemoveValue(self: *const IPortableDeviceValues, key: ?*const PROPERTYKEY) HRESULT {
         return self.vtable.RemoveValue(self, key);
     }
-    pub fn CopyValuesFromPropertyStore(self: *const IPortableDeviceValues, pStore: ?*IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn CopyValuesFromPropertyStore(self: *const IPortableDeviceValues, pStore: ?*IPropertyStore) HRESULT {
         return self.vtable.CopyValuesFromPropertyStore(self, pStore);
     }
-    pub fn CopyValuesToPropertyStore(self: *const IPortableDeviceValues, pStore: ?*IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn CopyValuesToPropertyStore(self: *const IPortableDeviceValues, pStore: ?*IPropertyStore) HRESULT {
         return self.vtable.CopyValuesToPropertyStore(self, pStore);
     }
-    pub fn Clear(self: *const IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IPortableDeviceValues) HRESULT {
         return self.vtable.Clear(self);
     }
 };
@@ -1998,42 +1998,42 @@ pub const IID_IPortableDeviceKeyCollection = &IID_IPortableDeviceKeyCollection_V
 pub const IPortableDeviceKeyCollection = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IPortableDeviceKeyCollection,
             pcElems: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IPortableDeviceKeyCollection,
             dwIndex: u32,
             pKey: ?*PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IPortableDeviceKeyCollection,
             Key: ?*const PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAt: *const fn (
             self: *const IPortableDeviceKeyCollection,
             dwIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IPortableDeviceKeyCollection, pcElems: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IPortableDeviceKeyCollection, pcElems: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pcElems);
     }
-    pub fn GetAt(self: *const IPortableDeviceKeyCollection, dwIndex: u32, pKey: ?*PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IPortableDeviceKeyCollection, dwIndex: u32, pKey: ?*PROPERTYKEY) HRESULT {
         return self.vtable.GetAt(self, dwIndex, pKey);
     }
-    pub fn Add(self: *const IPortableDeviceKeyCollection, Key: ?*const PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IPortableDeviceKeyCollection, Key: ?*const PROPERTYKEY) HRESULT {
         return self.vtable.Add(self, Key);
     }
-    pub fn Clear(self: *const IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn RemoveAt(self: *const IPortableDeviceKeyCollection, dwIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAt(self: *const IPortableDeviceKeyCollection, dwIndex: u32) HRESULT {
         return self.vtable.RemoveAt(self, dwIndex);
     }
 };
@@ -2043,56 +2043,56 @@ pub const IID_IPortableDevicePropVariantCollection = &IID_IPortableDevicePropVar
 pub const IPortableDevicePropVariantCollection = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IPortableDevicePropVariantCollection,
             pcElems: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IPortableDevicePropVariantCollection,
             dwIndex: u32,
             pValue: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IPortableDevicePropVariantCollection,
             pValue: ?*const PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetType: *const fn (
             self: *const IPortableDevicePropVariantCollection,
             pvt: ?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ChangeType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ChangeType: *const fn (
             self: *const IPortableDevicePropVariantCollection,
             vt: u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAt: *const fn (
             self: *const IPortableDevicePropVariantCollection,
             dwIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IPortableDevicePropVariantCollection, pcElems: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IPortableDevicePropVariantCollection, pcElems: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pcElems);
     }
-    pub fn GetAt(self: *const IPortableDevicePropVariantCollection, dwIndex: u32, pValue: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IPortableDevicePropVariantCollection, dwIndex: u32, pValue: ?*PROPVARIANT) HRESULT {
         return self.vtable.GetAt(self, dwIndex, pValue);
     }
-    pub fn Add(self: *const IPortableDevicePropVariantCollection, pValue: ?*const PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IPortableDevicePropVariantCollection, pValue: ?*const PROPVARIANT) HRESULT {
         return self.vtable.Add(self, pValue);
     }
-    pub fn GetType(self: *const IPortableDevicePropVariantCollection, pvt: ?*u16) callconv(.Inline) HRESULT {
+    pub inline fn GetType(self: *const IPortableDevicePropVariantCollection, pvt: ?*u16) HRESULT {
         return self.vtable.GetType(self, pvt);
     }
-    pub fn ChangeType(self: *const IPortableDevicePropVariantCollection, vt: u16) callconv(.Inline) HRESULT {
+    pub inline fn ChangeType(self: *const IPortableDevicePropVariantCollection, vt: u16) HRESULT {
         return self.vtable.ChangeType(self, vt);
     }
-    pub fn Clear(self: *const IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn RemoveAt(self: *const IPortableDevicePropVariantCollection, dwIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAt(self: *const IPortableDevicePropVariantCollection, dwIndex: u32) HRESULT {
         return self.vtable.RemoveAt(self, dwIndex);
     }
 };
@@ -2102,42 +2102,42 @@ pub const IID_IPortableDeviceValuesCollection = &IID_IPortableDeviceValuesCollec
 pub const IPortableDeviceValuesCollection = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IPortableDeviceValuesCollection,
             pcElems: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IPortableDeviceValuesCollection,
             dwIndex: u32,
             ppValues: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IPortableDeviceValuesCollection,
             pValues: ?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IPortableDeviceValuesCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAt: *const fn (
             self: *const IPortableDeviceValuesCollection,
             dwIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IPortableDeviceValuesCollection, pcElems: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IPortableDeviceValuesCollection, pcElems: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pcElems);
     }
-    pub fn GetAt(self: *const IPortableDeviceValuesCollection, dwIndex: u32, ppValues: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IPortableDeviceValuesCollection, dwIndex: u32, ppValues: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetAt(self, dwIndex, ppValues);
     }
-    pub fn Add(self: *const IPortableDeviceValuesCollection, pValues: ?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IPortableDeviceValuesCollection, pValues: ?*IPortableDeviceValues) HRESULT {
         return self.vtable.Add(self, pValues);
     }
-    pub fn Clear(self: *const IPortableDeviceValuesCollection) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IPortableDeviceValuesCollection) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn RemoveAt(self: *const IPortableDeviceValuesCollection, dwIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAt(self: *const IPortableDeviceValuesCollection, dwIndex: u32) HRESULT {
         return self.vtable.RemoveAt(self, dwIndex);
     }
 };
@@ -2168,67 +2168,67 @@ pub const IID_IPortableDeviceManager = &IID_IPortableDeviceManager_Value;
 pub const IPortableDeviceManager = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDevices: *const fn(
+        GetDevices: *const fn (
             self: *const IPortableDeviceManager,
             pPnPDeviceIDs: ?*?PWSTR,
             pcPnPDeviceIDs: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RefreshDeviceList: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RefreshDeviceList: *const fn (
             self: *const IPortableDeviceManager,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDeviceFriendlyName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDeviceFriendlyName: *const fn (
             self: *const IPortableDeviceManager,
             pszPnPDeviceID: ?[*:0]const u16,
             pDeviceFriendlyName: ?PWSTR,
             pcchDeviceFriendlyName: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDeviceDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDeviceDescription: *const fn (
             self: *const IPortableDeviceManager,
             pszPnPDeviceID: ?[*:0]const u16,
             pDeviceDescription: ?PWSTR,
             pcchDeviceDescription: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDeviceManufacturer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDeviceManufacturer: *const fn (
             self: *const IPortableDeviceManager,
             pszPnPDeviceID: ?[*:0]const u16,
             pDeviceManufacturer: ?PWSTR,
             pcchDeviceManufacturer: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDeviceProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDeviceProperty: *const fn (
             self: *const IPortableDeviceManager,
             pszPnPDeviceID: ?[*:0]const u16,
             pszDevicePropertyName: ?[*:0]const u16,
             pData: ?*u8,
             pcbData: ?*u32,
             pdwType: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPrivateDevices: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPrivateDevices: *const fn (
             self: *const IPortableDeviceManager,
             pPnPDeviceIDs: ?*?PWSTR,
             pcPnPDeviceIDs: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDevices(self: *const IPortableDeviceManager, pPnPDeviceIDs: ?*?PWSTR, pcPnPDeviceIDs: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDevices(self: *const IPortableDeviceManager, pPnPDeviceIDs: ?*?PWSTR, pcPnPDeviceIDs: ?*u32) HRESULT {
         return self.vtable.GetDevices(self, pPnPDeviceIDs, pcPnPDeviceIDs);
     }
-    pub fn RefreshDeviceList(self: *const IPortableDeviceManager) callconv(.Inline) HRESULT {
+    pub inline fn RefreshDeviceList(self: *const IPortableDeviceManager) HRESULT {
         return self.vtable.RefreshDeviceList(self);
     }
-    pub fn GetDeviceFriendlyName(self: *const IPortableDeviceManager, pszPnPDeviceID: ?[*:0]const u16, pDeviceFriendlyName: ?PWSTR, pcchDeviceFriendlyName: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceFriendlyName(self: *const IPortableDeviceManager, pszPnPDeviceID: ?[*:0]const u16, pDeviceFriendlyName: ?PWSTR, pcchDeviceFriendlyName: ?*u32) HRESULT {
         return self.vtable.GetDeviceFriendlyName(self, pszPnPDeviceID, pDeviceFriendlyName, pcchDeviceFriendlyName);
     }
-    pub fn GetDeviceDescription(self: *const IPortableDeviceManager, pszPnPDeviceID: ?[*:0]const u16, pDeviceDescription: ?PWSTR, pcchDeviceDescription: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceDescription(self: *const IPortableDeviceManager, pszPnPDeviceID: ?[*:0]const u16, pDeviceDescription: ?PWSTR, pcchDeviceDescription: ?*u32) HRESULT {
         return self.vtable.GetDeviceDescription(self, pszPnPDeviceID, pDeviceDescription, pcchDeviceDescription);
     }
-    pub fn GetDeviceManufacturer(self: *const IPortableDeviceManager, pszPnPDeviceID: ?[*:0]const u16, pDeviceManufacturer: ?PWSTR, pcchDeviceManufacturer: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceManufacturer(self: *const IPortableDeviceManager, pszPnPDeviceID: ?[*:0]const u16, pDeviceManufacturer: ?PWSTR, pcchDeviceManufacturer: ?*u32) HRESULT {
         return self.vtable.GetDeviceManufacturer(self, pszPnPDeviceID, pDeviceManufacturer, pcchDeviceManufacturer);
     }
-    pub fn GetDeviceProperty(self: *const IPortableDeviceManager, pszPnPDeviceID: ?[*:0]const u16, pszDevicePropertyName: ?[*:0]const u16, pData: ?*u8, pcbData: ?*u32, pdwType: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceProperty(self: *const IPortableDeviceManager, pszPnPDeviceID: ?[*:0]const u16, pszDevicePropertyName: ?[*:0]const u16, pData: ?*u8, pcbData: ?*u32, pdwType: ?*u32) HRESULT {
         return self.vtable.GetDeviceProperty(self, pszPnPDeviceID, pszDevicePropertyName, pData, pcbData, pdwType);
     }
-    pub fn GetPrivateDevices(self: *const IPortableDeviceManager, pPnPDeviceIDs: ?*?PWSTR, pcPnPDeviceIDs: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPrivateDevices(self: *const IPortableDeviceManager, pPnPDeviceIDs: ?*?PWSTR, pcPnPDeviceIDs: ?*u32) HRESULT {
         return self.vtable.GetPrivateDevices(self, pPnPDeviceIDs, pcPnPDeviceIDs);
     }
 };
@@ -2238,74 +2238,74 @@ pub const IID_IPortableDevice = &IID_IPortableDevice_Value;
 pub const IPortableDevice = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Open: *const fn(
+        Open: *const fn (
             self: *const IPortableDevice,
             pszPnPDeviceID: ?[*:0]const u16,
             pClientInfo: ?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SendCommand: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SendCommand: *const fn (
             self: *const IPortableDevice,
             dwFlags: u32,
             pParameters: ?*IPortableDeviceValues,
             ppResults: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Content: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Content: *const fn (
             self: *const IPortableDevice,
             ppContent: ?*?*IPortableDeviceContent,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Capabilities: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Capabilities: *const fn (
             self: *const IPortableDevice,
             ppCapabilities: ?*?*IPortableDeviceCapabilities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDevice,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Close: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Close: *const fn (
             self: *const IPortableDevice,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Advise: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Advise: *const fn (
             self: *const IPortableDevice,
             dwFlags: u32,
             pCallback: ?*IPortableDeviceEventCallback,
             pParameters: ?*IPortableDeviceValues,
             ppszCookie: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unadvise: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unadvise: *const fn (
             self: *const IPortableDevice,
             pszCookie: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPnPDeviceID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPnPDeviceID: *const fn (
             self: *const IPortableDevice,
             ppszPnPDeviceID: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Open(self: *const IPortableDevice, pszPnPDeviceID: ?[*:0]const u16, pClientInfo: ?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn Open(self: *const IPortableDevice, pszPnPDeviceID: ?[*:0]const u16, pClientInfo: ?*IPortableDeviceValues) HRESULT {
         return self.vtable.Open(self, pszPnPDeviceID, pClientInfo);
     }
-    pub fn SendCommand(self: *const IPortableDevice, dwFlags: u32, pParameters: ?*IPortableDeviceValues, ppResults: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn SendCommand(self: *const IPortableDevice, dwFlags: u32, pParameters: ?*IPortableDeviceValues, ppResults: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.SendCommand(self, dwFlags, pParameters, ppResults);
     }
-    pub fn Content(self: *const IPortableDevice, ppContent: ?*?*IPortableDeviceContent) callconv(.Inline) HRESULT {
+    pub inline fn Content(self: *const IPortableDevice, ppContent: ?*?*IPortableDeviceContent) HRESULT {
         return self.vtable.Content(self, ppContent);
     }
-    pub fn Capabilities(self: *const IPortableDevice, ppCapabilities: ?*?*IPortableDeviceCapabilities) callconv(.Inline) HRESULT {
+    pub inline fn Capabilities(self: *const IPortableDevice, ppCapabilities: ?*?*IPortableDeviceCapabilities) HRESULT {
         return self.vtable.Capabilities(self, ppCapabilities);
     }
-    pub fn Cancel(self: *const IPortableDevice) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDevice) HRESULT {
         return self.vtable.Cancel(self);
     }
-    pub fn Close(self: *const IPortableDevice) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const IPortableDevice) HRESULT {
         return self.vtable.Close(self);
     }
-    pub fn Advise(self: *const IPortableDevice, dwFlags: u32, pCallback: ?*IPortableDeviceEventCallback, pParameters: ?*IPortableDeviceValues, ppszCookie: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn Advise(self: *const IPortableDevice, dwFlags: u32, pCallback: ?*IPortableDeviceEventCallback, pParameters: ?*IPortableDeviceValues, ppszCookie: ?*?PWSTR) HRESULT {
         return self.vtable.Advise(self, dwFlags, pCallback, pParameters, ppszCookie);
     }
-    pub fn Unadvise(self: *const IPortableDevice, pszCookie: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Unadvise(self: *const IPortableDevice, pszCookie: ?[*:0]const u16) HRESULT {
         return self.vtable.Unadvise(self, pszCookie);
     }
-    pub fn GetPnPDeviceID(self: *const IPortableDevice, ppszPnPDeviceID: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPnPDeviceID(self: *const IPortableDevice, ppszPnPDeviceID: ?*?PWSTR) HRESULT {
         return self.vtable.GetPnPDeviceID(self, ppszPnPDeviceID);
     }
 };
@@ -2315,90 +2315,90 @@ pub const IID_IPortableDeviceContent = &IID_IPortableDeviceContent_Value;
 pub const IPortableDeviceContent = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        EnumObjects: *const fn(
+        EnumObjects: *const fn (
             self: *const IPortableDeviceContent,
             dwFlags: u32,
             pszParentObjectID: ?[*:0]const u16,
             pFilter: ?*IPortableDeviceValues,
             ppEnum: ?*?*IEnumPortableDeviceObjectIDs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Properties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Properties: *const fn (
             self: *const IPortableDeviceContent,
             ppProperties: ?*?*IPortableDeviceProperties,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Transfer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Transfer: *const fn (
             self: *const IPortableDeviceContent,
             ppResources: ?*?*IPortableDeviceResources,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateObjectWithPropertiesOnly: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateObjectWithPropertiesOnly: *const fn (
             self: *const IPortableDeviceContent,
             pValues: ?*IPortableDeviceValues,
             ppszObjectID: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateObjectWithPropertiesAndData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateObjectWithPropertiesAndData: *const fn (
             self: *const IPortableDeviceContent,
             pValues: ?*IPortableDeviceValues,
             ppData: ?*?*IStream,
             pdwOptimalWriteBufferSize: ?*u32,
             ppszCookie: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IPortableDeviceContent,
             dwOptions: u32,
             pObjectIDs: ?*IPortableDevicePropVariantCollection,
             ppResults: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObjectIDsFromPersistentUniqueIDs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObjectIDsFromPersistentUniqueIDs: *const fn (
             self: *const IPortableDeviceContent,
             pPersistentUniqueIDs: ?*IPortableDevicePropVariantCollection,
             ppObjectIDs: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceContent,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Move: *const fn(
-            self: *const IPortableDeviceContent,
-            pObjectIDs: ?*IPortableDevicePropVariantCollection,
-            pszDestinationFolderObjectID: ?[*:0]const u16,
-            ppResults: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Copy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Move: *const fn (
             self: *const IPortableDeviceContent,
             pObjectIDs: ?*IPortableDevicePropVariantCollection,
             pszDestinationFolderObjectID: ?[*:0]const u16,
             ppResults: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
+        Copy: *const fn (
+            self: *const IPortableDeviceContent,
+            pObjectIDs: ?*IPortableDevicePropVariantCollection,
+            pszDestinationFolderObjectID: ?[*:0]const u16,
+            ppResults: ?*?*IPortableDevicePropVariantCollection,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn EnumObjects(self: *const IPortableDeviceContent, dwFlags: u32, pszParentObjectID: ?[*:0]const u16, pFilter: ?*IPortableDeviceValues, ppEnum: ?*?*IEnumPortableDeviceObjectIDs) callconv(.Inline) HRESULT {
+    pub inline fn EnumObjects(self: *const IPortableDeviceContent, dwFlags: u32, pszParentObjectID: ?[*:0]const u16, pFilter: ?*IPortableDeviceValues, ppEnum: ?*?*IEnumPortableDeviceObjectIDs) HRESULT {
         return self.vtable.EnumObjects(self, dwFlags, pszParentObjectID, pFilter, ppEnum);
     }
-    pub fn Properties(self: *const IPortableDeviceContent, ppProperties: ?*?*IPortableDeviceProperties) callconv(.Inline) HRESULT {
+    pub inline fn Properties(self: *const IPortableDeviceContent, ppProperties: ?*?*IPortableDeviceProperties) HRESULT {
         return self.vtable.Properties(self, ppProperties);
     }
-    pub fn Transfer(self: *const IPortableDeviceContent, ppResources: ?*?*IPortableDeviceResources) callconv(.Inline) HRESULT {
+    pub inline fn Transfer(self: *const IPortableDeviceContent, ppResources: ?*?*IPortableDeviceResources) HRESULT {
         return self.vtable.Transfer(self, ppResources);
     }
-    pub fn CreateObjectWithPropertiesOnly(self: *const IPortableDeviceContent, pValues: ?*IPortableDeviceValues, ppszObjectID: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn CreateObjectWithPropertiesOnly(self: *const IPortableDeviceContent, pValues: ?*IPortableDeviceValues, ppszObjectID: ?*?PWSTR) HRESULT {
         return self.vtable.CreateObjectWithPropertiesOnly(self, pValues, ppszObjectID);
     }
-    pub fn CreateObjectWithPropertiesAndData(self: *const IPortableDeviceContent, pValues: ?*IPortableDeviceValues, ppData: ?*?*IStream, pdwOptimalWriteBufferSize: ?*u32, ppszCookie: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn CreateObjectWithPropertiesAndData(self: *const IPortableDeviceContent, pValues: ?*IPortableDeviceValues, ppData: ?*?*IStream, pdwOptimalWriteBufferSize: ?*u32, ppszCookie: ?*?PWSTR) HRESULT {
         return self.vtable.CreateObjectWithPropertiesAndData(self, pValues, ppData, pdwOptimalWriteBufferSize, ppszCookie);
     }
-    pub fn Delete(self: *const IPortableDeviceContent, dwOptions: u32, pObjectIDs: ?*IPortableDevicePropVariantCollection, ppResults: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IPortableDeviceContent, dwOptions: u32, pObjectIDs: ?*IPortableDevicePropVariantCollection, ppResults: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.Delete(self, dwOptions, pObjectIDs, ppResults);
     }
-    pub fn GetObjectIDsFromPersistentUniqueIDs(self: *const IPortableDeviceContent, pPersistentUniqueIDs: ?*IPortableDevicePropVariantCollection, ppObjectIDs: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectIDsFromPersistentUniqueIDs(self: *const IPortableDeviceContent, pPersistentUniqueIDs: ?*IPortableDevicePropVariantCollection, ppObjectIDs: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetObjectIDsFromPersistentUniqueIDs(self, pPersistentUniqueIDs, ppObjectIDs);
     }
-    pub fn Cancel(self: *const IPortableDeviceContent) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceContent) HRESULT {
         return self.vtable.Cancel(self);
     }
-    pub fn Move(self: *const IPortableDeviceContent, pObjectIDs: ?*IPortableDevicePropVariantCollection, pszDestinationFolderObjectID: ?[*:0]const u16, ppResults: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn Move(self: *const IPortableDeviceContent, pObjectIDs: ?*IPortableDevicePropVariantCollection, pszDestinationFolderObjectID: ?[*:0]const u16, ppResults: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.Move(self, pObjectIDs, pszDestinationFolderObjectID, ppResults);
     }
-    pub fn Copy(self: *const IPortableDeviceContent, pObjectIDs: ?*IPortableDevicePropVariantCollection, pszDestinationFolderObjectID: ?[*:0]const u16, ppResults: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn Copy(self: *const IPortableDeviceContent, pObjectIDs: ?*IPortableDevicePropVariantCollection, pszDestinationFolderObjectID: ?[*:0]const u16, ppResults: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.Copy(self, pObjectIDs, pszDestinationFolderObjectID, ppResults);
     }
 };
@@ -2409,18 +2409,18 @@ pub const IID_IPortableDeviceContent2 = &IID_IPortableDeviceContent2_Value;
 pub const IPortableDeviceContent2 = extern union {
     pub const VTable = extern struct {
         base: IPortableDeviceContent.VTable,
-        UpdateObjectWithPropertiesAndData: *const fn(
+        UpdateObjectWithPropertiesAndData: *const fn (
             self: *const IPortableDeviceContent2,
             pszObjectID: ?[*:0]const u16,
             pProperties: ?*IPortableDeviceValues,
             ppData: ?*?*IStream,
             pdwOptimalWriteBufferSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPortableDeviceContent: IPortableDeviceContent,
     IUnknown: IUnknown,
-    pub fn UpdateObjectWithPropertiesAndData(self: *const IPortableDeviceContent2, pszObjectID: ?[*:0]const u16, pProperties: ?*IPortableDeviceValues, ppData: ?*?*IStream, pdwOptimalWriteBufferSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn UpdateObjectWithPropertiesAndData(self: *const IPortableDeviceContent2, pszObjectID: ?[*:0]const u16, pProperties: ?*IPortableDeviceValues, ppData: ?*?*IStream, pdwOptimalWriteBufferSize: ?*u32) HRESULT {
         return self.vtable.UpdateObjectWithPropertiesAndData(self, pszObjectID, pProperties, ppData, pdwOptimalWriteBufferSize);
     }
 };
@@ -2430,42 +2430,42 @@ pub const IID_IEnumPortableDeviceObjectIDs = &IID_IEnumPortableDeviceObjectIDs_V
 pub const IEnumPortableDeviceObjectIDs = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Next: *const fn(
+        Next: *const fn (
             self: *const IEnumPortableDeviceObjectIDs,
             cObjects: u32,
             pObjIDs: [*]?PWSTR,
             pcFetched: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumPortableDeviceObjectIDs,
             cObjects: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumPortableDeviceObjectIDs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumPortableDeviceObjectIDs,
             ppEnum: ?*?*IEnumPortableDeviceObjectIDs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IEnumPortableDeviceObjectIDs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Next(self: *const IEnumPortableDeviceObjectIDs, cObjects: u32, pObjIDs: [*]?PWSTR, pcFetched: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumPortableDeviceObjectIDs, cObjects: u32, pObjIDs: [*]?PWSTR, pcFetched: ?*u32) HRESULT {
         return self.vtable.Next(self, cObjects, pObjIDs, pcFetched);
     }
-    pub fn Skip(self: *const IEnumPortableDeviceObjectIDs, cObjects: u32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumPortableDeviceObjectIDs, cObjects: u32) HRESULT {
         return self.vtable.Skip(self, cObjects);
     }
-    pub fn Reset(self: *const IEnumPortableDeviceObjectIDs) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumPortableDeviceObjectIDs) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Clone(self: *const IEnumPortableDeviceObjectIDs, ppEnum: ?*?*IEnumPortableDeviceObjectIDs) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumPortableDeviceObjectIDs, ppEnum: ?*?*IEnumPortableDeviceObjectIDs) HRESULT {
         return self.vtable.Clone(self, ppEnum);
     }
-    pub fn Cancel(self: *const IEnumPortableDeviceObjectIDs) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IEnumPortableDeviceObjectIDs) HRESULT {
         return self.vtable.Cancel(self);
     }
 };
@@ -2475,56 +2475,56 @@ pub const IID_IPortableDeviceProperties = &IID_IPortableDeviceProperties_Value;
 pub const IPortableDeviceProperties = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetSupportedProperties: *const fn(
+        GetSupportedProperties: *const fn (
             self: *const IPortableDeviceProperties,
             pszObjectID: ?[*:0]const u16,
             ppKeys: ?*?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyAttributes: *const fn (
             self: *const IPortableDeviceProperties,
             pszObjectID: ?[*:0]const u16,
             Key: ?*const PROPERTYKEY,
             ppAttributes: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValues: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValues: *const fn (
             self: *const IPortableDeviceProperties,
             pszObjectID: ?[*:0]const u16,
             pKeys: ?*IPortableDeviceKeyCollection,
             ppValues: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValues: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValues: *const fn (
             self: *const IPortableDeviceProperties,
             pszObjectID: ?[*:0]const u16,
             pValues: ?*IPortableDeviceValues,
             ppResults: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IPortableDeviceProperties,
             pszObjectID: ?[*:0]const u16,
             pKeys: ?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceProperties,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetSupportedProperties(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, ppKeys: ?*?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedProperties(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, ppKeys: ?*?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.GetSupportedProperties(self, pszObjectID, ppKeys);
     }
-    pub fn GetPropertyAttributes(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, Key: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyAttributes(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, Key: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetPropertyAttributes(self, pszObjectID, Key, ppAttributes);
     }
-    pub fn GetValues(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, pKeys: ?*IPortableDeviceKeyCollection, ppValues: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetValues(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, pKeys: ?*IPortableDeviceKeyCollection, ppValues: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetValues(self, pszObjectID, pKeys, ppValues);
     }
-    pub fn SetValues(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, pValues: ?*IPortableDeviceValues, ppResults: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn SetValues(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, pValues: ?*IPortableDeviceValues, ppResults: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.SetValues(self, pszObjectID, pValues, ppResults);
     }
-    pub fn Delete(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, pKeys: ?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IPortableDeviceProperties, pszObjectID: ?[*:0]const u16, pKeys: ?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.Delete(self, pszObjectID, pKeys);
     }
-    pub fn Cancel(self: *const IPortableDeviceProperties) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceProperties) HRESULT {
         return self.vtable.Cancel(self);
     }
 };
@@ -2534,59 +2534,59 @@ pub const IID_IPortableDeviceResources = &IID_IPortableDeviceResources_Value;
 pub const IPortableDeviceResources = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetSupportedResources: *const fn(
+        GetSupportedResources: *const fn (
             self: *const IPortableDeviceResources,
             pszObjectID: ?[*:0]const u16,
             ppKeys: ?*?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetResourceAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetResourceAttributes: *const fn (
             self: *const IPortableDeviceResources,
             pszObjectID: ?[*:0]const u16,
             Key: ?*const PROPERTYKEY,
             ppResourceAttributes: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStream: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStream: *const fn (
             self: *const IPortableDeviceResources,
             pszObjectID: ?[*:0]const u16,
             Key: ?*const PROPERTYKEY,
             dwMode: u32,
             pdwOptimalBufferSize: ?*u32,
             ppStream: ?*?*IStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IPortableDeviceResources,
             pszObjectID: ?[*:0]const u16,
             pKeys: ?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceResources,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateResource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateResource: *const fn (
             self: *const IPortableDeviceResources,
             pResourceAttributes: ?*IPortableDeviceValues,
             ppData: ?*?*IStream,
             pdwOptimalWriteBufferSize: ?*u32,
             ppszCookie: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetSupportedResources(self: *const IPortableDeviceResources, pszObjectID: ?[*:0]const u16, ppKeys: ?*?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedResources(self: *const IPortableDeviceResources, pszObjectID: ?[*:0]const u16, ppKeys: ?*?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.GetSupportedResources(self, pszObjectID, ppKeys);
     }
-    pub fn GetResourceAttributes(self: *const IPortableDeviceResources, pszObjectID: ?[*:0]const u16, Key: ?*const PROPERTYKEY, ppResourceAttributes: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetResourceAttributes(self: *const IPortableDeviceResources, pszObjectID: ?[*:0]const u16, Key: ?*const PROPERTYKEY, ppResourceAttributes: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetResourceAttributes(self, pszObjectID, Key, ppResourceAttributes);
     }
-    pub fn GetStream(self: *const IPortableDeviceResources, pszObjectID: ?[*:0]const u16, Key: ?*const PROPERTYKEY, dwMode: u32, pdwOptimalBufferSize: ?*u32, ppStream: ?*?*IStream) callconv(.Inline) HRESULT {
+    pub inline fn GetStream(self: *const IPortableDeviceResources, pszObjectID: ?[*:0]const u16, Key: ?*const PROPERTYKEY, dwMode: u32, pdwOptimalBufferSize: ?*u32, ppStream: ?*?*IStream) HRESULT {
         return self.vtable.GetStream(self, pszObjectID, Key, dwMode, pdwOptimalBufferSize, ppStream);
     }
-    pub fn Delete(self: *const IPortableDeviceResources, pszObjectID: ?[*:0]const u16, pKeys: ?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IPortableDeviceResources, pszObjectID: ?[*:0]const u16, pKeys: ?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.Delete(self, pszObjectID, pKeys);
     }
-    pub fn Cancel(self: *const IPortableDeviceResources) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceResources) HRESULT {
         return self.vtable.Cancel(self);
     }
-    pub fn CreateResource(self: *const IPortableDeviceResources, pResourceAttributes: ?*IPortableDeviceValues, ppData: ?*?*IStream, pdwOptimalWriteBufferSize: ?*u32, ppszCookie: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn CreateResource(self: *const IPortableDeviceResources, pResourceAttributes: ?*IPortableDeviceValues, ppData: ?*?*IStream, pdwOptimalWriteBufferSize: ?*u32, ppszCookie: ?*?PWSTR) HRESULT {
         return self.vtable.CreateResource(self, pResourceAttributes, ppData, pdwOptimalWriteBufferSize, ppszCookie);
     }
 };
@@ -2596,91 +2596,91 @@ pub const IID_IPortableDeviceCapabilities = &IID_IPortableDeviceCapabilities_Val
 pub const IPortableDeviceCapabilities = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetSupportedCommands: *const fn(
+        GetSupportedCommands: *const fn (
             self: *const IPortableDeviceCapabilities,
             ppCommands: ?*?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCommandOptions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCommandOptions: *const fn (
             self: *const IPortableDeviceCapabilities,
             Command: ?*const PROPERTYKEY,
             ppOptions: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFunctionalCategories: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFunctionalCategories: *const fn (
             self: *const IPortableDeviceCapabilities,
             ppCategories: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFunctionalObjects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFunctionalObjects: *const fn (
             self: *const IPortableDeviceCapabilities,
             Category: ?*const Guid,
             ppObjectIDs: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedContentTypes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedContentTypes: *const fn (
             self: *const IPortableDeviceCapabilities,
             Category: ?*const Guid,
             ppContentTypes: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedFormats: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedFormats: *const fn (
             self: *const IPortableDeviceCapabilities,
             ContentType: ?*const Guid,
             ppFormats: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedFormatProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedFormatProperties: *const fn (
             self: *const IPortableDeviceCapabilities,
             Format: ?*const Guid,
             ppKeys: ?*?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFixedPropertyAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFixedPropertyAttributes: *const fn (
             self: *const IPortableDeviceCapabilities,
             Format: ?*const Guid,
             Key: ?*const PROPERTYKEY,
             ppAttributes: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceCapabilities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedEvents: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedEvents: *const fn (
             self: *const IPortableDeviceCapabilities,
             ppEvents: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEventOptions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEventOptions: *const fn (
             self: *const IPortableDeviceCapabilities,
             Event: ?*const Guid,
             ppOptions: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetSupportedCommands(self: *const IPortableDeviceCapabilities, ppCommands: ?*?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedCommands(self: *const IPortableDeviceCapabilities, ppCommands: ?*?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.GetSupportedCommands(self, ppCommands);
     }
-    pub fn GetCommandOptions(self: *const IPortableDeviceCapabilities, Command: ?*const PROPERTYKEY, ppOptions: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetCommandOptions(self: *const IPortableDeviceCapabilities, Command: ?*const PROPERTYKEY, ppOptions: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetCommandOptions(self, Command, ppOptions);
     }
-    pub fn GetFunctionalCategories(self: *const IPortableDeviceCapabilities, ppCategories: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetFunctionalCategories(self: *const IPortableDeviceCapabilities, ppCategories: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetFunctionalCategories(self, ppCategories);
     }
-    pub fn GetFunctionalObjects(self: *const IPortableDeviceCapabilities, Category: ?*const Guid, ppObjectIDs: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetFunctionalObjects(self: *const IPortableDeviceCapabilities, Category: ?*const Guid, ppObjectIDs: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetFunctionalObjects(self, Category, ppObjectIDs);
     }
-    pub fn GetSupportedContentTypes(self: *const IPortableDeviceCapabilities, Category: ?*const Guid, ppContentTypes: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedContentTypes(self: *const IPortableDeviceCapabilities, Category: ?*const Guid, ppContentTypes: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetSupportedContentTypes(self, Category, ppContentTypes);
     }
-    pub fn GetSupportedFormats(self: *const IPortableDeviceCapabilities, ContentType: ?*const Guid, ppFormats: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedFormats(self: *const IPortableDeviceCapabilities, ContentType: ?*const Guid, ppFormats: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetSupportedFormats(self, ContentType, ppFormats);
     }
-    pub fn GetSupportedFormatProperties(self: *const IPortableDeviceCapabilities, Format: ?*const Guid, ppKeys: ?*?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedFormatProperties(self: *const IPortableDeviceCapabilities, Format: ?*const Guid, ppKeys: ?*?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.GetSupportedFormatProperties(self, Format, ppKeys);
     }
-    pub fn GetFixedPropertyAttributes(self: *const IPortableDeviceCapabilities, Format: ?*const Guid, Key: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetFixedPropertyAttributes(self: *const IPortableDeviceCapabilities, Format: ?*const Guid, Key: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetFixedPropertyAttributes(self, Format, Key, ppAttributes);
     }
-    pub fn Cancel(self: *const IPortableDeviceCapabilities) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceCapabilities) HRESULT {
         return self.vtable.Cancel(self);
     }
-    pub fn GetSupportedEvents(self: *const IPortableDeviceCapabilities, ppEvents: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedEvents(self: *const IPortableDeviceCapabilities, ppEvents: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetSupportedEvents(self, ppEvents);
     }
-    pub fn GetEventOptions(self: *const IPortableDeviceCapabilities, Event: ?*const Guid, ppOptions: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetEventOptions(self: *const IPortableDeviceCapabilities, Event: ?*const Guid, ppOptions: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetEventOptions(self, Event, ppOptions);
     }
 };
@@ -2690,14 +2690,14 @@ pub const IID_IPortableDeviceEventCallback = &IID_IPortableDeviceEventCallback_V
 pub const IPortableDeviceEventCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnEvent: *const fn(
+        OnEvent: *const fn (
             self: *const IPortableDeviceEventCallback,
             pEventParameters: ?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnEvent(self: *const IPortableDeviceEventCallback, pEventParameters: ?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn OnEvent(self: *const IPortableDeviceEventCallback, pEventParameters: ?*IPortableDeviceValues) HRESULT {
         return self.vtable.OnEvent(self, pEventParameters);
     }
 };
@@ -2707,22 +2707,22 @@ pub const IID_IPortableDeviceDataStream = &IID_IPortableDeviceDataStream_Value;
 pub const IPortableDeviceDataStream = extern union {
     pub const VTable = extern struct {
         base: IStream.VTable,
-        GetObjectID: *const fn(
+        GetObjectID: *const fn (
             self: *const IPortableDeviceDataStream,
             ppszObjectID: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceDataStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IStream: IStream,
     ISequentialStream: ISequentialStream,
     IUnknown: IUnknown,
-    pub fn GetObjectID(self: *const IPortableDeviceDataStream, ppszObjectID: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectID(self: *const IPortableDeviceDataStream, ppszObjectID: ?*?PWSTR) HRESULT {
         return self.vtable.GetObjectID(self, ppszObjectID);
     }
-    pub fn Cancel(self: *const IPortableDeviceDataStream) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceDataStream) HRESULT {
         return self.vtable.Cancel(self);
     }
 };
@@ -2733,23 +2733,23 @@ pub const IID_IPortableDeviceUnitsStream = &IID_IPortableDeviceUnitsStream_Value
 pub const IPortableDeviceUnitsStream = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SeekInUnits: *const fn(
+        SeekInUnits: *const fn (
             self: *const IPortableDeviceUnitsStream,
             dlibMove: LARGE_INTEGER,
             units: WPD_STREAM_UNITS,
             dwOrigin: u32,
             plibNewPosition: ?*ULARGE_INTEGER,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceUnitsStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SeekInUnits(self: *const IPortableDeviceUnitsStream, dlibMove: LARGE_INTEGER, units: WPD_STREAM_UNITS, dwOrigin: u32, plibNewPosition: ?*ULARGE_INTEGER) callconv(.Inline) HRESULT {
+    pub inline fn SeekInUnits(self: *const IPortableDeviceUnitsStream, dlibMove: LARGE_INTEGER, units: WPD_STREAM_UNITS, dwOrigin: u32, plibNewPosition: ?*ULARGE_INTEGER) HRESULT {
         return self.vtable.SeekInUnits(self, dlibMove, units, dwOrigin, plibNewPosition);
     }
-    pub fn Cancel(self: *const IPortableDeviceUnitsStream) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceUnitsStream) HRESULT {
         return self.vtable.Cancel(self);
     }
 };
@@ -2759,14 +2759,14 @@ pub const IID_IPortableDevicePropertiesBulk = &IID_IPortableDevicePropertiesBulk
 pub const IPortableDevicePropertiesBulk = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QueueGetValuesByObjectList: *const fn(
+        QueueGetValuesByObjectList: *const fn (
             self: *const IPortableDevicePropertiesBulk,
             pObjectIDs: ?*IPortableDevicePropVariantCollection,
             pKeys: ?*IPortableDeviceKeyCollection,
             pCallback: ?*IPortableDevicePropertiesBulkCallback,
             pContext: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueueGetValuesByObjectFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueueGetValuesByObjectFormat: *const fn (
             self: *const IPortableDevicePropertiesBulk,
             pguidObjectFormat: ?*const Guid,
             pszParentObjectID: ?[*:0]const u16,
@@ -2774,37 +2774,37 @@ pub const IPortableDevicePropertiesBulk = extern union {
             pKeys: ?*IPortableDeviceKeyCollection,
             pCallback: ?*IPortableDevicePropertiesBulkCallback,
             pContext: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueueSetValuesByObjectList: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueueSetValuesByObjectList: *const fn (
             self: *const IPortableDevicePropertiesBulk,
             pObjectValues: ?*IPortableDeviceValuesCollection,
             pCallback: ?*IPortableDevicePropertiesBulkCallback,
             pContext: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Start: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Start: *const fn (
             self: *const IPortableDevicePropertiesBulk,
             pContext: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDevicePropertiesBulk,
             pContext: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QueueGetValuesByObjectList(self: *const IPortableDevicePropertiesBulk, pObjectIDs: ?*IPortableDevicePropVariantCollection, pKeys: ?*IPortableDeviceKeyCollection, pCallback: ?*IPortableDevicePropertiesBulkCallback, pContext: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn QueueGetValuesByObjectList(self: *const IPortableDevicePropertiesBulk, pObjectIDs: ?*IPortableDevicePropVariantCollection, pKeys: ?*IPortableDeviceKeyCollection, pCallback: ?*IPortableDevicePropertiesBulkCallback, pContext: ?*Guid) HRESULT {
         return self.vtable.QueueGetValuesByObjectList(self, pObjectIDs, pKeys, pCallback, pContext);
     }
-    pub fn QueueGetValuesByObjectFormat(self: *const IPortableDevicePropertiesBulk, pguidObjectFormat: ?*const Guid, pszParentObjectID: ?[*:0]const u16, dwDepth: u32, pKeys: ?*IPortableDeviceKeyCollection, pCallback: ?*IPortableDevicePropertiesBulkCallback, pContext: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn QueueGetValuesByObjectFormat(self: *const IPortableDevicePropertiesBulk, pguidObjectFormat: ?*const Guid, pszParentObjectID: ?[*:0]const u16, dwDepth: u32, pKeys: ?*IPortableDeviceKeyCollection, pCallback: ?*IPortableDevicePropertiesBulkCallback, pContext: ?*Guid) HRESULT {
         return self.vtable.QueueGetValuesByObjectFormat(self, pguidObjectFormat, pszParentObjectID, dwDepth, pKeys, pCallback, pContext);
     }
-    pub fn QueueSetValuesByObjectList(self: *const IPortableDevicePropertiesBulk, pObjectValues: ?*IPortableDeviceValuesCollection, pCallback: ?*IPortableDevicePropertiesBulkCallback, pContext: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn QueueSetValuesByObjectList(self: *const IPortableDevicePropertiesBulk, pObjectValues: ?*IPortableDeviceValuesCollection, pCallback: ?*IPortableDevicePropertiesBulkCallback, pContext: ?*Guid) HRESULT {
         return self.vtable.QueueSetValuesByObjectList(self, pObjectValues, pCallback, pContext);
     }
-    pub fn Start(self: *const IPortableDevicePropertiesBulk, pContext: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn Start(self: *const IPortableDevicePropertiesBulk, pContext: ?*const Guid) HRESULT {
         return self.vtable.Start(self, pContext);
     }
-    pub fn Cancel(self: *const IPortableDevicePropertiesBulk, pContext: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDevicePropertiesBulk, pContext: ?*const Guid) HRESULT {
         return self.vtable.Cancel(self, pContext);
     }
 };
@@ -2814,30 +2814,30 @@ pub const IID_IPortableDevicePropertiesBulkCallback = &IID_IPortableDeviceProper
 pub const IPortableDevicePropertiesBulkCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnStart: *const fn(
+        OnStart: *const fn (
             self: *const IPortableDevicePropertiesBulkCallback,
             pContext: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnProgress: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnProgress: *const fn (
             self: *const IPortableDevicePropertiesBulkCallback,
             pContext: ?*const Guid,
             pResults: ?*IPortableDeviceValuesCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnEnd: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnEnd: *const fn (
             self: *const IPortableDevicePropertiesBulkCallback,
             pContext: ?*const Guid,
             hrStatus: HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnStart(self: *const IPortableDevicePropertiesBulkCallback, pContext: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn OnStart(self: *const IPortableDevicePropertiesBulkCallback, pContext: ?*const Guid) HRESULT {
         return self.vtable.OnStart(self, pContext);
     }
-    pub fn OnProgress(self: *const IPortableDevicePropertiesBulkCallback, pContext: ?*const Guid, pResults: ?*IPortableDeviceValuesCollection) callconv(.Inline) HRESULT {
+    pub inline fn OnProgress(self: *const IPortableDevicePropertiesBulkCallback, pContext: ?*const Guid, pResults: ?*IPortableDeviceValuesCollection) HRESULT {
         return self.vtable.OnProgress(self, pContext, pResults);
     }
-    pub fn OnEnd(self: *const IPortableDevicePropertiesBulkCallback, pContext: ?*const Guid, hrStatus: HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn OnEnd(self: *const IPortableDevicePropertiesBulkCallback, pContext: ?*const Guid, hrStatus: HRESULT) HRESULT {
         return self.vtable.OnEnd(self, pContext, hrStatus);
     }
 };
@@ -2848,25 +2848,25 @@ pub const IID_IPortableDeviceServiceManager = &IID_IPortableDeviceServiceManager
 pub const IPortableDeviceServiceManager = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDeviceServices: *const fn(
+        GetDeviceServices: *const fn (
             self: *const IPortableDeviceServiceManager,
             pszPnPDeviceID: ?[*:0]const u16,
             guidServiceCategory: ?*const Guid,
             pServices: ?*?PWSTR,
             pcServices: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDeviceForService: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDeviceForService: *const fn (
             self: *const IPortableDeviceServiceManager,
             pszPnPServiceID: ?[*:0]const u16,
             ppszPnPDeviceID: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDeviceServices(self: *const IPortableDeviceServiceManager, pszPnPDeviceID: ?[*:0]const u16, guidServiceCategory: ?*const Guid, pServices: ?*?PWSTR, pcServices: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceServices(self: *const IPortableDeviceServiceManager, pszPnPDeviceID: ?[*:0]const u16, guidServiceCategory: ?*const Guid, pServices: ?*?PWSTR, pcServices: ?*u32) HRESULT {
         return self.vtable.GetDeviceServices(self, pszPnPDeviceID, guidServiceCategory, pServices, pcServices);
     }
-    pub fn GetDeviceForService(self: *const IPortableDeviceServiceManager, pszPnPServiceID: ?[*:0]const u16, ppszPnPDeviceID: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceForService(self: *const IPortableDeviceServiceManager, pszPnPServiceID: ?[*:0]const u16, ppszPnPDeviceID: ?*?PWSTR) HRESULT {
         return self.vtable.GetDeviceForService(self, pszPnPServiceID, ppszPnPDeviceID);
     }
 };
@@ -2877,88 +2877,88 @@ pub const IID_IPortableDeviceService = &IID_IPortableDeviceService_Value;
 pub const IPortableDeviceService = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Open: *const fn(
+        Open: *const fn (
             self: *const IPortableDeviceService,
             pszPnPServiceID: ?[*:0]const u16,
             pClientInfo: ?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Capabilities: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Capabilities: *const fn (
             self: *const IPortableDeviceService,
             ppCapabilities: ?*?*IPortableDeviceServiceCapabilities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Content: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Content: *const fn (
             self: *const IPortableDeviceService,
             ppContent: ?*?*IPortableDeviceContent2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Methods: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Methods: *const fn (
             self: *const IPortableDeviceService,
             ppMethods: ?*?*IPortableDeviceServiceMethods,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceService,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Close: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Close: *const fn (
             self: *const IPortableDeviceService,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetServiceObjectID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetServiceObjectID: *const fn (
             self: *const IPortableDeviceService,
             ppszServiceObjectID: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPnPServiceID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPnPServiceID: *const fn (
             self: *const IPortableDeviceService,
             ppszPnPServiceID: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Advise: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Advise: *const fn (
             self: *const IPortableDeviceService,
             dwFlags: u32,
             pCallback: ?*IPortableDeviceEventCallback,
             pParameters: ?*IPortableDeviceValues,
             ppszCookie: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unadvise: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unadvise: *const fn (
             self: *const IPortableDeviceService,
             pszCookie: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SendCommand: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SendCommand: *const fn (
             self: *const IPortableDeviceService,
             dwFlags: u32,
             pParameters: ?*IPortableDeviceValues,
             ppResults: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Open(self: *const IPortableDeviceService, pszPnPServiceID: ?[*:0]const u16, pClientInfo: ?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn Open(self: *const IPortableDeviceService, pszPnPServiceID: ?[*:0]const u16, pClientInfo: ?*IPortableDeviceValues) HRESULT {
         return self.vtable.Open(self, pszPnPServiceID, pClientInfo);
     }
-    pub fn Capabilities(self: *const IPortableDeviceService, ppCapabilities: ?*?*IPortableDeviceServiceCapabilities) callconv(.Inline) HRESULT {
+    pub inline fn Capabilities(self: *const IPortableDeviceService, ppCapabilities: ?*?*IPortableDeviceServiceCapabilities) HRESULT {
         return self.vtable.Capabilities(self, ppCapabilities);
     }
-    pub fn Content(self: *const IPortableDeviceService, ppContent: ?*?*IPortableDeviceContent2) callconv(.Inline) HRESULT {
+    pub inline fn Content(self: *const IPortableDeviceService, ppContent: ?*?*IPortableDeviceContent2) HRESULT {
         return self.vtable.Content(self, ppContent);
     }
-    pub fn Methods(self: *const IPortableDeviceService, ppMethods: ?*?*IPortableDeviceServiceMethods) callconv(.Inline) HRESULT {
+    pub inline fn Methods(self: *const IPortableDeviceService, ppMethods: ?*?*IPortableDeviceServiceMethods) HRESULT {
         return self.vtable.Methods(self, ppMethods);
     }
-    pub fn Cancel(self: *const IPortableDeviceService) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceService) HRESULT {
         return self.vtable.Cancel(self);
     }
-    pub fn Close(self: *const IPortableDeviceService) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const IPortableDeviceService) HRESULT {
         return self.vtable.Close(self);
     }
-    pub fn GetServiceObjectID(self: *const IPortableDeviceService, ppszServiceObjectID: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetServiceObjectID(self: *const IPortableDeviceService, ppszServiceObjectID: ?*?PWSTR) HRESULT {
         return self.vtable.GetServiceObjectID(self, ppszServiceObjectID);
     }
-    pub fn GetPnPServiceID(self: *const IPortableDeviceService, ppszPnPServiceID: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPnPServiceID(self: *const IPortableDeviceService, ppszPnPServiceID: ?*?PWSTR) HRESULT {
         return self.vtable.GetPnPServiceID(self, ppszPnPServiceID);
     }
-    pub fn Advise(self: *const IPortableDeviceService, dwFlags: u32, pCallback: ?*IPortableDeviceEventCallback, pParameters: ?*IPortableDeviceValues, ppszCookie: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn Advise(self: *const IPortableDeviceService, dwFlags: u32, pCallback: ?*IPortableDeviceEventCallback, pParameters: ?*IPortableDeviceValues, ppszCookie: ?*?PWSTR) HRESULT {
         return self.vtable.Advise(self, dwFlags, pCallback, pParameters, ppszCookie);
     }
-    pub fn Unadvise(self: *const IPortableDeviceService, pszCookie: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Unadvise(self: *const IPortableDeviceService, pszCookie: ?[*:0]const u16) HRESULT {
         return self.vtable.Unadvise(self, pszCookie);
     }
-    pub fn SendCommand(self: *const IPortableDeviceService, dwFlags: u32, pParameters: ?*IPortableDeviceValues, ppResults: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn SendCommand(self: *const IPortableDeviceService, dwFlags: u32, pParameters: ?*IPortableDeviceValues, ppResults: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.SendCommand(self, dwFlags, pParameters, ppResults);
     }
 };
@@ -2969,132 +2969,132 @@ pub const IID_IPortableDeviceServiceCapabilities = &IID_IPortableDeviceServiceCa
 pub const IPortableDeviceServiceCapabilities = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetSupportedMethods: *const fn(
+        GetSupportedMethods: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             ppMethods: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedMethodsByFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedMethodsByFormat: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Format: ?*const Guid,
             ppMethods: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMethodAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMethodAttributes: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Method: ?*const Guid,
             ppAttributes: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMethodParameterAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMethodParameterAttributes: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Method: ?*const Guid,
             Parameter: ?*const PROPERTYKEY,
             ppAttributes: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedFormats: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedFormats: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             ppFormats: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFormatAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFormatAttributes: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Format: ?*const Guid,
             ppAttributes: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedFormatProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedFormatProperties: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Format: ?*const Guid,
             ppKeys: ?*?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFormatPropertyAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFormatPropertyAttributes: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Format: ?*const Guid,
             Property: ?*const PROPERTYKEY,
             ppAttributes: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedEvents: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedEvents: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             ppEvents: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEventAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEventAttributes: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Event: ?*const Guid,
             ppAttributes: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEventParameterAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEventParameterAttributes: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Event: ?*const Guid,
             Parameter: ?*const PROPERTYKEY,
             ppAttributes: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInheritedServices: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInheritedServices: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             dwInheritanceType: u32,
             ppServices: ?*?*IPortableDevicePropVariantCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFormatRenderingProfiles: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFormatRenderingProfiles: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Format: ?*const Guid,
             ppRenderingProfiles: ?*?*IPortableDeviceValuesCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedCommands: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedCommands: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             ppCommands: ?*?*IPortableDeviceKeyCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCommandOptions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCommandOptions: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
             Command: ?*const PROPERTYKEY,
             ppOptions: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceServiceCapabilities,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetSupportedMethods(self: *const IPortableDeviceServiceCapabilities, ppMethods: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedMethods(self: *const IPortableDeviceServiceCapabilities, ppMethods: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetSupportedMethods(self, ppMethods);
     }
-    pub fn GetSupportedMethodsByFormat(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, ppMethods: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedMethodsByFormat(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, ppMethods: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetSupportedMethodsByFormat(self, Format, ppMethods);
     }
-    pub fn GetMethodAttributes(self: *const IPortableDeviceServiceCapabilities, Method: ?*const Guid, ppAttributes: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetMethodAttributes(self: *const IPortableDeviceServiceCapabilities, Method: ?*const Guid, ppAttributes: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetMethodAttributes(self, Method, ppAttributes);
     }
-    pub fn GetMethodParameterAttributes(self: *const IPortableDeviceServiceCapabilities, Method: ?*const Guid, Parameter: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetMethodParameterAttributes(self: *const IPortableDeviceServiceCapabilities, Method: ?*const Guid, Parameter: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetMethodParameterAttributes(self, Method, Parameter, ppAttributes);
     }
-    pub fn GetSupportedFormats(self: *const IPortableDeviceServiceCapabilities, ppFormats: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedFormats(self: *const IPortableDeviceServiceCapabilities, ppFormats: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetSupportedFormats(self, ppFormats);
     }
-    pub fn GetFormatAttributes(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, ppAttributes: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetFormatAttributes(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, ppAttributes: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetFormatAttributes(self, Format, ppAttributes);
     }
-    pub fn GetSupportedFormatProperties(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, ppKeys: ?*?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedFormatProperties(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, ppKeys: ?*?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.GetSupportedFormatProperties(self, Format, ppKeys);
     }
-    pub fn GetFormatPropertyAttributes(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, Property: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetFormatPropertyAttributes(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, Property: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetFormatPropertyAttributes(self, Format, Property, ppAttributes);
     }
-    pub fn GetSupportedEvents(self: *const IPortableDeviceServiceCapabilities, ppEvents: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedEvents(self: *const IPortableDeviceServiceCapabilities, ppEvents: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetSupportedEvents(self, ppEvents);
     }
-    pub fn GetEventAttributes(self: *const IPortableDeviceServiceCapabilities, Event: ?*const Guid, ppAttributes: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetEventAttributes(self: *const IPortableDeviceServiceCapabilities, Event: ?*const Guid, ppAttributes: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetEventAttributes(self, Event, ppAttributes);
     }
-    pub fn GetEventParameterAttributes(self: *const IPortableDeviceServiceCapabilities, Event: ?*const Guid, Parameter: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetEventParameterAttributes(self: *const IPortableDeviceServiceCapabilities, Event: ?*const Guid, Parameter: ?*const PROPERTYKEY, ppAttributes: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetEventParameterAttributes(self, Event, Parameter, ppAttributes);
     }
-    pub fn GetInheritedServices(self: *const IPortableDeviceServiceCapabilities, dwInheritanceType: u32, ppServices: ?*?*IPortableDevicePropVariantCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetInheritedServices(self: *const IPortableDeviceServiceCapabilities, dwInheritanceType: u32, ppServices: ?*?*IPortableDevicePropVariantCollection) HRESULT {
         return self.vtable.GetInheritedServices(self, dwInheritanceType, ppServices);
     }
-    pub fn GetFormatRenderingProfiles(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, ppRenderingProfiles: ?*?*IPortableDeviceValuesCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetFormatRenderingProfiles(self: *const IPortableDeviceServiceCapabilities, Format: ?*const Guid, ppRenderingProfiles: ?*?*IPortableDeviceValuesCollection) HRESULT {
         return self.vtable.GetFormatRenderingProfiles(self, Format, ppRenderingProfiles);
     }
-    pub fn GetSupportedCommands(self: *const IPortableDeviceServiceCapabilities, ppCommands: ?*?*IPortableDeviceKeyCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedCommands(self: *const IPortableDeviceServiceCapabilities, ppCommands: ?*?*IPortableDeviceKeyCollection) HRESULT {
         return self.vtable.GetSupportedCommands(self, ppCommands);
     }
-    pub fn GetCommandOptions(self: *const IPortableDeviceServiceCapabilities, Command: ?*const PROPERTYKEY, ppOptions: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn GetCommandOptions(self: *const IPortableDeviceServiceCapabilities, Command: ?*const PROPERTYKEY, ppOptions: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.GetCommandOptions(self, Command, ppOptions);
     }
-    pub fn Cancel(self: *const IPortableDeviceServiceCapabilities) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceServiceCapabilities) HRESULT {
         return self.vtable.Cancel(self);
     }
 };
@@ -3105,32 +3105,32 @@ pub const IID_IPortableDeviceServiceMethods = &IID_IPortableDeviceServiceMethods
 pub const IPortableDeviceServiceMethods = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Invoke: *const fn(
+        Invoke: *const fn (
             self: *const IPortableDeviceServiceMethods,
             Method: ?*const Guid,
             pParameters: ?*IPortableDeviceValues,
             ppResults: ?*?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InvokeAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InvokeAsync: *const fn (
             self: *const IPortableDeviceServiceMethods,
             Method: ?*const Guid,
             pParameters: ?*IPortableDeviceValues,
             pCallback: ?*IPortableDeviceServiceMethodCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceServiceMethods,
             pCallback: ?*IPortableDeviceServiceMethodCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Invoke(self: *const IPortableDeviceServiceMethods, Method: ?*const Guid, pParameters: ?*IPortableDeviceValues, ppResults: ?*?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn Invoke(self: *const IPortableDeviceServiceMethods, Method: ?*const Guid, pParameters: ?*IPortableDeviceValues, ppResults: ?*?*IPortableDeviceValues) HRESULT {
         return self.vtable.Invoke(self, Method, pParameters, ppResults);
     }
-    pub fn InvokeAsync(self: *const IPortableDeviceServiceMethods, Method: ?*const Guid, pParameters: ?*IPortableDeviceValues, pCallback: ?*IPortableDeviceServiceMethodCallback) callconv(.Inline) HRESULT {
+    pub inline fn InvokeAsync(self: *const IPortableDeviceServiceMethods, Method: ?*const Guid, pParameters: ?*IPortableDeviceValues, pCallback: ?*IPortableDeviceServiceMethodCallback) HRESULT {
         return self.vtable.InvokeAsync(self, Method, pParameters, pCallback);
     }
-    pub fn Cancel(self: *const IPortableDeviceServiceMethods, pCallback: ?*IPortableDeviceServiceMethodCallback) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceServiceMethods, pCallback: ?*IPortableDeviceServiceMethodCallback) HRESULT {
         return self.vtable.Cancel(self, pCallback);
     }
 };
@@ -3141,15 +3141,15 @@ pub const IID_IPortableDeviceServiceMethodCallback = &IID_IPortableDeviceService
 pub const IPortableDeviceServiceMethodCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnComplete: *const fn(
+        OnComplete: *const fn (
             self: *const IPortableDeviceServiceMethodCallback,
             hrStatus: HRESULT,
             pResults: ?*IPortableDeviceValues,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnComplete(self: *const IPortableDeviceServiceMethodCallback, hrStatus: HRESULT, pResults: ?*IPortableDeviceValues) callconv(.Inline) HRESULT {
+    pub inline fn OnComplete(self: *const IPortableDeviceServiceMethodCallback, hrStatus: HRESULT, pResults: ?*IPortableDeviceValues) HRESULT {
         return self.vtable.OnComplete(self, hrStatus, pResults);
     }
 };
@@ -3159,22 +3159,22 @@ pub const IID_IPortableDeviceServiceActivation = &IID_IPortableDeviceServiceActi
 pub const IPortableDeviceServiceActivation = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OpenAsync: *const fn(
+        OpenAsync: *const fn (
             self: *const IPortableDeviceServiceActivation,
             pszPnPServiceID: ?[*:0]const u16,
             pClientInfo: ?*IPortableDeviceValues,
             pCallback: ?*IPortableDeviceServiceOpenCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CancelOpenAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CancelOpenAsync: *const fn (
             self: *const IPortableDeviceServiceActivation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OpenAsync(self: *const IPortableDeviceServiceActivation, pszPnPServiceID: ?[*:0]const u16, pClientInfo: ?*IPortableDeviceValues, pCallback: ?*IPortableDeviceServiceOpenCallback) callconv(.Inline) HRESULT {
+    pub inline fn OpenAsync(self: *const IPortableDeviceServiceActivation, pszPnPServiceID: ?[*:0]const u16, pClientInfo: ?*IPortableDeviceValues, pCallback: ?*IPortableDeviceServiceOpenCallback) HRESULT {
         return self.vtable.OpenAsync(self, pszPnPServiceID, pClientInfo, pCallback);
     }
-    pub fn CancelOpenAsync(self: *const IPortableDeviceServiceActivation) callconv(.Inline) HRESULT {
+    pub inline fn CancelOpenAsync(self: *const IPortableDeviceServiceActivation) HRESULT {
         return self.vtable.CancelOpenAsync(self);
     }
 };
@@ -3184,14 +3184,14 @@ pub const IID_IPortableDeviceServiceOpenCallback = &IID_IPortableDeviceServiceOp
 pub const IPortableDeviceServiceOpenCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnComplete: *const fn(
+        OnComplete: *const fn (
             self: *const IPortableDeviceServiceOpenCallback,
             hrStatus: HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnComplete(self: *const IPortableDeviceServiceOpenCallback, hrStatus: HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn OnComplete(self: *const IPortableDeviceServiceOpenCallback, hrStatus: HRESULT) HRESULT {
         return self.vtable.OnComplete(self, hrStatus);
     }
 };
@@ -3202,15 +3202,15 @@ pub const IID_IPortableDeviceDispatchFactory = &IID_IPortableDeviceDispatchFacto
 pub const IPortableDeviceDispatchFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDeviceDispatch: *const fn(
+        GetDeviceDispatch: *const fn (
             self: *const IPortableDeviceDispatchFactory,
             pszPnPDeviceID: ?[*:0]const u16,
             ppDeviceDispatch: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDeviceDispatch(self: *const IPortableDeviceDispatchFactory, pszPnPDeviceID: ?[*:0]const u16, ppDeviceDispatch: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceDispatch(self: *const IPortableDeviceDispatchFactory, pszPnPDeviceID: ?[*:0]const u16, ppDeviceDispatch: ?*?*IDispatch) HRESULT {
         return self.vtable.GetDeviceDispatch(self, pszPnPDeviceID, ppDeviceDispatch);
     }
 };
@@ -3221,25 +3221,25 @@ pub const IID_IPortableDeviceWebControl = &IID_IPortableDeviceWebControl_Value;
 pub const IPortableDeviceWebControl = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetDeviceFromId: *const fn(
+        GetDeviceFromId: *const fn (
             self: *const IPortableDeviceWebControl,
             deviceId: ?BSTR,
             ppDevice: **IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDeviceFromIdAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDeviceFromIdAsync: *const fn (
             self: *const IPortableDeviceWebControl,
             deviceId: ?BSTR,
             pCompletionHandler: ?*IDispatch,
             pErrorHandler: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetDeviceFromId(self: *const IPortableDeviceWebControl, deviceId: ?BSTR, ppDevice: **IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceFromId(self: *const IPortableDeviceWebControl, deviceId: ?BSTR, ppDevice: **IDispatch) HRESULT {
         return self.vtable.GetDeviceFromId(self, deviceId, ppDevice);
     }
-    pub fn GetDeviceFromIdAsync(self: *const IPortableDeviceWebControl, deviceId: ?BSTR, pCompletionHandler: ?*IDispatch, pErrorHandler: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceFromIdAsync(self: *const IPortableDeviceWebControl, deviceId: ?BSTR, pCompletionHandler: ?*IDispatch, pErrorHandler: ?*IDispatch) HRESULT {
         return self.vtable.GetDeviceFromIdAsync(self, deviceId, pCompletionHandler, pErrorHandler);
     }
 };
@@ -3252,36 +3252,36 @@ pub const IID_IEnumPortableDeviceConnectors = &IID_IEnumPortableDeviceConnectors
 pub const IEnumPortableDeviceConnectors = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Next: *const fn(
+        Next: *const fn (
             self: *const IEnumPortableDeviceConnectors,
             cRequested: u32,
             pConnectors: [*]?*IPortableDeviceConnector,
             pcFetched: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumPortableDeviceConnectors,
             cConnectors: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumPortableDeviceConnectors,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumPortableDeviceConnectors,
             ppEnum: ?*?*IEnumPortableDeviceConnectors,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Next(self: *const IEnumPortableDeviceConnectors, cRequested: u32, pConnectors: [*]?*IPortableDeviceConnector, pcFetched: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumPortableDeviceConnectors, cRequested: u32, pConnectors: [*]?*IPortableDeviceConnector, pcFetched: ?*u32) HRESULT {
         return self.vtable.Next(self, cRequested, pConnectors, pcFetched);
     }
-    pub fn Skip(self: *const IEnumPortableDeviceConnectors, cConnectors: u32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumPortableDeviceConnectors, cConnectors: u32) HRESULT {
         return self.vtable.Skip(self, cConnectors);
     }
-    pub fn Reset(self: *const IEnumPortableDeviceConnectors) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumPortableDeviceConnectors) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Clone(self: *const IEnumPortableDeviceConnectors, ppEnum: ?*?*IEnumPortableDeviceConnectors) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumPortableDeviceConnectors, ppEnum: ?*?*IEnumPortableDeviceConnectors) HRESULT {
         return self.vtable.Clone(self, ppEnum);
     }
 };
@@ -3292,55 +3292,55 @@ pub const IID_IPortableDeviceConnector = &IID_IPortableDeviceConnector_Value;
 pub const IPortableDeviceConnector = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Connect: *const fn(
+        Connect: *const fn (
             self: *const IPortableDeviceConnector,
             pCallback: ?*IConnectionRequestCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Disconnect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Disconnect: *const fn (
             self: *const IPortableDeviceConnector,
             pCallback: ?*IConnectionRequestCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPortableDeviceConnector,
             pCallback: ?*IConnectionRequestCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const IPortableDeviceConnector,
             pPropertyKey: ?*const DEVPROPKEY,
             pPropertyType: ?*u32,
             ppData: [*]?*u8,
             pcbData: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProperty: *const fn (
             self: *const IPortableDeviceConnector,
             pPropertyKey: ?*const DEVPROPKEY,
             PropertyType: u32,
             pData: [*:0]const u8,
             cbData: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPnPID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPnPID: *const fn (
             self: *const IPortableDeviceConnector,
             ppwszPnPID: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Connect(self: *const IPortableDeviceConnector, pCallback: ?*IConnectionRequestCallback) callconv(.Inline) HRESULT {
+    pub inline fn Connect(self: *const IPortableDeviceConnector, pCallback: ?*IConnectionRequestCallback) HRESULT {
         return self.vtable.Connect(self, pCallback);
     }
-    pub fn Disconnect(self: *const IPortableDeviceConnector, pCallback: ?*IConnectionRequestCallback) callconv(.Inline) HRESULT {
+    pub inline fn Disconnect(self: *const IPortableDeviceConnector, pCallback: ?*IConnectionRequestCallback) HRESULT {
         return self.vtable.Disconnect(self, pCallback);
     }
-    pub fn Cancel(self: *const IPortableDeviceConnector, pCallback: ?*IConnectionRequestCallback) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPortableDeviceConnector, pCallback: ?*IConnectionRequestCallback) HRESULT {
         return self.vtable.Cancel(self, pCallback);
     }
-    pub fn GetProperty(self: *const IPortableDeviceConnector, pPropertyKey: ?*const DEVPROPKEY, pPropertyType: ?*u32, ppData: [*]?*u8, pcbData: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const IPortableDeviceConnector, pPropertyKey: ?*const DEVPROPKEY, pPropertyType: ?*u32, ppData: [*]?*u8, pcbData: ?*u32) HRESULT {
         return self.vtable.GetProperty(self, pPropertyKey, pPropertyType, ppData, pcbData);
     }
-    pub fn SetProperty(self: *const IPortableDeviceConnector, pPropertyKey: ?*const DEVPROPKEY, PropertyType: u32, pData: [*:0]const u8, cbData: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetProperty(self: *const IPortableDeviceConnector, pPropertyKey: ?*const DEVPROPKEY, PropertyType: u32, pData: [*:0]const u8, cbData: u32) HRESULT {
         return self.vtable.SetProperty(self, pPropertyKey, PropertyType, pData, cbData);
     }
-    pub fn GetPnPID(self: *const IPortableDeviceConnector, ppwszPnPID: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPnPID(self: *const IPortableDeviceConnector, ppwszPnPID: ?*?PWSTR) HRESULT {
         return self.vtable.GetPnPID(self, ppwszPnPID);
     }
 };
@@ -3350,14 +3350,14 @@ pub const IID_IConnectionRequestCallback = &IID_IConnectionRequestCallback_Value
 pub const IConnectionRequestCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnComplete: *const fn(
+        OnComplete: *const fn (
             self: *const IConnectionRequestCallback,
             hrStatus: HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnComplete(self: *const IConnectionRequestCallback, hrStatus: HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn OnComplete(self: *const IConnectionRequestCallback, hrStatus: HRESULT) HRESULT {
         return self.vtable.OnComplete(self, hrStatus);
     }
 };
@@ -3393,22 +3393,22 @@ pub const IID_IMediaRadioManager = &IID_IMediaRadioManager_Value;
 pub const IMediaRadioManager = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetRadioInstances: *const fn(
+        GetRadioInstances: *const fn (
             self: *const IMediaRadioManager,
             ppCollection: ?*?*IRadioInstanceCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnSystemRadioStateChange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnSystemRadioStateChange: *const fn (
             self: *const IMediaRadioManager,
             sysRadioState: SYSTEM_RADIO_STATE,
             uTimeoutSec: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetRadioInstances(self: *const IMediaRadioManager, ppCollection: ?*?*IRadioInstanceCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetRadioInstances(self: *const IMediaRadioManager, ppCollection: ?*?*IRadioInstanceCollection) HRESULT {
         return self.vtable.GetRadioInstances(self, ppCollection);
     }
-    pub fn OnSystemRadioStateChange(self: *const IMediaRadioManager, sysRadioState: SYSTEM_RADIO_STATE, uTimeoutSec: u32) callconv(.Inline) HRESULT {
+    pub inline fn OnSystemRadioStateChange(self: *const IMediaRadioManager, sysRadioState: SYSTEM_RADIO_STATE, uTimeoutSec: u32) HRESULT {
         return self.vtable.OnSystemRadioStateChange(self, sysRadioState, uTimeoutSec);
     }
 };
@@ -3418,22 +3418,22 @@ pub const IID_IRadioInstanceCollection = &IID_IRadioInstanceCollection_Value;
 pub const IRadioInstanceCollection = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IRadioInstanceCollection,
             pcInstance: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IRadioInstanceCollection,
             uIndex: u32,
             ppRadioInstance: ?*?*IRadioInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IRadioInstanceCollection, pcInstance: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IRadioInstanceCollection, pcInstance: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pcInstance);
     }
-    pub fn GetAt(self: *const IRadioInstanceCollection, uIndex: u32, ppRadioInstance: ?*?*IRadioInstance) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IRadioInstanceCollection, uIndex: u32, ppRadioInstance: ?*?*IRadioInstance) HRESULT {
         return self.vtable.GetAt(self, uIndex, ppRadioInstance);
     }
 };
@@ -3443,56 +3443,56 @@ pub const IID_IRadioInstance = &IID_IRadioInstance_Value;
 pub const IRadioInstance = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetRadioManagerSignature: *const fn(
+        GetRadioManagerSignature: *const fn (
             self: *const IRadioInstance,
             pguidSignature: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInstanceSignature: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInstanceSignature: *const fn (
             self: *const IRadioInstance,
             pbstrId: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFriendlyName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFriendlyName: *const fn (
             self: *const IRadioInstance,
             lcid: u32,
             pbstrName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRadioState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRadioState: *const fn (
             self: *const IRadioInstance,
             pRadioState: ?*DEVICE_RADIO_STATE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetRadioState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetRadioState: *const fn (
             self: *const IRadioInstance,
             radioState: DEVICE_RADIO_STATE,
             uTimeoutSec: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsMultiComm: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsMultiComm: *const fn (
             self: *const IRadioInstance,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        IsAssociatingDevice: *const fn(
+        ) callconv(.winapi) BOOL,
+        IsAssociatingDevice: *const fn (
             self: *const IRadioInstance,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
+        ) callconv(.winapi) BOOL,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetRadioManagerSignature(self: *const IRadioInstance, pguidSignature: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn GetRadioManagerSignature(self: *const IRadioInstance, pguidSignature: ?*Guid) HRESULT {
         return self.vtable.GetRadioManagerSignature(self, pguidSignature);
     }
-    pub fn GetInstanceSignature(self: *const IRadioInstance, pbstrId: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetInstanceSignature(self: *const IRadioInstance, pbstrId: ?*?BSTR) HRESULT {
         return self.vtable.GetInstanceSignature(self, pbstrId);
     }
-    pub fn GetFriendlyName(self: *const IRadioInstance, lcid: u32, pbstrName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetFriendlyName(self: *const IRadioInstance, lcid: u32, pbstrName: ?*?BSTR) HRESULT {
         return self.vtable.GetFriendlyName(self, lcid, pbstrName);
     }
-    pub fn GetRadioState(self: *const IRadioInstance, pRadioState: ?*DEVICE_RADIO_STATE) callconv(.Inline) HRESULT {
+    pub inline fn GetRadioState(self: *const IRadioInstance, pRadioState: ?*DEVICE_RADIO_STATE) HRESULT {
         return self.vtable.GetRadioState(self, pRadioState);
     }
-    pub fn SetRadioState(self: *const IRadioInstance, radioState: DEVICE_RADIO_STATE, uTimeoutSec: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetRadioState(self: *const IRadioInstance, radioState: DEVICE_RADIO_STATE, uTimeoutSec: u32) HRESULT {
         return self.vtable.SetRadioState(self, radioState, uTimeoutSec);
     }
-    pub fn IsMultiComm(self: *const IRadioInstance) callconv(.Inline) BOOL {
+    pub inline fn IsMultiComm(self: *const IRadioInstance) BOOL {
         return self.vtable.IsMultiComm(self);
     }
-    pub fn IsAssociatingDevice(self: *const IRadioInstance) callconv(.Inline) BOOL {
+    pub inline fn IsAssociatingDevice(self: *const IRadioInstance) BOOL {
         return self.vtable.IsAssociatingDevice(self);
     }
 };
@@ -3502,33 +3502,32 @@ pub const IID_IMediaRadioManagerNotifySink = &IID_IMediaRadioManagerNotifySink_V
 pub const IMediaRadioManagerNotifySink = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnInstanceAdd: *const fn(
+        OnInstanceAdd: *const fn (
             self: *const IMediaRadioManagerNotifySink,
             pRadioInstance: ?*IRadioInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnInstanceRemove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnInstanceRemove: *const fn (
             self: *const IMediaRadioManagerNotifySink,
             bstrRadioInstanceId: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnInstanceRadioChange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnInstanceRadioChange: *const fn (
             self: *const IMediaRadioManagerNotifySink,
             bstrRadioInstanceId: ?BSTR,
             radioState: DEVICE_RADIO_STATE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnInstanceAdd(self: *const IMediaRadioManagerNotifySink, pRadioInstance: ?*IRadioInstance) callconv(.Inline) HRESULT {
+    pub inline fn OnInstanceAdd(self: *const IMediaRadioManagerNotifySink, pRadioInstance: ?*IRadioInstance) HRESULT {
         return self.vtable.OnInstanceAdd(self, pRadioInstance);
     }
-    pub fn OnInstanceRemove(self: *const IMediaRadioManagerNotifySink, bstrRadioInstanceId: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn OnInstanceRemove(self: *const IMediaRadioManagerNotifySink, bstrRadioInstanceId: ?BSTR) HRESULT {
         return self.vtable.OnInstanceRemove(self, bstrRadioInstanceId);
     }
-    pub fn OnInstanceRadioChange(self: *const IMediaRadioManagerNotifySink, bstrRadioInstanceId: ?BSTR, radioState: DEVICE_RADIO_STATE) callconv(.Inline) HRESULT {
+    pub inline fn OnInstanceRadioChange(self: *const IMediaRadioManagerNotifySink, bstrRadioInstanceId: ?BSTR, radioState: DEVICE_RADIO_STATE) HRESULT {
         return self.vtable.OnInstanceRadioChange(self, bstrRadioInstanceId, radioState);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (1)
@@ -3538,8 +3537,7 @@ pub extern "dmprocessxmlfiltered" fn DMProcessConfigXMLFiltered(
     rgszAllowedCspNodes: [*]?PWSTR,
     dwNumAllowedCspNodes: u32,
     pbstrXmlOut: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -3564,9 +3562,7 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 const ULARGE_INTEGER = @import("../foundation.zig").ULARGE_INTEGER;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

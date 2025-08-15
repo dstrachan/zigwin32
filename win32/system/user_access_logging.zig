@@ -14,32 +14,30 @@ pub const UAL_DATA_BLOB = extern struct {
     UserName: [260]u16,
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (4)
 //--------------------------------------------------------------------------------
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "ualapi" fn UalStart(
     Data: ?*UAL_DATA_BLOB,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "ualapi" fn UalStop(
     Data: ?*UAL_DATA_BLOB,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "ualapi" fn UalInstrument(
     Data: ?*UAL_DATA_BLOB,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "ualapi" fn UalRegisterProduct(
     wszProductName: ?[*:0]const u16,
     wszRoleName: ?[*:0]const u16,
     wszGuid: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -53,9 +51,7 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 const SOCKADDR_STORAGE = @import("../networking/win_sock.zig").SOCKADDR_STORAGE;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

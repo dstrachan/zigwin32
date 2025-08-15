@@ -11,19 +11,18 @@ pub const IID_IIsolatedEnvironmentInterop = &IID_IIsolatedEnvironmentInterop_Val
 pub const IIsolatedEnvironmentInterop = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetHostHwndInterop: *const fn(
+        GetHostHwndInterop: *const fn (
             self: *const IIsolatedEnvironmentInterop,
             containerHwnd: ?HWND,
             hostHwnd: ?*?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetHostHwndInterop(self: *const IIsolatedEnvironmentInterop, containerHwnd: ?HWND, hostHwnd: ?*?HWND) callconv(.Inline) HRESULT {
+    pub inline fn GetHostHwndInterop(self: *const IIsolatedEnvironmentInterop, containerHwnd: ?HWND, hostHwnd: ?*?HWND) HRESULT {
         return self.vtable.GetHostHwndInterop(self, containerHwnd, hostHwnd);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -41,9 +40,7 @@ const HWND = @import("../../foundation.zig").HWND;
 const IUnknown = @import("../../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

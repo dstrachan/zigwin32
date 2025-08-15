@@ -12,17 +12,17 @@ pub const IID_IRadialControllerInterop = &IID_IRadialControllerInterop_Value;
 pub const IRadialControllerInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CreateForWindow: *const fn(
+        CreateForWindow: *const fn (
             self: *const IRadialControllerInterop,
             hwnd: ?HWND,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CreateForWindow(self: *const IRadialControllerInterop, hwnd: ?HWND, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateForWindow(self: *const IRadialControllerInterop, hwnd: ?HWND, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.CreateForWindow(self, hwnd, riid, ppv);
     }
 };
@@ -33,17 +33,17 @@ pub const IID_IRadialControllerConfigurationInterop = &IID_IRadialControllerConf
 pub const IRadialControllerConfigurationInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        GetForWindow: *const fn(
+        GetForWindow: *const fn (
             self: *const IRadialControllerConfigurationInterop,
             hwnd: ?HWND,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn GetForWindow(self: *const IRadialControllerConfigurationInterop, hwnd: ?HWND, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetForWindow(self: *const IRadialControllerConfigurationInterop, hwnd: ?HWND, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetForWindow(self, hwnd, riid, ppv);
     }
 };
@@ -53,21 +53,20 @@ pub const IID_IRadialControllerIndependentInputSourceInterop = &IID_IRadialContr
 pub const IRadialControllerIndependentInputSourceInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CreateForWindow: *const fn(
+        CreateForWindow: *const fn (
             self: *const IRadialControllerIndependentInputSourceInterop,
             hwnd: ?HWND,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CreateForWindow(self: *const IRadialControllerIndependentInputSourceInterop, hwnd: ?HWND, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateForWindow(self: *const IRadialControllerIndependentInputSourceInterop, hwnd: ?HWND, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.CreateForWindow(self, hwnd, riid, ppv);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -86,9 +85,7 @@ const IInspectable = @import("../../system/win_rt.zig").IInspectable;
 const IUnknown = @import("../../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

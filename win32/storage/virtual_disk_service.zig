@@ -1352,36 +1352,36 @@ pub const IID_IEnumVdsObject = &IID_IEnumVdsObject_Value;
 pub const IEnumVdsObject = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Next: *const fn(
+        Next: *const fn (
             self: *const IEnumVdsObject,
             celt: u32,
             ppObjectArray: [*]?*IUnknown,
             pcFetched: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumVdsObject,
             celt: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumVdsObject,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Next(self: *const IEnumVdsObject, celt: u32, ppObjectArray: [*]?*IUnknown, pcFetched: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumVdsObject, celt: u32, ppObjectArray: [*]?*IUnknown, pcFetched: ?*u32) HRESULT {
         return self.vtable.Next(self, celt, ppObjectArray, pcFetched);
     }
-    pub fn Skip(self: *const IEnumVdsObject, celt: u32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumVdsObject, celt: u32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
-    pub fn Reset(self: *const IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumVdsObject) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Clone(self: *const IEnumVdsObject, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumVdsObject, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.Clone(self, ppEnum);
     }
 };
@@ -1392,29 +1392,29 @@ pub const IID_IVdsAsync = &IID_IVdsAsync_Value;
 pub const IVdsAsync = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Cancel: *const fn(
+        Cancel: *const fn (
             self: *const IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Wait: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Wait: *const fn (
             self: *const IVdsAsync,
             pHrResult: ?*HRESULT,
             pAsyncOut: ?*VDS_ASYNC_OUTPUT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryStatus: *const fn (
             self: *const IVdsAsync,
             pHrResult: ?*HRESULT,
             pulPercentCompleted: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Cancel(self: *const IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IVdsAsync) HRESULT {
         return self.vtable.Cancel(self);
     }
-    pub fn Wait(self: *const IVdsAsync, pHrResult: ?*HRESULT, pAsyncOut: ?*VDS_ASYNC_OUTPUT) callconv(.Inline) HRESULT {
+    pub inline fn Wait(self: *const IVdsAsync, pHrResult: ?*HRESULT, pAsyncOut: ?*VDS_ASYNC_OUTPUT) HRESULT {
         return self.vtable.Wait(self, pHrResult, pAsyncOut);
     }
-    pub fn QueryStatus(self: *const IVdsAsync, pHrResult: ?*HRESULT, pulPercentCompleted: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn QueryStatus(self: *const IVdsAsync, pHrResult: ?*HRESULT, pulPercentCompleted: ?*u32) HRESULT {
         return self.vtable.QueryStatus(self, pHrResult, pulPercentCompleted);
     }
 };
@@ -1425,15 +1425,15 @@ pub const IID_IVdsAdviseSink = &IID_IVdsAdviseSink_Value;
 pub const IVdsAdviseSink = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnNotify: *const fn(
+        OnNotify: *const fn (
             self: *const IVdsAdviseSink,
             lNumberOfNotifications: i32,
             pNotificationArray: [*]VDS_NOTIFICATION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnNotify(self: *const IVdsAdviseSink, lNumberOfNotifications: i32, pNotificationArray: [*]VDS_NOTIFICATION) callconv(.Inline) HRESULT {
+    pub inline fn OnNotify(self: *const IVdsAdviseSink, lNumberOfNotifications: i32, pNotificationArray: [*]VDS_NOTIFICATION) HRESULT {
         return self.vtable.OnNotify(self, lNumberOfNotifications, pNotificationArray);
     }
 };
@@ -1444,14 +1444,14 @@ pub const IID_IVdsProvider = &IID_IVdsProvider_Value;
 pub const IVdsProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsProvider,
             pProviderProp: ?*VDS_PROVIDER_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsProvider, pProviderProp: ?*VDS_PROVIDER_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsProvider, pProviderProp: ?*VDS_PROVIDER_PROP) HRESULT {
         return self.vtable.GetProperties(self, pProviderProp);
     }
 };
@@ -1462,14 +1462,14 @@ pub const IID_IVdsProviderSupport = &IID_IVdsProviderSupport_Value;
 pub const IVdsProviderSupport = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetVersionSupport: *const fn(
+        GetVersionSupport: *const fn (
             self: *const IVdsProviderSupport,
             ulVersionSupport: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetVersionSupport(self: *const IVdsProviderSupport, ulVersionSupport: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetVersionSupport(self: *const IVdsProviderSupport, ulVersionSupport: ?*u32) HRESULT {
         return self.vtable.GetVersionSupport(self, ulVersionSupport);
     }
 };
@@ -1480,31 +1480,31 @@ pub const IID_IVdsProviderPrivate = &IID_IVdsProviderPrivate_Value;
 pub const IVdsProviderPrivate = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetObject: *const fn(
+        GetObject: *const fn (
             self: *const IVdsProviderPrivate,
             ObjectId: Guid,
             type: VDS_OBJECT_TYPE,
             ppObjectUnk: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnLoad: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnLoad: *const fn (
             self: *const IVdsProviderPrivate,
             pwszMachineName: ?PWSTR,
             pCallbackObject: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnUnload: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnUnload: *const fn (
             self: *const IVdsProviderPrivate,
             bForceUnload: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetObject(self: *const IVdsProviderPrivate, ObjectId: Guid, @"type": VDS_OBJECT_TYPE, ppObjectUnk: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetObject(self: *const IVdsProviderPrivate, ObjectId: Guid, @"type": VDS_OBJECT_TYPE, ppObjectUnk: ?*?*IUnknown) HRESULT {
         return self.vtable.GetObject(self, ObjectId, @"type", ppObjectUnk);
     }
-    pub fn OnLoad(self: *const IVdsProviderPrivate, pwszMachineName: ?PWSTR, pCallbackObject: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn OnLoad(self: *const IVdsProviderPrivate, pwszMachineName: ?PWSTR, pCallbackObject: ?*IUnknown) HRESULT {
         return self.vtable.OnLoad(self, pwszMachineName, pCallbackObject);
     }
-    pub fn OnUnload(self: *const IVdsProviderPrivate, bForceUnload: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn OnUnload(self: *const IVdsProviderPrivate, bForceUnload: BOOL) HRESULT {
         return self.vtable.OnUnload(self, bForceUnload);
     }
 };
@@ -2159,26 +2159,26 @@ pub const IID_IVdsHwProvider = &IID_IVdsHwProvider_Value;
 pub const IVdsHwProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QuerySubSystems: *const fn(
+        QuerySubSystems: *const fn (
             self: *const IVdsHwProvider,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reenumerate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reenumerate: *const fn (
             self: *const IVdsHwProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Refresh: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Refresh: *const fn (
             self: *const IVdsHwProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QuerySubSystems(self: *const IVdsHwProvider, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QuerySubSystems(self: *const IVdsHwProvider, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QuerySubSystems(self, ppEnum);
     }
-    pub fn Reenumerate(self: *const IVdsHwProvider) callconv(.Inline) HRESULT {
+    pub inline fn Reenumerate(self: *const IVdsHwProvider) HRESULT {
         return self.vtable.Reenumerate(self);
     }
-    pub fn Refresh(self: *const IVdsHwProvider) callconv(.Inline) HRESULT {
+    pub inline fn Refresh(self: *const IVdsHwProvider) HRESULT {
         return self.vtable.Refresh(self);
     }
 };
@@ -2189,14 +2189,14 @@ pub const IID_IVdsHwProviderType = &IID_IVdsHwProviderType_Value;
 pub const IVdsHwProviderType = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProviderType: *const fn(
+        GetProviderType: *const fn (
             self: *const IVdsHwProviderType,
             pType: ?*VDS_HWPROVIDER_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProviderType(self: *const IVdsHwProviderType, pType: ?*VDS_HWPROVIDER_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetProviderType(self: *const IVdsHwProviderType, pType: ?*VDS_HWPROVIDER_TYPE) HRESULT {
         return self.vtable.GetProviderType(self, pType);
     }
 };
@@ -2207,14 +2207,14 @@ pub const IID_IVdsHwProviderType2 = &IID_IVdsHwProviderType2_Value;
 pub const IVdsHwProviderType2 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProviderType2: *const fn(
+        GetProviderType2: *const fn (
             self: *const IVdsHwProviderType2,
             pType: ?*VDS_HWPROVIDER_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProviderType2(self: *const IVdsHwProviderType2, pType: ?*VDS_HWPROVIDER_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetProviderType2(self: *const IVdsHwProviderType2, pType: ?*VDS_HWPROVIDER_TYPE) HRESULT {
         return self.vtable.GetProviderType2(self, pType);
     }
 };
@@ -2225,14 +2225,14 @@ pub const IID_IVdsHwProviderStoragePools = &IID_IVdsHwProviderStoragePools_Value
 pub const IVdsHwProviderStoragePools = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QueryStoragePools: *const fn(
+        QueryStoragePools: *const fn (
             self: *const IVdsHwProviderStoragePools,
             ulFlags: u32,
             ullRemainingFreeSpace: u64,
             pPoolAttributes: ?*VDS_POOL_ATTRIBUTES,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateLunInStoragePool: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateLunInStoragePool: *const fn (
             self: *const IVdsHwProviderStoragePools,
             type: VDS_LUN_TYPE,
             ullSizeInBytes: u64,
@@ -2240,24 +2240,24 @@ pub const IVdsHwProviderStoragePools = extern union {
             pwszUnmaskingList: ?PWSTR,
             pHints2: ?*VDS_HINTS2,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryMaxLunCreateSizeInStoragePool: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryMaxLunCreateSizeInStoragePool: *const fn (
             self: *const IVdsHwProviderStoragePools,
             type: VDS_LUN_TYPE,
             StoragePoolId: Guid,
             pHints2: ?*VDS_HINTS2,
             pullMaxLunSize: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QueryStoragePools(self: *const IVdsHwProviderStoragePools, ulFlags: u32, ullRemainingFreeSpace: u64, pPoolAttributes: ?*VDS_POOL_ATTRIBUTES, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryStoragePools(self: *const IVdsHwProviderStoragePools, ulFlags: u32, ullRemainingFreeSpace: u64, pPoolAttributes: ?*VDS_POOL_ATTRIBUTES, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryStoragePools(self, ulFlags, ullRemainingFreeSpace, pPoolAttributes, ppEnum);
     }
-    pub fn CreateLunInStoragePool(self: *const IVdsHwProviderStoragePools, @"type": VDS_LUN_TYPE, ullSizeInBytes: u64, StoragePoolId: Guid, pwszUnmaskingList: ?PWSTR, pHints2: ?*VDS_HINTS2, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn CreateLunInStoragePool(self: *const IVdsHwProviderStoragePools, @"type": VDS_LUN_TYPE, ullSizeInBytes: u64, StoragePoolId: Guid, pwszUnmaskingList: ?PWSTR, pHints2: ?*VDS_HINTS2, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.CreateLunInStoragePool(self, @"type", ullSizeInBytes, StoragePoolId, pwszUnmaskingList, pHints2, ppAsync);
     }
-    pub fn QueryMaxLunCreateSizeInStoragePool(self: *const IVdsHwProviderStoragePools, @"type": VDS_LUN_TYPE, StoragePoolId: Guid, pHints2: ?*VDS_HINTS2, pullMaxLunSize: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn QueryMaxLunCreateSizeInStoragePool(self: *const IVdsHwProviderStoragePools, @"type": VDS_LUN_TYPE, StoragePoolId: Guid, pHints2: ?*VDS_HINTS2, pullMaxLunSize: ?*u64) HRESULT {
         return self.vtable.QueryMaxLunCreateSizeInStoragePool(self, @"type", StoragePoolId, pHints2, pullMaxLunSize);
     }
 };
@@ -2268,43 +2268,43 @@ pub const IID_IVdsSubSystem = &IID_IVdsSubSystem_Value;
 pub const IVdsSubSystem = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsSubSystem,
             pSubSystemProp: ?*VDS_SUB_SYSTEM_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProvider: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProvider: *const fn (
             self: *const IVdsSubSystem,
             ppProvider: ?*?*IVdsProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryControllers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryControllers: *const fn (
             self: *const IVdsSubSystem,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryLuns: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryLuns: *const fn (
             self: *const IVdsSubSystem,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryDrives: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryDrives: *const fn (
             self: *const IVdsSubSystem,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDrive: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDrive: *const fn (
             self: *const IVdsSubSystem,
             sBusNumber: i16,
             sSlotNumber: i16,
             ppDrive: ?*?*IVdsDrive,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reenumerate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reenumerate: *const fn (
             self: *const IVdsSubSystem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetControllerStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetControllerStatus: *const fn (
             self: *const IVdsSubSystem,
             pOnlineControllerIdArray: [*]Guid,
             lNumberOfOnlineControllers: i32,
             pOfflineControllerIdArray: [*]Guid,
             lNumberOfOfflineControllers: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateLun: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateLun: *const fn (
             self: *const IVdsSubSystem,
             type: VDS_LUN_TYPE,
             ullSizeInBytes: u64,
@@ -2313,61 +2313,61 @@ pub const IVdsSubSystem = extern union {
             pwszUnmaskingList: ?PWSTR,
             pHints: ?*VDS_HINTS,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReplaceDrive: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReplaceDrive: *const fn (
             self: *const IVdsSubSystem,
             DriveToBeReplaced: Guid,
             ReplacementDrive: Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStatus: *const fn (
             self: *const IVdsSubSystem,
             status: VDS_SUB_SYSTEM_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryMaxLunCreateSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryMaxLunCreateSize: *const fn (
             self: *const IVdsSubSystem,
             type: VDS_LUN_TYPE,
             pDriveIdArray: ?[*]Guid,
             lNumberOfDrives: i32,
             pHints: ?*VDS_HINTS,
             pullMaxLunSize: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsSubSystem, pSubSystemProp: ?*VDS_SUB_SYSTEM_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsSubSystem, pSubSystemProp: ?*VDS_SUB_SYSTEM_PROP) HRESULT {
         return self.vtable.GetProperties(self, pSubSystemProp);
     }
-    pub fn GetProvider(self: *const IVdsSubSystem, ppProvider: ?*?*IVdsProvider) callconv(.Inline) HRESULT {
+    pub inline fn GetProvider(self: *const IVdsSubSystem, ppProvider: ?*?*IVdsProvider) HRESULT {
         return self.vtable.GetProvider(self, ppProvider);
     }
-    pub fn QueryControllers(self: *const IVdsSubSystem, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryControllers(self: *const IVdsSubSystem, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryControllers(self, ppEnum);
     }
-    pub fn QueryLuns(self: *const IVdsSubSystem, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryLuns(self: *const IVdsSubSystem, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryLuns(self, ppEnum);
     }
-    pub fn QueryDrives(self: *const IVdsSubSystem, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryDrives(self: *const IVdsSubSystem, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryDrives(self, ppEnum);
     }
-    pub fn GetDrive(self: *const IVdsSubSystem, sBusNumber: i16, sSlotNumber: i16, ppDrive: ?*?*IVdsDrive) callconv(.Inline) HRESULT {
+    pub inline fn GetDrive(self: *const IVdsSubSystem, sBusNumber: i16, sSlotNumber: i16, ppDrive: ?*?*IVdsDrive) HRESULT {
         return self.vtable.GetDrive(self, sBusNumber, sSlotNumber, ppDrive);
     }
-    pub fn Reenumerate(self: *const IVdsSubSystem) callconv(.Inline) HRESULT {
+    pub inline fn Reenumerate(self: *const IVdsSubSystem) HRESULT {
         return self.vtable.Reenumerate(self);
     }
-    pub fn SetControllerStatus(self: *const IVdsSubSystem, pOnlineControllerIdArray: [*]Guid, lNumberOfOnlineControllers: i32, pOfflineControllerIdArray: [*]Guid, lNumberOfOfflineControllers: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetControllerStatus(self: *const IVdsSubSystem, pOnlineControllerIdArray: [*]Guid, lNumberOfOnlineControllers: i32, pOfflineControllerIdArray: [*]Guid, lNumberOfOfflineControllers: i32) HRESULT {
         return self.vtable.SetControllerStatus(self, pOnlineControllerIdArray, lNumberOfOnlineControllers, pOfflineControllerIdArray, lNumberOfOfflineControllers);
     }
-    pub fn CreateLun(self: *const IVdsSubSystem, @"type": VDS_LUN_TYPE, ullSizeInBytes: u64, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pwszUnmaskingList: ?PWSTR, pHints: ?*VDS_HINTS, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn CreateLun(self: *const IVdsSubSystem, @"type": VDS_LUN_TYPE, ullSizeInBytes: u64, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pwszUnmaskingList: ?PWSTR, pHints: ?*VDS_HINTS, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.CreateLun(self, @"type", ullSizeInBytes, pDriveIdArray, lNumberOfDrives, pwszUnmaskingList, pHints, ppAsync);
     }
-    pub fn ReplaceDrive(self: *const IVdsSubSystem, DriveToBeReplaced: Guid, ReplacementDrive: Guid) callconv(.Inline) HRESULT {
+    pub inline fn ReplaceDrive(self: *const IVdsSubSystem, DriveToBeReplaced: Guid, ReplacementDrive: Guid) HRESULT {
         return self.vtable.ReplaceDrive(self, DriveToBeReplaced, ReplacementDrive);
     }
-    pub fn SetStatus(self: *const IVdsSubSystem, status: VDS_SUB_SYSTEM_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn SetStatus(self: *const IVdsSubSystem, status: VDS_SUB_SYSTEM_STATUS) HRESULT {
         return self.vtable.SetStatus(self, status);
     }
-    pub fn QueryMaxLunCreateSize(self: *const IVdsSubSystem, @"type": VDS_LUN_TYPE, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pHints: ?*VDS_HINTS, pullMaxLunSize: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn QueryMaxLunCreateSize(self: *const IVdsSubSystem, @"type": VDS_LUN_TYPE, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pHints: ?*VDS_HINTS, pullMaxLunSize: ?*u64) HRESULT {
         return self.vtable.QueryMaxLunCreateSize(self, @"type", pDriveIdArray, lNumberOfDrives, pHints, pullMaxLunSize);
     }
 };
@@ -2378,18 +2378,18 @@ pub const IID_IVdsSubSystem2 = &IID_IVdsSubSystem2_Value;
 pub const IVdsSubSystem2 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties2: *const fn(
+        GetProperties2: *const fn (
             self: *const IVdsSubSystem2,
             pSubSystemProp2: ?*VDS_SUB_SYSTEM_PROP2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDrive2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDrive2: *const fn (
             self: *const IVdsSubSystem2,
             sBusNumber: i16,
             sSlotNumber: i16,
             ulEnclosureNumber: u32,
             ppDrive: ?*?*IVdsDrive,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateLun2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateLun2: *const fn (
             self: *const IVdsSubSystem2,
             type: VDS_LUN_TYPE,
             ullSizeInBytes: u64,
@@ -2398,28 +2398,28 @@ pub const IVdsSubSystem2 = extern union {
             pwszUnmaskingList: ?PWSTR,
             pHints2: ?*VDS_HINTS2,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryMaxLunCreateSize2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryMaxLunCreateSize2: *const fn (
             self: *const IVdsSubSystem2,
             type: VDS_LUN_TYPE,
             pDriveIdArray: ?[*]Guid,
             lNumberOfDrives: i32,
             pHints2: ?*VDS_HINTS2,
             pullMaxLunSize: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties2(self: *const IVdsSubSystem2, pSubSystemProp2: ?*VDS_SUB_SYSTEM_PROP2) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties2(self: *const IVdsSubSystem2, pSubSystemProp2: ?*VDS_SUB_SYSTEM_PROP2) HRESULT {
         return self.vtable.GetProperties2(self, pSubSystemProp2);
     }
-    pub fn GetDrive2(self: *const IVdsSubSystem2, sBusNumber: i16, sSlotNumber: i16, ulEnclosureNumber: u32, ppDrive: ?*?*IVdsDrive) callconv(.Inline) HRESULT {
+    pub inline fn GetDrive2(self: *const IVdsSubSystem2, sBusNumber: i16, sSlotNumber: i16, ulEnclosureNumber: u32, ppDrive: ?*?*IVdsDrive) HRESULT {
         return self.vtable.GetDrive2(self, sBusNumber, sSlotNumber, ulEnclosureNumber, ppDrive);
     }
-    pub fn CreateLun2(self: *const IVdsSubSystem2, @"type": VDS_LUN_TYPE, ullSizeInBytes: u64, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pwszUnmaskingList: ?PWSTR, pHints2: ?*VDS_HINTS2, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn CreateLun2(self: *const IVdsSubSystem2, @"type": VDS_LUN_TYPE, ullSizeInBytes: u64, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pwszUnmaskingList: ?PWSTR, pHints2: ?*VDS_HINTS2, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.CreateLun2(self, @"type", ullSizeInBytes, pDriveIdArray, lNumberOfDrives, pwszUnmaskingList, pHints2, ppAsync);
     }
-    pub fn QueryMaxLunCreateSize2(self: *const IVdsSubSystem2, @"type": VDS_LUN_TYPE, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pHints2: ?*VDS_HINTS2, pullMaxLunSize: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn QueryMaxLunCreateSize2(self: *const IVdsSubSystem2, @"type": VDS_LUN_TYPE, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pHints2: ?*VDS_HINTS2, pullMaxLunSize: ?*u64) HRESULT {
         return self.vtable.QueryMaxLunCreateSize2(self, @"type", pDriveIdArray, lNumberOfDrives, pHints2, pullMaxLunSize);
     }
 };
@@ -2430,14 +2430,14 @@ pub const IID_IVdsSubSystemNaming = &IID_IVdsSubSystemNaming_Value;
 pub const IVdsSubSystemNaming = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetFriendlyName: *const fn(
+        SetFriendlyName: *const fn (
             self: *const IVdsSubSystemNaming,
             pwszFriendlyName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetFriendlyName(self: *const IVdsSubSystemNaming, pwszFriendlyName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetFriendlyName(self: *const IVdsSubSystemNaming, pwszFriendlyName: ?PWSTR) HRESULT {
         return self.vtable.SetFriendlyName(self, pwszFriendlyName);
     }
 };
@@ -2448,37 +2448,37 @@ pub const IID_IVdsSubSystemIscsi = &IID_IVdsSubSystemIscsi_Value;
 pub const IVdsSubSystemIscsi = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QueryTargets: *const fn(
+        QueryTargets: *const fn (
             self: *const IVdsSubSystemIscsi,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryPortals: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryPortals: *const fn (
             self: *const IVdsSubSystemIscsi,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateTarget: *const fn (
             self: *const IVdsSubSystemIscsi,
             pwszIscsiName: ?PWSTR,
             pwszFriendlyName: ?PWSTR,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIpsecGroupPresharedKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIpsecGroupPresharedKey: *const fn (
             self: *const IVdsSubSystemIscsi,
             pIpsecKey: ?*VDS_ISCSI_IPSEC_KEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QueryTargets(self: *const IVdsSubSystemIscsi, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryTargets(self: *const IVdsSubSystemIscsi, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryTargets(self, ppEnum);
     }
-    pub fn QueryPortals(self: *const IVdsSubSystemIscsi, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryPortals(self: *const IVdsSubSystemIscsi, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryPortals(self, ppEnum);
     }
-    pub fn CreateTarget(self: *const IVdsSubSystemIscsi, pwszIscsiName: ?PWSTR, pwszFriendlyName: ?PWSTR, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn CreateTarget(self: *const IVdsSubSystemIscsi, pwszIscsiName: ?PWSTR, pwszFriendlyName: ?PWSTR, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.CreateTarget(self, pwszIscsiName, pwszFriendlyName, ppAsync);
     }
-    pub fn SetIpsecGroupPresharedKey(self: *const IVdsSubSystemIscsi, pIpsecKey: ?*VDS_ISCSI_IPSEC_KEY) callconv(.Inline) HRESULT {
+    pub inline fn SetIpsecGroupPresharedKey(self: *const IVdsSubSystemIscsi, pIpsecKey: ?*VDS_ISCSI_IPSEC_KEY) HRESULT {
         return self.vtable.SetIpsecGroupPresharedKey(self, pIpsecKey);
     }
 };
@@ -2489,14 +2489,14 @@ pub const IID_IVdsSubSystemInterconnect = &IID_IVdsSubSystemInterconnect_Value;
 pub const IVdsSubSystemInterconnect = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetSupportedInterconnects: *const fn(
+        GetSupportedInterconnects: *const fn (
             self: *const IVdsSubSystemInterconnect,
             pulSupportedInterconnectsFlag: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetSupportedInterconnects(self: *const IVdsSubSystemInterconnect, pulSupportedInterconnectsFlag: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedInterconnects(self: *const IVdsSubSystemInterconnect, pulSupportedInterconnectsFlag: ?*u32) HRESULT {
         return self.vtable.GetSupportedInterconnects(self, pulSupportedInterconnectsFlag);
     }
 };
@@ -2507,41 +2507,41 @@ pub const IID_IVdsControllerPort = &IID_IVdsControllerPort_Value;
 pub const IVdsControllerPort = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsControllerPort,
             pPortProp: ?*VDS_PORT_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetController: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetController: *const fn (
             self: *const IVdsControllerPort,
             ppController: ?*?*IVdsController,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryAssociatedLuns: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryAssociatedLuns: *const fn (
             self: *const IVdsControllerPort,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IVdsControllerPort,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStatus: *const fn (
             self: *const IVdsControllerPort,
             status: VDS_PORT_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsControllerPort, pPortProp: ?*VDS_PORT_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsControllerPort, pPortProp: ?*VDS_PORT_PROP) HRESULT {
         return self.vtable.GetProperties(self, pPortProp);
     }
-    pub fn GetController(self: *const IVdsControllerPort, ppController: ?*?*IVdsController) callconv(.Inline) HRESULT {
+    pub inline fn GetController(self: *const IVdsControllerPort, ppController: ?*?*IVdsController) HRESULT {
         return self.vtable.GetController(self, ppController);
     }
-    pub fn QueryAssociatedLuns(self: *const IVdsControllerPort, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryAssociatedLuns(self: *const IVdsControllerPort, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryAssociatedLuns(self, ppEnum);
     }
-    pub fn Reset(self: *const IVdsControllerPort) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IVdsControllerPort) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn SetStatus(self: *const IVdsControllerPort, status: VDS_PORT_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn SetStatus(self: *const IVdsControllerPort, status: VDS_PORT_STATUS) HRESULT {
         return self.vtable.SetStatus(self, status);
     }
 };
@@ -2552,61 +2552,61 @@ pub const IID_IVdsController = &IID_IVdsController_Value;
 pub const IVdsController = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsController,
             pControllerProp: ?*VDS_CONTROLLER_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSubSystem: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSubSystem: *const fn (
             self: *const IVdsController,
             ppSubSystem: ?*?*IVdsSubSystem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPortProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPortProperties: *const fn (
             self: *const IVdsController,
             sPortNumber: i16,
             pPortProp: ?*VDS_PORT_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FlushCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FlushCache: *const fn (
             self: *const IVdsController,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InvalidateCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InvalidateCache: *const fn (
             self: *const IVdsController,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IVdsController,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryAssociatedLuns: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryAssociatedLuns: *const fn (
             self: *const IVdsController,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStatus: *const fn (
             self: *const IVdsController,
             status: VDS_CONTROLLER_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsController, pControllerProp: ?*VDS_CONTROLLER_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsController, pControllerProp: ?*VDS_CONTROLLER_PROP) HRESULT {
         return self.vtable.GetProperties(self, pControllerProp);
     }
-    pub fn GetSubSystem(self: *const IVdsController, ppSubSystem: ?*?*IVdsSubSystem) callconv(.Inline) HRESULT {
+    pub inline fn GetSubSystem(self: *const IVdsController, ppSubSystem: ?*?*IVdsSubSystem) HRESULT {
         return self.vtable.GetSubSystem(self, ppSubSystem);
     }
-    pub fn GetPortProperties(self: *const IVdsController, sPortNumber: i16, pPortProp: ?*VDS_PORT_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetPortProperties(self: *const IVdsController, sPortNumber: i16, pPortProp: ?*VDS_PORT_PROP) HRESULT {
         return self.vtable.GetPortProperties(self, sPortNumber, pPortProp);
     }
-    pub fn FlushCache(self: *const IVdsController) callconv(.Inline) HRESULT {
+    pub inline fn FlushCache(self: *const IVdsController) HRESULT {
         return self.vtable.FlushCache(self);
     }
-    pub fn InvalidateCache(self: *const IVdsController) callconv(.Inline) HRESULT {
+    pub inline fn InvalidateCache(self: *const IVdsController) HRESULT {
         return self.vtable.InvalidateCache(self);
     }
-    pub fn Reset(self: *const IVdsController) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IVdsController) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn QueryAssociatedLuns(self: *const IVdsController, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryAssociatedLuns(self: *const IVdsController, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryAssociatedLuns(self, ppEnum);
     }
-    pub fn SetStatus(self: *const IVdsController, status: VDS_CONTROLLER_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn SetStatus(self: *const IVdsController, status: VDS_CONTROLLER_STATUS) HRESULT {
         return self.vtable.SetStatus(self, status);
     }
 };
@@ -2617,14 +2617,14 @@ pub const IID_IVdsControllerControllerPort = &IID_IVdsControllerControllerPort_V
 pub const IVdsControllerControllerPort = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QueryControllerPorts: *const fn(
+        QueryControllerPorts: *const fn (
             self: *const IVdsControllerControllerPort,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QueryControllerPorts(self: *const IVdsControllerControllerPort, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryControllerPorts(self: *const IVdsControllerControllerPort, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryControllerPorts(self, ppEnum);
     }
 };
@@ -2635,50 +2635,50 @@ pub const IID_IVdsDrive = &IID_IVdsDrive_Value;
 pub const IVdsDrive = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsDrive,
             pDriveProp: ?*VDS_DRIVE_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSubSystem: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSubSystem: *const fn (
             self: *const IVdsDrive,
             ppSubSystem: ?*?*IVdsSubSystem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryExtents: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryExtents: *const fn (
             self: *const IVdsDrive,
             ppExtentArray: [*]?*VDS_DRIVE_EXTENT,
             plNumberOfExtents: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFlags: *const fn (
             self: *const IVdsDrive,
             ulFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ClearFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ClearFlags: *const fn (
             self: *const IVdsDrive,
             ulFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStatus: *const fn (
             self: *const IVdsDrive,
             status: VDS_DRIVE_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsDrive, pDriveProp: ?*VDS_DRIVE_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsDrive, pDriveProp: ?*VDS_DRIVE_PROP) HRESULT {
         return self.vtable.GetProperties(self, pDriveProp);
     }
-    pub fn GetSubSystem(self: *const IVdsDrive, ppSubSystem: ?*?*IVdsSubSystem) callconv(.Inline) HRESULT {
+    pub inline fn GetSubSystem(self: *const IVdsDrive, ppSubSystem: ?*?*IVdsSubSystem) HRESULT {
         return self.vtable.GetSubSystem(self, ppSubSystem);
     }
-    pub fn QueryExtents(self: *const IVdsDrive, ppExtentArray: [*]?*VDS_DRIVE_EXTENT, plNumberOfExtents: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn QueryExtents(self: *const IVdsDrive, ppExtentArray: [*]?*VDS_DRIVE_EXTENT, plNumberOfExtents: ?*i32) HRESULT {
         return self.vtable.QueryExtents(self, ppExtentArray, plNumberOfExtents);
     }
-    pub fn SetFlags(self: *const IVdsDrive, ulFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetFlags(self: *const IVdsDrive, ulFlags: u32) HRESULT {
         return self.vtable.SetFlags(self, ulFlags);
     }
-    pub fn ClearFlags(self: *const IVdsDrive, ulFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn ClearFlags(self: *const IVdsDrive, ulFlags: u32) HRESULT {
         return self.vtable.ClearFlags(self, ulFlags);
     }
-    pub fn SetStatus(self: *const IVdsDrive, status: VDS_DRIVE_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn SetStatus(self: *const IVdsDrive, status: VDS_DRIVE_STATUS) HRESULT {
         return self.vtable.SetStatus(self, status);
     }
 };
@@ -2689,14 +2689,14 @@ pub const IID_IVdsDrive2 = &IID_IVdsDrive2_Value;
 pub const IVdsDrive2 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties2: *const fn(
+        GetProperties2: *const fn (
             self: *const IVdsDrive2,
             pDriveProp2: ?*VDS_DRIVE_PROP2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties2(self: *const IVdsDrive2, pDriveProp2: ?*VDS_DRIVE_PROP2) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties2(self: *const IVdsDrive2, pDriveProp2: ?*VDS_DRIVE_PROP2) HRESULT {
         return self.vtable.GetProperties2(self, pDriveProp2);
     }
 };
@@ -2707,136 +2707,136 @@ pub const IID_IVdsLun = &IID_IVdsLun_Value;
 pub const IVdsLun = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsLun,
             pLunProp: ?*VDS_LUN_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSubSystem: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSubSystem: *const fn (
             self: *const IVdsLun,
             ppSubSystem: ?*?*IVdsSubSystem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIdentificationData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIdentificationData: *const fn (
             self: *const IVdsLun,
             pLunInfo: ?*VDS_LUN_INFORMATION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryActiveControllers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryActiveControllers: *const fn (
             self: *const IVdsLun,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Extend: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Extend: *const fn (
             self: *const IVdsLun,
             ullNumberOfBytesToAdd: u64,
             pDriveIdArray: ?[*]Guid,
             lNumberOfDrives: i32,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Shrink: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Shrink: *const fn (
             self: *const IVdsLun,
             ullNumberOfBytesToRemove: u64,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryPlexes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryPlexes: *const fn (
             self: *const IVdsLun,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPlex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPlex: *const fn (
             self: *const IVdsLun,
             lunId: Guid,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemovePlex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemovePlex: *const fn (
             self: *const IVdsLun,
             plexId: Guid,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Recover: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Recover: *const fn (
             self: *const IVdsLun,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetMask: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetMask: *const fn (
             self: *const IVdsLun,
             pwszUnmaskingList: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IVdsLun,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AssociateControllers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AssociateControllers: *const fn (
             self: *const IVdsLun,
             pActiveControllerIdArray: ?[*]Guid,
             lNumberOfActiveControllers: i32,
             pInactiveControllerIdArray: ?[*]Guid,
             lNumberOfInactiveControllers: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryHints: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryHints: *const fn (
             self: *const IVdsLun,
             pHints: ?*VDS_HINTS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ApplyHints: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ApplyHints: *const fn (
             self: *const IVdsLun,
             pHints: ?*VDS_HINTS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStatus: *const fn (
             self: *const IVdsLun,
             status: VDS_LUN_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryMaxLunExtendSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryMaxLunExtendSize: *const fn (
             self: *const IVdsLun,
             pDriveIdArray: ?[*]Guid,
             lNumberOfDrives: i32,
             pullMaxBytesToBeAdded: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsLun, pLunProp: ?*VDS_LUN_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsLun, pLunProp: ?*VDS_LUN_PROP) HRESULT {
         return self.vtable.GetProperties(self, pLunProp);
     }
-    pub fn GetSubSystem(self: *const IVdsLun, ppSubSystem: ?*?*IVdsSubSystem) callconv(.Inline) HRESULT {
+    pub inline fn GetSubSystem(self: *const IVdsLun, ppSubSystem: ?*?*IVdsSubSystem) HRESULT {
         return self.vtable.GetSubSystem(self, ppSubSystem);
     }
-    pub fn GetIdentificationData(self: *const IVdsLun, pLunInfo: ?*VDS_LUN_INFORMATION) callconv(.Inline) HRESULT {
+    pub inline fn GetIdentificationData(self: *const IVdsLun, pLunInfo: ?*VDS_LUN_INFORMATION) HRESULT {
         return self.vtable.GetIdentificationData(self, pLunInfo);
     }
-    pub fn QueryActiveControllers(self: *const IVdsLun, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryActiveControllers(self: *const IVdsLun, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryActiveControllers(self, ppEnum);
     }
-    pub fn Extend(self: *const IVdsLun, ullNumberOfBytesToAdd: u64, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn Extend(self: *const IVdsLun, ullNumberOfBytesToAdd: u64, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.Extend(self, ullNumberOfBytesToAdd, pDriveIdArray, lNumberOfDrives, ppAsync);
     }
-    pub fn Shrink(self: *const IVdsLun, ullNumberOfBytesToRemove: u64, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn Shrink(self: *const IVdsLun, ullNumberOfBytesToRemove: u64, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.Shrink(self, ullNumberOfBytesToRemove, ppAsync);
     }
-    pub fn QueryPlexes(self: *const IVdsLun, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryPlexes(self: *const IVdsLun, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryPlexes(self, ppEnum);
     }
-    pub fn AddPlex(self: *const IVdsLun, lunId: Guid, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn AddPlex(self: *const IVdsLun, lunId: Guid, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.AddPlex(self, lunId, ppAsync);
     }
-    pub fn RemovePlex(self: *const IVdsLun, plexId: Guid, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn RemovePlex(self: *const IVdsLun, plexId: Guid, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.RemovePlex(self, plexId, ppAsync);
     }
-    pub fn Recover(self: *const IVdsLun, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn Recover(self: *const IVdsLun, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.Recover(self, ppAsync);
     }
-    pub fn SetMask(self: *const IVdsLun, pwszUnmaskingList: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetMask(self: *const IVdsLun, pwszUnmaskingList: ?PWSTR) HRESULT {
         return self.vtable.SetMask(self, pwszUnmaskingList);
     }
-    pub fn Delete(self: *const IVdsLun) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IVdsLun) HRESULT {
         return self.vtable.Delete(self);
     }
-    pub fn AssociateControllers(self: *const IVdsLun, pActiveControllerIdArray: ?[*]Guid, lNumberOfActiveControllers: i32, pInactiveControllerIdArray: ?[*]Guid, lNumberOfInactiveControllers: i32) callconv(.Inline) HRESULT {
+    pub inline fn AssociateControllers(self: *const IVdsLun, pActiveControllerIdArray: ?[*]Guid, lNumberOfActiveControllers: i32, pInactiveControllerIdArray: ?[*]Guid, lNumberOfInactiveControllers: i32) HRESULT {
         return self.vtable.AssociateControllers(self, pActiveControllerIdArray, lNumberOfActiveControllers, pInactiveControllerIdArray, lNumberOfInactiveControllers);
     }
-    pub fn QueryHints(self: *const IVdsLun, pHints: ?*VDS_HINTS) callconv(.Inline) HRESULT {
+    pub inline fn QueryHints(self: *const IVdsLun, pHints: ?*VDS_HINTS) HRESULT {
         return self.vtable.QueryHints(self, pHints);
     }
-    pub fn ApplyHints(self: *const IVdsLun, pHints: ?*VDS_HINTS) callconv(.Inline) HRESULT {
+    pub inline fn ApplyHints(self: *const IVdsLun, pHints: ?*VDS_HINTS) HRESULT {
         return self.vtable.ApplyHints(self, pHints);
     }
-    pub fn SetStatus(self: *const IVdsLun, status: VDS_LUN_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn SetStatus(self: *const IVdsLun, status: VDS_LUN_STATUS) HRESULT {
         return self.vtable.SetStatus(self, status);
     }
-    pub fn QueryMaxLunExtendSize(self: *const IVdsLun, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pullMaxBytesToBeAdded: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn QueryMaxLunExtendSize(self: *const IVdsLun, pDriveIdArray: ?[*]Guid, lNumberOfDrives: i32, pullMaxBytesToBeAdded: ?*u64) HRESULT {
         return self.vtable.QueryMaxLunExtendSize(self, pDriveIdArray, lNumberOfDrives, pullMaxBytesToBeAdded);
     }
 };
@@ -2847,21 +2847,21 @@ pub const IID_IVdsLun2 = &IID_IVdsLun2_Value;
 pub const IVdsLun2 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QueryHints2: *const fn(
+        QueryHints2: *const fn (
             self: *const IVdsLun2,
             pHints2: ?*VDS_HINTS2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ApplyHints2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ApplyHints2: *const fn (
             self: *const IVdsLun2,
             pHints2: ?*VDS_HINTS2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QueryHints2(self: *const IVdsLun2, pHints2: ?*VDS_HINTS2) callconv(.Inline) HRESULT {
+    pub inline fn QueryHints2(self: *const IVdsLun2, pHints2: ?*VDS_HINTS2) HRESULT {
         return self.vtable.QueryHints2(self, pHints2);
     }
-    pub fn ApplyHints2(self: *const IVdsLun2, pHints2: ?*VDS_HINTS2) callconv(.Inline) HRESULT {
+    pub inline fn ApplyHints2(self: *const IVdsLun2, pHints2: ?*VDS_HINTS2) HRESULT {
         return self.vtable.ApplyHints2(self, pHints2);
     }
 };
@@ -2872,14 +2872,14 @@ pub const IID_IVdsLunNaming = &IID_IVdsLunNaming_Value;
 pub const IVdsLunNaming = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetFriendlyName: *const fn(
+        SetFriendlyName: *const fn (
             self: *const IVdsLunNaming,
             pwszFriendlyName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetFriendlyName(self: *const IVdsLunNaming, pwszFriendlyName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetFriendlyName(self: *const IVdsLunNaming, pwszFriendlyName: ?PWSTR) HRESULT {
         return self.vtable.SetFriendlyName(self, pwszFriendlyName);
     }
 };
@@ -2890,14 +2890,14 @@ pub const IID_IVdsLunNumber = &IID_IVdsLunNumber_Value;
 pub const IVdsLunNumber = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetLunNumber: *const fn(
+        GetLunNumber: *const fn (
             self: *const IVdsLunNumber,
             pulLunNumber: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetLunNumber(self: *const IVdsLunNumber, pulLunNumber: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetLunNumber(self: *const IVdsLunNumber, pulLunNumber: ?*u32) HRESULT {
         return self.vtable.GetLunNumber(self, pulLunNumber);
     }
 };
@@ -2908,24 +2908,24 @@ pub const IID_IVdsLunControllerPorts = &IID_IVdsLunControllerPorts_Value;
 pub const IVdsLunControllerPorts = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AssociateControllerPorts: *const fn(
+        AssociateControllerPorts: *const fn (
             self: *const IVdsLunControllerPorts,
             pActiveControllerPortIdArray: ?[*]Guid,
             lNumberOfActiveControllerPorts: i32,
             pInactiveControllerPortIdArray: ?[*]Guid,
             lNumberOfInactiveControllerPorts: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryActiveControllerPorts: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryActiveControllerPorts: *const fn (
             self: *const IVdsLunControllerPorts,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AssociateControllerPorts(self: *const IVdsLunControllerPorts, pActiveControllerPortIdArray: ?[*]Guid, lNumberOfActiveControllerPorts: i32, pInactiveControllerPortIdArray: ?[*]Guid, lNumberOfInactiveControllerPorts: i32) callconv(.Inline) HRESULT {
+    pub inline fn AssociateControllerPorts(self: *const IVdsLunControllerPorts, pActiveControllerPortIdArray: ?[*]Guid, lNumberOfActiveControllerPorts: i32, pInactiveControllerPortIdArray: ?[*]Guid, lNumberOfInactiveControllerPorts: i32) HRESULT {
         return self.vtable.AssociateControllerPorts(self, pActiveControllerPortIdArray, lNumberOfActiveControllerPorts, pInactiveControllerPortIdArray, lNumberOfInactiveControllerPorts);
     }
-    pub fn QueryActiveControllerPorts(self: *const IVdsLunControllerPorts, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryActiveControllerPorts(self: *const IVdsLunControllerPorts, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryActiveControllerPorts(self, ppEnum);
     }
 };
@@ -2936,40 +2936,40 @@ pub const IID_IVdsLunMpio = &IID_IVdsLunMpio_Value;
 pub const IVdsLunMpio = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetPathInfo: *const fn(
+        GetPathInfo: *const fn (
             self: *const IVdsLunMpio,
             ppPaths: [*]?*VDS_PATH_INFO,
             plNumberOfPaths: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLoadBalancePolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLoadBalancePolicy: *const fn (
             self: *const IVdsLunMpio,
             pPolicy: ?*VDS_LOADBALANCE_POLICY_ENUM,
             ppPaths: [*]?*VDS_PATH_POLICY,
             plNumberOfPaths: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLoadBalancePolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLoadBalancePolicy: *const fn (
             self: *const IVdsLunMpio,
             policy: VDS_LOADBALANCE_POLICY_ENUM,
             pPaths: ?[*]VDS_PATH_POLICY,
             lNumberOfPaths: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedLbPolicies: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedLbPolicies: *const fn (
             self: *const IVdsLunMpio,
             pulLbFlags: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetPathInfo(self: *const IVdsLunMpio, ppPaths: [*]?*VDS_PATH_INFO, plNumberOfPaths: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPathInfo(self: *const IVdsLunMpio, ppPaths: [*]?*VDS_PATH_INFO, plNumberOfPaths: ?*i32) HRESULT {
         return self.vtable.GetPathInfo(self, ppPaths, plNumberOfPaths);
     }
-    pub fn GetLoadBalancePolicy(self: *const IVdsLunMpio, pPolicy: ?*VDS_LOADBALANCE_POLICY_ENUM, ppPaths: [*]?*VDS_PATH_POLICY, plNumberOfPaths: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetLoadBalancePolicy(self: *const IVdsLunMpio, pPolicy: ?*VDS_LOADBALANCE_POLICY_ENUM, ppPaths: [*]?*VDS_PATH_POLICY, plNumberOfPaths: ?*i32) HRESULT {
         return self.vtable.GetLoadBalancePolicy(self, pPolicy, ppPaths, plNumberOfPaths);
     }
-    pub fn SetLoadBalancePolicy(self: *const IVdsLunMpio, policy: VDS_LOADBALANCE_POLICY_ENUM, pPaths: ?[*]VDS_PATH_POLICY, lNumberOfPaths: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetLoadBalancePolicy(self: *const IVdsLunMpio, policy: VDS_LOADBALANCE_POLICY_ENUM, pPaths: ?[*]VDS_PATH_POLICY, lNumberOfPaths: i32) HRESULT {
         return self.vtable.SetLoadBalancePolicy(self, policy, pPaths, lNumberOfPaths);
     }
-    pub fn GetSupportedLbPolicies(self: *const IVdsLunMpio, pulLbFlags: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedLbPolicies(self: *const IVdsLunMpio, pulLbFlags: ?*u32) HRESULT {
         return self.vtable.GetSupportedLbPolicies(self, pulLbFlags);
     }
 };
@@ -2980,22 +2980,22 @@ pub const IID_IVdsLunIscsi = &IID_IVdsLunIscsi_Value;
 pub const IVdsLunIscsi = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AssociateTargets: *const fn(
+        AssociateTargets: *const fn (
             self: *const IVdsLunIscsi,
             pTargetIdArray: ?[*]Guid,
             lNumberOfTargets: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryAssociatedTargets: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryAssociatedTargets: *const fn (
             self: *const IVdsLunIscsi,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AssociateTargets(self: *const IVdsLunIscsi, pTargetIdArray: ?[*]Guid, lNumberOfTargets: i32) callconv(.Inline) HRESULT {
+    pub inline fn AssociateTargets(self: *const IVdsLunIscsi, pTargetIdArray: ?[*]Guid, lNumberOfTargets: i32) HRESULT {
         return self.vtable.AssociateTargets(self, pTargetIdArray, lNumberOfTargets);
     }
-    pub fn QueryAssociatedTargets(self: *const IVdsLunIscsi, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryAssociatedTargets(self: *const IVdsLunIscsi, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryAssociatedTargets(self, ppEnum);
     }
 };
@@ -3006,43 +3006,43 @@ pub const IID_IVdsLunPlex = &IID_IVdsLunPlex_Value;
 pub const IVdsLunPlex = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsLunPlex,
             pPlexProp: ?*VDS_LUN_PLEX_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLun: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLun: *const fn (
             self: *const IVdsLunPlex,
             ppLun: ?*?*IVdsLun,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryExtents: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryExtents: *const fn (
             self: *const IVdsLunPlex,
             ppExtentArray: [*]?*VDS_DRIVE_EXTENT,
             plNumberOfExtents: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryHints: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryHints: *const fn (
             self: *const IVdsLunPlex,
             pHints: ?*VDS_HINTS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ApplyHints: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ApplyHints: *const fn (
             self: *const IVdsLunPlex,
             pHints: ?*VDS_HINTS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsLunPlex, pPlexProp: ?*VDS_LUN_PLEX_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsLunPlex, pPlexProp: ?*VDS_LUN_PLEX_PROP) HRESULT {
         return self.vtable.GetProperties(self, pPlexProp);
     }
-    pub fn GetLun(self: *const IVdsLunPlex, ppLun: ?*?*IVdsLun) callconv(.Inline) HRESULT {
+    pub inline fn GetLun(self: *const IVdsLunPlex, ppLun: ?*?*IVdsLun) HRESULT {
         return self.vtable.GetLun(self, ppLun);
     }
-    pub fn QueryExtents(self: *const IVdsLunPlex, ppExtentArray: [*]?*VDS_DRIVE_EXTENT, plNumberOfExtents: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn QueryExtents(self: *const IVdsLunPlex, ppExtentArray: [*]?*VDS_DRIVE_EXTENT, plNumberOfExtents: ?*i32) HRESULT {
         return self.vtable.QueryExtents(self, ppExtentArray, plNumberOfExtents);
     }
-    pub fn QueryHints(self: *const IVdsLunPlex, pHints: ?*VDS_HINTS) callconv(.Inline) HRESULT {
+    pub inline fn QueryHints(self: *const IVdsLunPlex, pHints: ?*VDS_HINTS) HRESULT {
         return self.vtable.QueryHints(self, pHints);
     }
-    pub fn ApplyHints(self: *const IVdsLunPlex, pHints: ?*VDS_HINTS) callconv(.Inline) HRESULT {
+    pub inline fn ApplyHints(self: *const IVdsLunPlex, pHints: ?*VDS_HINTS) HRESULT {
         return self.vtable.ApplyHints(self, pHints);
     }
 };
@@ -3053,60 +3053,60 @@ pub const IID_IVdsIscsiPortal = &IID_IVdsIscsiPortal_Value;
 pub const IVdsIscsiPortal = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsIscsiPortal,
             pPortalProp: ?*VDS_ISCSI_PORTAL_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSubSystem: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSubSystem: *const fn (
             self: *const IVdsIscsiPortal,
             ppSubSystem: ?*?*IVdsSubSystem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryAssociatedPortalGroups: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryAssociatedPortalGroups: *const fn (
             self: *const IVdsIscsiPortal,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStatus: *const fn (
             self: *const IVdsIscsiPortal,
             status: VDS_ISCSI_PORTAL_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIpsecTunnelAddress: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIpsecTunnelAddress: *const fn (
             self: *const IVdsIscsiPortal,
             pTunnelAddress: ?*VDS_IPADDRESS,
             pDestinationAddress: ?*VDS_IPADDRESS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIpsecSecurity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIpsecSecurity: *const fn (
             self: *const IVdsIscsiPortal,
             pInitiatorPortalAddress: ?*VDS_IPADDRESS,
             pullSecurityFlags: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIpsecSecurity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIpsecSecurity: *const fn (
             self: *const IVdsIscsiPortal,
             pInitiatorPortalAddress: ?*VDS_IPADDRESS,
             ullSecurityFlags: u64,
             pIpsecKey: ?*VDS_ISCSI_IPSEC_KEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsIscsiPortal, pPortalProp: ?*VDS_ISCSI_PORTAL_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsIscsiPortal, pPortalProp: ?*VDS_ISCSI_PORTAL_PROP) HRESULT {
         return self.vtable.GetProperties(self, pPortalProp);
     }
-    pub fn GetSubSystem(self: *const IVdsIscsiPortal, ppSubSystem: ?*?*IVdsSubSystem) callconv(.Inline) HRESULT {
+    pub inline fn GetSubSystem(self: *const IVdsIscsiPortal, ppSubSystem: ?*?*IVdsSubSystem) HRESULT {
         return self.vtable.GetSubSystem(self, ppSubSystem);
     }
-    pub fn QueryAssociatedPortalGroups(self: *const IVdsIscsiPortal, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryAssociatedPortalGroups(self: *const IVdsIscsiPortal, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryAssociatedPortalGroups(self, ppEnum);
     }
-    pub fn SetStatus(self: *const IVdsIscsiPortal, status: VDS_ISCSI_PORTAL_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn SetStatus(self: *const IVdsIscsiPortal, status: VDS_ISCSI_PORTAL_STATUS) HRESULT {
         return self.vtable.SetStatus(self, status);
     }
-    pub fn SetIpsecTunnelAddress(self: *const IVdsIscsiPortal, pTunnelAddress: ?*VDS_IPADDRESS, pDestinationAddress: ?*VDS_IPADDRESS) callconv(.Inline) HRESULT {
+    pub inline fn SetIpsecTunnelAddress(self: *const IVdsIscsiPortal, pTunnelAddress: ?*VDS_IPADDRESS, pDestinationAddress: ?*VDS_IPADDRESS) HRESULT {
         return self.vtable.SetIpsecTunnelAddress(self, pTunnelAddress, pDestinationAddress);
     }
-    pub fn GetIpsecSecurity(self: *const IVdsIscsiPortal, pInitiatorPortalAddress: ?*VDS_IPADDRESS, pullSecurityFlags: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn GetIpsecSecurity(self: *const IVdsIscsiPortal, pInitiatorPortalAddress: ?*VDS_IPADDRESS, pullSecurityFlags: ?*u64) HRESULT {
         return self.vtable.GetIpsecSecurity(self, pInitiatorPortalAddress, pullSecurityFlags);
     }
-    pub fn SetIpsecSecurity(self: *const IVdsIscsiPortal, pInitiatorPortalAddress: ?*VDS_IPADDRESS, ullSecurityFlags: u64, pIpsecKey: ?*VDS_ISCSI_IPSEC_KEY) callconv(.Inline) HRESULT {
+    pub inline fn SetIpsecSecurity(self: *const IVdsIscsiPortal, pInitiatorPortalAddress: ?*VDS_IPADDRESS, ullSecurityFlags: u64, pIpsecKey: ?*VDS_ISCSI_IPSEC_KEY) HRESULT {
         return self.vtable.SetIpsecSecurity(self, pInitiatorPortalAddress, ullSecurityFlags, pIpsecKey);
     }
 };
@@ -3117,80 +3117,80 @@ pub const IID_IVdsIscsiTarget = &IID_IVdsIscsiTarget_Value;
 pub const IVdsIscsiTarget = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsIscsiTarget,
             pTargetProp: ?*VDS_ISCSI_TARGET_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSubSystem: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSubSystem: *const fn (
             self: *const IVdsIscsiTarget,
             ppSubSystem: ?*?*IVdsSubSystem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryPortalGroups: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryPortalGroups: *const fn (
             self: *const IVdsIscsiTarget,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryAssociatedLuns: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryAssociatedLuns: *const fn (
             self: *const IVdsIscsiTarget,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreatePortalGroup: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreatePortalGroup: *const fn (
             self: *const IVdsIscsiTarget,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IVdsIscsiTarget,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFriendlyName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFriendlyName: *const fn (
             self: *const IVdsIscsiTarget,
             pwszFriendlyName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSharedSecret: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSharedSecret: *const fn (
             self: *const IVdsIscsiTarget,
             pTargetSharedSecret: ?*VDS_ISCSI_SHARED_SECRET,
             pwszInitiatorName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RememberInitiatorSharedSecret: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RememberInitiatorSharedSecret: *const fn (
             self: *const IVdsIscsiTarget,
             pwszInitiatorName: ?PWSTR,
             pInitiatorSharedSecret: ?*VDS_ISCSI_SHARED_SECRET,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConnectedInitiators: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConnectedInitiators: *const fn (
             self: *const IVdsIscsiTarget,
             pppwszInitiatorList: [*]?*?PWSTR,
             plNumberOfInitiators: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsIscsiTarget, pTargetProp: ?*VDS_ISCSI_TARGET_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsIscsiTarget, pTargetProp: ?*VDS_ISCSI_TARGET_PROP) HRESULT {
         return self.vtable.GetProperties(self, pTargetProp);
     }
-    pub fn GetSubSystem(self: *const IVdsIscsiTarget, ppSubSystem: ?*?*IVdsSubSystem) callconv(.Inline) HRESULT {
+    pub inline fn GetSubSystem(self: *const IVdsIscsiTarget, ppSubSystem: ?*?*IVdsSubSystem) HRESULT {
         return self.vtable.GetSubSystem(self, ppSubSystem);
     }
-    pub fn QueryPortalGroups(self: *const IVdsIscsiTarget, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryPortalGroups(self: *const IVdsIscsiTarget, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryPortalGroups(self, ppEnum);
     }
-    pub fn QueryAssociatedLuns(self: *const IVdsIscsiTarget, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryAssociatedLuns(self: *const IVdsIscsiTarget, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryAssociatedLuns(self, ppEnum);
     }
-    pub fn CreatePortalGroup(self: *const IVdsIscsiTarget, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn CreatePortalGroup(self: *const IVdsIscsiTarget, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.CreatePortalGroup(self, ppAsync);
     }
-    pub fn Delete(self: *const IVdsIscsiTarget, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IVdsIscsiTarget, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.Delete(self, ppAsync);
     }
-    pub fn SetFriendlyName(self: *const IVdsIscsiTarget, pwszFriendlyName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetFriendlyName(self: *const IVdsIscsiTarget, pwszFriendlyName: ?PWSTR) HRESULT {
         return self.vtable.SetFriendlyName(self, pwszFriendlyName);
     }
-    pub fn SetSharedSecret(self: *const IVdsIscsiTarget, pTargetSharedSecret: ?*VDS_ISCSI_SHARED_SECRET, pwszInitiatorName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetSharedSecret(self: *const IVdsIscsiTarget, pTargetSharedSecret: ?*VDS_ISCSI_SHARED_SECRET, pwszInitiatorName: ?PWSTR) HRESULT {
         return self.vtable.SetSharedSecret(self, pTargetSharedSecret, pwszInitiatorName);
     }
-    pub fn RememberInitiatorSharedSecret(self: *const IVdsIscsiTarget, pwszInitiatorName: ?PWSTR, pInitiatorSharedSecret: ?*VDS_ISCSI_SHARED_SECRET) callconv(.Inline) HRESULT {
+    pub inline fn RememberInitiatorSharedSecret(self: *const IVdsIscsiTarget, pwszInitiatorName: ?PWSTR, pInitiatorSharedSecret: ?*VDS_ISCSI_SHARED_SECRET) HRESULT {
         return self.vtable.RememberInitiatorSharedSecret(self, pwszInitiatorName, pInitiatorSharedSecret);
     }
-    pub fn GetConnectedInitiators(self: *const IVdsIscsiTarget, pppwszInitiatorList: [*]?*?PWSTR, plNumberOfInitiators: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetConnectedInitiators(self: *const IVdsIscsiTarget, pppwszInitiatorList: [*]?*?PWSTR, plNumberOfInitiators: ?*i32) HRESULT {
         return self.vtable.GetConnectedInitiators(self, pppwszInitiatorList, plNumberOfInitiators);
     }
 };
@@ -3201,51 +3201,51 @@ pub const IID_IVdsIscsiPortalGroup = &IID_IVdsIscsiPortalGroup_Value;
 pub const IVdsIscsiPortalGroup = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperties: *const fn(
+        GetProperties: *const fn (
             self: *const IVdsIscsiPortalGroup,
             pPortalGroupProp: ?*VDS_ISCSI_PORTALGROUP_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTarget: *const fn (
             self: *const IVdsIscsiPortalGroup,
             ppTarget: ?*?*IVdsIscsiTarget,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryAssociatedPortals: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryAssociatedPortals: *const fn (
             self: *const IVdsIscsiPortalGroup,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPortal: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPortal: *const fn (
             self: *const IVdsIscsiPortalGroup,
             portalId: Guid,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemovePortal: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemovePortal: *const fn (
             self: *const IVdsIscsiPortalGroup,
             portalId: Guid,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IVdsIscsiPortalGroup,
             ppAsync: ?*?*IVdsAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperties(self: *const IVdsIscsiPortalGroup, pPortalGroupProp: ?*VDS_ISCSI_PORTALGROUP_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsIscsiPortalGroup, pPortalGroupProp: ?*VDS_ISCSI_PORTALGROUP_PROP) HRESULT {
         return self.vtable.GetProperties(self, pPortalGroupProp);
     }
-    pub fn GetTarget(self: *const IVdsIscsiPortalGroup, ppTarget: ?*?*IVdsIscsiTarget) callconv(.Inline) HRESULT {
+    pub inline fn GetTarget(self: *const IVdsIscsiPortalGroup, ppTarget: ?*?*IVdsIscsiTarget) HRESULT {
         return self.vtable.GetTarget(self, ppTarget);
     }
-    pub fn QueryAssociatedPortals(self: *const IVdsIscsiPortalGroup, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryAssociatedPortals(self: *const IVdsIscsiPortalGroup, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryAssociatedPortals(self, ppEnum);
     }
-    pub fn AddPortal(self: *const IVdsIscsiPortalGroup, portalId: Guid, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn AddPortal(self: *const IVdsIscsiPortalGroup, portalId: Guid, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.AddPortal(self, portalId, ppAsync);
     }
-    pub fn RemovePortal(self: *const IVdsIscsiPortalGroup, portalId: Guid, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn RemovePortal(self: *const IVdsIscsiPortalGroup, portalId: Guid, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.RemovePortal(self, portalId, ppAsync);
     }
-    pub fn Delete(self: *const IVdsIscsiPortalGroup, ppAsync: ?*?*IVdsAsync) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IVdsIscsiPortalGroup, ppAsync: ?*?*IVdsAsync) HRESULT {
         return self.vtable.Delete(self, ppAsync);
     }
 };
@@ -3256,50 +3256,50 @@ pub const IID_IVdsStoragePool = &IID_IVdsStoragePool_Value;
 pub const IVdsStoragePool = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProvider: *const fn(
+        GetProvider: *const fn (
             self: *const IVdsStoragePool,
             ppProvider: ?*?*IVdsProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperties: *const fn (
             self: *const IVdsStoragePool,
             pStoragePoolProp: ?*VDS_STORAGE_POOL_PROP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAttributes: *const fn (
             self: *const IVdsStoragePool,
             pStoragePoolAttributes: ?*VDS_POOL_ATTRIBUTES,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryDriveExtents: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryDriveExtents: *const fn (
             self: *const IVdsStoragePool,
             ppExtentArray: [*]?*VDS_STORAGE_POOL_DRIVE_EXTENT,
             plNumberOfExtents: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryAllocatedLuns: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryAllocatedLuns: *const fn (
             self: *const IVdsStoragePool,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryAllocatedStoragePools: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryAllocatedStoragePools: *const fn (
             self: *const IVdsStoragePool,
             ppEnum: ?*?*IEnumVdsObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProvider(self: *const IVdsStoragePool, ppProvider: ?*?*IVdsProvider) callconv(.Inline) HRESULT {
+    pub inline fn GetProvider(self: *const IVdsStoragePool, ppProvider: ?*?*IVdsProvider) HRESULT {
         return self.vtable.GetProvider(self, ppProvider);
     }
-    pub fn GetProperties(self: *const IVdsStoragePool, pStoragePoolProp: ?*VDS_STORAGE_POOL_PROP) callconv(.Inline) HRESULT {
+    pub inline fn GetProperties(self: *const IVdsStoragePool, pStoragePoolProp: ?*VDS_STORAGE_POOL_PROP) HRESULT {
         return self.vtable.GetProperties(self, pStoragePoolProp);
     }
-    pub fn GetAttributes(self: *const IVdsStoragePool, pStoragePoolAttributes: ?*VDS_POOL_ATTRIBUTES) callconv(.Inline) HRESULT {
+    pub inline fn GetAttributes(self: *const IVdsStoragePool, pStoragePoolAttributes: ?*VDS_POOL_ATTRIBUTES) HRESULT {
         return self.vtable.GetAttributes(self, pStoragePoolAttributes);
     }
-    pub fn QueryDriveExtents(self: *const IVdsStoragePool, ppExtentArray: [*]?*VDS_STORAGE_POOL_DRIVE_EXTENT, plNumberOfExtents: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn QueryDriveExtents(self: *const IVdsStoragePool, ppExtentArray: [*]?*VDS_STORAGE_POOL_DRIVE_EXTENT, plNumberOfExtents: ?*i32) HRESULT {
         return self.vtable.QueryDriveExtents(self, ppExtentArray, plNumberOfExtents);
     }
-    pub fn QueryAllocatedLuns(self: *const IVdsStoragePool, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryAllocatedLuns(self: *const IVdsStoragePool, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryAllocatedLuns(self, ppEnum);
     }
-    pub fn QueryAllocatedStoragePools(self: *const IVdsStoragePool, ppEnum: ?*?*IEnumVdsObject) callconv(.Inline) HRESULT {
+    pub inline fn QueryAllocatedStoragePools(self: *const IVdsStoragePool, ppEnum: ?*?*IEnumVdsObject) HRESULT {
         return self.vtable.QueryAllocatedStoragePools(self, ppEnum);
     }
 };
@@ -3310,29 +3310,29 @@ pub const IID_IVdsMaintenance = &IID_IVdsMaintenance_Value;
 pub const IVdsMaintenance = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        StartMaintenance: *const fn(
+        StartMaintenance: *const fn (
             self: *const IVdsMaintenance,
             operation: VDS_MAINTENANCE_OPERATION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        StopMaintenance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        StopMaintenance: *const fn (
             self: *const IVdsMaintenance,
             operation: VDS_MAINTENANCE_OPERATION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PulseMaintenance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PulseMaintenance: *const fn (
             self: *const IVdsMaintenance,
             operation: VDS_MAINTENANCE_OPERATION,
             ulCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn StartMaintenance(self: *const IVdsMaintenance, operation: VDS_MAINTENANCE_OPERATION) callconv(.Inline) HRESULT {
+    pub inline fn StartMaintenance(self: *const IVdsMaintenance, operation: VDS_MAINTENANCE_OPERATION) HRESULT {
         return self.vtable.StartMaintenance(self, operation);
     }
-    pub fn StopMaintenance(self: *const IVdsMaintenance, operation: VDS_MAINTENANCE_OPERATION) callconv(.Inline) HRESULT {
+    pub inline fn StopMaintenance(self: *const IVdsMaintenance, operation: VDS_MAINTENANCE_OPERATION) HRESULT {
         return self.vtable.StopMaintenance(self, operation);
     }
-    pub fn PulseMaintenance(self: *const IVdsMaintenance, operation: VDS_MAINTENANCE_OPERATION, ulCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn PulseMaintenance(self: *const IVdsMaintenance, operation: VDS_MAINTENANCE_OPERATION, ulCount: u32) HRESULT {
         return self.vtable.PulseMaintenance(self, operation, ulCount);
     }
 };
@@ -3343,16 +3343,16 @@ pub const IID_IVdsHwProviderPrivate = &IID_IVdsHwProviderPrivate_Value;
 pub const IVdsHwProviderPrivate = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QueryIfCreatedLun: *const fn(
+        QueryIfCreatedLun: *const fn (
             self: *const IVdsHwProviderPrivate,
             pwszDevicePath: ?PWSTR,
             pVdsLunInformation: ?*VDS_LUN_INFORMATION,
             pLunId: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QueryIfCreatedLun(self: *const IVdsHwProviderPrivate, pwszDevicePath: ?PWSTR, pVdsLunInformation: ?*VDS_LUN_INFORMATION, pLunId: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn QueryIfCreatedLun(self: *const IVdsHwProviderPrivate, pwszDevicePath: ?PWSTR, pVdsLunInformation: ?*VDS_LUN_INFORMATION, pLunId: ?*Guid) HRESULT {
         return self.vtable.QueryIfCreatedLun(self, pwszDevicePath, pVdsLunInformation, pLunId);
     }
 };
@@ -3363,15 +3363,15 @@ pub const IID_IVdsHwProviderPrivateMpio = &IID_IVdsHwProviderPrivateMpio_Value;
 pub const IVdsHwProviderPrivateMpio = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetAllPathStatusesFromHbaPort: *const fn(
+        SetAllPathStatusesFromHbaPort: *const fn (
             self: *const IVdsHwProviderPrivateMpio,
             hbaPortProp: VDS_HBAPORT_PROP,
             status: VDS_PATH_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetAllPathStatusesFromHbaPort(self: *const IVdsHwProviderPrivateMpio, hbaPortProp: VDS_HBAPORT_PROP, status: VDS_PATH_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn SetAllPathStatusesFromHbaPort(self: *const IVdsHwProviderPrivateMpio, hbaPortProp: VDS_HBAPORT_PROP, status: VDS_PATH_STATUS) HRESULT {
         return self.vtable.SetAllPathStatusesFromHbaPort(self, hbaPortProp, status);
     }
 };
@@ -3382,7 +3382,7 @@ pub const IID_IVdsAdmin = &IID_IVdsAdmin_Value;
 pub const IVdsAdmin = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RegisterProvider: *const fn(
+        RegisterProvider: *const fn (
             self: *const IVdsAdmin,
             providerId: Guid,
             providerClsid: Guid,
@@ -3391,22 +3391,21 @@ pub const IVdsAdmin = extern union {
             pwszMachineName: ?PWSTR,
             pwszVersion: ?PWSTR,
             guidVersionId: Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnregisterProvider: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnregisterProvider: *const fn (
             self: *const IVdsAdmin,
             providerId: Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RegisterProvider(self: *const IVdsAdmin, providerId: Guid, providerClsid: Guid, pwszName: ?PWSTR, @"type": VDS_PROVIDER_TYPE, pwszMachineName: ?PWSTR, pwszVersion: ?PWSTR, guidVersionId: Guid) callconv(.Inline) HRESULT {
+    pub inline fn RegisterProvider(self: *const IVdsAdmin, providerId: Guid, providerClsid: Guid, pwszName: ?PWSTR, @"type": VDS_PROVIDER_TYPE, pwszMachineName: ?PWSTR, pwszVersion: ?PWSTR, guidVersionId: Guid) HRESULT {
         return self.vtable.RegisterProvider(self, providerId, providerClsid, pwszName, @"type", pwszMachineName, pwszVersion, guidVersionId);
     }
-    pub fn UnregisterProvider(self: *const IVdsAdmin, providerId: Guid) callconv(.Inline) HRESULT {
+    pub inline fn UnregisterProvider(self: *const IVdsAdmin, providerId: Guid) HRESULT {
         return self.vtable.UnregisterProvider(self, providerId);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -3425,9 +3424,7 @@ const IUnknown = @import("../system/com.zig").IUnknown;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

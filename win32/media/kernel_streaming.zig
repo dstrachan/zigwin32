@@ -188,9 +188,9 @@ pub const KSDSOUND_BUFFER_CTRL_FREQUENCY = @as(u32, 2);
 pub const KSDSOUND_BUFFER_CTRL_PAN = @as(u32, 4);
 pub const KSDSOUND_BUFFER_CTRL_VOLUME = @as(u32, 8);
 pub const KSDSOUND_BUFFER_CTRL_POSITIONNOTIFY = @as(u32, 16);
-pub const DEVPKEY_KsAudio_PacketSize_Constraints = DEVPROPKEY { .fmtid = Guid.initString("13e004d6-b066-43bd-913b-a415cd13da87"), .pid = 2 };
-pub const DEVPKEY_KsAudio_Controller_DeviceInterface_Path = DEVPROPKEY { .fmtid = Guid.initString("13e004d6-b066-43bd-913b-a415cd13da87"), .pid = 3 };
-pub const DEVPKEY_KsAudio_PacketSize_Constraints2 = DEVPROPKEY { .fmtid = Guid.initString("9404f781-7191-409b-8b0b-80bf6ec229ae"), .pid = 2 };
+pub const DEVPKEY_KsAudio_PacketSize_Constraints = DEVPROPKEY{ .fmtid = Guid.initString("13e004d6-b066-43bd-913b-a415cd13da87"), .pid = 2 };
+pub const DEVPKEY_KsAudio_Controller_DeviceInterface_Path = DEVPROPKEY{ .fmtid = Guid.initString("13e004d6-b066-43bd-913b-a415cd13da87"), .pid = 3 };
+pub const DEVPKEY_KsAudio_PacketSize_Constraints2 = DEVPROPKEY{ .fmtid = Guid.initString("9404f781-7191-409b-8b0b-80bf6ec229ae"), .pid = 2 };
 pub const KSAUDIO_STEREO_SPEAKER_GEOMETRY_HEADPHONE = @as(i32, -1);
 pub const KSAUDIO_STEREO_SPEAKER_GEOMETRY_MIN = @as(u32, 5);
 pub const KSAUDIO_STEREO_SPEAKER_GEOMETRY_NARROW = @as(u32, 10);
@@ -673,40 +673,40 @@ pub const IID_IKsControl = &IID_IKsControl_Value;
 pub const IKsControl = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        KsProperty: *const fn(
+        KsProperty: *const fn (
             self: *const IKsControl,
             Property: ?*KSIDENTIFIER,
             PropertyLength: u32,
             PropertyData: ?*anyopaque,
             DataLength: u32,
             BytesReturned: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        KsMethod: *const fn(
+        ) callconv(.winapi) HRESULT,
+        KsMethod: *const fn (
             self: *const IKsControl,
             Method: ?*KSIDENTIFIER,
             MethodLength: u32,
             MethodData: ?*anyopaque,
             DataLength: u32,
             BytesReturned: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        KsEvent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        KsEvent: *const fn (
             self: *const IKsControl,
             Event: ?*KSIDENTIFIER,
             EventLength: u32,
             EventData: ?*anyopaque,
             DataLength: u32,
             BytesReturned: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn KsProperty(self: *const IKsControl, Property: ?*KSIDENTIFIER, PropertyLength: u32, PropertyData: ?*anyopaque, DataLength: u32, BytesReturned: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn KsProperty(self: *const IKsControl, Property: ?*KSIDENTIFIER, PropertyLength: u32, PropertyData: ?*anyopaque, DataLength: u32, BytesReturned: ?*u32) HRESULT {
         return self.vtable.KsProperty(self, Property, PropertyLength, PropertyData, DataLength, BytesReturned);
     }
-    pub fn KsMethod(self: *const IKsControl, Method: ?*KSIDENTIFIER, MethodLength: u32, MethodData: ?*anyopaque, DataLength: u32, BytesReturned: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn KsMethod(self: *const IKsControl, Method: ?*KSIDENTIFIER, MethodLength: u32, MethodData: ?*anyopaque, DataLength: u32, BytesReturned: ?*u32) HRESULT {
         return self.vtable.KsMethod(self, Method, MethodLength, MethodData, DataLength, BytesReturned);
     }
-    pub fn KsEvent(self: *const IKsControl, Event: ?*KSIDENTIFIER, EventLength: u32, EventData: ?*anyopaque, DataLength: u32, BytesReturned: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn KsEvent(self: *const IKsControl, Event: ?*KSIDENTIFIER, EventLength: u32, EventData: ?*anyopaque, DataLength: u32, BytesReturned: ?*u32) HRESULT {
         return self.vtable.KsEvent(self, Event, EventLength, EventData, DataLength, BytesReturned);
     }
 };
@@ -717,23 +717,23 @@ pub const IID_IKsFormatSupport = &IID_IKsFormatSupport_Value;
 pub const IKsFormatSupport = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        IsFormatSupported: *const fn(
+        IsFormatSupported: *const fn (
             self: *const IKsFormatSupport,
             pKsFormat: ?*KSDATAFORMAT,
             cbFormat: u32,
             pbSupported: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDevicePreferredFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDevicePreferredFormat: *const fn (
             self: *const IKsFormatSupport,
             ppKsFormat: ?*?*KSDATAFORMAT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn IsFormatSupported(self: *const IKsFormatSupport, pKsFormat: ?*KSDATAFORMAT, cbFormat: u32, pbSupported: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn IsFormatSupported(self: *const IKsFormatSupport, pKsFormat: ?*KSDATAFORMAT, cbFormat: u32, pbSupported: ?*BOOL) HRESULT {
         return self.vtable.IsFormatSupported(self, pKsFormat, cbFormat, pbSupported);
     }
-    pub fn GetDevicePreferredFormat(self: *const IKsFormatSupport, ppKsFormat: ?*?*KSDATAFORMAT) callconv(.Inline) HRESULT {
+    pub inline fn GetDevicePreferredFormat(self: *const IKsFormatSupport, ppKsFormat: ?*?*KSDATAFORMAT) HRESULT {
         return self.vtable.GetDevicePreferredFormat(self, ppKsFormat);
     }
 };
@@ -744,22 +744,22 @@ pub const IID_IKsJackDescription = &IID_IKsJackDescription_Value;
 pub const IKsJackDescription = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetJackCount: *const fn(
+        GetJackCount: *const fn (
             self: *const IKsJackDescription,
             pcJacks: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetJackDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetJackDescription: *const fn (
             self: *const IKsJackDescription,
             nJack: u32,
             pDescription: ?*KSJACK_DESCRIPTION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetJackCount(self: *const IKsJackDescription, pcJacks: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetJackCount(self: *const IKsJackDescription, pcJacks: ?*u32) HRESULT {
         return self.vtable.GetJackCount(self, pcJacks);
     }
-    pub fn GetJackDescription(self: *const IKsJackDescription, nJack: u32, pDescription: ?*KSJACK_DESCRIPTION) callconv(.Inline) HRESULT {
+    pub inline fn GetJackDescription(self: *const IKsJackDescription, nJack: u32, pDescription: ?*KSJACK_DESCRIPTION) HRESULT {
         return self.vtable.GetJackDescription(self, nJack, pDescription);
     }
 };
@@ -770,22 +770,22 @@ pub const IID_IKsJackDescription2 = &IID_IKsJackDescription2_Value;
 pub const IKsJackDescription2 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetJackCount: *const fn(
+        GetJackCount: *const fn (
             self: *const IKsJackDescription2,
             pcJacks: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetJackDescription2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetJackDescription2: *const fn (
             self: *const IKsJackDescription2,
             nJack: u32,
             pDescription2: ?*KSJACK_DESCRIPTION2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetJackCount(self: *const IKsJackDescription2, pcJacks: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetJackCount(self: *const IKsJackDescription2, pcJacks: ?*u32) HRESULT {
         return self.vtable.GetJackCount(self, pcJacks);
     }
-    pub fn GetJackDescription2(self: *const IKsJackDescription2, nJack: u32, pDescription2: ?*KSJACK_DESCRIPTION2) callconv(.Inline) HRESULT {
+    pub inline fn GetJackDescription2(self: *const IKsJackDescription2, nJack: u32, pDescription2: ?*KSJACK_DESCRIPTION2) HRESULT {
         return self.vtable.GetJackDescription2(self, nJack, pDescription2);
     }
 };
@@ -796,14 +796,14 @@ pub const IID_IKsJackSinkInformation = &IID_IKsJackSinkInformation_Value;
 pub const IKsJackSinkInformation = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetJackSinkInformation: *const fn(
+        GetJackSinkInformation: *const fn (
             self: *const IKsJackSinkInformation,
             pJackSinkInformation: ?*KSJACK_SINK_INFORMATION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetJackSinkInformation(self: *const IKsJackSinkInformation, pJackSinkInformation: ?*KSJACK_SINK_INFORMATION) callconv(.Inline) HRESULT {
+    pub inline fn GetJackSinkInformation(self: *const IKsJackSinkInformation, pJackSinkInformation: ?*KSJACK_SINK_INFORMATION) HRESULT {
         return self.vtable.GetJackSinkInformation(self, pJackSinkInformation);
     }
 };
@@ -813,14 +813,14 @@ pub const IID_IKsJackContainerId = &IID_IKsJackContainerId_Value;
 pub const IKsJackContainerId = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetJackContainerId: *const fn(
+        GetJackContainerId: *const fn (
             self: *const IKsJackContainerId,
             pJackContainerId: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetJackContainerId(self: *const IKsJackContainerId, pJackContainerId: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn GetJackContainerId(self: *const IKsJackContainerId, pJackContainerId: ?*Guid) HRESULT {
         return self.vtable.GetJackContainerId(self, pJackContainerId);
     }
 };
@@ -1565,7 +1565,6 @@ pub const KSTIME = extern struct {
     Numerator: u32,
     Denominator: u32,
 };
-
 
 pub const KSSTREAM_METADATA_INFO = extern struct {
     BufferSize: u32,
@@ -3385,8 +3384,6 @@ pub const KSNODEPROPERTY_AUDIO_DEV_SPECIFIC = extern struct {
     DeviceInfo: u32,
     Length: u32,
 };
-
-
 
 const CLSID_KSDATAFORMAT_TYPE_MUSIC_Value = Guid.initString("e725d360-62cc-11cf-a5d6-28db04c10000");
 pub const CLSID_KSDATAFORMAT_TYPE_MUSIC = &CLSID_KSDATAFORMAT_TYPE_MUSIC_Value;
@@ -7098,7 +7095,7 @@ pub const IID_IKsPropertySet = &IID_IKsPropertySet_Value;
 pub const IKsPropertySet = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Set: *const fn(
+        Set: *const fn (
             self: *const IKsPropertySet,
             PropSet: ?*const Guid,
             Id: u32,
@@ -7108,8 +7105,8 @@ pub const IKsPropertySet = extern union {
             // TODO: what to do with BytesParamIndex 5?
             PropertyData: ?*anyopaque,
             DataLength: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Get: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Get: *const fn (
             self: *const IKsPropertySet,
             PropSet: ?*const Guid,
             Id: u32,
@@ -7120,23 +7117,23 @@ pub const IKsPropertySet = extern union {
             PropertyData: ?*anyopaque,
             DataLength: u32,
             BytesReturned: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QuerySupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QuerySupported: *const fn (
             self: *const IKsPropertySet,
             PropSet: ?*const Guid,
             Id: u32,
             TypeSupport: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Set(self: *const IKsPropertySet, PropSet: ?*const Guid, Id: u32, InstanceData: ?*anyopaque, InstanceLength: u32, PropertyData: ?*anyopaque, DataLength: u32) callconv(.Inline) HRESULT {
+    pub inline fn Set(self: *const IKsPropertySet, PropSet: ?*const Guid, Id: u32, InstanceData: ?*anyopaque, InstanceLength: u32, PropertyData: ?*anyopaque, DataLength: u32) HRESULT {
         return self.vtable.Set(self, PropSet, Id, InstanceData, InstanceLength, PropertyData, DataLength);
     }
-    pub fn Get(self: *const IKsPropertySet, PropSet: ?*const Guid, Id: u32, InstanceData: ?*anyopaque, InstanceLength: u32, PropertyData: ?*anyopaque, DataLength: u32, BytesReturned: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const IKsPropertySet, PropSet: ?*const Guid, Id: u32, InstanceData: ?*anyopaque, InstanceLength: u32, PropertyData: ?*anyopaque, DataLength: u32, BytesReturned: ?*u32) HRESULT {
         return self.vtable.Get(self, PropSet, Id, InstanceData, InstanceLength, PropertyData, DataLength, BytesReturned);
     }
-    pub fn QuerySupported(self: *const IKsPropertySet, PropSet: ?*const Guid, Id: u32, TypeSupport: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn QuerySupported(self: *const IKsPropertySet, PropSet: ?*const Guid, Id: u32, TypeSupport: ?*u32) HRESULT {
         return self.vtable.QuerySupported(self, PropSet, Id, TypeSupport);
     }
 };
@@ -7146,21 +7143,21 @@ pub const IID_IKsAggregateControl = &IID_IKsAggregateControl_Value;
 pub const IKsAggregateControl = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        KsAddAggregate: *const fn(
+        KsAddAggregate: *const fn (
             self: *const IKsAggregateControl,
             AggregateClass: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        KsRemoveAggregate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        KsRemoveAggregate: *const fn (
             self: *const IKsAggregateControl,
             AggregateClass: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn KsAddAggregate(self: *const IKsAggregateControl, AggregateClass: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn KsAddAggregate(self: *const IKsAggregateControl, AggregateClass: ?*const Guid) HRESULT {
         return self.vtable.KsAddAggregate(self, AggregateClass);
     }
-    pub fn KsRemoveAggregate(self: *const IKsAggregateControl, AggregateClass: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn KsRemoveAggregate(self: *const IKsAggregateControl, AggregateClass: ?*const Guid) HRESULT {
         return self.vtable.KsRemoveAggregate(self, AggregateClass);
     }
 };
@@ -7170,7 +7167,7 @@ pub const IID_IKsTopology = &IID_IKsTopology_Value;
 pub const IKsTopology = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateNodeInstance: *const fn(
+        CreateNodeInstance: *const fn (
             self: *const IKsTopology,
             NodeId: u32,
             Flags: u32,
@@ -7178,19 +7175,16 @@ pub const IKsTopology = extern union {
             UnkOuter: ?*IUnknown,
             InterfaceId: ?*const Guid,
             Interface: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateNodeInstance(self: *const IKsTopology, NodeId: u32, Flags: u32, DesiredAccess: u32, UnkOuter: ?*IUnknown, InterfaceId: ?*const Guid, Interface: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateNodeInstance(self: *const IKsTopology, NodeId: u32, Flags: u32, DesiredAccess: u32, UnkOuter: ?*IUnknown, InterfaceId: ?*const Guid, Interface: ?*?*anyopaque) HRESULT {
         return self.vtable.CreateNodeInstance(self, NodeId, Flags, DesiredAccess, UnkOuter, InterfaceId, Interface);
     }
 };
 
-
-
-
-pub const KSSTREAM_HEADER = switch(@import("../zig.zig").arch) {
+pub const KSSTREAM_HEADER = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         Size: u32,
         TypeSpecificFlags: u32,
@@ -7213,7 +7207,7 @@ pub const KSSTREAM_HEADER = switch(@import("../zig.zig").arch) {
         OptionsFlags: u32,
     },
 };
-pub const KSNODEPROPERTY_AUDIO_3D_LISTENER = switch(@import("../zig.zig").arch) {
+pub const KSNODEPROPERTY_AUDIO_3D_LISTENER = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         NodeProperty: KSNODEPROPERTY,
         ListenerId: ?*anyopaque,
@@ -7224,7 +7218,7 @@ pub const KSNODEPROPERTY_AUDIO_3D_LISTENER = switch(@import("../zig.zig").arch) 
         Reserved: u32,
     },
 };
-pub const KSNODEPROPERTY_AUDIO_PROPERTY = switch(@import("../zig.zig").arch) {
+pub const KSNODEPROPERTY_AUDIO_PROPERTY = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         NodeProperty: KSNODEPROPERTY,
         AppContext: ?*anyopaque,
@@ -7245,54 +7239,53 @@ pub extern "ksuser" fn KsCreateAllocator(
     ConnectionHandle: ?HANDLE,
     AllocatorFraming: ?*KSALLOCATOR_FRAMING,
     AllocatorHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "ksuser" fn KsCreateClock(
     ConnectionHandle: ?HANDLE,
     ClockCreate: ?*KSCLOCK_CREATE,
     ClockHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "ksuser" fn KsCreatePin(
     FilterHandle: ?HANDLE,
     Connect: ?*KSPIN_CONNECT,
     DesiredAccess: u32,
     ConnectionHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "ksuser" fn KsCreateTopologyNode(
     ParentHandle: ?HANDLE,
     NodeCreate: ?*KSNODE_CREATE,
     DesiredAccess: u32,
     NodeHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "ksuser" fn KsCreateAllocator2(
     ConnectionHandle: ?HANDLE,
     AllocatorFraming: ?*KSALLOCATOR_FRAMING,
     AllocatorHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "ksuser" fn KsCreateClock2(
     ConnectionHandle: ?HANDLE,
     ClockCreate: ?*KSCLOCK_CREATE,
     ClockHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "ksuser" fn KsCreatePin2(
     FilterHandle: ?HANDLE,
     Connect: ?*KSPIN_CONNECT,
     DesiredAccess: u32,
     ConnectionHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "ksuser" fn KsCreateTopologyNode2(
     ParentHandle: ?HANDLE,
     NodeCreate: ?*KSNODE_CREATE,
     DesiredAccess: u32,
     NodeHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -7316,9 +7309,7 @@ const TIMECODE_SAMPLE = @import("../media.zig").TIMECODE_SAMPLE;
 const ULARGE_INTEGER = @import("../foundation.zig").ULARGE_INTEGER;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

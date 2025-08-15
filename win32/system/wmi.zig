@@ -1011,7 +1011,7 @@ pub const MI_PropertyDecl = extern struct {
 };
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const MI_MethodDecl_Invoke = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const MI_MethodDecl_Invoke = *const fn () callconv(.winapi) void;
 
 pub const MI_MethodDecl = extern struct {
     flags: u32,
@@ -1056,21 +1056,21 @@ pub const MI_Module_Self = extern struct {
     placeholder: usize, // TODO: why is this type empty?
 };
 
-pub const MI_ProviderFT_Load = *const fn(
+pub const MI_ProviderFT_Load = *const fn (
     self: ?*?*anyopaque,
     selfModule: ?*MI_Module_Self,
     context: ?*MI_Context,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_ProviderFT_Unload = *const fn(
+pub const MI_ProviderFT_Unload = *const fn (
     self: ?*anyopaque,
     context: ?*MI_Context,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const MI_ProviderFT_GetInstance = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const MI_ProviderFT_GetInstance = *const fn () callconv(.winapi) void;
 
-pub const MI_ProviderFT_EnumerateInstances = *const fn(
+pub const MI_ProviderFT_EnumerateInstances = *const fn (
     self: ?*anyopaque,
     context: ?*MI_Context,
     nameSpace: ?*const u16,
@@ -1078,38 +1078,38 @@ pub const MI_ProviderFT_EnumerateInstances = *const fn(
     propertySet: ?*const MI_PropertySet,
     keysOnly: u8,
     filter: ?*const MI_Filter,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const MI_ProviderFT_CreateInstance = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const MI_ProviderFT_CreateInstance = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const MI_ProviderFT_ModifyInstance = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const MI_ProviderFT_ModifyInstance = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const MI_ProviderFT_DeleteInstance = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const MI_ProviderFT_DeleteInstance = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const MI_ProviderFT_AssociatorInstances = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const MI_ProviderFT_AssociatorInstances = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const MI_ProviderFT_ReferenceInstances = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const MI_ProviderFT_ReferenceInstances = *const fn () callconv(.winapi) void;
 
-pub const MI_ProviderFT_EnableIndications = *const fn(
+pub const MI_ProviderFT_EnableIndications = *const fn (
     self: ?*anyopaque,
     indicationsContext: ?*MI_Context,
     nameSpace: ?*const u16,
     className: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_ProviderFT_DisableIndications = *const fn(
+pub const MI_ProviderFT_DisableIndications = *const fn (
     self: ?*anyopaque,
     indicationsContext: ?*MI_Context,
     nameSpace: ?*const u16,
     className: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_ProviderFT_Subscribe = *const fn(
+pub const MI_ProviderFT_Subscribe = *const fn (
     self: ?*anyopaque,
     context: ?*MI_Context,
     nameSpace: ?*const u16,
@@ -1118,19 +1118,19 @@ pub const MI_ProviderFT_Subscribe = *const fn(
     bookmark: ?*const u16,
     subscriptionID: u64,
     subscriptionSelf: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_ProviderFT_Unsubscribe = *const fn(
+pub const MI_ProviderFT_Unsubscribe = *const fn (
     self: ?*anyopaque,
     context: ?*MI_Context,
     nameSpace: ?*const u16,
     className: ?*const u16,
     subscriptionID: u64,
     subscriptionSelf: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const MI_ProviderFT_Invoke = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const MI_ProviderFT_Invoke = *const fn () callconv(.winapi) void;
 
 pub const MI_ProviderFT = extern struct {
     Load: ?MI_ProviderFT_Load,
@@ -1149,15 +1149,15 @@ pub const MI_ProviderFT = extern struct {
     Invoke: ?MI_ProviderFT_Invoke,
 };
 
-pub const MI_Module_Load = *const fn(
+pub const MI_Module_Load = *const fn (
     self: ?*?*MI_Module_Self,
     context: ?*MI_Context,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_Module_Unload = *const fn(
+pub const MI_Module_Unload = *const fn (
     self: ?*MI_Module_Self,
     context: ?*MI_Context,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const MI_Module = extern struct {
     version: u32,
@@ -1226,10 +1226,10 @@ pub const MI_REASON_TIMEOUT = MI_CancellationReason.TIMEOUT;
 pub const MI_REASON_SHUTDOWN = MI_CancellationReason.SHUTDOWN;
 pub const MI_REASON_SERVICESTOP = MI_CancellationReason.SERVICESTOP;
 
-pub const MI_CancelCallback = *const fn(
+pub const MI_CancelCallback = *const fn (
     reason: MI_CancellationReason,
     callbackData: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const MI_ContextFT = extern struct {
     PostResult: isize,
@@ -1269,9 +1269,9 @@ pub const MI_Context = extern struct {
     reserved: [3]isize,
 };
 
-pub const MI_MainFunction = *const fn(
+pub const MI_MainFunction = *const fn (
     server: ?*MI_Server,
-) callconv(@import("std").os.windows.WINAPI) ?*MI_Module;
+) callconv(.winapi) ?*MI_Module;
 
 pub const MI_QualifierSetFT = extern struct {
     GetQualifierCount: isize,
@@ -1334,29 +1334,29 @@ pub const MI_OperationCallback_ResponseType_Yes = MI_OperationCallback_ResponseT
 pub const MI_OperationCallback_ResponseType_NoToAll = MI_OperationCallback_ResponseType.NoToAll;
 pub const MI_OperationCallback_ResponseType_YesToAll = MI_OperationCallback_ResponseType.YesToAll;
 
-pub const MI_OperationCallback_PromptUser = *const fn(
+pub const MI_OperationCallback_PromptUser = *const fn (
     operation: ?*MI_Operation,
     callbackContext: ?*anyopaque,
     message: ?*const u16,
     promptType: MI_PromptType,
     promptUserResult: isize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_OperationCallback_WriteError = *const fn(
+pub const MI_OperationCallback_WriteError = *const fn (
     operation: ?*MI_Operation,
     callbackContext: ?*anyopaque,
     instance: ?*MI_Instance,
     writeErrorResult: isize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_OperationCallback_WriteMessage = *const fn(
+pub const MI_OperationCallback_WriteMessage = *const fn (
     operation: ?*MI_Operation,
     callbackContext: ?*anyopaque,
     channel: u32,
     message: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_OperationCallback_WriteProgress = *const fn(
+pub const MI_OperationCallback_WriteProgress = *const fn (
     operation: ?*MI_Operation,
     callbackContext: ?*anyopaque,
     activity: ?*const u16,
@@ -1364,9 +1364,9 @@ pub const MI_OperationCallback_WriteProgress = *const fn(
     statusDescription: ?*const u16,
     percentageComplete: u32,
     secondsRemaining: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_OperationCallback_Instance = *const fn(
+pub const MI_OperationCallback_Instance = *const fn (
     operation: ?*MI_Operation,
     callbackContext: ?*anyopaque,
     instance: ?*const MI_Instance,
@@ -1375,18 +1375,18 @@ pub const MI_OperationCallback_Instance = *const fn(
     errorString: ?*const u16,
     errorDetails: ?*const MI_Instance,
     resultAcknowledgement: isize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_OperationCallback_StreamedParameter = *const fn(
+pub const MI_OperationCallback_StreamedParameter = *const fn (
     operation: ?*MI_Operation,
     callbackContext: ?*anyopaque,
     parameterName: ?*const u16,
     resultType: MI_Type,
     result: ?*const MI_Value,
     resultAcknowledgement: isize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_OperationCallback_Indication = *const fn(
+pub const MI_OperationCallback_Indication = *const fn (
     operation: ?*MI_Operation,
     callbackContext: ?*anyopaque,
     instance: ?*const MI_Instance,
@@ -1397,9 +1397,9 @@ pub const MI_OperationCallback_Indication = *const fn(
     errorString: ?*const u16,
     errorDetails: ?*const MI_Instance,
     resultAcknowledgement: isize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const MI_OperationCallback_Class = *const fn(
+pub const MI_OperationCallback_Class = *const fn (
     operation: ?*MI_Operation,
     callbackContext: ?*anyopaque,
     classResult: ?*const MI_Class,
@@ -1408,7 +1408,7 @@ pub const MI_OperationCallback_Class = *const fn(
     errorString: ?*const u16,
     errorDetails: ?*const MI_Instance,
     resultAcknowledgement: isize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const MI_OperationCallbacks = extern struct {
     callbackContext: ?*anyopaque,
@@ -1491,13 +1491,13 @@ pub const MI_SerializerFT = extern struct {
     SerializeInstance: isize,
 };
 
-pub const MI_Deserializer_ClassObjectNeeded = *const fn(
+pub const MI_Deserializer_ClassObjectNeeded = *const fn (
     context: ?*anyopaque,
     serverName: ?*const u16,
     namespaceName: ?*const u16,
     className: ?*const u16,
     requestedClassObject: ?*?*MI_Class,
-) callconv(@import("std").os.windows.WINAPI) MI_Result;
+) callconv(.winapi) MI_Result;
 
 pub const MI_DeserializerFT = extern struct {
     Close: isize,
@@ -1739,25 +1739,25 @@ pub const IID_IWbemPathKeyList = &IID_IWbemPathKeyList_Value;
 pub const IWbemPathKeyList = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IWbemPathKeyList,
             puKeyCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetKey: *const fn (
             self: *const IWbemPathKeyList,
             wszName: ?[*:0]const u16,
             uFlags: u32,
             uCimType: u32,
             pKeyVal: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetKey2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetKey2: *const fn (
             self: *const IWbemPathKeyList,
             wszName: ?[*:0]const u16,
             uFlags: u32,
             uCimType: u32,
             pKeyVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKey: *const fn (
             self: *const IWbemPathKeyList,
             uKeyIx: u32,
             uFlags: u32,
@@ -1766,8 +1766,8 @@ pub const IWbemPathKeyList = extern union {
             puKeyValBufSize: ?*u32,
             pKeyVal: ?*anyopaque,
             puApparentCimType: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKey2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKey2: *const fn (
             self: *const IWbemPathKeyList,
             uKeyIx: u32,
             uFlags: u32,
@@ -1775,62 +1775,62 @@ pub const IWbemPathKeyList = extern union {
             pszKeyName: ?[*:0]u16,
             pKeyValue: ?*VARIANT,
             puApparentCimType: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveKey: *const fn (
             self: *const IWbemPathKeyList,
             wszName: ?[*:0]const u16,
             uFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAllKeys: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAllKeys: *const fn (
             self: *const IWbemPathKeyList,
             uFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MakeSingleton: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MakeSingleton: *const fn (
             self: *const IWbemPathKeyList,
             bSet: u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInfo: *const fn (
             self: *const IWbemPathKeyList,
             uRequestedInfo: u32,
             puResponse: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetText: *const fn (
             self: *const IWbemPathKeyList,
             lFlags: i32,
             puBuffLength: ?*u32,
             pszText: [*:0]u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IWbemPathKeyList, puKeyCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IWbemPathKeyList, puKeyCount: ?*u32) HRESULT {
         return self.vtable.GetCount(self, puKeyCount);
     }
-    pub fn SetKey(self: *const IWbemPathKeyList, wszName: ?[*:0]const u16, uFlags: u32, uCimType: u32, pKeyVal: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn SetKey(self: *const IWbemPathKeyList, wszName: ?[*:0]const u16, uFlags: u32, uCimType: u32, pKeyVal: ?*anyopaque) HRESULT {
         return self.vtable.SetKey(self, wszName, uFlags, uCimType, pKeyVal);
     }
-    pub fn SetKey2(self: *const IWbemPathKeyList, wszName: ?[*:0]const u16, uFlags: u32, uCimType: u32, pKeyVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetKey2(self: *const IWbemPathKeyList, wszName: ?[*:0]const u16, uFlags: u32, uCimType: u32, pKeyVal: ?*VARIANT) HRESULT {
         return self.vtable.SetKey2(self, wszName, uFlags, uCimType, pKeyVal);
     }
-    pub fn GetKey(self: *const IWbemPathKeyList, uKeyIx: u32, uFlags: u32, puNameBufSize: ?*u32, pszKeyName: ?[*:0]u16, puKeyValBufSize: ?*u32, pKeyVal: ?*anyopaque, puApparentCimType: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetKey(self: *const IWbemPathKeyList, uKeyIx: u32, uFlags: u32, puNameBufSize: ?*u32, pszKeyName: ?[*:0]u16, puKeyValBufSize: ?*u32, pKeyVal: ?*anyopaque, puApparentCimType: ?*u32) HRESULT {
         return self.vtable.GetKey(self, uKeyIx, uFlags, puNameBufSize, pszKeyName, puKeyValBufSize, pKeyVal, puApparentCimType);
     }
-    pub fn GetKey2(self: *const IWbemPathKeyList, uKeyIx: u32, uFlags: u32, puNameBufSize: ?*u32, pszKeyName: ?[*:0]u16, pKeyValue: ?*VARIANT, puApparentCimType: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetKey2(self: *const IWbemPathKeyList, uKeyIx: u32, uFlags: u32, puNameBufSize: ?*u32, pszKeyName: ?[*:0]u16, pKeyValue: ?*VARIANT, puApparentCimType: ?*u32) HRESULT {
         return self.vtable.GetKey2(self, uKeyIx, uFlags, puNameBufSize, pszKeyName, pKeyValue, puApparentCimType);
     }
-    pub fn RemoveKey(self: *const IWbemPathKeyList, wszName: ?[*:0]const u16, uFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveKey(self: *const IWbemPathKeyList, wszName: ?[*:0]const u16, uFlags: u32) HRESULT {
         return self.vtable.RemoveKey(self, wszName, uFlags);
     }
-    pub fn RemoveAllKeys(self: *const IWbemPathKeyList, uFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAllKeys(self: *const IWbemPathKeyList, uFlags: u32) HRESULT {
         return self.vtable.RemoveAllKeys(self, uFlags);
     }
-    pub fn MakeSingleton(self: *const IWbemPathKeyList, bSet: u8) callconv(.Inline) HRESULT {
+    pub inline fn MakeSingleton(self: *const IWbemPathKeyList, bSet: u8) HRESULT {
         return self.vtable.MakeSingleton(self, bSet);
     }
-    pub fn GetInfo(self: *const IWbemPathKeyList, uRequestedInfo: u32, puResponse: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn GetInfo(self: *const IWbemPathKeyList, uRequestedInfo: u32, puResponse: ?*u64) HRESULT {
         return self.vtable.GetInfo(self, uRequestedInfo, puResponse);
     }
-    pub fn GetText(self: *const IWbemPathKeyList, lFlags: i32, puBuffLength: ?*u32, pszText: [*:0]u16) callconv(.Inline) HRESULT {
+    pub inline fn GetText(self: *const IWbemPathKeyList, lFlags: i32, puBuffLength: ?*u32, pszText: [*:0]u16) HRESULT {
         return self.vtable.GetText(self, lFlags, puBuffLength, pszText);
     }
 };
@@ -1841,207 +1841,207 @@ pub const IID_IWbemPath = &IID_IWbemPath_Value;
 pub const IWbemPath = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetText: *const fn(
+        SetText: *const fn (
             self: *const IWbemPath,
             uMode: u32,
             pszPath: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetText: *const fn (
             self: *const IWbemPath,
             lFlags: i32,
             puBuffLength: ?*u32,
             pszText: [*:0]u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInfo: *const fn (
             self: *const IWbemPath,
             uRequestedInfo: u32,
             puResponse: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetServer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetServer: *const fn (
             self: *const IWbemPath,
             Name: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetServer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetServer: *const fn (
             self: *const IWbemPath,
             puNameBufLength: ?*u32,
             pName: [*:0]u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNamespaceCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNamespaceCount: *const fn (
             self: *const IWbemPath,
             puCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetNamespaceAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetNamespaceAt: *const fn (
             self: *const IWbemPath,
             uIndex: u32,
             pszName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNamespaceAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNamespaceAt: *const fn (
             self: *const IWbemPath,
             uIndex: u32,
             puNameBufLength: ?*u32,
             pName: [*:0]u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveNamespaceAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveNamespaceAt: *const fn (
             self: *const IWbemPath,
             uIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAllNamespaces: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAllNamespaces: *const fn (
             self: *const IWbemPath,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetScopeCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetScopeCount: *const fn (
             self: *const IWbemPath,
             puCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetScope: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetScope: *const fn (
             self: *const IWbemPath,
             uIndex: u32,
             pszClass: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetScopeFromText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetScopeFromText: *const fn (
             self: *const IWbemPath,
             uIndex: u32,
             pszText: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetScope: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetScope: *const fn (
             self: *const IWbemPath,
             uIndex: u32,
             puClassNameBufSize: ?*u32,
             pszClass: [*:0]u16,
             pKeyList: ?*?*IWbemPathKeyList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetScopeAsText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetScopeAsText: *const fn (
             self: *const IWbemPath,
             uIndex: u32,
             puTextBufSize: ?*u32,
             pszText: [*:0]u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveScope: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveScope: *const fn (
             self: *const IWbemPath,
             uIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAllScopes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAllScopes: *const fn (
             self: *const IWbemPath,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetClassName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetClassName: *const fn (
             self: *const IWbemPath,
             Name: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetClassName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetClassName: *const fn (
             self: *const IWbemPath,
             puBuffLength: ?*u32,
             pszName: ?[*:0]u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeyList: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeyList: *const fn (
             self: *const IWbemPath,
             pOut: ?*?*IWbemPathKeyList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateClassPart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateClassPart: *const fn (
             self: *const IWbemPath,
             lFlags: i32,
             Name: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteClassPart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteClassPart: *const fn (
             self: *const IWbemPath,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsRelative: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsRelative: *const fn (
             self: *const IWbemPath,
             wszMachine: ?PWSTR,
             wszNamespace: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        IsRelativeOrChild: *const fn(
+        ) callconv(.winapi) BOOL,
+        IsRelativeOrChild: *const fn (
             self: *const IWbemPath,
             wszMachine: ?PWSTR,
             wszNamespace: ?PWSTR,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        IsLocal: *const fn(
+        ) callconv(.winapi) BOOL,
+        IsLocal: *const fn (
             self: *const IWbemPath,
             wszMachine: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        IsSameClassName: *const fn(
+        ) callconv(.winapi) BOOL,
+        IsSameClassName: *const fn (
             self: *const IWbemPath,
             wszClass: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
+        ) callconv(.winapi) BOOL,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetText(self: *const IWbemPath, uMode: u32, pszPath: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetText(self: *const IWbemPath, uMode: u32, pszPath: ?[*:0]const u16) HRESULT {
         return self.vtable.SetText(self, uMode, pszPath);
     }
-    pub fn GetText(self: *const IWbemPath, lFlags: i32, puBuffLength: ?*u32, pszText: [*:0]u16) callconv(.Inline) HRESULT {
+    pub inline fn GetText(self: *const IWbemPath, lFlags: i32, puBuffLength: ?*u32, pszText: [*:0]u16) HRESULT {
         return self.vtable.GetText(self, lFlags, puBuffLength, pszText);
     }
-    pub fn GetInfo(self: *const IWbemPath, uRequestedInfo: u32, puResponse: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn GetInfo(self: *const IWbemPath, uRequestedInfo: u32, puResponse: ?*u64) HRESULT {
         return self.vtable.GetInfo(self, uRequestedInfo, puResponse);
     }
-    pub fn SetServer(self: *const IWbemPath, Name: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetServer(self: *const IWbemPath, Name: ?[*:0]const u16) HRESULT {
         return self.vtable.SetServer(self, Name);
     }
-    pub fn GetServer(self: *const IWbemPath, puNameBufLength: ?*u32, pName: [*:0]u16) callconv(.Inline) HRESULT {
+    pub inline fn GetServer(self: *const IWbemPath, puNameBufLength: ?*u32, pName: [*:0]u16) HRESULT {
         return self.vtable.GetServer(self, puNameBufLength, pName);
     }
-    pub fn GetNamespaceCount(self: *const IWbemPath, puCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetNamespaceCount(self: *const IWbemPath, puCount: ?*u32) HRESULT {
         return self.vtable.GetNamespaceCount(self, puCount);
     }
-    pub fn SetNamespaceAt(self: *const IWbemPath, uIndex: u32, pszName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetNamespaceAt(self: *const IWbemPath, uIndex: u32, pszName: ?[*:0]const u16) HRESULT {
         return self.vtable.SetNamespaceAt(self, uIndex, pszName);
     }
-    pub fn GetNamespaceAt(self: *const IWbemPath, uIndex: u32, puNameBufLength: ?*u32, pName: [*:0]u16) callconv(.Inline) HRESULT {
+    pub inline fn GetNamespaceAt(self: *const IWbemPath, uIndex: u32, puNameBufLength: ?*u32, pName: [*:0]u16) HRESULT {
         return self.vtable.GetNamespaceAt(self, uIndex, puNameBufLength, pName);
     }
-    pub fn RemoveNamespaceAt(self: *const IWbemPath, uIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveNamespaceAt(self: *const IWbemPath, uIndex: u32) HRESULT {
         return self.vtable.RemoveNamespaceAt(self, uIndex);
     }
-    pub fn RemoveAllNamespaces(self: *const IWbemPath) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAllNamespaces(self: *const IWbemPath) HRESULT {
         return self.vtable.RemoveAllNamespaces(self);
     }
-    pub fn GetScopeCount(self: *const IWbemPath, puCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetScopeCount(self: *const IWbemPath, puCount: ?*u32) HRESULT {
         return self.vtable.GetScopeCount(self, puCount);
     }
-    pub fn SetScope(self: *const IWbemPath, uIndex: u32, pszClass: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetScope(self: *const IWbemPath, uIndex: u32, pszClass: ?PWSTR) HRESULT {
         return self.vtable.SetScope(self, uIndex, pszClass);
     }
-    pub fn SetScopeFromText(self: *const IWbemPath, uIndex: u32, pszText: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetScopeFromText(self: *const IWbemPath, uIndex: u32, pszText: ?PWSTR) HRESULT {
         return self.vtable.SetScopeFromText(self, uIndex, pszText);
     }
-    pub fn GetScope(self: *const IWbemPath, uIndex: u32, puClassNameBufSize: ?*u32, pszClass: [*:0]u16, pKeyList: ?*?*IWbemPathKeyList) callconv(.Inline) HRESULT {
+    pub inline fn GetScope(self: *const IWbemPath, uIndex: u32, puClassNameBufSize: ?*u32, pszClass: [*:0]u16, pKeyList: ?*?*IWbemPathKeyList) HRESULT {
         return self.vtable.GetScope(self, uIndex, puClassNameBufSize, pszClass, pKeyList);
     }
-    pub fn GetScopeAsText(self: *const IWbemPath, uIndex: u32, puTextBufSize: ?*u32, pszText: [*:0]u16) callconv(.Inline) HRESULT {
+    pub inline fn GetScopeAsText(self: *const IWbemPath, uIndex: u32, puTextBufSize: ?*u32, pszText: [*:0]u16) HRESULT {
         return self.vtable.GetScopeAsText(self, uIndex, puTextBufSize, pszText);
     }
-    pub fn RemoveScope(self: *const IWbemPath, uIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveScope(self: *const IWbemPath, uIndex: u32) HRESULT {
         return self.vtable.RemoveScope(self, uIndex);
     }
-    pub fn RemoveAllScopes(self: *const IWbemPath) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAllScopes(self: *const IWbemPath) HRESULT {
         return self.vtable.RemoveAllScopes(self);
     }
-    pub fn SetClassName(self: *const IWbemPath, Name: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetClassName(self: *const IWbemPath, Name: ?[*:0]const u16) HRESULT {
         return self.vtable.SetClassName(self, Name);
     }
-    pub fn GetClassName(self: *const IWbemPath, puBuffLength: ?*u32, pszName: ?[*:0]u16) callconv(.Inline) HRESULT {
+    pub inline fn GetClassName(self: *const IWbemPath, puBuffLength: ?*u32, pszName: ?[*:0]u16) HRESULT {
         return self.vtable.GetClassName(self, puBuffLength, pszName);
     }
-    pub fn GetKeyList(self: *const IWbemPath, pOut: ?*?*IWbemPathKeyList) callconv(.Inline) HRESULT {
+    pub inline fn GetKeyList(self: *const IWbemPath, pOut: ?*?*IWbemPathKeyList) HRESULT {
         return self.vtable.GetKeyList(self, pOut);
     }
-    pub fn CreateClassPart(self: *const IWbemPath, lFlags: i32, Name: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn CreateClassPart(self: *const IWbemPath, lFlags: i32, Name: ?[*:0]const u16) HRESULT {
         return self.vtable.CreateClassPart(self, lFlags, Name);
     }
-    pub fn DeleteClassPart(self: *const IWbemPath, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteClassPart(self: *const IWbemPath, lFlags: i32) HRESULT {
         return self.vtable.DeleteClassPart(self, lFlags);
     }
-    pub fn IsRelative(self: *const IWbemPath, wszMachine: ?PWSTR, wszNamespace: ?PWSTR) callconv(.Inline) BOOL {
+    pub inline fn IsRelative(self: *const IWbemPath, wszMachine: ?PWSTR, wszNamespace: ?PWSTR) BOOL {
         return self.vtable.IsRelative(self, wszMachine, wszNamespace);
     }
-    pub fn IsRelativeOrChild(self: *const IWbemPath, wszMachine: ?PWSTR, wszNamespace: ?PWSTR, lFlags: i32) callconv(.Inline) BOOL {
+    pub inline fn IsRelativeOrChild(self: *const IWbemPath, wszMachine: ?PWSTR, wszNamespace: ?PWSTR, lFlags: i32) BOOL {
         return self.vtable.IsRelativeOrChild(self, wszMachine, wszNamespace, lFlags);
     }
-    pub fn IsLocal(self: *const IWbemPath, wszMachine: ?[*:0]const u16) callconv(.Inline) BOOL {
+    pub inline fn IsLocal(self: *const IWbemPath, wszMachine: ?[*:0]const u16) BOOL {
         return self.vtable.IsLocal(self, wszMachine);
     }
-    pub fn IsSameClassName(self: *const IWbemPath, wszClass: ?[*:0]const u16) callconv(.Inline) BOOL {
+    pub inline fn IsSameClassName(self: *const IWbemPath, wszClass: ?[*:0]const u16) BOOL {
         return self.vtable.IsSameClassName(self, wszClass);
     }
 };
@@ -2052,66 +2052,66 @@ pub const IID_IWbemQuery = &IID_IWbemQuery_Value;
 pub const IWbemQuery = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Empty: *const fn(
+        Empty: *const fn (
             self: *const IWbemQuery,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLanguageFeatures: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLanguageFeatures: *const fn (
             self: *const IWbemQuery,
             uFlags: u32,
             uArraySize: u32,
             puFeatures: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TestLanguageFeatures: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TestLanguageFeatures: *const fn (
             self: *const IWbemQuery,
             uFlags: u32,
             uArraySize: ?*u32,
             puFeatures: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Parse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Parse: *const fn (
             self: *const IWbemQuery,
             pszLang: ?[*:0]const u16,
             pszQuery: ?[*:0]const u16,
             uFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAnalysis: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAnalysis: *const fn (
             self: *const IWbemQuery,
             uAnalysisType: u32,
             uFlags: u32,
             pAnalysis: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FreeMemory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FreeMemory: *const fn (
             self: *const IWbemQuery,
             pMem: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetQueryInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetQueryInfo: *const fn (
             self: *const IWbemQuery,
             uAnalysisType: u32,
             uInfoId: u32,
             uBufSize: u32,
             pDestBuf: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Empty(self: *const IWbemQuery) callconv(.Inline) HRESULT {
+    pub inline fn Empty(self: *const IWbemQuery) HRESULT {
         return self.vtable.Empty(self);
     }
-    pub fn SetLanguageFeatures(self: *const IWbemQuery, uFlags: u32, uArraySize: u32, puFeatures: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn SetLanguageFeatures(self: *const IWbemQuery, uFlags: u32, uArraySize: u32, puFeatures: ?*u32) HRESULT {
         return self.vtable.SetLanguageFeatures(self, uFlags, uArraySize, puFeatures);
     }
-    pub fn TestLanguageFeatures(self: *const IWbemQuery, uFlags: u32, uArraySize: ?*u32, puFeatures: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn TestLanguageFeatures(self: *const IWbemQuery, uFlags: u32, uArraySize: ?*u32, puFeatures: ?*u32) HRESULT {
         return self.vtable.TestLanguageFeatures(self, uFlags, uArraySize, puFeatures);
     }
-    pub fn Parse(self: *const IWbemQuery, pszLang: ?[*:0]const u16, pszQuery: ?[*:0]const u16, uFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Parse(self: *const IWbemQuery, pszLang: ?[*:0]const u16, pszQuery: ?[*:0]const u16, uFlags: u32) HRESULT {
         return self.vtable.Parse(self, pszLang, pszQuery, uFlags);
     }
-    pub fn GetAnalysis(self: *const IWbemQuery, uAnalysisType: u32, uFlags: u32, pAnalysis: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetAnalysis(self: *const IWbemQuery, uAnalysisType: u32, uFlags: u32, pAnalysis: ?*?*anyopaque) HRESULT {
         return self.vtable.GetAnalysis(self, uAnalysisType, uFlags, pAnalysis);
     }
-    pub fn FreeMemory(self: *const IWbemQuery, pMem: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn FreeMemory(self: *const IWbemQuery, pMem: ?*anyopaque) HRESULT {
         return self.vtable.FreeMemory(self, pMem);
     }
-    pub fn GetQueryInfo(self: *const IWbemQuery, uAnalysisType: u32, uInfoId: u32, uBufSize: u32, pDestBuf: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetQueryInfo(self: *const IWbemQuery, uAnalysisType: u32, uInfoId: u32, uBufSize: u32, pDestBuf: ?*anyopaque) HRESULT {
         return self.vtable.GetQueryInfo(self, uAnalysisType, uInfoId, uBufSize, pDestBuf);
     }
 };
@@ -3154,204 +3154,204 @@ pub const IID_IWbemClassObject = &IID_IWbemClassObject_Value;
 pub const IWbemClassObject = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetQualifierSet: *const fn(
+        GetQualifierSet: *const fn (
             self: *const IWbemClassObject,
             ppQualSet: ?*?*IWbemQualifierSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Get: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Get: *const fn (
             self: *const IWbemClassObject,
             wszName: ?[*:0]const u16,
             lFlags: i32,
             pVal: ?*VARIANT,
             pType: ?*i32,
             plFlavor: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Put: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Put: *const fn (
             self: *const IWbemClassObject,
             wszName: ?[*:0]const u16,
             lFlags: i32,
             pVal: ?*VARIANT,
             Type: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IWbemClassObject,
             wszName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNames: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNames: *const fn (
             self: *const IWbemClassObject,
             wszQualifierName: ?[*:0]const u16,
             lFlags: i32,
             pQualifierVal: ?*VARIANT,
             pNames: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BeginEnumeration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BeginEnumeration: *const fn (
             self: *const IWbemClassObject,
             lEnumFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IWbemClassObject,
             lFlags: i32,
             strName: ?*?BSTR,
             pVal: ?*VARIANT,
             pType: ?*i32,
             plFlavor: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndEnumeration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndEnumeration: *const fn (
             self: *const IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyQualifierSet: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyQualifierSet: *const fn (
             self: *const IWbemClassObject,
             wszProperty: ?[*:0]const u16,
             ppQualSet: ?*?*IWbemQualifierSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IWbemClassObject,
             ppCopy: ?*?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObjectText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObjectText: *const fn (
             self: *const IWbemClassObject,
             lFlags: i32,
             pstrObjectText: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SpawnDerivedClass: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SpawnDerivedClass: *const fn (
             self: *const IWbemClassObject,
             lFlags: i32,
             ppNewClass: ?*?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SpawnInstance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SpawnInstance: *const fn (
             self: *const IWbemClassObject,
             lFlags: i32,
             ppNewInstance: ?*?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CompareTo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CompareTo: *const fn (
             self: *const IWbemClassObject,
             lFlags: i32,
             pCompareTo: ?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyOrigin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyOrigin: *const fn (
             self: *const IWbemClassObject,
             wszName: ?[*:0]const u16,
             pstrClassName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InheritsFrom: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InheritsFrom: *const fn (
             self: *const IWbemClassObject,
             strAncestor: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMethod: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMethod: *const fn (
             self: *const IWbemClassObject,
             wszName: ?[*:0]const u16,
             lFlags: i32,
             ppInSignature: ?*?*IWbemClassObject,
             ppOutSignature: ?*?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutMethod: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutMethod: *const fn (
             self: *const IWbemClassObject,
             wszName: ?[*:0]const u16,
             lFlags: i32,
             pInSignature: ?*IWbemClassObject,
             pOutSignature: ?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteMethod: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteMethod: *const fn (
             self: *const IWbemClassObject,
             wszName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BeginMethodEnumeration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BeginMethodEnumeration: *const fn (
             self: *const IWbemClassObject,
             lEnumFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NextMethod: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NextMethod: *const fn (
             self: *const IWbemClassObject,
             lFlags: i32,
             pstrName: ?*?BSTR,
             ppInSignature: ?*?*IWbemClassObject,
             ppOutSignature: ?*?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndMethodEnumeration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndMethodEnumeration: *const fn (
             self: *const IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMethodQualifierSet: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMethodQualifierSet: *const fn (
             self: *const IWbemClassObject,
             wszMethod: ?[*:0]const u16,
             ppQualSet: ?*?*IWbemQualifierSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMethodOrigin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMethodOrigin: *const fn (
             self: *const IWbemClassObject,
             wszMethodName: ?[*:0]const u16,
             pstrClassName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetQualifierSet(self: *const IWbemClassObject, ppQualSet: ?*?*IWbemQualifierSet) callconv(.Inline) HRESULT {
+    pub inline fn GetQualifierSet(self: *const IWbemClassObject, ppQualSet: ?*?*IWbemQualifierSet) HRESULT {
         return self.vtable.GetQualifierSet(self, ppQualSet);
     }
-    pub fn Get(self: *const IWbemClassObject, wszName: ?[*:0]const u16, lFlags: i32, pVal: ?*VARIANT, pType: ?*i32, plFlavor: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const IWbemClassObject, wszName: ?[*:0]const u16, lFlags: i32, pVal: ?*VARIANT, pType: ?*i32, plFlavor: ?*i32) HRESULT {
         return self.vtable.Get(self, wszName, lFlags, pVal, pType, plFlavor);
     }
-    pub fn Put(self: *const IWbemClassObject, wszName: ?[*:0]const u16, lFlags: i32, pVal: ?*VARIANT, Type: i32) callconv(.Inline) HRESULT {
+    pub inline fn Put(self: *const IWbemClassObject, wszName: ?[*:0]const u16, lFlags: i32, pVal: ?*VARIANT, Type: i32) HRESULT {
         return self.vtable.Put(self, wszName, lFlags, pVal, Type);
     }
-    pub fn Delete(self: *const IWbemClassObject, wszName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IWbemClassObject, wszName: ?[*:0]const u16) HRESULT {
         return self.vtable.Delete(self, wszName);
     }
-    pub fn GetNames(self: *const IWbemClassObject, wszQualifierName: ?[*:0]const u16, lFlags: i32, pQualifierVal: ?*VARIANT, pNames: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetNames(self: *const IWbemClassObject, wszQualifierName: ?[*:0]const u16, lFlags: i32, pQualifierVal: ?*VARIANT, pNames: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetNames(self, wszQualifierName, lFlags, pQualifierVal, pNames);
     }
-    pub fn BeginEnumeration(self: *const IWbemClassObject, lEnumFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn BeginEnumeration(self: *const IWbemClassObject, lEnumFlags: i32) HRESULT {
         return self.vtable.BeginEnumeration(self, lEnumFlags);
     }
-    pub fn Next(self: *const IWbemClassObject, lFlags: i32, strName: ?*?BSTR, pVal: ?*VARIANT, pType: ?*i32, plFlavor: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IWbemClassObject, lFlags: i32, strName: ?*?BSTR, pVal: ?*VARIANT, pType: ?*i32, plFlavor: ?*i32) HRESULT {
         return self.vtable.Next(self, lFlags, strName, pVal, pType, plFlavor);
     }
-    pub fn EndEnumeration(self: *const IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn EndEnumeration(self: *const IWbemClassObject) HRESULT {
         return self.vtable.EndEnumeration(self);
     }
-    pub fn GetPropertyQualifierSet(self: *const IWbemClassObject, wszProperty: ?[*:0]const u16, ppQualSet: ?*?*IWbemQualifierSet) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyQualifierSet(self: *const IWbemClassObject, wszProperty: ?[*:0]const u16, ppQualSet: ?*?*IWbemQualifierSet) HRESULT {
         return self.vtable.GetPropertyQualifierSet(self, wszProperty, ppQualSet);
     }
-    pub fn Clone(self: *const IWbemClassObject, ppCopy: ?*?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IWbemClassObject, ppCopy: ?*?*IWbemClassObject) HRESULT {
         return self.vtable.Clone(self, ppCopy);
     }
-    pub fn GetObjectText(self: *const IWbemClassObject, lFlags: i32, pstrObjectText: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectText(self: *const IWbemClassObject, lFlags: i32, pstrObjectText: ?*?BSTR) HRESULT {
         return self.vtable.GetObjectText(self, lFlags, pstrObjectText);
     }
-    pub fn SpawnDerivedClass(self: *const IWbemClassObject, lFlags: i32, ppNewClass: ?*?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn SpawnDerivedClass(self: *const IWbemClassObject, lFlags: i32, ppNewClass: ?*?*IWbemClassObject) HRESULT {
         return self.vtable.SpawnDerivedClass(self, lFlags, ppNewClass);
     }
-    pub fn SpawnInstance(self: *const IWbemClassObject, lFlags: i32, ppNewInstance: ?*?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn SpawnInstance(self: *const IWbemClassObject, lFlags: i32, ppNewInstance: ?*?*IWbemClassObject) HRESULT {
         return self.vtable.SpawnInstance(self, lFlags, ppNewInstance);
     }
-    pub fn CompareTo(self: *const IWbemClassObject, lFlags: i32, pCompareTo: ?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn CompareTo(self: *const IWbemClassObject, lFlags: i32, pCompareTo: ?*IWbemClassObject) HRESULT {
         return self.vtable.CompareTo(self, lFlags, pCompareTo);
     }
-    pub fn GetPropertyOrigin(self: *const IWbemClassObject, wszName: ?[*:0]const u16, pstrClassName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyOrigin(self: *const IWbemClassObject, wszName: ?[*:0]const u16, pstrClassName: ?*?BSTR) HRESULT {
         return self.vtable.GetPropertyOrigin(self, wszName, pstrClassName);
     }
-    pub fn InheritsFrom(self: *const IWbemClassObject, strAncestor: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn InheritsFrom(self: *const IWbemClassObject, strAncestor: ?[*:0]const u16) HRESULT {
         return self.vtable.InheritsFrom(self, strAncestor);
     }
-    pub fn GetMethod(self: *const IWbemClassObject, wszName: ?[*:0]const u16, lFlags: i32, ppInSignature: ?*?*IWbemClassObject, ppOutSignature: ?*?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn GetMethod(self: *const IWbemClassObject, wszName: ?[*:0]const u16, lFlags: i32, ppInSignature: ?*?*IWbemClassObject, ppOutSignature: ?*?*IWbemClassObject) HRESULT {
         return self.vtable.GetMethod(self, wszName, lFlags, ppInSignature, ppOutSignature);
     }
-    pub fn PutMethod(self: *const IWbemClassObject, wszName: ?[*:0]const u16, lFlags: i32, pInSignature: ?*IWbemClassObject, pOutSignature: ?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn PutMethod(self: *const IWbemClassObject, wszName: ?[*:0]const u16, lFlags: i32, pInSignature: ?*IWbemClassObject, pOutSignature: ?*IWbemClassObject) HRESULT {
         return self.vtable.PutMethod(self, wszName, lFlags, pInSignature, pOutSignature);
     }
-    pub fn DeleteMethod(self: *const IWbemClassObject, wszName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn DeleteMethod(self: *const IWbemClassObject, wszName: ?[*:0]const u16) HRESULT {
         return self.vtable.DeleteMethod(self, wszName);
     }
-    pub fn BeginMethodEnumeration(self: *const IWbemClassObject, lEnumFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn BeginMethodEnumeration(self: *const IWbemClassObject, lEnumFlags: i32) HRESULT {
         return self.vtable.BeginMethodEnumeration(self, lEnumFlags);
     }
-    pub fn NextMethod(self: *const IWbemClassObject, lFlags: i32, pstrName: ?*?BSTR, ppInSignature: ?*?*IWbemClassObject, ppOutSignature: ?*?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn NextMethod(self: *const IWbemClassObject, lFlags: i32, pstrName: ?*?BSTR, ppInSignature: ?*?*IWbemClassObject, ppOutSignature: ?*?*IWbemClassObject) HRESULT {
         return self.vtable.NextMethod(self, lFlags, pstrName, ppInSignature, ppOutSignature);
     }
-    pub fn EndMethodEnumeration(self: *const IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn EndMethodEnumeration(self: *const IWbemClassObject) HRESULT {
         return self.vtable.EndMethodEnumeration(self);
     }
-    pub fn GetMethodQualifierSet(self: *const IWbemClassObject, wszMethod: ?[*:0]const u16, ppQualSet: ?*?*IWbemQualifierSet) callconv(.Inline) HRESULT {
+    pub inline fn GetMethodQualifierSet(self: *const IWbemClassObject, wszMethod: ?[*:0]const u16, ppQualSet: ?*?*IWbemQualifierSet) HRESULT {
         return self.vtable.GetMethodQualifierSet(self, wszMethod, ppQualSet);
     }
-    pub fn GetMethodOrigin(self: *const IWbemClassObject, wszMethodName: ?[*:0]const u16, pstrClassName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetMethodOrigin(self: *const IWbemClassObject, wszMethodName: ?[*:0]const u16, pstrClassName: ?*?BSTR) HRESULT {
         return self.vtable.GetMethodOrigin(self, wszMethodName, pstrClassName);
     }
 };
@@ -3362,91 +3362,91 @@ pub const IID_IWbemObjectAccess = &IID_IWbemObjectAccess_Value;
 pub const IWbemObjectAccess = extern union {
     pub const VTable = extern struct {
         base: IWbemClassObject.VTable,
-        GetPropertyHandle: *const fn(
+        GetPropertyHandle: *const fn (
             self: *const IWbemObjectAccess,
             wszPropertyName: ?[*:0]const u16,
             pType: ?*i32,
             plHandle: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WritePropertyValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WritePropertyValue: *const fn (
             self: *const IWbemObjectAccess,
             lHandle: i32,
             lNumBytes: i32,
             aData: [*:0]const u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReadPropertyValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReadPropertyValue: *const fn (
             self: *const IWbemObjectAccess,
             lHandle: i32,
             lBufferSize: i32,
             plNumBytes: ?*i32,
             aData: [*:0]u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReadDWORD: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReadDWORD: *const fn (
             self: *const IWbemObjectAccess,
             lHandle: i32,
             pdw: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteDWORD: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteDWORD: *const fn (
             self: *const IWbemObjectAccess,
             lHandle: i32,
             dw: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReadQWORD: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReadQWORD: *const fn (
             self: *const IWbemObjectAccess,
             lHandle: i32,
             pqw: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteQWORD: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteQWORD: *const fn (
             self: *const IWbemObjectAccess,
             lHandle: i32,
             pw: u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyInfoByHandle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyInfoByHandle: *const fn (
             self: *const IWbemObjectAccess,
             lHandle: i32,
             pstrName: ?*?BSTR,
             pType: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Lock: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Lock: *const fn (
             self: *const IWbemObjectAccess,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unlock: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unlock: *const fn (
             self: *const IWbemObjectAccess,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWbemClassObject: IWbemClassObject,
     IUnknown: IUnknown,
-    pub fn GetPropertyHandle(self: *const IWbemObjectAccess, wszPropertyName: ?[*:0]const u16, pType: ?*i32, plHandle: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyHandle(self: *const IWbemObjectAccess, wszPropertyName: ?[*:0]const u16, pType: ?*i32, plHandle: ?*i32) HRESULT {
         return self.vtable.GetPropertyHandle(self, wszPropertyName, pType, plHandle);
     }
-    pub fn WritePropertyValue(self: *const IWbemObjectAccess, lHandle: i32, lNumBytes: i32, aData: [*:0]const u8) callconv(.Inline) HRESULT {
+    pub inline fn WritePropertyValue(self: *const IWbemObjectAccess, lHandle: i32, lNumBytes: i32, aData: [*:0]const u8) HRESULT {
         return self.vtable.WritePropertyValue(self, lHandle, lNumBytes, aData);
     }
-    pub fn ReadPropertyValue(self: *const IWbemObjectAccess, lHandle: i32, lBufferSize: i32, plNumBytes: ?*i32, aData: [*:0]u8) callconv(.Inline) HRESULT {
+    pub inline fn ReadPropertyValue(self: *const IWbemObjectAccess, lHandle: i32, lBufferSize: i32, plNumBytes: ?*i32, aData: [*:0]u8) HRESULT {
         return self.vtable.ReadPropertyValue(self, lHandle, lBufferSize, plNumBytes, aData);
     }
-    pub fn ReadDWORD(self: *const IWbemObjectAccess, lHandle: i32, pdw: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ReadDWORD(self: *const IWbemObjectAccess, lHandle: i32, pdw: ?*u32) HRESULT {
         return self.vtable.ReadDWORD(self, lHandle, pdw);
     }
-    pub fn WriteDWORD(self: *const IWbemObjectAccess, lHandle: i32, dw: u32) callconv(.Inline) HRESULT {
+    pub inline fn WriteDWORD(self: *const IWbemObjectAccess, lHandle: i32, dw: u32) HRESULT {
         return self.vtable.WriteDWORD(self, lHandle, dw);
     }
-    pub fn ReadQWORD(self: *const IWbemObjectAccess, lHandle: i32, pqw: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn ReadQWORD(self: *const IWbemObjectAccess, lHandle: i32, pqw: ?*u64) HRESULT {
         return self.vtable.ReadQWORD(self, lHandle, pqw);
     }
-    pub fn WriteQWORD(self: *const IWbemObjectAccess, lHandle: i32, pw: u64) callconv(.Inline) HRESULT {
+    pub inline fn WriteQWORD(self: *const IWbemObjectAccess, lHandle: i32, pw: u64) HRESULT {
         return self.vtable.WriteQWORD(self, lHandle, pw);
     }
-    pub fn GetPropertyInfoByHandle(self: *const IWbemObjectAccess, lHandle: i32, pstrName: ?*?BSTR, pType: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyInfoByHandle(self: *const IWbemObjectAccess, lHandle: i32, pstrName: ?*?BSTR, pType: ?*i32) HRESULT {
         return self.vtable.GetPropertyInfoByHandle(self, lHandle, pstrName, pType);
     }
-    pub fn Lock(self: *const IWbemObjectAccess, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Lock(self: *const IWbemObjectAccess, lFlags: i32) HRESULT {
         return self.vtable.Lock(self, lFlags);
     }
-    pub fn Unlock(self: *const IWbemObjectAccess, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Unlock(self: *const IWbemObjectAccess, lFlags: i32) HRESULT {
         return self.vtable.Unlock(self, lFlags);
     }
 };
@@ -3457,64 +3457,64 @@ pub const IID_IWbemQualifierSet = &IID_IWbemQualifierSet_Value;
 pub const IWbemQualifierSet = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Get: *const fn(
+        Get: *const fn (
             self: *const IWbemQualifierSet,
             wszName: ?[*:0]const u16,
             lFlags: i32,
             pVal: ?*VARIANT,
             plFlavor: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Put: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Put: *const fn (
             self: *const IWbemQualifierSet,
             wszName: ?[*:0]const u16,
             pVal: ?*VARIANT,
             lFlavor: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IWbemQualifierSet,
             wszName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNames: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNames: *const fn (
             self: *const IWbemQualifierSet,
             lFlags: i32,
             pNames: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BeginEnumeration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BeginEnumeration: *const fn (
             self: *const IWbemQualifierSet,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IWbemQualifierSet,
             lFlags: i32,
             pstrName: ?*?BSTR,
             pVal: ?*VARIANT,
             plFlavor: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndEnumeration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndEnumeration: *const fn (
             self: *const IWbemQualifierSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Get(self: *const IWbemQualifierSet, wszName: ?[*:0]const u16, lFlags: i32, pVal: ?*VARIANT, plFlavor: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const IWbemQualifierSet, wszName: ?[*:0]const u16, lFlags: i32, pVal: ?*VARIANT, plFlavor: ?*i32) HRESULT {
         return self.vtable.Get(self, wszName, lFlags, pVal, plFlavor);
     }
-    pub fn Put(self: *const IWbemQualifierSet, wszName: ?[*:0]const u16, pVal: ?*VARIANT, lFlavor: i32) callconv(.Inline) HRESULT {
+    pub inline fn Put(self: *const IWbemQualifierSet, wszName: ?[*:0]const u16, pVal: ?*VARIANT, lFlavor: i32) HRESULT {
         return self.vtable.Put(self, wszName, pVal, lFlavor);
     }
-    pub fn Delete(self: *const IWbemQualifierSet, wszName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IWbemQualifierSet, wszName: ?[*:0]const u16) HRESULT {
         return self.vtable.Delete(self, wszName);
     }
-    pub fn GetNames(self: *const IWbemQualifierSet, lFlags: i32, pNames: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetNames(self: *const IWbemQualifierSet, lFlags: i32, pNames: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetNames(self, lFlags, pNames);
     }
-    pub fn BeginEnumeration(self: *const IWbemQualifierSet, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn BeginEnumeration(self: *const IWbemQualifierSet, lFlags: i32) HRESULT {
         return self.vtable.BeginEnumeration(self, lFlags);
     }
-    pub fn Next(self: *const IWbemQualifierSet, lFlags: i32, pstrName: ?*?BSTR, pVal: ?*VARIANT, plFlavor: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IWbemQualifierSet, lFlags: i32, pstrName: ?*?BSTR, pVal: ?*VARIANT, plFlavor: ?*i32) HRESULT {
         return self.vtable.Next(self, lFlags, pstrName, pVal, plFlavor);
     }
-    pub fn EndEnumeration(self: *const IWbemQualifierSet) callconv(.Inline) HRESULT {
+    pub inline fn EndEnumeration(self: *const IWbemQualifierSet) HRESULT {
         return self.vtable.EndEnumeration(self);
     }
 };
@@ -3525,155 +3525,155 @@ pub const IID_IWbemServices = &IID_IWbemServices_Value;
 pub const IWbemServices = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OpenNamespace: *const fn(
+        OpenNamespace: *const fn (
             self: *const IWbemServices,
             strNamespace: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppWorkingNamespace: ?*?*IWbemServices,
             ppResult: ?*?*IWbemCallResult,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CancelAsyncCall: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CancelAsyncCall: *const fn (
             self: *const IWbemServices,
             pSink: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryObjectSink: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryObjectSink: *const fn (
             self: *const IWbemServices,
             lFlags: i32,
             ppResponseHandler: ?*?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObject: *const fn (
             self: *const IWbemServices,
             strObjectPath: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppObject: ?*?*IWbemClassObject,
             ppCallResult: ?*?*IWbemCallResult,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObjectAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObjectAsync: *const fn (
             self: *const IWbemServices,
             strObjectPath: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutClass: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutClass: *const fn (
             self: *const IWbemServices,
             pObject: ?*IWbemClassObject,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppCallResult: ?*?*IWbemCallResult,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutClassAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutClassAsync: *const fn (
             self: *const IWbemServices,
             pObject: ?*IWbemClassObject,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteClass: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteClass: *const fn (
             self: *const IWbemServices,
             strClass: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppCallResult: ?*?*IWbemCallResult,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteClassAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteClassAsync: *const fn (
             self: *const IWbemServices,
             strClass: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateClassEnum: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateClassEnum: *const fn (
             self: *const IWbemServices,
             strSuperclass: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppEnum: ?*?*IEnumWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateClassEnumAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateClassEnumAsync: *const fn (
             self: *const IWbemServices,
             strSuperclass: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutInstance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutInstance: *const fn (
             self: *const IWbemServices,
             pInst: ?*IWbemClassObject,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppCallResult: ?*?*IWbemCallResult,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutInstanceAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutInstanceAsync: *const fn (
             self: *const IWbemServices,
             pInst: ?*IWbemClassObject,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteInstance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteInstance: *const fn (
             self: *const IWbemServices,
             strObjectPath: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppCallResult: ?*?*IWbemCallResult,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteInstanceAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteInstanceAsync: *const fn (
             self: *const IWbemServices,
             strObjectPath: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateInstanceEnum: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateInstanceEnum: *const fn (
             self: *const IWbemServices,
             strFilter: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppEnum: **IEnumWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateInstanceEnumAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateInstanceEnumAsync: *const fn (
             self: *const IWbemServices,
             strFilter: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecQuery: *const fn (
             self: *const IWbemServices,
             strQueryLanguage: ?BSTR,
             strQuery: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppEnum: ?*?*IEnumWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecQueryAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecQueryAsync: *const fn (
             self: *const IWbemServices,
             strQueryLanguage: ?BSTR,
             strQuery: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecNotificationQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecNotificationQuery: *const fn (
             self: *const IWbemServices,
             strQueryLanguage: ?BSTR,
             strQuery: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppEnum: ?*?*IEnumWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecNotificationQueryAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecNotificationQueryAsync: *const fn (
             self: *const IWbemServices,
             strQueryLanguage: ?BSTR,
             strQuery: ?BSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecMethod: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecMethod: *const fn (
             self: *const IWbemServices,
             strObjectPath: ?BSTR,
             strMethodName: ?BSTR,
@@ -3682,8 +3682,8 @@ pub const IWbemServices = extern union {
             pInParams: ?*IWbemClassObject,
             ppOutParams: ?*?*IWbemClassObject,
             ppCallResult: ?*?*IWbemCallResult,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecMethodAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecMethodAsync: *const fn (
             self: *const IWbemServices,
             strObjectPath: ?BSTR,
             strMethodName: ?BSTR,
@@ -3691,77 +3691,77 @@ pub const IWbemServices = extern union {
             pCtx: ?*IWbemContext,
             pInParams: ?*IWbemClassObject,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OpenNamespace(self: *const IWbemServices, strNamespace: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppWorkingNamespace: ?*?*IWbemServices, ppResult: ?*?*IWbemCallResult) callconv(.Inline) HRESULT {
+    pub inline fn OpenNamespace(self: *const IWbemServices, strNamespace: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppWorkingNamespace: ?*?*IWbemServices, ppResult: ?*?*IWbemCallResult) HRESULT {
         return self.vtable.OpenNamespace(self, strNamespace, lFlags, pCtx, ppWorkingNamespace, ppResult);
     }
-    pub fn CancelAsyncCall(self: *const IWbemServices, pSink: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn CancelAsyncCall(self: *const IWbemServices, pSink: ?*IWbemObjectSink) HRESULT {
         return self.vtable.CancelAsyncCall(self, pSink);
     }
-    pub fn QueryObjectSink(self: *const IWbemServices, lFlags: i32, ppResponseHandler: ?*?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn QueryObjectSink(self: *const IWbemServices, lFlags: i32, ppResponseHandler: ?*?*IWbemObjectSink) HRESULT {
         return self.vtable.QueryObjectSink(self, lFlags, ppResponseHandler);
     }
-    pub fn GetObject(self: *const IWbemServices, strObjectPath: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppObject: ?*?*IWbemClassObject, ppCallResult: ?*?*IWbemCallResult) callconv(.Inline) HRESULT {
+    pub inline fn GetObject(self: *const IWbemServices, strObjectPath: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppObject: ?*?*IWbemClassObject, ppCallResult: ?*?*IWbemCallResult) HRESULT {
         return self.vtable.GetObject(self, strObjectPath, lFlags, pCtx, ppObject, ppCallResult);
     }
-    pub fn GetObjectAsync(self: *const IWbemServices, strObjectPath: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectAsync(self: *const IWbemServices, strObjectPath: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.GetObjectAsync(self, strObjectPath, lFlags, pCtx, pResponseHandler);
     }
-    pub fn PutClass(self: *const IWbemServices, pObject: ?*IWbemClassObject, lFlags: i32, pCtx: ?*IWbemContext, ppCallResult: ?*?*IWbemCallResult) callconv(.Inline) HRESULT {
+    pub inline fn PutClass(self: *const IWbemServices, pObject: ?*IWbemClassObject, lFlags: i32, pCtx: ?*IWbemContext, ppCallResult: ?*?*IWbemCallResult) HRESULT {
         return self.vtable.PutClass(self, pObject, lFlags, pCtx, ppCallResult);
     }
-    pub fn PutClassAsync(self: *const IWbemServices, pObject: ?*IWbemClassObject, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn PutClassAsync(self: *const IWbemServices, pObject: ?*IWbemClassObject, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.PutClassAsync(self, pObject, lFlags, pCtx, pResponseHandler);
     }
-    pub fn DeleteClass(self: *const IWbemServices, strClass: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppCallResult: ?*?*IWbemCallResult) callconv(.Inline) HRESULT {
+    pub inline fn DeleteClass(self: *const IWbemServices, strClass: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppCallResult: ?*?*IWbemCallResult) HRESULT {
         return self.vtable.DeleteClass(self, strClass, lFlags, pCtx, ppCallResult);
     }
-    pub fn DeleteClassAsync(self: *const IWbemServices, strClass: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn DeleteClassAsync(self: *const IWbemServices, strClass: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.DeleteClassAsync(self, strClass, lFlags, pCtx, pResponseHandler);
     }
-    pub fn CreateClassEnum(self: *const IWbemServices, strSuperclass: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppEnum: ?*?*IEnumWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn CreateClassEnum(self: *const IWbemServices, strSuperclass: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppEnum: ?*?*IEnumWbemClassObject) HRESULT {
         return self.vtable.CreateClassEnum(self, strSuperclass, lFlags, pCtx, ppEnum);
     }
-    pub fn CreateClassEnumAsync(self: *const IWbemServices, strSuperclass: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn CreateClassEnumAsync(self: *const IWbemServices, strSuperclass: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.CreateClassEnumAsync(self, strSuperclass, lFlags, pCtx, pResponseHandler);
     }
-    pub fn PutInstance(self: *const IWbemServices, pInst: ?*IWbemClassObject, lFlags: i32, pCtx: ?*IWbemContext, ppCallResult: ?*?*IWbemCallResult) callconv(.Inline) HRESULT {
+    pub inline fn PutInstance(self: *const IWbemServices, pInst: ?*IWbemClassObject, lFlags: i32, pCtx: ?*IWbemContext, ppCallResult: ?*?*IWbemCallResult) HRESULT {
         return self.vtable.PutInstance(self, pInst, lFlags, pCtx, ppCallResult);
     }
-    pub fn PutInstanceAsync(self: *const IWbemServices, pInst: ?*IWbemClassObject, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn PutInstanceAsync(self: *const IWbemServices, pInst: ?*IWbemClassObject, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.PutInstanceAsync(self, pInst, lFlags, pCtx, pResponseHandler);
     }
-    pub fn DeleteInstance(self: *const IWbemServices, strObjectPath: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppCallResult: ?*?*IWbemCallResult) callconv(.Inline) HRESULT {
+    pub inline fn DeleteInstance(self: *const IWbemServices, strObjectPath: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppCallResult: ?*?*IWbemCallResult) HRESULT {
         return self.vtable.DeleteInstance(self, strObjectPath, lFlags, pCtx, ppCallResult);
     }
-    pub fn DeleteInstanceAsync(self: *const IWbemServices, strObjectPath: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn DeleteInstanceAsync(self: *const IWbemServices, strObjectPath: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.DeleteInstanceAsync(self, strObjectPath, lFlags, pCtx, pResponseHandler);
     }
-    pub fn CreateInstanceEnum(self: *const IWbemServices, strFilter: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppEnum: **IEnumWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn CreateInstanceEnum(self: *const IWbemServices, strFilter: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppEnum: **IEnumWbemClassObject) HRESULT {
         return self.vtable.CreateInstanceEnum(self, strFilter, lFlags, pCtx, ppEnum);
     }
-    pub fn CreateInstanceEnumAsync(self: *const IWbemServices, strFilter: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn CreateInstanceEnumAsync(self: *const IWbemServices, strFilter: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.CreateInstanceEnumAsync(self, strFilter, lFlags, pCtx, pResponseHandler);
     }
-    pub fn ExecQuery(self: *const IWbemServices, strQueryLanguage: ?BSTR, strQuery: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppEnum: ?*?*IEnumWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn ExecQuery(self: *const IWbemServices, strQueryLanguage: ?BSTR, strQuery: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppEnum: ?*?*IEnumWbemClassObject) HRESULT {
         return self.vtable.ExecQuery(self, strQueryLanguage, strQuery, lFlags, pCtx, ppEnum);
     }
-    pub fn ExecQueryAsync(self: *const IWbemServices, strQueryLanguage: ?BSTR, strQuery: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn ExecQueryAsync(self: *const IWbemServices, strQueryLanguage: ?BSTR, strQuery: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.ExecQueryAsync(self, strQueryLanguage, strQuery, lFlags, pCtx, pResponseHandler);
     }
-    pub fn ExecNotificationQuery(self: *const IWbemServices, strQueryLanguage: ?BSTR, strQuery: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppEnum: ?*?*IEnumWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn ExecNotificationQuery(self: *const IWbemServices, strQueryLanguage: ?BSTR, strQuery: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, ppEnum: ?*?*IEnumWbemClassObject) HRESULT {
         return self.vtable.ExecNotificationQuery(self, strQueryLanguage, strQuery, lFlags, pCtx, ppEnum);
     }
-    pub fn ExecNotificationQueryAsync(self: *const IWbemServices, strQueryLanguage: ?BSTR, strQuery: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn ExecNotificationQueryAsync(self: *const IWbemServices, strQueryLanguage: ?BSTR, strQuery: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.ExecNotificationQueryAsync(self, strQueryLanguage, strQuery, lFlags, pCtx, pResponseHandler);
     }
-    pub fn ExecMethod(self: *const IWbemServices, strObjectPath: ?BSTR, strMethodName: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pInParams: ?*IWbemClassObject, ppOutParams: ?*?*IWbemClassObject, ppCallResult: ?*?*IWbemCallResult) callconv(.Inline) HRESULT {
+    pub inline fn ExecMethod(self: *const IWbemServices, strObjectPath: ?BSTR, strMethodName: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pInParams: ?*IWbemClassObject, ppOutParams: ?*?*IWbemClassObject, ppCallResult: ?*?*IWbemCallResult) HRESULT {
         return self.vtable.ExecMethod(self, strObjectPath, strMethodName, lFlags, pCtx, pInParams, ppOutParams, ppCallResult);
     }
-    pub fn ExecMethodAsync(self: *const IWbemServices, strObjectPath: ?BSTR, strMethodName: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pInParams: ?*IWbemClassObject, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn ExecMethodAsync(self: *const IWbemServices, strObjectPath: ?BSTR, strMethodName: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, pInParams: ?*IWbemClassObject, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.ExecMethodAsync(self, strObjectPath, strMethodName, lFlags, pCtx, pInParams, pResponseHandler);
     }
 };
@@ -3772,7 +3772,7 @@ pub const IID_IWbemLocator = &IID_IWbemLocator_Value;
 pub const IWbemLocator = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ConnectServer: *const fn(
+        ConnectServer: *const fn (
             self: *const IWbemLocator,
             strNetworkResource: ?BSTR,
             strUser: ?BSTR,
@@ -3782,11 +3782,11 @@ pub const IWbemLocator = extern union {
             strAuthority: ?BSTR,
             pCtx: ?*IWbemContext,
             ppNamespace: ?*?*IWbemServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ConnectServer(self: *const IWbemLocator, strNetworkResource: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, lSecurityFlags: i32, strAuthority: ?BSTR, pCtx: ?*IWbemContext, ppNamespace: ?*?*IWbemServices) callconv(.Inline) HRESULT {
+    pub inline fn ConnectServer(self: *const IWbemLocator, strNetworkResource: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, lSecurityFlags: i32, strAuthority: ?BSTR, pCtx: ?*IWbemContext, ppNamespace: ?*?*IWbemServices) HRESULT {
         return self.vtable.ConnectServer(self, strNetworkResource, strUser, strPassword, strLocale, lSecurityFlags, strAuthority, pCtx, ppNamespace);
     }
 };
@@ -3797,25 +3797,25 @@ pub const IID_IWbemObjectSink = &IID_IWbemObjectSink_Value;
 pub const IWbemObjectSink = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Indicate: *const fn(
+        Indicate: *const fn (
             self: *const IWbemObjectSink,
             lObjectCount: i32,
             apObjArray: [*]?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStatus: *const fn (
             self: *const IWbemObjectSink,
             lFlags: i32,
             hResult: HRESULT,
             strParam: ?BSTR,
             pObjParam: ?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Indicate(self: *const IWbemObjectSink, lObjectCount: i32, apObjArray: [*]?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn Indicate(self: *const IWbemObjectSink, lObjectCount: i32, apObjArray: [*]?*IWbemClassObject) HRESULT {
         return self.vtable.Indicate(self, lObjectCount, apObjArray);
     }
-    pub fn SetStatus(self: *const IWbemObjectSink, lFlags: i32, hResult: HRESULT, strParam: ?BSTR, pObjParam: ?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn SetStatus(self: *const IWbemObjectSink, lFlags: i32, hResult: HRESULT, strParam: ?BSTR, pObjParam: ?*IWbemClassObject) HRESULT {
         return self.vtable.SetStatus(self, lFlags, hResult, strParam, pObjParam);
     }
 };
@@ -3826,46 +3826,46 @@ pub const IID_IEnumWbemClassObject = &IID_IEnumWbemClassObject_Value;
 pub const IEnumWbemClassObject = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Reset: *const fn(
+        Reset: *const fn (
             self: *const IEnumWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IEnumWbemClassObject,
             lTimeout: i32,
             uCount: u32,
             apObjects: [*]?*IWbemClassObject,
             puReturned: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NextAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NextAsync: *const fn (
             self: *const IEnumWbemClassObject,
             uCount: u32,
             pSink: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumWbemClassObject,
             ppEnum: ?*?*IEnumWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumWbemClassObject,
             lTimeout: i32,
             nCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Reset(self: *const IEnumWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumWbemClassObject) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Next(self: *const IEnumWbemClassObject, lTimeout: i32, uCount: u32, apObjects: [*]?*IWbemClassObject, puReturned: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumWbemClassObject, lTimeout: i32, uCount: u32, apObjects: [*]?*IWbemClassObject, puReturned: ?*u32) HRESULT {
         return self.vtable.Next(self, lTimeout, uCount, apObjects, puReturned);
     }
-    pub fn NextAsync(self: *const IEnumWbemClassObject, uCount: u32, pSink: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn NextAsync(self: *const IEnumWbemClassObject, uCount: u32, pSink: ?*IWbemObjectSink) HRESULT {
         return self.vtable.NextAsync(self, uCount, pSink);
     }
-    pub fn Clone(self: *const IEnumWbemClassObject, ppEnum: ?*?*IEnumWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumWbemClassObject, ppEnum: ?*?*IEnumWbemClassObject) HRESULT {
         return self.vtable.Clone(self, ppEnum);
     }
-    pub fn Skip(self: *const IEnumWbemClassObject, lTimeout: i32, nCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumWbemClassObject, lTimeout: i32, nCount: u32) HRESULT {
         return self.vtable.Skip(self, lTimeout, nCount);
     }
 };
@@ -3876,39 +3876,39 @@ pub const IID_IWbemCallResult = &IID_IWbemCallResult_Value;
 pub const IWbemCallResult = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetResultObject: *const fn(
+        GetResultObject: *const fn (
             self: *const IWbemCallResult,
             lTimeout: i32,
             ppResultObject: ?*?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetResultString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetResultString: *const fn (
             self: *const IWbemCallResult,
             lTimeout: i32,
             pstrResultString: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetResultServices: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetResultServices: *const fn (
             self: *const IWbemCallResult,
             lTimeout: i32,
             ppServices: ?*?*IWbemServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCallStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCallStatus: *const fn (
             self: *const IWbemCallResult,
             lTimeout: i32,
             plStatus: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetResultObject(self: *const IWbemCallResult, lTimeout: i32, ppResultObject: ?*?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn GetResultObject(self: *const IWbemCallResult, lTimeout: i32, ppResultObject: ?*?*IWbemClassObject) HRESULT {
         return self.vtable.GetResultObject(self, lTimeout, ppResultObject);
     }
-    pub fn GetResultString(self: *const IWbemCallResult, lTimeout: i32, pstrResultString: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetResultString(self: *const IWbemCallResult, lTimeout: i32, pstrResultString: ?*?BSTR) HRESULT {
         return self.vtable.GetResultString(self, lTimeout, pstrResultString);
     }
-    pub fn GetResultServices(self: *const IWbemCallResult, lTimeout: i32, ppServices: ?*?*IWbemServices) callconv(.Inline) HRESULT {
+    pub inline fn GetResultServices(self: *const IWbemCallResult, lTimeout: i32, ppServices: ?*?*IWbemServices) HRESULT {
         return self.vtable.GetResultServices(self, lTimeout, ppServices);
     }
-    pub fn GetCallStatus(self: *const IWbemCallResult, lTimeout: i32, plStatus: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCallStatus(self: *const IWbemCallResult, lTimeout: i32, plStatus: ?*i32) HRESULT {
         return self.vtable.GetCallStatus(self, lTimeout, plStatus);
     }
 };
@@ -3919,76 +3919,76 @@ pub const IID_IWbemContext = &IID_IWbemContext_Value;
 pub const IWbemContext = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Clone: *const fn(
+        Clone: *const fn (
             self: *const IWbemContext,
             ppNewCopy: ?*?*IWbemContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNames: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNames: *const fn (
             self: *const IWbemContext,
             lFlags: i32,
             pNames: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BeginEnumeration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BeginEnumeration: *const fn (
             self: *const IWbemContext,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IWbemContext,
             lFlags: i32,
             pstrName: ?*?BSTR,
             pValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndEnumeration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndEnumeration: *const fn (
             self: *const IWbemContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
-            self: *const IWbemContext,
-            wszName: ?[*:0]const u16,
-            lFlags: i32,
-            pValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const IWbemContext,
             wszName: ?[*:0]const u16,
             lFlags: i32,
             pValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const IWbemContext,
             wszName: ?[*:0]const u16,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAll: *const fn(
+            pValue: ?*VARIANT,
+        ) callconv(.winapi) HRESULT,
+        DeleteValue: *const fn (
             self: *const IWbemContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+            wszName: ?[*:0]const u16,
+            lFlags: i32,
+        ) callconv(.winapi) HRESULT,
+        DeleteAll: *const fn (
+            self: *const IWbemContext,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Clone(self: *const IWbemContext, ppNewCopy: ?*?*IWbemContext) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IWbemContext, ppNewCopy: ?*?*IWbemContext) HRESULT {
         return self.vtable.Clone(self, ppNewCopy);
     }
-    pub fn GetNames(self: *const IWbemContext, lFlags: i32, pNames: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetNames(self: *const IWbemContext, lFlags: i32, pNames: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetNames(self, lFlags, pNames);
     }
-    pub fn BeginEnumeration(self: *const IWbemContext, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn BeginEnumeration(self: *const IWbemContext, lFlags: i32) HRESULT {
         return self.vtable.BeginEnumeration(self, lFlags);
     }
-    pub fn Next(self: *const IWbemContext, lFlags: i32, pstrName: ?*?BSTR, pValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IWbemContext, lFlags: i32, pstrName: ?*?BSTR, pValue: ?*VARIANT) HRESULT {
         return self.vtable.Next(self, lFlags, pstrName, pValue);
     }
-    pub fn EndEnumeration(self: *const IWbemContext) callconv(.Inline) HRESULT {
+    pub inline fn EndEnumeration(self: *const IWbemContext) HRESULT {
         return self.vtable.EndEnumeration(self);
     }
-    pub fn SetValue(self: *const IWbemContext, wszName: ?[*:0]const u16, lFlags: i32, pValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const IWbemContext, wszName: ?[*:0]const u16, lFlags: i32, pValue: ?*VARIANT) HRESULT {
         return self.vtable.SetValue(self, wszName, lFlags, pValue);
     }
-    pub fn GetValue(self: *const IWbemContext, wszName: ?[*:0]const u16, lFlags: i32, pValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const IWbemContext, wszName: ?[*:0]const u16, lFlags: i32, pValue: ?*VARIANT) HRESULT {
         return self.vtable.GetValue(self, wszName, lFlags, pValue);
     }
-    pub fn DeleteValue(self: *const IWbemContext, wszName: ?[*:0]const u16, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteValue(self: *const IWbemContext, wszName: ?[*:0]const u16, lFlags: i32) HRESULT {
         return self.vtable.DeleteValue(self, wszName, lFlags);
     }
-    pub fn DeleteAll(self: *const IWbemContext) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAll(self: *const IWbemContext) HRESULT {
         return self.vtable.DeleteAll(self);
     }
 };
@@ -3999,15 +3999,15 @@ pub const IID_IUnsecuredApartment = &IID_IUnsecuredApartment_Value;
 pub const IUnsecuredApartment = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateObjectStub: *const fn(
+        CreateObjectStub: *const fn (
             self: *const IUnsecuredApartment,
             pObject: ?*IUnknown,
             ppStub: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateObjectStub(self: *const IUnsecuredApartment, pObject: ?*IUnknown, ppStub: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn CreateObjectStub(self: *const IUnsecuredApartment, pObject: ?*IUnknown, ppStub: ?*?*IUnknown) HRESULT {
         return self.vtable.CreateObjectStub(self, pObject, ppStub);
     }
 };
@@ -4018,18 +4018,18 @@ pub const IID_IWbemUnsecuredApartment = &IID_IWbemUnsecuredApartment_Value;
 pub const IWbemUnsecuredApartment = extern union {
     pub const VTable = extern struct {
         base: IUnsecuredApartment.VTable,
-        CreateSinkStub: *const fn(
+        CreateSinkStub: *const fn (
             self: *const IWbemUnsecuredApartment,
             pSink: ?*IWbemObjectSink,
             dwFlags: u32,
             wszReserved: ?[*:0]const u16,
             ppStub: ?*?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnsecuredApartment: IUnsecuredApartment,
     IUnknown: IUnknown,
-    pub fn CreateSinkStub(self: *const IWbemUnsecuredApartment, pSink: ?*IWbemObjectSink, dwFlags: u32, wszReserved: ?[*:0]const u16, ppStub: ?*?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn CreateSinkStub(self: *const IWbemUnsecuredApartment, pSink: ?*IWbemObjectSink, dwFlags: u32, wszReserved: ?[*:0]const u16, ppStub: ?*?*IWbemObjectSink) HRESULT {
         return self.vtable.CreateSinkStub(self, pSink, dwFlags, wszReserved, ppStub);
     }
 };
@@ -4040,27 +4040,27 @@ pub const IID_IWbemStatusCodeText = &IID_IWbemStatusCodeText_Value;
 pub const IWbemStatusCodeText = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetErrorCodeText: *const fn(
+        GetErrorCodeText: *const fn (
             self: *const IWbemStatusCodeText,
             hRes: HRESULT,
             LocaleId: u32,
             lFlags: i32,
             MessageText: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFacilityCodeText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFacilityCodeText: *const fn (
             self: *const IWbemStatusCodeText,
             hRes: HRESULT,
             LocaleId: u32,
             lFlags: i32,
             MessageText: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetErrorCodeText(self: *const IWbemStatusCodeText, hRes: HRESULT, LocaleId: u32, lFlags: i32, MessageText: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetErrorCodeText(self: *const IWbemStatusCodeText, hRes: HRESULT, LocaleId: u32, lFlags: i32, MessageText: ?*?BSTR) HRESULT {
         return self.vtable.GetErrorCodeText(self, hRes, LocaleId, lFlags, MessageText);
     }
-    pub fn GetFacilityCodeText(self: *const IWbemStatusCodeText, hRes: HRESULT, LocaleId: u32, lFlags: i32, MessageText: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetFacilityCodeText(self: *const IWbemStatusCodeText, hRes: HRESULT, LocaleId: u32, lFlags: i32, MessageText: ?*?BSTR) HRESULT {
         return self.vtable.GetFacilityCodeText(self, hRes, LocaleId, lFlags, MessageText);
     }
 };
@@ -4071,23 +4071,23 @@ pub const IID_IWbemBackupRestore = &IID_IWbemBackupRestore_Value;
 pub const IWbemBackupRestore = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Backup: *const fn(
+        Backup: *const fn (
             self: *const IWbemBackupRestore,
             strBackupToFile: ?[*:0]const u16,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Restore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Restore: *const fn (
             self: *const IWbemBackupRestore,
             strRestoreFromFile: ?[*:0]const u16,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Backup(self: *const IWbemBackupRestore, strBackupToFile: ?[*:0]const u16, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Backup(self: *const IWbemBackupRestore, strBackupToFile: ?[*:0]const u16, lFlags: i32) HRESULT {
         return self.vtable.Backup(self, strBackupToFile, lFlags);
     }
-    pub fn Restore(self: *const IWbemBackupRestore, strRestoreFromFile: ?[*:0]const u16, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Restore(self: *const IWbemBackupRestore, strRestoreFromFile: ?[*:0]const u16, lFlags: i32) HRESULT {
         return self.vtable.Restore(self, strRestoreFromFile, lFlags);
     }
 };
@@ -4098,20 +4098,20 @@ pub const IID_IWbemBackupRestoreEx = &IID_IWbemBackupRestoreEx_Value;
 pub const IWbemBackupRestoreEx = extern union {
     pub const VTable = extern struct {
         base: IWbemBackupRestore.VTable,
-        Pause: *const fn(
+        Pause: *const fn (
             self: *const IWbemBackupRestoreEx,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Resume: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Resume: *const fn (
             self: *const IWbemBackupRestoreEx,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWbemBackupRestore: IWbemBackupRestore,
     IUnknown: IUnknown,
-    pub fn Pause(self: *const IWbemBackupRestoreEx) callconv(.Inline) HRESULT {
+    pub inline fn Pause(self: *const IWbemBackupRestoreEx) HRESULT {
         return self.vtable.Pause(self);
     }
-    pub fn Resume(self: *const IWbemBackupRestoreEx) callconv(.Inline) HRESULT {
+    pub inline fn Resume(self: *const IWbemBackupRestoreEx) HRESULT {
         return self.vtable.Resume(self);
     }
 };
@@ -4122,14 +4122,14 @@ pub const IID_IWbemRefresher = &IID_IWbemRefresher_Value;
 pub const IWbemRefresher = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Refresh: *const fn(
+        Refresh: *const fn (
             self: *const IWbemRefresher,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Refresh(self: *const IWbemRefresher, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Refresh(self: *const IWbemRefresher, lFlags: i32) HRESULT {
         return self.vtable.Refresh(self, lFlags);
     }
 };
@@ -4140,43 +4140,43 @@ pub const IID_IWbemHiPerfEnum = &IID_IWbemHiPerfEnum_Value;
 pub const IWbemHiPerfEnum = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AddObjects: *const fn(
+        AddObjects: *const fn (
             self: *const IWbemHiPerfEnum,
             lFlags: i32,
             uNumObjects: u32,
             apIds: [*]i32,
             apObj: [*]?*IWbemObjectAccess,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveObjects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveObjects: *const fn (
             self: *const IWbemHiPerfEnum,
             lFlags: i32,
             uNumObjects: u32,
             apIds: [*]i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObjects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObjects: *const fn (
             self: *const IWbemHiPerfEnum,
             lFlags: i32,
             uNumObjects: u32,
             apObj: [*]?*IWbemObjectAccess,
             puReturned: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAll: *const fn (
             self: *const IWbemHiPerfEnum,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AddObjects(self: *const IWbemHiPerfEnum, lFlags: i32, uNumObjects: u32, apIds: [*]i32, apObj: [*]?*IWbemObjectAccess) callconv(.Inline) HRESULT {
+    pub inline fn AddObjects(self: *const IWbemHiPerfEnum, lFlags: i32, uNumObjects: u32, apIds: [*]i32, apObj: [*]?*IWbemObjectAccess) HRESULT {
         return self.vtable.AddObjects(self, lFlags, uNumObjects, apIds, apObj);
     }
-    pub fn RemoveObjects(self: *const IWbemHiPerfEnum, lFlags: i32, uNumObjects: u32, apIds: [*]i32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveObjects(self: *const IWbemHiPerfEnum, lFlags: i32, uNumObjects: u32, apIds: [*]i32) HRESULT {
         return self.vtable.RemoveObjects(self, lFlags, uNumObjects, apIds);
     }
-    pub fn GetObjects(self: *const IWbemHiPerfEnum, lFlags: i32, uNumObjects: u32, apObj: [*]?*IWbemObjectAccess, puReturned: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetObjects(self: *const IWbemHiPerfEnum, lFlags: i32, uNumObjects: u32, apObj: [*]?*IWbemObjectAccess, puReturned: ?*u32) HRESULT {
         return self.vtable.GetObjects(self, lFlags, uNumObjects, apObj, puReturned);
     }
-    pub fn RemoveAll(self: *const IWbemHiPerfEnum, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAll(self: *const IWbemHiPerfEnum, lFlags: i32) HRESULT {
         return self.vtable.RemoveAll(self, lFlags);
     }
 };
@@ -4187,7 +4187,7 @@ pub const IID_IWbemConfigureRefresher = &IID_IWbemConfigureRefresher_Value;
 pub const IWbemConfigureRefresher = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AddObjectByPath: *const fn(
+        AddObjectByPath: *const fn (
             self: *const IWbemConfigureRefresher,
             pNamespace: ?*IWbemServices,
             wszPath: ?[*:0]const u16,
@@ -4195,8 +4195,8 @@ pub const IWbemConfigureRefresher = extern union {
             pContext: ?*IWbemContext,
             ppRefreshable: ?*?*IWbemClassObject,
             plId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddObjectByTemplate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddObjectByTemplate: *const fn (
             self: *const IWbemConfigureRefresher,
             pNamespace: ?*IWbemServices,
             pTemplate: ?*IWbemClassObject,
@@ -4204,19 +4204,19 @@ pub const IWbemConfigureRefresher = extern union {
             pContext: ?*IWbemContext,
             ppRefreshable: ?*?*IWbemClassObject,
             plId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddRefresher: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddRefresher: *const fn (
             self: *const IWbemConfigureRefresher,
             pRefresher: ?*IWbemRefresher,
             lFlags: i32,
             plId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IWbemConfigureRefresher,
             lId: i32,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddEnum: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddEnum: *const fn (
             self: *const IWbemConfigureRefresher,
             pNamespace: ?*IWbemServices,
             wszClassName: ?[*:0]const u16,
@@ -4224,23 +4224,23 @@ pub const IWbemConfigureRefresher = extern union {
             pContext: ?*IWbemContext,
             ppEnum: ?*?*IWbemHiPerfEnum,
             plId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AddObjectByPath(self: *const IWbemConfigureRefresher, pNamespace: ?*IWbemServices, wszPath: ?[*:0]const u16, lFlags: i32, pContext: ?*IWbemContext, ppRefreshable: ?*?*IWbemClassObject, plId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn AddObjectByPath(self: *const IWbemConfigureRefresher, pNamespace: ?*IWbemServices, wszPath: ?[*:0]const u16, lFlags: i32, pContext: ?*IWbemContext, ppRefreshable: ?*?*IWbemClassObject, plId: ?*i32) HRESULT {
         return self.vtable.AddObjectByPath(self, pNamespace, wszPath, lFlags, pContext, ppRefreshable, plId);
     }
-    pub fn AddObjectByTemplate(self: *const IWbemConfigureRefresher, pNamespace: ?*IWbemServices, pTemplate: ?*IWbemClassObject, lFlags: i32, pContext: ?*IWbemContext, ppRefreshable: ?*?*IWbemClassObject, plId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn AddObjectByTemplate(self: *const IWbemConfigureRefresher, pNamespace: ?*IWbemServices, pTemplate: ?*IWbemClassObject, lFlags: i32, pContext: ?*IWbemContext, ppRefreshable: ?*?*IWbemClassObject, plId: ?*i32) HRESULT {
         return self.vtable.AddObjectByTemplate(self, pNamespace, pTemplate, lFlags, pContext, ppRefreshable, plId);
     }
-    pub fn AddRefresher(self: *const IWbemConfigureRefresher, pRefresher: ?*IWbemRefresher, lFlags: i32, plId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn AddRefresher(self: *const IWbemConfigureRefresher, pRefresher: ?*IWbemRefresher, lFlags: i32, plId: ?*i32) HRESULT {
         return self.vtable.AddRefresher(self, pRefresher, lFlags, plId);
     }
-    pub fn Remove(self: *const IWbemConfigureRefresher, lId: i32, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IWbemConfigureRefresher, lId: i32, lFlags: i32) HRESULT {
         return self.vtable.Remove(self, lId, lFlags);
     }
-    pub fn AddEnum(self: *const IWbemConfigureRefresher, pNamespace: ?*IWbemServices, wszClassName: ?[*:0]const u16, lFlags: i32, pContext: ?*IWbemContext, ppEnum: ?*?*IWbemHiPerfEnum, plId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn AddEnum(self: *const IWbemConfigureRefresher, pNamespace: ?*IWbemServices, wszClassName: ?[*:0]const u16, lFlags: i32, pContext: ?*IWbemContext, ppEnum: ?*?*IWbemHiPerfEnum, plId: ?*i32) HRESULT {
         return self.vtable.AddEnum(self, pNamespace, wszClassName, lFlags, pContext, ppEnum, plId);
     }
 };
@@ -4251,54 +4251,54 @@ pub const IID_IWbemObjectSinkEx = &IID_IWbemObjectSinkEx_Value;
 pub const IWbemObjectSinkEx = extern union {
     pub const VTable = extern struct {
         base: IWbemObjectSink.VTable,
-        WriteMessage: *const fn(
+        WriteMessage: *const fn (
             self: *const IWbemObjectSinkEx,
             uChannel: u32,
             strMessage: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteError: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteError: *const fn (
             self: *const IWbemObjectSinkEx,
             pObjError: ?*IWbemClassObject,
             puReturned: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PromptUser: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PromptUser: *const fn (
             self: *const IWbemObjectSinkEx,
             strMessage: ?BSTR,
             uPromptType: u8,
             puReturned: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteProgress: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteProgress: *const fn (
             self: *const IWbemObjectSinkEx,
             strActivity: ?BSTR,
             strCurrentOperation: ?BSTR,
             strStatusDescription: ?BSTR,
             uPercentComplete: u32,
             uSecondsRemaining: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteStreamParameter: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteStreamParameter: *const fn (
             self: *const IWbemObjectSinkEx,
             strName: ?BSTR,
             vtValue: ?*VARIANT,
             ulType: u32,
             ulFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWbemObjectSink: IWbemObjectSink,
     IUnknown: IUnknown,
-    pub fn WriteMessage(self: *const IWbemObjectSinkEx, uChannel: u32, strMessage: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn WriteMessage(self: *const IWbemObjectSinkEx, uChannel: u32, strMessage: ?BSTR) HRESULT {
         return self.vtable.WriteMessage(self, uChannel, strMessage);
     }
-    pub fn WriteError(self: *const IWbemObjectSinkEx, pObjError: ?*IWbemClassObject, puReturned: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn WriteError(self: *const IWbemObjectSinkEx, pObjError: ?*IWbemClassObject, puReturned: ?*u8) HRESULT {
         return self.vtable.WriteError(self, pObjError, puReturned);
     }
-    pub fn PromptUser(self: *const IWbemObjectSinkEx, strMessage: ?BSTR, uPromptType: u8, puReturned: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn PromptUser(self: *const IWbemObjectSinkEx, strMessage: ?BSTR, uPromptType: u8, puReturned: ?*u8) HRESULT {
         return self.vtable.PromptUser(self, strMessage, uPromptType, puReturned);
     }
-    pub fn WriteProgress(self: *const IWbemObjectSinkEx, strActivity: ?BSTR, strCurrentOperation: ?BSTR, strStatusDescription: ?BSTR, uPercentComplete: u32, uSecondsRemaining: u32) callconv(.Inline) HRESULT {
+    pub inline fn WriteProgress(self: *const IWbemObjectSinkEx, strActivity: ?BSTR, strCurrentOperation: ?BSTR, strStatusDescription: ?BSTR, uPercentComplete: u32, uSecondsRemaining: u32) HRESULT {
         return self.vtable.WriteProgress(self, strActivity, strCurrentOperation, strStatusDescription, uPercentComplete, uSecondsRemaining);
     }
-    pub fn WriteStreamParameter(self: *const IWbemObjectSinkEx, strName: ?BSTR, vtValue: ?*VARIANT, ulType: u32, ulFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn WriteStreamParameter(self: *const IWbemObjectSinkEx, strName: ?BSTR, vtValue: ?*VARIANT, ulType: u32, ulFlags: u32) HRESULT {
         return self.vtable.WriteStreamParameter(self, strName, vtValue, ulType, ulFlags);
     }
 };
@@ -4309,16 +4309,16 @@ pub const IID_IWbemShutdown = &IID_IWbemShutdown_Value;
 pub const IWbemShutdown = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Shutdown: *const fn(
+        Shutdown: *const fn (
             self: *const IWbemShutdown,
             uReason: i32,
             uMaxMilliseconds: u32,
             pCtx: ?*IWbemContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Shutdown(self: *const IWbemShutdown, uReason: i32, uMaxMilliseconds: u32, pCtx: ?*IWbemContext) callconv(.Inline) HRESULT {
+    pub inline fn Shutdown(self: *const IWbemShutdown, uReason: i32, uMaxMilliseconds: u32, pCtx: ?*IWbemContext) HRESULT {
         return self.vtable.Shutdown(self, uReason, uMaxMilliseconds, pCtx);
     }
 };
@@ -4358,29 +4358,29 @@ pub const IID_IWbemObjectTextSrc = &IID_IWbemObjectTextSrc_Value;
 pub const IWbemObjectTextSrc = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetText: *const fn(
+        GetText: *const fn (
             self: *const IWbemObjectTextSrc,
             lFlags: i32,
             pObj: ?*IWbemClassObject,
             uObjTextFormat: u32,
             pCtx: ?*IWbemContext,
             strText: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateFromText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateFromText: *const fn (
             self: *const IWbemObjectTextSrc,
             lFlags: i32,
             strText: ?BSTR,
             uObjTextFormat: u32,
             pCtx: ?*IWbemContext,
             pNewObj: ?*?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetText(self: *const IWbemObjectTextSrc, lFlags: i32, pObj: ?*IWbemClassObject, uObjTextFormat: u32, pCtx: ?*IWbemContext, strText: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetText(self: *const IWbemObjectTextSrc, lFlags: i32, pObj: ?*IWbemClassObject, uObjTextFormat: u32, pCtx: ?*IWbemContext, strText: ?*?BSTR) HRESULT {
         return self.vtable.GetText(self, lFlags, pObj, uObjTextFormat, pCtx, strText);
     }
-    pub fn CreateFromText(self: *const IWbemObjectTextSrc, lFlags: i32, strText: ?BSTR, uObjTextFormat: u32, pCtx: ?*IWbemContext, pNewObj: ?*?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn CreateFromText(self: *const IWbemObjectTextSrc, lFlags: i32, strText: ?BSTR, uObjTextFormat: u32, pCtx: ?*IWbemContext, pNewObj: ?*?*IWbemClassObject) HRESULT {
         return self.vtable.CreateFromText(self, lFlags, strText, uObjTextFormat, pCtx, pNewObj);
     }
 };
@@ -4426,7 +4426,7 @@ pub const IID_IMofCompiler = &IID_IMofCompiler_Value;
 pub const IMofCompiler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CompileFile: *const fn(
+        CompileFile: *const fn (
             self: *const IMofCompiler,
             FileName: ?PWSTR,
             ServerAndNamespace: ?PWSTR,
@@ -4437,8 +4437,8 @@ pub const IMofCompiler = extern union {
             lClassFlags: i32,
             lInstanceFlags: i32,
             pInfo: ?*WBEM_COMPILE_STATUS_INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CompileBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CompileBuffer: *const fn (
             self: *const IMofCompiler,
             BuffSize: i32,
             // TODO: what to do with BytesParamIndex 0?
@@ -4451,8 +4451,8 @@ pub const IMofCompiler = extern union {
             lClassFlags: i32,
             lInstanceFlags: i32,
             pInfo: ?*WBEM_COMPILE_STATUS_INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateBMOF: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateBMOF: *const fn (
             self: *const IMofCompiler,
             TextFileName: ?PWSTR,
             BMOFFileName: ?PWSTR,
@@ -4461,17 +4461,17 @@ pub const IMofCompiler = extern union {
             lClassFlags: i32,
             lInstanceFlags: i32,
             pInfo: ?*WBEM_COMPILE_STATUS_INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CompileFile(self: *const IMofCompiler, FileName: ?PWSTR, ServerAndNamespace: ?PWSTR, User: ?PWSTR, Authority: ?PWSTR, Password: ?PWSTR, lOptionFlags: i32, lClassFlags: i32, lInstanceFlags: i32, pInfo: ?*WBEM_COMPILE_STATUS_INFO) callconv(.Inline) HRESULT {
+    pub inline fn CompileFile(self: *const IMofCompiler, FileName: ?PWSTR, ServerAndNamespace: ?PWSTR, User: ?PWSTR, Authority: ?PWSTR, Password: ?PWSTR, lOptionFlags: i32, lClassFlags: i32, lInstanceFlags: i32, pInfo: ?*WBEM_COMPILE_STATUS_INFO) HRESULT {
         return self.vtable.CompileFile(self, FileName, ServerAndNamespace, User, Authority, Password, lOptionFlags, lClassFlags, lInstanceFlags, pInfo);
     }
-    pub fn CompileBuffer(self: *const IMofCompiler, BuffSize: i32, pBuffer: ?*u8, ServerAndNamespace: ?PWSTR, User: ?PWSTR, Authority: ?PWSTR, Password: ?PWSTR, lOptionFlags: i32, lClassFlags: i32, lInstanceFlags: i32, pInfo: ?*WBEM_COMPILE_STATUS_INFO) callconv(.Inline) HRESULT {
+    pub inline fn CompileBuffer(self: *const IMofCompiler, BuffSize: i32, pBuffer: ?*u8, ServerAndNamespace: ?PWSTR, User: ?PWSTR, Authority: ?PWSTR, Password: ?PWSTR, lOptionFlags: i32, lClassFlags: i32, lInstanceFlags: i32, pInfo: ?*WBEM_COMPILE_STATUS_INFO) HRESULT {
         return self.vtable.CompileBuffer(self, BuffSize, pBuffer, ServerAndNamespace, User, Authority, Password, lOptionFlags, lClassFlags, lInstanceFlags, pInfo);
     }
-    pub fn CreateBMOF(self: *const IMofCompiler, TextFileName: ?PWSTR, BMOFFileName: ?PWSTR, ServerAndNamespace: ?PWSTR, lOptionFlags: i32, lClassFlags: i32, lInstanceFlags: i32, pInfo: ?*WBEM_COMPILE_STATUS_INFO) callconv(.Inline) HRESULT {
+    pub inline fn CreateBMOF(self: *const IMofCompiler, TextFileName: ?PWSTR, BMOFFileName: ?PWSTR, ServerAndNamespace: ?PWSTR, lOptionFlags: i32, lClassFlags: i32, lInstanceFlags: i32, pInfo: ?*WBEM_COMPILE_STATUS_INFO) HRESULT {
         return self.vtable.CreateBMOF(self, TextFileName, BMOFFileName, ServerAndNamespace, lOptionFlags, lClassFlags, lInstanceFlags, pInfo);
     }
 };
@@ -4522,7 +4522,7 @@ pub const IID_IWbemPropertyProvider = &IID_IWbemPropertyProvider_Value;
 pub const IWbemPropertyProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperty: *const fn(
+        GetProperty: *const fn (
             self: *const IWbemPropertyProvider,
             lFlags: i32,
             strLocale: ?BSTR,
@@ -4530,8 +4530,8 @@ pub const IWbemPropertyProvider = extern union {
             strInstMapping: ?BSTR,
             strPropMapping: ?BSTR,
             pvValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutProperty: *const fn (
             self: *const IWbemPropertyProvider,
             lFlags: i32,
             strLocale: ?BSTR,
@@ -4539,14 +4539,14 @@ pub const IWbemPropertyProvider = extern union {
             strInstMapping: ?BSTR,
             strPropMapping: ?BSTR,
             pvValue: ?*const VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperty(self: *const IWbemPropertyProvider, lFlags: i32, strLocale: ?BSTR, strClassMapping: ?BSTR, strInstMapping: ?BSTR, strPropMapping: ?BSTR, pvValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const IWbemPropertyProvider, lFlags: i32, strLocale: ?BSTR, strClassMapping: ?BSTR, strInstMapping: ?BSTR, strPropMapping: ?BSTR, pvValue: ?*VARIANT) HRESULT {
         return self.vtable.GetProperty(self, lFlags, strLocale, strClassMapping, strInstMapping, strPropMapping, pvValue);
     }
-    pub fn PutProperty(self: *const IWbemPropertyProvider, lFlags: i32, strLocale: ?BSTR, strClassMapping: ?BSTR, strInstMapping: ?BSTR, strPropMapping: ?BSTR, pvValue: ?*const VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn PutProperty(self: *const IWbemPropertyProvider, lFlags: i32, strLocale: ?BSTR, strClassMapping: ?BSTR, strInstMapping: ?BSTR, strPropMapping: ?BSTR, pvValue: ?*const VARIANT) HRESULT {
         return self.vtable.PutProperty(self, lFlags, strLocale, strClassMapping, strInstMapping, strPropMapping, pvValue);
     }
 };
@@ -4557,16 +4557,16 @@ pub const IID_IWbemUnboundObjectSink = &IID_IWbemUnboundObjectSink_Value;
 pub const IWbemUnboundObjectSink = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        IndicateToConsumer: *const fn(
+        IndicateToConsumer: *const fn (
             self: *const IWbemUnboundObjectSink,
             pLogicalConsumer: ?*IWbemClassObject,
             lNumObjects: i32,
             apObjects: [*]?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn IndicateToConsumer(self: *const IWbemUnboundObjectSink, pLogicalConsumer: ?*IWbemClassObject, lNumObjects: i32, apObjects: [*]?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn IndicateToConsumer(self: *const IWbemUnboundObjectSink, pLogicalConsumer: ?*IWbemClassObject, lNumObjects: i32, apObjects: [*]?*IWbemClassObject) HRESULT {
         return self.vtable.IndicateToConsumer(self, pLogicalConsumer, lNumObjects, apObjects);
     }
 };
@@ -4577,15 +4577,15 @@ pub const IID_IWbemEventProvider = &IID_IWbemEventProvider_Value;
 pub const IWbemEventProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ProvideEvents: *const fn(
+        ProvideEvents: *const fn (
             self: *const IWbemEventProvider,
             pSink: ?*IWbemObjectSink,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ProvideEvents(self: *const IWbemEventProvider, pSink: ?*IWbemObjectSink, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn ProvideEvents(self: *const IWbemEventProvider, pSink: ?*IWbemObjectSink, lFlags: i32) HRESULT {
         return self.vtable.ProvideEvents(self, pSink, lFlags);
     }
 };
@@ -4596,23 +4596,23 @@ pub const IID_IWbemEventProviderQuerySink = &IID_IWbemEventProviderQuerySink_Val
 pub const IWbemEventProviderQuerySink = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        NewQuery: *const fn(
+        NewQuery: *const fn (
             self: *const IWbemEventProviderQuerySink,
             dwId: u32,
             wszQueryLanguage: ?*u16,
             wszQuery: ?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CancelQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CancelQuery: *const fn (
             self: *const IWbemEventProviderQuerySink,
             dwId: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn NewQuery(self: *const IWbemEventProviderQuerySink, dwId: u32, wszQueryLanguage: ?*u16, wszQuery: ?*u16) callconv(.Inline) HRESULT {
+    pub inline fn NewQuery(self: *const IWbemEventProviderQuerySink, dwId: u32, wszQueryLanguage: ?*u16, wszQuery: ?*u16) HRESULT {
         return self.vtable.NewQuery(self, dwId, wszQueryLanguage, wszQuery);
     }
-    pub fn CancelQuery(self: *const IWbemEventProviderQuerySink, dwId: u32) callconv(.Inline) HRESULT {
+    pub inline fn CancelQuery(self: *const IWbemEventProviderQuerySink, dwId: u32) HRESULT {
         return self.vtable.CancelQuery(self, dwId);
     }
 };
@@ -4623,17 +4623,17 @@ pub const IID_IWbemEventProviderSecurity = &IID_IWbemEventProviderSecurity_Value
 pub const IWbemEventProviderSecurity = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AccessCheck: *const fn(
+        AccessCheck: *const fn (
             self: *const IWbemEventProviderSecurity,
             wszQueryLanguage: ?*u16,
             wszQuery: ?*u16,
             lSidLength: i32,
             pSid: [*:0]const u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AccessCheck(self: *const IWbemEventProviderSecurity, wszQueryLanguage: ?*u16, wszQuery: ?*u16, lSidLength: i32, pSid: [*:0]const u8) callconv(.Inline) HRESULT {
+    pub inline fn AccessCheck(self: *const IWbemEventProviderSecurity, wszQueryLanguage: ?*u16, wszQuery: ?*u16, lSidLength: i32, pSid: [*:0]const u8) HRESULT {
         return self.vtable.AccessCheck(self, wszQueryLanguage, wszQuery, lSidLength, pSid);
     }
 };
@@ -4644,15 +4644,15 @@ pub const IID_IWbemEventConsumerProvider = &IID_IWbemEventConsumerProvider_Value
 pub const IWbemEventConsumerProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        FindConsumer: *const fn(
+        FindConsumer: *const fn (
             self: *const IWbemEventConsumerProvider,
             pLogicalConsumer: ?*IWbemClassObject,
             ppConsumer: ?*?*IWbemUnboundObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn FindConsumer(self: *const IWbemEventConsumerProvider, pLogicalConsumer: ?*IWbemClassObject, ppConsumer: ?*?*IWbemUnboundObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn FindConsumer(self: *const IWbemEventConsumerProvider, pLogicalConsumer: ?*IWbemClassObject, ppConsumer: ?*?*IWbemUnboundObjectSink) HRESULT {
         return self.vtable.FindConsumer(self, pLogicalConsumer, ppConsumer);
     }
 };
@@ -4663,15 +4663,15 @@ pub const IID_IWbemProviderInitSink = &IID_IWbemProviderInitSink_Value;
 pub const IWbemProviderInitSink = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetStatus: *const fn(
+        SetStatus: *const fn (
             self: *const IWbemProviderInitSink,
             lStatus: i32,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetStatus(self: *const IWbemProviderInitSink, lStatus: i32, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetStatus(self: *const IWbemProviderInitSink, lStatus: i32, lFlags: i32) HRESULT {
         return self.vtable.SetStatus(self, lStatus, lFlags);
     }
 };
@@ -4682,7 +4682,7 @@ pub const IID_IWbemProviderInit = &IID_IWbemProviderInit_Value;
 pub const IWbemProviderInit = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IWbemProviderInit,
             wszUser: ?PWSTR,
             lFlags: i32,
@@ -4691,11 +4691,11 @@ pub const IWbemProviderInit = extern union {
             pNamespace: ?*IWbemServices,
             pCtx: ?*IWbemContext,
             pInitSink: ?*IWbemProviderInitSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IWbemProviderInit, wszUser: ?PWSTR, lFlags: i32, wszNamespace: ?PWSTR, wszLocale: ?PWSTR, pNamespace: ?*IWbemServices, pCtx: ?*IWbemContext, pInitSink: ?*IWbemProviderInitSink) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IWbemProviderInit, wszUser: ?PWSTR, lFlags: i32, wszNamespace: ?PWSTR, wszLocale: ?PWSTR, pNamespace: ?*IWbemServices, pCtx: ?*IWbemContext, pInitSink: ?*IWbemProviderInitSink) HRESULT {
         return self.vtable.Initialize(self, wszUser, lFlags, wszNamespace, wszLocale, pNamespace, pCtx, pInitSink);
     }
 };
@@ -4706,21 +4706,21 @@ pub const IID_IWbemHiPerfProvider = &IID_IWbemHiPerfProvider_Value;
 pub const IWbemHiPerfProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QueryInstances: *const fn(
+        QueryInstances: *const fn (
             self: *const IWbemHiPerfProvider,
             pNamespace: ?*IWbemServices,
             wszClass: ?PWSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             pSink: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateRefresher: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateRefresher: *const fn (
             self: *const IWbemHiPerfProvider,
             pNamespace: ?*IWbemServices,
             lFlags: i32,
             ppRefresher: ?*?*IWbemRefresher,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateRefreshableObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateRefreshableObject: *const fn (
             self: *const IWbemHiPerfProvider,
             pNamespace: ?*IWbemServices,
             pTemplate: ?*IWbemObjectAccess,
@@ -4729,14 +4729,14 @@ pub const IWbemHiPerfProvider = extern union {
             pContext: ?*IWbemContext,
             ppRefreshable: ?*?*IWbemObjectAccess,
             plId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        StopRefreshing: *const fn(
+        ) callconv(.winapi) HRESULT,
+        StopRefreshing: *const fn (
             self: *const IWbemHiPerfProvider,
             pRefresher: ?*IWbemRefresher,
             lId: i32,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateRefreshableEnum: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateRefreshableEnum: *const fn (
             self: *const IWbemHiPerfProvider,
             pNamespace: ?*IWbemServices,
             wszClass: ?[*:0]const u16,
@@ -4745,34 +4745,34 @@ pub const IWbemHiPerfProvider = extern union {
             pContext: ?*IWbemContext,
             pHiPerfEnum: ?*IWbemHiPerfEnum,
             plId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObjects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObjects: *const fn (
             self: *const IWbemHiPerfProvider,
             pNamespace: ?*IWbemServices,
             lNumObjects: i32,
             apObj: [*]?*IWbemObjectAccess,
             lFlags: i32,
             pContext: ?*IWbemContext,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QueryInstances(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, wszClass: ?PWSTR, lFlags: i32, pCtx: ?*IWbemContext, pSink: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn QueryInstances(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, wszClass: ?PWSTR, lFlags: i32, pCtx: ?*IWbemContext, pSink: ?*IWbemObjectSink) HRESULT {
         return self.vtable.QueryInstances(self, pNamespace, wszClass, lFlags, pCtx, pSink);
     }
-    pub fn CreateRefresher(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, lFlags: i32, ppRefresher: ?*?*IWbemRefresher) callconv(.Inline) HRESULT {
+    pub inline fn CreateRefresher(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, lFlags: i32, ppRefresher: ?*?*IWbemRefresher) HRESULT {
         return self.vtable.CreateRefresher(self, pNamespace, lFlags, ppRefresher);
     }
-    pub fn CreateRefreshableObject(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, pTemplate: ?*IWbemObjectAccess, pRefresher: ?*IWbemRefresher, lFlags: i32, pContext: ?*IWbemContext, ppRefreshable: ?*?*IWbemObjectAccess, plId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CreateRefreshableObject(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, pTemplate: ?*IWbemObjectAccess, pRefresher: ?*IWbemRefresher, lFlags: i32, pContext: ?*IWbemContext, ppRefreshable: ?*?*IWbemObjectAccess, plId: ?*i32) HRESULT {
         return self.vtable.CreateRefreshableObject(self, pNamespace, pTemplate, pRefresher, lFlags, pContext, ppRefreshable, plId);
     }
-    pub fn StopRefreshing(self: *const IWbemHiPerfProvider, pRefresher: ?*IWbemRefresher, lId: i32, lFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn StopRefreshing(self: *const IWbemHiPerfProvider, pRefresher: ?*IWbemRefresher, lId: i32, lFlags: i32) HRESULT {
         return self.vtable.StopRefreshing(self, pRefresher, lId, lFlags);
     }
-    pub fn CreateRefreshableEnum(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, wszClass: ?[*:0]const u16, pRefresher: ?*IWbemRefresher, lFlags: i32, pContext: ?*IWbemContext, pHiPerfEnum: ?*IWbemHiPerfEnum, plId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CreateRefreshableEnum(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, wszClass: ?[*:0]const u16, pRefresher: ?*IWbemRefresher, lFlags: i32, pContext: ?*IWbemContext, pHiPerfEnum: ?*IWbemHiPerfEnum, plId: ?*i32) HRESULT {
         return self.vtable.CreateRefreshableEnum(self, pNamespace, wszClass, pRefresher, lFlags, pContext, pHiPerfEnum, plId);
     }
-    pub fn GetObjects(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, lNumObjects: i32, apObj: [*]?*IWbemObjectAccess, lFlags: i32, pContext: ?*IWbemContext) callconv(.Inline) HRESULT {
+    pub inline fn GetObjects(self: *const IWbemHiPerfProvider, pNamespace: ?*IWbemServices, lNumObjects: i32, apObj: [*]?*IWbemObjectAccess, lFlags: i32, pContext: ?*IWbemContext) HRESULT {
         return self.vtable.GetObjects(self, pNamespace, lNumObjects, apObj, lFlags, pContext);
     }
 };
@@ -4783,7 +4783,7 @@ pub const IID_IWbemDecoupledRegistrar = &IID_IWbemDecoupledRegistrar_Value;
 pub const IWbemDecoupledRegistrar = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Register: *const fn(
+        Register: *const fn (
             self: *const IWbemDecoupledRegistrar,
             a_Flags: i32,
             a_Context: ?*IWbemContext,
@@ -4792,17 +4792,17 @@ pub const IWbemDecoupledRegistrar = extern union {
             a_Scope: ?[*:0]const u16,
             a_Registration: ?[*:0]const u16,
             pIUnknown: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnRegister: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnRegister: *const fn (
             self: *const IWbemDecoupledRegistrar,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Register(self: *const IWbemDecoupledRegistrar, a_Flags: i32, a_Context: ?*IWbemContext, a_User: ?[*:0]const u16, a_Locale: ?[*:0]const u16, a_Scope: ?[*:0]const u16, a_Registration: ?[*:0]const u16, pIUnknown: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn Register(self: *const IWbemDecoupledRegistrar, a_Flags: i32, a_Context: ?*IWbemContext, a_User: ?[*:0]const u16, a_Locale: ?[*:0]const u16, a_Scope: ?[*:0]const u16, a_Registration: ?[*:0]const u16, pIUnknown: ?*IUnknown) HRESULT {
         return self.vtable.Register(self, a_Flags, a_Context, a_User, a_Locale, a_Scope, a_Registration, pIUnknown);
     }
-    pub fn UnRegister(self: *const IWbemDecoupledRegistrar) callconv(.Inline) HRESULT {
+    pub inline fn UnRegister(self: *const IWbemDecoupledRegistrar) HRESULT {
         return self.vtable.UnRegister(self);
     }
 };
@@ -4813,15 +4813,15 @@ pub const IID_IWbemProviderIdentity = &IID_IWbemProviderIdentity_Value;
 pub const IWbemProviderIdentity = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetRegistrationObject: *const fn(
+        SetRegistrationObject: *const fn (
             self: *const IWbemProviderIdentity,
             lFlags: i32,
             pProvReg: ?*IWbemClassObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetRegistrationObject(self: *const IWbemProviderIdentity, lFlags: i32, pProvReg: ?*IWbemClassObject) callconv(.Inline) HRESULT {
+    pub inline fn SetRegistrationObject(self: *const IWbemProviderIdentity, lFlags: i32, pProvReg: ?*IWbemClassObject) HRESULT {
         return self.vtable.SetRegistrationObject(self, lFlags, pProvReg);
     }
 };
@@ -4852,26 +4852,26 @@ pub const IID_IWbemDecoupledBasicEventProvider = &IID_IWbemDecoupledBasicEventPr
 pub const IWbemDecoupledBasicEventProvider = extern union {
     pub const VTable = extern struct {
         base: IWbemDecoupledRegistrar.VTable,
-        GetSink: *const fn(
+        GetSink: *const fn (
             self: *const IWbemDecoupledBasicEventProvider,
             a_Flags: i32,
             a_Context: ?*IWbemContext,
             a_Sink: ?*?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetService: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetService: *const fn (
             self: *const IWbemDecoupledBasicEventProvider,
             a_Flags: i32,
             a_Context: ?*IWbemContext,
             a_Service: ?*?*IWbemServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWbemDecoupledRegistrar: IWbemDecoupledRegistrar,
     IUnknown: IUnknown,
-    pub fn GetSink(self: *const IWbemDecoupledBasicEventProvider, a_Flags: i32, a_Context: ?*IWbemContext, a_Sink: ?*?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn GetSink(self: *const IWbemDecoupledBasicEventProvider, a_Flags: i32, a_Context: ?*IWbemContext, a_Sink: ?*?*IWbemObjectSink) HRESULT {
         return self.vtable.GetSink(self, a_Flags, a_Context, a_Sink);
     }
-    pub fn GetService(self: *const IWbemDecoupledBasicEventProvider, a_Flags: i32, a_Context: ?*IWbemContext, a_Service: ?*?*IWbemServices) callconv(.Inline) HRESULT {
+    pub inline fn GetService(self: *const IWbemDecoupledBasicEventProvider, a_Flags: i32, a_Context: ?*IWbemContext, a_Service: ?*?*IWbemServices) HRESULT {
         return self.vtable.GetService(self, a_Flags, a_Context, a_Service);
     }
 };
@@ -4891,41 +4891,41 @@ pub const IID_IWbemEventSink = &IID_IWbemEventSink_Value;
 pub const IWbemEventSink = extern union {
     pub const VTable = extern struct {
         base: IWbemObjectSink.VTable,
-        SetSinkSecurity: *const fn(
+        SetSinkSecurity: *const fn (
             self: *const IWbemEventSink,
             lSDLength: i32,
             pSD: [*:0]u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsActive: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsActive: *const fn (
             self: *const IWbemEventSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRestrictedSink: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRestrictedSink: *const fn (
             self: *const IWbemEventSink,
             lNumQueries: i32,
             awszQueries: [*]const ?[*:0]const u16,
             pCallback: ?*IUnknown,
             ppSink: ?*?*IWbemEventSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetBatchingParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetBatchingParameters: *const fn (
             self: *const IWbemEventSink,
             lFlags: i32,
             dwMaxBufferSize: u32,
             dwMaxSendLatency: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWbemObjectSink: IWbemObjectSink,
     IUnknown: IUnknown,
-    pub fn SetSinkSecurity(self: *const IWbemEventSink, lSDLength: i32, pSD: [*:0]u8) callconv(.Inline) HRESULT {
+    pub inline fn SetSinkSecurity(self: *const IWbemEventSink, lSDLength: i32, pSD: [*:0]u8) HRESULT {
         return self.vtable.SetSinkSecurity(self, lSDLength, pSD);
     }
-    pub fn IsActive(self: *const IWbemEventSink) callconv(.Inline) HRESULT {
+    pub inline fn IsActive(self: *const IWbemEventSink) HRESULT {
         return self.vtable.IsActive(self);
     }
-    pub fn GetRestrictedSink(self: *const IWbemEventSink, lNumQueries: i32, awszQueries: [*]const ?[*:0]const u16, pCallback: ?*IUnknown, ppSink: ?*?*IWbemEventSink) callconv(.Inline) HRESULT {
+    pub inline fn GetRestrictedSink(self: *const IWbemEventSink, lNumQueries: i32, awszQueries: [*]const ?[*:0]const u16, pCallback: ?*IUnknown, ppSink: ?*?*IWbemEventSink) HRESULT {
         return self.vtable.GetRestrictedSink(self, lNumQueries, awszQueries, pCallback, ppSink);
     }
-    pub fn SetBatchingParameters(self: *const IWbemEventSink, lFlags: i32, dwMaxBufferSize: u32, dwMaxSendLatency: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetBatchingParameters(self: *const IWbemEventSink, lFlags: i32, dwMaxBufferSize: u32, dwMaxSendLatency: u32) HRESULT {
         return self.vtable.SetBatchingParameters(self, lFlags, dwMaxBufferSize, dwMaxSendLatency);
     }
 };
@@ -5486,74 +5486,74 @@ pub const IID_ISWbemServices = &IID_ISWbemServices_Value;
 pub const ISWbemServices = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Get: *const fn(
+        Get: *const fn (
             self: *const ISWbemServices,
             strObjectPath: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObject: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAsync: *const fn (
             self: *const ISWbemServices,
             objWbemSink: ?*IDispatch,
             strObjectPath: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const ISWbemServices,
             strObjectPath: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteAsync: *const fn (
             self: *const ISWbemServices,
             objWbemSink: ?*IDispatch,
             strObjectPath: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstancesOf: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstancesOf: *const fn (
             self: *const ISWbemServices,
             strClass: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstancesOfAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstancesOfAsync: *const fn (
             self: *const ISWbemServices,
             objWbemSink: ?*IDispatch,
             strClass: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SubclassesOf: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SubclassesOf: *const fn (
             self: *const ISWbemServices,
             strSuperclass: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SubclassesOfAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SubclassesOfAsync: *const fn (
             self: *const ISWbemServices,
             objWbemSink: ?*IDispatch,
             strSuperclass: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecQuery: *const fn (
             self: *const ISWbemServices,
             strQuery: ?BSTR,
             strQueryLanguage: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecQueryAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecQueryAsync: *const fn (
             self: *const ISWbemServices,
             objWbemSink: ?*IDispatch,
             strQuery: ?BSTR,
@@ -5561,8 +5561,8 @@ pub const ISWbemServices = extern union {
             lFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AssociatorsOf: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AssociatorsOf: *const fn (
             self: *const ISWbemServices,
             strObjectPath: ?BSTR,
             strAssocClass: ?BSTR,
@@ -5576,8 +5576,8 @@ pub const ISWbemServices = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AssociatorsOfAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AssociatorsOfAsync: *const fn (
             self: *const ISWbemServices,
             objWbemSink: ?*IDispatch,
             strObjectPath: ?BSTR,
@@ -5592,8 +5592,8 @@ pub const ISWbemServices = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReferencesTo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReferencesTo: *const fn (
             self: *const ISWbemServices,
             strObjectPath: ?BSTR,
             strResultClass: ?BSTR,
@@ -5604,8 +5604,8 @@ pub const ISWbemServices = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReferencesToAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReferencesToAsync: *const fn (
             self: *const ISWbemServices,
             objWbemSink: ?*IDispatch,
             strObjectPath: ?BSTR,
@@ -5617,16 +5617,16 @@ pub const ISWbemServices = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecNotificationQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecNotificationQuery: *const fn (
             self: *const ISWbemServices,
             strQuery: ?BSTR,
             strQueryLanguage: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemEventSource: ?*?*ISWbemEventSource,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecNotificationQueryAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecNotificationQueryAsync: *const fn (
             self: *const ISWbemServices,
             objWbemSink: ?*IDispatch,
             strQuery: ?BSTR,
@@ -5634,8 +5634,8 @@ pub const ISWbemServices = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecMethod: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecMethod: *const fn (
             self: *const ISWbemServices,
             strObjectPath: ?BSTR,
             strMethodName: ?BSTR,
@@ -5643,8 +5643,8 @@ pub const ISWbemServices = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemOutParameters: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecMethodAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecMethodAsync: *const fn (
             self: *const ISWbemServices,
             objWbemSink: ?*IDispatch,
             strObjectPath: ?BSTR,
@@ -5653,71 +5653,71 @@ pub const ISWbemServices = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Security_: *const fn(
+        get_Security_: *const fn (
             self: *const ISWbemServices,
             objWbemSecurity: ?*?*ISWbemSecurity,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Get(self: *const ISWbemServices, strObjectPath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObject: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const ISWbemServices, strObjectPath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObject: ?*?*ISWbemObject) HRESULT {
         return self.vtable.Get(self, strObjectPath, iFlags, objWbemNamedValueSet, objWbemObject);
     }
-    pub fn GetAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn GetAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.GetAsync(self, objWbemSink, strObjectPath, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn Delete(self: *const ISWbemServices, strObjectPath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const ISWbemServices, strObjectPath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch) HRESULT {
         return self.vtable.Delete(self, strObjectPath, iFlags, objWbemNamedValueSet);
     }
-    pub fn DeleteAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.DeleteAsync(self, objWbemSink, strObjectPath, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn InstancesOf(self: *const ISWbemServices, strClass: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn InstancesOf(self: *const ISWbemServices, strClass: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.InstancesOf(self, strClass, iFlags, objWbemNamedValueSet, objWbemObjectSet);
     }
-    pub fn InstancesOfAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strClass: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn InstancesOfAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strClass: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.InstancesOfAsync(self, objWbemSink, strClass, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn SubclassesOf(self: *const ISWbemServices, strSuperclass: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn SubclassesOf(self: *const ISWbemServices, strSuperclass: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.SubclassesOf(self, strSuperclass, iFlags, objWbemNamedValueSet, objWbemObjectSet);
     }
-    pub fn SubclassesOfAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strSuperclass: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn SubclassesOfAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strSuperclass: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.SubclassesOfAsync(self, objWbemSink, strSuperclass, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn ExecQuery(self: *const ISWbemServices, strQuery: ?BSTR, strQueryLanguage: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn ExecQuery(self: *const ISWbemServices, strQuery: ?BSTR, strQueryLanguage: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.ExecQuery(self, strQuery, strQueryLanguage, iFlags, objWbemNamedValueSet, objWbemObjectSet);
     }
-    pub fn ExecQueryAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strQuery: ?BSTR, strQueryLanguage: ?BSTR, lFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn ExecQueryAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strQuery: ?BSTR, strQueryLanguage: ?BSTR, lFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.ExecQueryAsync(self, objWbemSink, strQuery, strQueryLanguage, lFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn AssociatorsOf(self: *const ISWbemServices, strObjectPath: ?BSTR, strAssocClass: ?BSTR, strResultClass: ?BSTR, strResultRole: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredAssocQualifier: ?BSTR, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn AssociatorsOf(self: *const ISWbemServices, strObjectPath: ?BSTR, strAssocClass: ?BSTR, strResultClass: ?BSTR, strResultRole: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredAssocQualifier: ?BSTR, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.AssociatorsOf(self, strObjectPath, strAssocClass, strResultClass, strResultRole, strRole, bClassesOnly, bSchemaOnly, strRequiredAssocQualifier, strRequiredQualifier, iFlags, objWbemNamedValueSet, objWbemObjectSet);
     }
-    pub fn AssociatorsOfAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, strAssocClass: ?BSTR, strResultClass: ?BSTR, strResultRole: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredAssocQualifier: ?BSTR, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn AssociatorsOfAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, strAssocClass: ?BSTR, strResultClass: ?BSTR, strResultRole: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredAssocQualifier: ?BSTR, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.AssociatorsOfAsync(self, objWbemSink, strObjectPath, strAssocClass, strResultClass, strResultRole, strRole, bClassesOnly, bSchemaOnly, strRequiredAssocQualifier, strRequiredQualifier, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn ReferencesTo(self: *const ISWbemServices, strObjectPath: ?BSTR, strResultClass: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn ReferencesTo(self: *const ISWbemServices, strObjectPath: ?BSTR, strResultClass: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.ReferencesTo(self, strObjectPath, strResultClass, strRole, bClassesOnly, bSchemaOnly, strRequiredQualifier, iFlags, objWbemNamedValueSet, objWbemObjectSet);
     }
-    pub fn ReferencesToAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, strResultClass: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn ReferencesToAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, strResultClass: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.ReferencesToAsync(self, objWbemSink, strObjectPath, strResultClass, strRole, bClassesOnly, bSchemaOnly, strRequiredQualifier, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn ExecNotificationQuery(self: *const ISWbemServices, strQuery: ?BSTR, strQueryLanguage: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemEventSource: ?*?*ISWbemEventSource) callconv(.Inline) HRESULT {
+    pub inline fn ExecNotificationQuery(self: *const ISWbemServices, strQuery: ?BSTR, strQueryLanguage: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemEventSource: ?*?*ISWbemEventSource) HRESULT {
         return self.vtable.ExecNotificationQuery(self, strQuery, strQueryLanguage, iFlags, objWbemNamedValueSet, objWbemEventSource);
     }
-    pub fn ExecNotificationQueryAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strQuery: ?BSTR, strQueryLanguage: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn ExecNotificationQueryAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strQuery: ?BSTR, strQueryLanguage: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.ExecNotificationQueryAsync(self, objWbemSink, strQuery, strQueryLanguage, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn ExecMethod(self: *const ISWbemServices, strObjectPath: ?BSTR, strMethodName: ?BSTR, objWbemInParameters: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemOutParameters: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn ExecMethod(self: *const ISWbemServices, strObjectPath: ?BSTR, strMethodName: ?BSTR, objWbemInParameters: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemOutParameters: ?*?*ISWbemObject) HRESULT {
         return self.vtable.ExecMethod(self, strObjectPath, strMethodName, objWbemInParameters, iFlags, objWbemNamedValueSet, objWbemOutParameters);
     }
-    pub fn ExecMethodAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, strMethodName: ?BSTR, objWbemInParameters: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn ExecMethodAsync(self: *const ISWbemServices, objWbemSink: ?*IDispatch, strObjectPath: ?BSTR, strMethodName: ?BSTR, objWbemInParameters: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.ExecMethodAsync(self, objWbemSink, strObjectPath, strMethodName, objWbemInParameters, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn get_Security_(self: *const ISWbemServices, objWbemSecurity: ?*?*ISWbemSecurity) callconv(.Inline) HRESULT {
+    pub inline fn get_Security_(self: *const ISWbemServices, objWbemSecurity: ?*?*ISWbemSecurity) HRESULT {
         return self.vtable.get_Security_(self, objWbemSecurity);
     }
 };
@@ -5727,7 +5727,7 @@ pub const IID_ISWbemLocator = &IID_ISWbemLocator_Value;
 pub const ISWbemLocator = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        ConnectServer: *const fn(
+        ConnectServer: *const fn (
             self: *const ISWbemLocator,
             strServer: ?BSTR,
             strNamespace: ?BSTR,
@@ -5738,20 +5738,20 @@ pub const ISWbemLocator = extern union {
             iSecurityFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemServices: ?*?*ISWbemServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Security_: *const fn(
+        get_Security_: *const fn (
             self: *const ISWbemLocator,
             objWbemSecurity: ?*?*ISWbemSecurity,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn ConnectServer(self: *const ISWbemLocator, strServer: ?BSTR, strNamespace: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, strAuthority: ?BSTR, iSecurityFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemServices: ?*?*ISWbemServices) callconv(.Inline) HRESULT {
+    pub inline fn ConnectServer(self: *const ISWbemLocator, strServer: ?BSTR, strNamespace: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, strAuthority: ?BSTR, iSecurityFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemServices: ?*?*ISWbemServices) HRESULT {
         return self.vtable.ConnectServer(self, strServer, strNamespace, strUser, strPassword, strLocale, strAuthority, iSecurityFlags, objWbemNamedValueSet, objWbemServices);
     }
-    pub fn get_Security_(self: *const ISWbemLocator, objWbemSecurity: ?*?*ISWbemSecurity) callconv(.Inline) HRESULT {
+    pub inline fn get_Security_(self: *const ISWbemLocator, objWbemSecurity: ?*?*ISWbemSecurity) HRESULT {
         return self.vtable.get_Security_(self, objWbemSecurity);
     }
 };
@@ -5761,58 +5761,58 @@ pub const IID_ISWbemObject = &IID_ISWbemObject_Value;
 pub const ISWbemObject = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Put_: *const fn(
+        Put_: *const fn (
             self: *const ISWbemObject,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectPath: ?*?*ISWbemObjectPath,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutAsync_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutAsync_: *const fn (
             self: *const ISWbemObject,
             objWbemSink: ?*IDispatch,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete_: *const fn (
             self: *const ISWbemObject,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAsync_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteAsync_: *const fn (
             self: *const ISWbemObject,
             objWbemSink: ?*IDispatch,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Instances_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Instances_: *const fn (
             self: *const ISWbemObject,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstancesAsync_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstancesAsync_: *const fn (
             self: *const ISWbemObject,
             objWbemSink: ?*IDispatch,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Subclasses_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Subclasses_: *const fn (
             self: *const ISWbemObject,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SubclassesAsync_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SubclassesAsync_: *const fn (
             self: *const ISWbemObject,
             objWbemSink: ?*IDispatch,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Associators_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Associators_: *const fn (
             self: *const ISWbemObject,
             strAssocClass: ?BSTR,
             strResultClass: ?BSTR,
@@ -5825,8 +5825,8 @@ pub const ISWbemObject = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AssociatorsAsync_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AssociatorsAsync_: *const fn (
             self: *const ISWbemObject,
             objWbemSink: ?*IDispatch,
             strAssocClass: ?BSTR,
@@ -5840,8 +5840,8 @@ pub const ISWbemObject = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        References_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        References_: *const fn (
             self: *const ISWbemObject,
             strResultClass: ?BSTR,
             strRole: ?BSTR,
@@ -5851,8 +5851,8 @@ pub const ISWbemObject = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReferencesAsync_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReferencesAsync_: *const fn (
             self: *const ISWbemObject,
             objWbemSink: ?*IDispatch,
             strResultClass: ?BSTR,
@@ -5863,16 +5863,16 @@ pub const ISWbemObject = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecMethod_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecMethod_: *const fn (
             self: *const ISWbemObject,
             strMethodName: ?BSTR,
             objWbemInParameters: ?*IDispatch,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemOutParameters: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecMethodAsync_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecMethodAsync_: *const fn (
             self: *const ISWbemObject,
             objWbemSink: ?*IDispatch,
             strMethodName: ?BSTR,
@@ -5880,139 +5880,139 @@ pub const ISWbemObject = extern union {
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone_: *const fn (
             self: *const ISWbemObject,
             objWbemObject: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObjectText_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObjectText_: *const fn (
             self: *const ISWbemObject,
             iFlags: i32,
             strObjectText: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SpawnDerivedClass_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SpawnDerivedClass_: *const fn (
             self: *const ISWbemObject,
             iFlags: i32,
             objWbemObject: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SpawnInstance_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SpawnInstance_: *const fn (
             self: *const ISWbemObject,
             iFlags: i32,
             objWbemObject: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CompareTo_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CompareTo_: *const fn (
             self: *const ISWbemObject,
             objWbemObject: ?*IDispatch,
             iFlags: i32,
             bResult: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Qualifiers_: *const fn(
+        get_Qualifiers_: *const fn (
             self: *const ISWbemObject,
             objWbemQualifierSet: ?*?*ISWbemQualifierSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Properties_: *const fn(
+        get_Properties_: *const fn (
             self: *const ISWbemObject,
             objWbemPropertySet: ?*?*ISWbemPropertySet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Methods_: *const fn(
+        get_Methods_: *const fn (
             self: *const ISWbemObject,
             objWbemMethodSet: ?*?*ISWbemMethodSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Derivation_: *const fn(
+        get_Derivation_: *const fn (
             self: *const ISWbemObject,
             strClassNameArray: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Path_: *const fn(
+        get_Path_: *const fn (
             self: *const ISWbemObject,
             objWbemObjectPath: ?*?*ISWbemObjectPath,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Security_: *const fn(
+        get_Security_: *const fn (
             self: *const ISWbemObject,
             objWbemSecurity: ?*?*ISWbemSecurity,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Put_(self: *const ISWbemObject, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectPath: ?*?*ISWbemObjectPath) callconv(.Inline) HRESULT {
+    pub inline fn Put_(self: *const ISWbemObject, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectPath: ?*?*ISWbemObjectPath) HRESULT {
         return self.vtable.Put_(self, iFlags, objWbemNamedValueSet, objWbemObjectPath);
     }
-    pub fn PutAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn PutAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.PutAsync_(self, objWbemSink, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn Delete_(self: *const ISWbemObject, iFlags: i32, objWbemNamedValueSet: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn Delete_(self: *const ISWbemObject, iFlags: i32, objWbemNamedValueSet: ?*IDispatch) HRESULT {
         return self.vtable.Delete_(self, iFlags, objWbemNamedValueSet);
     }
-    pub fn DeleteAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.DeleteAsync_(self, objWbemSink, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn Instances_(self: *const ISWbemObject, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn Instances_(self: *const ISWbemObject, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.Instances_(self, iFlags, objWbemNamedValueSet, objWbemObjectSet);
     }
-    pub fn InstancesAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn InstancesAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.InstancesAsync_(self, objWbemSink, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn Subclasses_(self: *const ISWbemObject, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn Subclasses_(self: *const ISWbemObject, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.Subclasses_(self, iFlags, objWbemNamedValueSet, objWbemObjectSet);
     }
-    pub fn SubclassesAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn SubclassesAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.SubclassesAsync_(self, objWbemSink, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn Associators_(self: *const ISWbemObject, strAssocClass: ?BSTR, strResultClass: ?BSTR, strResultRole: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredAssocQualifier: ?BSTR, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn Associators_(self: *const ISWbemObject, strAssocClass: ?BSTR, strResultClass: ?BSTR, strResultRole: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredAssocQualifier: ?BSTR, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.Associators_(self, strAssocClass, strResultClass, strResultRole, strRole, bClassesOnly, bSchemaOnly, strRequiredAssocQualifier, strRequiredQualifier, iFlags, objWbemNamedValueSet, objWbemObjectSet);
     }
-    pub fn AssociatorsAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, strAssocClass: ?BSTR, strResultClass: ?BSTR, strResultRole: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredAssocQualifier: ?BSTR, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn AssociatorsAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, strAssocClass: ?BSTR, strResultClass: ?BSTR, strResultRole: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredAssocQualifier: ?BSTR, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.AssociatorsAsync_(self, objWbemSink, strAssocClass, strResultClass, strResultRole, strRole, bClassesOnly, bSchemaOnly, strRequiredAssocQualifier, strRequiredQualifier, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn References_(self: *const ISWbemObject, strResultClass: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn References_(self: *const ISWbemObject, strResultClass: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.References_(self, strResultClass, strRole, bClassesOnly, bSchemaOnly, strRequiredQualifier, iFlags, objWbemNamedValueSet, objWbemObjectSet);
     }
-    pub fn ReferencesAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, strResultClass: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn ReferencesAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, strResultClass: ?BSTR, strRole: ?BSTR, bClassesOnly: i16, bSchemaOnly: i16, strRequiredQualifier: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.ReferencesAsync_(self, objWbemSink, strResultClass, strRole, bClassesOnly, bSchemaOnly, strRequiredQualifier, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn ExecMethod_(self: *const ISWbemObject, strMethodName: ?BSTR, objWbemInParameters: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemOutParameters: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn ExecMethod_(self: *const ISWbemObject, strMethodName: ?BSTR, objWbemInParameters: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemOutParameters: ?*?*ISWbemObject) HRESULT {
         return self.vtable.ExecMethod_(self, strMethodName, objWbemInParameters, iFlags, objWbemNamedValueSet, objWbemOutParameters);
     }
-    pub fn ExecMethodAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, strMethodName: ?BSTR, objWbemInParameters: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn ExecMethodAsync_(self: *const ISWbemObject, objWbemSink: ?*IDispatch, strMethodName: ?BSTR, objWbemInParameters: ?*IDispatch, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.ExecMethodAsync_(self, objWbemSink, strMethodName, objWbemInParameters, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
-    pub fn Clone_(self: *const ISWbemObject, objWbemObject: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn Clone_(self: *const ISWbemObject, objWbemObject: ?*?*ISWbemObject) HRESULT {
         return self.vtable.Clone_(self, objWbemObject);
     }
-    pub fn GetObjectText_(self: *const ISWbemObject, iFlags: i32, strObjectText: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectText_(self: *const ISWbemObject, iFlags: i32, strObjectText: ?*?BSTR) HRESULT {
         return self.vtable.GetObjectText_(self, iFlags, strObjectText);
     }
-    pub fn SpawnDerivedClass_(self: *const ISWbemObject, iFlags: i32, objWbemObject: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn SpawnDerivedClass_(self: *const ISWbemObject, iFlags: i32, objWbemObject: ?*?*ISWbemObject) HRESULT {
         return self.vtable.SpawnDerivedClass_(self, iFlags, objWbemObject);
     }
-    pub fn SpawnInstance_(self: *const ISWbemObject, iFlags: i32, objWbemObject: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn SpawnInstance_(self: *const ISWbemObject, iFlags: i32, objWbemObject: ?*?*ISWbemObject) HRESULT {
         return self.vtable.SpawnInstance_(self, iFlags, objWbemObject);
     }
-    pub fn CompareTo_(self: *const ISWbemObject, objWbemObject: ?*IDispatch, iFlags: i32, bResult: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn CompareTo_(self: *const ISWbemObject, objWbemObject: ?*IDispatch, iFlags: i32, bResult: ?*i16) HRESULT {
         return self.vtable.CompareTo_(self, objWbemObject, iFlags, bResult);
     }
-    pub fn get_Qualifiers_(self: *const ISWbemObject, objWbemQualifierSet: ?*?*ISWbemQualifierSet) callconv(.Inline) HRESULT {
+    pub inline fn get_Qualifiers_(self: *const ISWbemObject, objWbemQualifierSet: ?*?*ISWbemQualifierSet) HRESULT {
         return self.vtable.get_Qualifiers_(self, objWbemQualifierSet);
     }
-    pub fn get_Properties_(self: *const ISWbemObject, objWbemPropertySet: ?*?*ISWbemPropertySet) callconv(.Inline) HRESULT {
+    pub inline fn get_Properties_(self: *const ISWbemObject, objWbemPropertySet: ?*?*ISWbemPropertySet) HRESULT {
         return self.vtable.get_Properties_(self, objWbemPropertySet);
     }
-    pub fn get_Methods_(self: *const ISWbemObject, objWbemMethodSet: ?*?*ISWbemMethodSet) callconv(.Inline) HRESULT {
+    pub inline fn get_Methods_(self: *const ISWbemObject, objWbemMethodSet: ?*?*ISWbemMethodSet) HRESULT {
         return self.vtable.get_Methods_(self, objWbemMethodSet);
     }
-    pub fn get_Derivation_(self: *const ISWbemObject, strClassNameArray: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Derivation_(self: *const ISWbemObject, strClassNameArray: ?*VARIANT) HRESULT {
         return self.vtable.get_Derivation_(self, strClassNameArray);
     }
-    pub fn get_Path_(self: *const ISWbemObject, objWbemObjectPath: ?*?*ISWbemObjectPath) callconv(.Inline) HRESULT {
+    pub inline fn get_Path_(self: *const ISWbemObject, objWbemObjectPath: ?*?*ISWbemObjectPath) HRESULT {
         return self.vtable.get_Path_(self, objWbemObjectPath);
     }
-    pub fn get_Security_(self: *const ISWbemObject, objWbemSecurity: ?*?*ISWbemSecurity) callconv(.Inline) HRESULT {
+    pub inline fn get_Security_(self: *const ISWbemObject, objWbemSecurity: ?*?*ISWbemSecurity) HRESULT {
         return self.vtable.get_Security_(self, objWbemSecurity);
     }
 };
@@ -6023,48 +6023,48 @@ pub const ISWbemObjectSet = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ISWbemObjectSet,
             pUnk: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const ISWbemObjectSet,
             strObjectPath: ?BSTR,
             iFlags: i32,
             objWbemObject: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ISWbemObjectSet,
             iCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Security_: *const fn(
+        get_Security_: *const fn (
             self: *const ISWbemObjectSet,
             objWbemSecurity: ?*?*ISWbemSecurity,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ItemIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ItemIndex: *const fn (
             self: *const ISWbemObjectSet,
             lIndex: i32,
             objWbemObject: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const ISWbemObjectSet, pUnk: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ISWbemObjectSet, pUnk: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pUnk);
     }
-    pub fn Item(self: *const ISWbemObjectSet, strObjectPath: ?BSTR, iFlags: i32, objWbemObject: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const ISWbemObjectSet, strObjectPath: ?BSTR, iFlags: i32, objWbemObject: ?*?*ISWbemObject) HRESULT {
         return self.vtable.Item(self, strObjectPath, iFlags, objWbemObject);
     }
-    pub fn get_Count(self: *const ISWbemObjectSet, iCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ISWbemObjectSet, iCount: ?*i32) HRESULT {
         return self.vtable.get_Count(self, iCount);
     }
-    pub fn get_Security_(self: *const ISWbemObjectSet, objWbemSecurity: ?*?*ISWbemSecurity) callconv(.Inline) HRESULT {
+    pub inline fn get_Security_(self: *const ISWbemObjectSet, objWbemSecurity: ?*?*ISWbemSecurity) HRESULT {
         return self.vtable.get_Security_(self, objWbemSecurity);
     }
-    pub fn ItemIndex(self: *const ISWbemObjectSet, lIndex: i32, objWbemObject: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn ItemIndex(self: *const ISWbemObjectSet, lIndex: i32, objWbemObject: ?*?*ISWbemObject) HRESULT {
         return self.vtable.ItemIndex(self, lIndex, objWbemObject);
     }
 };
@@ -6075,31 +6075,31 @@ pub const ISWbemNamedValue = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const ISWbemNamedValue,
             varValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Value: *const fn(
+        put_Value: *const fn (
             self: *const ISWbemNamedValue,
             varValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const ISWbemNamedValue,
             strName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Value(self: *const ISWbemNamedValue, varValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const ISWbemNamedValue, varValue: ?*VARIANT) HRESULT {
         return self.vtable.get_Value(self, varValue);
     }
-    pub fn put_Value(self: *const ISWbemNamedValue, varValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Value(self: *const ISWbemNamedValue, varValue: ?*VARIANT) HRESULT {
         return self.vtable.put_Value(self, varValue);
     }
-    pub fn get_Name(self: *const ISWbemNamedValue, strName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const ISWbemNamedValue, strName: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, strName);
     }
 };
@@ -6110,63 +6110,63 @@ pub const ISWbemNamedValueSet = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ISWbemNamedValueSet,
             pUnk: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const ISWbemNamedValueSet,
             strName: ?BSTR,
             iFlags: i32,
             objWbemNamedValue: ?*?*ISWbemNamedValue,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ISWbemNamedValueSet,
             iCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ISWbemNamedValueSet,
             strName: ?BSTR,
             varValue: ?*VARIANT,
             iFlags: i32,
             objWbemNamedValue: ?*?*ISWbemNamedValue,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ISWbemNamedValueSet,
             strName: ?BSTR,
             iFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const ISWbemNamedValueSet,
             objWbemNamedValueSet: ?*?*ISWbemNamedValueSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteAll: *const fn (
             self: *const ISWbemNamedValueSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const ISWbemNamedValueSet, pUnk: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ISWbemNamedValueSet, pUnk: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pUnk);
     }
-    pub fn Item(self: *const ISWbemNamedValueSet, strName: ?BSTR, iFlags: i32, objWbemNamedValue: ?*?*ISWbemNamedValue) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const ISWbemNamedValueSet, strName: ?BSTR, iFlags: i32, objWbemNamedValue: ?*?*ISWbemNamedValue) HRESULT {
         return self.vtable.Item(self, strName, iFlags, objWbemNamedValue);
     }
-    pub fn get_Count(self: *const ISWbemNamedValueSet, iCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ISWbemNamedValueSet, iCount: ?*i32) HRESULT {
         return self.vtable.get_Count(self, iCount);
     }
-    pub fn Add(self: *const ISWbemNamedValueSet, strName: ?BSTR, varValue: ?*VARIANT, iFlags: i32, objWbemNamedValue: ?*?*ISWbemNamedValue) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ISWbemNamedValueSet, strName: ?BSTR, varValue: ?*VARIANT, iFlags: i32, objWbemNamedValue: ?*?*ISWbemNamedValue) HRESULT {
         return self.vtable.Add(self, strName, varValue, iFlags, objWbemNamedValue);
     }
-    pub fn Remove(self: *const ISWbemNamedValueSet, strName: ?BSTR, iFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ISWbemNamedValueSet, strName: ?BSTR, iFlags: i32) HRESULT {
         return self.vtable.Remove(self, strName, iFlags);
     }
-    pub fn Clone(self: *const ISWbemNamedValueSet, objWbemNamedValueSet: ?*?*ISWbemNamedValueSet) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const ISWbemNamedValueSet, objWbemNamedValueSet: ?*?*ISWbemNamedValueSet) HRESULT {
         return self.vtable.Clone(self, objWbemNamedValueSet);
     }
-    pub fn DeleteAll(self: *const ISWbemNamedValueSet) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAll(self: *const ISWbemNamedValueSet) HRESULT {
         return self.vtable.DeleteAll(self);
     }
 };
@@ -6177,95 +6177,95 @@ pub const ISWbemQualifier = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const ISWbemQualifier,
             varValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Value: *const fn(
+        put_Value: *const fn (
             self: *const ISWbemQualifier,
             varValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const ISWbemQualifier,
             strName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsLocal: *const fn(
+        get_IsLocal: *const fn (
             self: *const ISWbemQualifier,
             bIsLocal: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PropagatesToSubclass: *const fn(
+        get_PropagatesToSubclass: *const fn (
             self: *const ISWbemQualifier,
             bPropagatesToSubclass: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PropagatesToSubclass: *const fn(
+        put_PropagatesToSubclass: *const fn (
             self: *const ISWbemQualifier,
             bPropagatesToSubclass: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PropagatesToInstance: *const fn(
+        get_PropagatesToInstance: *const fn (
             self: *const ISWbemQualifier,
             bPropagatesToInstance: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PropagatesToInstance: *const fn(
+        put_PropagatesToInstance: *const fn (
             self: *const ISWbemQualifier,
             bPropagatesToInstance: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsOverridable: *const fn(
+        get_IsOverridable: *const fn (
             self: *const ISWbemQualifier,
             bIsOverridable: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_IsOverridable: *const fn(
+        put_IsOverridable: *const fn (
             self: *const ISWbemQualifier,
             bIsOverridable: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsAmended: *const fn(
+        get_IsAmended: *const fn (
             self: *const ISWbemQualifier,
             bIsAmended: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Value(self: *const ISWbemQualifier, varValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const ISWbemQualifier, varValue: ?*VARIANT) HRESULT {
         return self.vtable.get_Value(self, varValue);
     }
-    pub fn put_Value(self: *const ISWbemQualifier, varValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Value(self: *const ISWbemQualifier, varValue: ?*VARIANT) HRESULT {
         return self.vtable.put_Value(self, varValue);
     }
-    pub fn get_Name(self: *const ISWbemQualifier, strName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const ISWbemQualifier, strName: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, strName);
     }
-    pub fn get_IsLocal(self: *const ISWbemQualifier, bIsLocal: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsLocal(self: *const ISWbemQualifier, bIsLocal: ?*i16) HRESULT {
         return self.vtable.get_IsLocal(self, bIsLocal);
     }
-    pub fn get_PropagatesToSubclass(self: *const ISWbemQualifier, bPropagatesToSubclass: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_PropagatesToSubclass(self: *const ISWbemQualifier, bPropagatesToSubclass: ?*i16) HRESULT {
         return self.vtable.get_PropagatesToSubclass(self, bPropagatesToSubclass);
     }
-    pub fn put_PropagatesToSubclass(self: *const ISWbemQualifier, bPropagatesToSubclass: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_PropagatesToSubclass(self: *const ISWbemQualifier, bPropagatesToSubclass: i16) HRESULT {
         return self.vtable.put_PropagatesToSubclass(self, bPropagatesToSubclass);
     }
-    pub fn get_PropagatesToInstance(self: *const ISWbemQualifier, bPropagatesToInstance: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_PropagatesToInstance(self: *const ISWbemQualifier, bPropagatesToInstance: ?*i16) HRESULT {
         return self.vtable.get_PropagatesToInstance(self, bPropagatesToInstance);
     }
-    pub fn put_PropagatesToInstance(self: *const ISWbemQualifier, bPropagatesToInstance: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_PropagatesToInstance(self: *const ISWbemQualifier, bPropagatesToInstance: i16) HRESULT {
         return self.vtable.put_PropagatesToInstance(self, bPropagatesToInstance);
     }
-    pub fn get_IsOverridable(self: *const ISWbemQualifier, bIsOverridable: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsOverridable(self: *const ISWbemQualifier, bIsOverridable: ?*i16) HRESULT {
         return self.vtable.get_IsOverridable(self, bIsOverridable);
     }
-    pub fn put_IsOverridable(self: *const ISWbemQualifier, bIsOverridable: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_IsOverridable(self: *const ISWbemQualifier, bIsOverridable: i16) HRESULT {
         return self.vtable.put_IsOverridable(self, bIsOverridable);
     }
-    pub fn get_IsAmended(self: *const ISWbemQualifier, bIsAmended: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsAmended(self: *const ISWbemQualifier, bIsAmended: ?*i16) HRESULT {
         return self.vtable.get_IsAmended(self, bIsAmended);
     }
 };
@@ -6276,22 +6276,22 @@ pub const ISWbemQualifierSet = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ISWbemQualifierSet,
             pUnk: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const ISWbemQualifierSet,
             name: ?BSTR,
             iFlags: i32,
             objWbemQualifier: ?*?*ISWbemQualifier,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ISWbemQualifierSet,
             iCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ISWbemQualifierSet,
             strName: ?BSTR,
             varVal: ?*VARIANT,
@@ -6300,29 +6300,29 @@ pub const ISWbemQualifierSet = extern union {
             bIsOverridable: i16,
             iFlags: i32,
             objWbemQualifier: ?*?*ISWbemQualifier,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ISWbemQualifierSet,
             strName: ?BSTR,
             iFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const ISWbemQualifierSet, pUnk: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ISWbemQualifierSet, pUnk: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pUnk);
     }
-    pub fn Item(self: *const ISWbemQualifierSet, name: ?BSTR, iFlags: i32, objWbemQualifier: ?*?*ISWbemQualifier) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const ISWbemQualifierSet, name: ?BSTR, iFlags: i32, objWbemQualifier: ?*?*ISWbemQualifier) HRESULT {
         return self.vtable.Item(self, name, iFlags, objWbemQualifier);
     }
-    pub fn get_Count(self: *const ISWbemQualifierSet, iCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ISWbemQualifierSet, iCount: ?*i32) HRESULT {
         return self.vtable.get_Count(self, iCount);
     }
-    pub fn Add(self: *const ISWbemQualifierSet, strName: ?BSTR, varVal: ?*VARIANT, bPropagatesToSubclass: i16, bPropagatesToInstance: i16, bIsOverridable: i16, iFlags: i32, objWbemQualifier: ?*?*ISWbemQualifier) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ISWbemQualifierSet, strName: ?BSTR, varVal: ?*VARIANT, bPropagatesToSubclass: i16, bPropagatesToInstance: i16, bIsOverridable: i16, iFlags: i32, objWbemQualifier: ?*?*ISWbemQualifier) HRESULT {
         return self.vtable.Add(self, strName, varVal, bPropagatesToSubclass, bPropagatesToInstance, bIsOverridable, iFlags, objWbemQualifier);
     }
-    pub fn Remove(self: *const ISWbemQualifierSet, strName: ?BSTR, iFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ISWbemQualifierSet, strName: ?BSTR, iFlags: i32) HRESULT {
         return self.vtable.Remove(self, strName, iFlags);
     }
 };
@@ -6333,71 +6333,71 @@ pub const ISWbemProperty = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const ISWbemProperty,
             varValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Value: *const fn(
+        put_Value: *const fn (
             self: *const ISWbemProperty,
             varValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const ISWbemProperty,
             strName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsLocal: *const fn(
+        get_IsLocal: *const fn (
             self: *const ISWbemProperty,
             bIsLocal: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Origin: *const fn(
+        get_Origin: *const fn (
             self: *const ISWbemProperty,
             strOrigin: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CIMType: *const fn(
+        get_CIMType: *const fn (
             self: *const ISWbemProperty,
             iCimType: ?*WbemCimtypeEnum,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Qualifiers_: *const fn(
+        get_Qualifiers_: *const fn (
             self: *const ISWbemProperty,
             objWbemQualifierSet: ?*?*ISWbemQualifierSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsArray: *const fn(
+        get_IsArray: *const fn (
             self: *const ISWbemProperty,
             bIsArray: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Value(self: *const ISWbemProperty, varValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const ISWbemProperty, varValue: ?*VARIANT) HRESULT {
         return self.vtable.get_Value(self, varValue);
     }
-    pub fn put_Value(self: *const ISWbemProperty, varValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Value(self: *const ISWbemProperty, varValue: ?*VARIANT) HRESULT {
         return self.vtable.put_Value(self, varValue);
     }
-    pub fn get_Name(self: *const ISWbemProperty, strName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const ISWbemProperty, strName: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, strName);
     }
-    pub fn get_IsLocal(self: *const ISWbemProperty, bIsLocal: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsLocal(self: *const ISWbemProperty, bIsLocal: ?*i16) HRESULT {
         return self.vtable.get_IsLocal(self, bIsLocal);
     }
-    pub fn get_Origin(self: *const ISWbemProperty, strOrigin: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Origin(self: *const ISWbemProperty, strOrigin: ?*?BSTR) HRESULT {
         return self.vtable.get_Origin(self, strOrigin);
     }
-    pub fn get_CIMType(self: *const ISWbemProperty, iCimType: ?*WbemCimtypeEnum) callconv(.Inline) HRESULT {
+    pub inline fn get_CIMType(self: *const ISWbemProperty, iCimType: ?*WbemCimtypeEnum) HRESULT {
         return self.vtable.get_CIMType(self, iCimType);
     }
-    pub fn get_Qualifiers_(self: *const ISWbemProperty, objWbemQualifierSet: ?*?*ISWbemQualifierSet) callconv(.Inline) HRESULT {
+    pub inline fn get_Qualifiers_(self: *const ISWbemProperty, objWbemQualifierSet: ?*?*ISWbemQualifierSet) HRESULT {
         return self.vtable.get_Qualifiers_(self, objWbemQualifierSet);
     }
-    pub fn get_IsArray(self: *const ISWbemProperty, bIsArray: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsArray(self: *const ISWbemProperty, bIsArray: ?*i16) HRESULT {
         return self.vtable.get_IsArray(self, bIsArray);
     }
 };
@@ -6408,51 +6408,51 @@ pub const ISWbemPropertySet = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ISWbemPropertySet,
             pUnk: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const ISWbemPropertySet,
             strName: ?BSTR,
             iFlags: i32,
             objWbemProperty: ?*?*ISWbemProperty,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ISWbemPropertySet,
             iCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ISWbemPropertySet,
             strName: ?BSTR,
             iCIMType: WbemCimtypeEnum,
             bIsArray: i16,
             iFlags: i32,
             objWbemProperty: ?*?*ISWbemProperty,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ISWbemPropertySet,
             strName: ?BSTR,
             iFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const ISWbemPropertySet, pUnk: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ISWbemPropertySet, pUnk: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pUnk);
     }
-    pub fn Item(self: *const ISWbemPropertySet, strName: ?BSTR, iFlags: i32, objWbemProperty: ?*?*ISWbemProperty) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const ISWbemPropertySet, strName: ?BSTR, iFlags: i32, objWbemProperty: ?*?*ISWbemProperty) HRESULT {
         return self.vtable.Item(self, strName, iFlags, objWbemProperty);
     }
-    pub fn get_Count(self: *const ISWbemPropertySet, iCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ISWbemPropertySet, iCount: ?*i32) HRESULT {
         return self.vtable.get_Count(self, iCount);
     }
-    pub fn Add(self: *const ISWbemPropertySet, strName: ?BSTR, iCIMType: WbemCimtypeEnum, bIsArray: i16, iFlags: i32, objWbemProperty: ?*?*ISWbemProperty) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ISWbemPropertySet, strName: ?BSTR, iCIMType: WbemCimtypeEnum, bIsArray: i16, iFlags: i32, objWbemProperty: ?*?*ISWbemProperty) HRESULT {
         return self.vtable.Add(self, strName, iCIMType, bIsArray, iFlags, objWbemProperty);
     }
-    pub fn Remove(self: *const ISWbemPropertySet, strName: ?BSTR, iFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ISWbemPropertySet, strName: ?BSTR, iFlags: i32) HRESULT {
         return self.vtable.Remove(self, strName, iFlags);
     }
 };
@@ -6463,47 +6463,47 @@ pub const ISWbemMethod = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const ISWbemMethod,
             strName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Origin: *const fn(
+        get_Origin: *const fn (
             self: *const ISWbemMethod,
             strOrigin: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_InParameters: *const fn(
+        get_InParameters: *const fn (
             self: *const ISWbemMethod,
             objWbemInParameters: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OutParameters: *const fn(
+        get_OutParameters: *const fn (
             self: *const ISWbemMethod,
             objWbemOutParameters: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Qualifiers_: *const fn(
+        get_Qualifiers_: *const fn (
             self: *const ISWbemMethod,
             objWbemQualifierSet: ?*?*ISWbemQualifierSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Name(self: *const ISWbemMethod, strName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const ISWbemMethod, strName: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, strName);
     }
-    pub fn get_Origin(self: *const ISWbemMethod, strOrigin: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Origin(self: *const ISWbemMethod, strOrigin: ?*?BSTR) HRESULT {
         return self.vtable.get_Origin(self, strOrigin);
     }
-    pub fn get_InParameters(self: *const ISWbemMethod, objWbemInParameters: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn get_InParameters(self: *const ISWbemMethod, objWbemInParameters: ?*?*ISWbemObject) HRESULT {
         return self.vtable.get_InParameters(self, objWbemInParameters);
     }
-    pub fn get_OutParameters(self: *const ISWbemMethod, objWbemOutParameters: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn get_OutParameters(self: *const ISWbemMethod, objWbemOutParameters: ?*?*ISWbemObject) HRESULT {
         return self.vtable.get_OutParameters(self, objWbemOutParameters);
     }
-    pub fn get_Qualifiers_(self: *const ISWbemMethod, objWbemQualifierSet: ?*?*ISWbemQualifierSet) callconv(.Inline) HRESULT {
+    pub inline fn get_Qualifiers_(self: *const ISWbemMethod, objWbemQualifierSet: ?*?*ISWbemQualifierSet) HRESULT {
         return self.vtable.get_Qualifiers_(self, objWbemQualifierSet);
     }
 };
@@ -6514,32 +6514,32 @@ pub const ISWbemMethodSet = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ISWbemMethodSet,
             pUnk: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const ISWbemMethodSet,
             strName: ?BSTR,
             iFlags: i32,
             objWbemMethod: ?*?*ISWbemMethod,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ISWbemMethodSet,
             iCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const ISWbemMethodSet, pUnk: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ISWbemMethodSet, pUnk: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pUnk);
     }
-    pub fn Item(self: *const ISWbemMethodSet, strName: ?BSTR, iFlags: i32, objWbemMethod: ?*?*ISWbemMethod) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const ISWbemMethodSet, strName: ?BSTR, iFlags: i32, objWbemMethod: ?*?*ISWbemMethod) HRESULT {
         return self.vtable.Item(self, strName, iFlags, objWbemMethod);
     }
-    pub fn get_Count(self: *const ISWbemMethodSet, iCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ISWbemMethodSet, iCount: ?*i32) HRESULT {
         return self.vtable.get_Count(self, iCount);
     }
 };
@@ -6549,24 +6549,24 @@ pub const IID_ISWbemEventSource = &IID_ISWbemEventSource_Value;
 pub const ISWbemEventSource = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        NextEvent: *const fn(
+        NextEvent: *const fn (
             self: *const ISWbemEventSource,
             iTimeoutMs: i32,
             objWbemObject: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Security_: *const fn(
+        get_Security_: *const fn (
             self: *const ISWbemEventSource,
             objWbemSecurity: ?*?*ISWbemSecurity,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn NextEvent(self: *const ISWbemEventSource, iTimeoutMs: i32, objWbemObject: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn NextEvent(self: *const ISWbemEventSource, iTimeoutMs: i32, objWbemObject: ?*?*ISWbemObject) HRESULT {
         return self.vtable.NextEvent(self, iTimeoutMs, objWbemObject);
     }
-    pub fn get_Security_(self: *const ISWbemEventSource, objWbemSecurity: ?*?*ISWbemSecurity) callconv(.Inline) HRESULT {
+    pub inline fn get_Security_(self: *const ISWbemEventSource, objWbemSecurity: ?*?*ISWbemSecurity) HRESULT {
         return self.vtable.get_Security_(self, objWbemSecurity);
     }
 };
@@ -6577,187 +6577,187 @@ pub const ISWbemObjectPath = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Path: *const fn(
+        get_Path: *const fn (
             self: *const ISWbemObjectPath,
             strPath: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Path: *const fn(
+        put_Path: *const fn (
             self: *const ISWbemObjectPath,
             strPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RelPath: *const fn(
+        get_RelPath: *const fn (
             self: *const ISWbemObjectPath,
             strRelPath: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RelPath: *const fn(
+        put_RelPath: *const fn (
             self: *const ISWbemObjectPath,
             strRelPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Server: *const fn(
+        get_Server: *const fn (
             self: *const ISWbemObjectPath,
             strServer: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Server: *const fn(
+        put_Server: *const fn (
             self: *const ISWbemObjectPath,
             strServer: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Namespace: *const fn(
+        get_Namespace: *const fn (
             self: *const ISWbemObjectPath,
             strNamespace: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Namespace: *const fn(
+        put_Namespace: *const fn (
             self: *const ISWbemObjectPath,
             strNamespace: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ParentNamespace: *const fn(
+        get_ParentNamespace: *const fn (
             self: *const ISWbemObjectPath,
             strParentNamespace: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DisplayName: *const fn(
+        get_DisplayName: *const fn (
             self: *const ISWbemObjectPath,
             strDisplayName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DisplayName: *const fn(
+        put_DisplayName: *const fn (
             self: *const ISWbemObjectPath,
             strDisplayName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Class: *const fn(
+        get_Class: *const fn (
             self: *const ISWbemObjectPath,
             strClass: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Class: *const fn(
+        put_Class: *const fn (
             self: *const ISWbemObjectPath,
             strClass: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsClass: *const fn(
+        get_IsClass: *const fn (
             self: *const ISWbemObjectPath,
             bIsClass: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAsClass: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAsClass: *const fn (
             self: *const ISWbemObjectPath,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsSingleton: *const fn(
+        get_IsSingleton: *const fn (
             self: *const ISWbemObjectPath,
             bIsSingleton: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAsSingleton: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAsSingleton: *const fn (
             self: *const ISWbemObjectPath,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Keys: *const fn(
+        get_Keys: *const fn (
             self: *const ISWbemObjectPath,
             objWbemNamedValueSet: ?*?*ISWbemNamedValueSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Security_: *const fn(
+        get_Security_: *const fn (
             self: *const ISWbemObjectPath,
             objWbemSecurity: ?*?*ISWbemSecurity,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Locale: *const fn(
+        get_Locale: *const fn (
             self: *const ISWbemObjectPath,
             strLocale: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Locale: *const fn(
+        put_Locale: *const fn (
             self: *const ISWbemObjectPath,
             strLocale: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Authority: *const fn(
+        get_Authority: *const fn (
             self: *const ISWbemObjectPath,
             strAuthority: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Authority: *const fn(
+        put_Authority: *const fn (
             self: *const ISWbemObjectPath,
             strAuthority: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Path(self: *const ISWbemObjectPath, strPath: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Path(self: *const ISWbemObjectPath, strPath: ?*?BSTR) HRESULT {
         return self.vtable.get_Path(self, strPath);
     }
-    pub fn put_Path(self: *const ISWbemObjectPath, strPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Path(self: *const ISWbemObjectPath, strPath: ?BSTR) HRESULT {
         return self.vtable.put_Path(self, strPath);
     }
-    pub fn get_RelPath(self: *const ISWbemObjectPath, strRelPath: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RelPath(self: *const ISWbemObjectPath, strRelPath: ?*?BSTR) HRESULT {
         return self.vtable.get_RelPath(self, strRelPath);
     }
-    pub fn put_RelPath(self: *const ISWbemObjectPath, strRelPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_RelPath(self: *const ISWbemObjectPath, strRelPath: ?BSTR) HRESULT {
         return self.vtable.put_RelPath(self, strRelPath);
     }
-    pub fn get_Server(self: *const ISWbemObjectPath, strServer: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Server(self: *const ISWbemObjectPath, strServer: ?*?BSTR) HRESULT {
         return self.vtable.get_Server(self, strServer);
     }
-    pub fn put_Server(self: *const ISWbemObjectPath, strServer: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Server(self: *const ISWbemObjectPath, strServer: ?BSTR) HRESULT {
         return self.vtable.put_Server(self, strServer);
     }
-    pub fn get_Namespace(self: *const ISWbemObjectPath, strNamespace: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Namespace(self: *const ISWbemObjectPath, strNamespace: ?*?BSTR) HRESULT {
         return self.vtable.get_Namespace(self, strNamespace);
     }
-    pub fn put_Namespace(self: *const ISWbemObjectPath, strNamespace: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Namespace(self: *const ISWbemObjectPath, strNamespace: ?BSTR) HRESULT {
         return self.vtable.put_Namespace(self, strNamespace);
     }
-    pub fn get_ParentNamespace(self: *const ISWbemObjectPath, strParentNamespace: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ParentNamespace(self: *const ISWbemObjectPath, strParentNamespace: ?*?BSTR) HRESULT {
         return self.vtable.get_ParentNamespace(self, strParentNamespace);
     }
-    pub fn get_DisplayName(self: *const ISWbemObjectPath, strDisplayName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DisplayName(self: *const ISWbemObjectPath, strDisplayName: ?*?BSTR) HRESULT {
         return self.vtable.get_DisplayName(self, strDisplayName);
     }
-    pub fn put_DisplayName(self: *const ISWbemObjectPath, strDisplayName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_DisplayName(self: *const ISWbemObjectPath, strDisplayName: ?BSTR) HRESULT {
         return self.vtable.put_DisplayName(self, strDisplayName);
     }
-    pub fn get_Class(self: *const ISWbemObjectPath, strClass: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Class(self: *const ISWbemObjectPath, strClass: ?*?BSTR) HRESULT {
         return self.vtable.get_Class(self, strClass);
     }
-    pub fn put_Class(self: *const ISWbemObjectPath, strClass: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Class(self: *const ISWbemObjectPath, strClass: ?BSTR) HRESULT {
         return self.vtable.put_Class(self, strClass);
     }
-    pub fn get_IsClass(self: *const ISWbemObjectPath, bIsClass: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsClass(self: *const ISWbemObjectPath, bIsClass: ?*i16) HRESULT {
         return self.vtable.get_IsClass(self, bIsClass);
     }
-    pub fn SetAsClass(self: *const ISWbemObjectPath) callconv(.Inline) HRESULT {
+    pub inline fn SetAsClass(self: *const ISWbemObjectPath) HRESULT {
         return self.vtable.SetAsClass(self);
     }
-    pub fn get_IsSingleton(self: *const ISWbemObjectPath, bIsSingleton: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsSingleton(self: *const ISWbemObjectPath, bIsSingleton: ?*i16) HRESULT {
         return self.vtable.get_IsSingleton(self, bIsSingleton);
     }
-    pub fn SetAsSingleton(self: *const ISWbemObjectPath) callconv(.Inline) HRESULT {
+    pub inline fn SetAsSingleton(self: *const ISWbemObjectPath) HRESULT {
         return self.vtable.SetAsSingleton(self);
     }
-    pub fn get_Keys(self: *const ISWbemObjectPath, objWbemNamedValueSet: ?*?*ISWbemNamedValueSet) callconv(.Inline) HRESULT {
+    pub inline fn get_Keys(self: *const ISWbemObjectPath, objWbemNamedValueSet: ?*?*ISWbemNamedValueSet) HRESULT {
         return self.vtable.get_Keys(self, objWbemNamedValueSet);
     }
-    pub fn get_Security_(self: *const ISWbemObjectPath, objWbemSecurity: ?*?*ISWbemSecurity) callconv(.Inline) HRESULT {
+    pub inline fn get_Security_(self: *const ISWbemObjectPath, objWbemSecurity: ?*?*ISWbemSecurity) HRESULT {
         return self.vtable.get_Security_(self, objWbemSecurity);
     }
-    pub fn get_Locale(self: *const ISWbemObjectPath, strLocale: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Locale(self: *const ISWbemObjectPath, strLocale: ?*?BSTR) HRESULT {
         return self.vtable.get_Locale(self, strLocale);
     }
-    pub fn put_Locale(self: *const ISWbemObjectPath, strLocale: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Locale(self: *const ISWbemObjectPath, strLocale: ?BSTR) HRESULT {
         return self.vtable.put_Locale(self, strLocale);
     }
-    pub fn get_Authority(self: *const ISWbemObjectPath, strAuthority: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Authority(self: *const ISWbemObjectPath, strAuthority: ?*?BSTR) HRESULT {
         return self.vtable.get_Authority(self, strAuthority);
     }
-    pub fn put_Authority(self: *const ISWbemObjectPath, strAuthority: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Authority(self: *const ISWbemObjectPath, strAuthority: ?BSTR) HRESULT {
         return self.vtable.put_Authority(self, strAuthority);
     }
 };
@@ -6790,14 +6790,14 @@ pub const IID_ISWbemSink = &IID_ISWbemSink_Value;
 pub const ISWbemSink = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Cancel: *const fn(
+        Cancel: *const fn (
             self: *const ISWbemSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Cancel(self: *const ISWbemSink) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const ISWbemSink) HRESULT {
         return self.vtable.Cancel(self);
     }
 };
@@ -6808,47 +6808,47 @@ pub const ISWbemSecurity = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ImpersonationLevel: *const fn(
+        get_ImpersonationLevel: *const fn (
             self: *const ISWbemSecurity,
             iImpersonationLevel: ?*WbemImpersonationLevelEnum,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ImpersonationLevel: *const fn(
+        put_ImpersonationLevel: *const fn (
             self: *const ISWbemSecurity,
             iImpersonationLevel: WbemImpersonationLevelEnum,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AuthenticationLevel: *const fn(
+        get_AuthenticationLevel: *const fn (
             self: *const ISWbemSecurity,
             iAuthenticationLevel: ?*WbemAuthenticationLevelEnum,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AuthenticationLevel: *const fn(
+        put_AuthenticationLevel: *const fn (
             self: *const ISWbemSecurity,
             iAuthenticationLevel: WbemAuthenticationLevelEnum,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Privileges: *const fn(
+        get_Privileges: *const fn (
             self: *const ISWbemSecurity,
             objWbemPrivilegeSet: ?*?*ISWbemPrivilegeSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ImpersonationLevel(self: *const ISWbemSecurity, iImpersonationLevel: ?*WbemImpersonationLevelEnum) callconv(.Inline) HRESULT {
+    pub inline fn get_ImpersonationLevel(self: *const ISWbemSecurity, iImpersonationLevel: ?*WbemImpersonationLevelEnum) HRESULT {
         return self.vtable.get_ImpersonationLevel(self, iImpersonationLevel);
     }
-    pub fn put_ImpersonationLevel(self: *const ISWbemSecurity, iImpersonationLevel: WbemImpersonationLevelEnum) callconv(.Inline) HRESULT {
+    pub inline fn put_ImpersonationLevel(self: *const ISWbemSecurity, iImpersonationLevel: WbemImpersonationLevelEnum) HRESULT {
         return self.vtable.put_ImpersonationLevel(self, iImpersonationLevel);
     }
-    pub fn get_AuthenticationLevel(self: *const ISWbemSecurity, iAuthenticationLevel: ?*WbemAuthenticationLevelEnum) callconv(.Inline) HRESULT {
+    pub inline fn get_AuthenticationLevel(self: *const ISWbemSecurity, iAuthenticationLevel: ?*WbemAuthenticationLevelEnum) HRESULT {
         return self.vtable.get_AuthenticationLevel(self, iAuthenticationLevel);
     }
-    pub fn put_AuthenticationLevel(self: *const ISWbemSecurity, iAuthenticationLevel: WbemAuthenticationLevelEnum) callconv(.Inline) HRESULT {
+    pub inline fn put_AuthenticationLevel(self: *const ISWbemSecurity, iAuthenticationLevel: WbemAuthenticationLevelEnum) HRESULT {
         return self.vtable.put_AuthenticationLevel(self, iAuthenticationLevel);
     }
-    pub fn get_Privileges(self: *const ISWbemSecurity, objWbemPrivilegeSet: ?*?*ISWbemPrivilegeSet) callconv(.Inline) HRESULT {
+    pub inline fn get_Privileges(self: *const ISWbemSecurity, objWbemPrivilegeSet: ?*?*ISWbemPrivilegeSet) HRESULT {
         return self.vtable.get_Privileges(self, objWbemPrivilegeSet);
     }
 };
@@ -6859,47 +6859,47 @@ pub const ISWbemPrivilege = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsEnabled: *const fn(
+        get_IsEnabled: *const fn (
             self: *const ISWbemPrivilege,
             bIsEnabled: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_IsEnabled: *const fn(
+        put_IsEnabled: *const fn (
             self: *const ISWbemPrivilege,
             bIsEnabled: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const ISWbemPrivilege,
             strDisplayName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DisplayName: *const fn(
+        get_DisplayName: *const fn (
             self: *const ISWbemPrivilege,
             strDisplayName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Identifier: *const fn(
+        get_Identifier: *const fn (
             self: *const ISWbemPrivilege,
             iPrivilege: ?*WbemPrivilegeEnum,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_IsEnabled(self: *const ISWbemPrivilege, bIsEnabled: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsEnabled(self: *const ISWbemPrivilege, bIsEnabled: ?*i16) HRESULT {
         return self.vtable.get_IsEnabled(self, bIsEnabled);
     }
-    pub fn put_IsEnabled(self: *const ISWbemPrivilege, bIsEnabled: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_IsEnabled(self: *const ISWbemPrivilege, bIsEnabled: i16) HRESULT {
         return self.vtable.put_IsEnabled(self, bIsEnabled);
     }
-    pub fn get_Name(self: *const ISWbemPrivilege, strDisplayName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const ISWbemPrivilege, strDisplayName: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, strDisplayName);
     }
-    pub fn get_DisplayName(self: *const ISWbemPrivilege, strDisplayName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DisplayName(self: *const ISWbemPrivilege, strDisplayName: ?*?BSTR) HRESULT {
         return self.vtable.get_DisplayName(self, strDisplayName);
     }
-    pub fn get_Identifier(self: *const ISWbemPrivilege, iPrivilege: ?*WbemPrivilegeEnum) callconv(.Inline) HRESULT {
+    pub inline fn get_Identifier(self: *const ISWbemPrivilege, iPrivilege: ?*WbemPrivilegeEnum) HRESULT {
         return self.vtable.get_Identifier(self, iPrivilege);
     }
 };
@@ -6910,62 +6910,62 @@ pub const ISWbemPrivilegeSet = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ISWbemPrivilegeSet,
             pUnk: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const ISWbemPrivilegeSet,
             iPrivilege: WbemPrivilegeEnum,
             objWbemPrivilege: ?*?*ISWbemPrivilege,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ISWbemPrivilegeSet,
             iCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ISWbemPrivilegeSet,
             iPrivilege: WbemPrivilegeEnum,
             bIsEnabled: i16,
             objWbemPrivilege: ?*?*ISWbemPrivilege,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ISWbemPrivilegeSet,
             iPrivilege: WbemPrivilegeEnum,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteAll: *const fn (
             self: *const ISWbemPrivilegeSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddAsString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddAsString: *const fn (
             self: *const ISWbemPrivilegeSet,
             strPrivilege: ?BSTR,
             bIsEnabled: i16,
             objWbemPrivilege: ?*?*ISWbemPrivilege,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const ISWbemPrivilegeSet, pUnk: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ISWbemPrivilegeSet, pUnk: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pUnk);
     }
-    pub fn Item(self: *const ISWbemPrivilegeSet, iPrivilege: WbemPrivilegeEnum, objWbemPrivilege: ?*?*ISWbemPrivilege) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const ISWbemPrivilegeSet, iPrivilege: WbemPrivilegeEnum, objWbemPrivilege: ?*?*ISWbemPrivilege) HRESULT {
         return self.vtable.Item(self, iPrivilege, objWbemPrivilege);
     }
-    pub fn get_Count(self: *const ISWbemPrivilegeSet, iCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ISWbemPrivilegeSet, iCount: ?*i32) HRESULT {
         return self.vtable.get_Count(self, iCount);
     }
-    pub fn Add(self: *const ISWbemPrivilegeSet, iPrivilege: WbemPrivilegeEnum, bIsEnabled: i16, objWbemPrivilege: ?*?*ISWbemPrivilege) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ISWbemPrivilegeSet, iPrivilege: WbemPrivilegeEnum, bIsEnabled: i16, objWbemPrivilege: ?*?*ISWbemPrivilege) HRESULT {
         return self.vtable.Add(self, iPrivilege, bIsEnabled, objWbemPrivilege);
     }
-    pub fn Remove(self: *const ISWbemPrivilegeSet, iPrivilege: WbemPrivilegeEnum) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ISWbemPrivilegeSet, iPrivilege: WbemPrivilegeEnum) HRESULT {
         return self.vtable.Remove(self, iPrivilege);
     }
-    pub fn DeleteAll(self: *const ISWbemPrivilegeSet) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAll(self: *const ISWbemPrivilegeSet) HRESULT {
         return self.vtable.DeleteAll(self);
     }
-    pub fn AddAsString(self: *const ISWbemPrivilegeSet, strPrivilege: ?BSTR, bIsEnabled: i16, objWbemPrivilege: ?*?*ISWbemPrivilege) callconv(.Inline) HRESULT {
+    pub inline fn AddAsString(self: *const ISWbemPrivilegeSet, strPrivilege: ?BSTR, bIsEnabled: i16, objWbemPrivilege: ?*?*ISWbemPrivilege) HRESULT {
         return self.vtable.AddAsString(self, strPrivilege, bIsEnabled, objWbemPrivilege);
     }
 };
@@ -6975,30 +6975,30 @@ pub const IID_ISWbemServicesEx = &IID_ISWbemServicesEx_Value;
 pub const ISWbemServicesEx = extern union {
     pub const VTable = extern struct {
         base: ISWbemServices.VTable,
-        Put: *const fn(
+        Put: *const fn (
             self: *const ISWbemServicesEx,
             objWbemObject: ?*ISWbemObjectEx,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemObjectPath: ?*?*ISWbemObjectPath,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutAsync: *const fn (
             self: *const ISWbemServicesEx,
             objWbemSink: ?*ISWbemSink,
             objWbemObject: ?*ISWbemObjectEx,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemAsyncContext: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ISWbemServices: ISWbemServices,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Put(self: *const ISWbemServicesEx, objWbemObject: ?*ISWbemObjectEx, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectPath: ?*?*ISWbemObjectPath) callconv(.Inline) HRESULT {
+    pub inline fn Put(self: *const ISWbemServicesEx, objWbemObject: ?*ISWbemObjectEx, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemObjectPath: ?*?*ISWbemObjectPath) HRESULT {
         return self.vtable.Put(self, objWbemObject, iFlags, objWbemNamedValueSet, objWbemObjectPath);
     }
-    pub fn PutAsync(self: *const ISWbemServicesEx, objWbemSink: ?*ISWbemSink, objWbemObject: ?*ISWbemObjectEx, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn PutAsync(self: *const ISWbemServicesEx, objWbemSink: ?*ISWbemSink, objWbemObject: ?*ISWbemObjectEx, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemAsyncContext: ?*IDispatch) HRESULT {
         return self.vtable.PutAsync(self, objWbemSink, objWbemObject, iFlags, objWbemNamedValueSet, objWbemAsyncContext);
     }
 };
@@ -7008,45 +7008,45 @@ pub const IID_ISWbemObjectEx = &IID_ISWbemObjectEx_Value;
 pub const ISWbemObjectEx = extern union {
     pub const VTable = extern struct {
         base: ISWbemObject.VTable,
-        Refresh_: *const fn(
+        Refresh_: *const fn (
             self: *const ISWbemObjectEx,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SystemProperties_: *const fn(
+        get_SystemProperties_: *const fn (
             self: *const ISWbemObjectEx,
             objWbemPropertySet: ?*?*ISWbemPropertySet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetText_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetText_: *const fn (
             self: *const ISWbemObjectEx,
             iObjectTextFormat: WbemObjectTextFormatEnum,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             bsText: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFromText_: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFromText_: *const fn (
             self: *const ISWbemObjectEx,
             bsText: ?BSTR,
             iObjectTextFormat: WbemObjectTextFormatEnum,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ISWbemObject: ISWbemObject,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Refresh_(self: *const ISWbemObjectEx, iFlags: i32, objWbemNamedValueSet: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn Refresh_(self: *const ISWbemObjectEx, iFlags: i32, objWbemNamedValueSet: ?*IDispatch) HRESULT {
         return self.vtable.Refresh_(self, iFlags, objWbemNamedValueSet);
     }
-    pub fn get_SystemProperties_(self: *const ISWbemObjectEx, objWbemPropertySet: ?*?*ISWbemPropertySet) callconv(.Inline) HRESULT {
+    pub inline fn get_SystemProperties_(self: *const ISWbemObjectEx, objWbemPropertySet: ?*?*ISWbemPropertySet) HRESULT {
         return self.vtable.get_SystemProperties_(self, objWbemPropertySet);
     }
-    pub fn GetText_(self: *const ISWbemObjectEx, iObjectTextFormat: WbemObjectTextFormatEnum, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, bsText: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetText_(self: *const ISWbemObjectEx, iObjectTextFormat: WbemObjectTextFormatEnum, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, bsText: ?*?BSTR) HRESULT {
         return self.vtable.GetText_(self, iObjectTextFormat, iFlags, objWbemNamedValueSet, bsText);
     }
-    pub fn SetFromText_(self: *const ISWbemObjectEx, bsText: ?BSTR, iObjectTextFormat: WbemObjectTextFormatEnum, iFlags: i32, objWbemNamedValueSet: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn SetFromText_(self: *const ISWbemObjectEx, bsText: ?BSTR, iObjectTextFormat: WbemObjectTextFormatEnum, iFlags: i32, objWbemNamedValueSet: ?*IDispatch) HRESULT {
         return self.vtable.SetFromText_(self, bsText, iObjectTextFormat, iFlags, objWbemNamedValueSet);
     }
 };
@@ -7057,327 +7057,327 @@ pub const ISWbemDateTime = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const ISWbemDateTime,
             strValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Value: *const fn(
+        put_Value: *const fn (
             self: *const ISWbemDateTime,
             strValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Year: *const fn(
+        get_Year: *const fn (
             self: *const ISWbemDateTime,
             iYear: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Year: *const fn(
+        put_Year: *const fn (
             self: *const ISWbemDateTime,
             iYear: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_YearSpecified: *const fn(
+        get_YearSpecified: *const fn (
             self: *const ISWbemDateTime,
             bYearSpecified: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_YearSpecified: *const fn(
+        put_YearSpecified: *const fn (
             self: *const ISWbemDateTime,
             bYearSpecified: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Month: *const fn(
+        get_Month: *const fn (
             self: *const ISWbemDateTime,
             iMonth: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Month: *const fn(
+        put_Month: *const fn (
             self: *const ISWbemDateTime,
             iMonth: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MonthSpecified: *const fn(
+        get_MonthSpecified: *const fn (
             self: *const ISWbemDateTime,
             bMonthSpecified: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MonthSpecified: *const fn(
+        put_MonthSpecified: *const fn (
             self: *const ISWbemDateTime,
             bMonthSpecified: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Day: *const fn(
+        get_Day: *const fn (
             self: *const ISWbemDateTime,
             iDay: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Day: *const fn(
+        put_Day: *const fn (
             self: *const ISWbemDateTime,
             iDay: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DaySpecified: *const fn(
+        get_DaySpecified: *const fn (
             self: *const ISWbemDateTime,
             bDaySpecified: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DaySpecified: *const fn(
+        put_DaySpecified: *const fn (
             self: *const ISWbemDateTime,
             bDaySpecified: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Hours: *const fn(
+        get_Hours: *const fn (
             self: *const ISWbemDateTime,
             iHours: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Hours: *const fn(
+        put_Hours: *const fn (
             self: *const ISWbemDateTime,
             iHours: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HoursSpecified: *const fn(
+        get_HoursSpecified: *const fn (
             self: *const ISWbemDateTime,
             bHoursSpecified: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HoursSpecified: *const fn(
+        put_HoursSpecified: *const fn (
             self: *const ISWbemDateTime,
             bHoursSpecified: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Minutes: *const fn(
+        get_Minutes: *const fn (
             self: *const ISWbemDateTime,
             iMinutes: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Minutes: *const fn(
+        put_Minutes: *const fn (
             self: *const ISWbemDateTime,
             iMinutes: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MinutesSpecified: *const fn(
+        get_MinutesSpecified: *const fn (
             self: *const ISWbemDateTime,
             bMinutesSpecified: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MinutesSpecified: *const fn(
+        put_MinutesSpecified: *const fn (
             self: *const ISWbemDateTime,
             bMinutesSpecified: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Seconds: *const fn(
+        get_Seconds: *const fn (
             self: *const ISWbemDateTime,
             iSeconds: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Seconds: *const fn(
+        put_Seconds: *const fn (
             self: *const ISWbemDateTime,
             iSeconds: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SecondsSpecified: *const fn(
+        get_SecondsSpecified: *const fn (
             self: *const ISWbemDateTime,
             bSecondsSpecified: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SecondsSpecified: *const fn(
+        put_SecondsSpecified: *const fn (
             self: *const ISWbemDateTime,
             bSecondsSpecified: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Microseconds: *const fn(
+        get_Microseconds: *const fn (
             self: *const ISWbemDateTime,
             iMicroseconds: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Microseconds: *const fn(
+        put_Microseconds: *const fn (
             self: *const ISWbemDateTime,
             iMicroseconds: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MicrosecondsSpecified: *const fn(
+        get_MicrosecondsSpecified: *const fn (
             self: *const ISWbemDateTime,
             bMicrosecondsSpecified: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MicrosecondsSpecified: *const fn(
+        put_MicrosecondsSpecified: *const fn (
             self: *const ISWbemDateTime,
             bMicrosecondsSpecified: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UTC: *const fn(
+        get_UTC: *const fn (
             self: *const ISWbemDateTime,
             iUTC: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UTC: *const fn(
+        put_UTC: *const fn (
             self: *const ISWbemDateTime,
             iUTC: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UTCSpecified: *const fn(
+        get_UTCSpecified: *const fn (
             self: *const ISWbemDateTime,
             bUTCSpecified: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UTCSpecified: *const fn(
+        put_UTCSpecified: *const fn (
             self: *const ISWbemDateTime,
             bUTCSpecified: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsInterval: *const fn(
+        get_IsInterval: *const fn (
             self: *const ISWbemDateTime,
             bIsInterval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_IsInterval: *const fn(
+        put_IsInterval: *const fn (
             self: *const ISWbemDateTime,
             bIsInterval: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVarDate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVarDate: *const fn (
             self: *const ISWbemDateTime,
             bIsLocal: i16,
             dVarDate: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetVarDate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetVarDate: *const fn (
             self: *const ISWbemDateTime,
             dVarDate: f64,
             bIsLocal: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFileTime: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFileTime: *const fn (
             self: *const ISWbemDateTime,
             bIsLocal: i16,
             strFileTime: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFileTime: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFileTime: *const fn (
             self: *const ISWbemDateTime,
             strFileTime: ?BSTR,
             bIsLocal: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Value(self: *const ISWbemDateTime, strValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const ISWbemDateTime, strValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Value(self, strValue);
     }
-    pub fn put_Value(self: *const ISWbemDateTime, strValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Value(self: *const ISWbemDateTime, strValue: ?BSTR) HRESULT {
         return self.vtable.put_Value(self, strValue);
     }
-    pub fn get_Year(self: *const ISWbemDateTime, iYear: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Year(self: *const ISWbemDateTime, iYear: ?*i32) HRESULT {
         return self.vtable.get_Year(self, iYear);
     }
-    pub fn put_Year(self: *const ISWbemDateTime, iYear: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Year(self: *const ISWbemDateTime, iYear: i32) HRESULT {
         return self.vtable.put_Year(self, iYear);
     }
-    pub fn get_YearSpecified(self: *const ISWbemDateTime, bYearSpecified: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_YearSpecified(self: *const ISWbemDateTime, bYearSpecified: ?*i16) HRESULT {
         return self.vtable.get_YearSpecified(self, bYearSpecified);
     }
-    pub fn put_YearSpecified(self: *const ISWbemDateTime, bYearSpecified: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_YearSpecified(self: *const ISWbemDateTime, bYearSpecified: i16) HRESULT {
         return self.vtable.put_YearSpecified(self, bYearSpecified);
     }
-    pub fn get_Month(self: *const ISWbemDateTime, iMonth: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Month(self: *const ISWbemDateTime, iMonth: ?*i32) HRESULT {
         return self.vtable.get_Month(self, iMonth);
     }
-    pub fn put_Month(self: *const ISWbemDateTime, iMonth: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Month(self: *const ISWbemDateTime, iMonth: i32) HRESULT {
         return self.vtable.put_Month(self, iMonth);
     }
-    pub fn get_MonthSpecified(self: *const ISWbemDateTime, bMonthSpecified: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_MonthSpecified(self: *const ISWbemDateTime, bMonthSpecified: ?*i16) HRESULT {
         return self.vtable.get_MonthSpecified(self, bMonthSpecified);
     }
-    pub fn put_MonthSpecified(self: *const ISWbemDateTime, bMonthSpecified: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_MonthSpecified(self: *const ISWbemDateTime, bMonthSpecified: i16) HRESULT {
         return self.vtable.put_MonthSpecified(self, bMonthSpecified);
     }
-    pub fn get_Day(self: *const ISWbemDateTime, iDay: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Day(self: *const ISWbemDateTime, iDay: ?*i32) HRESULT {
         return self.vtable.get_Day(self, iDay);
     }
-    pub fn put_Day(self: *const ISWbemDateTime, iDay: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Day(self: *const ISWbemDateTime, iDay: i32) HRESULT {
         return self.vtable.put_Day(self, iDay);
     }
-    pub fn get_DaySpecified(self: *const ISWbemDateTime, bDaySpecified: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_DaySpecified(self: *const ISWbemDateTime, bDaySpecified: ?*i16) HRESULT {
         return self.vtable.get_DaySpecified(self, bDaySpecified);
     }
-    pub fn put_DaySpecified(self: *const ISWbemDateTime, bDaySpecified: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_DaySpecified(self: *const ISWbemDateTime, bDaySpecified: i16) HRESULT {
         return self.vtable.put_DaySpecified(self, bDaySpecified);
     }
-    pub fn get_Hours(self: *const ISWbemDateTime, iHours: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Hours(self: *const ISWbemDateTime, iHours: ?*i32) HRESULT {
         return self.vtable.get_Hours(self, iHours);
     }
-    pub fn put_Hours(self: *const ISWbemDateTime, iHours: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Hours(self: *const ISWbemDateTime, iHours: i32) HRESULT {
         return self.vtable.put_Hours(self, iHours);
     }
-    pub fn get_HoursSpecified(self: *const ISWbemDateTime, bHoursSpecified: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_HoursSpecified(self: *const ISWbemDateTime, bHoursSpecified: ?*i16) HRESULT {
         return self.vtable.get_HoursSpecified(self, bHoursSpecified);
     }
-    pub fn put_HoursSpecified(self: *const ISWbemDateTime, bHoursSpecified: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_HoursSpecified(self: *const ISWbemDateTime, bHoursSpecified: i16) HRESULT {
         return self.vtable.put_HoursSpecified(self, bHoursSpecified);
     }
-    pub fn get_Minutes(self: *const ISWbemDateTime, iMinutes: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Minutes(self: *const ISWbemDateTime, iMinutes: ?*i32) HRESULT {
         return self.vtable.get_Minutes(self, iMinutes);
     }
-    pub fn put_Minutes(self: *const ISWbemDateTime, iMinutes: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Minutes(self: *const ISWbemDateTime, iMinutes: i32) HRESULT {
         return self.vtable.put_Minutes(self, iMinutes);
     }
-    pub fn get_MinutesSpecified(self: *const ISWbemDateTime, bMinutesSpecified: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_MinutesSpecified(self: *const ISWbemDateTime, bMinutesSpecified: ?*i16) HRESULT {
         return self.vtable.get_MinutesSpecified(self, bMinutesSpecified);
     }
-    pub fn put_MinutesSpecified(self: *const ISWbemDateTime, bMinutesSpecified: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_MinutesSpecified(self: *const ISWbemDateTime, bMinutesSpecified: i16) HRESULT {
         return self.vtable.put_MinutesSpecified(self, bMinutesSpecified);
     }
-    pub fn get_Seconds(self: *const ISWbemDateTime, iSeconds: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Seconds(self: *const ISWbemDateTime, iSeconds: ?*i32) HRESULT {
         return self.vtable.get_Seconds(self, iSeconds);
     }
-    pub fn put_Seconds(self: *const ISWbemDateTime, iSeconds: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Seconds(self: *const ISWbemDateTime, iSeconds: i32) HRESULT {
         return self.vtable.put_Seconds(self, iSeconds);
     }
-    pub fn get_SecondsSpecified(self: *const ISWbemDateTime, bSecondsSpecified: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_SecondsSpecified(self: *const ISWbemDateTime, bSecondsSpecified: ?*i16) HRESULT {
         return self.vtable.get_SecondsSpecified(self, bSecondsSpecified);
     }
-    pub fn put_SecondsSpecified(self: *const ISWbemDateTime, bSecondsSpecified: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_SecondsSpecified(self: *const ISWbemDateTime, bSecondsSpecified: i16) HRESULT {
         return self.vtable.put_SecondsSpecified(self, bSecondsSpecified);
     }
-    pub fn get_Microseconds(self: *const ISWbemDateTime, iMicroseconds: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Microseconds(self: *const ISWbemDateTime, iMicroseconds: ?*i32) HRESULT {
         return self.vtable.get_Microseconds(self, iMicroseconds);
     }
-    pub fn put_Microseconds(self: *const ISWbemDateTime, iMicroseconds: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Microseconds(self: *const ISWbemDateTime, iMicroseconds: i32) HRESULT {
         return self.vtable.put_Microseconds(self, iMicroseconds);
     }
-    pub fn get_MicrosecondsSpecified(self: *const ISWbemDateTime, bMicrosecondsSpecified: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_MicrosecondsSpecified(self: *const ISWbemDateTime, bMicrosecondsSpecified: ?*i16) HRESULT {
         return self.vtable.get_MicrosecondsSpecified(self, bMicrosecondsSpecified);
     }
-    pub fn put_MicrosecondsSpecified(self: *const ISWbemDateTime, bMicrosecondsSpecified: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_MicrosecondsSpecified(self: *const ISWbemDateTime, bMicrosecondsSpecified: i16) HRESULT {
         return self.vtable.put_MicrosecondsSpecified(self, bMicrosecondsSpecified);
     }
-    pub fn get_UTC(self: *const ISWbemDateTime, iUTC: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_UTC(self: *const ISWbemDateTime, iUTC: ?*i32) HRESULT {
         return self.vtable.get_UTC(self, iUTC);
     }
-    pub fn put_UTC(self: *const ISWbemDateTime, iUTC: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_UTC(self: *const ISWbemDateTime, iUTC: i32) HRESULT {
         return self.vtable.put_UTC(self, iUTC);
     }
-    pub fn get_UTCSpecified(self: *const ISWbemDateTime, bUTCSpecified: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_UTCSpecified(self: *const ISWbemDateTime, bUTCSpecified: ?*i16) HRESULT {
         return self.vtable.get_UTCSpecified(self, bUTCSpecified);
     }
-    pub fn put_UTCSpecified(self: *const ISWbemDateTime, bUTCSpecified: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_UTCSpecified(self: *const ISWbemDateTime, bUTCSpecified: i16) HRESULT {
         return self.vtable.put_UTCSpecified(self, bUTCSpecified);
     }
-    pub fn get_IsInterval(self: *const ISWbemDateTime, bIsInterval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsInterval(self: *const ISWbemDateTime, bIsInterval: ?*i16) HRESULT {
         return self.vtable.get_IsInterval(self, bIsInterval);
     }
-    pub fn put_IsInterval(self: *const ISWbemDateTime, bIsInterval: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_IsInterval(self: *const ISWbemDateTime, bIsInterval: i16) HRESULT {
         return self.vtable.put_IsInterval(self, bIsInterval);
     }
-    pub fn GetVarDate(self: *const ISWbemDateTime, bIsLocal: i16, dVarDate: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn GetVarDate(self: *const ISWbemDateTime, bIsLocal: i16, dVarDate: ?*f64) HRESULT {
         return self.vtable.GetVarDate(self, bIsLocal, dVarDate);
     }
-    pub fn SetVarDate(self: *const ISWbemDateTime, dVarDate: f64, bIsLocal: i16) callconv(.Inline) HRESULT {
+    pub inline fn SetVarDate(self: *const ISWbemDateTime, dVarDate: f64, bIsLocal: i16) HRESULT {
         return self.vtable.SetVarDate(self, dVarDate, bIsLocal);
     }
-    pub fn GetFileTime(self: *const ISWbemDateTime, bIsLocal: i16, strFileTime: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetFileTime(self: *const ISWbemDateTime, bIsLocal: i16, strFileTime: ?*?BSTR) HRESULT {
         return self.vtable.GetFileTime(self, bIsLocal, strFileTime);
     }
-    pub fn SetFileTime(self: *const ISWbemDateTime, strFileTime: ?BSTR, bIsLocal: i16) callconv(.Inline) HRESULT {
+    pub inline fn SetFileTime(self: *const ISWbemDateTime, strFileTime: ?BSTR, bIsLocal: i16) HRESULT {
         return self.vtable.SetFileTime(self, strFileTime, bIsLocal);
     }
 };
@@ -7388,90 +7388,90 @@ pub const ISWbemRefresher = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const ISWbemRefresher,
             pUnk: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const ISWbemRefresher,
             iIndex: i32,
             objWbemRefreshableItem: ?*?*ISWbemRefreshableItem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const ISWbemRefresher,
             iCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ISWbemRefresher,
             objWbemServices: ?*ISWbemServicesEx,
             bsInstancePath: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemRefreshableItem: ?*?*ISWbemRefreshableItem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddEnum: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddEnum: *const fn (
             self: *const ISWbemRefresher,
             objWbemServices: ?*ISWbemServicesEx,
             bsClassName: ?BSTR,
             iFlags: i32,
             objWbemNamedValueSet: ?*IDispatch,
             objWbemRefreshableItem: ?*?*ISWbemRefreshableItem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ISWbemRefresher,
             iIndex: i32,
             iFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Refresh: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Refresh: *const fn (
             self: *const ISWbemRefresher,
             iFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AutoReconnect: *const fn(
+        get_AutoReconnect: *const fn (
             self: *const ISWbemRefresher,
             bCount: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AutoReconnect: *const fn(
+        put_AutoReconnect: *const fn (
             self: *const ISWbemRefresher,
             bCount: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteAll: *const fn (
             self: *const ISWbemRefresher,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const ISWbemRefresher, pUnk: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const ISWbemRefresher, pUnk: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, pUnk);
     }
-    pub fn Item(self: *const ISWbemRefresher, iIndex: i32, objWbemRefreshableItem: ?*?*ISWbemRefreshableItem) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const ISWbemRefresher, iIndex: i32, objWbemRefreshableItem: ?*?*ISWbemRefreshableItem) HRESULT {
         return self.vtable.Item(self, iIndex, objWbemRefreshableItem);
     }
-    pub fn get_Count(self: *const ISWbemRefresher, iCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const ISWbemRefresher, iCount: ?*i32) HRESULT {
         return self.vtable.get_Count(self, iCount);
     }
-    pub fn Add(self: *const ISWbemRefresher, objWbemServices: ?*ISWbemServicesEx, bsInstancePath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemRefreshableItem: ?*?*ISWbemRefreshableItem) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ISWbemRefresher, objWbemServices: ?*ISWbemServicesEx, bsInstancePath: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemRefreshableItem: ?*?*ISWbemRefreshableItem) HRESULT {
         return self.vtable.Add(self, objWbemServices, bsInstancePath, iFlags, objWbemNamedValueSet, objWbemRefreshableItem);
     }
-    pub fn AddEnum(self: *const ISWbemRefresher, objWbemServices: ?*ISWbemServicesEx, bsClassName: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemRefreshableItem: ?*?*ISWbemRefreshableItem) callconv(.Inline) HRESULT {
+    pub inline fn AddEnum(self: *const ISWbemRefresher, objWbemServices: ?*ISWbemServicesEx, bsClassName: ?BSTR, iFlags: i32, objWbemNamedValueSet: ?*IDispatch, objWbemRefreshableItem: ?*?*ISWbemRefreshableItem) HRESULT {
         return self.vtable.AddEnum(self, objWbemServices, bsClassName, iFlags, objWbemNamedValueSet, objWbemRefreshableItem);
     }
-    pub fn Remove(self: *const ISWbemRefresher, iIndex: i32, iFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ISWbemRefresher, iIndex: i32, iFlags: i32) HRESULT {
         return self.vtable.Remove(self, iIndex, iFlags);
     }
-    pub fn Refresh(self: *const ISWbemRefresher, iFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Refresh(self: *const ISWbemRefresher, iFlags: i32) HRESULT {
         return self.vtable.Refresh(self, iFlags);
     }
-    pub fn get_AutoReconnect(self: *const ISWbemRefresher, bCount: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_AutoReconnect(self: *const ISWbemRefresher, bCount: ?*i16) HRESULT {
         return self.vtable.get_AutoReconnect(self, bCount);
     }
-    pub fn put_AutoReconnect(self: *const ISWbemRefresher, bCount: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_AutoReconnect(self: *const ISWbemRefresher, bCount: i16) HRESULT {
         return self.vtable.put_AutoReconnect(self, bCount);
     }
-    pub fn DeleteAll(self: *const ISWbemRefresher) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAll(self: *const ISWbemRefresher) HRESULT {
         return self.vtable.DeleteAll(self);
     }
 };
@@ -7482,54 +7482,54 @@ pub const ISWbemRefreshableItem = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Index: *const fn(
+        get_Index: *const fn (
             self: *const ISWbemRefreshableItem,
             iIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Refresher: *const fn(
+        get_Refresher: *const fn (
             self: *const ISWbemRefreshableItem,
             objWbemRefresher: ?*?*ISWbemRefresher,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsSet: *const fn(
+        get_IsSet: *const fn (
             self: *const ISWbemRefreshableItem,
             bIsSet: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Object: *const fn(
+        get_Object: *const fn (
             self: *const ISWbemRefreshableItem,
             objWbemObject: ?*?*ISWbemObjectEx,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectSet: *const fn(
+        get_ObjectSet: *const fn (
             self: *const ISWbemRefreshableItem,
             objWbemObjectSet: ?*?*ISWbemObjectSet,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ISWbemRefreshableItem,
             iFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Index(self: *const ISWbemRefreshableItem, iIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Index(self: *const ISWbemRefreshableItem, iIndex: ?*i32) HRESULT {
         return self.vtable.get_Index(self, iIndex);
     }
-    pub fn get_Refresher(self: *const ISWbemRefreshableItem, objWbemRefresher: ?*?*ISWbemRefresher) callconv(.Inline) HRESULT {
+    pub inline fn get_Refresher(self: *const ISWbemRefreshableItem, objWbemRefresher: ?*?*ISWbemRefresher) HRESULT {
         return self.vtable.get_Refresher(self, objWbemRefresher);
     }
-    pub fn get_IsSet(self: *const ISWbemRefreshableItem, bIsSet: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsSet(self: *const ISWbemRefreshableItem, bIsSet: ?*i16) HRESULT {
         return self.vtable.get_IsSet(self, bIsSet);
     }
-    pub fn get_Object(self: *const ISWbemRefreshableItem, objWbemObject: ?*?*ISWbemObjectEx) callconv(.Inline) HRESULT {
+    pub inline fn get_Object(self: *const ISWbemRefreshableItem, objWbemObject: ?*?*ISWbemObjectEx) HRESULT {
         return self.vtable.get_Object(self, objWbemObject);
     }
-    pub fn get_ObjectSet(self: *const ISWbemRefreshableItem, objWbemObjectSet: ?*?*ISWbemObjectSet) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectSet(self: *const ISWbemRefreshableItem, objWbemObjectSet: ?*?*ISWbemObjectSet) HRESULT {
         return self.vtable.get_ObjectSet(self, objWbemObjectSet);
     }
-    pub fn Remove(self: *const ISWbemRefreshableItem, iFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ISWbemRefreshableItem, iFlags: i32) HRESULT {
         return self.vtable.Remove(self, iFlags);
     }
 };
@@ -7543,29 +7543,29 @@ pub const IWMIExtension = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_WMIObjectPath: *const fn(
+        get_WMIObjectPath: *const fn (
             self: *const IWMIExtension,
             strWMIObjectPath: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetWMIObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetWMIObject: *const fn (
             self: *const IWMIExtension,
             objWMIObject: ?*?*ISWbemObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetWMIServices: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetWMIServices: *const fn (
             self: *const IWMIExtension,
             objWMIServices: ?*?*ISWbemServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_WMIObjectPath(self: *const IWMIExtension, strWMIObjectPath: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_WMIObjectPath(self: *const IWMIExtension, strWMIObjectPath: ?*?BSTR) HRESULT {
         return self.vtable.get_WMIObjectPath(self, strWMIObjectPath);
     }
-    pub fn GetWMIObject(self: *const IWMIExtension, objWMIObject: ?*?*ISWbemObject) callconv(.Inline) HRESULT {
+    pub inline fn GetWMIObject(self: *const IWMIExtension, objWMIObject: ?*?*ISWbemObject) HRESULT {
         return self.vtable.GetWMIObject(self, objWMIObject);
     }
-    pub fn GetWMIServices(self: *const IWMIExtension, objWMIServices: ?*?*ISWbemServices) callconv(.Inline) HRESULT {
+    pub inline fn GetWMIServices(self: *const IWMIExtension, objWMIServices: ?*?*ISWbemServices) HRESULT {
         return self.vtable.GetWMIServices(self, objWMIServices);
     }
 };
@@ -7600,13 +7600,13 @@ pub const IID_IWbemTransport = &IID_IWbemTransport_Value;
 pub const IWbemTransport = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IWbemTransport,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IWbemTransport) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IWbemTransport) HRESULT {
         return self.vtable.Initialize(self);
     }
 };
@@ -7616,47 +7616,47 @@ pub const IID_IWbemLevel1Login = &IID_IWbemLevel1Login_Value;
 pub const IWbemLevel1Login = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        EstablishPosition: *const fn(
+        EstablishPosition: *const fn (
             self: *const IWbemLevel1Login,
             wszLocaleList: ?PWSTR,
             dwNumLocales: u32,
             reserved: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RequestChallenge: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RequestChallenge: *const fn (
             self: *const IWbemLevel1Login,
             wszNetworkResource: ?PWSTR,
             wszUser: ?PWSTR,
             Nonce: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WBEMLogin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WBEMLogin: *const fn (
             self: *const IWbemLevel1Login,
             wszPreferredLocale: ?PWSTR,
             AccessToken: ?*u8,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppNamespace: ?*?*IWbemServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NTLMLogin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NTLMLogin: *const fn (
             self: *const IWbemLevel1Login,
             wszNetworkResource: ?PWSTR,
             wszPreferredLocale: ?PWSTR,
             lFlags: i32,
             pCtx: ?*IWbemContext,
             ppNamespace: ?*?*IWbemServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn EstablishPosition(self: *const IWbemLevel1Login, wszLocaleList: ?PWSTR, dwNumLocales: u32, reserved: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn EstablishPosition(self: *const IWbemLevel1Login, wszLocaleList: ?PWSTR, dwNumLocales: u32, reserved: ?*u32) HRESULT {
         return self.vtable.EstablishPosition(self, wszLocaleList, dwNumLocales, reserved);
     }
-    pub fn RequestChallenge(self: *const IWbemLevel1Login, wszNetworkResource: ?PWSTR, wszUser: ?PWSTR, Nonce: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn RequestChallenge(self: *const IWbemLevel1Login, wszNetworkResource: ?PWSTR, wszUser: ?PWSTR, Nonce: ?*u8) HRESULT {
         return self.vtable.RequestChallenge(self, wszNetworkResource, wszUser, Nonce);
     }
-    pub fn WBEMLogin(self: *const IWbemLevel1Login, wszPreferredLocale: ?PWSTR, AccessToken: ?*u8, lFlags: i32, pCtx: ?*IWbemContext, ppNamespace: ?*?*IWbemServices) callconv(.Inline) HRESULT {
+    pub inline fn WBEMLogin(self: *const IWbemLevel1Login, wszPreferredLocale: ?PWSTR, AccessToken: ?*u8, lFlags: i32, pCtx: ?*IWbemContext, ppNamespace: ?*?*IWbemServices) HRESULT {
         return self.vtable.WBEMLogin(self, wszPreferredLocale, AccessToken, lFlags, pCtx, ppNamespace);
     }
-    pub fn NTLMLogin(self: *const IWbemLevel1Login, wszNetworkResource: ?PWSTR, wszPreferredLocale: ?PWSTR, lFlags: i32, pCtx: ?*IWbemContext, ppNamespace: ?*?*IWbemServices) callconv(.Inline) HRESULT {
+    pub inline fn NTLMLogin(self: *const IWbemLevel1Login, wszNetworkResource: ?PWSTR, wszPreferredLocale: ?PWSTR, lFlags: i32, pCtx: ?*IWbemContext, ppNamespace: ?*?*IWbemServices) HRESULT {
         return self.vtable.NTLMLogin(self, wszNetworkResource, wszPreferredLocale, lFlags, pCtx, ppNamespace);
     }
 };
@@ -7666,7 +7666,7 @@ pub const IID_IWbemConnectorLogin = &IID_IWbemConnectorLogin_Value;
 pub const IWbemConnectorLogin = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ConnectorLogin: *const fn(
+        ConnectorLogin: *const fn (
             self: *const IWbemConnectorLogin,
             wszNetworkResource: ?PWSTR,
             wszPreferredLocale: ?PWSTR,
@@ -7674,11 +7674,11 @@ pub const IWbemConnectorLogin = extern union {
             pCtx: ?*IWbemContext,
             riid: ?*const Guid,
             pInterface: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ConnectorLogin(self: *const IWbemConnectorLogin, wszNetworkResource: ?PWSTR, wszPreferredLocale: ?PWSTR, lFlags: i32, pCtx: ?*IWbemContext, riid: ?*const Guid, pInterface: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn ConnectorLogin(self: *const IWbemConnectorLogin, wszNetworkResource: ?PWSTR, wszPreferredLocale: ?PWSTR, lFlags: i32, pCtx: ?*IWbemContext, riid: ?*const Guid, pInterface: **anyopaque) HRESULT {
         return self.vtable.ConnectorLogin(self, wszNetworkResource, wszPreferredLocale, lFlags, pCtx, riid, pInterface);
     }
 };
@@ -7688,17 +7688,17 @@ pub const IID_IWbemAddressResolution = &IID_IWbemAddressResolution_Value;
 pub const IWbemAddressResolution = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Resolve: *const fn(
+        Resolve: *const fn (
             self: *const IWbemAddressResolution,
             wszNamespacePath: ?PWSTR,
             wszAddressType: ?PWSTR,
             pdwAddressLength: ?*u32,
             pabBinaryAddress: ?*?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Resolve(self: *const IWbemAddressResolution, wszNamespacePath: ?PWSTR, wszAddressType: ?PWSTR, pdwAddressLength: ?*u32, pabBinaryAddress: ?*?*u8) callconv(.Inline) HRESULT {
+    pub inline fn Resolve(self: *const IWbemAddressResolution, wszNamespacePath: ?PWSTR, wszAddressType: ?PWSTR, pdwAddressLength: ?*u32, pabBinaryAddress: ?*?*u8) HRESULT {
         return self.vtable.Resolve(self, wszNamespacePath, wszAddressType, pdwAddressLength, pabBinaryAddress);
     }
 };
@@ -7708,7 +7708,7 @@ pub const IID_IWbemClientTransport = &IID_IWbemClientTransport_Value;
 pub const IWbemClientTransport = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ConnectServer: *const fn(
+        ConnectServer: *const fn (
             self: *const IWbemClientTransport,
             strAddressType: ?BSTR,
             dwBinaryAddressLength: u32,
@@ -7721,11 +7721,11 @@ pub const IWbemClientTransport = extern union {
             strAuthority: ?BSTR,
             pCtx: ?*IWbemContext,
             ppNamespace: ?*?*IWbemServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ConnectServer(self: *const IWbemClientTransport, strAddressType: ?BSTR, dwBinaryAddressLength: u32, abBinaryAddress: [*:0]u8, strNetworkResource: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, lSecurityFlags: i32, strAuthority: ?BSTR, pCtx: ?*IWbemContext, ppNamespace: ?*?*IWbemServices) callconv(.Inline) HRESULT {
+    pub inline fn ConnectServer(self: *const IWbemClientTransport, strAddressType: ?BSTR, dwBinaryAddressLength: u32, abBinaryAddress: [*:0]u8, strNetworkResource: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, lSecurityFlags: i32, strAuthority: ?BSTR, pCtx: ?*IWbemContext, ppNamespace: ?*?*IWbemServices) HRESULT {
         return self.vtable.ConnectServer(self, strAddressType, dwBinaryAddressLength, abBinaryAddress, strNetworkResource, strUser, strPassword, strLocale, lSecurityFlags, strAuthority, pCtx, ppNamespace);
     }
 };
@@ -7735,7 +7735,7 @@ pub const IID_IWbemClientConnectionTransport = &IID_IWbemClientConnectionTranspo
 pub const IWbemClientConnectionTransport = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Open: *const fn(
+        Open: *const fn (
             self: *const IWbemClientConnectionTransport,
             strAddressType: ?BSTR,
             dwBinaryAddressLength: u32,
@@ -7749,8 +7749,8 @@ pub const IWbemClientConnectionTransport = extern union {
             riid: ?*const Guid,
             pInterface: **anyopaque,
             pCallRes: ?*?*IWbemCallResult,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OpenAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OpenAsync: *const fn (
             self: *const IWbemClientConnectionTransport,
             strAddressType: ?BSTR,
             dwBinaryAddressLength: u32,
@@ -7763,22 +7763,22 @@ pub const IWbemClientConnectionTransport = extern union {
             pCtx: ?*IWbemContext,
             riid: ?*const Guid,
             pResponseHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IWbemClientConnectionTransport,
             lFlags: i32,
             pHandler: ?*IWbemObjectSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Open(self: *const IWbemClientConnectionTransport, strAddressType: ?BSTR, dwBinaryAddressLength: u32, abBinaryAddress: [*:0]u8, strObject: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, riid: ?*const Guid, pInterface: **anyopaque, pCallRes: ?*?*IWbemCallResult) callconv(.Inline) HRESULT {
+    pub inline fn Open(self: *const IWbemClientConnectionTransport, strAddressType: ?BSTR, dwBinaryAddressLength: u32, abBinaryAddress: [*:0]u8, strObject: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, riid: ?*const Guid, pInterface: **anyopaque, pCallRes: ?*?*IWbemCallResult) HRESULT {
         return self.vtable.Open(self, strAddressType, dwBinaryAddressLength, abBinaryAddress, strObject, strUser, strPassword, strLocale, lFlags, pCtx, riid, pInterface, pCallRes);
     }
-    pub fn OpenAsync(self: *const IWbemClientConnectionTransport, strAddressType: ?BSTR, dwBinaryAddressLength: u32, abBinaryAddress: [*:0]u8, strObject: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, riid: ?*const Guid, pResponseHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn OpenAsync(self: *const IWbemClientConnectionTransport, strAddressType: ?BSTR, dwBinaryAddressLength: u32, abBinaryAddress: [*:0]u8, strObject: ?BSTR, strUser: ?BSTR, strPassword: ?BSTR, strLocale: ?BSTR, lFlags: i32, pCtx: ?*IWbemContext, riid: ?*const Guid, pResponseHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.OpenAsync(self, strAddressType, dwBinaryAddressLength, abBinaryAddress, strObject, strUser, strPassword, strLocale, lFlags, pCtx, riid, pResponseHandler);
     }
-    pub fn Cancel(self: *const IWbemClientConnectionTransport, lFlags: i32, pHandler: ?*IWbemObjectSink) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IWbemClientConnectionTransport, lFlags: i32, pHandler: ?*IWbemObjectSink) HRESULT {
         return self.vtable.Cancel(self, lFlags, pHandler);
     }
 };
@@ -7788,44 +7788,43 @@ pub const IID_IWbemConstructClassObject = &IID_IWbemConstructClassObject_Value;
 pub const IWbemConstructClassObject = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetInheritanceChain: *const fn(
+        SetInheritanceChain: *const fn (
             self: *const IWbemConstructClassObject,
             lNumAntecedents: i32,
             // TODO: what to do with BytesParamIndex 0?
             awszAntecedents: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPropertyOrigin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPropertyOrigin: *const fn (
             self: *const IWbemConstructClassObject,
             wszPropertyName: ?[*:0]const u16,
             lOriginIndex: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetMethodOrigin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetMethodOrigin: *const fn (
             self: *const IWbemConstructClassObject,
             wszMethodName: ?[*:0]const u16,
             lOriginIndex: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetServerNamespace: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetServerNamespace: *const fn (
             self: *const IWbemConstructClassObject,
             wszServer: ?[*:0]const u16,
             wszNamespace: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetInheritanceChain(self: *const IWbemConstructClassObject, lNumAntecedents: i32, awszAntecedents: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetInheritanceChain(self: *const IWbemConstructClassObject, lNumAntecedents: i32, awszAntecedents: ?*?PWSTR) HRESULT {
         return self.vtable.SetInheritanceChain(self, lNumAntecedents, awszAntecedents);
     }
-    pub fn SetPropertyOrigin(self: *const IWbemConstructClassObject, wszPropertyName: ?[*:0]const u16, lOriginIndex: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetPropertyOrigin(self: *const IWbemConstructClassObject, wszPropertyName: ?[*:0]const u16, lOriginIndex: i32) HRESULT {
         return self.vtable.SetPropertyOrigin(self, wszPropertyName, lOriginIndex);
     }
-    pub fn SetMethodOrigin(self: *const IWbemConstructClassObject, wszMethodName: ?[*:0]const u16, lOriginIndex: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetMethodOrigin(self: *const IWbemConstructClassObject, wszMethodName: ?[*:0]const u16, lOriginIndex: i32) HRESULT {
         return self.vtable.SetMethodOrigin(self, wszMethodName, lOriginIndex);
     }
-    pub fn SetServerNamespace(self: *const IWbemConstructClassObject, wszServer: ?[*:0]const u16, wszNamespace: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetServerNamespace(self: *const IWbemConstructClassObject, wszServer: ?[*:0]const u16, wszNamespace: ?[*:0]const u16) HRESULT {
         return self.vtable.SetServerNamespace(self, wszServer, wszNamespace);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (1)
@@ -7836,8 +7835,7 @@ pub extern "mi" fn MI_Application_InitializeV1(
     applicationID: ?*const u16,
     extendedError: ?*?*MI_Instance,
     application: ?*MI_Application,
-) callconv(@import("std").os.windows.WINAPI) MI_Result;
-
+) callconv(.winapi) MI_Result;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -7857,30 +7855,68 @@ const VARIANT = @import("../system/com.zig").VARIANT;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "MI_ProviderFT_Load")) { _ = MI_ProviderFT_Load; }
-    if (@hasDecl(@This(), "MI_ProviderFT_Unload")) { _ = MI_ProviderFT_Unload; }
-    if (@hasDecl(@This(), "MI_ProviderFT_EnumerateInstances")) { _ = MI_ProviderFT_EnumerateInstances; }
-    if (@hasDecl(@This(), "MI_ProviderFT_EnableIndications")) { _ = MI_ProviderFT_EnableIndications; }
-    if (@hasDecl(@This(), "MI_ProviderFT_DisableIndications")) { _ = MI_ProviderFT_DisableIndications; }
-    if (@hasDecl(@This(), "MI_ProviderFT_Subscribe")) { _ = MI_ProviderFT_Subscribe; }
-    if (@hasDecl(@This(), "MI_ProviderFT_Unsubscribe")) { _ = MI_ProviderFT_Unsubscribe; }
-    if (@hasDecl(@This(), "MI_Module_Load")) { _ = MI_Module_Load; }
-    if (@hasDecl(@This(), "MI_Module_Unload")) { _ = MI_Module_Unload; }
-    if (@hasDecl(@This(), "MI_CancelCallback")) { _ = MI_CancelCallback; }
-    if (@hasDecl(@This(), "MI_MainFunction")) { _ = MI_MainFunction; }
-    if (@hasDecl(@This(), "MI_OperationCallback_PromptUser")) { _ = MI_OperationCallback_PromptUser; }
-    if (@hasDecl(@This(), "MI_OperationCallback_WriteError")) { _ = MI_OperationCallback_WriteError; }
-    if (@hasDecl(@This(), "MI_OperationCallback_WriteMessage")) { _ = MI_OperationCallback_WriteMessage; }
-    if (@hasDecl(@This(), "MI_OperationCallback_WriteProgress")) { _ = MI_OperationCallback_WriteProgress; }
-    if (@hasDecl(@This(), "MI_OperationCallback_Instance")) { _ = MI_OperationCallback_Instance; }
-    if (@hasDecl(@This(), "MI_OperationCallback_StreamedParameter")) { _ = MI_OperationCallback_StreamedParameter; }
-    if (@hasDecl(@This(), "MI_OperationCallback_Indication")) { _ = MI_OperationCallback_Indication; }
-    if (@hasDecl(@This(), "MI_OperationCallback_Class")) { _ = MI_OperationCallback_Class; }
-    if (@hasDecl(@This(), "MI_Deserializer_ClassObjectNeeded")) { _ = MI_Deserializer_ClassObjectNeeded; }
+    if (@hasDecl(@This(), "MI_ProviderFT_Load")) {
+        _ = MI_ProviderFT_Load;
+    }
+    if (@hasDecl(@This(), "MI_ProviderFT_Unload")) {
+        _ = MI_ProviderFT_Unload;
+    }
+    if (@hasDecl(@This(), "MI_ProviderFT_EnumerateInstances")) {
+        _ = MI_ProviderFT_EnumerateInstances;
+    }
+    if (@hasDecl(@This(), "MI_ProviderFT_EnableIndications")) {
+        _ = MI_ProviderFT_EnableIndications;
+    }
+    if (@hasDecl(@This(), "MI_ProviderFT_DisableIndications")) {
+        _ = MI_ProviderFT_DisableIndications;
+    }
+    if (@hasDecl(@This(), "MI_ProviderFT_Subscribe")) {
+        _ = MI_ProviderFT_Subscribe;
+    }
+    if (@hasDecl(@This(), "MI_ProviderFT_Unsubscribe")) {
+        _ = MI_ProviderFT_Unsubscribe;
+    }
+    if (@hasDecl(@This(), "MI_Module_Load")) {
+        _ = MI_Module_Load;
+    }
+    if (@hasDecl(@This(), "MI_Module_Unload")) {
+        _ = MI_Module_Unload;
+    }
+    if (@hasDecl(@This(), "MI_CancelCallback")) {
+        _ = MI_CancelCallback;
+    }
+    if (@hasDecl(@This(), "MI_MainFunction")) {
+        _ = MI_MainFunction;
+    }
+    if (@hasDecl(@This(), "MI_OperationCallback_PromptUser")) {
+        _ = MI_OperationCallback_PromptUser;
+    }
+    if (@hasDecl(@This(), "MI_OperationCallback_WriteError")) {
+        _ = MI_OperationCallback_WriteError;
+    }
+    if (@hasDecl(@This(), "MI_OperationCallback_WriteMessage")) {
+        _ = MI_OperationCallback_WriteMessage;
+    }
+    if (@hasDecl(@This(), "MI_OperationCallback_WriteProgress")) {
+        _ = MI_OperationCallback_WriteProgress;
+    }
+    if (@hasDecl(@This(), "MI_OperationCallback_Instance")) {
+        _ = MI_OperationCallback_Instance;
+    }
+    if (@hasDecl(@This(), "MI_OperationCallback_StreamedParameter")) {
+        _ = MI_OperationCallback_StreamedParameter;
+    }
+    if (@hasDecl(@This(), "MI_OperationCallback_Indication")) {
+        _ = MI_OperationCallback_Indication;
+    }
+    if (@hasDecl(@This(), "MI_OperationCallback_Class")) {
+        _ = MI_OperationCallback_Class;
+    }
+    if (@hasDecl(@This(), "MI_Deserializer_ClassObjectNeeded")) {
+        _ = MI_Deserializer_ClassObjectNeeded;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

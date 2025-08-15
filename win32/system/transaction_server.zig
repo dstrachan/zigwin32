@@ -32,40 +32,40 @@ pub const IID_ICatalog = &IID_ICatalog_Value;
 pub const ICatalog = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetCollection: *const fn(
+        GetCollection: *const fn (
             self: *const ICatalog,
             bstrCollName: ?BSTR,
             ppCatalogCollection: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Connect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Connect: *const fn (
             self: *const ICatalog,
             bstrConnectString: ?BSTR,
             ppCatalogCollection: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MajorVersion: *const fn(
+        get_MajorVersion: *const fn (
             self: *const ICatalog,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MinorVersion: *const fn(
+        get_MinorVersion: *const fn (
             self: *const ICatalog,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetCollection(self: *const ICatalog, bstrCollName: ?BSTR, ppCatalogCollection: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn GetCollection(self: *const ICatalog, bstrCollName: ?BSTR, ppCatalogCollection: ?*?*IDispatch) HRESULT {
         return self.vtable.GetCollection(self, bstrCollName, ppCatalogCollection);
     }
-    pub fn Connect(self: *const ICatalog, bstrConnectString: ?BSTR, ppCatalogCollection: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn Connect(self: *const ICatalog, bstrConnectString: ?BSTR, ppCatalogCollection: ?*?*IDispatch) HRESULT {
         return self.vtable.Connect(self, bstrConnectString, ppCatalogCollection);
     }
-    pub fn get_MajorVersion(self: *const ICatalog, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MajorVersion(self: *const ICatalog, retval: ?*i32) HRESULT {
         return self.vtable.get_MajorVersion(self, retval);
     }
-    pub fn get_MinorVersion(self: *const ICatalog, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MinorVersion(self: *const ICatalog, retval: ?*i32) HRESULT {
         return self.vtable.get_MinorVersion(self, retval);
     }
 };
@@ -75,40 +75,40 @@ pub const IID_IComponentUtil = &IID_IComponentUtil_Value;
 pub const IComponentUtil = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        InstallComponent: *const fn(
+        InstallComponent: *const fn (
             self: *const IComponentUtil,
             bstrDLLFile: ?BSTR,
             bstrTypelibFile: ?BSTR,
             bstrProxyStubDLLFile: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ImportComponent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ImportComponent: *const fn (
             self: *const IComponentUtil,
             bstrCLSID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ImportComponentByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ImportComponentByName: *const fn (
             self: *const IComponentUtil,
             bstrProgID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCLSIDs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCLSIDs: *const fn (
             self: *const IComponentUtil,
             bstrDLLFile: ?BSTR,
             bstrTypelibFile: ?BSTR,
             aCLSIDs: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InstallComponent(self: *const IComponentUtil, bstrDLLFile: ?BSTR, bstrTypelibFile: ?BSTR, bstrProxyStubDLLFile: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InstallComponent(self: *const IComponentUtil, bstrDLLFile: ?BSTR, bstrTypelibFile: ?BSTR, bstrProxyStubDLLFile: ?BSTR) HRESULT {
         return self.vtable.InstallComponent(self, bstrDLLFile, bstrTypelibFile, bstrProxyStubDLLFile);
     }
-    pub fn ImportComponent(self: *const IComponentUtil, bstrCLSID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn ImportComponent(self: *const IComponentUtil, bstrCLSID: ?BSTR) HRESULT {
         return self.vtable.ImportComponent(self, bstrCLSID);
     }
-    pub fn ImportComponentByName(self: *const IComponentUtil, bstrProgID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn ImportComponentByName(self: *const IComponentUtil, bstrProgID: ?BSTR) HRESULT {
         return self.vtable.ImportComponentByName(self, bstrProgID);
     }
-    pub fn GetCLSIDs(self: *const IComponentUtil, bstrDLLFile: ?BSTR, bstrTypelibFile: ?BSTR, aCLSIDs: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetCLSIDs(self: *const IComponentUtil, bstrDLLFile: ?BSTR, bstrTypelibFile: ?BSTR, aCLSIDs: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetCLSIDs(self, bstrDLLFile, bstrTypelibFile, aCLSIDs);
     }
 };
@@ -118,33 +118,33 @@ pub const IID_IPackageUtil = &IID_IPackageUtil_Value;
 pub const IPackageUtil = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        InstallPackage: *const fn(
+        InstallPackage: *const fn (
             self: *const IPackageUtil,
             bstrPackageFile: ?BSTR,
             bstrInstallPath: ?BSTR,
             lOptions: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExportPackage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExportPackage: *const fn (
             self: *const IPackageUtil,
             bstrPackageID: ?BSTR,
             bstrPackageFile: ?BSTR,
             lOptions: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ShutdownPackage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ShutdownPackage: *const fn (
             self: *const IPackageUtil,
             bstrPackageID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InstallPackage(self: *const IPackageUtil, bstrPackageFile: ?BSTR, bstrInstallPath: ?BSTR, lOptions: i32) callconv(.Inline) HRESULT {
+    pub inline fn InstallPackage(self: *const IPackageUtil, bstrPackageFile: ?BSTR, bstrInstallPath: ?BSTR, lOptions: i32) HRESULT {
         return self.vtable.InstallPackage(self, bstrPackageFile, bstrInstallPath, lOptions);
     }
-    pub fn ExportPackage(self: *const IPackageUtil, bstrPackageID: ?BSTR, bstrPackageFile: ?BSTR, lOptions: i32) callconv(.Inline) HRESULT {
+    pub inline fn ExportPackage(self: *const IPackageUtil, bstrPackageID: ?BSTR, bstrPackageFile: ?BSTR, lOptions: i32) HRESULT {
         return self.vtable.ExportPackage(self, bstrPackageID, bstrPackageFile, lOptions);
     }
-    pub fn ShutdownPackage(self: *const IPackageUtil, bstrPackageID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn ShutdownPackage(self: *const IPackageUtil, bstrPackageID: ?BSTR) HRESULT {
         return self.vtable.ShutdownPackage(self, bstrPackageID);
     }
 };
@@ -154,26 +154,26 @@ pub const IID_IRemoteComponentUtil = &IID_IRemoteComponentUtil_Value;
 pub const IRemoteComponentUtil = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        InstallRemoteComponent: *const fn(
+        InstallRemoteComponent: *const fn (
             self: *const IRemoteComponentUtil,
             bstrServer: ?BSTR,
             bstrPackageID: ?BSTR,
             bstrCLSID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstallRemoteComponentByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstallRemoteComponentByName: *const fn (
             self: *const IRemoteComponentUtil,
             bstrServer: ?BSTR,
             bstrPackageName: ?BSTR,
             bstrProgID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn InstallRemoteComponent(self: *const IRemoteComponentUtil, bstrServer: ?BSTR, bstrPackageID: ?BSTR, bstrCLSID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InstallRemoteComponent(self: *const IRemoteComponentUtil, bstrServer: ?BSTR, bstrPackageID: ?BSTR, bstrCLSID: ?BSTR) HRESULT {
         return self.vtable.InstallRemoteComponent(self, bstrServer, bstrPackageID, bstrCLSID);
     }
-    pub fn InstallRemoteComponentByName(self: *const IRemoteComponentUtil, bstrServer: ?BSTR, bstrPackageName: ?BSTR, bstrProgID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InstallRemoteComponentByName(self: *const IRemoteComponentUtil, bstrServer: ?BSTR, bstrPackageName: ?BSTR, bstrProgID: ?BSTR) HRESULT {
         return self.vtable.InstallRemoteComponentByName(self, bstrServer, bstrPackageName, bstrProgID);
     }
 };
@@ -183,22 +183,22 @@ pub const IID_IRoleAssociationUtil = &IID_IRoleAssociationUtil_Value;
 pub const IRoleAssociationUtil = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        AssociateRole: *const fn(
+        AssociateRole: *const fn (
             self: *const IRoleAssociationUtil,
             bstrRoleID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AssociateRoleByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AssociateRoleByName: *const fn (
             self: *const IRoleAssociationUtil,
             bstrRoleName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn AssociateRole(self: *const IRoleAssociationUtil, bstrRoleID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn AssociateRole(self: *const IRoleAssociationUtil, bstrRoleID: ?BSTR) HRESULT {
         return self.vtable.AssociateRole(self, bstrRoleID);
     }
-    pub fn AssociateRoleByName(self: *const IRoleAssociationUtil, bstrRoleName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn AssociateRoleByName(self: *const IRoleAssociationUtil, bstrRoleName: ?BSTR) HRESULT {
         return self.vtable.AssociateRoleByName(self, bstrRoleName);
     }
 };
@@ -306,7 +306,6 @@ pub const mtsErrNotDeletable = MTSAdminErrorCodes.NotDeletable;
 pub const mtsErrSession = MTSAdminErrorCodes.Session;
 pub const mtsErrCompFileNoRegistrar = MTSAdminErrorCodes.CompFileNoRegistrar;
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
 //--------------------------------------------------------------------------------
@@ -325,9 +324,7 @@ const IUnknown = @import("../system/com.zig").IUnknown;
 const SAFEARRAY = @import("../system/com.zig").SAFEARRAY;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

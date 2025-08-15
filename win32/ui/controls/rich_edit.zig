@@ -753,7 +753,7 @@ pub const RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE = packed struct(u16) {
     _14: u1 = 0,
     GCM_RIGHTMOUSEDROP: u1 = 0,
 };
-pub const SEL_EMPTY = RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE{ };
+pub const SEL_EMPTY = RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE{};
 pub const SEL_TEXT = RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE{ .SEL_TEXT = 1 };
 pub const SEL_OBJECT = RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE{ .SEL_OBJECT = 1 };
 pub const SEL_MULTICHAR = RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE{ .SEL_MULTICHAR = 1 };
@@ -797,7 +797,7 @@ pub const RICH_EDIT_GET_OBJECT_FLAGS = packed struct(u32) {
 pub const REO_GETOBJ_POLEOBJ = RICH_EDIT_GET_OBJECT_FLAGS{ .POLEOBJ = 1 };
 pub const REO_GETOBJ_PSTG = RICH_EDIT_GET_OBJECT_FLAGS{ .PSTG = 1 };
 pub const REO_GETOBJ_POLESITE = RICH_EDIT_GET_OBJECT_FLAGS{ .POLESITE = 1 };
-pub const REO_GETOBJ_NO_INTERFACES = RICH_EDIT_GET_OBJECT_FLAGS{ };
+pub const REO_GETOBJ_NO_INTERFACES = RICH_EDIT_GET_OBJECT_FLAGS{};
 pub const REO_GETOBJ_ALL_INTERFACES = RICH_EDIT_GET_OBJECT_FLAGS{
     .POLEOBJ = 1,
     .PSTG = 1,
@@ -918,7 +918,7 @@ pub const GETTEXTLENGTHEX_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const GTL_DEFAULT = GETTEXTLENGTHEX_FLAGS{ };
+pub const GTL_DEFAULT = GETTEXTLENGTHEX_FLAGS{};
 pub const GTL_USECRLF = GETTEXTLENGTHEX_FLAGS{ .USECRLF = 1 };
 pub const GTL_PRECISE = GETTEXTLENGTHEX_FLAGS{ .PRECISE = 1 };
 pub const GTL_CLOSE = GETTEXTLENGTHEX_FLAGS{ .CLOSE = 1 };
@@ -1053,13 +1053,13 @@ pub const TABLECELLPARMS = extern struct {
     crForePat: u32,
 };
 
-pub const AutoCorrectProc = *const fn(
+pub const AutoCorrectProc = *const fn (
     langid: u16,
     pszBefore: ?[*:0]const u16,
     pszAfter: ?PWSTR,
     cchAfter: i32,
     pcchReplaced: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const RICHEDIT_IMAGE_PARAMETERS = extern struct {
     xWidth: i32 align(4),
@@ -1075,12 +1075,12 @@ pub const ENDCOMPOSITIONNOTIFY = extern struct {
     dwCode: ENDCOMPOSITIONNOTIFY_CODE align(4),
 };
 
-pub const EDITWORDBREAKPROCEX = *const fn(
+pub const EDITWORDBREAKPROCEX = *const fn (
     pchText: ?PSTR,
     cchText: i32,
     bCharSet: u8,
     action: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const CHARFORMATA = extern struct {
     cbSize: u32,
@@ -1157,12 +1157,12 @@ pub const TEXTRANGEW = extern struct {
     lpstrText: ?PWSTR align(4),
 };
 
-pub const EDITSTREAMCALLBACK = *const fn(
+pub const EDITSTREAMCALLBACK = *const fn (
     dwCookie: usize,
     pbBuff: ?*u8,
     cb: i32,
     pcb: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub const EDITSTREAM = extern struct {
     dwCookie: usize align(4),
@@ -1469,14 +1469,14 @@ pub const CHANGENOTIFY = extern struct {
 pub const ITextServices = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        TxSendMessage: *const fn(
+        TxSendMessage: *const fn (
             self: *const ITextServices,
             msg: u32,
             wparam: WPARAM,
             lparam: LPARAM,
             plresult: ?*LRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxDraw: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxDraw: *const fn (
             self: *const ITextServices,
             dwDrawAspect: DVASPECT,
             lindex: i32,
@@ -1490,24 +1490,24 @@ pub const ITextServices = extern union {
             pfnContinue: isize,
             dwContinue: u32,
             lViewId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetHScroll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetHScroll: *const fn (
             self: *const ITextServices,
             plMin: ?*i32,
             plMax: ?*i32,
             plPos: ?*i32,
             plPage: ?*i32,
             pfEnabled: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetVScroll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetVScroll: *const fn (
             self: *const ITextServices,
             plMin: ?*i32,
             plMax: ?*i32,
             plPos: ?*i32,
             plPage: ?*i32,
             pfEnabled: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnTxSetCursor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnTxSetCursor: *const fn (
             self: *const ITextServices,
             dwDrawAspect: DVASPECT,
             lindex: i32,
@@ -1518,8 +1518,8 @@ pub const ITextServices = extern union {
             lprcClient: ?*RECT,
             x: i32,
             y: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxQueryHitPoint: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxQueryHitPoint: *const fn (
             self: *const ITextServices,
             dwDrawAspect: DVASPECT,
             lindex: i32,
@@ -1531,37 +1531,37 @@ pub const ITextServices = extern union {
             x: i32,
             y: i32,
             pHitResult: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnTxInPlaceActivate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnTxInPlaceActivate: *const fn (
             self: *const ITextServices,
             prcClient: ?*RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnTxInPlaceDeactivate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnTxInPlaceDeactivate: *const fn (
             self: *const ITextServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnTxUIActivate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnTxUIActivate: *const fn (
             self: *const ITextServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnTxUIDeactivate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnTxUIDeactivate: *const fn (
             self: *const ITextServices,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetText: *const fn (
             self: *const ITextServices,
             pbstrText: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxSetText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxSetText: *const fn (
             self: *const ITextServices,
             pszText: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetCurTargetX: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetCurTargetX: *const fn (
             self: *const ITextServices,
             param0: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetBaseLinePos: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetBaseLinePos: *const fn (
             self: *const ITextServices,
             param0: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetNaturalSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetNaturalSize: *const fn (
             self: *const ITextServices,
             dwAspect: u32,
             hdcDraw: ?HDC,
@@ -1571,76 +1571,76 @@ pub const ITextServices = extern union {
             psizelExtent: ?*const SIZE,
             pwidth: ?*i32,
             pheight: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetDropTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetDropTarget: *const fn (
             self: *const ITextServices,
             ppDropTarget: ?*?*IDropTarget,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnTxPropertyBitsChange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnTxPropertyBitsChange: *const fn (
             self: *const ITextServices,
             dwMask: u32,
             dwBits: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetCachedSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetCachedSize: *const fn (
             self: *const ITextServices,
             pdwWidth: ?*u32,
             pdwHeight: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn TxSendMessage(self: *const ITextServices, msg: u32, wparam: WPARAM, lparam: LPARAM, plresult: ?*LRESULT) callconv(.Inline) HRESULT {
+    pub inline fn TxSendMessage(self: *const ITextServices, msg: u32, wparam: WPARAM, lparam: LPARAM, plresult: ?*LRESULT) HRESULT {
         return self.vtable.TxSendMessage(self, msg, wparam, lparam, plresult);
     }
-    pub fn TxDraw(self: *const ITextServices, dwDrawAspect: DVASPECT, lindex: i32, pvAspect: ?*anyopaque, ptd: ?*DVTARGETDEVICE, hdcDraw: ?HDC, hicTargetDev: ?HDC, lprcBounds: ?*RECTL, lprcWBounds: ?*RECTL, lprcUpdate: ?*RECT, pfnContinue: isize, dwContinue: u32, lViewId: i32) callconv(.Inline) HRESULT {
+    pub inline fn TxDraw(self: *const ITextServices, dwDrawAspect: DVASPECT, lindex: i32, pvAspect: ?*anyopaque, ptd: ?*DVTARGETDEVICE, hdcDraw: ?HDC, hicTargetDev: ?HDC, lprcBounds: ?*RECTL, lprcWBounds: ?*RECTL, lprcUpdate: ?*RECT, pfnContinue: isize, dwContinue: u32, lViewId: i32) HRESULT {
         return self.vtable.TxDraw(self, dwDrawAspect, lindex, pvAspect, ptd, hdcDraw, hicTargetDev, lprcBounds, lprcWBounds, lprcUpdate, pfnContinue, dwContinue, lViewId);
     }
-    pub fn TxGetHScroll(self: *const ITextServices, plMin: ?*i32, plMax: ?*i32, plPos: ?*i32, plPage: ?*i32, pfEnabled: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn TxGetHScroll(self: *const ITextServices, plMin: ?*i32, plMax: ?*i32, plPos: ?*i32, plPage: ?*i32, pfEnabled: ?*BOOL) HRESULT {
         return self.vtable.TxGetHScroll(self, plMin, plMax, plPos, plPage, pfEnabled);
     }
-    pub fn TxGetVScroll(self: *const ITextServices, plMin: ?*i32, plMax: ?*i32, plPos: ?*i32, plPage: ?*i32, pfEnabled: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn TxGetVScroll(self: *const ITextServices, plMin: ?*i32, plMax: ?*i32, plPos: ?*i32, plPage: ?*i32, pfEnabled: ?*BOOL) HRESULT {
         return self.vtable.TxGetVScroll(self, plMin, plMax, plPos, plPage, pfEnabled);
     }
-    pub fn OnTxSetCursor(self: *const ITextServices, dwDrawAspect: DVASPECT, lindex: i32, pvAspect: ?*anyopaque, ptd: ?*DVTARGETDEVICE, hdcDraw: ?HDC, hicTargetDev: ?HDC, lprcClient: ?*RECT, x: i32, y: i32) callconv(.Inline) HRESULT {
+    pub inline fn OnTxSetCursor(self: *const ITextServices, dwDrawAspect: DVASPECT, lindex: i32, pvAspect: ?*anyopaque, ptd: ?*DVTARGETDEVICE, hdcDraw: ?HDC, hicTargetDev: ?HDC, lprcClient: ?*RECT, x: i32, y: i32) HRESULT {
         return self.vtable.OnTxSetCursor(self, dwDrawAspect, lindex, pvAspect, ptd, hdcDraw, hicTargetDev, lprcClient, x, y);
     }
-    pub fn TxQueryHitPoint(self: *const ITextServices, dwDrawAspect: DVASPECT, lindex: i32, pvAspect: ?*anyopaque, ptd: ?*DVTARGETDEVICE, hdcDraw: ?HDC, hicTargetDev: ?HDC, lprcClient: ?*RECT, x: i32, y: i32, pHitResult: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn TxQueryHitPoint(self: *const ITextServices, dwDrawAspect: DVASPECT, lindex: i32, pvAspect: ?*anyopaque, ptd: ?*DVTARGETDEVICE, hdcDraw: ?HDC, hicTargetDev: ?HDC, lprcClient: ?*RECT, x: i32, y: i32, pHitResult: ?*u32) HRESULT {
         return self.vtable.TxQueryHitPoint(self, dwDrawAspect, lindex, pvAspect, ptd, hdcDraw, hicTargetDev, lprcClient, x, y, pHitResult);
     }
-    pub fn OnTxInPlaceActivate(self: *const ITextServices, prcClient: ?*RECT) callconv(.Inline) HRESULT {
+    pub inline fn OnTxInPlaceActivate(self: *const ITextServices, prcClient: ?*RECT) HRESULT {
         return self.vtable.OnTxInPlaceActivate(self, prcClient);
     }
-    pub fn OnTxInPlaceDeactivate(self: *const ITextServices) callconv(.Inline) HRESULT {
+    pub inline fn OnTxInPlaceDeactivate(self: *const ITextServices) HRESULT {
         return self.vtable.OnTxInPlaceDeactivate(self);
     }
-    pub fn OnTxUIActivate(self: *const ITextServices) callconv(.Inline) HRESULT {
+    pub inline fn OnTxUIActivate(self: *const ITextServices) HRESULT {
         return self.vtable.OnTxUIActivate(self);
     }
-    pub fn OnTxUIDeactivate(self: *const ITextServices) callconv(.Inline) HRESULT {
+    pub inline fn OnTxUIDeactivate(self: *const ITextServices) HRESULT {
         return self.vtable.OnTxUIDeactivate(self);
     }
-    pub fn TxGetText(self: *const ITextServices, pbstrText: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn TxGetText(self: *const ITextServices, pbstrText: ?*?BSTR) HRESULT {
         return self.vtable.TxGetText(self, pbstrText);
     }
-    pub fn TxSetText(self: *const ITextServices, pszText: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn TxSetText(self: *const ITextServices, pszText: ?[*:0]const u16) HRESULT {
         return self.vtable.TxSetText(self, pszText);
     }
-    pub fn TxGetCurTargetX(self: *const ITextServices, param0: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetCurTargetX(self: *const ITextServices, param0: ?*i32) HRESULT {
         return self.vtable.TxGetCurTargetX(self, param0);
     }
-    pub fn TxGetBaseLinePos(self: *const ITextServices, param0: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetBaseLinePos(self: *const ITextServices, param0: ?*i32) HRESULT {
         return self.vtable.TxGetBaseLinePos(self, param0);
     }
-    pub fn TxGetNaturalSize(self: *const ITextServices, dwAspect: u32, hdcDraw: ?HDC, hicTargetDev: ?HDC, ptd: ?*DVTARGETDEVICE, dwMode: u32, psizelExtent: ?*const SIZE, pwidth: ?*i32, pheight: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetNaturalSize(self: *const ITextServices, dwAspect: u32, hdcDraw: ?HDC, hicTargetDev: ?HDC, ptd: ?*DVTARGETDEVICE, dwMode: u32, psizelExtent: ?*const SIZE, pwidth: ?*i32, pheight: ?*i32) HRESULT {
         return self.vtable.TxGetNaturalSize(self, dwAspect, hdcDraw, hicTargetDev, ptd, dwMode, psizelExtent, pwidth, pheight);
     }
-    pub fn TxGetDropTarget(self: *const ITextServices, ppDropTarget: ?*?*IDropTarget) callconv(.Inline) HRESULT {
+    pub inline fn TxGetDropTarget(self: *const ITextServices, ppDropTarget: ?*?*IDropTarget) HRESULT {
         return self.vtable.TxGetDropTarget(self, ppDropTarget);
     }
-    pub fn OnTxPropertyBitsChange(self: *const ITextServices, dwMask: u32, dwBits: u32) callconv(.Inline) HRESULT {
+    pub inline fn OnTxPropertyBitsChange(self: *const ITextServices, dwMask: u32, dwBits: u32) HRESULT {
         return self.vtable.OnTxPropertyBitsChange(self, dwMask, dwBits);
     }
-    pub fn TxGetCachedSize(self: *const ITextServices, pdwWidth: ?*u32, pdwHeight: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetCachedSize(self: *const ITextServices, pdwWidth: ?*u32, pdwHeight: ?*u32) HRESULT {
         return self.vtable.TxGetCachedSize(self, pdwWidth, pdwHeight);
     }
 };
@@ -1668,70 +1668,70 @@ pub const CARET_INFO = extern union {
 pub const ITextHost = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        TxGetDC: *const fn(
+        TxGetDC: *const fn (
             self: *const ITextHost,
-        ) callconv(@import("std").os.windows.WINAPI) ?HDC,
-        TxReleaseDC: *const fn(
+        ) callconv(.winapi) ?HDC,
+        TxReleaseDC: *const fn (
             self: *const ITextHost,
             hdc: ?HDC,
-        ) callconv(@import("std").os.windows.WINAPI) i32,
-        TxShowScrollBar: *const fn(
+        ) callconv(.winapi) i32,
+        TxShowScrollBar: *const fn (
             self: *const ITextHost,
             fnBar: i32,
             fShow: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxEnableScrollBar: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxEnableScrollBar: *const fn (
             self: *const ITextHost,
             fuSBFlags: SCROLLBAR_CONSTANTS,
             fuArrowflags: ENABLE_SCROLL_BAR_ARROWS,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxSetScrollRange: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxSetScrollRange: *const fn (
             self: *const ITextHost,
             fnBar: i32,
             nMinPos: i32,
             nMaxPos: i32,
             fRedraw: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxSetScrollPos: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxSetScrollPos: *const fn (
             self: *const ITextHost,
             fnBar: i32,
             nPos: i32,
             fRedraw: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxInvalidateRect: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxInvalidateRect: *const fn (
             self: *const ITextHost,
             prc: ?*RECT,
             fMode: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        TxViewChange: *const fn(
+        ) callconv(.winapi) void,
+        TxViewChange: *const fn (
             self: *const ITextHost,
             fUpdate: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        TxCreateCaret: *const fn(
+        ) callconv(.winapi) void,
+        TxCreateCaret: *const fn (
             self: *const ITextHost,
             hbmp: ?HBITMAP,
             xWidth: i32,
             yHeight: i32,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxShowCaret: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxShowCaret: *const fn (
             self: *const ITextHost,
             fShow: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxSetCaretPos: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxSetCaretPos: *const fn (
             self: *const ITextHost,
             x: i32,
             y: i32,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxSetTimer: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxSetTimer: *const fn (
             self: *const ITextHost,
             idTimer: u32,
             uTimeout: u32,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxKillTimer: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxKillTimer: *const fn (
             self: *const ITextHost,
             idTimer: u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        TxScrollWindowEx: *const fn(
+        ) callconv(.winapi) void,
+        TxScrollWindowEx: *const fn (
             self: *const ITextHost,
             dx: i32,
             dy: i32,
@@ -1740,226 +1740,226 @@ pub const ITextHost = extern union {
             hrgnUpdate: ?HRGN,
             lprcUpdate: ?*RECT,
             fuScroll: SHOW_WINDOW_CMD,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        TxSetCapture: *const fn(
+        ) callconv(.winapi) void,
+        TxSetCapture: *const fn (
             self: *const ITextHost,
             fCapture: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        TxSetFocus: *const fn(
+        ) callconv(.winapi) void,
+        TxSetFocus: *const fn (
             self: *const ITextHost,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        TxSetCursor: *const fn(
+        ) callconv(.winapi) void,
+        TxSetCursor: *const fn (
             self: *const ITextHost,
             hcur: ?HCURSOR,
             fText: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        TxScreenToClient: *const fn(
+        ) callconv(.winapi) void,
+        TxScreenToClient: *const fn (
             self: *const ITextHost,
             lppt: ?*POINT,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxClientToScreen: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxClientToScreen: *const fn (
             self: *const ITextHost,
             lppt: ?*POINT,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxActivate: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxActivate: *const fn (
             self: *const ITextHost,
             plOldState: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxDeactivate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxDeactivate: *const fn (
             self: *const ITextHost,
             lNewState: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetClientRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetClientRect: *const fn (
             self: *const ITextHost,
             prc: ?*RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetViewInset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetViewInset: *const fn (
             self: *const ITextHost,
             prc: ?*RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetCharFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetCharFormat: *const fn (
             self: *const ITextHost,
             ppCF: ?*const ?*CHARFORMATW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetParaFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetParaFormat: *const fn (
             self: *const ITextHost,
             ppPF: ?*const ?*PARAFORMAT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetSysColor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetSysColor: *const fn (
             self: *const ITextHost,
             nIndex: i32,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        TxGetBackStyle: *const fn(
+        ) callconv(.winapi) u32,
+        TxGetBackStyle: *const fn (
             self: *const ITextHost,
             pstyle: ?*TXTBACKSTYLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetMaxLength: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetMaxLength: *const fn (
             self: *const ITextHost,
             plength: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetScrollBars: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetScrollBars: *const fn (
             self: *const ITextHost,
             pdwScrollBar: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetPasswordChar: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetPasswordChar: *const fn (
             self: *const ITextHost,
             pch: ?*i8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetAcceleratorPos: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetAcceleratorPos: *const fn (
             self: *const ITextHost,
             pcp: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetExtent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetExtent: *const fn (
             self: *const ITextHost,
             lpExtent: ?*SIZE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnTxCharFormatChange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnTxCharFormatChange: *const fn (
             self: *const ITextHost,
             pCF: ?*const CHARFORMATW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnTxParaFormatChange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnTxParaFormatChange: *const fn (
             self: *const ITextHost,
             pPF: ?*const PARAFORMAT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetPropertyBits: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetPropertyBits: *const fn (
             self: *const ITextHost,
             dwMask: u32,
             pdwBits: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxNotify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxNotify: *const fn (
             self: *const ITextHost,
             iNotify: u32,
             pv: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxImmGetContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxImmGetContext: *const fn (
             self: *const ITextHost,
-        ) callconv(@import("std").os.windows.WINAPI) ?HIMC,
-        TxImmReleaseContext: *const fn(
+        ) callconv(.winapi) ?HIMC,
+        TxImmReleaseContext: *const fn (
             self: *const ITextHost,
             himc: ?HIMC,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        TxGetSelectionBarWidth: *const fn(
+        ) callconv(.winapi) void,
+        TxGetSelectionBarWidth: *const fn (
             self: *const ITextHost,
             lSelBarWidth: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn TxGetDC(self: *const ITextHost) callconv(.Inline) ?HDC {
+    pub inline fn TxGetDC(self: *const ITextHost) ?HDC {
         return self.vtable.TxGetDC(self);
     }
-    pub fn TxReleaseDC(self: *const ITextHost, hdc: ?HDC) callconv(.Inline) i32 {
+    pub inline fn TxReleaseDC(self: *const ITextHost, hdc: ?HDC) i32 {
         return self.vtable.TxReleaseDC(self, hdc);
     }
-    pub fn TxShowScrollBar(self: *const ITextHost, fnBar: i32, fShow: BOOL) callconv(.Inline) BOOL {
+    pub inline fn TxShowScrollBar(self: *const ITextHost, fnBar: i32, fShow: BOOL) BOOL {
         return self.vtable.TxShowScrollBar(self, fnBar, fShow);
     }
-    pub fn TxEnableScrollBar(self: *const ITextHost, fuSBFlags: SCROLLBAR_CONSTANTS, fuArrowflags: ENABLE_SCROLL_BAR_ARROWS) callconv(.Inline) BOOL {
+    pub inline fn TxEnableScrollBar(self: *const ITextHost, fuSBFlags: SCROLLBAR_CONSTANTS, fuArrowflags: ENABLE_SCROLL_BAR_ARROWS) BOOL {
         return self.vtable.TxEnableScrollBar(self, fuSBFlags, fuArrowflags);
     }
-    pub fn TxSetScrollRange(self: *const ITextHost, fnBar: i32, nMinPos: i32, nMaxPos: i32, fRedraw: BOOL) callconv(.Inline) BOOL {
+    pub inline fn TxSetScrollRange(self: *const ITextHost, fnBar: i32, nMinPos: i32, nMaxPos: i32, fRedraw: BOOL) BOOL {
         return self.vtable.TxSetScrollRange(self, fnBar, nMinPos, nMaxPos, fRedraw);
     }
-    pub fn TxSetScrollPos(self: *const ITextHost, fnBar: i32, nPos: i32, fRedraw: BOOL) callconv(.Inline) BOOL {
+    pub inline fn TxSetScrollPos(self: *const ITextHost, fnBar: i32, nPos: i32, fRedraw: BOOL) BOOL {
         return self.vtable.TxSetScrollPos(self, fnBar, nPos, fRedraw);
     }
-    pub fn TxInvalidateRect(self: *const ITextHost, prc: ?*RECT, fMode: BOOL) callconv(.Inline) void {
+    pub inline fn TxInvalidateRect(self: *const ITextHost, prc: ?*RECT, fMode: BOOL) void {
         return self.vtable.TxInvalidateRect(self, prc, fMode);
     }
-    pub fn TxViewChange(self: *const ITextHost, fUpdate: BOOL) callconv(.Inline) void {
+    pub inline fn TxViewChange(self: *const ITextHost, fUpdate: BOOL) void {
         return self.vtable.TxViewChange(self, fUpdate);
     }
-    pub fn TxCreateCaret(self: *const ITextHost, hbmp: ?HBITMAP, xWidth: i32, yHeight: i32) callconv(.Inline) BOOL {
+    pub inline fn TxCreateCaret(self: *const ITextHost, hbmp: ?HBITMAP, xWidth: i32, yHeight: i32) BOOL {
         return self.vtable.TxCreateCaret(self, hbmp, xWidth, yHeight);
     }
-    pub fn TxShowCaret(self: *const ITextHost, fShow: BOOL) callconv(.Inline) BOOL {
+    pub inline fn TxShowCaret(self: *const ITextHost, fShow: BOOL) BOOL {
         return self.vtable.TxShowCaret(self, fShow);
     }
-    pub fn TxSetCaretPos(self: *const ITextHost, x: i32, y: i32) callconv(.Inline) BOOL {
+    pub inline fn TxSetCaretPos(self: *const ITextHost, x: i32, y: i32) BOOL {
         return self.vtable.TxSetCaretPos(self, x, y);
     }
-    pub fn TxSetTimer(self: *const ITextHost, idTimer: u32, uTimeout: u32) callconv(.Inline) BOOL {
+    pub inline fn TxSetTimer(self: *const ITextHost, idTimer: u32, uTimeout: u32) BOOL {
         return self.vtable.TxSetTimer(self, idTimer, uTimeout);
     }
-    pub fn TxKillTimer(self: *const ITextHost, idTimer: u32) callconv(.Inline) void {
+    pub inline fn TxKillTimer(self: *const ITextHost, idTimer: u32) void {
         return self.vtable.TxKillTimer(self, idTimer);
     }
-    pub fn TxScrollWindowEx(self: *const ITextHost, dx: i32, dy: i32, lprcScroll: ?*RECT, lprcClip: ?*RECT, hrgnUpdate: ?HRGN, lprcUpdate: ?*RECT, fuScroll: SHOW_WINDOW_CMD) callconv(.Inline) void {
+    pub inline fn TxScrollWindowEx(self: *const ITextHost, dx: i32, dy: i32, lprcScroll: ?*RECT, lprcClip: ?*RECT, hrgnUpdate: ?HRGN, lprcUpdate: ?*RECT, fuScroll: SHOW_WINDOW_CMD) void {
         return self.vtable.TxScrollWindowEx(self, dx, dy, lprcScroll, lprcClip, hrgnUpdate, lprcUpdate, fuScroll);
     }
-    pub fn TxSetCapture(self: *const ITextHost, fCapture: BOOL) callconv(.Inline) void {
+    pub inline fn TxSetCapture(self: *const ITextHost, fCapture: BOOL) void {
         return self.vtable.TxSetCapture(self, fCapture);
     }
-    pub fn TxSetFocus(self: *const ITextHost) callconv(.Inline) void {
+    pub inline fn TxSetFocus(self: *const ITextHost) void {
         return self.vtable.TxSetFocus(self);
     }
-    pub fn TxSetCursor(self: *const ITextHost, hcur: ?HCURSOR, fText: BOOL) callconv(.Inline) void {
+    pub inline fn TxSetCursor(self: *const ITextHost, hcur: ?HCURSOR, fText: BOOL) void {
         return self.vtable.TxSetCursor(self, hcur, fText);
     }
-    pub fn TxScreenToClient(self: *const ITextHost, lppt: ?*POINT) callconv(.Inline) BOOL {
+    pub inline fn TxScreenToClient(self: *const ITextHost, lppt: ?*POINT) BOOL {
         return self.vtable.TxScreenToClient(self, lppt);
     }
-    pub fn TxClientToScreen(self: *const ITextHost, lppt: ?*POINT) callconv(.Inline) BOOL {
+    pub inline fn TxClientToScreen(self: *const ITextHost, lppt: ?*POINT) BOOL {
         return self.vtable.TxClientToScreen(self, lppt);
     }
-    pub fn TxActivate(self: *const ITextHost, plOldState: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn TxActivate(self: *const ITextHost, plOldState: ?*i32) HRESULT {
         return self.vtable.TxActivate(self, plOldState);
     }
-    pub fn TxDeactivate(self: *const ITextHost, lNewState: i32) callconv(.Inline) HRESULT {
+    pub inline fn TxDeactivate(self: *const ITextHost, lNewState: i32) HRESULT {
         return self.vtable.TxDeactivate(self, lNewState);
     }
-    pub fn TxGetClientRect(self: *const ITextHost, prc: ?*RECT) callconv(.Inline) HRESULT {
+    pub inline fn TxGetClientRect(self: *const ITextHost, prc: ?*RECT) HRESULT {
         return self.vtable.TxGetClientRect(self, prc);
     }
-    pub fn TxGetViewInset(self: *const ITextHost, prc: ?*RECT) callconv(.Inline) HRESULT {
+    pub inline fn TxGetViewInset(self: *const ITextHost, prc: ?*RECT) HRESULT {
         return self.vtable.TxGetViewInset(self, prc);
     }
-    pub fn TxGetCharFormat(self: *const ITextHost, ppCF: ?*const ?*CHARFORMATW) callconv(.Inline) HRESULT {
+    pub inline fn TxGetCharFormat(self: *const ITextHost, ppCF: ?*const ?*CHARFORMATW) HRESULT {
         return self.vtable.TxGetCharFormat(self, ppCF);
     }
-    pub fn TxGetParaFormat(self: *const ITextHost, ppPF: ?*const ?*PARAFORMAT) callconv(.Inline) HRESULT {
+    pub inline fn TxGetParaFormat(self: *const ITextHost, ppPF: ?*const ?*PARAFORMAT) HRESULT {
         return self.vtable.TxGetParaFormat(self, ppPF);
     }
-    pub fn TxGetSysColor(self: *const ITextHost, nIndex: i32) callconv(.Inline) u32 {
+    pub inline fn TxGetSysColor(self: *const ITextHost, nIndex: i32) u32 {
         return self.vtable.TxGetSysColor(self, nIndex);
     }
-    pub fn TxGetBackStyle(self: *const ITextHost, pstyle: ?*TXTBACKSTYLE) callconv(.Inline) HRESULT {
+    pub inline fn TxGetBackStyle(self: *const ITextHost, pstyle: ?*TXTBACKSTYLE) HRESULT {
         return self.vtable.TxGetBackStyle(self, pstyle);
     }
-    pub fn TxGetMaxLength(self: *const ITextHost, plength: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetMaxLength(self: *const ITextHost, plength: ?*u32) HRESULT {
         return self.vtable.TxGetMaxLength(self, plength);
     }
-    pub fn TxGetScrollBars(self: *const ITextHost, pdwScrollBar: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetScrollBars(self: *const ITextHost, pdwScrollBar: ?*u32) HRESULT {
         return self.vtable.TxGetScrollBars(self, pdwScrollBar);
     }
-    pub fn TxGetPasswordChar(self: *const ITextHost, pch: ?*i8) callconv(.Inline) HRESULT {
+    pub inline fn TxGetPasswordChar(self: *const ITextHost, pch: ?*i8) HRESULT {
         return self.vtable.TxGetPasswordChar(self, pch);
     }
-    pub fn TxGetAcceleratorPos(self: *const ITextHost, pcp: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetAcceleratorPos(self: *const ITextHost, pcp: ?*i32) HRESULT {
         return self.vtable.TxGetAcceleratorPos(self, pcp);
     }
-    pub fn TxGetExtent(self: *const ITextHost, lpExtent: ?*SIZE) callconv(.Inline) HRESULT {
+    pub inline fn TxGetExtent(self: *const ITextHost, lpExtent: ?*SIZE) HRESULT {
         return self.vtable.TxGetExtent(self, lpExtent);
     }
-    pub fn OnTxCharFormatChange(self: *const ITextHost, pCF: ?*const CHARFORMATW) callconv(.Inline) HRESULT {
+    pub inline fn OnTxCharFormatChange(self: *const ITextHost, pCF: ?*const CHARFORMATW) HRESULT {
         return self.vtable.OnTxCharFormatChange(self, pCF);
     }
-    pub fn OnTxParaFormatChange(self: *const ITextHost, pPF: ?*const PARAFORMAT) callconv(.Inline) HRESULT {
+    pub inline fn OnTxParaFormatChange(self: *const ITextHost, pPF: ?*const PARAFORMAT) HRESULT {
         return self.vtable.OnTxParaFormatChange(self, pPF);
     }
-    pub fn TxGetPropertyBits(self: *const ITextHost, dwMask: u32, pdwBits: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetPropertyBits(self: *const ITextHost, dwMask: u32, pdwBits: ?*u32) HRESULT {
         return self.vtable.TxGetPropertyBits(self, dwMask, pdwBits);
     }
-    pub fn TxNotify(self: *const ITextHost, iNotify: u32, pv: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn TxNotify(self: *const ITextHost, iNotify: u32, pv: ?*anyopaque) HRESULT {
         return self.vtable.TxNotify(self, iNotify, pv);
     }
-    pub fn TxImmGetContext(self: *const ITextHost) callconv(.Inline) ?HIMC {
+    pub inline fn TxImmGetContext(self: *const ITextHost) ?HIMC {
         return self.vtable.TxImmGetContext(self);
     }
-    pub fn TxImmReleaseContext(self: *const ITextHost, himc: ?HIMC) callconv(.Inline) void {
+    pub inline fn TxImmReleaseContext(self: *const ITextHost, himc: ?HIMC) void {
         return self.vtable.TxImmReleaseContext(self, himc);
     }
-    pub fn TxGetSelectionBarWidth(self: *const ITextHost, lSelBarWidth: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetSelectionBarWidth(self: *const ITextHost, lSelBarWidth: ?*i32) HRESULT {
         return self.vtable.TxGetSelectionBarWidth(self, lSelBarWidth);
     }
 };
@@ -1968,118 +1968,118 @@ pub const ITextHost = extern union {
 pub const IRicheditUiaOverrides = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetPropertyOverrideValue: *const fn(
+        GetPropertyOverrideValue: *const fn (
             self: *const IRicheditUiaOverrides,
             propertyId: i32,
             pRetValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetPropertyOverrideValue(self: *const IRicheditUiaOverrides, propertyId: i32, pRetValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyOverrideValue(self: *const IRicheditUiaOverrides, propertyId: i32, pRetValue: ?*VARIANT) HRESULT {
         return self.vtable.GetPropertyOverrideValue(self, propertyId, pRetValue);
     }
 };
 
-pub const PCreateTextServices = *const fn(
+pub const PCreateTextServices = *const fn (
     punkOuter: ?*IUnknown,
     pITextHost: ?*ITextHost,
     ppUnk: ?*?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const PShutdownTextServices = *const fn(
+pub const PShutdownTextServices = *const fn (
     pTextServices: ?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub const ITextHost2 = extern union {
     pub const VTable = extern struct {
         base: ITextHost.VTable,
-        TxIsDoubleClickPending: *const fn(
+        TxIsDoubleClickPending: *const fn (
             self: *const ITextHost2,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        TxGetWindow: *const fn(
+        ) callconv(.winapi) BOOL,
+        TxGetWindow: *const fn (
             self: *const ITextHost2,
             phwnd: ?*?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxSetForegroundWindow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxSetForegroundWindow: *const fn (
             self: *const ITextHost2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetPalette: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetPalette: *const fn (
             self: *const ITextHost2,
-        ) callconv(@import("std").os.windows.WINAPI) ?HPALETTE,
-        TxGetEastAsianFlags: *const fn(
+        ) callconv(.winapi) ?HPALETTE,
+        TxGetEastAsianFlags: *const fn (
             self: *const ITextHost2,
             pFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxSetCursor2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxSetCursor2: *const fn (
             self: *const ITextHost2,
             hcur: ?HCURSOR,
             bText: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) ?HCURSOR,
-        TxFreeTextServicesNotification: *const fn(
+        ) callconv(.winapi) ?HCURSOR,
+        TxFreeTextServicesNotification: *const fn (
             self: *const ITextHost2,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        TxGetEditStyle: *const fn(
+        ) callconv(.winapi) void,
+        TxGetEditStyle: *const fn (
             self: *const ITextHost2,
             dwItem: u32,
             pdwData: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetWindowStyles: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetWindowStyles: *const fn (
             self: *const ITextHost2,
             pdwStyle: ?*u32,
             pdwExStyle: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxShowDropCaret: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxShowDropCaret: *const fn (
             self: *const ITextHost2,
             fShow: BOOL,
             hdc: ?HDC,
             prc: ?*RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxDestroyCaret: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxDestroyCaret: *const fn (
             self: *const ITextHost2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxGetHorzExtent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxGetHorzExtent: *const fn (
             self: *const ITextHost2,
             plHorzExtent: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextHost: ITextHost,
     IUnknown: IUnknown,
-    pub fn TxIsDoubleClickPending(self: *const ITextHost2) callconv(.Inline) BOOL {
+    pub inline fn TxIsDoubleClickPending(self: *const ITextHost2) BOOL {
         return self.vtable.TxIsDoubleClickPending(self);
     }
-    pub fn TxGetWindow(self: *const ITextHost2, phwnd: ?*?HWND) callconv(.Inline) HRESULT {
+    pub inline fn TxGetWindow(self: *const ITextHost2, phwnd: ?*?HWND) HRESULT {
         return self.vtable.TxGetWindow(self, phwnd);
     }
-    pub fn TxSetForegroundWindow(self: *const ITextHost2) callconv(.Inline) HRESULT {
+    pub inline fn TxSetForegroundWindow(self: *const ITextHost2) HRESULT {
         return self.vtable.TxSetForegroundWindow(self);
     }
-    pub fn TxGetPalette(self: *const ITextHost2) callconv(.Inline) ?HPALETTE {
+    pub inline fn TxGetPalette(self: *const ITextHost2) ?HPALETTE {
         return self.vtable.TxGetPalette(self);
     }
-    pub fn TxGetEastAsianFlags(self: *const ITextHost2, pFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetEastAsianFlags(self: *const ITextHost2, pFlags: ?*i32) HRESULT {
         return self.vtable.TxGetEastAsianFlags(self, pFlags);
     }
-    pub fn TxSetCursor2(self: *const ITextHost2, hcur: ?HCURSOR, bText: BOOL) callconv(.Inline) ?HCURSOR {
+    pub inline fn TxSetCursor2(self: *const ITextHost2, hcur: ?HCURSOR, bText: BOOL) ?HCURSOR {
         return self.vtable.TxSetCursor2(self, hcur, bText);
     }
-    pub fn TxFreeTextServicesNotification(self: *const ITextHost2) callconv(.Inline) void {
+    pub inline fn TxFreeTextServicesNotification(self: *const ITextHost2) void {
         return self.vtable.TxFreeTextServicesNotification(self);
     }
-    pub fn TxGetEditStyle(self: *const ITextHost2, dwItem: u32, pdwData: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetEditStyle(self: *const ITextHost2, dwItem: u32, pdwData: ?*u32) HRESULT {
         return self.vtable.TxGetEditStyle(self, dwItem, pdwData);
     }
-    pub fn TxGetWindowStyles(self: *const ITextHost2, pdwStyle: ?*u32, pdwExStyle: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetWindowStyles(self: *const ITextHost2, pdwStyle: ?*u32, pdwExStyle: ?*u32) HRESULT {
         return self.vtable.TxGetWindowStyles(self, pdwStyle, pdwExStyle);
     }
-    pub fn TxShowDropCaret(self: *const ITextHost2, fShow: BOOL, hdc: ?HDC, prc: ?*RECT) callconv(.Inline) HRESULT {
+    pub inline fn TxShowDropCaret(self: *const ITextHost2, fShow: BOOL, hdc: ?HDC, prc: ?*RECT) HRESULT {
         return self.vtable.TxShowDropCaret(self, fShow, hdc, prc);
     }
-    pub fn TxDestroyCaret(self: *const ITextHost2) callconv(.Inline) HRESULT {
+    pub inline fn TxDestroyCaret(self: *const ITextHost2) HRESULT {
         return self.vtable.TxDestroyCaret(self);
     }
-    pub fn TxGetHorzExtent(self: *const ITextHost2, plHorzExtent: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetHorzExtent(self: *const ITextHost2, plHorzExtent: ?*i32) HRESULT {
         return self.vtable.TxGetHorzExtent(self, plHorzExtent);
     }
 };
@@ -2087,7 +2087,7 @@ pub const ITextHost2 = extern union {
 pub const ITextServices2 = extern union {
     pub const VTable = extern struct {
         base: ITextServices.VTable,
-        TxGetNaturalSize2: *const fn(
+        TxGetNaturalSize2: *const fn (
             self: *const ITextServices2,
             dwAspect: u32,
             hdcDraw: ?HDC,
@@ -2098,22 +2098,22 @@ pub const ITextServices2 = extern union {
             pwidth: ?*i32,
             pheight: ?*i32,
             pascent: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TxDrawD2D: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TxDrawD2D: *const fn (
             self: *const ITextServices2,
             pRenderTarget: ?*ID2D1RenderTarget,
             lprcBounds: ?*RECTL,
             lprcUpdate: ?*RECT,
             lViewId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextServices: ITextServices,
     IUnknown: IUnknown,
-    pub fn TxGetNaturalSize2(self: *const ITextServices2, dwAspect: u32, hdcDraw: ?HDC, hicTargetDev: ?HDC, ptd: ?*DVTARGETDEVICE, dwMode: u32, psizelExtent: ?*const SIZE, pwidth: ?*i32, pheight: ?*i32, pascent: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn TxGetNaturalSize2(self: *const ITextServices2, dwAspect: u32, hdcDraw: ?HDC, hicTargetDev: ?HDC, ptd: ?*DVTARGETDEVICE, dwMode: u32, psizelExtent: ?*const SIZE, pwidth: ?*i32, pheight: ?*i32, pascent: ?*i32) HRESULT {
         return self.vtable.TxGetNaturalSize2(self, dwAspect, hdcDraw, hicTargetDev, ptd, dwMode, psizelExtent, pwidth, pheight, pascent);
     }
-    pub fn TxDrawD2D(self: *const ITextServices2, pRenderTarget: ?*ID2D1RenderTarget, lprcBounds: ?*RECTL, lprcUpdate: ?*RECT, lViewId: i32) callconv(.Inline) HRESULT {
+    pub inline fn TxDrawD2D(self: *const ITextServices2, pRenderTarget: ?*ID2D1RenderTarget, lprcBounds: ?*RECTL, lprcUpdate: ?*RECT, lViewId: i32) HRESULT {
         return self.vtable.TxDrawD2D(self, pRenderTarget, lprcBounds, lprcUpdate, lViewId);
     }
 };
@@ -2137,129 +2137,129 @@ pub const IID_IRichEditOle = &IID_IRichEditOle_Value;
 pub const IRichEditOle = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetClientSite: *const fn(
+        GetClientSite: *const fn (
             self: *const IRichEditOle,
             lplpolesite: ?*?*IOleClientSite,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObjectCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObjectCount: *const fn (
             self: *const IRichEditOle,
-        ) callconv(@import("std").os.windows.WINAPI) i32,
-        GetLinkCount: *const fn(
+        ) callconv(.winapi) i32,
+        GetLinkCount: *const fn (
             self: *const IRichEditOle,
-        ) callconv(@import("std").os.windows.WINAPI) i32,
-        GetObject: *const fn(
+        ) callconv(.winapi) i32,
+        GetObject: *const fn (
             self: *const IRichEditOle,
             iob: i32,
             lpreobject: ?*REOBJECT,
             dwFlags: RICH_EDIT_GET_OBJECT_FLAGS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InsertObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InsertObject: *const fn (
             self: *const IRichEditOle,
             lpreobject: ?*REOBJECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertObject: *const fn (
             self: *const IRichEditOle,
             iob: i32,
             rclsidNew: ?*const Guid,
             lpstrUserTypeNew: ?[*:0]const u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ActivateAs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ActivateAs: *const fn (
             self: *const IRichEditOle,
             rclsid: ?*const Guid,
             rclsidAs: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHostNames: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHostNames: *const fn (
             self: *const IRichEditOle,
             lpstrContainerApp: ?[*:0]const u8,
             lpstrContainerObj: ?[*:0]const u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLinkAvailable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLinkAvailable: *const fn (
             self: *const IRichEditOle,
             iob: i32,
             fAvailable: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDvaspect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDvaspect: *const fn (
             self: *const IRichEditOle,
             iob: i32,
             dvaspect: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        HandsOffStorage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        HandsOffStorage: *const fn (
             self: *const IRichEditOle,
             iob: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SaveCompleted: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SaveCompleted: *const fn (
             self: *const IRichEditOle,
             iob: i32,
             lpstg: ?*IStorage,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InPlaceDeactivate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InPlaceDeactivate: *const fn (
             self: *const IRichEditOle,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ContextSensitiveHelp: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ContextSensitiveHelp: *const fn (
             self: *const IRichEditOle,
             fEnterMode: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetClipboardData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetClipboardData: *const fn (
             self: *const IRichEditOle,
             lpchrg: ?*CHARRANGE,
             reco: u32,
             lplpdataobj: ?*?*IDataObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ImportDataObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ImportDataObject: *const fn (
             self: *const IRichEditOle,
             lpdataobj: ?*IDataObject,
             cf: u16,
             hMetaPict: isize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetClientSite(self: *const IRichEditOle, lplpolesite: ?*?*IOleClientSite) callconv(.Inline) HRESULT {
+    pub inline fn GetClientSite(self: *const IRichEditOle, lplpolesite: ?*?*IOleClientSite) HRESULT {
         return self.vtable.GetClientSite(self, lplpolesite);
     }
-    pub fn GetObjectCount(self: *const IRichEditOle) callconv(.Inline) i32 {
+    pub inline fn GetObjectCount(self: *const IRichEditOle) i32 {
         return self.vtable.GetObjectCount(self);
     }
-    pub fn GetLinkCount(self: *const IRichEditOle) callconv(.Inline) i32 {
+    pub inline fn GetLinkCount(self: *const IRichEditOle) i32 {
         return self.vtable.GetLinkCount(self);
     }
-    pub fn GetObject(self: *const IRichEditOle, iob: i32, lpreobject: ?*REOBJECT, dwFlags: RICH_EDIT_GET_OBJECT_FLAGS) callconv(.Inline) HRESULT {
+    pub inline fn GetObject(self: *const IRichEditOle, iob: i32, lpreobject: ?*REOBJECT, dwFlags: RICH_EDIT_GET_OBJECT_FLAGS) HRESULT {
         return self.vtable.GetObject(self, iob, lpreobject, dwFlags);
     }
-    pub fn InsertObject(self: *const IRichEditOle, lpreobject: ?*REOBJECT) callconv(.Inline) HRESULT {
+    pub inline fn InsertObject(self: *const IRichEditOle, lpreobject: ?*REOBJECT) HRESULT {
         return self.vtable.InsertObject(self, lpreobject);
     }
-    pub fn ConvertObject(self: *const IRichEditOle, iob: i32, rclsidNew: ?*const Guid, lpstrUserTypeNew: ?[*:0]const u8) callconv(.Inline) HRESULT {
+    pub inline fn ConvertObject(self: *const IRichEditOle, iob: i32, rclsidNew: ?*const Guid, lpstrUserTypeNew: ?[*:0]const u8) HRESULT {
         return self.vtable.ConvertObject(self, iob, rclsidNew, lpstrUserTypeNew);
     }
-    pub fn ActivateAs(self: *const IRichEditOle, rclsid: ?*const Guid, rclsidAs: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn ActivateAs(self: *const IRichEditOle, rclsid: ?*const Guid, rclsidAs: ?*const Guid) HRESULT {
         return self.vtable.ActivateAs(self, rclsid, rclsidAs);
     }
-    pub fn SetHostNames(self: *const IRichEditOle, lpstrContainerApp: ?[*:0]const u8, lpstrContainerObj: ?[*:0]const u8) callconv(.Inline) HRESULT {
+    pub inline fn SetHostNames(self: *const IRichEditOle, lpstrContainerApp: ?[*:0]const u8, lpstrContainerObj: ?[*:0]const u8) HRESULT {
         return self.vtable.SetHostNames(self, lpstrContainerApp, lpstrContainerObj);
     }
-    pub fn SetLinkAvailable(self: *const IRichEditOle, iob: i32, fAvailable: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn SetLinkAvailable(self: *const IRichEditOle, iob: i32, fAvailable: BOOL) HRESULT {
         return self.vtable.SetLinkAvailable(self, iob, fAvailable);
     }
-    pub fn SetDvaspect(self: *const IRichEditOle, iob: i32, dvaspect: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetDvaspect(self: *const IRichEditOle, iob: i32, dvaspect: u32) HRESULT {
         return self.vtable.SetDvaspect(self, iob, dvaspect);
     }
-    pub fn HandsOffStorage(self: *const IRichEditOle, iob: i32) callconv(.Inline) HRESULT {
+    pub inline fn HandsOffStorage(self: *const IRichEditOle, iob: i32) HRESULT {
         return self.vtable.HandsOffStorage(self, iob);
     }
-    pub fn SaveCompleted(self: *const IRichEditOle, iob: i32, lpstg: ?*IStorage) callconv(.Inline) HRESULT {
+    pub inline fn SaveCompleted(self: *const IRichEditOle, iob: i32, lpstg: ?*IStorage) HRESULT {
         return self.vtable.SaveCompleted(self, iob, lpstg);
     }
-    pub fn InPlaceDeactivate(self: *const IRichEditOle) callconv(.Inline) HRESULT {
+    pub inline fn InPlaceDeactivate(self: *const IRichEditOle) HRESULT {
         return self.vtable.InPlaceDeactivate(self);
     }
-    pub fn ContextSensitiveHelp(self: *const IRichEditOle, fEnterMode: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn ContextSensitiveHelp(self: *const IRichEditOle, fEnterMode: BOOL) HRESULT {
         return self.vtable.ContextSensitiveHelp(self, fEnterMode);
     }
-    pub fn GetClipboardData(self: *const IRichEditOle, lpchrg: ?*CHARRANGE, reco: u32, lplpdataobj: ?*?*IDataObject) callconv(.Inline) HRESULT {
+    pub inline fn GetClipboardData(self: *const IRichEditOle, lpchrg: ?*CHARRANGE, reco: u32, lplpdataobj: ?*?*IDataObject) HRESULT {
         return self.vtable.GetClipboardData(self, lpchrg, reco, lplpdataobj);
     }
-    pub fn ImportDataObject(self: *const IRichEditOle, lpdataobj: ?*IDataObject, cf: u16, hMetaPict: isize) callconv(.Inline) HRESULT {
+    pub inline fn ImportDataObject(self: *const IRichEditOle, lpdataobj: ?*IDataObject, cf: u16, hMetaPict: isize) HRESULT {
         return self.vtable.ImportDataObject(self, lpdataobj, cf, hMetaPict);
     }
 };
@@ -2270,92 +2270,92 @@ pub const IID_IRichEditOleCallback = &IID_IRichEditOleCallback_Value;
 pub const IRichEditOleCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetNewStorage: *const fn(
+        GetNewStorage: *const fn (
             self: *const IRichEditOleCallback,
             lplpstg: ?*?*IStorage,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInPlaceContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInPlaceContext: *const fn (
             self: *const IRichEditOleCallback,
             lplpFrame: ?*?*IOleInPlaceFrame,
             lplpDoc: ?*?*IOleInPlaceUIWindow,
             lpFrameInfo: ?*OIFI,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ShowContainerUI: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ShowContainerUI: *const fn (
             self: *const IRichEditOleCallback,
             fShow: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryInsertObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryInsertObject: *const fn (
             self: *const IRichEditOleCallback,
             lpclsid: ?*Guid,
             lpstg: ?*IStorage,
             cp: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteObject: *const fn (
             self: *const IRichEditOleCallback,
             lpoleobj: ?*IOleObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryAcceptData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryAcceptData: *const fn (
             self: *const IRichEditOleCallback,
             lpdataobj: ?*IDataObject,
             lpcfFormat: ?*u16,
             reco: u32,
             fReally: BOOL,
             hMetaPict: isize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ContextSensitiveHelp: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ContextSensitiveHelp: *const fn (
             self: *const IRichEditOleCallback,
             fEnterMode: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetClipboardData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetClipboardData: *const fn (
             self: *const IRichEditOleCallback,
             lpchrg: ?*CHARRANGE,
             reco: u32,
             lplpdataobj: ?*?*IDataObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDragDropEffect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDragDropEffect: *const fn (
             self: *const IRichEditOleCallback,
             fDrag: BOOL,
             grfKeyState: u32,
             pdwEffect: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetContextMenu: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetContextMenu: *const fn (
             self: *const IRichEditOleCallback,
             seltype: RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE,
             lpoleobj: ?*IOleObject,
             lpchrg: ?*CHARRANGE,
             lphmenu: ?*?HMENU,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetNewStorage(self: *const IRichEditOleCallback, lplpstg: ?*?*IStorage) callconv(.Inline) HRESULT {
+    pub inline fn GetNewStorage(self: *const IRichEditOleCallback, lplpstg: ?*?*IStorage) HRESULT {
         return self.vtable.GetNewStorage(self, lplpstg);
     }
-    pub fn GetInPlaceContext(self: *const IRichEditOleCallback, lplpFrame: ?*?*IOleInPlaceFrame, lplpDoc: ?*?*IOleInPlaceUIWindow, lpFrameInfo: ?*OIFI) callconv(.Inline) HRESULT {
+    pub inline fn GetInPlaceContext(self: *const IRichEditOleCallback, lplpFrame: ?*?*IOleInPlaceFrame, lplpDoc: ?*?*IOleInPlaceUIWindow, lpFrameInfo: ?*OIFI) HRESULT {
         return self.vtable.GetInPlaceContext(self, lplpFrame, lplpDoc, lpFrameInfo);
     }
-    pub fn ShowContainerUI(self: *const IRichEditOleCallback, fShow: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn ShowContainerUI(self: *const IRichEditOleCallback, fShow: BOOL) HRESULT {
         return self.vtable.ShowContainerUI(self, fShow);
     }
-    pub fn QueryInsertObject(self: *const IRichEditOleCallback, lpclsid: ?*Guid, lpstg: ?*IStorage, cp: i32) callconv(.Inline) HRESULT {
+    pub inline fn QueryInsertObject(self: *const IRichEditOleCallback, lpclsid: ?*Guid, lpstg: ?*IStorage, cp: i32) HRESULT {
         return self.vtable.QueryInsertObject(self, lpclsid, lpstg, cp);
     }
-    pub fn DeleteObject(self: *const IRichEditOleCallback, lpoleobj: ?*IOleObject) callconv(.Inline) HRESULT {
+    pub inline fn DeleteObject(self: *const IRichEditOleCallback, lpoleobj: ?*IOleObject) HRESULT {
         return self.vtable.DeleteObject(self, lpoleobj);
     }
-    pub fn QueryAcceptData(self: *const IRichEditOleCallback, lpdataobj: ?*IDataObject, lpcfFormat: ?*u16, reco: u32, fReally: BOOL, hMetaPict: isize) callconv(.Inline) HRESULT {
+    pub inline fn QueryAcceptData(self: *const IRichEditOleCallback, lpdataobj: ?*IDataObject, lpcfFormat: ?*u16, reco: u32, fReally: BOOL, hMetaPict: isize) HRESULT {
         return self.vtable.QueryAcceptData(self, lpdataobj, lpcfFormat, reco, fReally, hMetaPict);
     }
-    pub fn ContextSensitiveHelp(self: *const IRichEditOleCallback, fEnterMode: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn ContextSensitiveHelp(self: *const IRichEditOleCallback, fEnterMode: BOOL) HRESULT {
         return self.vtable.ContextSensitiveHelp(self, fEnterMode);
     }
-    pub fn GetClipboardData(self: *const IRichEditOleCallback, lpchrg: ?*CHARRANGE, reco: u32, lplpdataobj: ?*?*IDataObject) callconv(.Inline) HRESULT {
+    pub inline fn GetClipboardData(self: *const IRichEditOleCallback, lpchrg: ?*CHARRANGE, reco: u32, lplpdataobj: ?*?*IDataObject) HRESULT {
         return self.vtable.GetClipboardData(self, lpchrg, reco, lplpdataobj);
     }
-    pub fn GetDragDropEffect(self: *const IRichEditOleCallback, fDrag: BOOL, grfKeyState: u32, pdwEffect: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDragDropEffect(self: *const IRichEditOleCallback, fDrag: BOOL, grfKeyState: u32, pdwEffect: ?*u32) HRESULT {
         return self.vtable.GetDragDropEffect(self, fDrag, grfKeyState, pdwEffect);
     }
-    pub fn GetContextMenu(self: *const IRichEditOleCallback, seltype: RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE, lpoleobj: ?*IOleObject, lpchrg: ?*CHARRANGE, lphmenu: ?*?HMENU) callconv(.Inline) HRESULT {
+    pub inline fn GetContextMenu(self: *const IRichEditOleCallback, seltype: RICH_EDIT_GET_CONTEXT_MENU_SEL_TYPE, lpoleobj: ?*IOleObject, lpchrg: ?*CHARRANGE, lphmenu: ?*?HMENU) HRESULT {
         return self.vtable.GetContextMenu(self, seltype, lpoleobj, lpchrg, lphmenu);
     }
 };
@@ -3637,148 +3637,148 @@ pub const IID_ITextDocument = &IID_ITextDocument_Value;
 pub const ITextDocument = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetName: *const fn(
+        GetName: *const fn (
             self: *const ITextDocument,
             pName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSelection: *const fn (
             self: *const ITextDocument,
             ppSel: ?*?*ITextSelection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStoryCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStoryCount: *const fn (
             self: *const ITextDocument,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStoryRanges: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStoryRanges: *const fn (
             self: *const ITextDocument,
             ppStories: ?*?*ITextStoryRanges,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSaved: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSaved: *const fn (
             self: *const ITextDocument,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSaved: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSaved: *const fn (
             self: *const ITextDocument,
             Value: tomConstants,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDefaultTabStop: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDefaultTabStop: *const fn (
             self: *const ITextDocument,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDefaultTabStop: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDefaultTabStop: *const fn (
             self: *const ITextDocument,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        New: *const fn(
+        ) callconv(.winapi) HRESULT,
+        New: *const fn (
             self: *const ITextDocument,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Open: *const fn(
-            self: *const ITextDocument,
-            pVar: ?*VARIANT,
-            Flags: i32,
-            CodePage: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Save: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Open: *const fn (
             self: *const ITextDocument,
             pVar: ?*VARIANT,
             Flags: i32,
             CodePage: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Freeze: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Save: *const fn (
+            self: *const ITextDocument,
+            pVar: ?*VARIANT,
+            Flags: i32,
+            CodePage: i32,
+        ) callconv(.winapi) HRESULT,
+        Freeze: *const fn (
             self: *const ITextDocument,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unfreeze: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unfreeze: *const fn (
             self: *const ITextDocument,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BeginEditCollection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BeginEditCollection: *const fn (
             self: *const ITextDocument,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndEditCollection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndEditCollection: *const fn (
             self: *const ITextDocument,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Undo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Undo: *const fn (
             self: *const ITextDocument,
             Count: i32,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Redo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Redo: *const fn (
             self: *const ITextDocument,
             Count: i32,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Range: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Range: *const fn (
             self: *const ITextDocument,
             cpActive: i32,
             cpAnchor: i32,
             ppRange: ?*?*ITextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RangeFromPoint: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RangeFromPoint: *const fn (
             self: *const ITextDocument,
             x: i32,
             y: i32,
             ppRange: ?*?*ITextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetName(self: *const ITextDocument, pName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetName(self: *const ITextDocument, pName: ?*?BSTR) HRESULT {
         return self.vtable.GetName(self, pName);
     }
-    pub fn GetSelection(self: *const ITextDocument, ppSel: ?*?*ITextSelection) callconv(.Inline) HRESULT {
+    pub inline fn GetSelection(self: *const ITextDocument, ppSel: ?*?*ITextSelection) HRESULT {
         return self.vtable.GetSelection(self, ppSel);
     }
-    pub fn GetStoryCount(self: *const ITextDocument, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStoryCount(self: *const ITextDocument, pCount: ?*i32) HRESULT {
         return self.vtable.GetStoryCount(self, pCount);
     }
-    pub fn GetStoryRanges(self: *const ITextDocument, ppStories: ?*?*ITextStoryRanges) callconv(.Inline) HRESULT {
+    pub inline fn GetStoryRanges(self: *const ITextDocument, ppStories: ?*?*ITextStoryRanges) HRESULT {
         return self.vtable.GetStoryRanges(self, ppStories);
     }
-    pub fn GetSaved(self: *const ITextDocument, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetSaved(self: *const ITextDocument, pValue: ?*i32) HRESULT {
         return self.vtable.GetSaved(self, pValue);
     }
-    pub fn SetSaved(self: *const ITextDocument, Value: tomConstants) callconv(.Inline) HRESULT {
+    pub inline fn SetSaved(self: *const ITextDocument, Value: tomConstants) HRESULT {
         return self.vtable.SetSaved(self, Value);
     }
-    pub fn GetDefaultTabStop(self: *const ITextDocument, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetDefaultTabStop(self: *const ITextDocument, pValue: ?*f32) HRESULT {
         return self.vtable.GetDefaultTabStop(self, pValue);
     }
-    pub fn SetDefaultTabStop(self: *const ITextDocument, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetDefaultTabStop(self: *const ITextDocument, Value: f32) HRESULT {
         return self.vtable.SetDefaultTabStop(self, Value);
     }
-    pub fn New(self: *const ITextDocument) callconv(.Inline) HRESULT {
+    pub inline fn New(self: *const ITextDocument) HRESULT {
         return self.vtable.New(self);
     }
-    pub fn Open(self: *const ITextDocument, pVar: ?*VARIANT, Flags: i32, CodePage: i32) callconv(.Inline) HRESULT {
+    pub inline fn Open(self: *const ITextDocument, pVar: ?*VARIANT, Flags: i32, CodePage: i32) HRESULT {
         return self.vtable.Open(self, pVar, Flags, CodePage);
     }
-    pub fn Save(self: *const ITextDocument, pVar: ?*VARIANT, Flags: i32, CodePage: i32) callconv(.Inline) HRESULT {
+    pub inline fn Save(self: *const ITextDocument, pVar: ?*VARIANT, Flags: i32, CodePage: i32) HRESULT {
         return self.vtable.Save(self, pVar, Flags, CodePage);
     }
-    pub fn Freeze(self: *const ITextDocument, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Freeze(self: *const ITextDocument, pCount: ?*i32) HRESULT {
         return self.vtable.Freeze(self, pCount);
     }
-    pub fn Unfreeze(self: *const ITextDocument, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Unfreeze(self: *const ITextDocument, pCount: ?*i32) HRESULT {
         return self.vtable.Unfreeze(self, pCount);
     }
-    pub fn BeginEditCollection(self: *const ITextDocument) callconv(.Inline) HRESULT {
+    pub inline fn BeginEditCollection(self: *const ITextDocument) HRESULT {
         return self.vtable.BeginEditCollection(self);
     }
-    pub fn EndEditCollection(self: *const ITextDocument) callconv(.Inline) HRESULT {
+    pub inline fn EndEditCollection(self: *const ITextDocument) HRESULT {
         return self.vtable.EndEditCollection(self);
     }
-    pub fn Undo(self: *const ITextDocument, Count: i32, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Undo(self: *const ITextDocument, Count: i32, pCount: ?*i32) HRESULT {
         return self.vtable.Undo(self, Count, pCount);
     }
-    pub fn Redo(self: *const ITextDocument, Count: i32, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Redo(self: *const ITextDocument, Count: i32, pCount: ?*i32) HRESULT {
         return self.vtable.Redo(self, Count, pCount);
     }
-    pub fn Range(self: *const ITextDocument, cpActive: i32, cpAnchor: i32, ppRange: ?*?*ITextRange) callconv(.Inline) HRESULT {
+    pub inline fn Range(self: *const ITextDocument, cpActive: i32, cpAnchor: i32, ppRange: ?*?*ITextRange) HRESULT {
         return self.vtable.Range(self, cpActive, cpAnchor, ppRange);
     }
-    pub fn RangeFromPoint(self: *const ITextDocument, x: i32, y: i32, ppRange: ?*?*ITextRange) callconv(.Inline) HRESULT {
+    pub inline fn RangeFromPoint(self: *const ITextDocument, x: i32, y: i32, ppRange: ?*?*ITextRange) HRESULT {
         return self.vtable.RangeFromPoint(self, x, y, ppRange);
     }
 };
@@ -3789,413 +3789,413 @@ pub const IID_ITextRange = &IID_ITextRange_Value;
 pub const ITextRange = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetText: *const fn(
+        GetText: *const fn (
             self: *const ITextRange,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetText: *const fn (
             self: *const ITextRange,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChar: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChar: *const fn (
             self: *const ITextRange,
             pChar: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetChar: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetChar: *const fn (
             self: *const ITextRange,
             Char: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDuplicate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDuplicate: *const fn (
             self: *const ITextRange,
             ppRange: ?*?*ITextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFormattedText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFormattedText: *const fn (
             self: *const ITextRange,
             ppRange: ?*?*ITextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFormattedText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFormattedText: *const fn (
             self: *const ITextRange,
             pRange: ?*ITextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStart: *const fn (
             self: *const ITextRange,
             pcpFirst: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStart: *const fn (
             self: *const ITextRange,
             cpFirst: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEnd: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEnd: *const fn (
             self: *const ITextRange,
             pcpLim: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEnd: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEnd: *const fn (
             self: *const ITextRange,
             cpLim: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFont: *const fn (
             self: *const ITextRange,
             ppFont: ?*?*ITextFont,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFont: *const fn (
             self: *const ITextRange,
             pFont: ?*ITextFont,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPara: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPara: *const fn (
             self: *const ITextRange,
             ppPara: ?*?*ITextPara,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPara: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPara: *const fn (
             self: *const ITextRange,
             pPara: ?*ITextPara,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStoryLength: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStoryLength: *const fn (
             self: *const ITextRange,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStoryType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStoryType: *const fn (
             self: *const ITextRange,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Collapse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Collapse: *const fn (
             self: *const ITextRange,
             bStart: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Expand: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Expand: *const fn (
             self: *const ITextRange,
             Unit: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIndex: *const fn (
             self: *const ITextRange,
             Unit: i32,
             pIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIndex: *const fn (
             self: *const ITextRange,
             Unit: i32,
             Index: i32,
             Extend: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetRange: *const fn (
             self: *const ITextRange,
             cpAnchor: i32,
             cpActive: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InRange: *const fn (
             self: *const ITextRange,
             pRange: ?*ITextRange,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InStory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InStory: *const fn (
             self: *const ITextRange,
             pRange: ?*ITextRange,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsEqual: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsEqual: *const fn (
             self: *const ITextRange,
             pRange: ?*ITextRange,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Select: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Select: *const fn (
             self: *const ITextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        StartOf: *const fn(
+        ) callconv(.winapi) HRESULT,
+        StartOf: *const fn (
             self: *const ITextRange,
             Unit: i32,
             Extend: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndOf: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndOf: *const fn (
             self: *const ITextRange,
             Unit: i32,
             Extend: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Move: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Move: *const fn (
             self: *const ITextRange,
             Unit: i32,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveStart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveStart: *const fn (
             self: *const ITextRange,
             Unit: i32,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveEnd: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveEnd: *const fn (
             self: *const ITextRange,
             Unit: i32,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveWhile: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveWhile: *const fn (
             self: *const ITextRange,
             Cset: ?*VARIANT,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveStartWhile: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveStartWhile: *const fn (
             self: *const ITextRange,
             Cset: ?*VARIANT,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveEndWhile: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveEndWhile: *const fn (
             self: *const ITextRange,
             Cset: ?*VARIANT,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveUntil: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveUntil: *const fn (
             self: *const ITextRange,
             Cset: ?*VARIANT,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveStartUntil: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveStartUntil: *const fn (
             self: *const ITextRange,
             Cset: ?*VARIANT,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveEndUntil: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveEndUntil: *const fn (
             self: *const ITextRange,
             Cset: ?*VARIANT,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindText: *const fn (
             self: *const ITextRange,
             bstr: ?BSTR,
             Count: i32,
             Flags: i32,
             pLength: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindTextStart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindTextStart: *const fn (
             self: *const ITextRange,
             bstr: ?BSTR,
             Count: i32,
             Flags: i32,
             pLength: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindTextEnd: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindTextEnd: *const fn (
             self: *const ITextRange,
             bstr: ?BSTR,
             Count: i32,
             Flags: i32,
             pLength: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const ITextRange,
             Unit: i32,
             Count: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cut: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cut: *const fn (
             self: *const ITextRange,
             pVar: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Copy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Copy: *const fn (
             self: *const ITextRange,
             pVar: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Paste: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Paste: *const fn (
             self: *const ITextRange,
             pVar: ?*VARIANT,
             Format: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CanPaste: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CanPaste: *const fn (
             self: *const ITextRange,
             pVar: ?*VARIANT,
             Format: i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CanEdit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CanEdit: *const fn (
             self: *const ITextRange,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ChangeCase: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ChangeCase: *const fn (
             self: *const ITextRange,
             Type: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPoint: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPoint: *const fn (
             self: *const ITextRange,
             Type: i32,
             px: ?*i32,
             py: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPoint: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPoint: *const fn (
             self: *const ITextRange,
             x: i32,
             y: i32,
             Type: i32,
             Extend: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ScrollIntoView: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ScrollIntoView: *const fn (
             self: *const ITextRange,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEmbeddedObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEmbeddedObject: *const fn (
             self: *const ITextRange,
             ppObject: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetText(self: *const ITextRange, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetText(self: *const ITextRange, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.GetText(self, pbstr);
     }
-    pub fn SetText(self: *const ITextRange, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetText(self: *const ITextRange, bstr: ?BSTR) HRESULT {
         return self.vtable.SetText(self, bstr);
     }
-    pub fn GetChar(self: *const ITextRange, pChar: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetChar(self: *const ITextRange, pChar: ?*i32) HRESULT {
         return self.vtable.GetChar(self, pChar);
     }
-    pub fn SetChar(self: *const ITextRange, Char: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetChar(self: *const ITextRange, Char: i32) HRESULT {
         return self.vtable.SetChar(self, Char);
     }
-    pub fn GetDuplicate(self: *const ITextRange, ppRange: ?*?*ITextRange) callconv(.Inline) HRESULT {
+    pub inline fn GetDuplicate(self: *const ITextRange, ppRange: ?*?*ITextRange) HRESULT {
         return self.vtable.GetDuplicate(self, ppRange);
     }
-    pub fn GetFormattedText(self: *const ITextRange, ppRange: ?*?*ITextRange) callconv(.Inline) HRESULT {
+    pub inline fn GetFormattedText(self: *const ITextRange, ppRange: ?*?*ITextRange) HRESULT {
         return self.vtable.GetFormattedText(self, ppRange);
     }
-    pub fn SetFormattedText(self: *const ITextRange, pRange: ?*ITextRange) callconv(.Inline) HRESULT {
+    pub inline fn SetFormattedText(self: *const ITextRange, pRange: ?*ITextRange) HRESULT {
         return self.vtable.SetFormattedText(self, pRange);
     }
-    pub fn GetStart(self: *const ITextRange, pcpFirst: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStart(self: *const ITextRange, pcpFirst: ?*i32) HRESULT {
         return self.vtable.GetStart(self, pcpFirst);
     }
-    pub fn SetStart(self: *const ITextRange, cpFirst: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetStart(self: *const ITextRange, cpFirst: i32) HRESULT {
         return self.vtable.SetStart(self, cpFirst);
     }
-    pub fn GetEnd(self: *const ITextRange, pcpLim: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetEnd(self: *const ITextRange, pcpLim: ?*i32) HRESULT {
         return self.vtable.GetEnd(self, pcpLim);
     }
-    pub fn SetEnd(self: *const ITextRange, cpLim: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetEnd(self: *const ITextRange, cpLim: i32) HRESULT {
         return self.vtable.SetEnd(self, cpLim);
     }
-    pub fn GetFont(self: *const ITextRange, ppFont: ?*?*ITextFont) callconv(.Inline) HRESULT {
+    pub inline fn GetFont(self: *const ITextRange, ppFont: ?*?*ITextFont) HRESULT {
         return self.vtable.GetFont(self, ppFont);
     }
-    pub fn SetFont(self: *const ITextRange, pFont: ?*ITextFont) callconv(.Inline) HRESULT {
+    pub inline fn SetFont(self: *const ITextRange, pFont: ?*ITextFont) HRESULT {
         return self.vtable.SetFont(self, pFont);
     }
-    pub fn GetPara(self: *const ITextRange, ppPara: ?*?*ITextPara) callconv(.Inline) HRESULT {
+    pub inline fn GetPara(self: *const ITextRange, ppPara: ?*?*ITextPara) HRESULT {
         return self.vtable.GetPara(self, ppPara);
     }
-    pub fn SetPara(self: *const ITextRange, pPara: ?*ITextPara) callconv(.Inline) HRESULT {
+    pub inline fn SetPara(self: *const ITextRange, pPara: ?*ITextPara) HRESULT {
         return self.vtable.SetPara(self, pPara);
     }
-    pub fn GetStoryLength(self: *const ITextRange, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStoryLength(self: *const ITextRange, pCount: ?*i32) HRESULT {
         return self.vtable.GetStoryLength(self, pCount);
     }
-    pub fn GetStoryType(self: *const ITextRange, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStoryType(self: *const ITextRange, pValue: ?*i32) HRESULT {
         return self.vtable.GetStoryType(self, pValue);
     }
-    pub fn Collapse(self: *const ITextRange, bStart: i32) callconv(.Inline) HRESULT {
+    pub inline fn Collapse(self: *const ITextRange, bStart: i32) HRESULT {
         return self.vtable.Collapse(self, bStart);
     }
-    pub fn Expand(self: *const ITextRange, Unit: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Expand(self: *const ITextRange, Unit: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.Expand(self, Unit, pDelta);
     }
-    pub fn GetIndex(self: *const ITextRange, Unit: i32, pIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetIndex(self: *const ITextRange, Unit: i32, pIndex: ?*i32) HRESULT {
         return self.vtable.GetIndex(self, Unit, pIndex);
     }
-    pub fn SetIndex(self: *const ITextRange, Unit: i32, Index: i32, Extend: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetIndex(self: *const ITextRange, Unit: i32, Index: i32, Extend: i32) HRESULT {
         return self.vtable.SetIndex(self, Unit, Index, Extend);
     }
-    pub fn SetRange(self: *const ITextRange, cpAnchor: i32, cpActive: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetRange(self: *const ITextRange, cpAnchor: i32, cpActive: i32) HRESULT {
         return self.vtable.SetRange(self, cpAnchor, cpActive);
     }
-    pub fn InRange(self: *const ITextRange, pRange: ?*ITextRange, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn InRange(self: *const ITextRange, pRange: ?*ITextRange, pValue: ?*i32) HRESULT {
         return self.vtable.InRange(self, pRange, pValue);
     }
-    pub fn InStory(self: *const ITextRange, pRange: ?*ITextRange, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn InStory(self: *const ITextRange, pRange: ?*ITextRange, pValue: ?*i32) HRESULT {
         return self.vtable.InStory(self, pRange, pValue);
     }
-    pub fn IsEqual(self: *const ITextRange, pRange: ?*ITextRange, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn IsEqual(self: *const ITextRange, pRange: ?*ITextRange, pValue: ?*i32) HRESULT {
         return self.vtable.IsEqual(self, pRange, pValue);
     }
-    pub fn Select(self: *const ITextRange) callconv(.Inline) HRESULT {
+    pub inline fn Select(self: *const ITextRange) HRESULT {
         return self.vtable.Select(self);
     }
-    pub fn StartOf(self: *const ITextRange, Unit: i32, Extend: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn StartOf(self: *const ITextRange, Unit: i32, Extend: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.StartOf(self, Unit, Extend, pDelta);
     }
-    pub fn EndOf(self: *const ITextRange, Unit: i32, Extend: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn EndOf(self: *const ITextRange, Unit: i32, Extend: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.EndOf(self, Unit, Extend, pDelta);
     }
-    pub fn Move(self: *const ITextRange, Unit: i32, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Move(self: *const ITextRange, Unit: i32, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.Move(self, Unit, Count, pDelta);
     }
-    pub fn MoveStart(self: *const ITextRange, Unit: i32, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveStart(self: *const ITextRange, Unit: i32, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveStart(self, Unit, Count, pDelta);
     }
-    pub fn MoveEnd(self: *const ITextRange, Unit: i32, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveEnd(self: *const ITextRange, Unit: i32, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveEnd(self, Unit, Count, pDelta);
     }
-    pub fn MoveWhile(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveWhile(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveWhile(self, Cset, Count, pDelta);
     }
-    pub fn MoveStartWhile(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveStartWhile(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveStartWhile(self, Cset, Count, pDelta);
     }
-    pub fn MoveEndWhile(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveEndWhile(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveEndWhile(self, Cset, Count, pDelta);
     }
-    pub fn MoveUntil(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveUntil(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveUntil(self, Cset, Count, pDelta);
     }
-    pub fn MoveStartUntil(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveStartUntil(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveStartUntil(self, Cset, Count, pDelta);
     }
-    pub fn MoveEndUntil(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveEndUntil(self: *const ITextRange, Cset: ?*VARIANT, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveEndUntil(self, Cset, Count, pDelta);
     }
-    pub fn FindText(self: *const ITextRange, bstr: ?BSTR, Count: i32, Flags: i32, pLength: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn FindText(self: *const ITextRange, bstr: ?BSTR, Count: i32, Flags: i32, pLength: ?*i32) HRESULT {
         return self.vtable.FindText(self, bstr, Count, Flags, pLength);
     }
-    pub fn FindTextStart(self: *const ITextRange, bstr: ?BSTR, Count: i32, Flags: i32, pLength: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn FindTextStart(self: *const ITextRange, bstr: ?BSTR, Count: i32, Flags: i32, pLength: ?*i32) HRESULT {
         return self.vtable.FindTextStart(self, bstr, Count, Flags, pLength);
     }
-    pub fn FindTextEnd(self: *const ITextRange, bstr: ?BSTR, Count: i32, Flags: i32, pLength: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn FindTextEnd(self: *const ITextRange, bstr: ?BSTR, Count: i32, Flags: i32, pLength: ?*i32) HRESULT {
         return self.vtable.FindTextEnd(self, bstr, Count, Flags, pLength);
     }
-    pub fn Delete(self: *const ITextRange, Unit: i32, Count: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const ITextRange, Unit: i32, Count: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.Delete(self, Unit, Count, pDelta);
     }
-    pub fn Cut(self: *const ITextRange, pVar: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Cut(self: *const ITextRange, pVar: ?*VARIANT) HRESULT {
         return self.vtable.Cut(self, pVar);
     }
-    pub fn Copy(self: *const ITextRange, pVar: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Copy(self: *const ITextRange, pVar: ?*VARIANT) HRESULT {
         return self.vtable.Copy(self, pVar);
     }
-    pub fn Paste(self: *const ITextRange, pVar: ?*VARIANT, Format: i32) callconv(.Inline) HRESULT {
+    pub inline fn Paste(self: *const ITextRange, pVar: ?*VARIANT, Format: i32) HRESULT {
         return self.vtable.Paste(self, pVar, Format);
     }
-    pub fn CanPaste(self: *const ITextRange, pVar: ?*VARIANT, Format: i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CanPaste(self: *const ITextRange, pVar: ?*VARIANT, Format: i32, pValue: ?*i32) HRESULT {
         return self.vtable.CanPaste(self, pVar, Format, pValue);
     }
-    pub fn CanEdit(self: *const ITextRange, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CanEdit(self: *const ITextRange, pValue: ?*i32) HRESULT {
         return self.vtable.CanEdit(self, pValue);
     }
-    pub fn ChangeCase(self: *const ITextRange, Type: i32) callconv(.Inline) HRESULT {
+    pub inline fn ChangeCase(self: *const ITextRange, Type: i32) HRESULT {
         return self.vtable.ChangeCase(self, Type);
     }
-    pub fn GetPoint(self: *const ITextRange, Type: i32, px: ?*i32, py: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPoint(self: *const ITextRange, Type: i32, px: ?*i32, py: ?*i32) HRESULT {
         return self.vtable.GetPoint(self, Type, px, py);
     }
-    pub fn SetPoint(self: *const ITextRange, x: i32, y: i32, Type: i32, Extend: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetPoint(self: *const ITextRange, x: i32, y: i32, Type: i32, Extend: i32) HRESULT {
         return self.vtable.SetPoint(self, x, y, Type, Extend);
     }
-    pub fn ScrollIntoView(self: *const ITextRange, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn ScrollIntoView(self: *const ITextRange, Value: i32) HRESULT {
         return self.vtable.ScrollIntoView(self, Value);
     }
-    pub fn GetEmbeddedObject(self: *const ITextRange, ppObject: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetEmbeddedObject(self: *const ITextRange, ppObject: ?*?*IUnknown) HRESULT {
         return self.vtable.GetEmbeddedObject(self, ppObject);
     }
 };
@@ -4206,95 +4206,95 @@ pub const IID_ITextSelection = &IID_ITextSelection_Value;
 pub const ITextSelection = extern union {
     pub const VTable = extern struct {
         base: ITextRange.VTable,
-        GetFlags: *const fn(
+        GetFlags: *const fn (
             self: *const ITextSelection,
             pFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFlags: *const fn (
             self: *const ITextSelection,
             Flags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetType: *const fn (
             self: *const ITextSelection,
             pType: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveLeft: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveLeft: *const fn (
             self: *const ITextSelection,
             Unit: i32,
             Count: i32,
             Extend: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveRight: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveRight: *const fn (
             self: *const ITextSelection,
             Unit: i32,
             Count: i32,
             Extend: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveUp: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveUp: *const fn (
             self: *const ITextSelection,
             Unit: i32,
             Count: i32,
             Extend: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveDown: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveDown: *const fn (
             self: *const ITextSelection,
             Unit: i32,
             Count: i32,
             Extend: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        HomeKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        HomeKey: *const fn (
             self: *const ITextSelection,
             Unit: tomConstants,
             Extend: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndKey: *const fn (
             self: *const ITextSelection,
             Unit: i32,
             Extend: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TypeText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TypeText: *const fn (
             self: *const ITextSelection,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextRange: ITextRange,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetFlags(self: *const ITextSelection, pFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetFlags(self: *const ITextSelection, pFlags: ?*i32) HRESULT {
         return self.vtable.GetFlags(self, pFlags);
     }
-    pub fn SetFlags(self: *const ITextSelection, Flags: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetFlags(self: *const ITextSelection, Flags: i32) HRESULT {
         return self.vtable.SetFlags(self, Flags);
     }
-    pub fn GetType(self: *const ITextSelection, pType: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetType(self: *const ITextSelection, pType: ?*i32) HRESULT {
         return self.vtable.GetType(self, pType);
     }
-    pub fn MoveLeft(self: *const ITextSelection, Unit: i32, Count: i32, Extend: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveLeft(self: *const ITextSelection, Unit: i32, Count: i32, Extend: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveLeft(self, Unit, Count, Extend, pDelta);
     }
-    pub fn MoveRight(self: *const ITextSelection, Unit: i32, Count: i32, Extend: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveRight(self: *const ITextSelection, Unit: i32, Count: i32, Extend: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveRight(self, Unit, Count, Extend, pDelta);
     }
-    pub fn MoveUp(self: *const ITextSelection, Unit: i32, Count: i32, Extend: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveUp(self: *const ITextSelection, Unit: i32, Count: i32, Extend: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveUp(self, Unit, Count, Extend, pDelta);
     }
-    pub fn MoveDown(self: *const ITextSelection, Unit: i32, Count: i32, Extend: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveDown(self: *const ITextSelection, Unit: i32, Count: i32, Extend: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.MoveDown(self, Unit, Count, Extend, pDelta);
     }
-    pub fn HomeKey(self: *const ITextSelection, Unit: tomConstants, Extend: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn HomeKey(self: *const ITextSelection, Unit: tomConstants, Extend: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.HomeKey(self, Unit, Extend, pDelta);
     }
-    pub fn EndKey(self: *const ITextSelection, Unit: i32, Extend: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn EndKey(self: *const ITextSelection, Unit: i32, Extend: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.EndKey(self, Unit, Extend, pDelta);
     }
-    pub fn TypeText(self: *const ITextSelection, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn TypeText(self: *const ITextSelection, bstr: ?BSTR) HRESULT {
         return self.vtable.TypeText(self, bstr);
     }
 };
@@ -4305,394 +4305,394 @@ pub const IID_ITextFont = &IID_ITextFont_Value;
 pub const ITextFont = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetDuplicate: *const fn(
+        GetDuplicate: *const fn (
             self: *const ITextFont,
             ppFont: ?*?*ITextFont,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDuplicate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDuplicate: *const fn (
             self: *const ITextFont,
             pFont: ?*ITextFont,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CanChange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CanChange: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsEqual: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsEqual: *const fn (
             self: *const ITextFont,
             pFont: ?*ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const ITextFont,
             Value: tomConstants,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStyle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStyle: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStyle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStyle: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAllCaps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAllCaps: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAllCaps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAllCaps: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAnimation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAnimation: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAnimation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAnimation: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBackColor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBackColor: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetBackColor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetBackColor: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBold: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBold: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetBold: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetBold: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEmboss: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEmboss: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEmboss: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEmboss: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetForeColor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetForeColor: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetForeColor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetForeColor: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetHidden: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetHidden: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHidden: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHidden: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEngrave: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEngrave: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEngrave: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEngrave: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetItalic: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetItalic: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetItalic: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetItalic: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKerning: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKerning: *const fn (
             self: *const ITextFont,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetKerning: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetKerning: *const fn (
             self: *const ITextFont,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLanguageID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLanguageID: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLanguageID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLanguageID: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetName: *const fn (
             self: *const ITextFont,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetName: *const fn (
             self: *const ITextFont,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetOutline: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetOutline: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetOutline: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetOutline: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPosition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPosition: *const fn (
             self: *const ITextFont,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPosition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPosition: *const fn (
             self: *const ITextFont,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProtected: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProtected: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProtected: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProtected: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetShadow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetShadow: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetShadow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetShadow: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSize: *const fn (
             self: *const ITextFont,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSize: *const fn (
             self: *const ITextFont,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSmallCaps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSmallCaps: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSmallCaps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSmallCaps: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSpacing: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSpacing: *const fn (
             self: *const ITextFont,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSpacing: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSpacing: *const fn (
             self: *const ITextFont,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStrikeThrough: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStrikeThrough: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStrikeThrough: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStrikeThrough: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSubscript: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSubscript: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSubscript: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSubscript: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSuperscript: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSuperscript: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSuperscript: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSuperscript: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetUnderline: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetUnderline: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetUnderline: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetUnderline: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetWeight: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetWeight: *const fn (
             self: *const ITextFont,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetWeight: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetWeight: *const fn (
             self: *const ITextFont,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetDuplicate(self: *const ITextFont, ppFont: ?*?*ITextFont) callconv(.Inline) HRESULT {
+    pub inline fn GetDuplicate(self: *const ITextFont, ppFont: ?*?*ITextFont) HRESULT {
         return self.vtable.GetDuplicate(self, ppFont);
     }
-    pub fn SetDuplicate(self: *const ITextFont, pFont: ?*ITextFont) callconv(.Inline) HRESULT {
+    pub inline fn SetDuplicate(self: *const ITextFont, pFont: ?*ITextFont) HRESULT {
         return self.vtable.SetDuplicate(self, pFont);
     }
-    pub fn CanChange(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CanChange(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.CanChange(self, pValue);
     }
-    pub fn IsEqual(self: *const ITextFont, pFont: ?*ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn IsEqual(self: *const ITextFont, pFont: ?*ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.IsEqual(self, pFont, pValue);
     }
-    pub fn Reset(self: *const ITextFont, Value: tomConstants) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ITextFont, Value: tomConstants) HRESULT {
         return self.vtable.Reset(self, Value);
     }
-    pub fn GetStyle(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStyle(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetStyle(self, pValue);
     }
-    pub fn SetStyle(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetStyle(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetStyle(self, Value);
     }
-    pub fn GetAllCaps(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetAllCaps(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetAllCaps(self, pValue);
     }
-    pub fn SetAllCaps(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetAllCaps(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetAllCaps(self, Value);
     }
-    pub fn GetAnimation(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetAnimation(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetAnimation(self, pValue);
     }
-    pub fn SetAnimation(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetAnimation(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetAnimation(self, Value);
     }
-    pub fn GetBackColor(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetBackColor(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetBackColor(self, pValue);
     }
-    pub fn SetBackColor(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetBackColor(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetBackColor(self, Value);
     }
-    pub fn GetBold(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetBold(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetBold(self, pValue);
     }
-    pub fn SetBold(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetBold(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetBold(self, Value);
     }
-    pub fn GetEmboss(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetEmboss(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetEmboss(self, pValue);
     }
-    pub fn SetEmboss(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetEmboss(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetEmboss(self, Value);
     }
-    pub fn GetForeColor(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetForeColor(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetForeColor(self, pValue);
     }
-    pub fn SetForeColor(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetForeColor(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetForeColor(self, Value);
     }
-    pub fn GetHidden(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetHidden(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetHidden(self, pValue);
     }
-    pub fn SetHidden(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetHidden(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetHidden(self, Value);
     }
-    pub fn GetEngrave(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetEngrave(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetEngrave(self, pValue);
     }
-    pub fn SetEngrave(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetEngrave(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetEngrave(self, Value);
     }
-    pub fn GetItalic(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetItalic(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetItalic(self, pValue);
     }
-    pub fn SetItalic(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetItalic(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetItalic(self, Value);
     }
-    pub fn GetKerning(self: *const ITextFont, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetKerning(self: *const ITextFont, pValue: ?*f32) HRESULT {
         return self.vtable.GetKerning(self, pValue);
     }
-    pub fn SetKerning(self: *const ITextFont, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetKerning(self: *const ITextFont, Value: f32) HRESULT {
         return self.vtable.SetKerning(self, Value);
     }
-    pub fn GetLanguageID(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetLanguageID(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetLanguageID(self, pValue);
     }
-    pub fn SetLanguageID(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetLanguageID(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetLanguageID(self, Value);
     }
-    pub fn GetName(self: *const ITextFont, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetName(self: *const ITextFont, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.GetName(self, pbstr);
     }
-    pub fn SetName(self: *const ITextFont, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetName(self: *const ITextFont, bstr: ?BSTR) HRESULT {
         return self.vtable.SetName(self, bstr);
     }
-    pub fn GetOutline(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetOutline(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetOutline(self, pValue);
     }
-    pub fn SetOutline(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetOutline(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetOutline(self, Value);
     }
-    pub fn GetPosition(self: *const ITextFont, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetPosition(self: *const ITextFont, pValue: ?*f32) HRESULT {
         return self.vtable.GetPosition(self, pValue);
     }
-    pub fn SetPosition(self: *const ITextFont, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetPosition(self: *const ITextFont, Value: f32) HRESULT {
         return self.vtable.SetPosition(self, Value);
     }
-    pub fn GetProtected(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetProtected(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetProtected(self, pValue);
     }
-    pub fn SetProtected(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetProtected(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetProtected(self, Value);
     }
-    pub fn GetShadow(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetShadow(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetShadow(self, pValue);
     }
-    pub fn SetShadow(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetShadow(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetShadow(self, Value);
     }
-    pub fn GetSize(self: *const ITextFont, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetSize(self: *const ITextFont, pValue: ?*f32) HRESULT {
         return self.vtable.GetSize(self, pValue);
     }
-    pub fn SetSize(self: *const ITextFont, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetSize(self: *const ITextFont, Value: f32) HRESULT {
         return self.vtable.SetSize(self, Value);
     }
-    pub fn GetSmallCaps(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetSmallCaps(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetSmallCaps(self, pValue);
     }
-    pub fn SetSmallCaps(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetSmallCaps(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetSmallCaps(self, Value);
     }
-    pub fn GetSpacing(self: *const ITextFont, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetSpacing(self: *const ITextFont, pValue: ?*f32) HRESULT {
         return self.vtable.GetSpacing(self, pValue);
     }
-    pub fn SetSpacing(self: *const ITextFont, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetSpacing(self: *const ITextFont, Value: f32) HRESULT {
         return self.vtable.SetSpacing(self, Value);
     }
-    pub fn GetStrikeThrough(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStrikeThrough(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetStrikeThrough(self, pValue);
     }
-    pub fn SetStrikeThrough(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetStrikeThrough(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetStrikeThrough(self, Value);
     }
-    pub fn GetSubscript(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetSubscript(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetSubscript(self, pValue);
     }
-    pub fn SetSubscript(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetSubscript(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetSubscript(self, Value);
     }
-    pub fn GetSuperscript(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetSuperscript(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetSuperscript(self, pValue);
     }
-    pub fn SetSuperscript(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetSuperscript(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetSuperscript(self, Value);
     }
-    pub fn GetUnderline(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetUnderline(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetUnderline(self, pValue);
     }
-    pub fn SetUnderline(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetUnderline(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetUnderline(self, Value);
     }
-    pub fn GetWeight(self: *const ITextFont, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetWeight(self: *const ITextFont, pValue: ?*i32) HRESULT {
         return self.vtable.GetWeight(self, pValue);
     }
-    pub fn SetWeight(self: *const ITextFont, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetWeight(self: *const ITextFont, Value: i32) HRESULT {
         return self.vtable.SetWeight(self, Value);
     }
 };
@@ -4703,352 +4703,352 @@ pub const IID_ITextPara = &IID_ITextPara_Value;
 pub const ITextPara = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetDuplicate: *const fn(
+        GetDuplicate: *const fn (
             self: *const ITextPara,
             ppPara: ?*?*ITextPara,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDuplicate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDuplicate: *const fn (
             self: *const ITextPara,
             pPara: ?*ITextPara,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CanChange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CanChange: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsEqual: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsEqual: *const fn (
             self: *const ITextPara,
             pPara: ?*ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStyle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStyle: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStyle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStyle: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAlignment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAlignment: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAlignment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAlignment: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetHyphenation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetHyphenation: *const fn (
             self: *const ITextPara,
             pValue: ?*tomConstants,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHyphenation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHyphenation: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFirstLineIndent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFirstLineIndent: *const fn (
             self: *const ITextPara,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeepTogether: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeepTogether: *const fn (
             self: *const ITextPara,
             pValue: ?*tomConstants,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetKeepTogether: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetKeepTogether: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeepWithNext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeepWithNext: *const fn (
             self: *const ITextPara,
             pValue: ?*tomConstants,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetKeepWithNext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetKeepWithNext: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLeftIndent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLeftIndent: *const fn (
             self: *const ITextPara,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLineSpacing: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLineSpacing: *const fn (
             self: *const ITextPara,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLineSpacingRule: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLineSpacingRule: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetListAlignment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetListAlignment: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetListAlignment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetListAlignment: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetListLevelIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetListLevelIndex: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetListLevelIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetListLevelIndex: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetListStart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetListStart: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetListStart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetListStart: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetListTab: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetListTab: *const fn (
             self: *const ITextPara,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetListTab: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetListTab: *const fn (
             self: *const ITextPara,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetListType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetListType: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetListType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetListType: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNoLineNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNoLineNumber: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetNoLineNumber: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetNoLineNumber: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPageBreakBefore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPageBreakBefore: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPageBreakBefore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPageBreakBefore: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRightIndent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRightIndent: *const fn (
             self: *const ITextPara,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetRightIndent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetRightIndent: *const fn (
             self: *const ITextPara,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIndents: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIndents: *const fn (
             self: *const ITextPara,
             First: f32,
             Left: f32,
             Right: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLineSpacing: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLineSpacing: *const fn (
             self: *const ITextPara,
             Rule: i32,
             Spacing: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSpaceAfter: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSpaceAfter: *const fn (
             self: *const ITextPara,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSpaceAfter: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSpaceAfter: *const fn (
             self: *const ITextPara,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSpaceBefore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSpaceBefore: *const fn (
             self: *const ITextPara,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSpaceBefore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSpaceBefore: *const fn (
             self: *const ITextPara,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetWidowControl: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetWidowControl: *const fn (
             self: *const ITextPara,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetWidowControl: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetWidowControl: *const fn (
             self: *const ITextPara,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTabCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTabCount: *const fn (
             self: *const ITextPara,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddTab: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddTab: *const fn (
             self: *const ITextPara,
             tbPos: f32,
             tbAlign: i32,
             tbLeader: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ClearAllTabs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ClearAllTabs: *const fn (
             self: *const ITextPara,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteTab: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteTab: *const fn (
             self: *const ITextPara,
             tbPos: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTab: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTab: *const fn (
             self: *const ITextPara,
             iTab: i32,
             ptbPos: ?*f32,
             ptbAlign: ?*i32,
             ptbLeader: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetDuplicate(self: *const ITextPara, ppPara: ?*?*ITextPara) callconv(.Inline) HRESULT {
+    pub inline fn GetDuplicate(self: *const ITextPara, ppPara: ?*?*ITextPara) HRESULT {
         return self.vtable.GetDuplicate(self, ppPara);
     }
-    pub fn SetDuplicate(self: *const ITextPara, pPara: ?*ITextPara) callconv(.Inline) HRESULT {
+    pub inline fn SetDuplicate(self: *const ITextPara, pPara: ?*ITextPara) HRESULT {
         return self.vtable.SetDuplicate(self, pPara);
     }
-    pub fn CanChange(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CanChange(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.CanChange(self, pValue);
     }
-    pub fn IsEqual(self: *const ITextPara, pPara: ?*ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn IsEqual(self: *const ITextPara, pPara: ?*ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.IsEqual(self, pPara, pValue);
     }
-    pub fn Reset(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.Reset(self, Value);
     }
-    pub fn GetStyle(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStyle(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetStyle(self, pValue);
     }
-    pub fn SetStyle(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetStyle(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetStyle(self, Value);
     }
-    pub fn GetAlignment(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetAlignment(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetAlignment(self, pValue);
     }
-    pub fn SetAlignment(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetAlignment(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetAlignment(self, Value);
     }
-    pub fn GetHyphenation(self: *const ITextPara, pValue: ?*tomConstants) callconv(.Inline) HRESULT {
+    pub inline fn GetHyphenation(self: *const ITextPara, pValue: ?*tomConstants) HRESULT {
         return self.vtable.GetHyphenation(self, pValue);
     }
-    pub fn SetHyphenation(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetHyphenation(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetHyphenation(self, Value);
     }
-    pub fn GetFirstLineIndent(self: *const ITextPara, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetFirstLineIndent(self: *const ITextPara, pValue: ?*f32) HRESULT {
         return self.vtable.GetFirstLineIndent(self, pValue);
     }
-    pub fn GetKeepTogether(self: *const ITextPara, pValue: ?*tomConstants) callconv(.Inline) HRESULT {
+    pub inline fn GetKeepTogether(self: *const ITextPara, pValue: ?*tomConstants) HRESULT {
         return self.vtable.GetKeepTogether(self, pValue);
     }
-    pub fn SetKeepTogether(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetKeepTogether(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetKeepTogether(self, Value);
     }
-    pub fn GetKeepWithNext(self: *const ITextPara, pValue: ?*tomConstants) callconv(.Inline) HRESULT {
+    pub inline fn GetKeepWithNext(self: *const ITextPara, pValue: ?*tomConstants) HRESULT {
         return self.vtable.GetKeepWithNext(self, pValue);
     }
-    pub fn SetKeepWithNext(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetKeepWithNext(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetKeepWithNext(self, Value);
     }
-    pub fn GetLeftIndent(self: *const ITextPara, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetLeftIndent(self: *const ITextPara, pValue: ?*f32) HRESULT {
         return self.vtable.GetLeftIndent(self, pValue);
     }
-    pub fn GetLineSpacing(self: *const ITextPara, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetLineSpacing(self: *const ITextPara, pValue: ?*f32) HRESULT {
         return self.vtable.GetLineSpacing(self, pValue);
     }
-    pub fn GetLineSpacingRule(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetLineSpacingRule(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetLineSpacingRule(self, pValue);
     }
-    pub fn GetListAlignment(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetListAlignment(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetListAlignment(self, pValue);
     }
-    pub fn SetListAlignment(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetListAlignment(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetListAlignment(self, Value);
     }
-    pub fn GetListLevelIndex(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetListLevelIndex(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetListLevelIndex(self, pValue);
     }
-    pub fn SetListLevelIndex(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetListLevelIndex(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetListLevelIndex(self, Value);
     }
-    pub fn GetListStart(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetListStart(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetListStart(self, pValue);
     }
-    pub fn SetListStart(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetListStart(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetListStart(self, Value);
     }
-    pub fn GetListTab(self: *const ITextPara, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetListTab(self: *const ITextPara, pValue: ?*f32) HRESULT {
         return self.vtable.GetListTab(self, pValue);
     }
-    pub fn SetListTab(self: *const ITextPara, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetListTab(self: *const ITextPara, Value: f32) HRESULT {
         return self.vtable.SetListTab(self, Value);
     }
-    pub fn GetListType(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetListType(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetListType(self, pValue);
     }
-    pub fn SetListType(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetListType(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetListType(self, Value);
     }
-    pub fn GetNoLineNumber(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetNoLineNumber(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetNoLineNumber(self, pValue);
     }
-    pub fn SetNoLineNumber(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetNoLineNumber(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetNoLineNumber(self, Value);
     }
-    pub fn GetPageBreakBefore(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPageBreakBefore(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetPageBreakBefore(self, pValue);
     }
-    pub fn SetPageBreakBefore(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetPageBreakBefore(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetPageBreakBefore(self, Value);
     }
-    pub fn GetRightIndent(self: *const ITextPara, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetRightIndent(self: *const ITextPara, pValue: ?*f32) HRESULT {
         return self.vtable.GetRightIndent(self, pValue);
     }
-    pub fn SetRightIndent(self: *const ITextPara, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetRightIndent(self: *const ITextPara, Value: f32) HRESULT {
         return self.vtable.SetRightIndent(self, Value);
     }
-    pub fn SetIndents(self: *const ITextPara, First: f32, Left: f32, Right: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetIndents(self: *const ITextPara, First: f32, Left: f32, Right: f32) HRESULT {
         return self.vtable.SetIndents(self, First, Left, Right);
     }
-    pub fn SetLineSpacing(self: *const ITextPara, Rule: i32, Spacing: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetLineSpacing(self: *const ITextPara, Rule: i32, Spacing: f32) HRESULT {
         return self.vtable.SetLineSpacing(self, Rule, Spacing);
     }
-    pub fn GetSpaceAfter(self: *const ITextPara, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetSpaceAfter(self: *const ITextPara, pValue: ?*f32) HRESULT {
         return self.vtable.GetSpaceAfter(self, pValue);
     }
-    pub fn SetSpaceAfter(self: *const ITextPara, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetSpaceAfter(self: *const ITextPara, Value: f32) HRESULT {
         return self.vtable.SetSpaceAfter(self, Value);
     }
-    pub fn GetSpaceBefore(self: *const ITextPara, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetSpaceBefore(self: *const ITextPara, pValue: ?*f32) HRESULT {
         return self.vtable.GetSpaceBefore(self, pValue);
     }
-    pub fn SetSpaceBefore(self: *const ITextPara, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetSpaceBefore(self: *const ITextPara, Value: f32) HRESULT {
         return self.vtable.SetSpaceBefore(self, Value);
     }
-    pub fn GetWidowControl(self: *const ITextPara, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetWidowControl(self: *const ITextPara, pValue: ?*i32) HRESULT {
         return self.vtable.GetWidowControl(self, pValue);
     }
-    pub fn SetWidowControl(self: *const ITextPara, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetWidowControl(self: *const ITextPara, Value: i32) HRESULT {
         return self.vtable.SetWidowControl(self, Value);
     }
-    pub fn GetTabCount(self: *const ITextPara, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetTabCount(self: *const ITextPara, pCount: ?*i32) HRESULT {
         return self.vtable.GetTabCount(self, pCount);
     }
-    pub fn AddTab(self: *const ITextPara, tbPos: f32, tbAlign: i32, tbLeader: i32) callconv(.Inline) HRESULT {
+    pub inline fn AddTab(self: *const ITextPara, tbPos: f32, tbAlign: i32, tbLeader: i32) HRESULT {
         return self.vtable.AddTab(self, tbPos, tbAlign, tbLeader);
     }
-    pub fn ClearAllTabs(self: *const ITextPara) callconv(.Inline) HRESULT {
+    pub inline fn ClearAllTabs(self: *const ITextPara) HRESULT {
         return self.vtable.ClearAllTabs(self);
     }
-    pub fn DeleteTab(self: *const ITextPara, tbPos: f32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteTab(self: *const ITextPara, tbPos: f32) HRESULT {
         return self.vtable.DeleteTab(self, tbPos);
     }
-    pub fn GetTab(self: *const ITextPara, iTab: i32, ptbPos: ?*f32, ptbAlign: ?*i32, ptbLeader: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetTab(self: *const ITextPara, iTab: i32, ptbPos: ?*f32, ptbAlign: ?*i32, ptbLeader: ?*i32) HRESULT {
         return self.vtable.GetTab(self, iTab, ptbPos, ptbAlign, ptbLeader);
     }
 };
@@ -5059,30 +5059,30 @@ pub const IID_ITextStoryRanges = &IID_ITextStoryRanges_Value;
 pub const ITextStoryRanges = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        _NewEnum: *const fn(
+        _NewEnum: *const fn (
             self: *const ITextStoryRanges,
             ppunkEnum: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const ITextStoryRanges,
             Index: i32,
             ppRange: ?*?*ITextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCount: *const fn (
             self: *const ITextStoryRanges,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn _NewEnum(self: *const ITextStoryRanges, ppunkEnum: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn _NewEnum(self: *const ITextStoryRanges, ppunkEnum: ?*?*IUnknown) HRESULT {
         return self.vtable._NewEnum(self, ppunkEnum);
     }
-    pub fn Item(self: *const ITextStoryRanges, Index: i32, ppRange: ?*?*ITextRange) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const ITextStoryRanges, Index: i32, ppRange: ?*?*ITextRange) HRESULT {
         return self.vtable.Item(self, Index, ppRange);
     }
-    pub fn GetCount(self: *const ITextStoryRanges, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const ITextStoryRanges, pCount: ?*i32) HRESULT {
         return self.vtable.GetCount(self, pCount);
     }
 };
@@ -5093,105 +5093,105 @@ pub const IID_ITextDocument2 = &IID_ITextDocument2_Value;
 pub const ITextDocument2 = extern union {
     pub const VTable = extern struct {
         base: ITextDocument.VTable,
-        GetCaretType: *const fn(
+        GetCaretType: *const fn (
             self: *const ITextDocument2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCaretType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCaretType: *const fn (
             self: *const ITextDocument2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplays: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplays: *const fn (
             self: *const ITextDocument2,
             ppDisplays: ?*?*ITextDisplays,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDocumentFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDocumentFont: *const fn (
             self: *const ITextDocument2,
             ppFont: ?*?*ITextFont2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDocumentFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDocumentFont: *const fn (
             self: *const ITextDocument2,
             pFont: ?*ITextFont2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDocumentPara: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDocumentPara: *const fn (
             self: *const ITextDocument2,
             ppPara: ?*?*ITextPara2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDocumentPara: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDocumentPara: *const fn (
             self: *const ITextDocument2,
             pPara: ?*ITextPara2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEastAsianFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEastAsianFlags: *const fn (
             self: *const ITextDocument2,
             pFlags: ?*tomConstants,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetGenerator: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetGenerator: *const fn (
             self: *const ITextDocument2,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIMEInProgress: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIMEInProgress: *const fn (
             self: *const ITextDocument2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNotificationMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNotificationMode: *const fn (
             self: *const ITextDocument2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetNotificationMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetNotificationMode: *const fn (
             self: *const ITextDocument2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSelection2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSelection2: *const fn (
             self: *const ITextDocument2,
             ppSel: ?*?*ITextSelection2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStoryRanges2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStoryRanges2: *const fn (
             self: *const ITextDocument2,
             ppStories: ?*?*ITextStoryRanges2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTypographyOptions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTypographyOptions: *const fn (
             self: *const ITextDocument2,
             pOptions: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVersion: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVersion: *const fn (
             self: *const ITextDocument2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetWindow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetWindow: *const fn (
             self: *const ITextDocument2,
             pHwnd: ?*i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AttachMsgFilter: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AttachMsgFilter: *const fn (
             self: *const ITextDocument2,
             pFilter: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckTextLimit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckTextLimit: *const fn (
             self: *const ITextDocument2,
             cch: i32,
             pcch: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCallManager: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCallManager: *const fn (
             self: *const ITextDocument2,
             ppVoid: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetClientRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetClientRect: *const fn (
             self: *const ITextDocument2,
             Type: tomConstants,
             pLeft: ?*i32,
             pTop: ?*i32,
             pRight: ?*i32,
             pBottom: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEffectColor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEffectColor: *const fn (
             self: *const ITextDocument2,
             Index: i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetImmContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetImmContext: *const fn (
             self: *const ITextDocument2,
             pContext: ?*i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPreferredFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPreferredFont: *const fn (
             self: *const ITextDocument2,
             cp: i32,
             CharRep: i32,
@@ -5201,231 +5201,231 @@ pub const ITextDocument2 = extern union {
             pbstr: ?*?BSTR,
             pPitchAndFamily: ?*i32,
             pNewFontSize: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const ITextDocument2,
             Type: i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStrings: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStrings: *const fn (
             self: *const ITextDocument2,
             ppStrs: ?*?*ITextStrings,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Notify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Notify: *const fn (
             self: *const ITextDocument2,
             Notify: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Range2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Range2: *const fn (
             self: *const ITextDocument2,
             cpActive: i32,
             cpAnchor: i32,
             ppRange: ?*?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RangeFromPoint2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RangeFromPoint2: *const fn (
             self: *const ITextDocument2,
             x: i32,
             y: i32,
             Type: i32,
             ppRange: ?*?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReleaseCallManager: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReleaseCallManager: *const fn (
             self: *const ITextDocument2,
             pVoid: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReleaseImmContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReleaseImmContext: *const fn (
             self: *const ITextDocument2,
             Context: i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEffectColor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEffectColor: *const fn (
             self: *const ITextDocument2,
             Index: i32,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProperty: *const fn (
             self: *const ITextDocument2,
             Type: i32,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTypographyOptions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTypographyOptions: *const fn (
             self: *const ITextDocument2,
             Options: i32,
             Mask: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SysBeep: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SysBeep: *const fn (
             self: *const ITextDocument2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Update: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Update: *const fn (
             self: *const ITextDocument2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UpdateWindow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UpdateWindow: *const fn (
             self: *const ITextDocument2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMathProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMathProperties: *const fn (
             self: *const ITextDocument2,
             pOptions: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetMathProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetMathProperties: *const fn (
             self: *const ITextDocument2,
             Options: i32,
             Mask: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetActiveStory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetActiveStory: *const fn (
             self: *const ITextDocument2,
             ppStory: ?*?*ITextStory,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetActiveStory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetActiveStory: *const fn (
             self: *const ITextDocument2,
             pStory: ?*ITextStory,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMainStory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMainStory: *const fn (
             self: *const ITextDocument2,
             ppStory: ?*?*ITextStory,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNewStory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNewStory: *const fn (
             self: *const ITextDocument2,
             ppStory: ?*?*ITextStory,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStory: *const fn (
             self: *const ITextDocument2,
             Index: i32,
             ppStory: ?*?*ITextStory,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextDocument: ITextDocument,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetCaretType(self: *const ITextDocument2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCaretType(self: *const ITextDocument2, pValue: ?*i32) HRESULT {
         return self.vtable.GetCaretType(self, pValue);
     }
-    pub fn SetCaretType(self: *const ITextDocument2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCaretType(self: *const ITextDocument2, Value: i32) HRESULT {
         return self.vtable.SetCaretType(self, Value);
     }
-    pub fn GetDisplays(self: *const ITextDocument2, ppDisplays: ?*?*ITextDisplays) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplays(self: *const ITextDocument2, ppDisplays: ?*?*ITextDisplays) HRESULT {
         return self.vtable.GetDisplays(self, ppDisplays);
     }
-    pub fn GetDocumentFont(self: *const ITextDocument2, ppFont: ?*?*ITextFont2) callconv(.Inline) HRESULT {
+    pub inline fn GetDocumentFont(self: *const ITextDocument2, ppFont: ?*?*ITextFont2) HRESULT {
         return self.vtable.GetDocumentFont(self, ppFont);
     }
-    pub fn SetDocumentFont(self: *const ITextDocument2, pFont: ?*ITextFont2) callconv(.Inline) HRESULT {
+    pub inline fn SetDocumentFont(self: *const ITextDocument2, pFont: ?*ITextFont2) HRESULT {
         return self.vtable.SetDocumentFont(self, pFont);
     }
-    pub fn GetDocumentPara(self: *const ITextDocument2, ppPara: ?*?*ITextPara2) callconv(.Inline) HRESULT {
+    pub inline fn GetDocumentPara(self: *const ITextDocument2, ppPara: ?*?*ITextPara2) HRESULT {
         return self.vtable.GetDocumentPara(self, ppPara);
     }
-    pub fn SetDocumentPara(self: *const ITextDocument2, pPara: ?*ITextPara2) callconv(.Inline) HRESULT {
+    pub inline fn SetDocumentPara(self: *const ITextDocument2, pPara: ?*ITextPara2) HRESULT {
         return self.vtable.SetDocumentPara(self, pPara);
     }
-    pub fn GetEastAsianFlags(self: *const ITextDocument2, pFlags: ?*tomConstants) callconv(.Inline) HRESULT {
+    pub inline fn GetEastAsianFlags(self: *const ITextDocument2, pFlags: ?*tomConstants) HRESULT {
         return self.vtable.GetEastAsianFlags(self, pFlags);
     }
-    pub fn GetGenerator(self: *const ITextDocument2, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetGenerator(self: *const ITextDocument2, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.GetGenerator(self, pbstr);
     }
-    pub fn SetIMEInProgress(self: *const ITextDocument2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetIMEInProgress(self: *const ITextDocument2, Value: i32) HRESULT {
         return self.vtable.SetIMEInProgress(self, Value);
     }
-    pub fn GetNotificationMode(self: *const ITextDocument2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetNotificationMode(self: *const ITextDocument2, pValue: ?*i32) HRESULT {
         return self.vtable.GetNotificationMode(self, pValue);
     }
-    pub fn SetNotificationMode(self: *const ITextDocument2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetNotificationMode(self: *const ITextDocument2, Value: i32) HRESULT {
         return self.vtable.SetNotificationMode(self, Value);
     }
-    pub fn GetSelection2(self: *const ITextDocument2, ppSel: ?*?*ITextSelection2) callconv(.Inline) HRESULT {
+    pub inline fn GetSelection2(self: *const ITextDocument2, ppSel: ?*?*ITextSelection2) HRESULT {
         return self.vtable.GetSelection2(self, ppSel);
     }
-    pub fn GetStoryRanges2(self: *const ITextDocument2, ppStories: ?*?*ITextStoryRanges2) callconv(.Inline) HRESULT {
+    pub inline fn GetStoryRanges2(self: *const ITextDocument2, ppStories: ?*?*ITextStoryRanges2) HRESULT {
         return self.vtable.GetStoryRanges2(self, ppStories);
     }
-    pub fn GetTypographyOptions(self: *const ITextDocument2, pOptions: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetTypographyOptions(self: *const ITextDocument2, pOptions: ?*i32) HRESULT {
         return self.vtable.GetTypographyOptions(self, pOptions);
     }
-    pub fn GetVersion(self: *const ITextDocument2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetVersion(self: *const ITextDocument2, pValue: ?*i32) HRESULT {
         return self.vtable.GetVersion(self, pValue);
     }
-    pub fn GetWindow(self: *const ITextDocument2, pHwnd: ?*i64) callconv(.Inline) HRESULT {
+    pub inline fn GetWindow(self: *const ITextDocument2, pHwnd: ?*i64) HRESULT {
         return self.vtable.GetWindow(self, pHwnd);
     }
-    pub fn AttachMsgFilter(self: *const ITextDocument2, pFilter: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn AttachMsgFilter(self: *const ITextDocument2, pFilter: ?*IUnknown) HRESULT {
         return self.vtable.AttachMsgFilter(self, pFilter);
     }
-    pub fn CheckTextLimit(self: *const ITextDocument2, cch: i32, pcch: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CheckTextLimit(self: *const ITextDocument2, cch: i32, pcch: ?*i32) HRESULT {
         return self.vtable.CheckTextLimit(self, cch, pcch);
     }
-    pub fn GetCallManager(self: *const ITextDocument2, ppVoid: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetCallManager(self: *const ITextDocument2, ppVoid: ?*?*IUnknown) HRESULT {
         return self.vtable.GetCallManager(self, ppVoid);
     }
-    pub fn GetClientRect(self: *const ITextDocument2, Type: tomConstants, pLeft: ?*i32, pTop: ?*i32, pRight: ?*i32, pBottom: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetClientRect(self: *const ITextDocument2, Type: tomConstants, pLeft: ?*i32, pTop: ?*i32, pRight: ?*i32, pBottom: ?*i32) HRESULT {
         return self.vtable.GetClientRect(self, Type, pLeft, pTop, pRight, pBottom);
     }
-    pub fn GetEffectColor(self: *const ITextDocument2, Index: i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetEffectColor(self: *const ITextDocument2, Index: i32, pValue: ?*i32) HRESULT {
         return self.vtable.GetEffectColor(self, Index, pValue);
     }
-    pub fn GetImmContext(self: *const ITextDocument2, pContext: ?*i64) callconv(.Inline) HRESULT {
+    pub inline fn GetImmContext(self: *const ITextDocument2, pContext: ?*i64) HRESULT {
         return self.vtable.GetImmContext(self, pContext);
     }
-    pub fn GetPreferredFont(self: *const ITextDocument2, cp: i32, CharRep: i32, Options: i32, curCharRep: i32, curFontSize: i32, pbstr: ?*?BSTR, pPitchAndFamily: ?*i32, pNewFontSize: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPreferredFont(self: *const ITextDocument2, cp: i32, CharRep: i32, Options: i32, curCharRep: i32, curFontSize: i32, pbstr: ?*?BSTR, pPitchAndFamily: ?*i32, pNewFontSize: ?*i32) HRESULT {
         return self.vtable.GetPreferredFont(self, cp, CharRep, Options, curCharRep, curFontSize, pbstr, pPitchAndFamily, pNewFontSize);
     }
-    pub fn GetProperty(self: *const ITextDocument2, Type: i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const ITextDocument2, Type: i32, pValue: ?*i32) HRESULT {
         return self.vtable.GetProperty(self, Type, pValue);
     }
-    pub fn GetStrings(self: *const ITextDocument2, ppStrs: ?*?*ITextStrings) callconv(.Inline) HRESULT {
+    pub inline fn GetStrings(self: *const ITextDocument2, ppStrs: ?*?*ITextStrings) HRESULT {
         return self.vtable.GetStrings(self, ppStrs);
     }
-    pub fn Notify(self: *const ITextDocument2, _param_Notify: i32) callconv(.Inline) HRESULT {
+    pub inline fn Notify(self: *const ITextDocument2, _param_Notify: i32) HRESULT {
         return self.vtable.Notify(self, _param_Notify);
     }
-    pub fn Range2(self: *const ITextDocument2, cpActive: i32, cpAnchor: i32, ppRange: ?*?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn Range2(self: *const ITextDocument2, cpActive: i32, cpAnchor: i32, ppRange: ?*?*ITextRange2) HRESULT {
         return self.vtable.Range2(self, cpActive, cpAnchor, ppRange);
     }
-    pub fn RangeFromPoint2(self: *const ITextDocument2, x: i32, y: i32, Type: i32, ppRange: ?*?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn RangeFromPoint2(self: *const ITextDocument2, x: i32, y: i32, Type: i32, ppRange: ?*?*ITextRange2) HRESULT {
         return self.vtable.RangeFromPoint2(self, x, y, Type, ppRange);
     }
-    pub fn ReleaseCallManager(self: *const ITextDocument2, pVoid: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn ReleaseCallManager(self: *const ITextDocument2, pVoid: ?*IUnknown) HRESULT {
         return self.vtable.ReleaseCallManager(self, pVoid);
     }
-    pub fn ReleaseImmContext(self: *const ITextDocument2, Context: i64) callconv(.Inline) HRESULT {
+    pub inline fn ReleaseImmContext(self: *const ITextDocument2, Context: i64) HRESULT {
         return self.vtable.ReleaseImmContext(self, Context);
     }
-    pub fn SetEffectColor(self: *const ITextDocument2, Index: i32, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetEffectColor(self: *const ITextDocument2, Index: i32, Value: i32) HRESULT {
         return self.vtable.SetEffectColor(self, Index, Value);
     }
-    pub fn SetProperty(self: *const ITextDocument2, Type: i32, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetProperty(self: *const ITextDocument2, Type: i32, Value: i32) HRESULT {
         return self.vtable.SetProperty(self, Type, Value);
     }
-    pub fn SetTypographyOptions(self: *const ITextDocument2, Options: i32, Mask: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetTypographyOptions(self: *const ITextDocument2, Options: i32, Mask: i32) HRESULT {
         return self.vtable.SetTypographyOptions(self, Options, Mask);
     }
-    pub fn SysBeep(self: *const ITextDocument2) callconv(.Inline) HRESULT {
+    pub inline fn SysBeep(self: *const ITextDocument2) HRESULT {
         return self.vtable.SysBeep(self);
     }
-    pub fn Update(self: *const ITextDocument2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn Update(self: *const ITextDocument2, Value: i32) HRESULT {
         return self.vtable.Update(self, Value);
     }
-    pub fn UpdateWindow(self: *const ITextDocument2) callconv(.Inline) HRESULT {
+    pub inline fn UpdateWindow(self: *const ITextDocument2) HRESULT {
         return self.vtable.UpdateWindow(self);
     }
-    pub fn GetMathProperties(self: *const ITextDocument2, pOptions: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetMathProperties(self: *const ITextDocument2, pOptions: ?*i32) HRESULT {
         return self.vtable.GetMathProperties(self, pOptions);
     }
-    pub fn SetMathProperties(self: *const ITextDocument2, Options: i32, Mask: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetMathProperties(self: *const ITextDocument2, Options: i32, Mask: i32) HRESULT {
         return self.vtable.SetMathProperties(self, Options, Mask);
     }
-    pub fn GetActiveStory(self: *const ITextDocument2, ppStory: ?*?*ITextStory) callconv(.Inline) HRESULT {
+    pub inline fn GetActiveStory(self: *const ITextDocument2, ppStory: ?*?*ITextStory) HRESULT {
         return self.vtable.GetActiveStory(self, ppStory);
     }
-    pub fn SetActiveStory(self: *const ITextDocument2, pStory: ?*ITextStory) callconv(.Inline) HRESULT {
+    pub inline fn SetActiveStory(self: *const ITextDocument2, pStory: ?*ITextStory) HRESULT {
         return self.vtable.SetActiveStory(self, pStory);
     }
-    pub fn GetMainStory(self: *const ITextDocument2, ppStory: ?*?*ITextStory) callconv(.Inline) HRESULT {
+    pub inline fn GetMainStory(self: *const ITextDocument2, ppStory: ?*?*ITextStory) HRESULT {
         return self.vtable.GetMainStory(self, ppStory);
     }
-    pub fn GetNewStory(self: *const ITextDocument2, ppStory: ?*?*ITextStory) callconv(.Inline) HRESULT {
+    pub inline fn GetNewStory(self: *const ITextDocument2, ppStory: ?*?*ITextStory) HRESULT {
         return self.vtable.GetNewStory(self, ppStory);
     }
-    pub fn GetStory(self: *const ITextDocument2, Index: i32, ppStory: ?*?*ITextStory) callconv(.Inline) HRESULT {
+    pub inline fn GetStory(self: *const ITextDocument2, Index: i32, ppStory: ?*?*ITextStory) HRESULT {
         return self.vtable.GetStory(self, Index, ppStory);
     }
 };
@@ -5436,111 +5436,111 @@ pub const IID_ITextRange2 = &IID_ITextRange2_Value;
 pub const ITextRange2 = extern union {
     pub const VTable = extern struct {
         base: ITextSelection.VTable,
-        GetCch: *const fn(
+        GetCch: *const fn (
             self: *const ITextRange2,
             pcch: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCells: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCells: *const fn (
             self: *const ITextRange2,
             ppCells: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetColumn: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetColumn: *const fn (
             self: *const ITextRange2,
             ppColumn: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCount: *const fn (
             self: *const ITextRange2,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDuplicate2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDuplicate2: *const fn (
             self: *const ITextRange2,
             ppRange: ?*?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFont2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFont2: *const fn (
             self: *const ITextRange2,
             ppFont: ?*?*ITextFont2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFont2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFont2: *const fn (
             self: *const ITextRange2,
             pFont: ?*ITextFont2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFormattedText2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFormattedText2: *const fn (
             self: *const ITextRange2,
             ppRange: ?*?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFormattedText2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFormattedText2: *const fn (
             self: *const ITextRange2,
             pRange: ?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetGravity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetGravity: *const fn (
             self: *const ITextRange2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetGravity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetGravity: *const fn (
             self: *const ITextRange2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPara2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPara2: *const fn (
             self: *const ITextRange2,
             ppPara: ?*?*ITextPara2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPara2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPara2: *const fn (
             self: *const ITextRange2,
             pPara: ?*ITextPara2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRow: *const fn (
             self: *const ITextRange2,
             ppRow: ?*?*ITextRow,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStartPara: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStartPara: *const fn (
             self: *const ITextRange2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTable: *const fn (
             self: *const ITextRange2,
             ppTable: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetURL: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetURL: *const fn (
             self: *const ITextRange2,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetURL: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetURL: *const fn (
             self: *const ITextRange2,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddSubrange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddSubrange: *const fn (
             self: *const ITextRange2,
             cp1: i32,
             cp2: i32,
             Activate: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BuildUpMath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BuildUpMath: *const fn (
             self: *const ITextRange2,
             Flags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteSubrange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteSubrange: *const fn (
             self: *const ITextRange2,
             cpFirst: i32,
             cpLim: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Find: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Find: *const fn (
             self: *const ITextRange2,
             pRange: ?*ITextRange2,
             Count: i32,
             Flags: i32,
             pDelta: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChar2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChar2: *const fn (
             self: *const ITextRange2,
             pChar: ?*i32,
             Offset: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDropCap: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDropCap: *const fn (
             self: *const ITextRange2,
             pcLine: ?*i32,
             pPosition: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInlineObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInlineObject: *const fn (
             self: *const ITextRange2,
             pType: ?*i32,
             pAlign: ?*i32,
@@ -5551,13 +5551,13 @@ pub const ITextRange2 = extern union {
             pTeXStyle: ?*i32,
             pcCol: ?*i32,
             pLevel: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const ITextRange2,
             Type: i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRect: *const fn (
             self: *const ITextRange2,
             Type: i32,
             pLeft: ?*i32,
@@ -5565,55 +5565,55 @@ pub const ITextRange2 = extern union {
             pRight: ?*i32,
             pBottom: ?*i32,
             pHit: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSubrange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSubrange: *const fn (
             self: *const ITextRange2,
             iSubrange: i32,
             pcpFirst: ?*i32,
             pcpLim: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetText2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetText2: *const fn (
             self: *const ITextRange2,
             Flags: i32,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        HexToUnicode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        HexToUnicode: *const fn (
             self: *const ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InsertTable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InsertTable: *const fn (
             self: *const ITextRange2,
             cCol: i32,
             cRow: i32,
             AutoFit: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Linearize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Linearize: *const fn (
             self: *const ITextRange2,
             Flags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetActiveSubrange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetActiveSubrange: *const fn (
             self: *const ITextRange2,
             cpAnchor: i32,
             cpActive: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDropCap: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDropCap: *const fn (
             self: *const ITextRange2,
             cLine: i32,
             Position: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProperty: *const fn (
             self: *const ITextRange2,
             Type: i32,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetText2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetText2: *const fn (
             self: *const ITextRange2,
             Flags: i32,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnicodeToHex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnicodeToHex: *const fn (
             self: *const ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetInlineObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetInlineObject: *const fn (
             self: *const ITextRange2,
             Type: i32,
             Align: i32,
@@ -5623,13 +5623,13 @@ pub const ITextRange2 = extern union {
             Count: i32,
             TeXStyle: i32,
             cCol: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMathFunctionType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMathFunctionType: *const fn (
             self: *const ITextRange2,
             bstr: ?BSTR,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InsertImage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InsertImage: *const fn (
             self: *const ITextRange2,
             width: i32,
             height: i32,
@@ -5637,131 +5637,131 @@ pub const ITextRange2 = extern union {
             Type: TEXT_ALIGN_OPTIONS,
             bstrAltText: ?BSTR,
             pStream: ?*IStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextSelection: ITextSelection,
     ITextRange: ITextRange,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetCch(self: *const ITextRange2, pcch: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCch(self: *const ITextRange2, pcch: ?*i32) HRESULT {
         return self.vtable.GetCch(self, pcch);
     }
-    pub fn GetCells(self: *const ITextRange2, ppCells: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetCells(self: *const ITextRange2, ppCells: ?*?*IUnknown) HRESULT {
         return self.vtable.GetCells(self, ppCells);
     }
-    pub fn GetColumn(self: *const ITextRange2, ppColumn: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetColumn(self: *const ITextRange2, ppColumn: ?*?*IUnknown) HRESULT {
         return self.vtable.GetColumn(self, ppColumn);
     }
-    pub fn GetCount(self: *const ITextRange2, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const ITextRange2, pCount: ?*i32) HRESULT {
         return self.vtable.GetCount(self, pCount);
     }
-    pub fn GetDuplicate2(self: *const ITextRange2, ppRange: ?*?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn GetDuplicate2(self: *const ITextRange2, ppRange: ?*?*ITextRange2) HRESULT {
         return self.vtable.GetDuplicate2(self, ppRange);
     }
-    pub fn GetFont2(self: *const ITextRange2, ppFont: ?*?*ITextFont2) callconv(.Inline) HRESULT {
+    pub inline fn GetFont2(self: *const ITextRange2, ppFont: ?*?*ITextFont2) HRESULT {
         return self.vtable.GetFont2(self, ppFont);
     }
-    pub fn SetFont2(self: *const ITextRange2, pFont: ?*ITextFont2) callconv(.Inline) HRESULT {
+    pub inline fn SetFont2(self: *const ITextRange2, pFont: ?*ITextFont2) HRESULT {
         return self.vtable.SetFont2(self, pFont);
     }
-    pub fn GetFormattedText2(self: *const ITextRange2, ppRange: ?*?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn GetFormattedText2(self: *const ITextRange2, ppRange: ?*?*ITextRange2) HRESULT {
         return self.vtable.GetFormattedText2(self, ppRange);
     }
-    pub fn SetFormattedText2(self: *const ITextRange2, pRange: ?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn SetFormattedText2(self: *const ITextRange2, pRange: ?*ITextRange2) HRESULT {
         return self.vtable.SetFormattedText2(self, pRange);
     }
-    pub fn GetGravity(self: *const ITextRange2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetGravity(self: *const ITextRange2, pValue: ?*i32) HRESULT {
         return self.vtable.GetGravity(self, pValue);
     }
-    pub fn SetGravity(self: *const ITextRange2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetGravity(self: *const ITextRange2, Value: i32) HRESULT {
         return self.vtable.SetGravity(self, Value);
     }
-    pub fn GetPara2(self: *const ITextRange2, ppPara: ?*?*ITextPara2) callconv(.Inline) HRESULT {
+    pub inline fn GetPara2(self: *const ITextRange2, ppPara: ?*?*ITextPara2) HRESULT {
         return self.vtable.GetPara2(self, ppPara);
     }
-    pub fn SetPara2(self: *const ITextRange2, pPara: ?*ITextPara2) callconv(.Inline) HRESULT {
+    pub inline fn SetPara2(self: *const ITextRange2, pPara: ?*ITextPara2) HRESULT {
         return self.vtable.SetPara2(self, pPara);
     }
-    pub fn GetRow(self: *const ITextRange2, ppRow: ?*?*ITextRow) callconv(.Inline) HRESULT {
+    pub inline fn GetRow(self: *const ITextRange2, ppRow: ?*?*ITextRow) HRESULT {
         return self.vtable.GetRow(self, ppRow);
     }
-    pub fn GetStartPara(self: *const ITextRange2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStartPara(self: *const ITextRange2, pValue: ?*i32) HRESULT {
         return self.vtable.GetStartPara(self, pValue);
     }
-    pub fn GetTable(self: *const ITextRange2, ppTable: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetTable(self: *const ITextRange2, ppTable: ?*?*IUnknown) HRESULT {
         return self.vtable.GetTable(self, ppTable);
     }
-    pub fn GetURL(self: *const ITextRange2, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetURL(self: *const ITextRange2, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.GetURL(self, pbstr);
     }
-    pub fn SetURL(self: *const ITextRange2, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetURL(self: *const ITextRange2, bstr: ?BSTR) HRESULT {
         return self.vtable.SetURL(self, bstr);
     }
-    pub fn AddSubrange(self: *const ITextRange2, cp1: i32, cp2: i32, Activate: i32) callconv(.Inline) HRESULT {
+    pub inline fn AddSubrange(self: *const ITextRange2, cp1: i32, cp2: i32, Activate: i32) HRESULT {
         return self.vtable.AddSubrange(self, cp1, cp2, Activate);
     }
-    pub fn BuildUpMath(self: *const ITextRange2, Flags: i32) callconv(.Inline) HRESULT {
+    pub inline fn BuildUpMath(self: *const ITextRange2, Flags: i32) HRESULT {
         return self.vtable.BuildUpMath(self, Flags);
     }
-    pub fn DeleteSubrange(self: *const ITextRange2, cpFirst: i32, cpLim: i32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteSubrange(self: *const ITextRange2, cpFirst: i32, cpLim: i32) HRESULT {
         return self.vtable.DeleteSubrange(self, cpFirst, cpLim);
     }
-    pub fn Find(self: *const ITextRange2, pRange: ?*ITextRange2, Count: i32, Flags: i32, pDelta: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Find(self: *const ITextRange2, pRange: ?*ITextRange2, Count: i32, Flags: i32, pDelta: ?*i32) HRESULT {
         return self.vtable.Find(self, pRange, Count, Flags, pDelta);
     }
-    pub fn GetChar2(self: *const ITextRange2, pChar: ?*i32, Offset: i32) callconv(.Inline) HRESULT {
+    pub inline fn GetChar2(self: *const ITextRange2, pChar: ?*i32, Offset: i32) HRESULT {
         return self.vtable.GetChar2(self, pChar, Offset);
     }
-    pub fn GetDropCap(self: *const ITextRange2, pcLine: ?*i32, pPosition: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetDropCap(self: *const ITextRange2, pcLine: ?*i32, pPosition: ?*i32) HRESULT {
         return self.vtable.GetDropCap(self, pcLine, pPosition);
     }
-    pub fn GetInlineObject(self: *const ITextRange2, pType: ?*i32, pAlign: ?*i32, pChar: ?*i32, pChar1: ?*i32, pChar2: ?*i32, pCount: ?*i32, pTeXStyle: ?*i32, pcCol: ?*i32, pLevel: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetInlineObject(self: *const ITextRange2, pType: ?*i32, pAlign: ?*i32, pChar: ?*i32, pChar1: ?*i32, pChar2: ?*i32, pCount: ?*i32, pTeXStyle: ?*i32, pcCol: ?*i32, pLevel: ?*i32) HRESULT {
         return self.vtable.GetInlineObject(self, pType, pAlign, pChar, pChar1, pChar2, pCount, pTeXStyle, pcCol, pLevel);
     }
-    pub fn GetProperty(self: *const ITextRange2, Type: i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const ITextRange2, Type: i32, pValue: ?*i32) HRESULT {
         return self.vtable.GetProperty(self, Type, pValue);
     }
-    pub fn GetRect(self: *const ITextRange2, Type: i32, pLeft: ?*i32, pTop: ?*i32, pRight: ?*i32, pBottom: ?*i32, pHit: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetRect(self: *const ITextRange2, Type: i32, pLeft: ?*i32, pTop: ?*i32, pRight: ?*i32, pBottom: ?*i32, pHit: ?*i32) HRESULT {
         return self.vtable.GetRect(self, Type, pLeft, pTop, pRight, pBottom, pHit);
     }
-    pub fn GetSubrange(self: *const ITextRange2, iSubrange: i32, pcpFirst: ?*i32, pcpLim: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetSubrange(self: *const ITextRange2, iSubrange: i32, pcpFirst: ?*i32, pcpLim: ?*i32) HRESULT {
         return self.vtable.GetSubrange(self, iSubrange, pcpFirst, pcpLim);
     }
-    pub fn GetText2(self: *const ITextRange2, Flags: i32, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetText2(self: *const ITextRange2, Flags: i32, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.GetText2(self, Flags, pbstr);
     }
-    pub fn HexToUnicode(self: *const ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn HexToUnicode(self: *const ITextRange2) HRESULT {
         return self.vtable.HexToUnicode(self);
     }
-    pub fn InsertTable(self: *const ITextRange2, cCol: i32, cRow: i32, AutoFit: i32) callconv(.Inline) HRESULT {
+    pub inline fn InsertTable(self: *const ITextRange2, cCol: i32, cRow: i32, AutoFit: i32) HRESULT {
         return self.vtable.InsertTable(self, cCol, cRow, AutoFit);
     }
-    pub fn Linearize(self: *const ITextRange2, Flags: i32) callconv(.Inline) HRESULT {
+    pub inline fn Linearize(self: *const ITextRange2, Flags: i32) HRESULT {
         return self.vtable.Linearize(self, Flags);
     }
-    pub fn SetActiveSubrange(self: *const ITextRange2, cpAnchor: i32, cpActive: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetActiveSubrange(self: *const ITextRange2, cpAnchor: i32, cpActive: i32) HRESULT {
         return self.vtable.SetActiveSubrange(self, cpAnchor, cpActive);
     }
-    pub fn SetDropCap(self: *const ITextRange2, cLine: i32, Position: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetDropCap(self: *const ITextRange2, cLine: i32, Position: i32) HRESULT {
         return self.vtable.SetDropCap(self, cLine, Position);
     }
-    pub fn SetProperty(self: *const ITextRange2, Type: i32, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetProperty(self: *const ITextRange2, Type: i32, Value: i32) HRESULT {
         return self.vtable.SetProperty(self, Type, Value);
     }
-    pub fn SetText2(self: *const ITextRange2, Flags: i32, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetText2(self: *const ITextRange2, Flags: i32, bstr: ?BSTR) HRESULT {
         return self.vtable.SetText2(self, Flags, bstr);
     }
-    pub fn UnicodeToHex(self: *const ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn UnicodeToHex(self: *const ITextRange2) HRESULT {
         return self.vtable.UnicodeToHex(self);
     }
-    pub fn SetInlineObject(self: *const ITextRange2, Type: i32, Align: i32, Char: i32, Char1: i32, Char2: i32, Count: i32, TeXStyle: i32, cCol: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetInlineObject(self: *const ITextRange2, Type: i32, Align: i32, Char: i32, Char1: i32, Char2: i32, Count: i32, TeXStyle: i32, cCol: i32) HRESULT {
         return self.vtable.SetInlineObject(self, Type, Align, Char, Char1, Char2, Count, TeXStyle, cCol);
     }
-    pub fn GetMathFunctionType(self: *const ITextRange2, bstr: ?BSTR, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetMathFunctionType(self: *const ITextRange2, bstr: ?BSTR, pValue: ?*i32) HRESULT {
         return self.vtable.GetMathFunctionType(self, bstr, pValue);
     }
-    pub fn InsertImage(self: *const ITextRange2, width: i32, height: i32, ascent: i32, Type: TEXT_ALIGN_OPTIONS, bstrAltText: ?BSTR, pStream: ?*IStream) callconv(.Inline) HRESULT {
+    pub inline fn InsertImage(self: *const ITextRange2, width: i32, height: i32, ascent: i32, Type: TEXT_ALIGN_OPTIONS, bstrAltText: ?BSTR, pStream: ?*IStream) HRESULT {
         return self.vtable.InsertImage(self, width, height, ascent, Type, bstrAltText, pStream);
     }
 };
@@ -5787,340 +5787,340 @@ pub const IID_ITextFont2 = &IID_ITextFont2_Value;
 pub const ITextFont2 = extern union {
     pub const VTable = extern struct {
         base: ITextFont.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const ITextFont2,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAutoLigatures: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAutoLigatures: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAutoLigatures: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAutoLigatures: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAutospaceAlpha: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAutospaceAlpha: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAutospaceAlpha: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAutospaceAlpha: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAutospaceNumeric: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAutospaceNumeric: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAutospaceNumeric: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAutospaceNumeric: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAutospaceParens: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAutospaceParens: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAutospaceParens: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAutospaceParens: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCharRep: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCharRep: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCharRep: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCharRep: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCompressionMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCompressionMode: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCompressionMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCompressionMode: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCookie: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCookie: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCookie: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCookie: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDoubleStrike: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDoubleStrike: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDoubleStrike: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDoubleStrike: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDuplicate2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDuplicate2: *const fn (
             self: *const ITextFont2,
             ppFont: ?*?*ITextFont2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDuplicate2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDuplicate2: *const fn (
             self: *const ITextFont2,
             pFont: ?*ITextFont2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLinkType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLinkType: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMathZone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMathZone: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetMathZone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetMathZone: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetModWidthPairs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetModWidthPairs: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetModWidthPairs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetModWidthPairs: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetModWidthSpace: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetModWidthSpace: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetModWidthSpace: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetModWidthSpace: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetOldNumbers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetOldNumbers: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetOldNumbers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetOldNumbers: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetOverlapping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetOverlapping: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetOverlapping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetOverlapping: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPositionSubSuper: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPositionSubSuper: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPositionSubSuper: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPositionSubSuper: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetScaling: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetScaling: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetScaling: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetScaling: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSpaceExtension: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSpaceExtension: *const fn (
             self: *const ITextFont2,
             pValue: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSpaceExtension: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSpaceExtension: *const fn (
             self: *const ITextFont2,
             Value: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetUnderlinePositionMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetUnderlinePositionMode: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetUnderlinePositionMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetUnderlinePositionMode: *const fn (
             self: *const ITextFont2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEffects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEffects: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
             pMask: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEffects2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEffects2: *const fn (
             self: *const ITextFont2,
             pValue: ?*i32,
             pMask: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const ITextFont2,
             Type: i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyInfo: *const fn (
             self: *const ITextFont2,
             Index: i32,
             pType: ?*i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsEqual2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsEqual2: *const fn (
             self: *const ITextFont2,
             pFont: ?*ITextFont2,
             pB: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEffects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEffects: *const fn (
             self: *const ITextFont2,
             Value: i32,
             Mask: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEffects2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEffects2: *const fn (
             self: *const ITextFont2,
             Value: i32,
             Mask: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProperty: *const fn (
             self: *const ITextFont2,
             Type: i32,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextFont: ITextFont,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const ITextFont2, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const ITextFont2, pCount: ?*i32) HRESULT {
         return self.vtable.GetCount(self, pCount);
     }
-    pub fn GetAutoLigatures(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetAutoLigatures(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetAutoLigatures(self, pValue);
     }
-    pub fn SetAutoLigatures(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetAutoLigatures(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetAutoLigatures(self, Value);
     }
-    pub fn GetAutospaceAlpha(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetAutospaceAlpha(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetAutospaceAlpha(self, pValue);
     }
-    pub fn SetAutospaceAlpha(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetAutospaceAlpha(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetAutospaceAlpha(self, Value);
     }
-    pub fn GetAutospaceNumeric(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetAutospaceNumeric(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetAutospaceNumeric(self, pValue);
     }
-    pub fn SetAutospaceNumeric(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetAutospaceNumeric(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetAutospaceNumeric(self, Value);
     }
-    pub fn GetAutospaceParens(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetAutospaceParens(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetAutospaceParens(self, pValue);
     }
-    pub fn SetAutospaceParens(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetAutospaceParens(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetAutospaceParens(self, Value);
     }
-    pub fn GetCharRep(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCharRep(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetCharRep(self, pValue);
     }
-    pub fn SetCharRep(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCharRep(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetCharRep(self, Value);
     }
-    pub fn GetCompressionMode(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCompressionMode(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetCompressionMode(self, pValue);
     }
-    pub fn SetCompressionMode(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCompressionMode(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetCompressionMode(self, Value);
     }
-    pub fn GetCookie(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCookie(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetCookie(self, pValue);
     }
-    pub fn SetCookie(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCookie(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetCookie(self, Value);
     }
-    pub fn GetDoubleStrike(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetDoubleStrike(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetDoubleStrike(self, pValue);
     }
-    pub fn SetDoubleStrike(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetDoubleStrike(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetDoubleStrike(self, Value);
     }
-    pub fn GetDuplicate2(self: *const ITextFont2, ppFont: ?*?*ITextFont2) callconv(.Inline) HRESULT {
+    pub inline fn GetDuplicate2(self: *const ITextFont2, ppFont: ?*?*ITextFont2) HRESULT {
         return self.vtable.GetDuplicate2(self, ppFont);
     }
-    pub fn SetDuplicate2(self: *const ITextFont2, pFont: ?*ITextFont2) callconv(.Inline) HRESULT {
+    pub inline fn SetDuplicate2(self: *const ITextFont2, pFont: ?*ITextFont2) HRESULT {
         return self.vtable.SetDuplicate2(self, pFont);
     }
-    pub fn GetLinkType(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetLinkType(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetLinkType(self, pValue);
     }
-    pub fn GetMathZone(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetMathZone(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetMathZone(self, pValue);
     }
-    pub fn SetMathZone(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetMathZone(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetMathZone(self, Value);
     }
-    pub fn GetModWidthPairs(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetModWidthPairs(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetModWidthPairs(self, pValue);
     }
-    pub fn SetModWidthPairs(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetModWidthPairs(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetModWidthPairs(self, Value);
     }
-    pub fn GetModWidthSpace(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetModWidthSpace(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetModWidthSpace(self, pValue);
     }
-    pub fn SetModWidthSpace(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetModWidthSpace(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetModWidthSpace(self, Value);
     }
-    pub fn GetOldNumbers(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetOldNumbers(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetOldNumbers(self, pValue);
     }
-    pub fn SetOldNumbers(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetOldNumbers(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetOldNumbers(self, Value);
     }
-    pub fn GetOverlapping(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetOverlapping(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetOverlapping(self, pValue);
     }
-    pub fn SetOverlapping(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetOverlapping(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetOverlapping(self, Value);
     }
-    pub fn GetPositionSubSuper(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPositionSubSuper(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetPositionSubSuper(self, pValue);
     }
-    pub fn SetPositionSubSuper(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetPositionSubSuper(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetPositionSubSuper(self, Value);
     }
-    pub fn GetScaling(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetScaling(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetScaling(self, pValue);
     }
-    pub fn SetScaling(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetScaling(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetScaling(self, Value);
     }
-    pub fn GetSpaceExtension(self: *const ITextFont2, pValue: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetSpaceExtension(self: *const ITextFont2, pValue: ?*f32) HRESULT {
         return self.vtable.GetSpaceExtension(self, pValue);
     }
-    pub fn SetSpaceExtension(self: *const ITextFont2, Value: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetSpaceExtension(self: *const ITextFont2, Value: f32) HRESULT {
         return self.vtable.SetSpaceExtension(self, Value);
     }
-    pub fn GetUnderlinePositionMode(self: *const ITextFont2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetUnderlinePositionMode(self: *const ITextFont2, pValue: ?*i32) HRESULT {
         return self.vtable.GetUnderlinePositionMode(self, pValue);
     }
-    pub fn SetUnderlinePositionMode(self: *const ITextFont2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetUnderlinePositionMode(self: *const ITextFont2, Value: i32) HRESULT {
         return self.vtable.SetUnderlinePositionMode(self, Value);
     }
-    pub fn GetEffects(self: *const ITextFont2, pValue: ?*i32, pMask: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetEffects(self: *const ITextFont2, pValue: ?*i32, pMask: ?*i32) HRESULT {
         return self.vtable.GetEffects(self, pValue, pMask);
     }
-    pub fn GetEffects2(self: *const ITextFont2, pValue: ?*i32, pMask: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetEffects2(self: *const ITextFont2, pValue: ?*i32, pMask: ?*i32) HRESULT {
         return self.vtable.GetEffects2(self, pValue, pMask);
     }
-    pub fn GetProperty(self: *const ITextFont2, Type: i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const ITextFont2, Type: i32, pValue: ?*i32) HRESULT {
         return self.vtable.GetProperty(self, Type, pValue);
     }
-    pub fn GetPropertyInfo(self: *const ITextFont2, Index: i32, pType: ?*i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyInfo(self: *const ITextFont2, Index: i32, pType: ?*i32, pValue: ?*i32) HRESULT {
         return self.vtable.GetPropertyInfo(self, Index, pType, pValue);
     }
-    pub fn IsEqual2(self: *const ITextFont2, pFont: ?*ITextFont2, pB: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn IsEqual2(self: *const ITextFont2, pFont: ?*ITextFont2, pB: ?*i32) HRESULT {
         return self.vtable.IsEqual2(self, pFont, pB);
     }
-    pub fn SetEffects(self: *const ITextFont2, Value: i32, Mask: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetEffects(self: *const ITextFont2, Value: i32, Mask: i32) HRESULT {
         return self.vtable.SetEffects(self, Value, Mask);
     }
-    pub fn SetEffects2(self: *const ITextFont2, Value: i32, Mask: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetEffects2(self: *const ITextFont2, Value: i32, Mask: i32) HRESULT {
         return self.vtable.SetEffects2(self, Value, Mask);
     }
-    pub fn SetProperty(self: *const ITextFont2, Type: i32, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetProperty(self: *const ITextFont2, Type: i32, Value: i32) HRESULT {
         return self.vtable.SetProperty(self, Type, Value);
     }
 };
@@ -6131,126 +6131,126 @@ pub const IID_ITextPara2 = &IID_ITextPara2_Value;
 pub const ITextPara2 = extern union {
     pub const VTable = extern struct {
         base: ITextPara.VTable,
-        GetBorders: *const fn(
+        GetBorders: *const fn (
             self: *const ITextPara2,
             ppBorders: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDuplicate2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDuplicate2: *const fn (
             self: *const ITextPara2,
             ppPara: ?*?*ITextPara2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDuplicate2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDuplicate2: *const fn (
             self: *const ITextPara2,
             pPara: ?*ITextPara2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFontAlignment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFontAlignment: *const fn (
             self: *const ITextPara2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFontAlignment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFontAlignment: *const fn (
             self: *const ITextPara2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetHangingPunctuation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetHangingPunctuation: *const fn (
             self: *const ITextPara2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHangingPunctuation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHangingPunctuation: *const fn (
             self: *const ITextPara2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSnapToGrid: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSnapToGrid: *const fn (
             self: *const ITextPara2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSnapToGrid: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSnapToGrid: *const fn (
             self: *const ITextPara2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTrimPunctuationAtStart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTrimPunctuationAtStart: *const fn (
             self: *const ITextPara2,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTrimPunctuationAtStart: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTrimPunctuationAtStart: *const fn (
             self: *const ITextPara2,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEffects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEffects: *const fn (
             self: *const ITextPara2,
             pValue: ?*i32,
             pMask: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const ITextPara2,
             Type: i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsEqual2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsEqual2: *const fn (
             self: *const ITextPara2,
             pPara: ?*ITextPara2,
             pB: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEffects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEffects: *const fn (
             self: *const ITextPara2,
             Value: i32,
             Mask: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProperty: *const fn (
             self: *const ITextPara2,
             Type: i32,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextPara: ITextPara,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetBorders(self: *const ITextPara2, ppBorders: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetBorders(self: *const ITextPara2, ppBorders: ?*?*IUnknown) HRESULT {
         return self.vtable.GetBorders(self, ppBorders);
     }
-    pub fn GetDuplicate2(self: *const ITextPara2, ppPara: ?*?*ITextPara2) callconv(.Inline) HRESULT {
+    pub inline fn GetDuplicate2(self: *const ITextPara2, ppPara: ?*?*ITextPara2) HRESULT {
         return self.vtable.GetDuplicate2(self, ppPara);
     }
-    pub fn SetDuplicate2(self: *const ITextPara2, pPara: ?*ITextPara2) callconv(.Inline) HRESULT {
+    pub inline fn SetDuplicate2(self: *const ITextPara2, pPara: ?*ITextPara2) HRESULT {
         return self.vtable.SetDuplicate2(self, pPara);
     }
-    pub fn GetFontAlignment(self: *const ITextPara2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetFontAlignment(self: *const ITextPara2, pValue: ?*i32) HRESULT {
         return self.vtable.GetFontAlignment(self, pValue);
     }
-    pub fn SetFontAlignment(self: *const ITextPara2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetFontAlignment(self: *const ITextPara2, Value: i32) HRESULT {
         return self.vtable.SetFontAlignment(self, Value);
     }
-    pub fn GetHangingPunctuation(self: *const ITextPara2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetHangingPunctuation(self: *const ITextPara2, pValue: ?*i32) HRESULT {
         return self.vtable.GetHangingPunctuation(self, pValue);
     }
-    pub fn SetHangingPunctuation(self: *const ITextPara2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetHangingPunctuation(self: *const ITextPara2, Value: i32) HRESULT {
         return self.vtable.SetHangingPunctuation(self, Value);
     }
-    pub fn GetSnapToGrid(self: *const ITextPara2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetSnapToGrid(self: *const ITextPara2, pValue: ?*i32) HRESULT {
         return self.vtable.GetSnapToGrid(self, pValue);
     }
-    pub fn SetSnapToGrid(self: *const ITextPara2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetSnapToGrid(self: *const ITextPara2, Value: i32) HRESULT {
         return self.vtable.SetSnapToGrid(self, Value);
     }
-    pub fn GetTrimPunctuationAtStart(self: *const ITextPara2, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetTrimPunctuationAtStart(self: *const ITextPara2, pValue: ?*i32) HRESULT {
         return self.vtable.GetTrimPunctuationAtStart(self, pValue);
     }
-    pub fn SetTrimPunctuationAtStart(self: *const ITextPara2, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetTrimPunctuationAtStart(self: *const ITextPara2, Value: i32) HRESULT {
         return self.vtable.SetTrimPunctuationAtStart(self, Value);
     }
-    pub fn GetEffects(self: *const ITextPara2, pValue: ?*i32, pMask: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetEffects(self: *const ITextPara2, pValue: ?*i32, pMask: ?*i32) HRESULT {
         return self.vtable.GetEffects(self, pValue, pMask);
     }
-    pub fn GetProperty(self: *const ITextPara2, Type: i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const ITextPara2, Type: i32, pValue: ?*i32) HRESULT {
         return self.vtable.GetProperty(self, Type, pValue);
     }
-    pub fn IsEqual2(self: *const ITextPara2, pPara: ?*ITextPara2, pB: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn IsEqual2(self: *const ITextPara2, pPara: ?*ITextPara2, pB: ?*i32) HRESULT {
         return self.vtable.IsEqual2(self, pPara, pB);
     }
-    pub fn SetEffects(self: *const ITextPara2, Value: i32, Mask: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetEffects(self: *const ITextPara2, Value: i32, Mask: i32) HRESULT {
         return self.vtable.SetEffects(self, Value, Mask);
     }
-    pub fn SetProperty(self: *const ITextPara2, Type: i32, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetProperty(self: *const ITextPara2, Type: i32, Value: i32) HRESULT {
         return self.vtable.SetProperty(self, Type, Value);
     }
 };
@@ -6261,17 +6261,17 @@ pub const IID_ITextStoryRanges2 = &IID_ITextStoryRanges2_Value;
 pub const ITextStoryRanges2 = extern union {
     pub const VTable = extern struct {
         base: ITextStoryRanges.VTable,
-        Item2: *const fn(
+        Item2: *const fn (
             self: *const ITextStoryRanges2,
             Index: i32,
             ppRange: ?*?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextStoryRanges: ITextStoryRanges,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Item2(self: *const ITextStoryRanges2, Index: i32, ppRange: ?*?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn Item2(self: *const ITextStoryRanges2, Index: i32, ppRange: ?*?*ITextRange2) HRESULT {
         return self.vtable.Item2(self, Index, ppRange);
     }
 };
@@ -6282,97 +6282,97 @@ pub const IID_ITextStory = &IID_ITextStory_Value;
 pub const ITextStory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetActive: *const fn(
+        GetActive: *const fn (
             self: *const ITextStory,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetActive: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetActive: *const fn (
             self: *const ITextStory,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplay: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplay: *const fn (
             self: *const ITextStory,
             ppDisplay: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIndex: *const fn (
             self: *const ITextStory,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetType: *const fn (
             self: *const ITextStory,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetType: *const fn (
             self: *const ITextStory,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const ITextStory,
             Type: i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRange: *const fn (
             self: *const ITextStory,
             cpActive: i32,
             cpAnchor: i32,
             ppRange: ?*?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetText: *const fn (
             self: *const ITextStory,
             Flags: i32,
             pbstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFormattedText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFormattedText: *const fn (
             self: *const ITextStory,
             pUnk: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProperty: *const fn (
             self: *const ITextStory,
             Type: i32,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetText: *const fn (
             self: *const ITextStory,
             Flags: i32,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetActive(self: *const ITextStory, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetActive(self: *const ITextStory, pValue: ?*i32) HRESULT {
         return self.vtable.GetActive(self, pValue);
     }
-    pub fn SetActive(self: *const ITextStory, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetActive(self: *const ITextStory, Value: i32) HRESULT {
         return self.vtable.SetActive(self, Value);
     }
-    pub fn GetDisplay(self: *const ITextStory, ppDisplay: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplay(self: *const ITextStory, ppDisplay: ?*?*IUnknown) HRESULT {
         return self.vtable.GetDisplay(self, ppDisplay);
     }
-    pub fn GetIndex(self: *const ITextStory, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetIndex(self: *const ITextStory, pValue: ?*i32) HRESULT {
         return self.vtable.GetIndex(self, pValue);
     }
-    pub fn GetType(self: *const ITextStory, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetType(self: *const ITextStory, pValue: ?*i32) HRESULT {
         return self.vtable.GetType(self, pValue);
     }
-    pub fn SetType(self: *const ITextStory, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetType(self: *const ITextStory, Value: i32) HRESULT {
         return self.vtable.SetType(self, Value);
     }
-    pub fn GetProperty(self: *const ITextStory, Type: i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const ITextStory, Type: i32, pValue: ?*i32) HRESULT {
         return self.vtable.GetProperty(self, Type, pValue);
     }
-    pub fn GetRange(self: *const ITextStory, cpActive: i32, cpAnchor: i32, ppRange: ?*?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn GetRange(self: *const ITextStory, cpActive: i32, cpAnchor: i32, ppRange: ?*?*ITextRange2) HRESULT {
         return self.vtable.GetRange(self, cpActive, cpAnchor, ppRange);
     }
-    pub fn GetText(self: *const ITextStory, Flags: i32, pbstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetText(self: *const ITextStory, Flags: i32, pbstr: ?*?BSTR) HRESULT {
         return self.vtable.GetText(self, Flags, pbstr);
     }
-    pub fn SetFormattedText(self: *const ITextStory, pUnk: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn SetFormattedText(self: *const ITextStory, pUnk: ?*IUnknown) HRESULT {
         return self.vtable.SetFormattedText(self, pUnk);
     }
-    pub fn SetProperty(self: *const ITextStory, Type: i32, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetProperty(self: *const ITextStory, Type: i32, Value: i32) HRESULT {
         return self.vtable.SetProperty(self, Type, Value);
     }
-    pub fn SetText(self: *const ITextStory, Flags: i32, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetText(self: *const ITextStory, Flags: i32, bstr: ?BSTR) HRESULT {
         return self.vtable.SetText(self, Flags, bstr);
     }
 };
@@ -6383,37 +6383,37 @@ pub const IID_ITextStrings = &IID_ITextStrings_Value;
 pub const ITextStrings = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Item: *const fn(
+        Item: *const fn (
             self: *const ITextStrings,
             Index: i32,
             ppRange: ?*?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCount: *const fn (
             self: *const ITextStrings,
             pCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ITextStrings,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Append: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Append: *const fn (
             self: *const ITextStrings,
             pRange: ?*ITextRange2,
             iString: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cat2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cat2: *const fn (
             self: *const ITextStrings,
             iString: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CatTop2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CatTop2: *const fn (
             self: *const ITextStrings,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteRange: *const fn (
             self: *const ITextStrings,
             pRange: ?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EncodeFunction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EncodeFunction: *const fn (
             self: *const ITextStrings,
             Type: i32,
             Align: i32,
@@ -6424,101 +6424,101 @@ pub const ITextStrings = extern union {
             TeXStyle: i32,
             cCol: i32,
             pRange: ?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCch: *const fn (
             self: *const ITextStrings,
             iString: i32,
             pcch: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InsertNullStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InsertNullStr: *const fn (
             self: *const ITextStrings,
             iString: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveBoundary: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveBoundary: *const fn (
             self: *const ITextStrings,
             iString: i32,
             cch: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PrefixTop: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PrefixTop: *const fn (
             self: *const ITextStrings,
             bstr: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const ITextStrings,
             iString: i32,
             cString: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFormattedText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFormattedText: *const fn (
             self: *const ITextStrings,
             pRangeD: ?*ITextRange2,
             pRangeS: ?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetOpCp: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetOpCp: *const fn (
             self: *const ITextStrings,
             iString: i32,
             cp: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SuffixTop: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SuffixTop: *const fn (
             self: *const ITextStrings,
             bstr: ?BSTR,
             pRange: ?*ITextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Swap: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Swap: *const fn (
             self: *const ITextStrings,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Item(self: *const ITextStrings, Index: i32, ppRange: ?*?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const ITextStrings, Index: i32, ppRange: ?*?*ITextRange2) HRESULT {
         return self.vtable.Item(self, Index, ppRange);
     }
-    pub fn GetCount(self: *const ITextStrings, pCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const ITextStrings, pCount: ?*i32) HRESULT {
         return self.vtable.GetCount(self, pCount);
     }
-    pub fn Add(self: *const ITextStrings, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ITextStrings, bstr: ?BSTR) HRESULT {
         return self.vtable.Add(self, bstr);
     }
-    pub fn Append(self: *const ITextStrings, pRange: ?*ITextRange2, iString: i32) callconv(.Inline) HRESULT {
+    pub inline fn Append(self: *const ITextStrings, pRange: ?*ITextRange2, iString: i32) HRESULT {
         return self.vtable.Append(self, pRange, iString);
     }
-    pub fn Cat2(self: *const ITextStrings, iString: i32) callconv(.Inline) HRESULT {
+    pub inline fn Cat2(self: *const ITextStrings, iString: i32) HRESULT {
         return self.vtable.Cat2(self, iString);
     }
-    pub fn CatTop2(self: *const ITextStrings, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn CatTop2(self: *const ITextStrings, bstr: ?BSTR) HRESULT {
         return self.vtable.CatTop2(self, bstr);
     }
-    pub fn DeleteRange(self: *const ITextStrings, pRange: ?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn DeleteRange(self: *const ITextStrings, pRange: ?*ITextRange2) HRESULT {
         return self.vtable.DeleteRange(self, pRange);
     }
-    pub fn EncodeFunction(self: *const ITextStrings, Type: i32, Align: i32, Char: i32, Char1: i32, Char2: i32, Count: i32, TeXStyle: i32, cCol: i32, pRange: ?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn EncodeFunction(self: *const ITextStrings, Type: i32, Align: i32, Char: i32, Char1: i32, Char2: i32, Count: i32, TeXStyle: i32, cCol: i32, pRange: ?*ITextRange2) HRESULT {
         return self.vtable.EncodeFunction(self, Type, Align, Char, Char1, Char2, Count, TeXStyle, cCol, pRange);
     }
-    pub fn GetCch(self: *const ITextStrings, iString: i32, pcch: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCch(self: *const ITextStrings, iString: i32, pcch: ?*i32) HRESULT {
         return self.vtable.GetCch(self, iString, pcch);
     }
-    pub fn InsertNullStr(self: *const ITextStrings, iString: i32) callconv(.Inline) HRESULT {
+    pub inline fn InsertNullStr(self: *const ITextStrings, iString: i32) HRESULT {
         return self.vtable.InsertNullStr(self, iString);
     }
-    pub fn MoveBoundary(self: *const ITextStrings, iString: i32, cch: i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveBoundary(self: *const ITextStrings, iString: i32, cch: i32) HRESULT {
         return self.vtable.MoveBoundary(self, iString, cch);
     }
-    pub fn PrefixTop(self: *const ITextStrings, bstr: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn PrefixTop(self: *const ITextStrings, bstr: ?BSTR) HRESULT {
         return self.vtable.PrefixTop(self, bstr);
     }
-    pub fn Remove(self: *const ITextStrings, iString: i32, cString: i32) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ITextStrings, iString: i32, cString: i32) HRESULT {
         return self.vtable.Remove(self, iString, cString);
     }
-    pub fn SetFormattedText(self: *const ITextStrings, pRangeD: ?*ITextRange2, pRangeS: ?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn SetFormattedText(self: *const ITextStrings, pRangeD: ?*ITextRange2, pRangeS: ?*ITextRange2) HRESULT {
         return self.vtable.SetFormattedText(self, pRangeD, pRangeS);
     }
-    pub fn SetOpCp(self: *const ITextStrings, iString: i32, cp: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetOpCp(self: *const ITextStrings, iString: i32, cp: i32) HRESULT {
         return self.vtable.SetOpCp(self, iString, cp);
     }
-    pub fn SuffixTop(self: *const ITextStrings, bstr: ?BSTR, pRange: ?*ITextRange2) callconv(.Inline) HRESULT {
+    pub inline fn SuffixTop(self: *const ITextStrings, bstr: ?BSTR, pRange: ?*ITextRange2) HRESULT {
         return self.vtable.SuffixTop(self, bstr, pRange);
     }
-    pub fn Swap(self: *const ITextStrings) callconv(.Inline) HRESULT {
+    pub inline fn Swap(self: *const ITextStrings) HRESULT {
         return self.vtable.Swap(self);
     }
 };
@@ -6529,346 +6529,346 @@ pub const IID_ITextRow = &IID_ITextRow_Value;
 pub const ITextRow = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetAlignment: *const fn(
+        GetAlignment: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAlignment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAlignment: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellCount: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellCount: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellCountCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellCountCache: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellCountCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellCountCache: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellIndex: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellIndex: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellMargin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellMargin: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellMargin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellMargin: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetHeight: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetHeight: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHeight: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHeight: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIndent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIndent: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIndent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIndent: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeepTogether: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeepTogether: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetKeepTogether: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetKeepTogether: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetKeepWithNext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetKeepWithNext: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetKeepWithNext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetKeepWithNext: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNestLevel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNestLevel: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRTL: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRTL: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetRTL: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetRTL: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellAlignment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellAlignment: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellAlignment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellAlignment: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellColorBack: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellColorBack: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellColorBack: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellColorBack: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellColorFore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellColorFore: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellColorFore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellColorFore: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellMergeFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellMergeFlags: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellMergeFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellMergeFlags: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellShading: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellShading: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellShading: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellShading: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellVerticalText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellVerticalText: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellVerticalText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellVerticalText: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellWidth: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellWidth: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellWidth: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellWidth: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellBorderColors: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellBorderColors: *const fn (
             self: *const ITextRow,
             pcrLeft: ?*i32,
             pcrTop: ?*i32,
             pcrRight: ?*i32,
             pcrBottom: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCellBorderWidths: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCellBorderWidths: *const fn (
             self: *const ITextRow,
             pduLeft: ?*i32,
             pduTop: ?*i32,
             pduRight: ?*i32,
             pduBottom: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellBorderColors: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellBorderColors: *const fn (
             self: *const ITextRow,
             crLeft: i32,
             crTop: i32,
             crRight: i32,
             crBottom: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCellBorderWidths: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCellBorderWidths: *const fn (
             self: *const ITextRow,
             duLeft: i32,
             duTop: i32,
             duRight: i32,
             duBottom: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Apply: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Apply: *const fn (
             self: *const ITextRow,
             cRow: i32,
             Flags: tomConstants,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CanChange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CanChange: *const fn (
             self: *const ITextRow,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const ITextRow,
             Type: i32,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Insert: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Insert: *const fn (
             self: *const ITextRow,
             cRow: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsEqual: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsEqual: *const fn (
             self: *const ITextRow,
             pRow: ?*ITextRow,
             pB: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const ITextRow,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetProperty: *const fn (
             self: *const ITextRow,
             Type: i32,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetAlignment(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetAlignment(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetAlignment(self, pValue);
     }
-    pub fn SetAlignment(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetAlignment(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetAlignment(self, Value);
     }
-    pub fn GetCellCount(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellCount(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellCount(self, pValue);
     }
-    pub fn SetCellCount(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellCount(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellCount(self, Value);
     }
-    pub fn GetCellCountCache(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellCountCache(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellCountCache(self, pValue);
     }
-    pub fn SetCellCountCache(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellCountCache(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellCountCache(self, Value);
     }
-    pub fn GetCellIndex(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellIndex(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellIndex(self, pValue);
     }
-    pub fn SetCellIndex(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellIndex(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellIndex(self, Value);
     }
-    pub fn GetCellMargin(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellMargin(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellMargin(self, pValue);
     }
-    pub fn SetCellMargin(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellMargin(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellMargin(self, Value);
     }
-    pub fn GetHeight(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetHeight(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetHeight(self, pValue);
     }
-    pub fn SetHeight(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetHeight(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetHeight(self, Value);
     }
-    pub fn GetIndent(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetIndent(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetIndent(self, pValue);
     }
-    pub fn SetIndent(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetIndent(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetIndent(self, Value);
     }
-    pub fn GetKeepTogether(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetKeepTogether(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetKeepTogether(self, pValue);
     }
-    pub fn SetKeepTogether(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetKeepTogether(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetKeepTogether(self, Value);
     }
-    pub fn GetKeepWithNext(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetKeepWithNext(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetKeepWithNext(self, pValue);
     }
-    pub fn SetKeepWithNext(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetKeepWithNext(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetKeepWithNext(self, Value);
     }
-    pub fn GetNestLevel(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetNestLevel(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetNestLevel(self, pValue);
     }
-    pub fn GetRTL(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetRTL(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetRTL(self, pValue);
     }
-    pub fn SetRTL(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetRTL(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetRTL(self, Value);
     }
-    pub fn GetCellAlignment(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellAlignment(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellAlignment(self, pValue);
     }
-    pub fn SetCellAlignment(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellAlignment(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellAlignment(self, Value);
     }
-    pub fn GetCellColorBack(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellColorBack(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellColorBack(self, pValue);
     }
-    pub fn SetCellColorBack(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellColorBack(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellColorBack(self, Value);
     }
-    pub fn GetCellColorFore(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellColorFore(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellColorFore(self, pValue);
     }
-    pub fn SetCellColorFore(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellColorFore(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellColorFore(self, Value);
     }
-    pub fn GetCellMergeFlags(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellMergeFlags(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellMergeFlags(self, pValue);
     }
-    pub fn SetCellMergeFlags(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellMergeFlags(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellMergeFlags(self, Value);
     }
-    pub fn GetCellShading(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellShading(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellShading(self, pValue);
     }
-    pub fn SetCellShading(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellShading(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellShading(self, Value);
     }
-    pub fn GetCellVerticalText(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellVerticalText(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellVerticalText(self, pValue);
     }
-    pub fn SetCellVerticalText(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellVerticalText(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellVerticalText(self, Value);
     }
-    pub fn GetCellWidth(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellWidth(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.GetCellWidth(self, pValue);
     }
-    pub fn SetCellWidth(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellWidth(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.SetCellWidth(self, Value);
     }
-    pub fn GetCellBorderColors(self: *const ITextRow, pcrLeft: ?*i32, pcrTop: ?*i32, pcrRight: ?*i32, pcrBottom: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellBorderColors(self: *const ITextRow, pcrLeft: ?*i32, pcrTop: ?*i32, pcrRight: ?*i32, pcrBottom: ?*i32) HRESULT {
         return self.vtable.GetCellBorderColors(self, pcrLeft, pcrTop, pcrRight, pcrBottom);
     }
-    pub fn GetCellBorderWidths(self: *const ITextRow, pduLeft: ?*i32, pduTop: ?*i32, pduRight: ?*i32, pduBottom: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCellBorderWidths(self: *const ITextRow, pduLeft: ?*i32, pduTop: ?*i32, pduRight: ?*i32, pduBottom: ?*i32) HRESULT {
         return self.vtable.GetCellBorderWidths(self, pduLeft, pduTop, pduRight, pduBottom);
     }
-    pub fn SetCellBorderColors(self: *const ITextRow, crLeft: i32, crTop: i32, crRight: i32, crBottom: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellBorderColors(self: *const ITextRow, crLeft: i32, crTop: i32, crRight: i32, crBottom: i32) HRESULT {
         return self.vtable.SetCellBorderColors(self, crLeft, crTop, crRight, crBottom);
     }
-    pub fn SetCellBorderWidths(self: *const ITextRow, duLeft: i32, duTop: i32, duRight: i32, duBottom: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCellBorderWidths(self: *const ITextRow, duLeft: i32, duTop: i32, duRight: i32, duBottom: i32) HRESULT {
         return self.vtable.SetCellBorderWidths(self, duLeft, duTop, duRight, duBottom);
     }
-    pub fn Apply(self: *const ITextRow, cRow: i32, Flags: tomConstants) callconv(.Inline) HRESULT {
+    pub inline fn Apply(self: *const ITextRow, cRow: i32, Flags: tomConstants) HRESULT {
         return self.vtable.Apply(self, cRow, Flags);
     }
-    pub fn CanChange(self: *const ITextRow, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CanChange(self: *const ITextRow, pValue: ?*i32) HRESULT {
         return self.vtable.CanChange(self, pValue);
     }
-    pub fn GetProperty(self: *const ITextRow, Type: i32, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const ITextRow, Type: i32, pValue: ?*i32) HRESULT {
         return self.vtable.GetProperty(self, Type, pValue);
     }
-    pub fn Insert(self: *const ITextRow, cRow: i32) callconv(.Inline) HRESULT {
+    pub inline fn Insert(self: *const ITextRow, cRow: i32) HRESULT {
         return self.vtable.Insert(self, cRow);
     }
-    pub fn IsEqual(self: *const ITextRow, pRow: ?*ITextRow, pB: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn IsEqual(self: *const ITextRow, pRow: ?*ITextRow, pB: ?*i32) HRESULT {
         return self.vtable.IsEqual(self, pRow, pB);
     }
-    pub fn Reset(self: *const ITextRow, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const ITextRow, Value: i32) HRESULT {
         return self.vtable.Reset(self, Value);
     }
-    pub fn SetProperty(self: *const ITextRow, Type: i32, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetProperty(self: *const ITextRow, Type: i32, Value: i32) HRESULT {
         return self.vtable.SetProperty(self, Type, Value);
     }
 };
@@ -6890,37 +6890,37 @@ pub const IID_ITextDocument2Old = &IID_ITextDocument2Old_Value;
 pub const ITextDocument2Old = extern union {
     pub const VTable = extern struct {
         base: ITextDocument.VTable,
-        AttachMsgFilter: *const fn(
+        AttachMsgFilter: *const fn (
             self: *const ITextDocument2Old,
             pFilter: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEffectColor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEffectColor: *const fn (
             self: *const ITextDocument2Old,
             Index: i32,
             cr: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEffectColor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEffectColor: *const fn (
             self: *const ITextDocument2Old,
             Index: i32,
             pcr: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCaretType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCaretType: *const fn (
             self: *const ITextDocument2Old,
             pCaretType: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCaretType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCaretType: *const fn (
             self: *const ITextDocument2Old,
             CaretType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetImmContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetImmContext: *const fn (
             self: *const ITextDocument2Old,
             pContext: ?*i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReleaseImmContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReleaseImmContext: *const fn (
             self: *const ITextDocument2Old,
             Context: i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPreferredFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPreferredFont: *const fn (
             self: *const ITextDocument2Old,
             cp: i32,
             CharRep: i32,
@@ -6930,153 +6930,152 @@ pub const ITextDocument2Old = extern union {
             pbstr: ?*?BSTR,
             pPitchAndFamily: ?*i32,
             pNewFontSize: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNotificationMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNotificationMode: *const fn (
             self: *const ITextDocument2Old,
             pMode: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetNotificationMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetNotificationMode: *const fn (
             self: *const ITextDocument2Old,
             Mode: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetClientRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetClientRect: *const fn (
             self: *const ITextDocument2Old,
             Type: i32,
             pLeft: ?*i32,
             pTop: ?*i32,
             pRight: ?*i32,
             pBottom: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSelection2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSelection2: *const fn (
             self: *const ITextDocument2Old,
             ppSel: ?*?*ITextSelection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetWindow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetWindow: *const fn (
             self: *const ITextDocument2Old,
             phWnd: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFEFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFEFlags: *const fn (
             self: *const ITextDocument2Old,
             pFlags: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UpdateWindow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UpdateWindow: *const fn (
             self: *const ITextDocument2Old,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckTextLimit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckTextLimit: *const fn (
             self: *const ITextDocument2Old,
             cch: i32,
             pcch: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IMEInProgress: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IMEInProgress: *const fn (
             self: *const ITextDocument2Old,
             Value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SysBeep: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SysBeep: *const fn (
             self: *const ITextDocument2Old,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Update: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Update: *const fn (
             self: *const ITextDocument2Old,
             Mode: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Notify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Notify: *const fn (
             self: *const ITextDocument2Old,
             Notify: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDocumentFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDocumentFont: *const fn (
             self: *const ITextDocument2Old,
             ppITextFont: ?*?*ITextFont,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDocumentPara: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDocumentPara: *const fn (
             self: *const ITextDocument2Old,
             ppITextPara: ?*?*ITextPara,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCallManager: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCallManager: *const fn (
             self: *const ITextDocument2Old,
             ppVoid: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReleaseCallManager: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReleaseCallManager: *const fn (
             self: *const ITextDocument2Old,
             pVoid: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextDocument: ITextDocument,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn AttachMsgFilter(self: *const ITextDocument2Old, pFilter: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn AttachMsgFilter(self: *const ITextDocument2Old, pFilter: ?*IUnknown) HRESULT {
         return self.vtable.AttachMsgFilter(self, pFilter);
     }
-    pub fn SetEffectColor(self: *const ITextDocument2Old, Index: i32, cr: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetEffectColor(self: *const ITextDocument2Old, Index: i32, cr: u32) HRESULT {
         return self.vtable.SetEffectColor(self, Index, cr);
     }
-    pub fn GetEffectColor(self: *const ITextDocument2Old, Index: i32, pcr: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetEffectColor(self: *const ITextDocument2Old, Index: i32, pcr: ?*u32) HRESULT {
         return self.vtable.GetEffectColor(self, Index, pcr);
     }
-    pub fn GetCaretType(self: *const ITextDocument2Old, pCaretType: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCaretType(self: *const ITextDocument2Old, pCaretType: ?*i32) HRESULT {
         return self.vtable.GetCaretType(self, pCaretType);
     }
-    pub fn SetCaretType(self: *const ITextDocument2Old, CaretType: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCaretType(self: *const ITextDocument2Old, CaretType: i32) HRESULT {
         return self.vtable.SetCaretType(self, CaretType);
     }
-    pub fn GetImmContext(self: *const ITextDocument2Old, pContext: ?*i64) callconv(.Inline) HRESULT {
+    pub inline fn GetImmContext(self: *const ITextDocument2Old, pContext: ?*i64) HRESULT {
         return self.vtable.GetImmContext(self, pContext);
     }
-    pub fn ReleaseImmContext(self: *const ITextDocument2Old, Context: i64) callconv(.Inline) HRESULT {
+    pub inline fn ReleaseImmContext(self: *const ITextDocument2Old, Context: i64) HRESULT {
         return self.vtable.ReleaseImmContext(self, Context);
     }
-    pub fn GetPreferredFont(self: *const ITextDocument2Old, cp: i32, CharRep: i32, Option: i32, CharRepCur: i32, curFontSize: i32, pbstr: ?*?BSTR, pPitchAndFamily: ?*i32, pNewFontSize: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPreferredFont(self: *const ITextDocument2Old, cp: i32, CharRep: i32, Option: i32, CharRepCur: i32, curFontSize: i32, pbstr: ?*?BSTR, pPitchAndFamily: ?*i32, pNewFontSize: ?*i32) HRESULT {
         return self.vtable.GetPreferredFont(self, cp, CharRep, Option, CharRepCur, curFontSize, pbstr, pPitchAndFamily, pNewFontSize);
     }
-    pub fn GetNotificationMode(self: *const ITextDocument2Old, pMode: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetNotificationMode(self: *const ITextDocument2Old, pMode: ?*i32) HRESULT {
         return self.vtable.GetNotificationMode(self, pMode);
     }
-    pub fn SetNotificationMode(self: *const ITextDocument2Old, Mode: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetNotificationMode(self: *const ITextDocument2Old, Mode: i32) HRESULT {
         return self.vtable.SetNotificationMode(self, Mode);
     }
-    pub fn GetClientRect(self: *const ITextDocument2Old, Type: i32, pLeft: ?*i32, pTop: ?*i32, pRight: ?*i32, pBottom: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetClientRect(self: *const ITextDocument2Old, Type: i32, pLeft: ?*i32, pTop: ?*i32, pRight: ?*i32, pBottom: ?*i32) HRESULT {
         return self.vtable.GetClientRect(self, Type, pLeft, pTop, pRight, pBottom);
     }
-    pub fn GetSelection2(self: *const ITextDocument2Old, ppSel: ?*?*ITextSelection) callconv(.Inline) HRESULT {
+    pub inline fn GetSelection2(self: *const ITextDocument2Old, ppSel: ?*?*ITextSelection) HRESULT {
         return self.vtable.GetSelection2(self, ppSel);
     }
-    pub fn GetWindow(self: *const ITextDocument2Old, phWnd: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetWindow(self: *const ITextDocument2Old, phWnd: ?*i32) HRESULT {
         return self.vtable.GetWindow(self, phWnd);
     }
-    pub fn GetFEFlags(self: *const ITextDocument2Old, pFlags: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetFEFlags(self: *const ITextDocument2Old, pFlags: ?*i32) HRESULT {
         return self.vtable.GetFEFlags(self, pFlags);
     }
-    pub fn UpdateWindow(self: *const ITextDocument2Old) callconv(.Inline) HRESULT {
+    pub inline fn UpdateWindow(self: *const ITextDocument2Old) HRESULT {
         return self.vtable.UpdateWindow(self);
     }
-    pub fn CheckTextLimit(self: *const ITextDocument2Old, cch: i32, pcch: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CheckTextLimit(self: *const ITextDocument2Old, cch: i32, pcch: ?*i32) HRESULT {
         return self.vtable.CheckTextLimit(self, cch, pcch);
     }
-    pub fn IMEInProgress(self: *const ITextDocument2Old, Value: i32) callconv(.Inline) HRESULT {
+    pub inline fn IMEInProgress(self: *const ITextDocument2Old, Value: i32) HRESULT {
         return self.vtable.IMEInProgress(self, Value);
     }
-    pub fn SysBeep(self: *const ITextDocument2Old) callconv(.Inline) HRESULT {
+    pub inline fn SysBeep(self: *const ITextDocument2Old) HRESULT {
         return self.vtable.SysBeep(self);
     }
-    pub fn Update(self: *const ITextDocument2Old, Mode: i32) callconv(.Inline) HRESULT {
+    pub inline fn Update(self: *const ITextDocument2Old, Mode: i32) HRESULT {
         return self.vtable.Update(self, Mode);
     }
-    pub fn Notify(self: *const ITextDocument2Old, _param_Notify: i32) callconv(.Inline) HRESULT {
+    pub inline fn Notify(self: *const ITextDocument2Old, _param_Notify: i32) HRESULT {
         return self.vtable.Notify(self, _param_Notify);
     }
-    pub fn GetDocumentFont(self: *const ITextDocument2Old, ppITextFont: ?*?*ITextFont) callconv(.Inline) HRESULT {
+    pub inline fn GetDocumentFont(self: *const ITextDocument2Old, ppITextFont: ?*?*ITextFont) HRESULT {
         return self.vtable.GetDocumentFont(self, ppITextFont);
     }
-    pub fn GetDocumentPara(self: *const ITextDocument2Old, ppITextPara: ?*?*ITextPara) callconv(.Inline) HRESULT {
+    pub inline fn GetDocumentPara(self: *const ITextDocument2Old, ppITextPara: ?*?*ITextPara) HRESULT {
         return self.vtable.GetDocumentPara(self, ppITextPara);
     }
-    pub fn GetCallManager(self: *const ITextDocument2Old, ppVoid: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetCallManager(self: *const ITextDocument2Old, ppVoid: ?*?*IUnknown) HRESULT {
         return self.vtable.GetCallManager(self, ppVoid);
     }
-    pub fn ReleaseCallManager(self: *const ITextDocument2Old, pVoid: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn ReleaseCallManager(self: *const ITextDocument2Old, pVoid: ?*IUnknown) HRESULT {
         return self.vtable.ReleaseCallManager(self, pVoid);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -7169,15 +7168,23 @@ const WPARAM = @import("../../foundation.zig").WPARAM;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "AutoCorrectProc")) { _ = AutoCorrectProc; }
-    if (@hasDecl(@This(), "EDITWORDBREAKPROCEX")) { _ = EDITWORDBREAKPROCEX; }
-    if (@hasDecl(@This(), "EDITSTREAMCALLBACK")) { _ = EDITSTREAMCALLBACK; }
-    if (@hasDecl(@This(), "PCreateTextServices")) { _ = PCreateTextServices; }
-    if (@hasDecl(@This(), "PShutdownTextServices")) { _ = PShutdownTextServices; }
+    if (@hasDecl(@This(), "AutoCorrectProc")) {
+        _ = AutoCorrectProc;
+    }
+    if (@hasDecl(@This(), "EDITWORDBREAKPROCEX")) {
+        _ = EDITWORDBREAKPROCEX;
+    }
+    if (@hasDecl(@This(), "EDITSTREAMCALLBACK")) {
+        _ = EDITSTREAMCALLBACK;
+    }
+    if (@hasDecl(@This(), "PCreateTextServices")) {
+        _ = PCreateTextServices;
+    }
+    if (@hasDecl(@This(), "PShutdownTextServices")) {
+        _ = PShutdownTextServices;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

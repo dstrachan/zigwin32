@@ -53,7 +53,7 @@ pub const CF_PLACEHOLDER_CREATE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_PLACEHOLDER_CREATE_FLAG_NONE = CF_PLACEHOLDER_CREATE_FLAGS{ };
+pub const CF_PLACEHOLDER_CREATE_FLAG_NONE = CF_PLACEHOLDER_CREATE_FLAGS{};
 pub const CF_PLACEHOLDER_CREATE_FLAG_DISABLE_ON_DEMAND_POPULATION = CF_PLACEHOLDER_CREATE_FLAGS{ .DISABLE_ON_DEMAND_POPULATION = 1 };
 pub const CF_PLACEHOLDER_CREATE_FLAG_MARK_IN_SYNC = CF_PLACEHOLDER_CREATE_FLAGS{ .MARK_IN_SYNC = 1 };
 pub const CF_PLACEHOLDER_CREATE_FLAG_SUPERSEDE = CF_PLACEHOLDER_CREATE_FLAGS{ .SUPERSEDE = 1 };
@@ -103,7 +103,7 @@ pub const CF_SYNC_PROVIDER_STATUS = packed struct(u32) {
     _30: u1 = 0,
     CLEAR_FLAGS: u1 = 0,
 };
-pub const CF_PROVIDER_STATUS_DISCONNECTED = CF_SYNC_PROVIDER_STATUS{ };
+pub const CF_PROVIDER_STATUS_DISCONNECTED = CF_SYNC_PROVIDER_STATUS{};
 pub const CF_PROVIDER_STATUS_IDLE = CF_SYNC_PROVIDER_STATUS{ .IDLE = 1 };
 pub const CF_PROVIDER_STATUS_POPULATE_NAMESPACE = CF_SYNC_PROVIDER_STATUS{ .POPULATE_NAMESPACE = 1 };
 pub const CF_PROVIDER_STATUS_POPULATE_METADATA = CF_SYNC_PROVIDER_STATUS{ .POPULATE_METADATA = 1 };
@@ -173,7 +173,7 @@ pub const CF_REGISTER_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_REGISTER_FLAG_NONE = CF_REGISTER_FLAGS{ };
+pub const CF_REGISTER_FLAG_NONE = CF_REGISTER_FLAGS{};
 pub const CF_REGISTER_FLAG_UPDATE = CF_REGISTER_FLAGS{ .UPDATE = 1 };
 pub const CF_REGISTER_FLAG_DISABLE_ON_DEMAND_POPULATION_ON_ROOT = CF_REGISTER_FLAGS{ .DISABLE_ON_DEMAND_POPULATION_ON_ROOT = 1 };
 pub const CF_REGISTER_FLAG_MARK_IN_SYNC_ON_ROOT = CF_REGISTER_FLAGS{ .MARK_IN_SYNC_ON_ROOT = 1 };
@@ -211,7 +211,7 @@ pub const CF_HYDRATION_POLICY_MODIFIER = packed struct(u16) {
     _14: u1 = 0,
     _15: u1 = 0,
 };
-pub const CF_HYDRATION_POLICY_MODIFIER_NONE = CF_HYDRATION_POLICY_MODIFIER{ };
+pub const CF_HYDRATION_POLICY_MODIFIER_NONE = CF_HYDRATION_POLICY_MODIFIER{};
 pub const CF_HYDRATION_POLICY_MODIFIER_VALIDATION_REQUIRED = CF_HYDRATION_POLICY_MODIFIER{ .VALIDATION_REQUIRED = 1 };
 pub const CF_HYDRATION_POLICY_MODIFIER_STREAMING_ALLOWED = CF_HYDRATION_POLICY_MODIFIER{ .STREAMING_ALLOWED = 1 };
 pub const CF_HYDRATION_POLICY_MODIFIER_AUTO_DEHYDRATION_ALLOWED = CF_HYDRATION_POLICY_MODIFIER{ .AUTO_DEHYDRATION_ALLOWED = 1 };
@@ -257,7 +257,7 @@ pub const CF_POPULATION_POLICY_MODIFIER = packed struct(u16) {
     _14: u1 = 0,
     _15: u1 = 0,
 };
-pub const CF_POPULATION_POLICY_MODIFIER_NONE = CF_POPULATION_POLICY_MODIFIER{ };
+pub const CF_POPULATION_POLICY_MODIFIER_NONE = CF_POPULATION_POLICY_MODIFIER{};
 
 pub const CF_POPULATION_POLICY_MODIFIER_USHORT = extern struct {
     us: u16,
@@ -313,7 +313,7 @@ pub const CF_INSYNC_POLICY = packed struct(u32) {
     _30: u1 = 0,
     PRESERVE_INSYNC_FOR_SYNC_ENGINE: u1 = 0,
 };
-pub const CF_INSYNC_POLICY_NONE = CF_INSYNC_POLICY{ };
+pub const CF_INSYNC_POLICY_NONE = CF_INSYNC_POLICY{};
 pub const CF_INSYNC_POLICY_TRACK_FILE_CREATION_TIME = CF_INSYNC_POLICY{ .TRACK_FILE_CREATION_TIME = 1 };
 pub const CF_INSYNC_POLICY_TRACK_FILE_READONLY_ATTRIBUTE = CF_INSYNC_POLICY{ .TRACK_FILE_READONLY_ATTRIBUTE = 1 };
 pub const CF_INSYNC_POLICY_TRACK_FILE_HIDDEN_ATTRIBUTE = CF_INSYNC_POLICY{ .TRACK_FILE_HIDDEN_ATTRIBUTE = 1 };
@@ -414,7 +414,7 @@ pub const CF_HARDLINK_POLICY = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_HARDLINK_POLICY_NONE = CF_HARDLINK_POLICY{ };
+pub const CF_HARDLINK_POLICY_NONE = CF_HARDLINK_POLICY{};
 pub const CF_HARDLINK_POLICY_ALLOWED = CF_HARDLINK_POLICY{ .ALLOWED = 1 };
 
 pub const CF_SYNC_POLICIES = extern struct {
@@ -493,7 +493,7 @@ pub const CF_CALLBACK_CANCEL_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_CANCEL_FLAG_NONE = CF_CALLBACK_CANCEL_FLAGS{ };
+pub const CF_CALLBACK_CANCEL_FLAG_NONE = CF_CALLBACK_CANCEL_FLAGS{};
 pub const CF_CALLBACK_CANCEL_FLAG_IO_TIMEOUT = CF_CALLBACK_CANCEL_FLAGS{ .IO_TIMEOUT = 1 };
 pub const CF_CALLBACK_CANCEL_FLAG_IO_ABORTED = CF_CALLBACK_CANCEL_FLAGS{ .IO_ABORTED = 1 };
 
@@ -531,7 +531,7 @@ pub const CF_CALLBACK_FETCH_DATA_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_FETCH_DATA_FLAG_NONE = CF_CALLBACK_FETCH_DATA_FLAGS{ };
+pub const CF_CALLBACK_FETCH_DATA_FLAG_NONE = CF_CALLBACK_FETCH_DATA_FLAGS{};
 pub const CF_CALLBACK_FETCH_DATA_FLAG_RECOVERY = CF_CALLBACK_FETCH_DATA_FLAGS{ .RECOVERY = 1 };
 pub const CF_CALLBACK_FETCH_DATA_FLAG_EXPLICIT_HYDRATION = CF_CALLBACK_FETCH_DATA_FLAGS{ .EXPLICIT_HYDRATION = 1 };
 
@@ -569,7 +569,7 @@ pub const CF_CALLBACK_VALIDATE_DATA_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_VALIDATE_DATA_FLAG_NONE = CF_CALLBACK_VALIDATE_DATA_FLAGS{ };
+pub const CF_CALLBACK_VALIDATE_DATA_FLAG_NONE = CF_CALLBACK_VALIDATE_DATA_FLAGS{};
 pub const CF_CALLBACK_VALIDATE_DATA_FLAG_EXPLICIT_HYDRATION = CF_CALLBACK_VALIDATE_DATA_FLAGS{ .EXPLICIT_HYDRATION = 1 };
 
 pub const CF_CALLBACK_FETCH_PLACEHOLDERS_FLAGS = packed struct(u32) {
@@ -606,7 +606,7 @@ pub const CF_CALLBACK_FETCH_PLACEHOLDERS_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_FETCH_PLACEHOLDERS_FLAG_NONE = CF_CALLBACK_FETCH_PLACEHOLDERS_FLAGS{ };
+pub const CF_CALLBACK_FETCH_PLACEHOLDERS_FLAG_NONE = CF_CALLBACK_FETCH_PLACEHOLDERS_FLAGS{};
 
 pub const CF_CALLBACK_OPEN_COMPLETION_FLAGS = packed struct(u32) {
     PLACEHOLDER_UNKNOWN: u1 = 0,
@@ -642,7 +642,7 @@ pub const CF_CALLBACK_OPEN_COMPLETION_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_OPEN_COMPLETION_FLAG_NONE = CF_CALLBACK_OPEN_COMPLETION_FLAGS{ };
+pub const CF_CALLBACK_OPEN_COMPLETION_FLAG_NONE = CF_CALLBACK_OPEN_COMPLETION_FLAGS{};
 pub const CF_CALLBACK_OPEN_COMPLETION_FLAG_PLACEHOLDER_UNKNOWN = CF_CALLBACK_OPEN_COMPLETION_FLAGS{ .PLACEHOLDER_UNKNOWN = 1 };
 pub const CF_CALLBACK_OPEN_COMPLETION_FLAG_PLACEHOLDER_UNSUPPORTED = CF_CALLBACK_OPEN_COMPLETION_FLAGS{ .PLACEHOLDER_UNSUPPORTED = 1 };
 
@@ -680,7 +680,7 @@ pub const CF_CALLBACK_CLOSE_COMPLETION_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_CLOSE_COMPLETION_FLAG_NONE = CF_CALLBACK_CLOSE_COMPLETION_FLAGS{ };
+pub const CF_CALLBACK_CLOSE_COMPLETION_FLAG_NONE = CF_CALLBACK_CLOSE_COMPLETION_FLAGS{};
 pub const CF_CALLBACK_CLOSE_COMPLETION_FLAG_DELETED = CF_CALLBACK_CLOSE_COMPLETION_FLAGS{ .DELETED = 1 };
 
 pub const CF_CALLBACK_DEHYDRATE_FLAGS = packed struct(u32) {
@@ -717,7 +717,7 @@ pub const CF_CALLBACK_DEHYDRATE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_DEHYDRATE_FLAG_NONE = CF_CALLBACK_DEHYDRATE_FLAGS{ };
+pub const CF_CALLBACK_DEHYDRATE_FLAG_NONE = CF_CALLBACK_DEHYDRATE_FLAGS{};
 pub const CF_CALLBACK_DEHYDRATE_FLAG_BACKGROUND = CF_CALLBACK_DEHYDRATE_FLAGS{ .BACKGROUND = 1 };
 
 pub const CF_CALLBACK_DEHYDRATE_COMPLETION_FLAGS = packed struct(u32) {
@@ -754,7 +754,7 @@ pub const CF_CALLBACK_DEHYDRATE_COMPLETION_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_DEHYDRATE_COMPLETION_FLAG_NONE = CF_CALLBACK_DEHYDRATE_COMPLETION_FLAGS{ };
+pub const CF_CALLBACK_DEHYDRATE_COMPLETION_FLAG_NONE = CF_CALLBACK_DEHYDRATE_COMPLETION_FLAGS{};
 pub const CF_CALLBACK_DEHYDRATE_COMPLETION_FLAG_BACKGROUND = CF_CALLBACK_DEHYDRATE_COMPLETION_FLAGS{ .BACKGROUND = 1 };
 pub const CF_CALLBACK_DEHYDRATE_COMPLETION_FLAG_DEHYDRATED = CF_CALLBACK_DEHYDRATE_COMPLETION_FLAGS{ .DEHYDRATED = 1 };
 
@@ -792,7 +792,7 @@ pub const CF_CALLBACK_DELETE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_DELETE_FLAG_NONE = CF_CALLBACK_DELETE_FLAGS{ };
+pub const CF_CALLBACK_DELETE_FLAG_NONE = CF_CALLBACK_DELETE_FLAGS{};
 pub const CF_CALLBACK_DELETE_FLAG_IS_DIRECTORY = CF_CALLBACK_DELETE_FLAGS{ .IS_DIRECTORY = 1 };
 pub const CF_CALLBACK_DELETE_FLAG_IS_UNDELETE = CF_CALLBACK_DELETE_FLAGS{ .IS_UNDELETE = 1 };
 
@@ -830,7 +830,7 @@ pub const CF_CALLBACK_DELETE_COMPLETION_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_DELETE_COMPLETION_FLAG_NONE = CF_CALLBACK_DELETE_COMPLETION_FLAGS{ };
+pub const CF_CALLBACK_DELETE_COMPLETION_FLAG_NONE = CF_CALLBACK_DELETE_COMPLETION_FLAGS{};
 
 pub const CF_CALLBACK_RENAME_FLAGS = packed struct(u32) {
     IS_DIRECTORY: u1 = 0,
@@ -866,7 +866,7 @@ pub const CF_CALLBACK_RENAME_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_RENAME_FLAG_NONE = CF_CALLBACK_RENAME_FLAGS{ };
+pub const CF_CALLBACK_RENAME_FLAG_NONE = CF_CALLBACK_RENAME_FLAGS{};
 pub const CF_CALLBACK_RENAME_FLAG_IS_DIRECTORY = CF_CALLBACK_RENAME_FLAGS{ .IS_DIRECTORY = 1 };
 pub const CF_CALLBACK_RENAME_FLAG_SOURCE_IN_SCOPE = CF_CALLBACK_RENAME_FLAGS{ .SOURCE_IN_SCOPE = 1 };
 pub const CF_CALLBACK_RENAME_FLAG_TARGET_IN_SCOPE = CF_CALLBACK_RENAME_FLAGS{ .TARGET_IN_SCOPE = 1 };
@@ -905,7 +905,7 @@ pub const CF_CALLBACK_RENAME_COMPLETION_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CALLBACK_RENAME_COMPLETION_FLAG_NONE = CF_CALLBACK_RENAME_COMPLETION_FLAGS{ };
+pub const CF_CALLBACK_RENAME_COMPLETION_FLAG_NONE = CF_CALLBACK_RENAME_COMPLETION_FLAGS{};
 
 pub const CF_CALLBACK_DEHYDRATION_REASON = enum(i32) {
     NONE = 0,
@@ -981,10 +981,10 @@ pub const CF_CALLBACK_PARAMETERS = extern struct {
     },
 };
 
-pub const CF_CALLBACK = *const fn(
+pub const CF_CALLBACK = *const fn (
     CallbackInfo: ?*const CF_CALLBACK_INFO,
     CallbackParameters: ?*const CF_CALLBACK_PARAMETERS,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const CF_CALLBACK_TYPE = enum(i32) {
     FETCH_DATA = 0,
@@ -1056,7 +1056,7 @@ pub const CF_CONNECT_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CONNECT_FLAG_NONE = CF_CONNECT_FLAGS{ };
+pub const CF_CONNECT_FLAG_NONE = CF_CONNECT_FLAGS{};
 pub const CF_CONNECT_FLAG_REQUIRE_PROCESS_INFO = CF_CONNECT_FLAGS{ .REQUIRE_PROCESS_INFO = 1 };
 pub const CF_CONNECT_FLAG_REQUIRE_FULL_FILE_PATH = CF_CONNECT_FLAGS{ .REQUIRE_FULL_FILE_PATH = 1 };
 pub const CF_CONNECT_FLAG_BLOCK_SELF_IMPLICIT_HYDRATION = CF_CONNECT_FLAGS{ .BLOCK_SELF_IMPLICIT_HYDRATION = 1 };
@@ -1133,7 +1133,7 @@ pub const CF_OPERATION_TRANSFER_DATA_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_OPERATION_TRANSFER_DATA_FLAG_NONE = CF_OPERATION_TRANSFER_DATA_FLAGS{ };
+pub const CF_OPERATION_TRANSFER_DATA_FLAG_NONE = CF_OPERATION_TRANSFER_DATA_FLAGS{};
 
 pub const CF_OPERATION_RETRIEVE_DATA_FLAGS = packed struct(u32) {
     _0: u1 = 0,
@@ -1169,7 +1169,7 @@ pub const CF_OPERATION_RETRIEVE_DATA_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_OPERATION_RETRIEVE_DATA_FLAG_NONE = CF_OPERATION_RETRIEVE_DATA_FLAGS{ };
+pub const CF_OPERATION_RETRIEVE_DATA_FLAG_NONE = CF_OPERATION_RETRIEVE_DATA_FLAGS{};
 
 pub const CF_OPERATION_ACK_DATA_FLAGS = packed struct(u32) {
     _0: u1 = 0,
@@ -1205,7 +1205,7 @@ pub const CF_OPERATION_ACK_DATA_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_OPERATION_ACK_DATA_FLAG_NONE = CF_OPERATION_ACK_DATA_FLAGS{ };
+pub const CF_OPERATION_ACK_DATA_FLAG_NONE = CF_OPERATION_ACK_DATA_FLAGS{};
 
 pub const CF_OPERATION_RESTART_HYDRATION_FLAGS = packed struct(u32) {
     MARK_IN_SYNC: u1 = 0,
@@ -1241,7 +1241,7 @@ pub const CF_OPERATION_RESTART_HYDRATION_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_OPERATION_RESTART_HYDRATION_FLAG_NONE = CF_OPERATION_RESTART_HYDRATION_FLAGS{ };
+pub const CF_OPERATION_RESTART_HYDRATION_FLAG_NONE = CF_OPERATION_RESTART_HYDRATION_FLAGS{};
 pub const CF_OPERATION_RESTART_HYDRATION_FLAG_MARK_IN_SYNC = CF_OPERATION_RESTART_HYDRATION_FLAGS{ .MARK_IN_SYNC = 1 };
 
 pub const CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAGS = packed struct(u32) {
@@ -1278,7 +1278,7 @@ pub const CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAG_NONE = CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAGS{ };
+pub const CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAG_NONE = CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAGS{};
 pub const CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAG_STOP_ON_ERROR = CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAGS{ .STOP_ON_ERROR = 1 };
 pub const CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAG_DISABLE_ON_DEMAND_POPULATION = CF_OPERATION_TRANSFER_PLACEHOLDERS_FLAGS{ .DISABLE_ON_DEMAND_POPULATION = 1 };
 
@@ -1316,7 +1316,7 @@ pub const CF_OPERATION_ACK_DEHYDRATE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_OPERATION_ACK_DEHYDRATE_FLAG_NONE = CF_OPERATION_ACK_DEHYDRATE_FLAGS{ };
+pub const CF_OPERATION_ACK_DEHYDRATE_FLAG_NONE = CF_OPERATION_ACK_DEHYDRATE_FLAGS{};
 
 pub const CF_OPERATION_ACK_RENAME_FLAGS = packed struct(u32) {
     _0: u1 = 0,
@@ -1352,7 +1352,7 @@ pub const CF_OPERATION_ACK_RENAME_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_OPERATION_ACK_RENAME_FLAG_NONE = CF_OPERATION_ACK_RENAME_FLAGS{ };
+pub const CF_OPERATION_ACK_RENAME_FLAG_NONE = CF_OPERATION_ACK_RENAME_FLAGS{};
 
 pub const CF_OPERATION_ACK_DELETE_FLAGS = packed struct(u32) {
     _0: u1 = 0,
@@ -1388,7 +1388,7 @@ pub const CF_OPERATION_ACK_DELETE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_OPERATION_ACK_DELETE_FLAG_NONE = CF_OPERATION_ACK_DELETE_FLAGS{ };
+pub const CF_OPERATION_ACK_DELETE_FLAG_NONE = CF_OPERATION_ACK_DELETE_FLAGS{};
 
 pub const CF_OPERATION_PARAMETERS = extern struct {
     ParamSize: u32,
@@ -1478,7 +1478,7 @@ pub const CF_CREATE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CREATE_FLAG_NONE = CF_CREATE_FLAGS{ };
+pub const CF_CREATE_FLAG_NONE = CF_CREATE_FLAGS{};
 pub const CF_CREATE_FLAG_STOP_ON_ERROR = CF_CREATE_FLAGS{ .STOP_ON_ERROR = 1 };
 
 pub const CF_OPEN_FILE_FLAGS = packed struct(u32) {
@@ -1515,7 +1515,7 @@ pub const CF_OPEN_FILE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_OPEN_FILE_FLAG_NONE = CF_OPEN_FILE_FLAGS{ };
+pub const CF_OPEN_FILE_FLAG_NONE = CF_OPEN_FILE_FLAGS{};
 pub const CF_OPEN_FILE_FLAG_EXCLUSIVE = CF_OPEN_FILE_FLAGS{ .EXCLUSIVE = 1 };
 pub const CF_OPEN_FILE_FLAG_WRITE_ACCESS = CF_OPEN_FILE_FLAGS{ .WRITE_ACCESS = 1 };
 pub const CF_OPEN_FILE_FLAG_DELETE_ACCESS = CF_OPEN_FILE_FLAGS{ .DELETE_ACCESS = 1 };
@@ -1560,7 +1560,7 @@ pub const CF_CONVERT_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_CONVERT_FLAG_NONE = CF_CONVERT_FLAGS{ };
+pub const CF_CONVERT_FLAG_NONE = CF_CONVERT_FLAGS{};
 pub const CF_CONVERT_FLAG_MARK_IN_SYNC = CF_CONVERT_FLAGS{ .MARK_IN_SYNC = 1 };
 pub const CF_CONVERT_FLAG_DEHYDRATE = CF_CONVERT_FLAGS{ .DEHYDRATE = 1 };
 pub const CF_CONVERT_FLAG_ENABLE_ON_DEMAND_POPULATION = CF_CONVERT_FLAGS{ .ENABLE_ON_DEMAND_POPULATION = 1 };
@@ -1601,7 +1601,7 @@ pub const CF_UPDATE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_UPDATE_FLAG_NONE = CF_UPDATE_FLAGS{ };
+pub const CF_UPDATE_FLAG_NONE = CF_UPDATE_FLAGS{};
 pub const CF_UPDATE_FLAG_VERIFY_IN_SYNC = CF_UPDATE_FLAGS{ .VERIFY_IN_SYNC = 1 };
 pub const CF_UPDATE_FLAG_MARK_IN_SYNC = CF_UPDATE_FLAGS{ .MARK_IN_SYNC = 1 };
 pub const CF_UPDATE_FLAG_DEHYDRATE = CF_UPDATE_FLAGS{ .DEHYDRATE = 1 };
@@ -1648,7 +1648,7 @@ pub const CF_REVERT_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_REVERT_FLAG_NONE = CF_REVERT_FLAGS{ };
+pub const CF_REVERT_FLAG_NONE = CF_REVERT_FLAGS{};
 
 pub const CF_HYDRATE_FLAGS = packed struct(u32) {
     _0: u1 = 0,
@@ -1684,7 +1684,7 @@ pub const CF_HYDRATE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_HYDRATE_FLAG_NONE = CF_HYDRATE_FLAGS{ };
+pub const CF_HYDRATE_FLAG_NONE = CF_HYDRATE_FLAGS{};
 
 pub const CF_DEHYDRATE_FLAGS = packed struct(u32) {
     BACKGROUND: u1 = 0,
@@ -1720,7 +1720,7 @@ pub const CF_DEHYDRATE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_DEHYDRATE_FLAG_NONE = CF_DEHYDRATE_FLAGS{ };
+pub const CF_DEHYDRATE_FLAG_NONE = CF_DEHYDRATE_FLAGS{};
 pub const CF_DEHYDRATE_FLAG_BACKGROUND = CF_DEHYDRATE_FLAGS{ .BACKGROUND = 1 };
 
 pub const CF_PIN_STATE = enum(i32) {
@@ -1770,7 +1770,7 @@ pub const CF_SET_PIN_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_SET_PIN_FLAG_NONE = CF_SET_PIN_FLAGS{ };
+pub const CF_SET_PIN_FLAG_NONE = CF_SET_PIN_FLAGS{};
 pub const CF_SET_PIN_FLAG_RECURSE = CF_SET_PIN_FLAGS{ .RECURSE = 1 };
 pub const CF_SET_PIN_FLAG_RECURSE_ONLY = CF_SET_PIN_FLAGS{ .RECURSE_ONLY = 1 };
 pub const CF_SET_PIN_FLAG_RECURSE_STOP_ON_ERROR = CF_SET_PIN_FLAGS{ .RECURSE_STOP_ON_ERROR = 1 };
@@ -1816,7 +1816,7 @@ pub const CF_SET_IN_SYNC_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_SET_IN_SYNC_FLAG_NONE = CF_SET_IN_SYNC_FLAGS{ };
+pub const CF_SET_IN_SYNC_FLAG_NONE = CF_SET_IN_SYNC_FLAGS{};
 
 pub const CF_PLACEHOLDER_STATE = packed struct(u32) {
     PLACEHOLDER: u1 = 0,
@@ -1852,7 +1852,7 @@ pub const CF_PLACEHOLDER_STATE = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CF_PLACEHOLDER_STATE_NO_STATES = CF_PLACEHOLDER_STATE{ };
+pub const CF_PLACEHOLDER_STATE_NO_STATES = CF_PLACEHOLDER_STATE{};
 pub const CF_PLACEHOLDER_STATE_PLACEHOLDER = CF_PLACEHOLDER_STATE{ .PLACEHOLDER = 1 };
 pub const CF_PLACEHOLDER_STATE_SYNC_ROOT = CF_PLACEHOLDER_STATE{ .SYNC_ROOT = 1 };
 pub const CF_PLACEHOLDER_STATE_ESSENTIAL_PROP_PRESENT = CF_PLACEHOLDER_STATE{ .ESSENTIAL_PROP_PRESENT = 1 };
@@ -1964,14 +1964,13 @@ pub const CF_PLACEHOLDER_RANGE_INFO_ONDISK = CF_PLACEHOLDER_RANGE_INFO_CLASS.OND
 pub const CF_PLACEHOLDER_RANGE_INFO_VALIDATED = CF_PLACEHOLDER_RANGE_INFO_CLASS.VALIDATED;
 pub const CF_PLACEHOLDER_RANGE_INFO_MODIFIED = CF_PLACEHOLDER_RANGE_INFO_CLASS.MODIFIED;
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (35)
 //--------------------------------------------------------------------------------
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetPlatformInfo(
     PlatformVersion: ?*CF_PLATFORM_INFO,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfRegisterSyncRoot(
@@ -1979,12 +1978,12 @@ pub extern "cldapi" fn CfRegisterSyncRoot(
     Registration: ?*const CF_SYNC_REGISTRATION,
     Policies: ?*const CF_SYNC_POLICIES,
     RegisterFlags: CF_REGISTER_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfUnregisterSyncRoot(
     SyncRootPath: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfConnectSyncRoot(
@@ -1993,48 +1992,48 @@ pub extern "cldapi" fn CfConnectSyncRoot(
     CallbackContext: ?*const anyopaque,
     ConnectFlags: CF_CONNECT_FLAGS,
     ConnectionKey: ?*CF_CONNECTION_KEY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfDisconnectSyncRoot(
     ConnectionKey: CF_CONNECTION_KEY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetTransferKey(
     FileHandle: ?HANDLE,
     TransferKey: ?*LARGE_INTEGER,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfReleaseTransferKey(
     FileHandle: ?HANDLE,
     TransferKey: ?*LARGE_INTEGER,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfExecute(
     OpInfo: ?*const CF_OPERATION_INFO,
     OpParams: ?*CF_OPERATION_PARAMETERS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfUpdateSyncProviderStatus(
     ConnectionKey: CF_CONNECTION_KEY,
     ProviderStatus: CF_SYNC_PROVIDER_STATUS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfQuerySyncProviderStatus(
     ConnectionKey: CF_CONNECTION_KEY,
     ProviderStatus: ?*CF_SYNC_PROVIDER_STATUS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.17134'
 pub extern "cldapi" fn CfReportSyncStatus(
     SyncRootPath: ?[*:0]const u16,
     SyncStatus: ?*CF_SYNC_STATUS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfCreatePlaceholders(
@@ -2043,34 +2042,34 @@ pub extern "cldapi" fn CfCreatePlaceholders(
     PlaceholderCount: u32,
     CreateFlags: CF_CREATE_FLAGS,
     EntriesProcessed: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfOpenFileWithOplock(
     FilePath: ?[*:0]const u16,
     Flags: CF_OPEN_FILE_FLAGS,
     ProtectedHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfReferenceProtectedHandle(
     ProtectedHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOLEAN;
+) callconv(.winapi) BOOLEAN;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetWin32HandleFromProtectedHandle(
     ProtectedHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfReleaseProtectedHandle(
     ProtectedHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfCloseHandle(
     FileHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfConvertToPlaceholder(
@@ -2081,7 +2080,7 @@ pub extern "cldapi" fn CfConvertToPlaceholder(
     ConvertFlags: CF_CONVERT_FLAGS,
     ConvertUsn: ?*i64,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfUpdatePlaceholder(
@@ -2095,14 +2094,14 @@ pub extern "cldapi" fn CfUpdatePlaceholder(
     UpdateFlags: CF_UPDATE_FLAGS,
     UpdateUsn: ?*i64,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfRevertPlaceholder(
     FileHandle: ?HANDLE,
     RevertFlags: CF_REVERT_FLAGS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfHydratePlaceholder(
@@ -2111,7 +2110,7 @@ pub extern "cldapi" fn CfHydratePlaceholder(
     Length: LARGE_INTEGER,
     HydrateFlags: CF_HYDRATE_FLAGS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "cldapi" fn CfDehydratePlaceholder(
     FileHandle: ?HANDLE,
@@ -2119,7 +2118,7 @@ pub extern "cldapi" fn CfDehydratePlaceholder(
     Length: LARGE_INTEGER,
     DehydrateFlags: CF_DEHYDRATE_FLAGS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfSetPinState(
@@ -2127,7 +2126,7 @@ pub extern "cldapi" fn CfSetPinState(
     PinState: CF_PIN_STATE,
     PinFlags: CF_SET_PIN_FLAGS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfSetInSyncState(
@@ -2135,36 +2134,36 @@ pub extern "cldapi" fn CfSetInSyncState(
     InSyncState: CF_IN_SYNC_STATE,
     InSyncFlags: CF_SET_IN_SYNC_FLAGS,
     InSyncUsn: ?*i64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfSetCorrelationVector(
     FileHandle: ?HANDLE,
     CorrelationVector: ?*const CORRELATION_VECTOR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetCorrelationVector(
     FileHandle: ?HANDLE,
     CorrelationVector: ?*CORRELATION_VECTOR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetPlaceholderStateFromAttributeTag(
     FileAttributes: u32,
     ReparseTag: u32,
-) callconv(@import("std").os.windows.WINAPI) CF_PLACEHOLDER_STATE;
+) callconv(.winapi) CF_PLACEHOLDER_STATE;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetPlaceholderStateFromFileInfo(
     InfoBuffer: ?*const anyopaque,
     InfoClass: FILE_INFO_BY_HANDLE_CLASS,
-) callconv(@import("std").os.windows.WINAPI) CF_PLACEHOLDER_STATE;
+) callconv(.winapi) CF_PLACEHOLDER_STATE;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetPlaceholderStateFromFindData(
     FindData: ?*const WIN32_FIND_DATAA,
-) callconv(@import("std").os.windows.WINAPI) CF_PLACEHOLDER_STATE;
+) callconv(.winapi) CF_PLACEHOLDER_STATE;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetPlaceholderInfo(
@@ -2174,7 +2173,7 @@ pub extern "cldapi" fn CfGetPlaceholderInfo(
     InfoBuffer: ?*anyopaque,
     InfoBufferLength: u32,
     ReturnedLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetSyncRootInfoByPath(
@@ -2183,7 +2182,7 @@ pub extern "cldapi" fn CfGetSyncRootInfoByPath(
     InfoBuffer: ?*anyopaque,
     InfoBufferLength: u32,
     ReturnedLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetSyncRootInfoByHandle(
@@ -2192,7 +2191,7 @@ pub extern "cldapi" fn CfGetSyncRootInfoByHandle(
     InfoBuffer: ?*anyopaque,
     InfoBufferLength: u32,
     ReturnedLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfGetPlaceholderRangeInfo(
@@ -2204,7 +2203,7 @@ pub extern "cldapi" fn CfGetPlaceholderRangeInfo(
     InfoBuffer: ?*anyopaque,
     InfoBufferLength: u32,
     ReturnedLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "cldapi" fn CfReportProviderProgress(
@@ -2212,7 +2211,7 @@ pub extern "cldapi" fn CfReportProviderProgress(
     TransferKey: LARGE_INTEGER,
     ProviderProgressTotal: LARGE_INTEGER,
     ProviderProgressCompleted: LARGE_INTEGER,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "cldapi" fn CfReportProviderProgress2(
     ConnectionKey: CF_CONNECTION_KEY,
@@ -2221,8 +2220,7 @@ pub extern "cldapi" fn CfReportProviderProgress2(
     ProviderProgressTotal: LARGE_INTEGER,
     ProviderProgressCompleted: LARGE_INTEGER,
     TargetSessionId: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -2245,11 +2243,11 @@ const WIN32_FIND_DATAA = @import("../storage/file_system.zig").WIN32_FIND_DATAA;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "CF_CALLBACK")) { _ = CF_CALLBACK; }
+    if (@hasDecl(@This(), "CF_CALLBACK")) {
+        _ = CF_CALLBACK;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

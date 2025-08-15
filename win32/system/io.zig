@@ -26,12 +26,11 @@ pub const OVERLAPPED_ENTRY = extern struct {
     dwNumberOfBytesTransferred: u32,
 };
 
-pub const LPOVERLAPPED_COMPLETION_ROUTINE = *const fn(
+pub const LPOVERLAPPED_COMPLETION_ROUTINE = *const fn (
     dwErrorCode: u32,
     dwNumberOfBytesTransfered: u32,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) void;
-
+) callconv(.winapi) void;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (11)
@@ -42,7 +41,7 @@ pub extern "kernel32" fn CreateIoCompletionPort(
     ExistingCompletionPort: ?HANDLE,
     CompletionKey: usize,
     NumberOfConcurrentThreads: u32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn GetQueuedCompletionStatus(
@@ -51,7 +50,7 @@ pub extern "kernel32" fn GetQueuedCompletionStatus(
     lpCompletionKey: ?*usize,
     lpOverlapped: ?*?*OVERLAPPED,
     dwMilliseconds: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetQueuedCompletionStatusEx(
@@ -61,7 +60,7 @@ pub extern "kernel32" fn GetQueuedCompletionStatusEx(
     ulNumEntriesRemoved: ?*u32,
     dwMilliseconds: u32,
     fAlertable: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn PostQueuedCompletionStatus(
@@ -69,7 +68,7 @@ pub extern "kernel32" fn PostQueuedCompletionStatus(
     dwNumberOfBytesTransferred: u32,
     dwCompletionKey: usize,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn DeviceIoControl(
@@ -83,7 +82,7 @@ pub extern "kernel32" fn DeviceIoControl(
     nOutBufferSize: u32,
     lpBytesReturned: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn GetOverlappedResult(
@@ -91,18 +90,18 @@ pub extern "kernel32" fn GetOverlappedResult(
     lpOverlapped: ?*OVERLAPPED,
     lpNumberOfBytesTransferred: ?*u32,
     bWait: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn CancelIoEx(
     hFile: ?HANDLE,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn CancelIo(
     hFile: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "kernel32" fn GetOverlappedResultEx(
@@ -111,20 +110,19 @@ pub extern "kernel32" fn GetOverlappedResultEx(
     lpNumberOfBytesTransferred: ?*u32,
     dwMilliseconds: u32,
     bAlertable: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn CancelSynchronousIo(
     hThread: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn BindIoCompletionCallback(
     FileHandle: ?HANDLE,
     Function: ?LPOVERLAPPED_COMPLETION_ROUTINE,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -137,11 +135,11 @@ const HANDLE = @import("../foundation.zig").HANDLE;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "LPOVERLAPPED_COMPLETION_ROUTINE")) { _ = LPOVERLAPPED_COMPLETION_ROUTINE; }
+    if (@hasDecl(@This(), "LPOVERLAPPED_COMPLETION_ROUTINE")) {
+        _ = LPOVERLAPPED_COMPLETION_ROUTINE;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

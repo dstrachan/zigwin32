@@ -11,26 +11,26 @@ pub const IID_IPrinting3DManagerInterop = &IID_IPrinting3DManagerInterop_Value;
 pub const IPrinting3DManagerInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        GetForWindow: *const fn(
+        GetForWindow: *const fn (
             self: *const IPrinting3DManagerInterop,
             appWindow: ?HWND,
             riid: ?*const Guid,
             printManager: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ShowPrintUIForWindowAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ShowPrintUIForWindowAsync: *const fn (
             self: *const IPrinting3DManagerInterop,
             appWindow: ?HWND,
             riid: ?*const Guid,
             asyncOperation: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn GetForWindow(self: *const IPrinting3DManagerInterop, appWindow: ?HWND, riid: ?*const Guid, printManager: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetForWindow(self: *const IPrinting3DManagerInterop, appWindow: ?HWND, riid: ?*const Guid, printManager: **anyopaque) HRESULT {
         return self.vtable.GetForWindow(self, appWindow, riid, printManager);
     }
-    pub fn ShowPrintUIForWindowAsync(self: *const IPrinting3DManagerInterop, appWindow: ?HWND, riid: ?*const Guid, asyncOperation: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn ShowPrintUIForWindowAsync(self: *const IPrinting3DManagerInterop, appWindow: ?HWND, riid: ?*const Guid, asyncOperation: **anyopaque) HRESULT {
         return self.vtable.ShowPrintUIForWindowAsync(self, appWindow, riid, asyncOperation);
     }
 };
@@ -41,26 +41,26 @@ pub const IID_IPrintManagerInterop = &IID_IPrintManagerInterop_Value;
 pub const IPrintManagerInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        GetForWindow: *const fn(
+        GetForWindow: *const fn (
             self: *const IPrintManagerInterop,
             appWindow: ?HWND,
             riid: ?*const Guid,
             printManager: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ShowPrintUIForWindowAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ShowPrintUIForWindowAsync: *const fn (
             self: *const IPrintManagerInterop,
             appWindow: ?HWND,
             riid: ?*const Guid,
             asyncOperation: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn GetForWindow(self: *const IPrintManagerInterop, appWindow: ?HWND, riid: ?*const Guid, printManager: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetForWindow(self: *const IPrintManagerInterop, appWindow: ?HWND, riid: ?*const Guid, printManager: **anyopaque) HRESULT {
         return self.vtable.GetForWindow(self, appWindow, riid, printManager);
     }
-    pub fn ShowPrintUIForWindowAsync(self: *const IPrintManagerInterop, appWindow: ?HWND, riid: ?*const Guid, asyncOperation: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn ShowPrintUIForWindowAsync(self: *const IPrintManagerInterop, appWindow: ?HWND, riid: ?*const Guid, asyncOperation: **anyopaque) HRESULT {
         return self.vtable.ShowPrintUIForWindowAsync(self, appWindow, riid, asyncOperation);
     }
 };
@@ -70,46 +70,46 @@ pub const IID_IPrintWorkflowXpsReceiver = &IID_IPrintWorkflowXpsReceiver_Value;
 pub const IPrintWorkflowXpsReceiver = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetDocumentSequencePrintTicket: *const fn(
+        SetDocumentSequencePrintTicket: *const fn (
             self: *const IPrintWorkflowXpsReceiver,
             documentSequencePrintTicket: ?*IStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDocumentSequenceUri: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDocumentSequenceUri: *const fn (
             self: *const IPrintWorkflowXpsReceiver,
             documentSequenceUri: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddDocumentData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddDocumentData: *const fn (
             self: *const IPrintWorkflowXpsReceiver,
             documentId: u32,
             documentPrintTicket: ?*IStream,
             documentUri: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPage: *const fn (
             self: *const IPrintWorkflowXpsReceiver,
             documentId: u32,
             pageId: u32,
             pageReference: ?*IXpsOMPageReference,
             pageUri: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Close: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Close: *const fn (
             self: *const IPrintWorkflowXpsReceiver,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetDocumentSequencePrintTicket(self: *const IPrintWorkflowXpsReceiver, documentSequencePrintTicket: ?*IStream) callconv(.Inline) HRESULT {
+    pub inline fn SetDocumentSequencePrintTicket(self: *const IPrintWorkflowXpsReceiver, documentSequencePrintTicket: ?*IStream) HRESULT {
         return self.vtable.SetDocumentSequencePrintTicket(self, documentSequencePrintTicket);
     }
-    pub fn SetDocumentSequenceUri(self: *const IPrintWorkflowXpsReceiver, documentSequenceUri: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetDocumentSequenceUri(self: *const IPrintWorkflowXpsReceiver, documentSequenceUri: ?[*:0]const u16) HRESULT {
         return self.vtable.SetDocumentSequenceUri(self, documentSequenceUri);
     }
-    pub fn AddDocumentData(self: *const IPrintWorkflowXpsReceiver, documentId: u32, documentPrintTicket: ?*IStream, documentUri: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn AddDocumentData(self: *const IPrintWorkflowXpsReceiver, documentId: u32, documentPrintTicket: ?*IStream, documentUri: ?[*:0]const u16) HRESULT {
         return self.vtable.AddDocumentData(self, documentId, documentPrintTicket, documentUri);
     }
-    pub fn AddPage(self: *const IPrintWorkflowXpsReceiver, documentId: u32, pageId: u32, pageReference: ?*IXpsOMPageReference, pageUri: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn AddPage(self: *const IPrintWorkflowXpsReceiver, documentId: u32, pageId: u32, pageReference: ?*IXpsOMPageReference, pageUri: ?[*:0]const u16) HRESULT {
         return self.vtable.AddPage(self, documentId, pageId, pageReference, pageUri);
     }
-    pub fn Close(self: *const IPrintWorkflowXpsReceiver) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const IPrintWorkflowXpsReceiver) HRESULT {
         return self.vtable.Close(self);
     }
 };
@@ -119,15 +119,15 @@ pub const IID_IPrintWorkflowXpsReceiver2 = &IID_IPrintWorkflowXpsReceiver2_Value
 pub const IPrintWorkflowXpsReceiver2 = extern union {
     pub const VTable = extern struct {
         base: IPrintWorkflowXpsReceiver.VTable,
-        Failed: *const fn(
+        Failed: *const fn (
             self: *const IPrintWorkflowXpsReceiver2,
             XpsError: HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPrintWorkflowXpsReceiver: IPrintWorkflowXpsReceiver,
     IUnknown: IUnknown,
-    pub fn Failed(self: *const IPrintWorkflowXpsReceiver2, XpsError: HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn Failed(self: *const IPrintWorkflowXpsReceiver2, XpsError: HRESULT) HRESULT {
         return self.vtable.Failed(self, XpsError);
     }
 };
@@ -137,22 +137,22 @@ pub const IID_IPrintWorkflowObjectModelSourceFileContentNative = &IID_IPrintWork
 pub const IPrintWorkflowObjectModelSourceFileContentNative = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        StartXpsOMGeneration: *const fn(
+        StartXpsOMGeneration: *const fn (
             self: *const IPrintWorkflowObjectModelSourceFileContentNative,
             receiver: ?*IPrintWorkflowXpsReceiver,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectFactory: *const fn(
+        get_ObjectFactory: *const fn (
             self: *const IPrintWorkflowObjectModelSourceFileContentNative,
             value: ?*?*IXpsOMObjectFactory1,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn StartXpsOMGeneration(self: *const IPrintWorkflowObjectModelSourceFileContentNative, receiver: ?*IPrintWorkflowXpsReceiver) callconv(.Inline) HRESULT {
+    pub inline fn StartXpsOMGeneration(self: *const IPrintWorkflowObjectModelSourceFileContentNative, receiver: ?*IPrintWorkflowXpsReceiver) HRESULT {
         return self.vtable.StartXpsOMGeneration(self, receiver);
     }
-    pub fn get_ObjectFactory(self: *const IPrintWorkflowObjectModelSourceFileContentNative, value: ?*?*IXpsOMObjectFactory1) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectFactory(self: *const IPrintWorkflowObjectModelSourceFileContentNative, value: ?*?*IXpsOMObjectFactory1) HRESULT {
         return self.vtable.get_ObjectFactory(self, value);
     }
 };
@@ -163,14 +163,14 @@ pub const IPrintWorkflowXpsObjectModelTargetPackageNative = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DocumentPackageTarget: *const fn(
+        get_DocumentPackageTarget: *const fn (
             self: *const IPrintWorkflowXpsObjectModelTargetPackageNative,
             value: ?*?*IXpsDocumentPackageTarget,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_DocumentPackageTarget(self: *const IPrintWorkflowXpsObjectModelTargetPackageNative, value: ?*?*IXpsDocumentPackageTarget) callconv(.Inline) HRESULT {
+    pub inline fn get_DocumentPackageTarget(self: *const IPrintWorkflowXpsObjectModelTargetPackageNative, value: ?*?*IXpsDocumentPackageTarget) HRESULT {
         return self.vtable.get_DocumentPackageTarget(self, value);
     }
 };
@@ -181,34 +181,33 @@ pub const IPrintWorkflowConfigurationNative = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrinterQueue: *const fn(
+        get_PrinterQueue: *const fn (
             self: *const IPrintWorkflowConfigurationNative,
             value: ?*?*IPrinterQueue,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DriverProperties: *const fn(
+        get_DriverProperties: *const fn (
             self: *const IPrintWorkflowConfigurationNative,
             value: ?*?*IPrinterPropertyBag,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UserProperties: *const fn(
+        get_UserProperties: *const fn (
             self: *const IPrintWorkflowConfigurationNative,
             value: ?*?*IPrinterPropertyBag,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_PrinterQueue(self: *const IPrintWorkflowConfigurationNative, value: ?*?*IPrinterQueue) callconv(.Inline) HRESULT {
+    pub inline fn get_PrinterQueue(self: *const IPrintWorkflowConfigurationNative, value: ?*?*IPrinterQueue) HRESULT {
         return self.vtable.get_PrinterQueue(self, value);
     }
-    pub fn get_DriverProperties(self: *const IPrintWorkflowConfigurationNative, value: ?*?*IPrinterPropertyBag) callconv(.Inline) HRESULT {
+    pub inline fn get_DriverProperties(self: *const IPrintWorkflowConfigurationNative, value: ?*?*IPrinterPropertyBag) HRESULT {
         return self.vtable.get_DriverProperties(self, value);
     }
-    pub fn get_UserProperties(self: *const IPrintWorkflowConfigurationNative, value: ?*?*IPrinterPropertyBag) callconv(.Inline) HRESULT {
+    pub inline fn get_UserProperties(self: *const IPrintWorkflowConfigurationNative, value: ?*?*IPrinterPropertyBag) HRESULT {
         return self.vtable.get_UserProperties(self, value);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -234,9 +233,7 @@ const IXpsOMPageReference = @import("../../storage/xps.zig").IXpsOMPageReference
 const PWSTR = @import("../../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

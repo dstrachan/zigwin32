@@ -35,14 +35,14 @@ pub const IID_IXpsPrintJobStream = &IID_IXpsPrintJobStream_Value;
 pub const IXpsPrintJobStream = extern union {
     pub const VTable = extern struct {
         base: ISequentialStream.VTable,
-        Close: *const fn(
+        Close: *const fn (
             self: *const IXpsPrintJobStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ISequentialStream: ISequentialStream,
     IUnknown: IUnknown,
-    pub fn Close(self: *const IXpsPrintJobStream) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const IXpsPrintJobStream) HRESULT {
         return self.vtable.Close(self);
     }
 };
@@ -53,20 +53,20 @@ pub const IID_IXpsPrintJob = &IID_IXpsPrintJob_Value;
 pub const IXpsPrintJob = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Cancel: *const fn(
+        Cancel: *const fn (
             self: *const IXpsPrintJob,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetJobStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetJobStatus: *const fn (
             self: *const IXpsPrintJob,
             jobStatus: ?*XPS_JOB_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Cancel(self: *const IXpsPrintJob) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IXpsPrintJob) HRESULT {
         return self.vtable.Cancel(self);
     }
-    pub fn GetJobStatus(self: *const IXpsPrintJob, jobStatus: ?*XPS_JOB_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn GetJobStatus(self: *const IXpsPrintJob, jobStatus: ?*XPS_JOB_STATUS) HRESULT {
         return self.vtable.GetJobStatus(self, jobStatus);
     }
 };
@@ -83,30 +83,30 @@ pub const IID_IPrintDocumentPackageTarget = &IID_IPrintDocumentPackageTarget_Val
 pub const IPrintDocumentPackageTarget = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetPackageTargetTypes: *const fn(
+        GetPackageTargetTypes: *const fn (
             self: *const IPrintDocumentPackageTarget,
             targetCount: ?*u32,
             targetTypes: [*]?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPackageTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPackageTarget: *const fn (
             self: *const IPrintDocumentPackageTarget,
             guidTargetType: ?*const Guid,
             riid: ?*const Guid,
             ppvTarget: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IPrintDocumentPackageTarget,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetPackageTargetTypes(self: *const IPrintDocumentPackageTarget, targetCount: ?*u32, targetTypes: [*]?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn GetPackageTargetTypes(self: *const IPrintDocumentPackageTarget, targetCount: ?*u32, targetTypes: [*]?*Guid) HRESULT {
         return self.vtable.GetPackageTargetTypes(self, targetCount, targetTypes);
     }
-    pub fn GetPackageTarget(self: *const IPrintDocumentPackageTarget, guidTargetType: ?*const Guid, riid: ?*const Guid, ppvTarget: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetPackageTarget(self: *const IPrintDocumentPackageTarget, guidTargetType: ?*const Guid, riid: ?*const Guid, ppvTarget: **anyopaque) HRESULT {
         return self.vtable.GetPackageTarget(self, guidTargetType, riid, ppvTarget);
     }
-    pub fn Cancel(self: *const IPrintDocumentPackageTarget) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IPrintDocumentPackageTarget) HRESULT {
         return self.vtable.Cancel(self);
     }
 };
@@ -137,15 +137,15 @@ pub const IID_IPrintDocumentPackageStatusEvent = &IID_IPrintDocumentPackageStatu
 pub const IPrintDocumentPackageStatusEvent = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        PackageStatusUpdated: *const fn(
+        PackageStatusUpdated: *const fn (
             self: *const IPrintDocumentPackageStatusEvent,
             packageStatus: ?*PrintDocumentPackageStatus,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn PackageStatusUpdated(self: *const IPrintDocumentPackageStatusEvent, packageStatus: ?*PrintDocumentPackageStatus) callconv(.Inline) HRESULT {
+    pub inline fn PackageStatusUpdated(self: *const IPrintDocumentPackageStatusEvent, packageStatus: ?*PrintDocumentPackageStatus) HRESULT {
         return self.vtable.PackageStatusUpdated(self, packageStatus);
     }
 };
@@ -156,22 +156,21 @@ pub const IID_IPrintDocumentPackageTargetFactory = &IID_IPrintDocumentPackageTar
 pub const IPrintDocumentPackageTargetFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateDocumentPackageTargetForPrintJob: *const fn(
+        CreateDocumentPackageTargetForPrintJob: *const fn (
             self: *const IPrintDocumentPackageTargetFactory,
             printerName: ?[*:0]const u16,
             jobName: ?[*:0]const u16,
             jobOutputStream: ?*IStream,
             jobPrintTicketStream: ?*IStream,
             docPackageTarget: ?*?*IPrintDocumentPackageTarget,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateDocumentPackageTargetForPrintJob(self: *const IPrintDocumentPackageTargetFactory, printerName: ?[*:0]const u16, jobName: ?[*:0]const u16, jobOutputStream: ?*IStream, jobPrintTicketStream: ?*IStream, docPackageTarget: ?*?*IPrintDocumentPackageTarget) callconv(.Inline) HRESULT {
+    pub inline fn CreateDocumentPackageTargetForPrintJob(self: *const IPrintDocumentPackageTargetFactory, printerName: ?[*:0]const u16, jobName: ?[*:0]const u16, jobOutputStream: ?*IStream, jobPrintTicketStream: ?*IStream, docPackageTarget: ?*?*IPrintDocumentPackageTarget) HRESULT {
         return self.vtable.CreateDocumentPackageTargetForPrintJob(self, printerName, jobName, jobOutputStream, jobPrintTicketStream, docPackageTarget);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (2)
@@ -188,7 +187,7 @@ pub extern "xpsprint" fn StartXpsPrintJob(
     xpsPrintJob: ?*?*IXpsPrintJob,
     documentStream: ?*?*IXpsPrintJobStream,
     printTicketStream: ?*?*IXpsPrintJobStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "xpsprint" fn StartXpsPrintJob1(
@@ -199,8 +198,7 @@ pub extern "xpsprint" fn StartXpsPrintJob1(
     completionEvent: ?HANDLE,
     xpsPrintJob: ?*?*IXpsPrintJob,
     printContentReceiver: ?*?*IXpsOMPackageTarget,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -219,9 +217,7 @@ const IXpsOMPackageTarget = @import("../../storage/xps.zig").IXpsOMPackageTarget
 const PWSTR = @import("../../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

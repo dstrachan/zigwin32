@@ -72,18 +72,17 @@ pub const IID_IWaaSAssessor = &IID_IWaaSAssessor_Value;
 pub const IWaaSAssessor = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetOSUpdateAssessment: *const fn(
+        GetOSUpdateAssessment: *const fn (
             self: *const IWaaSAssessor,
             result: ?*OSUpdateAssessment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetOSUpdateAssessment(self: *const IWaaSAssessor, result: ?*OSUpdateAssessment) callconv(.Inline) HRESULT {
+    pub inline fn GetOSUpdateAssessment(self: *const IWaaSAssessor, result: ?*OSUpdateAssessment) HRESULT {
         return self.vtable.GetOSUpdateAssessment(self, result);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -103,9 +102,7 @@ const IUnknown = @import("../system/com.zig").IUnknown;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

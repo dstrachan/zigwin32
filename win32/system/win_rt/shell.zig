@@ -20,7 +20,7 @@ pub const IID_IDDEInitializer = &IID_IDDEInitializer_Value;
 pub const IDDEInitializer = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IDDEInitializer,
             fileExtensionOrProtocol: ?[*:0]const u16,
             method: CreateProcessMethod,
@@ -31,15 +31,14 @@ pub const IDDEInitializer = extern union {
             targetFile: ?[*:0]const u16,
             arguments: ?[*:0]const u16,
             verb: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IDDEInitializer, fileExtensionOrProtocol: ?[*:0]const u16, method: CreateProcessMethod, currentDirectory: ?[*:0]const u16, execTarget: ?*IShellItem, site: ?*IUnknown, application: ?[*:0]const u16, targetFile: ?[*:0]const u16, arguments: ?[*:0]const u16, verb: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IDDEInitializer, fileExtensionOrProtocol: ?[*:0]const u16, method: CreateProcessMethod, currentDirectory: ?[*:0]const u16, execTarget: ?*IShellItem, site: ?*IUnknown, application: ?[*:0]const u16, targetFile: ?[*:0]const u16, arguments: ?[*:0]const u16, verb: ?[*:0]const u16) HRESULT {
         return self.vtable.Initialize(self, fileExtensionOrProtocol, method, currentDirectory, execTarget, site, application, targetFile, arguments, verb);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -58,9 +57,7 @@ const IUnknown = @import("../../system/com.zig").IUnknown;
 const PWSTR = @import("../../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

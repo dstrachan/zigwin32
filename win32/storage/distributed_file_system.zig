@@ -64,7 +64,6 @@ pub const DFS_INFO_1 = extern struct {
     EntryPath: ?PWSTR,
 };
 
-
 pub const DFS_INFO_2 = extern struct {
     EntryPath: ?PWSTR,
     Comment: ?PWSTR,
@@ -72,13 +71,11 @@ pub const DFS_INFO_2 = extern struct {
     NumberOfStorages: u32,
 };
 
-
 pub const DFS_STORAGE_INFO = extern struct {
     State: u32,
     ServerName: ?PWSTR,
     ShareName: ?PWSTR,
 };
-
 
 pub const DFS_STORAGE_INFO_1 = extern struct {
     State: u32,
@@ -95,7 +92,6 @@ pub const DFS_INFO_3 = extern struct {
     Storage: ?*DFS_STORAGE_INFO,
 };
 
-
 pub const DFS_INFO_4 = extern struct {
     EntryPath: ?PWSTR,
     Comment: ?PWSTR,
@@ -105,7 +101,6 @@ pub const DFS_INFO_4 = extern struct {
     NumberOfStorages: u32,
     Storage: ?*DFS_STORAGE_INFO,
 };
-
 
 pub const DFS_INFO_5 = extern struct {
     EntryPath: ?PWSTR,
@@ -261,13 +256,13 @@ pub const DFS_GET_PKT_ENTRY_STATE_ARG = extern struct {
     Buffer: [1]u16,
 };
 
-pub const DFS_INFO_1_32 = switch(@import("../zig.zig").arch) {
+pub const DFS_INFO_1_32 = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         EntryPath: u32,
     },
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
-pub const DFS_INFO_2_32 = switch(@import("../zig.zig").arch) {
+pub const DFS_INFO_2_32 = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         EntryPath: u32,
         Comment: u32,
@@ -276,7 +271,7 @@ pub const DFS_INFO_2_32 = switch(@import("../zig.zig").arch) {
     },
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
-pub const DFS_STORAGE_INFO_0_32 = switch(@import("../zig.zig").arch) {
+pub const DFS_STORAGE_INFO_0_32 = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         State: u32,
         ServerName: u32,
@@ -284,7 +279,7 @@ pub const DFS_STORAGE_INFO_0_32 = switch(@import("../zig.zig").arch) {
     },
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
-pub const DFS_INFO_3_32 = switch(@import("../zig.zig").arch) {
+pub const DFS_INFO_3_32 = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         EntryPath: u32,
         Comment: u32,
@@ -294,7 +289,7 @@ pub const DFS_INFO_3_32 = switch(@import("../zig.zig").arch) {
     },
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
-pub const DFS_INFO_4_32 = switch(@import("../zig.zig").arch) {
+pub const DFS_INFO_4_32 = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         EntryPath: u32,
         Comment: u32,
@@ -317,7 +312,7 @@ pub extern "netapi32" fn NetDfsAdd(
     ShareName: ?PWSTR,
     Comment: ?PWSTR,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsAddStdRoot(
@@ -325,14 +320,14 @@ pub extern "netapi32" fn NetDfsAddStdRoot(
     RootShare: ?PWSTR,
     Comment: ?PWSTR,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsRemoveStdRoot(
     ServerName: ?PWSTR,
     RootShare: ?PWSTR,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsAddFtRoot(
@@ -341,7 +336,7 @@ pub extern "netapi32" fn NetDfsAddFtRoot(
     FtDfsName: ?PWSTR,
     Comment: ?PWSTR,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsRemoveFtRoot(
@@ -349,7 +344,7 @@ pub extern "netapi32" fn NetDfsRemoveFtRoot(
     RootShare: ?PWSTR,
     FtDfsName: ?PWSTR,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsRemoveFtRootForced(
@@ -358,14 +353,14 @@ pub extern "netapi32" fn NetDfsRemoveFtRootForced(
     RootShare: ?PWSTR,
     FtDfsName: ?PWSTR,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsRemove(
     DfsEntryPath: ?PWSTR,
     ServerName: ?PWSTR,
     ShareName: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsEnum(
@@ -375,7 +370,7 @@ pub extern "netapi32" fn NetDfsEnum(
     Buffer: ?*?*u8,
     EntriesRead: ?*u32,
     ResumeHandle: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsGetInfo(
@@ -384,7 +379,7 @@ pub extern "netapi32" fn NetDfsGetInfo(
     ShareName: ?PWSTR,
     Level: u32,
     Buffer: ?*?*u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsSetInfo(
@@ -393,7 +388,7 @@ pub extern "netapi32" fn NetDfsSetInfo(
     ShareName: ?PWSTR,
     Level: u32,
     Buffer: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsGetClientInfo(
@@ -402,7 +397,7 @@ pub extern "netapi32" fn NetDfsGetClientInfo(
     ShareName: ?PWSTR,
     Level: u32,
     Buffer: ?*?*u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsSetClientInfo(
@@ -411,14 +406,14 @@ pub extern "netapi32" fn NetDfsSetClientInfo(
     ShareName: ?PWSTR,
     Level: u32,
     Buffer: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsMove(
     OldDfsEntryPath: ?PWSTR,
     NewDfsEntryPath: ?PWSTR,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsAddRootTarget(
@@ -427,14 +422,14 @@ pub extern "netapi32" fn NetDfsAddRootTarget(
     MajorVersion: u32,
     pComment: ?PWSTR,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsRemoveRootTarget(
     pDfsPath: ?PWSTR,
     pTargetPath: ?PWSTR,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsGetSecurity(
@@ -442,14 +437,14 @@ pub extern "netapi32" fn NetDfsGetSecurity(
     SecurityInformation: u32,
     ppSecurityDescriptor: ?*?PSECURITY_DESCRIPTOR,
     lpcbSecurityDescriptor: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsSetSecurity(
     DfsEntryPath: ?PWSTR,
     SecurityInformation: u32,
     pSecurityDescriptor: ?PSECURITY_DESCRIPTOR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsGetStdContainerSecurity(
@@ -457,14 +452,14 @@ pub extern "netapi32" fn NetDfsGetStdContainerSecurity(
     SecurityInformation: u32,
     ppSecurityDescriptor: ?*?PSECURITY_DESCRIPTOR,
     lpcbSecurityDescriptor: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsSetStdContainerSecurity(
     MachineName: ?PWSTR,
     SecurityInformation: u32,
     pSecurityDescriptor: ?PSECURITY_DESCRIPTOR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsGetFtContainerSecurity(
@@ -472,22 +467,21 @@ pub extern "netapi32" fn NetDfsGetFtContainerSecurity(
     SecurityInformation: u32,
     ppSecurityDescriptor: ?*?PSECURITY_DESCRIPTOR,
     lpcbSecurityDescriptor: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsSetFtContainerSecurity(
     DomainName: ?PWSTR,
     SecurityInformation: u32,
     pSecurityDescriptor: ?PSECURITY_DESCRIPTOR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn NetDfsGetSupportedNamespaceVersion(
     Origin: DFS_NAMESPACE_VERSION_ORIGIN,
     pName: ?PWSTR,
     ppVersionInfo: ?*?*DFS_SUPPORTED_NAMESPACE_VERSION_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -500,9 +494,7 @@ const PSECURITY_DESCRIPTOR = @import("../security.zig").PSECURITY_DESCRIPTOR;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

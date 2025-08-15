@@ -45,17 +45,16 @@ pub const NAMED_PIPE_MODE = packed struct(u32) {
     _31: u1 = 0,
     // SERVER_END (bit index 0) conflicts with NOWAIT
 };
-pub const PIPE_WAIT = NAMED_PIPE_MODE{ };
+pub const PIPE_WAIT = NAMED_PIPE_MODE{};
 pub const PIPE_NOWAIT = NAMED_PIPE_MODE{ .NOWAIT = 1 };
-pub const PIPE_READMODE_BYTE = NAMED_PIPE_MODE{ };
+pub const PIPE_READMODE_BYTE = NAMED_PIPE_MODE{};
 pub const PIPE_READMODE_MESSAGE = NAMED_PIPE_MODE{ .READMODE_MESSAGE = 1 };
-pub const PIPE_CLIENT_END = NAMED_PIPE_MODE{ };
+pub const PIPE_CLIENT_END = NAMED_PIPE_MODE{};
 pub const PIPE_SERVER_END = NAMED_PIPE_MODE{ .NOWAIT = 1 };
-pub const PIPE_TYPE_BYTE = NAMED_PIPE_MODE{ };
+pub const PIPE_TYPE_BYTE = NAMED_PIPE_MODE{};
 pub const PIPE_TYPE_MESSAGE = NAMED_PIPE_MODE{ .TYPE_MESSAGE = 1 };
-pub const PIPE_ACCEPT_REMOTE_CLIENTS = NAMED_PIPE_MODE{ };
+pub const PIPE_ACCEPT_REMOTE_CLIENTS = NAMED_PIPE_MODE{};
 pub const PIPE_REJECT_REMOTE_CLIENTS = NAMED_PIPE_MODE{ .REJECT_REMOTE_CLIENTS = 1 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (22)
@@ -66,18 +65,18 @@ pub extern "kernel32" fn CreatePipe(
     hWritePipe: ?*?HANDLE,
     lpPipeAttributes: ?*SECURITY_ATTRIBUTES,
     nSize: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn ConnectNamedPipe(
     hNamedPipe: ?HANDLE,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn DisconnectNamedPipe(
     hNamedPipe: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn SetNamedPipeHandleState(
@@ -85,7 +84,7 @@ pub extern "kernel32" fn SetNamedPipeHandleState(
     lpMode: ?*NAMED_PIPE_MODE,
     lpMaxCollectionCount: ?*u32,
     lpCollectDataTimeout: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn PeekNamedPipe(
@@ -96,7 +95,7 @@ pub extern "kernel32" fn PeekNamedPipe(
     lpBytesRead: ?*u32,
     lpTotalBytesAvail: ?*u32,
     lpBytesLeftThisMessage: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn TransactNamedPipe(
@@ -109,7 +108,7 @@ pub extern "kernel32" fn TransactNamedPipe(
     nOutBufferSize: u32,
     lpBytesRead: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "kernel32" fn CreateNamedPipeW(
     lpName: ?[*:0]const u16,
@@ -120,24 +119,24 @@ pub extern "kernel32" fn CreateNamedPipeW(
     nInBufferSize: u32,
     nDefaultTimeOut: u32,
     lpSecurityAttributes: ?*SECURITY_ATTRIBUTES,
-) callconv(@import("std").os.windows.WINAPI) HANDLE;
+) callconv(.winapi) HANDLE;
 
 pub extern "kernel32" fn WaitNamedPipeW(
     lpNamedPipeName: ?[*:0]const u16,
     nTimeOut: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "kernel32" fn GetNamedPipeClientComputerNameW(
     Pipe: ?HANDLE,
     // TODO: what to do with BytesParamIndex 2?
     ClientComputerName: ?PWSTR,
     ClientComputerNameLength: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "advapi32" fn ImpersonateNamedPipeClient(
     hNamedPipe: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetNamedPipeInfo(
@@ -146,7 +145,7 @@ pub extern "kernel32" fn GetNamedPipeInfo(
     lpOutBufferSize: ?*u32,
     lpInBufferSize: ?*u32,
     lpMaxInstances: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "kernel32" fn GetNamedPipeHandleStateW(
     hNamedPipe: ?HANDLE,
@@ -156,7 +155,7 @@ pub extern "kernel32" fn GetNamedPipeHandleStateW(
     lpCollectDataTimeout: ?*u32,
     lpUserName: ?[*:0]u16,
     nMaxUserNameSize: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "kernel32" fn CallNamedPipeW(
     lpNamedPipeName: ?[*:0]const u16,
@@ -168,7 +167,7 @@ pub extern "kernel32" fn CallNamedPipeW(
     nOutBufferSize: u32,
     lpBytesRead: ?*u32,
     nTimeOut: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn CreateNamedPipeA(
@@ -180,7 +179,7 @@ pub extern "kernel32" fn CreateNamedPipeA(
     nInBufferSize: u32,
     nDefaultTimeOut: u32,
     lpSecurityAttributes: ?*SECURITY_ATTRIBUTES,
-) callconv(@import("std").os.windows.WINAPI) HANDLE;
+) callconv(.winapi) HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetNamedPipeHandleStateA(
@@ -191,7 +190,7 @@ pub extern "kernel32" fn GetNamedPipeHandleStateA(
     lpCollectDataTimeout: ?*u32,
     lpUserName: ?[*:0]u8,
     nMaxUserNameSize: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn CallNamedPipeA(
@@ -204,13 +203,13 @@ pub extern "kernel32" fn CallNamedPipeA(
     nOutBufferSize: u32,
     lpBytesRead: ?*u32,
     nTimeOut: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn WaitNamedPipeA(
     lpNamedPipeName: ?[*:0]const u8,
     nTimeOut: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetNamedPipeClientComputerNameA(
@@ -218,32 +217,31 @@ pub extern "kernel32" fn GetNamedPipeClientComputerNameA(
     // TODO: what to do with BytesParamIndex 2?
     ClientComputerName: ?PSTR,
     ClientComputerNameLength: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetNamedPipeClientProcessId(
     Pipe: ?HANDLE,
     ClientProcessId: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetNamedPipeClientSessionId(
     Pipe: ?HANDLE,
     ClientSessionId: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetNamedPipeServerProcessId(
     Pipe: ?HANDLE,
     ServerProcessId: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetNamedPipeServerSessionId(
     Pipe: ?HANDLE,
     ServerSessionId: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (5)
@@ -295,9 +293,7 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 const SECURITY_ATTRIBUTES = @import("../security.zig").SECURITY_ATTRIBUTES;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

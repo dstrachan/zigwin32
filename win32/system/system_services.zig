@@ -3589,7 +3589,7 @@ pub const CFU_UNDERLINEDOUBLE = CFE_UNDERLINE{
 };
 pub const CFU_UNDERLINEWORD = CFE_UNDERLINE{ .UNDERLINEWORD = 1 };
 pub const CFU_UNDERLINE = CFE_UNDERLINE{ .UNDERLINE = 1 };
-pub const CFU_UNDERLINENONE = CFE_UNDERLINE{ };
+pub const CFU_UNDERLINENONE = CFE_UNDERLINE{};
 
 pub const IGP_ID = enum(u32) {
     GETIMEVERSION = 4294967292,
@@ -3831,13 +3831,11 @@ pub const DEV_BROADCAST_VOLUME_FLAGS = enum(u16) {
 pub const DBTF_MEDIA = DEV_BROADCAST_VOLUME_FLAGS.MEDIA;
 pub const DBTF_NET = DEV_BROADCAST_VOLUME_FLAGS.NET;
 
-pub const PUMS_SCHEDULER_ENTRY_POINT = *const fn(
+pub const PUMS_SCHEDULER_ENTRY_POINT = *const fn (
     Reason: RTL_UMS_SCHEDULER_REASON,
     ActivationPayload: usize,
     SchedulerParam: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
-
-
+) callconv(.winapi) void;
 
 pub const TP_POOL = extern struct {
     placeholder: usize, // TODO: why is this type empty?
@@ -4181,9 +4179,6 @@ pub const SCOPE_TABLE_AMD64 = extern struct {
         JumpTarget: u32,
     },
 };
-
-
-
 
 pub const SCOPE_TABLE_ARM = extern struct {
     Count: u32,
@@ -4671,7 +4666,6 @@ pub const REARRANGE_FILE_DATA = extern struct {
     Length: u32,
     Flags: u32,
 };
-
 
 pub const SHUFFLE_FILE_DATA = extern struct {
     StartingOffset: i64,
@@ -5470,11 +5464,11 @@ pub const IMAGE_IMPORT_BY_NAME = extern struct {
     Name: [1]CHAR,
 };
 
-pub const PIMAGE_TLS_CALLBACK = *const fn(
+pub const PIMAGE_TLS_CALLBACK = *const fn (
     DllHandle: ?*anyopaque,
     Reason: u32,
     Reserved: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const IMAGE_TLS_DIRECTORY64 = extern struct {
     StartAddressOfRawData: u64 align(4),
@@ -5942,15 +5936,15 @@ pub const HEAP_OPTIMIZE_RESOURCES_INFORMATION = extern struct {
     Flags: u32,
 };
 
-pub const WORKERCALLBACKFUNC = *const fn(
+pub const WORKERCALLBACKFUNC = *const fn (
     param0: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const APC_CALLBACK_FUNCTION = *const fn(
+pub const APC_CALLBACK_FUNCTION = *const fn (
     param0: u32,
     param1: ?*anyopaque,
     param2: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const ACTIVATION_CONTEXT_INFO_CLASS = enum(i32) {
     ActivationContextBasicInformation = 1,
@@ -6267,40 +6261,40 @@ pub const KTMOBJECT_CURSOR = extern struct {
     ObjectIds: [1]Guid,
 };
 
-pub const PTERMINATION_HANDLER = switch(@import("../zig.zig").arch) {
-    .Arm64 => *const fn(
+pub const PTERMINATION_HANDLER = switch (@import("../zig.zig").arch) {
+    .Arm64 => *const fn (
         _abnormal_termination: BOOLEAN,
         EstablisherFrame: u64,
-    ) callconv(@import("std").os.windows.WINAPI) void,
-    .X64 => *const fn(
+    ) callconv(.winapi) void,
+    .X64 => *const fn (
         _abnormal_termination: BOOLEAN,
         EstablisherFrame: ?*anyopaque,
-    ) callconv(@import("std").os.windows.WINAPI) void,
+    ) callconv(.winapi) void,
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
-pub const POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK = switch(@import("../zig.zig").arch) {
-    .Arm64 => *const fn(
+pub const POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK = switch (@import("../zig.zig").arch) {
+    .Arm64 => *const fn (
         Process: ?HANDLE,
         TableAddress: ?*anyopaque,
         Entries: ?*u32,
         Functions: ?*?*IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY,
-    ) callconv(@import("std").os.windows.WINAPI) u32,
-    .X64 => *const fn(
+    ) callconv(.winapi) u32,
+    .X64 => *const fn (
         Process: ?HANDLE,
         TableAddress: ?*anyopaque,
         Entries: ?*u32,
         Functions: ?*?*IMAGE_RUNTIME_FUNCTION_ENTRY,
-    ) callconv(@import("std").os.windows.WINAPI) u32,
+    ) callconv(.winapi) u32,
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
-pub const PEXCEPTION_FILTER = switch(@import("../zig.zig").arch) {
-    .X64, .Arm64 => *const fn(
+pub const PEXCEPTION_FILTER = switch (@import("../zig.zig").arch) {
+    .X64, .Arm64 => *const fn (
         ExceptionPointers: ?*EXCEPTION_POINTERS,
         EstablisherFrame: ?*anyopaque,
-    ) callconv(@import("std").os.windows.WINAPI) i32,
+    ) callconv(.winapi) i32,
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
-pub const REARRANGE_FILE_DATA32 = switch(@import("../zig.zig").arch) {
+pub const REARRANGE_FILE_DATA32 = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         SourceStartingOffset: u64,
         TargetOffset: u64,
@@ -6317,8 +6311,7 @@ pub const REARRANGE_FILE_DATA32 = switch(@import("../zig.zig").arch) {
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "user32" fn UnregisterDeviceNotification(
     Handle: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (2)
@@ -6358,34 +6351,50 @@ const SID = @import("../security.zig").SID;
 const SID_AND_ATTRIBUTES = @import("../security.zig").SID_AND_ATTRIBUTES;
 const TOKEN_USER = @import("../security.zig").TOKEN_USER;
 // 3 arch-specific imports
-const EXCEPTION_POINTERS = switch(@import("../zig.zig").arch) {
+const EXCEPTION_POINTERS = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => @import("../system/diagnostics/debug.zig").EXCEPTION_POINTERS,
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
-const IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY = switch(@import("../zig.zig").arch) {
+const IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY = switch (@import("../zig.zig").arch) {
     .Arm64 => @import("../system/diagnostics/debug.zig").IMAGE_ARM64_RUNTIME_FUNCTION_ENTRY,
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
-const IMAGE_RUNTIME_FUNCTION_ENTRY = switch(@import("../zig.zig").arch) {
+const IMAGE_RUNTIME_FUNCTION_ENTRY = switch (@import("../zig.zig").arch) {
     .X64 => @import("../system/diagnostics/debug.zig").IMAGE_RUNTIME_FUNCTION_ENTRY,
     else => usize, // NOTE: this should be a @compileError but can't because of https://github.com/ziglang/zig/issues/9682
 };
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "PUMS_SCHEDULER_ENTRY_POINT")) { _ = PUMS_SCHEDULER_ENTRY_POINT; }
-    if (@hasDecl(@This(), "PIMAGE_TLS_CALLBACK")) { _ = PIMAGE_TLS_CALLBACK; }
-    if (@hasDecl(@This(), "WORKERCALLBACKFUNC")) { _ = WORKERCALLBACKFUNC; }
-    if (@hasDecl(@This(), "APC_CALLBACK_FUNCTION")) { _ = APC_CALLBACK_FUNCTION; }
-    if (@hasDecl(@This(), "PTERMINATION_HANDLER")) { _ = PTERMINATION_HANDLER; }
-    if (@hasDecl(@This(), "PTERMINATION_HANDLER")) { _ = PTERMINATION_HANDLER; }
-    if (@hasDecl(@This(), "POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK")) { _ = POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK; }
-    if (@hasDecl(@This(), "POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK")) { _ = POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK; }
-    if (@hasDecl(@This(), "PEXCEPTION_FILTER")) { _ = PEXCEPTION_FILTER; }
+    if (@hasDecl(@This(), "PUMS_SCHEDULER_ENTRY_POINT")) {
+        _ = PUMS_SCHEDULER_ENTRY_POINT;
+    }
+    if (@hasDecl(@This(), "PIMAGE_TLS_CALLBACK")) {
+        _ = PIMAGE_TLS_CALLBACK;
+    }
+    if (@hasDecl(@This(), "WORKERCALLBACKFUNC")) {
+        _ = WORKERCALLBACKFUNC;
+    }
+    if (@hasDecl(@This(), "APC_CALLBACK_FUNCTION")) {
+        _ = APC_CALLBACK_FUNCTION;
+    }
+    if (@hasDecl(@This(), "PTERMINATION_HANDLER")) {
+        _ = PTERMINATION_HANDLER;
+    }
+    if (@hasDecl(@This(), "PTERMINATION_HANDLER")) {
+        _ = PTERMINATION_HANDLER;
+    }
+    if (@hasDecl(@This(), "POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK")) {
+        _ = POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK;
+    }
+    if (@hasDecl(@This(), "POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK")) {
+        _ = POUT_OF_PROCESS_FUNCTION_TABLE_CALLBACK;
+    }
+    if (@hasDecl(@This(), "PEXCEPTION_FILTER")) {
+        _ = PEXCEPTION_FILTER;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

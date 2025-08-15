@@ -11,27 +11,27 @@ pub const IID_IDisplayDeviceInterop = &IID_IDisplayDeviceInterop_Value;
 pub const IDisplayDeviceInterop = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateSharedHandle: *const fn(
+        CreateSharedHandle: *const fn (
             self: *const IDisplayDeviceInterop,
             pObject: ?*IInspectable,
             pSecurityAttributes: ?*const SECURITY_ATTRIBUTES,
             Access: u32,
             Name: ?HSTRING,
             pHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OpenSharedHandle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OpenSharedHandle: *const fn (
             self: *const IDisplayDeviceInterop,
             NTHandle: ?HANDLE,
             riid: Guid,
             ppvObj: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateSharedHandle(self: *const IDisplayDeviceInterop, pObject: ?*IInspectable, pSecurityAttributes: ?*const SECURITY_ATTRIBUTES, Access: u32, Name: ?HSTRING, pHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateSharedHandle(self: *const IDisplayDeviceInterop, pObject: ?*IInspectable, pSecurityAttributes: ?*const SECURITY_ATTRIBUTES, Access: u32, Name: ?HSTRING, pHandle: ?*?HANDLE) HRESULT {
         return self.vtable.CreateSharedHandle(self, pObject, pSecurityAttributes, Access, Name, pHandle);
     }
-    pub fn OpenSharedHandle(self: *const IDisplayDeviceInterop, NTHandle: ?HANDLE, riid: Guid, ppvObj: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn OpenSharedHandle(self: *const IDisplayDeviceInterop, NTHandle: ?HANDLE, riid: Guid, ppvObj: ?*?*anyopaque) HRESULT {
         return self.vtable.OpenSharedHandle(self, NTHandle, riid, ppvObj);
     }
 };
@@ -41,25 +41,24 @@ pub const IID_IDisplayPathInterop = &IID_IDisplayPathInterop_Value;
 pub const IDisplayPathInterop = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateSourcePresentationHandle: *const fn(
+        CreateSourcePresentationHandle: *const fn (
             self: *const IDisplayPathInterop,
             pValue: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSourceId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSourceId: *const fn (
             self: *const IDisplayPathInterop,
             pSourceId: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateSourcePresentationHandle(self: *const IDisplayPathInterop, pValue: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateSourcePresentationHandle(self: *const IDisplayPathInterop, pValue: ?*?HANDLE) HRESULT {
         return self.vtable.CreateSourcePresentationHandle(self, pValue);
     }
-    pub fn GetSourceId(self: *const IDisplayPathInterop, pSourceId: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSourceId(self: *const IDisplayPathInterop, pSourceId: ?*u32) HRESULT {
         return self.vtable.GetSourceId(self, pSourceId);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -80,9 +79,7 @@ const IUnknown = @import("../../system/com.zig").IUnknown;
 const SECURITY_ATTRIBUTES = @import("../../security.zig").SECURITY_ATTRIBUTES;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

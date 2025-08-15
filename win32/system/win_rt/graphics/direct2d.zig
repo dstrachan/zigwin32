@@ -36,53 +36,53 @@ pub const IID_IGraphicsEffectD2D1Interop = &IID_IGraphicsEffectD2D1Interop_Value
 pub const IGraphicsEffectD2D1Interop = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetEffectId: *const fn(
+        GetEffectId: *const fn (
             self: *const IGraphicsEffectD2D1Interop,
             id: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNamedPropertyMapping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNamedPropertyMapping: *const fn (
             self: *const IGraphicsEffectD2D1Interop,
             name: ?[*:0]const u16,
             index: ?*u32,
             mapping: ?*GRAPHICS_EFFECT_PROPERTY_MAPPING,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyCount: *const fn (
             self: *const IGraphicsEffectD2D1Interop,
             count: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const IGraphicsEffectD2D1Interop,
             index: u32,
-            value: ?**struct{comment: []const u8 = "MissingClrType IPropertyValue.Windows.Foundation"},
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSource: *const fn(
+            value: ?**struct { comment: []const u8 = "MissingClrType IPropertyValue.Windows.Foundation" },
+        ) callconv(.winapi) HRESULT,
+        GetSource: *const fn (
             self: *const IGraphicsEffectD2D1Interop,
             index: u32,
-            source: ?**struct{comment: []const u8 = "MissingClrType IGraphicsEffectSource.Windows.Graphics.Effects"},
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSourceCount: *const fn(
+            source: ?**struct { comment: []const u8 = "MissingClrType IGraphicsEffectSource.Windows.Graphics.Effects" },
+        ) callconv(.winapi) HRESULT,
+        GetSourceCount: *const fn (
             self: *const IGraphicsEffectD2D1Interop,
             count: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetEffectId(self: *const IGraphicsEffectD2D1Interop, id: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn GetEffectId(self: *const IGraphicsEffectD2D1Interop, id: ?*Guid) HRESULT {
         return self.vtable.GetEffectId(self, id);
     }
-    pub fn GetNamedPropertyMapping(self: *const IGraphicsEffectD2D1Interop, name: ?[*:0]const u16, index: ?*u32, mapping: ?*GRAPHICS_EFFECT_PROPERTY_MAPPING) callconv(.Inline) HRESULT {
+    pub inline fn GetNamedPropertyMapping(self: *const IGraphicsEffectD2D1Interop, name: ?[*:0]const u16, index: ?*u32, mapping: ?*GRAPHICS_EFFECT_PROPERTY_MAPPING) HRESULT {
         return self.vtable.GetNamedPropertyMapping(self, name, index, mapping);
     }
-    pub fn GetPropertyCount(self: *const IGraphicsEffectD2D1Interop, count: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyCount(self: *const IGraphicsEffectD2D1Interop, count: ?*u32) HRESULT {
         return self.vtable.GetPropertyCount(self, count);
     }
-    pub fn GetProperty(self: *const IGraphicsEffectD2D1Interop, index: u32, value: ?**struct{comment: []const u8 = "MissingClrType IPropertyValue.Windows.Foundation"}) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const IGraphicsEffectD2D1Interop, index: u32, value: ?**struct { comment: []const u8 = "MissingClrType IPropertyValue.Windows.Foundation" }) HRESULT {
         return self.vtable.GetProperty(self, index, value);
     }
-    pub fn GetSource(self: *const IGraphicsEffectD2D1Interop, index: u32, source: ?**struct{comment: []const u8 = "MissingClrType IGraphicsEffectSource.Windows.Graphics.Effects"}) callconv(.Inline) HRESULT {
+    pub inline fn GetSource(self: *const IGraphicsEffectD2D1Interop, index: u32, source: ?**struct { comment: []const u8 = "MissingClrType IGraphicsEffectSource.Windows.Graphics.Effects" }) HRESULT {
         return self.vtable.GetSource(self, index, source);
     }
-    pub fn GetSourceCount(self: *const IGraphicsEffectD2D1Interop, count: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSourceCount(self: *const IGraphicsEffectD2D1Interop, count: ?*u32) HRESULT {
         return self.vtable.GetSourceCount(self, count);
     }
 };
@@ -92,26 +92,25 @@ pub const IID_IGeometrySource2DInterop = &IID_IGeometrySource2DInterop_Value;
 pub const IGeometrySource2DInterop = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetGeometry: *const fn(
+        GetGeometry: *const fn (
             self: *const IGeometrySource2DInterop,
             value: **ID2D1Geometry,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        TryGetGeometryUsingFactory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        TryGetGeometryUsingFactory: *const fn (
             self: *const IGeometrySource2DInterop,
             factory: ?*ID2D1Factory,
             value: ?**ID2D1Geometry,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetGeometry(self: *const IGeometrySource2DInterop, value: **ID2D1Geometry) callconv(.Inline) HRESULT {
+    pub inline fn GetGeometry(self: *const IGeometrySource2DInterop, value: **ID2D1Geometry) HRESULT {
         return self.vtable.GetGeometry(self, value);
     }
-    pub fn TryGetGeometryUsingFactory(self: *const IGeometrySource2DInterop, factory: ?*ID2D1Factory, value: ?**ID2D1Geometry) callconv(.Inline) HRESULT {
+    pub inline fn TryGetGeometryUsingFactory(self: *const IGeometrySource2DInterop, factory: ?*ID2D1Factory, value: ?**ID2D1Geometry) HRESULT {
         return self.vtable.TryGetGeometryUsingFactory(self, factory, value);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -131,9 +130,7 @@ const IUnknown = @import("../../../system/com.zig").IUnknown;
 const PWSTR = @import("../../../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

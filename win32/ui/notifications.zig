@@ -17,21 +17,20 @@ pub const IID_INotificationActivationCallback = &IID_INotificationActivationCall
 pub const INotificationActivationCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Activate: *const fn(
+        Activate: *const fn (
             self: *const INotificationActivationCallback,
             appUserModelId: ?[*:0]const u16,
             invokedArgs: ?[*:0]const u16,
             data: [*]const NOTIFICATION_USER_INPUT_DATA,
             count: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Activate(self: *const INotificationActivationCallback, appUserModelId: ?[*:0]const u16, invokedArgs: ?[*:0]const u16, data: [*]const NOTIFICATION_USER_INPUT_DATA, count: u32) callconv(.Inline) HRESULT {
+    pub inline fn Activate(self: *const INotificationActivationCallback, appUserModelId: ?[*:0]const u16, invokedArgs: ?[*:0]const u16, data: [*]const NOTIFICATION_USER_INPUT_DATA, count: u32) HRESULT {
         return self.vtable.Activate(self, appUserModelId, invokedArgs, data, count);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -49,9 +48,7 @@ const IUnknown = @import("../system/com.zig").IUnknown;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

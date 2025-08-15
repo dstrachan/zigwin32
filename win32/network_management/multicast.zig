@@ -52,23 +52,21 @@ pub const MCAST_LEASE_RESPONSE = extern struct {
     pAddrBuf: ?*u8,
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (7)
 //--------------------------------------------------------------------------------
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "dhcpcsvc" fn McastApiStartup(
     Version: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "dhcpcsvc" fn McastApiCleanup(
-) callconv(@import("std").os.windows.WINAPI) void;
+pub extern "dhcpcsvc" fn McastApiCleanup() callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "dhcpcsvc" fn McastGenUID(
     pRequestID: ?*MCAST_CLIENT_UID,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "dhcpcsvc" fn McastEnumerateScopes(
@@ -77,7 +75,7 @@ pub extern "dhcpcsvc" fn McastEnumerateScopes(
     pScopeList: ?*MCAST_SCOPE_ENTRY,
     pScopeLen: ?*u32,
     pScopeCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "dhcpcsvc" fn McastRequestAddress(
@@ -86,7 +84,7 @@ pub extern "dhcpcsvc" fn McastRequestAddress(
     pScopeCtx: ?*MCAST_SCOPE_CTX,
     pAddrRequest: ?*MCAST_LEASE_REQUEST,
     pAddrResponse: ?*MCAST_LEASE_RESPONSE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "dhcpcsvc" fn McastRenewAddress(
@@ -94,15 +92,14 @@ pub extern "dhcpcsvc" fn McastRenewAddress(
     pRequestID: ?*MCAST_CLIENT_UID,
     pRenewRequest: ?*MCAST_LEASE_REQUEST,
     pRenewResponse: ?*MCAST_LEASE_RESPONSE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "dhcpcsvc" fn McastReleaseAddress(
     AddrFamily: u16,
     pRequestID: ?*MCAST_CLIENT_UID,
     pReleaseRequest: ?*MCAST_LEASE_REQUEST,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -114,9 +111,7 @@ const BOOL = @import("../foundation.zig").BOOL;
 const UNICODE_STRING = @import("../foundation.zig").UNICODE_STRING;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -83,32 +83,32 @@ pub const SCESVC_ANALYSIS_INFO = extern struct {
     Lines: ?*SCESVC_ANALYSIS_LINE,
 };
 
-pub const PFSCE_QUERY_INFO = *const fn(
+pub const PFSCE_QUERY_INFO = *const fn (
     sceHandle: ?*anyopaque,
     sceType: SCESVC_INFO_TYPE,
     lpPrefix: ?*i8,
     bExact: BOOL,
     ppvInfo: ?*?*anyopaque,
     psceEnumHandle: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PFSCE_SET_INFO = *const fn(
+pub const PFSCE_SET_INFO = *const fn (
     sceHandle: ?*anyopaque,
     sceType: SCESVC_INFO_TYPE,
     lpPrefix: ?*i8,
     bExact: BOOL,
     pvInfo: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PFSCE_FREE_INFO = *const fn(
+pub const PFSCE_FREE_INFO = *const fn (
     pvServiceInfo: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PFSCE_LOG_INFO = *const fn(
+pub const PFSCE_LOG_INFO = *const fn (
     ErrLevel: SCE_LOG_ERR_LEVEL,
     Win32rc: u32,
     pErrFmt: ?*i8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub const SCESVC_CALLBACK_INFO = extern struct {
     sceHandle: ?*anyopaque,
@@ -118,14 +118,14 @@ pub const SCESVC_CALLBACK_INFO = extern struct {
     pfLogInfo: ?PFSCE_LOG_INFO,
 };
 
-pub const PF_ConfigAnalyzeService = *const fn(
+pub const PF_ConfigAnalyzeService = *const fn (
     pSceCbInfo: ?*SCESVC_CALLBACK_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PF_UpdateService = *const fn(
+pub const PF_UpdateService = *const fn (
     pSceCbInfo: ?*SCESVC_CALLBACK_INFO,
     ServiceInfo: ?*SCESVC_CONFIGURATION_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 const IID_ISceSvcAttachmentPersistInfo_Value = Guid.initString("6d90e0d0-200d-11d1-affb-00c04fb984f9");
@@ -133,31 +133,31 @@ pub const IID_ISceSvcAttachmentPersistInfo = &IID_ISceSvcAttachmentPersistInfo_V
 pub const ISceSvcAttachmentPersistInfo = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Save: *const fn(
+        Save: *const fn (
             self: *const ISceSvcAttachmentPersistInfo,
             lpTemplateName: ?*i8,
             scesvcHandle: ?*?*anyopaque,
             ppvData: ?*?*anyopaque,
             pbOverwriteAll: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsDirty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsDirty: *const fn (
             self: *const ISceSvcAttachmentPersistInfo,
             lpTemplateName: ?*i8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FreeBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FreeBuffer: *const fn (
             self: *const ISceSvcAttachmentPersistInfo,
             pvData: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Save(self: *const ISceSvcAttachmentPersistInfo, lpTemplateName: ?*i8, scesvcHandle: ?*?*anyopaque, ppvData: ?*?*anyopaque, pbOverwriteAll: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn Save(self: *const ISceSvcAttachmentPersistInfo, lpTemplateName: ?*i8, scesvcHandle: ?*?*anyopaque, ppvData: ?*?*anyopaque, pbOverwriteAll: ?*BOOL) HRESULT {
         return self.vtable.Save(self, lpTemplateName, scesvcHandle, ppvData, pbOverwriteAll);
     }
-    pub fn IsDirty(self: *const ISceSvcAttachmentPersistInfo, lpTemplateName: ?*i8) callconv(.Inline) HRESULT {
+    pub inline fn IsDirty(self: *const ISceSvcAttachmentPersistInfo, lpTemplateName: ?*i8) HRESULT {
         return self.vtable.IsDirty(self, lpTemplateName);
     }
-    pub fn FreeBuffer(self: *const ISceSvcAttachmentPersistInfo, pvData: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn FreeBuffer(self: *const ISceSvcAttachmentPersistInfo, pvData: ?*anyopaque) HRESULT {
         return self.vtable.FreeBuffer(self, pvData);
     }
 };
@@ -168,45 +168,44 @@ pub const IID_ISceSvcAttachmentData = &IID_ISceSvcAttachmentData_Value;
 pub const ISceSvcAttachmentData = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetData: *const fn(
+        GetData: *const fn (
             self: *const ISceSvcAttachmentData,
             scesvcHandle: ?*anyopaque,
             sceType: SCESVC_INFO_TYPE,
             ppvData: ?*?*anyopaque,
             psceEnumHandle: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Initialize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Initialize: *const fn (
             self: *const ISceSvcAttachmentData,
             lpServiceName: ?*i8,
             lpTemplateName: ?*i8,
             lpSceSvcPersistInfo: ?*ISceSvcAttachmentPersistInfo,
             pscesvcHandle: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FreeBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FreeBuffer: *const fn (
             self: *const ISceSvcAttachmentData,
             pvData: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CloseHandle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CloseHandle: *const fn (
             self: *const ISceSvcAttachmentData,
             scesvcHandle: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetData(self: *const ISceSvcAttachmentData, scesvcHandle: ?*anyopaque, sceType: SCESVC_INFO_TYPE, ppvData: ?*?*anyopaque, psceEnumHandle: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetData(self: *const ISceSvcAttachmentData, scesvcHandle: ?*anyopaque, sceType: SCESVC_INFO_TYPE, ppvData: ?*?*anyopaque, psceEnumHandle: ?*u32) HRESULT {
         return self.vtable.GetData(self, scesvcHandle, sceType, ppvData, psceEnumHandle);
     }
-    pub fn Initialize(self: *const ISceSvcAttachmentData, lpServiceName: ?*i8, lpTemplateName: ?*i8, lpSceSvcPersistInfo: ?*ISceSvcAttachmentPersistInfo, pscesvcHandle: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const ISceSvcAttachmentData, lpServiceName: ?*i8, lpTemplateName: ?*i8, lpSceSvcPersistInfo: ?*ISceSvcAttachmentPersistInfo, pscesvcHandle: ?*?*anyopaque) HRESULT {
         return self.vtable.Initialize(self, lpServiceName, lpTemplateName, lpSceSvcPersistInfo, pscesvcHandle);
     }
-    pub fn FreeBuffer(self: *const ISceSvcAttachmentData, pvData: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn FreeBuffer(self: *const ISceSvcAttachmentData, pvData: ?*anyopaque) HRESULT {
         return self.vtable.FreeBuffer(self, pvData);
     }
-    pub fn CloseHandle(self: *const ISceSvcAttachmentData, scesvcHandle: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CloseHandle(self: *const ISceSvcAttachmentData, scesvcHandle: ?*anyopaque) HRESULT {
         return self.vtable.CloseHandle(self, scesvcHandle);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -225,16 +224,26 @@ const IUnknown = @import("../system/com.zig").IUnknown;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "PFSCE_QUERY_INFO")) { _ = PFSCE_QUERY_INFO; }
-    if (@hasDecl(@This(), "PFSCE_SET_INFO")) { _ = PFSCE_SET_INFO; }
-    if (@hasDecl(@This(), "PFSCE_FREE_INFO")) { _ = PFSCE_FREE_INFO; }
-    if (@hasDecl(@This(), "PFSCE_LOG_INFO")) { _ = PFSCE_LOG_INFO; }
-    if (@hasDecl(@This(), "PF_ConfigAnalyzeService")) { _ = PF_ConfigAnalyzeService; }
-    if (@hasDecl(@This(), "PF_UpdateService")) { _ = PF_UpdateService; }
+    if (@hasDecl(@This(), "PFSCE_QUERY_INFO")) {
+        _ = PFSCE_QUERY_INFO;
+    }
+    if (@hasDecl(@This(), "PFSCE_SET_INFO")) {
+        _ = PFSCE_SET_INFO;
+    }
+    if (@hasDecl(@This(), "PFSCE_FREE_INFO")) {
+        _ = PFSCE_FREE_INFO;
+    }
+    if (@hasDecl(@This(), "PFSCE_LOG_INFO")) {
+        _ = PFSCE_LOG_INFO;
+    }
+    if (@hasDecl(@This(), "PF_ConfigAnalyzeService")) {
+        _ = PF_ConfigAnalyzeService;
+    }
+    if (@hasDecl(@This(), "PF_UpdateService")) {
+        _ = PF_UpdateService;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

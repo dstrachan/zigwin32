@@ -31,7 +31,6 @@ pub const PERFORMANCE_DATA = extern struct {
     HwCounters: [16]HARDWARE_COUNTER_DATA,
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (4)
 //--------------------------------------------------------------------------------
@@ -41,26 +40,25 @@ pub extern "kernel32" fn EnableThreadProfiling(
     Flags: u32,
     HardwareCounters: u64,
     PerformanceDataHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "kernel32" fn DisableThreadProfiling(
     PerformanceDataHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "kernel32" fn QueryThreadProfiling(
     ThreadHandle: ?HANDLE,
     Enabled: ?*BOOLEAN,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "kernel32" fn ReadThreadProfilingData(
     PerformanceDataHandle: ?HANDLE,
     Flags: u32,
     PerformanceData: ?*PERFORMANCE_DATA,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -72,9 +70,7 @@ const BOOLEAN = @import("../../foundation.zig").BOOLEAN;
 const HANDLE = @import("../../foundation.zig").HANDLE;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

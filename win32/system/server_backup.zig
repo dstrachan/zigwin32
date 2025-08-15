@@ -15,7 +15,7 @@ pub const IID_IWsbApplicationBackupSupport = &IID_IWsbApplicationBackupSupport_V
 pub const IWsbApplicationBackupSupport = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CheckConsistency: *const fn(
+        CheckConsistency: *const fn (
             self: *const IWsbApplicationBackupSupport,
             wszWriterMetadata: ?PWSTR,
             wszComponentName: ?PWSTR,
@@ -24,11 +24,11 @@ pub const IWsbApplicationBackupSupport = extern union {
             rgwszSourceVolumePath: [*]?PWSTR,
             rgwszSnapshotVolumePath: [*]?PWSTR,
             ppAsync: ?*?*IWsbApplicationAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CheckConsistency(self: *const IWsbApplicationBackupSupport, wszWriterMetadata: ?PWSTR, wszComponentName: ?PWSTR, wszComponentLogicalPath: ?PWSTR, cVolumes: u32, rgwszSourceVolumePath: [*]?PWSTR, rgwszSnapshotVolumePath: [*]?PWSTR, ppAsync: ?*?*IWsbApplicationAsync) callconv(.Inline) HRESULT {
+    pub inline fn CheckConsistency(self: *const IWsbApplicationBackupSupport, wszWriterMetadata: ?PWSTR, wszComponentName: ?PWSTR, wszComponentLogicalPath: ?PWSTR, cVolumes: u32, rgwszSourceVolumePath: [*]?PWSTR, rgwszSnapshotVolumePath: [*]?PWSTR, ppAsync: ?*?*IWsbApplicationAsync) HRESULT {
         return self.vtable.CheckConsistency(self, wszWriterMetadata, wszComponentName, wszComponentLogicalPath, cVolumes, rgwszSourceVolumePath, rgwszSnapshotVolumePath, ppAsync);
     }
 };
@@ -39,45 +39,45 @@ pub const IID_IWsbApplicationRestoreSupport = &IID_IWsbApplicationRestoreSupport
 pub const IWsbApplicationRestoreSupport = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        PreRestore: *const fn(
+        PreRestore: *const fn (
             self: *const IWsbApplicationRestoreSupport,
             wszWriterMetadata: ?PWSTR,
             wszComponentName: ?PWSTR,
             wszComponentLogicalPath: ?PWSTR,
             bNoRollForward: BOOLEAN,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PostRestore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PostRestore: *const fn (
             self: *const IWsbApplicationRestoreSupport,
             wszWriterMetadata: ?PWSTR,
             wszComponentName: ?PWSTR,
             wszComponentLogicalPath: ?PWSTR,
             bNoRollForward: BOOLEAN,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OrderComponents: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OrderComponents: *const fn (
             self: *const IWsbApplicationRestoreSupport,
             cComponents: u32,
             rgComponentName: [*]?PWSTR,
             rgComponentLogicalPaths: [*]?PWSTR,
             prgComponentName: [*]?*?PWSTR,
             prgComponentLogicalPath: [*]?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsRollForwardSupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsRollForwardSupported: *const fn (
             self: *const IWsbApplicationRestoreSupport,
             pbRollForwardSupported: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn PreRestore(self: *const IWsbApplicationRestoreSupport, wszWriterMetadata: ?PWSTR, wszComponentName: ?PWSTR, wszComponentLogicalPath: ?PWSTR, bNoRollForward: BOOLEAN) callconv(.Inline) HRESULT {
+    pub inline fn PreRestore(self: *const IWsbApplicationRestoreSupport, wszWriterMetadata: ?PWSTR, wszComponentName: ?PWSTR, wszComponentLogicalPath: ?PWSTR, bNoRollForward: BOOLEAN) HRESULT {
         return self.vtable.PreRestore(self, wszWriterMetadata, wszComponentName, wszComponentLogicalPath, bNoRollForward);
     }
-    pub fn PostRestore(self: *const IWsbApplicationRestoreSupport, wszWriterMetadata: ?PWSTR, wszComponentName: ?PWSTR, wszComponentLogicalPath: ?PWSTR, bNoRollForward: BOOLEAN) callconv(.Inline) HRESULT {
+    pub inline fn PostRestore(self: *const IWsbApplicationRestoreSupport, wszWriterMetadata: ?PWSTR, wszComponentName: ?PWSTR, wszComponentLogicalPath: ?PWSTR, bNoRollForward: BOOLEAN) HRESULT {
         return self.vtable.PostRestore(self, wszWriterMetadata, wszComponentName, wszComponentLogicalPath, bNoRollForward);
     }
-    pub fn OrderComponents(self: *const IWsbApplicationRestoreSupport, cComponents: u32, rgComponentName: [*]?PWSTR, rgComponentLogicalPaths: [*]?PWSTR, prgComponentName: [*]?*?PWSTR, prgComponentLogicalPath: [*]?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn OrderComponents(self: *const IWsbApplicationRestoreSupport, cComponents: u32, rgComponentName: [*]?PWSTR, rgComponentLogicalPaths: [*]?PWSTR, prgComponentName: [*]?*?PWSTR, prgComponentLogicalPath: [*]?*?PWSTR) HRESULT {
         return self.vtable.OrderComponents(self, cComponents, rgComponentName, rgComponentLogicalPaths, prgComponentName, prgComponentLogicalPath);
     }
-    pub fn IsRollForwardSupported(self: *const IWsbApplicationRestoreSupport, pbRollForwardSupported: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn IsRollForwardSupported(self: *const IWsbApplicationRestoreSupport, pbRollForwardSupported: ?*u8) HRESULT {
         return self.vtable.IsRollForwardSupported(self, pbRollForwardSupported);
     }
 };
@@ -88,20 +88,20 @@ pub const IID_IWsbApplicationAsync = &IID_IWsbApplicationAsync_Value;
 pub const IWsbApplicationAsync = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QueryStatus: *const fn(
+        QueryStatus: *const fn (
             self: *const IWsbApplicationAsync,
             phrResult: ?*HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Abort: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Abort: *const fn (
             self: *const IWsbApplicationAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QueryStatus(self: *const IWsbApplicationAsync, phrResult: ?*HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn QueryStatus(self: *const IWsbApplicationAsync, phrResult: ?*HRESULT) HRESULT {
         return self.vtable.QueryStatus(self, phrResult);
     }
-    pub fn Abort(self: *const IWsbApplicationAsync) callconv(.Inline) HRESULT {
+    pub inline fn Abort(self: *const IWsbApplicationAsync) HRESULT {
         return self.vtable.Abort(self);
     }
 };
@@ -150,7 +150,6 @@ pub const WSB_OB_REGISTRATION_INFO = extern struct {
     m_bSupportsRemoting: BOOLEAN,
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
 //--------------------------------------------------------------------------------
@@ -168,9 +167,7 @@ const IUnknown = @import("../system/com.zig").IUnknown;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -11,19 +11,18 @@ pub const IID_IDirect3DDxgiInterfaceAccess = &IID_IDirect3DDxgiInterfaceAccess_V
 pub const IDirect3DDxgiInterfaceAccess = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetInterface: *const fn(
+        GetInterface: *const fn (
             self: *const IDirect3DDxgiInterfaceAccess,
             iid: ?*const Guid,
             p: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetInterface(self: *const IDirect3DDxgiInterfaceAccess, iid: ?*const Guid, p: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetInterface(self: *const IDirect3DDxgiInterfaceAccess, iid: ?*const Guid, p: **anyopaque) HRESULT {
         return self.vtable.GetInterface(self, iid, p);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (2)
@@ -31,13 +30,12 @@ pub const IDirect3DDxgiInterfaceAccess = extern union {
 pub extern "d3d11" fn CreateDirect3D11DeviceFromDXGIDevice(
     dxgiDevice: ?*IDXGIDevice,
     graphicsDevice: **IInspectable,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "d3d11" fn CreateDirect3D11SurfaceFromDXGISurface(
     dgxiSurface: ?*IDXGISurface,
     graphicsSurface: **IInspectable,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -53,9 +51,7 @@ const IInspectable = @import("../../system/win_rt.zig").IInspectable;
 const IUnknown = @import("../../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

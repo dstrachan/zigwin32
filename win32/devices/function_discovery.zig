@@ -21,64 +21,64 @@ pub const SID_UnpairProvider = Guid.initString("89a502fc-857b-4698-a0b7-02719200
 pub const SID_DeviceDisplayStatusManager = Guid.initString("f59aa553-8309-46ca-9736-1ac3c62d6031");
 pub const SID_FunctionDiscoveryProviderRefresh = Guid.initString("2b4cbdc9-31c4-40d4-a62d-772aa174ed52");
 pub const SID_UninstallDeviceFunction = Guid.initString("c920566e-5671-4496-8025-bf0b89bd44cd");
-pub const PKEY_FunctionInstance = PROPERTYKEY { .fmtid = Guid.initString("08c0c253-a154-4746-9005-82de5317148b"), .pid = 1 };
+pub const PKEY_FunctionInstance = PROPERTYKEY{ .fmtid = Guid.initString("08c0c253-a154-4746-9005-82de5317148b"), .pid = 1 };
 pub const FMTID_FD = Guid.initString("904b03a2-471d-423c-a584-f3483238a146");
 pub const FD_Visibility_Default = @as(u32, 0);
 pub const FD_Visibility_Hidden = @as(u32, 1);
 pub const FMTID_Device = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57");
 pub const FMTID_DeviceInterface = Guid.initString("53808008-07bb-4661-bc3c-b5953e708560");
-pub const PKEY_DeviceDisplay_Address = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 51 };
-pub const PKEY_DeviceDisplay_DiscoveryMethod = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 52 };
-pub const PKEY_DeviceDisplay_IsEncrypted = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 53 };
-pub const PKEY_DeviceDisplay_IsAuthenticated = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 54 };
-pub const PKEY_DeviceDisplay_IsConnected = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 55 };
-pub const PKEY_DeviceDisplay_IsPaired = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 56 };
-pub const PKEY_DeviceDisplay_Icon = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 57 };
-pub const PKEY_DeviceDisplay_Version = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 65 };
-pub const PKEY_DeviceDisplay_Last_Seen = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 66 };
-pub const PKEY_DeviceDisplay_Last_Connected = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 67 };
-pub const PKEY_DeviceDisplay_IsShowInDisconnectedState = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 68 };
-pub const PKEY_DeviceDisplay_IsLocalMachine = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 70 };
-pub const PKEY_DeviceDisplay_MetadataPath = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 71 };
-pub const PKEY_DeviceDisplay_IsMetadataSearchInProgress = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 72 };
-pub const PKEY_DeviceDisplay_MetadataChecksum = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 73 };
-pub const PKEY_DeviceDisplay_IsNotInterestingForDisplay = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 74 };
-pub const PKEY_DeviceDisplay_LaunchDeviceStageOnDeviceConnect = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 76 };
-pub const PKEY_DeviceDisplay_LaunchDeviceStageFromExplorer = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 77 };
-pub const PKEY_DeviceDisplay_BaselineExperienceId = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 78 };
-pub const PKEY_DeviceDisplay_IsDeviceUniquelyIdentifiable = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 79 };
-pub const PKEY_DeviceDisplay_AssociationArray = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 80 };
-pub const PKEY_DeviceDisplay_DeviceDescription1 = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 81 };
-pub const PKEY_DeviceDisplay_DeviceDescription2 = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 82 };
-pub const PKEY_DeviceDisplay_IsNotWorkingProperly = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 83 };
-pub const PKEY_DeviceDisplay_IsSharedDevice = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 84 };
-pub const PKEY_DeviceDisplay_IsNetworkDevice = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 85 };
-pub const PKEY_DeviceDisplay_IsDefaultDevice = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 86 };
-pub const PKEY_DeviceDisplay_MetadataCabinet = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 87 };
-pub const PKEY_DeviceDisplay_RequiresPairingElevation = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 88 };
-pub const PKEY_DeviceDisplay_ExperienceId = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 89 };
-pub const PKEY_DeviceDisplay_Category = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 90 };
-pub const PKEY_DeviceDisplay_Category_Desc_Singular = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 91 };
-pub const PKEY_DeviceDisplay_Category_Desc_Plural = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 92 };
-pub const PKEY_DeviceDisplay_Category_Icon = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 93 };
-pub const PKEY_DeviceDisplay_CategoryGroup_Desc = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 94 };
-pub const PKEY_DeviceDisplay_CategoryGroup_Icon = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 95 };
-pub const PKEY_DeviceDisplay_PrimaryCategory = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 97 };
-pub const PKEY_DeviceDisplay_UnpairUninstall = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 98 };
-pub const PKEY_DeviceDisplay_RequiresUninstallElevation = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 99 };
-pub const PKEY_DeviceDisplay_DeviceFunctionSubRank = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 100 };
-pub const PKEY_DeviceDisplay_AlwaysShowDeviceAsConnected = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 101 };
-pub const PKEY_DeviceDisplay_FriendlyName = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12288 };
-pub const PKEY_DeviceDisplay_Manufacturer = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8192 };
-pub const PKEY_DeviceDisplay_ModelName = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8194 };
-pub const PKEY_DeviceDisplay_ModelNumber = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8195 };
-pub const PKEY_DeviceDisplay_InstallInProgress = PROPERTYKEY { .fmtid = Guid.initString("83da6326-97a6-4088-9453-a1923f573b29"), .pid = 9 };
+pub const PKEY_DeviceDisplay_Address = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 51 };
+pub const PKEY_DeviceDisplay_DiscoveryMethod = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 52 };
+pub const PKEY_DeviceDisplay_IsEncrypted = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 53 };
+pub const PKEY_DeviceDisplay_IsAuthenticated = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 54 };
+pub const PKEY_DeviceDisplay_IsConnected = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 55 };
+pub const PKEY_DeviceDisplay_IsPaired = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 56 };
+pub const PKEY_DeviceDisplay_Icon = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 57 };
+pub const PKEY_DeviceDisplay_Version = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 65 };
+pub const PKEY_DeviceDisplay_Last_Seen = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 66 };
+pub const PKEY_DeviceDisplay_Last_Connected = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 67 };
+pub const PKEY_DeviceDisplay_IsShowInDisconnectedState = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 68 };
+pub const PKEY_DeviceDisplay_IsLocalMachine = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 70 };
+pub const PKEY_DeviceDisplay_MetadataPath = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 71 };
+pub const PKEY_DeviceDisplay_IsMetadataSearchInProgress = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 72 };
+pub const PKEY_DeviceDisplay_MetadataChecksum = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 73 };
+pub const PKEY_DeviceDisplay_IsNotInterestingForDisplay = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 74 };
+pub const PKEY_DeviceDisplay_LaunchDeviceStageOnDeviceConnect = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 76 };
+pub const PKEY_DeviceDisplay_LaunchDeviceStageFromExplorer = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 77 };
+pub const PKEY_DeviceDisplay_BaselineExperienceId = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 78 };
+pub const PKEY_DeviceDisplay_IsDeviceUniquelyIdentifiable = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 79 };
+pub const PKEY_DeviceDisplay_AssociationArray = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 80 };
+pub const PKEY_DeviceDisplay_DeviceDescription1 = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 81 };
+pub const PKEY_DeviceDisplay_DeviceDescription2 = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 82 };
+pub const PKEY_DeviceDisplay_IsNotWorkingProperly = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 83 };
+pub const PKEY_DeviceDisplay_IsSharedDevice = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 84 };
+pub const PKEY_DeviceDisplay_IsNetworkDevice = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 85 };
+pub const PKEY_DeviceDisplay_IsDefaultDevice = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 86 };
+pub const PKEY_DeviceDisplay_MetadataCabinet = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 87 };
+pub const PKEY_DeviceDisplay_RequiresPairingElevation = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 88 };
+pub const PKEY_DeviceDisplay_ExperienceId = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 89 };
+pub const PKEY_DeviceDisplay_Category = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 90 };
+pub const PKEY_DeviceDisplay_Category_Desc_Singular = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 91 };
+pub const PKEY_DeviceDisplay_Category_Desc_Plural = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 92 };
+pub const PKEY_DeviceDisplay_Category_Icon = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 93 };
+pub const PKEY_DeviceDisplay_CategoryGroup_Desc = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 94 };
+pub const PKEY_DeviceDisplay_CategoryGroup_Icon = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 95 };
+pub const PKEY_DeviceDisplay_PrimaryCategory = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 97 };
+pub const PKEY_DeviceDisplay_UnpairUninstall = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 98 };
+pub const PKEY_DeviceDisplay_RequiresUninstallElevation = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 99 };
+pub const PKEY_DeviceDisplay_DeviceFunctionSubRank = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 100 };
+pub const PKEY_DeviceDisplay_AlwaysShowDeviceAsConnected = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 101 };
+pub const PKEY_DeviceDisplay_FriendlyName = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12288 };
+pub const PKEY_DeviceDisplay_Manufacturer = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8192 };
+pub const PKEY_DeviceDisplay_ModelName = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8194 };
+pub const PKEY_DeviceDisplay_ModelNumber = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8195 };
+pub const PKEY_DeviceDisplay_InstallInProgress = PROPERTYKEY{ .fmtid = Guid.initString("83da6326-97a6-4088-9453-a1923f573b29"), .pid = 9 };
 pub const FMTID_Pairing = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc");
-pub const PKEY_Pairing_ListItemText = PROPERTYKEY { .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 1 };
-pub const PKEY_Pairing_ListItemDescription = PROPERTYKEY { .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 2 };
-pub const PKEY_Pairing_ListItemIcon = PROPERTYKEY { .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 3 };
-pub const PKEY_Pairing_ListItemDefault = PROPERTYKEY { .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 4 };
-pub const PKEY_Pairing_IsWifiOnlyDevice = PROPERTYKEY { .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 16 };
+pub const PKEY_Pairing_ListItemText = PROPERTYKEY{ .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 1 };
+pub const PKEY_Pairing_ListItemDescription = PROPERTYKEY{ .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 2 };
+pub const PKEY_Pairing_ListItemIcon = PROPERTYKEY{ .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 3 };
+pub const PKEY_Pairing_ListItemDefault = PROPERTYKEY{ .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 4 };
+pub const PKEY_Pairing_IsWifiOnlyDevice = PROPERTYKEY{ .fmtid = Guid.initString("8807cae6-7db6-4f10-8ee4-435eaa1392bc"), .pid = 16 };
 pub const DEVICEDISPLAY_DISCOVERYMETHOD_BLUETOOTH = "Bluetooth";
 pub const DEVICEDISPLAY_DISCOVERYMETHOD_BLUETOOTH_LE = "Bluetooth Low Energy";
 pub const DEVICEDISPLAY_DISCOVERYMETHOD_NETBIOS = "NetBIOS";
@@ -89,27 +89,27 @@ pub const DEVICEDISPLAY_DISCOVERYMETHOD_WSD = "WSD";
 pub const DEVICEDISPLAY_DISCOVERYMETHOD_WUSB = "WUSB";
 pub const DEVICEDISPLAY_DISCOVERYMETHOD_WFD = "WiFiDirect";
 pub const DEVICEDISPLAY_DISCOVERYMETHOD_ASP_INFRA = "AspInfra";
-pub const PKEY_Device_BIOSVersion = PROPERTYKEY { .fmtid = Guid.initString("eaee7f1d-6a33-44d1-9441-5f46def23198"), .pid = 9 };
+pub const PKEY_Device_BIOSVersion = PROPERTYKEY{ .fmtid = Guid.initString("eaee7f1d-6a33-44d1-9441-5f46def23198"), .pid = 9 };
 pub const FMTID_WSD = Guid.initString("92506491-ff95-4724-a05a-5b81885a7c92");
 pub const FMTID_PNPX = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd");
-pub const PKEY_PNPX_GlobalIdentity = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4096 };
-pub const PKEY_PNPX_Types = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4097 };
-pub const PKEY_PNPX_Scopes = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4098 };
-pub const PKEY_PNPX_XAddrs = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4099 };
-pub const PKEY_PNPX_MetadataVersion = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4100 };
-pub const PKEY_PNPX_ID = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4101 };
-pub const PKEY_PNPX_RemoteAddress = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4102 };
-pub const PKEY_PNPX_RootProxy = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4103 };
-pub const PKEY_PNPX_ManufacturerUrl = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8193 };
-pub const PKEY_PNPX_ModelUrl = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8196 };
-pub const PKEY_PNPX_Upc = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8197 };
-pub const PKEY_PNPX_PresentationUrl = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8198 };
-pub const PKEY_PNPX_FirmwareVersion = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12289 };
-pub const PKEY_PNPX_SerialNumber = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12290 };
-pub const PKEY_PNPX_DeviceCategory = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12292 };
-pub const PKEY_PNPX_SecureChannel = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28673 };
-pub const PKEY_PNPX_CompactSignature = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28674 };
-pub const PKEY_PNPX_DeviceCertHash = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28675 };
+pub const PKEY_PNPX_GlobalIdentity = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4096 };
+pub const PKEY_PNPX_Types = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4097 };
+pub const PKEY_PNPX_Scopes = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4098 };
+pub const PKEY_PNPX_XAddrs = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4099 };
+pub const PKEY_PNPX_MetadataVersion = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4100 };
+pub const PKEY_PNPX_ID = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4101 };
+pub const PKEY_PNPX_RemoteAddress = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4102 };
+pub const PKEY_PNPX_RootProxy = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 4103 };
+pub const PKEY_PNPX_ManufacturerUrl = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8193 };
+pub const PKEY_PNPX_ModelUrl = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8196 };
+pub const PKEY_PNPX_Upc = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8197 };
+pub const PKEY_PNPX_PresentationUrl = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 8198 };
+pub const PKEY_PNPX_FirmwareVersion = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12289 };
+pub const PKEY_PNPX_SerialNumber = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12290 };
+pub const PKEY_PNPX_DeviceCategory = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12292 };
+pub const PKEY_PNPX_SecureChannel = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28673 };
+pub const PKEY_PNPX_CompactSignature = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28674 };
+pub const PKEY_PNPX_DeviceCertHash = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28675 };
 pub const PNPX_DEVICECATEGORY_COMPUTER = "Computers";
 pub const PNPX_DEVICECATEGORY_INPUTDEVICE = "Input";
 pub const PNPX_DEVICECATEGORY_PRINTER = "Printers";
@@ -126,178 +126,178 @@ pub const PNPX_DEVICECATEGORY_TELEPHONE = "Phones";
 pub const PNPX_DEVICECATEGORY_HOME_AUTOMATION_SYSTEM = "HomeAutomation";
 pub const PNPX_DEVICECATEGORY_HOME_SECURITY_SYSTEM = "HomeSecurity";
 pub const PNPX_DEVICECATEGORY_OTHER = "Other";
-pub const PKEY_PNPX_DeviceCategory_Desc = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12293 };
-pub const PKEY_PNPX_Category_Desc_NonPlural = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12304 };
-pub const PKEY_PNPX_PhysicalAddress = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12294 };
-pub const PKEY_PNPX_NetworkInterfaceLuid = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12295 };
-pub const PKEY_PNPX_NetworkInterfaceGuid = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12296 };
-pub const PKEY_PNPX_IpAddress = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12297 };
-pub const PKEY_PNPX_ServiceAddress = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16384 };
-pub const PKEY_PNPX_ServiceId = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16385 };
-pub const PKEY_PNPX_ServiceTypes = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16386 };
-pub const PKEY_PNPX_ServiceControlUrl = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16388 };
-pub const PKEY_PNPX_ServiceDescUrl = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16389 };
-pub const PKEY_PNPX_ServiceEventSubUrl = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16390 };
-pub const PKEY_PNPX_DomainName = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 20480 };
-pub const PKEY_PNPX_ShareName = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 20482 };
-pub const PKEY_SSDP_AltLocationInfo = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 24576 };
-pub const PKEY_SSDP_DevLifeTime = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 24577 };
-pub const PKEY_SSDP_NetworkInterface = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 24578 };
+pub const PKEY_PNPX_DeviceCategory_Desc = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12293 };
+pub const PKEY_PNPX_Category_Desc_NonPlural = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12304 };
+pub const PKEY_PNPX_PhysicalAddress = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12294 };
+pub const PKEY_PNPX_NetworkInterfaceLuid = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12295 };
+pub const PKEY_PNPX_NetworkInterfaceGuid = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12296 };
+pub const PKEY_PNPX_IpAddress = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 12297 };
+pub const PKEY_PNPX_ServiceAddress = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16384 };
+pub const PKEY_PNPX_ServiceId = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16385 };
+pub const PKEY_PNPX_ServiceTypes = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16386 };
+pub const PKEY_PNPX_ServiceControlUrl = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16388 };
+pub const PKEY_PNPX_ServiceDescUrl = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16389 };
+pub const PKEY_PNPX_ServiceEventSubUrl = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 16390 };
+pub const PKEY_PNPX_DomainName = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 20480 };
+pub const PKEY_PNPX_ShareName = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 20482 };
+pub const PKEY_SSDP_AltLocationInfo = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 24576 };
+pub const PKEY_SSDP_DevLifeTime = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 24577 };
+pub const PKEY_SSDP_NetworkInterface = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 24578 };
 pub const FMTID_PNPXDynamicProperty = Guid.initString("4fc5077e-b686-44be-93e3-86cafe368ccd");
-pub const PKEY_PNPX_Installable = PROPERTYKEY { .fmtid = Guid.initString("4fc5077e-b686-44be-93e3-86cafe368ccd"), .pid = 1 };
-pub const PKEY_PNPX_Associated = PROPERTYKEY { .fmtid = Guid.initString("4fc5077e-b686-44be-93e3-86cafe368ccd"), .pid = 2 };
-pub const PKEY_PNPX_CompatibleTypes = PROPERTYKEY { .fmtid = Guid.initString("4fc5077e-b686-44be-93e3-86cafe368ccd"), .pid = 3 };
-pub const PKEY_PNPX_InstallState = PROPERTYKEY { .fmtid = Guid.initString("4fc5077e-b686-44be-93e3-86cafe368ccd"), .pid = 4 };
+pub const PKEY_PNPX_Installable = PROPERTYKEY{ .fmtid = Guid.initString("4fc5077e-b686-44be-93e3-86cafe368ccd"), .pid = 1 };
+pub const PKEY_PNPX_Associated = PROPERTYKEY{ .fmtid = Guid.initString("4fc5077e-b686-44be-93e3-86cafe368ccd"), .pid = 2 };
+pub const PKEY_PNPX_CompatibleTypes = PROPERTYKEY{ .fmtid = Guid.initString("4fc5077e-b686-44be-93e3-86cafe368ccd"), .pid = 3 };
+pub const PKEY_PNPX_InstallState = PROPERTYKEY{ .fmtid = Guid.initString("4fc5077e-b686-44be-93e3-86cafe368ccd"), .pid = 4 };
 pub const PNPX_INSTALLSTATE_NOTINSTALLED = @as(u32, 0);
 pub const PNPX_INSTALLSTATE_INSTALLED = @as(u32, 1);
 pub const PNPX_INSTALLSTATE_INSTALLING = @as(u32, 2);
 pub const PNPX_INSTALLSTATE_FAILED = @as(u32, 3);
-pub const PKEY_PNPX_Removable = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28672 };
-pub const PKEY_PNPX_IPBusEnumerated = PROPERTYKEY { .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28688 };
-pub const PKEY_WNET_Scope = PROPERTYKEY { .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 1 };
-pub const PKEY_WNET_Type = PROPERTYKEY { .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 2 };
-pub const PKEY_WNET_DisplayType = PROPERTYKEY { .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 3 };
-pub const PKEY_WNET_Usage = PROPERTYKEY { .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 4 };
-pub const PKEY_WNET_LocalName = PROPERTYKEY { .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 5 };
-pub const PKEY_WNET_RemoteName = PROPERTYKEY { .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 6 };
-pub const PKEY_WNET_Comment = PROPERTYKEY { .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 7 };
-pub const PKEY_WNET_Provider = PROPERTYKEY { .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 8 };
-pub const PKEY_WCN_Version = PROPERTYKEY { .fmtid = Guid.initString("88190b80-4684-11da-a26a-0002b3988e81"), .pid = 1 };
-pub const PKEY_WCN_RequestType = PROPERTYKEY { .fmtid = Guid.initString("88190b81-4684-11da-a26a-0002b3988e81"), .pid = 2 };
-pub const PKEY_WCN_AuthType = PROPERTYKEY { .fmtid = Guid.initString("88190b82-4684-11da-a26a-0002b3988e81"), .pid = 3 };
-pub const PKEY_WCN_EncryptType = PROPERTYKEY { .fmtid = Guid.initString("88190b83-4684-11da-a26a-0002b3988e81"), .pid = 4 };
-pub const PKEY_WCN_ConnType = PROPERTYKEY { .fmtid = Guid.initString("88190b84-4684-11da-a26a-0002b3988e81"), .pid = 5 };
-pub const PKEY_WCN_ConfigMethods = PROPERTYKEY { .fmtid = Guid.initString("88190b85-4684-11da-a26a-0002b3988e81"), .pid = 6 };
-pub const PKEY_WCN_RfBand = PROPERTYKEY { .fmtid = Guid.initString("88190b87-4684-11da-a26a-0002b3988e81"), .pid = 8 };
-pub const PKEY_WCN_AssocState = PROPERTYKEY { .fmtid = Guid.initString("88190b88-4684-11da-a26a-0002b3988e81"), .pid = 9 };
-pub const PKEY_WCN_ConfigError = PROPERTYKEY { .fmtid = Guid.initString("88190b89-4684-11da-a26a-0002b3988e81"), .pid = 10 };
-pub const PKEY_WCN_ConfigState = PROPERTYKEY { .fmtid = Guid.initString("88190b89-4684-11da-a26a-0002b3988e81"), .pid = 11 };
-pub const PKEY_WCN_DevicePasswordId = PROPERTYKEY { .fmtid = Guid.initString("88190b89-4684-11da-a26a-0002b3988e81"), .pid = 12 };
-pub const PKEY_WCN_OSVersion = PROPERTYKEY { .fmtid = Guid.initString("88190b89-4684-11da-a26a-0002b3988e81"), .pid = 13 };
-pub const PKEY_WCN_VendorExtension = PROPERTYKEY { .fmtid = Guid.initString("88190b8a-4684-11da-a26a-0002b3988e81"), .pid = 14 };
-pub const PKEY_WCN_RegistrarType = PROPERTYKEY { .fmtid = Guid.initString("88190b8b-4684-11da-a26a-0002b3988e81"), .pid = 15 };
-pub const PKEY_Hardware_Devinst = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4097 };
-pub const PKEY_Hardware_DisplayAttribute = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 5 };
-pub const PKEY_Hardware_DriverDate = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 11 };
-pub const PKEY_Hardware_DriverProvider = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 10 };
-pub const PKEY_Hardware_DriverVersion = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 9 };
-pub const PKEY_Hardware_Function = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4099 };
-pub const PKEY_Hardware_Icon = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 3 };
-pub const PKEY_Hardware_Image = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4098 };
-pub const PKEY_Hardware_Manufacturer = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 6 };
-pub const PKEY_Hardware_Model = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 7 };
-pub const PKEY_Hardware_Name = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 2 };
-pub const PKEY_Hardware_SerialNumber = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 8 };
-pub const PKEY_Hardware_ShellAttributes = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4100 };
-pub const PKEY_Hardware_Status = PROPERTYKEY { .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4096 };
-pub const PKEY_NAME = PROPERTYKEY { .fmtid = Guid.initString("b725f130-47ef-101a-a5f1-02608c9eebac"), .pid = 10 };
-pub const PKEY_Device_DeviceDesc = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 2 };
-pub const PKEY_Device_HardwareIds = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 3 };
-pub const PKEY_Device_CompatibleIds = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 4 };
-pub const PKEY_Device_Service = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 6 };
-pub const PKEY_Device_Class = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 9 };
-pub const PKEY_Device_ClassGuid = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 10 };
-pub const PKEY_Device_Driver = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 11 };
-pub const PKEY_Device_ConfigFlags = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 12 };
-pub const PKEY_Device_Manufacturer = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 13 };
-pub const PKEY_Device_FriendlyName = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 14 };
-pub const PKEY_Device_LocationInfo = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 15 };
-pub const PKEY_Device_PDOName = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 16 };
-pub const PKEY_Device_Capabilities = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 17 };
-pub const PKEY_Device_UINumber = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 18 };
-pub const PKEY_Device_UpperFilters = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 19 };
-pub const PKEY_Device_LowerFilters = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 20 };
-pub const PKEY_Device_BusTypeGuid = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 21 };
-pub const PKEY_Device_LegacyBusType = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 22 };
-pub const PKEY_Device_BusNumber = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 23 };
-pub const PKEY_Device_EnumeratorName = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 24 };
-pub const PKEY_Device_Security = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 25 };
-pub const PKEY_Device_SecuritySDS = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 26 };
-pub const PKEY_Device_DevType = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 27 };
-pub const PKEY_Device_Exclusive = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 28 };
-pub const PKEY_Device_Characteristics = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 29 };
-pub const PKEY_Device_Address = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 30 };
-pub const PKEY_Device_UINumberDescFormat = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 31 };
-pub const PKEY_Device_PowerData = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 32 };
-pub const PKEY_Device_RemovalPolicy = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 33 };
-pub const PKEY_Device_RemovalPolicyDefault = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 34 };
-pub const PKEY_Device_RemovalPolicyOverride = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 35 };
-pub const PKEY_Device_InstallState = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 36 };
-pub const PKEY_Device_LocationPaths = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 37 };
-pub const PKEY_Device_BaseContainerId = PROPERTYKEY { .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 38 };
-pub const PKEY_Device_DevNodeStatus = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 2 };
-pub const PKEY_Device_ProblemCode = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 3 };
-pub const PKEY_Device_EjectionRelations = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 4 };
-pub const PKEY_Device_RemovalRelations = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 5 };
-pub const PKEY_Device_PowerRelations = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 6 };
-pub const PKEY_Device_BusRelations = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 7 };
-pub const PKEY_Device_Parent = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 8 };
-pub const PKEY_Device_Children = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 9 };
-pub const PKEY_Device_Siblings = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 10 };
-pub const PKEY_Device_TransportRelations = PROPERTYKEY { .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 11 };
-pub const PKEY_Device_Reported = PROPERTYKEY { .fmtid = Guid.initString("80497100-8c73-48b9-aad9-ce387e19c56e"), .pid = 2 };
-pub const PKEY_Device_Legacy = PROPERTYKEY { .fmtid = Guid.initString("80497100-8c73-48b9-aad9-ce387e19c56e"), .pid = 3 };
-pub const PKEY_Device_InstanceId = PROPERTYKEY { .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 256 };
-pub const PKEY_Device_ContainerId = PROPERTYKEY { .fmtid = Guid.initString("8c7ed206-3f8a-4827-b3ab-ae9e1faefc6c"), .pid = 2 };
-pub const PKEY_Device_ModelId = PROPERTYKEY { .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 2 };
-pub const PKEY_Device_FriendlyNameAttributes = PROPERTYKEY { .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 3 };
-pub const PKEY_Device_ManufacturerAttributes = PROPERTYKEY { .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 4 };
-pub const PKEY_Device_PresenceNotForDevice = PROPERTYKEY { .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 5 };
-pub const PKEY_Device_SignalStrength = PROPERTYKEY { .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 6 };
-pub const PKEY_Device_IsAssociateableByUserAction = PROPERTYKEY { .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 7 };
-pub const PKEY_Numa_Proximity_Domain = PROPERTYKEY { .fmtid = Guid.initString("540b947e-8b40-45bc-a8a2-6a0b894cbda2"), .pid = 1 };
-pub const PKEY_Device_DHP_Rebalance_Policy = PROPERTYKEY { .fmtid = Guid.initString("540b947e-8b40-45bc-a8a2-6a0b894cbda2"), .pid = 2 };
-pub const PKEY_Device_Numa_Node = PROPERTYKEY { .fmtid = Guid.initString("540b947e-8b40-45bc-a8a2-6a0b894cbda2"), .pid = 3 };
-pub const PKEY_Device_BusReportedDeviceDesc = PROPERTYKEY { .fmtid = Guid.initString("540b947e-8b40-45bc-a8a2-6a0b894cbda2"), .pid = 4 };
-pub const PKEY_Device_InstallInProgress = PROPERTYKEY { .fmtid = Guid.initString("83da6326-97a6-4088-9453-a1923f573b29"), .pid = 9 };
-pub const PKEY_Device_DriverDate = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 2 };
-pub const PKEY_Device_DriverVersion = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 3 };
-pub const PKEY_Device_DriverDesc = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 4 };
-pub const PKEY_Device_DriverInfPath = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 5 };
-pub const PKEY_Device_DriverInfSection = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 6 };
-pub const PKEY_Device_DriverInfSectionExt = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 7 };
-pub const PKEY_Device_MatchingDeviceId = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 8 };
-pub const PKEY_Device_DriverProvider = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 9 };
-pub const PKEY_Device_DriverPropPageProvider = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 10 };
-pub const PKEY_Device_DriverCoInstallers = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 11 };
-pub const PKEY_Device_ResourcePickerTags = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 12 };
-pub const PKEY_Device_ResourcePickerExceptions = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 13 };
-pub const PKEY_Device_DriverRank = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 14 };
-pub const PKEY_Device_DriverLogoLevel = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 15 };
-pub const PKEY_Device_NoConnectSound = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 17 };
-pub const PKEY_Device_GenericDriverInstalled = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 18 };
-pub const PKEY_Device_AdditionalSoftwareRequested = PROPERTYKEY { .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 19 };
-pub const PKEY_Device_SafeRemovalRequired = PROPERTYKEY { .fmtid = Guid.initString("afd97640-86a3-4210-b67c-289c41aabe55"), .pid = 2 };
-pub const PKEY_Device_SafeRemovalRequiredOverride = PROPERTYKEY { .fmtid = Guid.initString("afd97640-86a3-4210-b67c-289c41aabe55"), .pid = 3 };
-pub const PKEY_DrvPkg_Model = PROPERTYKEY { .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 2 };
-pub const PKEY_DrvPkg_VendorWebSite = PROPERTYKEY { .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 3 };
-pub const PKEY_DrvPkg_DetailedDescription = PROPERTYKEY { .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 4 };
-pub const PKEY_DrvPkg_DocumentationLink = PROPERTYKEY { .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 5 };
-pub const PKEY_DrvPkg_Icon = PROPERTYKEY { .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 6 };
-pub const PKEY_DrvPkg_BrandingIcon = PROPERTYKEY { .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 7 };
-pub const PKEY_DeviceClass_UpperFilters = PROPERTYKEY { .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 19 };
-pub const PKEY_DeviceClass_LowerFilters = PROPERTYKEY { .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 20 };
-pub const PKEY_DeviceClass_Security = PROPERTYKEY { .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 25 };
-pub const PKEY_DeviceClass_SecuritySDS = PROPERTYKEY { .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 26 };
-pub const PKEY_DeviceClass_DevType = PROPERTYKEY { .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 27 };
-pub const PKEY_DeviceClass_Exclusive = PROPERTYKEY { .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 28 };
-pub const PKEY_DeviceClass_Characteristics = PROPERTYKEY { .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 29 };
-pub const PKEY_DeviceClass_Name = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 2 };
-pub const PKEY_DeviceClass_ClassName = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 3 };
-pub const PKEY_DeviceClass_Icon = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 4 };
-pub const PKEY_DeviceClass_ClassInstaller = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 5 };
-pub const PKEY_DeviceClass_PropPageProvider = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 6 };
-pub const PKEY_DeviceClass_NoInstallClass = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 7 };
-pub const PKEY_DeviceClass_NoDisplayClass = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 8 };
-pub const PKEY_DeviceClass_SilentInstall = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 9 };
-pub const PKEY_DeviceClass_NoUseClass = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 10 };
-pub const PKEY_DeviceClass_DefaultService = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 11 };
-pub const PKEY_DeviceClass_IconPath = PROPERTYKEY { .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 12 };
-pub const PKEY_DeviceClass_ClassCoInstallers = PROPERTYKEY { .fmtid = Guid.initString("713d1703-a2e2-49f5-9214-56472ef3da5c"), .pid = 2 };
-pub const PKEY_DeviceInterface_FriendlyName = PROPERTYKEY { .fmtid = Guid.initString("026e516e-b814-414b-83cd-856d6fef4822"), .pid = 2 };
-pub const PKEY_DeviceInterface_Enabled = PROPERTYKEY { .fmtid = Guid.initString("026e516e-b814-414b-83cd-856d6fef4822"), .pid = 3 };
-pub const PKEY_DeviceInterface_ClassGuid = PROPERTYKEY { .fmtid = Guid.initString("026e516e-b814-414b-83cd-856d6fef4822"), .pid = 4 };
-pub const PKEY_DeviceInterfaceClass_DefaultInterface = PROPERTYKEY { .fmtid = Guid.initString("14c83a99-0b3f-44b7-be4c-a178d3990564"), .pid = 2 };
+pub const PKEY_PNPX_Removable = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28672 };
+pub const PKEY_PNPX_IPBusEnumerated = PROPERTYKEY{ .fmtid = Guid.initString("656a3bb3-ecc0-43fd-8477-4ae0404a96cd"), .pid = 28688 };
+pub const PKEY_WNET_Scope = PROPERTYKEY{ .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 1 };
+pub const PKEY_WNET_Type = PROPERTYKEY{ .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 2 };
+pub const PKEY_WNET_DisplayType = PROPERTYKEY{ .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 3 };
+pub const PKEY_WNET_Usage = PROPERTYKEY{ .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 4 };
+pub const PKEY_WNET_LocalName = PROPERTYKEY{ .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 5 };
+pub const PKEY_WNET_RemoteName = PROPERTYKEY{ .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 6 };
+pub const PKEY_WNET_Comment = PROPERTYKEY{ .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 7 };
+pub const PKEY_WNET_Provider = PROPERTYKEY{ .fmtid = Guid.initString("debda43a-37b3-4383-91e7-4498da2995ab"), .pid = 8 };
+pub const PKEY_WCN_Version = PROPERTYKEY{ .fmtid = Guid.initString("88190b80-4684-11da-a26a-0002b3988e81"), .pid = 1 };
+pub const PKEY_WCN_RequestType = PROPERTYKEY{ .fmtid = Guid.initString("88190b81-4684-11da-a26a-0002b3988e81"), .pid = 2 };
+pub const PKEY_WCN_AuthType = PROPERTYKEY{ .fmtid = Guid.initString("88190b82-4684-11da-a26a-0002b3988e81"), .pid = 3 };
+pub const PKEY_WCN_EncryptType = PROPERTYKEY{ .fmtid = Guid.initString("88190b83-4684-11da-a26a-0002b3988e81"), .pid = 4 };
+pub const PKEY_WCN_ConnType = PROPERTYKEY{ .fmtid = Guid.initString("88190b84-4684-11da-a26a-0002b3988e81"), .pid = 5 };
+pub const PKEY_WCN_ConfigMethods = PROPERTYKEY{ .fmtid = Guid.initString("88190b85-4684-11da-a26a-0002b3988e81"), .pid = 6 };
+pub const PKEY_WCN_RfBand = PROPERTYKEY{ .fmtid = Guid.initString("88190b87-4684-11da-a26a-0002b3988e81"), .pid = 8 };
+pub const PKEY_WCN_AssocState = PROPERTYKEY{ .fmtid = Guid.initString("88190b88-4684-11da-a26a-0002b3988e81"), .pid = 9 };
+pub const PKEY_WCN_ConfigError = PROPERTYKEY{ .fmtid = Guid.initString("88190b89-4684-11da-a26a-0002b3988e81"), .pid = 10 };
+pub const PKEY_WCN_ConfigState = PROPERTYKEY{ .fmtid = Guid.initString("88190b89-4684-11da-a26a-0002b3988e81"), .pid = 11 };
+pub const PKEY_WCN_DevicePasswordId = PROPERTYKEY{ .fmtid = Guid.initString("88190b89-4684-11da-a26a-0002b3988e81"), .pid = 12 };
+pub const PKEY_WCN_OSVersion = PROPERTYKEY{ .fmtid = Guid.initString("88190b89-4684-11da-a26a-0002b3988e81"), .pid = 13 };
+pub const PKEY_WCN_VendorExtension = PROPERTYKEY{ .fmtid = Guid.initString("88190b8a-4684-11da-a26a-0002b3988e81"), .pid = 14 };
+pub const PKEY_WCN_RegistrarType = PROPERTYKEY{ .fmtid = Guid.initString("88190b8b-4684-11da-a26a-0002b3988e81"), .pid = 15 };
+pub const PKEY_Hardware_Devinst = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4097 };
+pub const PKEY_Hardware_DisplayAttribute = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 5 };
+pub const PKEY_Hardware_DriverDate = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 11 };
+pub const PKEY_Hardware_DriverProvider = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 10 };
+pub const PKEY_Hardware_DriverVersion = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 9 };
+pub const PKEY_Hardware_Function = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4099 };
+pub const PKEY_Hardware_Icon = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 3 };
+pub const PKEY_Hardware_Image = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4098 };
+pub const PKEY_Hardware_Manufacturer = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 6 };
+pub const PKEY_Hardware_Model = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 7 };
+pub const PKEY_Hardware_Name = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 2 };
+pub const PKEY_Hardware_SerialNumber = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 8 };
+pub const PKEY_Hardware_ShellAttributes = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4100 };
+pub const PKEY_Hardware_Status = PROPERTYKEY{ .fmtid = Guid.initString("5eaf3ef2-e0ca-4598-bf06-71ed1d9dd953"), .pid = 4096 };
+pub const PKEY_NAME = PROPERTYKEY{ .fmtid = Guid.initString("b725f130-47ef-101a-a5f1-02608c9eebac"), .pid = 10 };
+pub const PKEY_Device_DeviceDesc = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 2 };
+pub const PKEY_Device_HardwareIds = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 3 };
+pub const PKEY_Device_CompatibleIds = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 4 };
+pub const PKEY_Device_Service = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 6 };
+pub const PKEY_Device_Class = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 9 };
+pub const PKEY_Device_ClassGuid = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 10 };
+pub const PKEY_Device_Driver = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 11 };
+pub const PKEY_Device_ConfigFlags = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 12 };
+pub const PKEY_Device_Manufacturer = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 13 };
+pub const PKEY_Device_FriendlyName = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 14 };
+pub const PKEY_Device_LocationInfo = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 15 };
+pub const PKEY_Device_PDOName = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 16 };
+pub const PKEY_Device_Capabilities = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 17 };
+pub const PKEY_Device_UINumber = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 18 };
+pub const PKEY_Device_UpperFilters = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 19 };
+pub const PKEY_Device_LowerFilters = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 20 };
+pub const PKEY_Device_BusTypeGuid = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 21 };
+pub const PKEY_Device_LegacyBusType = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 22 };
+pub const PKEY_Device_BusNumber = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 23 };
+pub const PKEY_Device_EnumeratorName = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 24 };
+pub const PKEY_Device_Security = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 25 };
+pub const PKEY_Device_SecuritySDS = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 26 };
+pub const PKEY_Device_DevType = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 27 };
+pub const PKEY_Device_Exclusive = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 28 };
+pub const PKEY_Device_Characteristics = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 29 };
+pub const PKEY_Device_Address = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 30 };
+pub const PKEY_Device_UINumberDescFormat = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 31 };
+pub const PKEY_Device_PowerData = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 32 };
+pub const PKEY_Device_RemovalPolicy = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 33 };
+pub const PKEY_Device_RemovalPolicyDefault = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 34 };
+pub const PKEY_Device_RemovalPolicyOverride = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 35 };
+pub const PKEY_Device_InstallState = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 36 };
+pub const PKEY_Device_LocationPaths = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 37 };
+pub const PKEY_Device_BaseContainerId = PROPERTYKEY{ .fmtid = Guid.initString("a45c254e-df1c-4efd-8020-67d146a850e0"), .pid = 38 };
+pub const PKEY_Device_DevNodeStatus = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 2 };
+pub const PKEY_Device_ProblemCode = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 3 };
+pub const PKEY_Device_EjectionRelations = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 4 };
+pub const PKEY_Device_RemovalRelations = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 5 };
+pub const PKEY_Device_PowerRelations = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 6 };
+pub const PKEY_Device_BusRelations = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 7 };
+pub const PKEY_Device_Parent = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 8 };
+pub const PKEY_Device_Children = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 9 };
+pub const PKEY_Device_Siblings = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 10 };
+pub const PKEY_Device_TransportRelations = PROPERTYKEY{ .fmtid = Guid.initString("4340a6c5-93fa-4706-972c-7b648008a5a7"), .pid = 11 };
+pub const PKEY_Device_Reported = PROPERTYKEY{ .fmtid = Guid.initString("80497100-8c73-48b9-aad9-ce387e19c56e"), .pid = 2 };
+pub const PKEY_Device_Legacy = PROPERTYKEY{ .fmtid = Guid.initString("80497100-8c73-48b9-aad9-ce387e19c56e"), .pid = 3 };
+pub const PKEY_Device_InstanceId = PROPERTYKEY{ .fmtid = Guid.initString("78c34fc8-104a-4aca-9ea4-524d52996e57"), .pid = 256 };
+pub const PKEY_Device_ContainerId = PROPERTYKEY{ .fmtid = Guid.initString("8c7ed206-3f8a-4827-b3ab-ae9e1faefc6c"), .pid = 2 };
+pub const PKEY_Device_ModelId = PROPERTYKEY{ .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 2 };
+pub const PKEY_Device_FriendlyNameAttributes = PROPERTYKEY{ .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 3 };
+pub const PKEY_Device_ManufacturerAttributes = PROPERTYKEY{ .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 4 };
+pub const PKEY_Device_PresenceNotForDevice = PROPERTYKEY{ .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 5 };
+pub const PKEY_Device_SignalStrength = PROPERTYKEY{ .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 6 };
+pub const PKEY_Device_IsAssociateableByUserAction = PROPERTYKEY{ .fmtid = Guid.initString("80d81ea6-7473-4b0c-8216-efc11a2c4c8b"), .pid = 7 };
+pub const PKEY_Numa_Proximity_Domain = PROPERTYKEY{ .fmtid = Guid.initString("540b947e-8b40-45bc-a8a2-6a0b894cbda2"), .pid = 1 };
+pub const PKEY_Device_DHP_Rebalance_Policy = PROPERTYKEY{ .fmtid = Guid.initString("540b947e-8b40-45bc-a8a2-6a0b894cbda2"), .pid = 2 };
+pub const PKEY_Device_Numa_Node = PROPERTYKEY{ .fmtid = Guid.initString("540b947e-8b40-45bc-a8a2-6a0b894cbda2"), .pid = 3 };
+pub const PKEY_Device_BusReportedDeviceDesc = PROPERTYKEY{ .fmtid = Guid.initString("540b947e-8b40-45bc-a8a2-6a0b894cbda2"), .pid = 4 };
+pub const PKEY_Device_InstallInProgress = PROPERTYKEY{ .fmtid = Guid.initString("83da6326-97a6-4088-9453-a1923f573b29"), .pid = 9 };
+pub const PKEY_Device_DriverDate = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 2 };
+pub const PKEY_Device_DriverVersion = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 3 };
+pub const PKEY_Device_DriverDesc = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 4 };
+pub const PKEY_Device_DriverInfPath = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 5 };
+pub const PKEY_Device_DriverInfSection = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 6 };
+pub const PKEY_Device_DriverInfSectionExt = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 7 };
+pub const PKEY_Device_MatchingDeviceId = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 8 };
+pub const PKEY_Device_DriverProvider = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 9 };
+pub const PKEY_Device_DriverPropPageProvider = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 10 };
+pub const PKEY_Device_DriverCoInstallers = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 11 };
+pub const PKEY_Device_ResourcePickerTags = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 12 };
+pub const PKEY_Device_ResourcePickerExceptions = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 13 };
+pub const PKEY_Device_DriverRank = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 14 };
+pub const PKEY_Device_DriverLogoLevel = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 15 };
+pub const PKEY_Device_NoConnectSound = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 17 };
+pub const PKEY_Device_GenericDriverInstalled = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 18 };
+pub const PKEY_Device_AdditionalSoftwareRequested = PROPERTYKEY{ .fmtid = Guid.initString("a8b865dd-2e3d-4094-ad97-e593a70c75d6"), .pid = 19 };
+pub const PKEY_Device_SafeRemovalRequired = PROPERTYKEY{ .fmtid = Guid.initString("afd97640-86a3-4210-b67c-289c41aabe55"), .pid = 2 };
+pub const PKEY_Device_SafeRemovalRequiredOverride = PROPERTYKEY{ .fmtid = Guid.initString("afd97640-86a3-4210-b67c-289c41aabe55"), .pid = 3 };
+pub const PKEY_DrvPkg_Model = PROPERTYKEY{ .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 2 };
+pub const PKEY_DrvPkg_VendorWebSite = PROPERTYKEY{ .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 3 };
+pub const PKEY_DrvPkg_DetailedDescription = PROPERTYKEY{ .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 4 };
+pub const PKEY_DrvPkg_DocumentationLink = PROPERTYKEY{ .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 5 };
+pub const PKEY_DrvPkg_Icon = PROPERTYKEY{ .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 6 };
+pub const PKEY_DrvPkg_BrandingIcon = PROPERTYKEY{ .fmtid = Guid.initString("cf73bb51-3abf-44a2-85e0-9a3dc7a12132"), .pid = 7 };
+pub const PKEY_DeviceClass_UpperFilters = PROPERTYKEY{ .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 19 };
+pub const PKEY_DeviceClass_LowerFilters = PROPERTYKEY{ .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 20 };
+pub const PKEY_DeviceClass_Security = PROPERTYKEY{ .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 25 };
+pub const PKEY_DeviceClass_SecuritySDS = PROPERTYKEY{ .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 26 };
+pub const PKEY_DeviceClass_DevType = PROPERTYKEY{ .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 27 };
+pub const PKEY_DeviceClass_Exclusive = PROPERTYKEY{ .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 28 };
+pub const PKEY_DeviceClass_Characteristics = PROPERTYKEY{ .fmtid = Guid.initString("4321918b-f69e-470d-a5de-4d88c75ad24b"), .pid = 29 };
+pub const PKEY_DeviceClass_Name = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 2 };
+pub const PKEY_DeviceClass_ClassName = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 3 };
+pub const PKEY_DeviceClass_Icon = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 4 };
+pub const PKEY_DeviceClass_ClassInstaller = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 5 };
+pub const PKEY_DeviceClass_PropPageProvider = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 6 };
+pub const PKEY_DeviceClass_NoInstallClass = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 7 };
+pub const PKEY_DeviceClass_NoDisplayClass = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 8 };
+pub const PKEY_DeviceClass_SilentInstall = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 9 };
+pub const PKEY_DeviceClass_NoUseClass = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 10 };
+pub const PKEY_DeviceClass_DefaultService = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 11 };
+pub const PKEY_DeviceClass_IconPath = PROPERTYKEY{ .fmtid = Guid.initString("259abffc-50a7-47ce-af08-68c9a7d73366"), .pid = 12 };
+pub const PKEY_DeviceClass_ClassCoInstallers = PROPERTYKEY{ .fmtid = Guid.initString("713d1703-a2e2-49f5-9214-56472ef3da5c"), .pid = 2 };
+pub const PKEY_DeviceInterface_FriendlyName = PROPERTYKEY{ .fmtid = Guid.initString("026e516e-b814-414b-83cd-856d6fef4822"), .pid = 2 };
+pub const PKEY_DeviceInterface_Enabled = PROPERTYKEY{ .fmtid = Guid.initString("026e516e-b814-414b-83cd-856d6fef4822"), .pid = 3 };
+pub const PKEY_DeviceInterface_ClassGuid = PROPERTYKEY{ .fmtid = Guid.initString("026e516e-b814-414b-83cd-856d6fef4822"), .pid = 4 };
+pub const PKEY_DeviceInterfaceClass_DefaultInterface = PROPERTYKEY{ .fmtid = Guid.initString("14c83a99-0b3f-44b7-be4c-a178d3990564"), .pid = 2 };
 pub const FD_LONGHORN = @as(u32, 1);
 pub const FD_SUBKEY = "SOFTWARE\\Microsoft\\Function Discovery\\";
 pub const FCTN_CATEGORY_PNP = "Provider\\Microsoft.Base.PnP";
@@ -442,34 +442,34 @@ pub const IID_IFunctionDiscoveryNotification = &IID_IFunctionDiscoveryNotificati
 pub const IFunctionDiscoveryNotification = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnUpdate: *const fn(
+        OnUpdate: *const fn (
             self: *const IFunctionDiscoveryNotification,
             enumQueryUpdateAction: QueryUpdateAction,
             fdqcQueryContext: u64,
             pIFunctionInstance: ?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnError: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnError: *const fn (
             self: *const IFunctionDiscoveryNotification,
             hr: HRESULT,
             fdqcQueryContext: u64,
             pszProvider: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnEvent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnEvent: *const fn (
             self: *const IFunctionDiscoveryNotification,
             dwEventID: u32,
             fdqcQueryContext: u64,
             pszProvider: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnUpdate(self: *const IFunctionDiscoveryNotification, enumQueryUpdateAction: QueryUpdateAction, fdqcQueryContext: u64, pIFunctionInstance: ?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn OnUpdate(self: *const IFunctionDiscoveryNotification, enumQueryUpdateAction: QueryUpdateAction, fdqcQueryContext: u64, pIFunctionInstance: ?*IFunctionInstance) HRESULT {
         return self.vtable.OnUpdate(self, enumQueryUpdateAction, fdqcQueryContext, pIFunctionInstance);
     }
-    pub fn OnError(self: *const IFunctionDiscoveryNotification, hr: HRESULT, fdqcQueryContext: u64, pszProvider: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn OnError(self: *const IFunctionDiscoveryNotification, hr: HRESULT, fdqcQueryContext: u64, pszProvider: ?[*:0]const u16) HRESULT {
         return self.vtable.OnError(self, hr, fdqcQueryContext, pszProvider);
     }
-    pub fn OnEvent(self: *const IFunctionDiscoveryNotification, dwEventID: u32, fdqcQueryContext: u64, pszProvider: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn OnEvent(self: *const IFunctionDiscoveryNotification, dwEventID: u32, fdqcQueryContext: u64, pszProvider: ?[*:0]const u16) HRESULT {
         return self.vtable.OnEvent(self, dwEventID, fdqcQueryContext, pszProvider);
     }
 };
@@ -480,19 +480,19 @@ pub const IID_IFunctionDiscovery = &IID_IFunctionDiscovery_Value;
 pub const IFunctionDiscovery = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetInstanceCollection: *const fn(
+        GetInstanceCollection: *const fn (
             self: *const IFunctionDiscovery,
             pszCategory: ?[*:0]const u16,
             pszSubCategory: ?[*:0]const u16,
             fIncludeAllSubCategories: BOOL,
             ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInstance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInstance: *const fn (
             self: *const IFunctionDiscovery,
             pszFunctionInstanceIdentity: ?[*:0]const u16,
             ppIFunctionInstance: ?*?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateInstanceCollectionQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateInstanceCollectionQuery: *const fn (
             self: *const IFunctionDiscovery,
             pszCategory: ?[*:0]const u16,
             pszSubCategory: ?[*:0]const u16,
@@ -500,48 +500,48 @@ pub const IFunctionDiscovery = extern union {
             pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification,
             pfdqcQueryContext: ?*u64,
             ppIFunctionInstanceCollectionQuery: ?*?*IFunctionInstanceCollectionQuery,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateInstanceQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateInstanceQuery: *const fn (
             self: *const IFunctionDiscovery,
             pszFunctionInstanceIdentity: ?[*:0]const u16,
             pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification,
             pfdqcQueryContext: ?*u64,
             ppIFunctionInstanceQuery: ?*?*IFunctionInstanceQuery,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddInstance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddInstance: *const fn (
             self: *const IFunctionDiscovery,
             enumSystemVisibility: SystemVisibilityFlags,
             pszCategory: ?[*:0]const u16,
             pszSubCategory: ?[*:0]const u16,
             pszCategoryIdentity: ?[*:0]const u16,
             ppIFunctionInstance: ?*?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveInstance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveInstance: *const fn (
             self: *const IFunctionDiscovery,
             enumSystemVisibility: SystemVisibilityFlags,
             pszCategory: ?[*:0]const u16,
             pszSubCategory: ?[*:0]const u16,
             pszCategoryIdentity: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetInstanceCollection(self: *const IFunctionDiscovery, pszCategory: ?[*:0]const u16, pszSubCategory: ?[*:0]const u16, fIncludeAllSubCategories: BOOL, ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetInstanceCollection(self: *const IFunctionDiscovery, pszCategory: ?[*:0]const u16, pszSubCategory: ?[*:0]const u16, fIncludeAllSubCategories: BOOL, ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection) HRESULT {
         return self.vtable.GetInstanceCollection(self, pszCategory, pszSubCategory, fIncludeAllSubCategories, ppIFunctionInstanceCollection);
     }
-    pub fn GetInstance(self: *const IFunctionDiscovery, pszFunctionInstanceIdentity: ?[*:0]const u16, ppIFunctionInstance: ?*?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn GetInstance(self: *const IFunctionDiscovery, pszFunctionInstanceIdentity: ?[*:0]const u16, ppIFunctionInstance: ?*?*IFunctionInstance) HRESULT {
         return self.vtable.GetInstance(self, pszFunctionInstanceIdentity, ppIFunctionInstance);
     }
-    pub fn CreateInstanceCollectionQuery(self: *const IFunctionDiscovery, pszCategory: ?[*:0]const u16, pszSubCategory: ?[*:0]const u16, fIncludeAllSubCategories: BOOL, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification, pfdqcQueryContext: ?*u64, ppIFunctionInstanceCollectionQuery: ?*?*IFunctionInstanceCollectionQuery) callconv(.Inline) HRESULT {
+    pub inline fn CreateInstanceCollectionQuery(self: *const IFunctionDiscovery, pszCategory: ?[*:0]const u16, pszSubCategory: ?[*:0]const u16, fIncludeAllSubCategories: BOOL, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification, pfdqcQueryContext: ?*u64, ppIFunctionInstanceCollectionQuery: ?*?*IFunctionInstanceCollectionQuery) HRESULT {
         return self.vtable.CreateInstanceCollectionQuery(self, pszCategory, pszSubCategory, fIncludeAllSubCategories, pIFunctionDiscoveryNotification, pfdqcQueryContext, ppIFunctionInstanceCollectionQuery);
     }
-    pub fn CreateInstanceQuery(self: *const IFunctionDiscovery, pszFunctionInstanceIdentity: ?[*:0]const u16, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification, pfdqcQueryContext: ?*u64, ppIFunctionInstanceQuery: ?*?*IFunctionInstanceQuery) callconv(.Inline) HRESULT {
+    pub inline fn CreateInstanceQuery(self: *const IFunctionDiscovery, pszFunctionInstanceIdentity: ?[*:0]const u16, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification, pfdqcQueryContext: ?*u64, ppIFunctionInstanceQuery: ?*?*IFunctionInstanceQuery) HRESULT {
         return self.vtable.CreateInstanceQuery(self, pszFunctionInstanceIdentity, pIFunctionDiscoveryNotification, pfdqcQueryContext, ppIFunctionInstanceQuery);
     }
-    pub fn AddInstance(self: *const IFunctionDiscovery, enumSystemVisibility: SystemVisibilityFlags, pszCategory: ?[*:0]const u16, pszSubCategory: ?[*:0]const u16, pszCategoryIdentity: ?[*:0]const u16, ppIFunctionInstance: ?*?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn AddInstance(self: *const IFunctionDiscovery, enumSystemVisibility: SystemVisibilityFlags, pszCategory: ?[*:0]const u16, pszSubCategory: ?[*:0]const u16, pszCategoryIdentity: ?[*:0]const u16, ppIFunctionInstance: ?*?*IFunctionInstance) HRESULT {
         return self.vtable.AddInstance(self, enumSystemVisibility, pszCategory, pszSubCategory, pszCategoryIdentity, ppIFunctionInstance);
     }
-    pub fn RemoveInstance(self: *const IFunctionDiscovery, enumSystemVisibility: SystemVisibilityFlags, pszCategory: ?[*:0]const u16, pszSubCategory: ?[*:0]const u16, pszCategoryIdentity: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RemoveInstance(self: *const IFunctionDiscovery, enumSystemVisibility: SystemVisibilityFlags, pszCategory: ?[*:0]const u16, pszSubCategory: ?[*:0]const u16, pszCategoryIdentity: ?[*:0]const u16) HRESULT {
         return self.vtable.RemoveInstance(self, enumSystemVisibility, pszCategory, pszSubCategory, pszCategoryIdentity);
     }
 };
@@ -552,38 +552,38 @@ pub const IID_IFunctionInstance = &IID_IFunctionInstance_Value;
 pub const IFunctionInstance = extern union {
     pub const VTable = extern struct {
         base: IServiceProvider.VTable,
-        GetID: *const fn(
+        GetID: *const fn (
             self: *const IFunctionInstance,
             ppszCoMemIdentity: ?*?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProviderInstanceID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProviderInstanceID: *const fn (
             self: *const IFunctionInstance,
             ppszCoMemProviderInstanceIdentity: ?*?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OpenPropertyStore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OpenPropertyStore: *const fn (
             self: *const IFunctionInstance,
             dwStgAccess: STGM,
             ppIPropertyStore: ?*?*IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCategory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCategory: *const fn (
             self: *const IFunctionInstance,
             ppszCoMemCategory: ?*?*u16,
             ppszCoMemSubCategory: ?*?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IServiceProvider: IServiceProvider,
     IUnknown: IUnknown,
-    pub fn GetID(self: *const IFunctionInstance, ppszCoMemIdentity: ?*?*u16) callconv(.Inline) HRESULT {
+    pub inline fn GetID(self: *const IFunctionInstance, ppszCoMemIdentity: ?*?*u16) HRESULT {
         return self.vtable.GetID(self, ppszCoMemIdentity);
     }
-    pub fn GetProviderInstanceID(self: *const IFunctionInstance, ppszCoMemProviderInstanceIdentity: ?*?*u16) callconv(.Inline) HRESULT {
+    pub inline fn GetProviderInstanceID(self: *const IFunctionInstance, ppszCoMemProviderInstanceIdentity: ?*?*u16) HRESULT {
         return self.vtable.GetProviderInstanceID(self, ppszCoMemProviderInstanceIdentity);
     }
-    pub fn OpenPropertyStore(self: *const IFunctionInstance, dwStgAccess: STGM, ppIPropertyStore: ?*?*IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn OpenPropertyStore(self: *const IFunctionInstance, dwStgAccess: STGM, ppIPropertyStore: ?*?*IPropertyStore) HRESULT {
         return self.vtable.OpenPropertyStore(self, dwStgAccess, ppIPropertyStore);
     }
-    pub fn GetCategory(self: *const IFunctionInstance, ppszCoMemCategory: ?*?*u16, ppszCoMemSubCategory: ?*?*u16) callconv(.Inline) HRESULT {
+    pub inline fn GetCategory(self: *const IFunctionInstance, ppszCoMemCategory: ?*?*u16, ppszCoMemSubCategory: ?*?*u16) HRESULT {
         return self.vtable.GetCategory(self, ppszCoMemCategory, ppszCoMemSubCategory);
     }
 };
@@ -594,59 +594,59 @@ pub const IID_IFunctionInstanceCollection = &IID_IFunctionInstanceCollection_Val
 pub const IFunctionInstanceCollection = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IFunctionInstanceCollection,
             pdwCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Get: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Get: *const fn (
             self: *const IFunctionInstanceCollection,
             pszInstanceIdentity: ?[*:0]const u16,
             pdwIndex: ?*u32,
             ppIFunctionInstance: ?*?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const IFunctionInstanceCollection,
             dwIndex: u32,
             ppIFunctionInstance: ?*?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IFunctionInstanceCollection,
             pIFunctionInstance: ?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IFunctionInstanceCollection,
             dwIndex: u32,
             ppIFunctionInstance: ?*?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IFunctionInstanceCollection,
             dwIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteAll: *const fn (
             self: *const IFunctionInstanceCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IFunctionInstanceCollection, pdwCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IFunctionInstanceCollection, pdwCount: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pdwCount);
     }
-    pub fn Get(self: *const IFunctionInstanceCollection, pszInstanceIdentity: ?[*:0]const u16, pdwIndex: ?*u32, ppIFunctionInstance: ?*?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const IFunctionInstanceCollection, pszInstanceIdentity: ?[*:0]const u16, pdwIndex: ?*u32, ppIFunctionInstance: ?*?*IFunctionInstance) HRESULT {
         return self.vtable.Get(self, pszInstanceIdentity, pdwIndex, ppIFunctionInstance);
     }
-    pub fn Item(self: *const IFunctionInstanceCollection, dwIndex: u32, ppIFunctionInstance: ?*?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const IFunctionInstanceCollection, dwIndex: u32, ppIFunctionInstance: ?*?*IFunctionInstance) HRESULT {
         return self.vtable.Item(self, dwIndex, ppIFunctionInstance);
     }
-    pub fn Add(self: *const IFunctionInstanceCollection, pIFunctionInstance: ?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IFunctionInstanceCollection, pIFunctionInstance: ?*IFunctionInstance) HRESULT {
         return self.vtable.Add(self, pIFunctionInstance);
     }
-    pub fn Remove(self: *const IFunctionInstanceCollection, dwIndex: u32, ppIFunctionInstance: ?*?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IFunctionInstanceCollection, dwIndex: u32, ppIFunctionInstance: ?*?*IFunctionInstance) HRESULT {
         return self.vtable.Remove(self, dwIndex, ppIFunctionInstance);
     }
-    pub fn Delete(self: *const IFunctionInstanceCollection, dwIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IFunctionInstanceCollection, dwIndex: u32) HRESULT {
         return self.vtable.Delete(self, dwIndex);
     }
-    pub fn DeleteAll(self: *const IFunctionInstanceCollection) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAll(self: *const IFunctionInstanceCollection) HRESULT {
         return self.vtable.DeleteAll(self);
     }
 };
@@ -656,59 +656,59 @@ pub const IID_IPropertyStoreCollection = &IID_IPropertyStoreCollection_Value;
 pub const IPropertyStoreCollection = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IPropertyStoreCollection,
             pdwCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Get: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Get: *const fn (
             self: *const IPropertyStoreCollection,
             pszInstanceIdentity: ?[*:0]const u16,
             pdwIndex: ?*u32,
             ppIPropertyStore: ?*?*IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const IPropertyStoreCollection,
             dwIndex: u32,
             ppIPropertyStore: ?*?*IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IPropertyStoreCollection,
             pIPropertyStore: ?*IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IPropertyStoreCollection,
             dwIndex: u32,
             pIPropertyStore: ?*?*IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IPropertyStoreCollection,
             dwIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteAll: *const fn (
             self: *const IPropertyStoreCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IPropertyStoreCollection, pdwCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IPropertyStoreCollection, pdwCount: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pdwCount);
     }
-    pub fn Get(self: *const IPropertyStoreCollection, pszInstanceIdentity: ?[*:0]const u16, pdwIndex: ?*u32, ppIPropertyStore: ?*?*IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const IPropertyStoreCollection, pszInstanceIdentity: ?[*:0]const u16, pdwIndex: ?*u32, ppIPropertyStore: ?*?*IPropertyStore) HRESULT {
         return self.vtable.Get(self, pszInstanceIdentity, pdwIndex, ppIPropertyStore);
     }
-    pub fn Item(self: *const IPropertyStoreCollection, dwIndex: u32, ppIPropertyStore: ?*?*IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const IPropertyStoreCollection, dwIndex: u32, ppIPropertyStore: ?*?*IPropertyStore) HRESULT {
         return self.vtable.Item(self, dwIndex, ppIPropertyStore);
     }
-    pub fn Add(self: *const IPropertyStoreCollection, pIPropertyStore: ?*IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IPropertyStoreCollection, pIPropertyStore: ?*IPropertyStore) HRESULT {
         return self.vtable.Add(self, pIPropertyStore);
     }
-    pub fn Remove(self: *const IPropertyStoreCollection, dwIndex: u32, pIPropertyStore: ?*?*IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IPropertyStoreCollection, dwIndex: u32, pIPropertyStore: ?*?*IPropertyStore) HRESULT {
         return self.vtable.Remove(self, dwIndex, pIPropertyStore);
     }
-    pub fn Delete(self: *const IPropertyStoreCollection, dwIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IPropertyStoreCollection, dwIndex: u32) HRESULT {
         return self.vtable.Delete(self, dwIndex);
     }
-    pub fn DeleteAll(self: *const IPropertyStoreCollection) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAll(self: *const IPropertyStoreCollection) HRESULT {
         return self.vtable.DeleteAll(self);
     }
 };
@@ -719,14 +719,14 @@ pub const IID_IFunctionInstanceQuery = &IID_IFunctionInstanceQuery_Value;
 pub const IFunctionInstanceQuery = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Execute: *const fn(
+        Execute: *const fn (
             self: *const IFunctionInstanceQuery,
             ppIFunctionInstance: ?*?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Execute(self: *const IFunctionInstanceQuery, ppIFunctionInstance: ?*?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn Execute(self: *const IFunctionInstanceQuery, ppIFunctionInstance: ?*?*IFunctionInstance) HRESULT {
         return self.vtable.Execute(self, ppIFunctionInstance);
     }
 };
@@ -737,31 +737,31 @@ pub const IID_IFunctionInstanceCollectionQuery = &IID_IFunctionInstanceCollectio
 pub const IFunctionInstanceCollectionQuery = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AddQueryConstraint: *const fn(
+        AddQueryConstraint: *const fn (
             self: *const IFunctionInstanceCollectionQuery,
             pszConstraintName: ?[*:0]const u16,
             pszConstraintValue: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPropertyConstraint: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPropertyConstraint: *const fn (
             self: *const IFunctionInstanceCollectionQuery,
             Key: ?*const PROPERTYKEY,
             pv: ?*const PROPVARIANT,
             enumPropertyConstraint: PropertyConstraint,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Execute: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Execute: *const fn (
             self: *const IFunctionInstanceCollectionQuery,
             ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AddQueryConstraint(self: *const IFunctionInstanceCollectionQuery, pszConstraintName: ?[*:0]const u16, pszConstraintValue: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn AddQueryConstraint(self: *const IFunctionInstanceCollectionQuery, pszConstraintName: ?[*:0]const u16, pszConstraintValue: ?[*:0]const u16) HRESULT {
         return self.vtable.AddQueryConstraint(self, pszConstraintName, pszConstraintValue);
     }
-    pub fn AddPropertyConstraint(self: *const IFunctionInstanceCollectionQuery, Key: ?*const PROPERTYKEY, pv: ?*const PROPVARIANT, enumPropertyConstraint: PropertyConstraint) callconv(.Inline) HRESULT {
+    pub inline fn AddPropertyConstraint(self: *const IFunctionInstanceCollectionQuery, Key: ?*const PROPERTYKEY, pv: ?*const PROPVARIANT, enumPropertyConstraint: PropertyConstraint) HRESULT {
         return self.vtable.AddPropertyConstraint(self, Key, pv, enumPropertyConstraint);
     }
-    pub fn Execute(self: *const IFunctionInstanceCollectionQuery, ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection) callconv(.Inline) HRESULT {
+    pub inline fn Execute(self: *const IFunctionInstanceCollectionQuery, ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection) HRESULT {
         return self.vtable.Execute(self, ppIFunctionInstanceCollection);
     }
 };
@@ -772,77 +772,77 @@ pub const IID_IFunctionDiscoveryProvider = &IID_IFunctionDiscoveryProvider_Value
 pub const IFunctionDiscoveryProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IFunctionDiscoveryProvider,
             pIFunctionDiscoveryProviderFactory: ?*IFunctionDiscoveryProviderFactory,
             pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification,
             lcidUserDefault: u32,
             pdwStgAccessCapabilities: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Query: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Query: *const fn (
             self: *const IFunctionDiscoveryProvider,
             pIFunctionDiscoveryProviderQuery: ?*IFunctionDiscoveryProviderQuery,
             ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndQuery: *const fn (
             self: *const IFunctionDiscoveryProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstancePropertyStoreValidateAccess: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstancePropertyStoreValidateAccess: *const fn (
             self: *const IFunctionDiscoveryProvider,
             pIFunctionInstance: ?*IFunctionInstance,
             iProviderInstanceContext: isize,
             dwStgAccess: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstancePropertyStoreOpen: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstancePropertyStoreOpen: *const fn (
             self: *const IFunctionDiscoveryProvider,
             pIFunctionInstance: ?*IFunctionInstance,
             iProviderInstanceContext: isize,
             dwStgAccess: u32,
             ppIPropertyStore: ?*?*IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstancePropertyStoreFlush: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstancePropertyStoreFlush: *const fn (
             self: *const IFunctionDiscoveryProvider,
             pIFunctionInstance: ?*IFunctionInstance,
             iProviderInstanceContext: isize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstanceQueryService: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstanceQueryService: *const fn (
             self: *const IFunctionDiscoveryProvider,
             pIFunctionInstance: ?*IFunctionInstance,
             iProviderInstanceContext: isize,
             guidService: ?*const Guid,
             riid: ?*const Guid,
             ppIUnknown: **IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InstanceReleased: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InstanceReleased: *const fn (
             self: *const IFunctionDiscoveryProvider,
             pIFunctionInstance: ?*IFunctionInstance,
             iProviderInstanceContext: isize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IFunctionDiscoveryProvider, pIFunctionDiscoveryProviderFactory: ?*IFunctionDiscoveryProviderFactory, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification, lcidUserDefault: u32, pdwStgAccessCapabilities: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IFunctionDiscoveryProvider, pIFunctionDiscoveryProviderFactory: ?*IFunctionDiscoveryProviderFactory, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification, lcidUserDefault: u32, pdwStgAccessCapabilities: ?*u32) HRESULT {
         return self.vtable.Initialize(self, pIFunctionDiscoveryProviderFactory, pIFunctionDiscoveryNotification, lcidUserDefault, pdwStgAccessCapabilities);
     }
-    pub fn Query(self: *const IFunctionDiscoveryProvider, pIFunctionDiscoveryProviderQuery: ?*IFunctionDiscoveryProviderQuery, ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection) callconv(.Inline) HRESULT {
+    pub inline fn Query(self: *const IFunctionDiscoveryProvider, pIFunctionDiscoveryProviderQuery: ?*IFunctionDiscoveryProviderQuery, ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection) HRESULT {
         return self.vtable.Query(self, pIFunctionDiscoveryProviderQuery, ppIFunctionInstanceCollection);
     }
-    pub fn EndQuery(self: *const IFunctionDiscoveryProvider) callconv(.Inline) HRESULT {
+    pub inline fn EndQuery(self: *const IFunctionDiscoveryProvider) HRESULT {
         return self.vtable.EndQuery(self);
     }
-    pub fn InstancePropertyStoreValidateAccess(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, dwStgAccess: u32) callconv(.Inline) HRESULT {
+    pub inline fn InstancePropertyStoreValidateAccess(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, dwStgAccess: u32) HRESULT {
         return self.vtable.InstancePropertyStoreValidateAccess(self, pIFunctionInstance, iProviderInstanceContext, dwStgAccess);
     }
-    pub fn InstancePropertyStoreOpen(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, dwStgAccess: u32, ppIPropertyStore: ?*?*IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn InstancePropertyStoreOpen(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, dwStgAccess: u32, ppIPropertyStore: ?*?*IPropertyStore) HRESULT {
         return self.vtable.InstancePropertyStoreOpen(self, pIFunctionInstance, iProviderInstanceContext, dwStgAccess, ppIPropertyStore);
     }
-    pub fn InstancePropertyStoreFlush(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize) callconv(.Inline) HRESULT {
+    pub inline fn InstancePropertyStoreFlush(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize) HRESULT {
         return self.vtable.InstancePropertyStoreFlush(self, pIFunctionInstance, iProviderInstanceContext);
     }
-    pub fn InstanceQueryService(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, guidService: ?*const Guid, riid: ?*const Guid, ppIUnknown: **IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn InstanceQueryService(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, guidService: ?*const Guid, riid: ?*const Guid, ppIUnknown: **IUnknown) HRESULT {
         return self.vtable.InstanceQueryService(self, pIFunctionInstance, iProviderInstanceContext, guidService, riid, ppIUnknown);
     }
-    pub fn InstanceReleased(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize) callconv(.Inline) HRESULT {
+    pub inline fn InstanceReleased(self: *const IFunctionDiscoveryProvider, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize) HRESULT {
         return self.vtable.InstanceReleased(self, pIFunctionInstance, iProviderInstanceContext);
     }
 };
@@ -853,46 +853,46 @@ pub const IID_IProviderProperties = &IID_IProviderProperties_Value;
 pub const IProviderProperties = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IProviderProperties,
             pIFunctionInstance: ?*IFunctionInstance,
             iProviderInstanceContext: isize,
             pdwCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IProviderProperties,
             pIFunctionInstance: ?*IFunctionInstance,
             iProviderInstanceContext: isize,
             dwIndex: u32,
             pKey: ?*PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const IProviderProperties,
             pIFunctionInstance: ?*IFunctionInstance,
             iProviderInstanceContext: isize,
             Key: ?*const PROPERTYKEY,
             ppropVar: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const IProviderProperties,
             pIFunctionInstance: ?*IFunctionInstance,
             iProviderInstanceContext: isize,
             Key: ?*const PROPERTYKEY,
             ppropVar: ?*const PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IProviderProperties, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, pdwCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IProviderProperties, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, pdwCount: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pIFunctionInstance, iProviderInstanceContext, pdwCount);
     }
-    pub fn GetAt(self: *const IProviderProperties, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, dwIndex: u32, pKey: ?*PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IProviderProperties, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, dwIndex: u32, pKey: ?*PROPERTYKEY) HRESULT {
         return self.vtable.GetAt(self, pIFunctionInstance, iProviderInstanceContext, dwIndex, pKey);
     }
-    pub fn GetValue(self: *const IProviderProperties, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, Key: ?*const PROPERTYKEY, ppropVar: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const IProviderProperties, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, Key: ?*const PROPERTYKEY, ppropVar: ?*PROPVARIANT) HRESULT {
         return self.vtable.GetValue(self, pIFunctionInstance, iProviderInstanceContext, Key, ppropVar);
     }
-    pub fn SetValue(self: *const IProviderProperties, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, Key: ?*const PROPERTYKEY, ppropVar: ?*const PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const IProviderProperties, pIFunctionInstance: ?*IFunctionInstance, iProviderInstanceContext: isize, Key: ?*const PROPERTYKEY, ppropVar: ?*const PROPVARIANT) HRESULT {
         return self.vtable.SetValue(self, pIFunctionInstance, iProviderInstanceContext, Key, ppropVar);
     }
 };
@@ -903,26 +903,26 @@ pub const IID_IProviderPublishing = &IID_IProviderPublishing_Value;
 pub const IProviderPublishing = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateInstance: *const fn(
+        CreateInstance: *const fn (
             self: *const IProviderPublishing,
             enumVisibilityFlags: SystemVisibilityFlags,
             pszSubCategory: ?[*:0]const u16,
             pszProviderInstanceIdentity: ?[*:0]const u16,
             ppIFunctionInstance: ?*?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveInstance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveInstance: *const fn (
             self: *const IProviderPublishing,
             enumVisibilityFlags: SystemVisibilityFlags,
             pszSubCategory: ?[*:0]const u16,
             pszProviderInstanceIdentity: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateInstance(self: *const IProviderPublishing, enumVisibilityFlags: SystemVisibilityFlags, pszSubCategory: ?[*:0]const u16, pszProviderInstanceIdentity: ?[*:0]const u16, ppIFunctionInstance: ?*?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn CreateInstance(self: *const IProviderPublishing, enumVisibilityFlags: SystemVisibilityFlags, pszSubCategory: ?[*:0]const u16, pszProviderInstanceIdentity: ?[*:0]const u16, ppIFunctionInstance: ?*?*IFunctionInstance) HRESULT {
         return self.vtable.CreateInstance(self, enumVisibilityFlags, pszSubCategory, pszProviderInstanceIdentity, ppIFunctionInstance);
     }
-    pub fn RemoveInstance(self: *const IProviderPublishing, enumVisibilityFlags: SystemVisibilityFlags, pszSubCategory: ?[*:0]const u16, pszProviderInstanceIdentity: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RemoveInstance(self: *const IProviderPublishing, enumVisibilityFlags: SystemVisibilityFlags, pszSubCategory: ?[*:0]const u16, pszProviderInstanceIdentity: ?[*:0]const u16) HRESULT {
         return self.vtable.RemoveInstance(self, enumVisibilityFlags, pszSubCategory, pszProviderInstanceIdentity);
     }
 };
@@ -933,11 +933,11 @@ pub const IID_IFunctionDiscoveryProviderFactory = &IID_IFunctionDiscoveryProvide
 pub const IFunctionDiscoveryProviderFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreatePropertyStore: *const fn(
+        CreatePropertyStore: *const fn (
             self: *const IFunctionDiscoveryProviderFactory,
             ppIPropertyStore: ?*?*IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateInstance: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn (
             self: *const IFunctionDiscoveryProviderFactory,
             pszSubCategory: ?[*:0]const u16,
             pszProviderInstanceIdentity: ?[*:0]const u16,
@@ -945,21 +945,21 @@ pub const IFunctionDiscoveryProviderFactory = extern union {
             pIPropertyStore: ?*IPropertyStore,
             pIFunctionDiscoveryProvider: ?*IFunctionDiscoveryProvider,
             ppIFunctionInstance: ?*?*IFunctionInstance,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateFunctionInstanceCollection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateFunctionInstanceCollection: *const fn (
             self: *const IFunctionDiscoveryProviderFactory,
             ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreatePropertyStore(self: *const IFunctionDiscoveryProviderFactory, ppIPropertyStore: ?*?*IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn CreatePropertyStore(self: *const IFunctionDiscoveryProviderFactory, ppIPropertyStore: ?*?*IPropertyStore) HRESULT {
         return self.vtable.CreatePropertyStore(self, ppIPropertyStore);
     }
-    pub fn CreateInstance(self: *const IFunctionDiscoveryProviderFactory, pszSubCategory: ?[*:0]const u16, pszProviderInstanceIdentity: ?[*:0]const u16, iProviderInstanceContext: isize, pIPropertyStore: ?*IPropertyStore, pIFunctionDiscoveryProvider: ?*IFunctionDiscoveryProvider, ppIFunctionInstance: ?*?*IFunctionInstance) callconv(.Inline) HRESULT {
+    pub inline fn CreateInstance(self: *const IFunctionDiscoveryProviderFactory, pszSubCategory: ?[*:0]const u16, pszProviderInstanceIdentity: ?[*:0]const u16, iProviderInstanceContext: isize, pIPropertyStore: ?*IPropertyStore, pIFunctionDiscoveryProvider: ?*IFunctionDiscoveryProvider, ppIFunctionInstance: ?*?*IFunctionInstance) HRESULT {
         return self.vtable.CreateInstance(self, pszSubCategory, pszProviderInstanceIdentity, iProviderInstanceContext, pIPropertyStore, pIFunctionDiscoveryProvider, ppIFunctionInstance);
     }
-    pub fn CreateFunctionInstanceCollection(self: *const IFunctionDiscoveryProviderFactory, ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection) callconv(.Inline) HRESULT {
+    pub inline fn CreateFunctionInstanceCollection(self: *const IFunctionDiscoveryProviderFactory, ppIFunctionInstanceCollection: ?*?*IFunctionInstanceCollection) HRESULT {
         return self.vtable.CreateFunctionInstanceCollection(self, ppIFunctionInstanceCollection);
     }
 };
@@ -970,37 +970,37 @@ pub const IID_IFunctionDiscoveryProviderQuery = &IID_IFunctionDiscoveryProviderQ
 pub const IFunctionDiscoveryProviderQuery = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        IsInstanceQuery: *const fn(
+        IsInstanceQuery: *const fn (
             self: *const IFunctionDiscoveryProviderQuery,
             pisInstanceQuery: ?*BOOL,
             ppszConstraintValue: ?*?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsSubcategoryQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsSubcategoryQuery: *const fn (
             self: *const IFunctionDiscoveryProviderQuery,
             pisSubcategoryQuery: ?*BOOL,
             ppszConstraintValue: ?*?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetQueryConstraints: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetQueryConstraints: *const fn (
             self: *const IFunctionDiscoveryProviderQuery,
             ppIProviderQueryConstraints: ?*?*IProviderQueryConstraintCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyConstraints: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyConstraints: *const fn (
             self: *const IFunctionDiscoveryProviderQuery,
             ppIProviderPropertyConstraints: ?*?*IProviderPropertyConstraintCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn IsInstanceQuery(self: *const IFunctionDiscoveryProviderQuery, pisInstanceQuery: ?*BOOL, ppszConstraintValue: ?*?*u16) callconv(.Inline) HRESULT {
+    pub inline fn IsInstanceQuery(self: *const IFunctionDiscoveryProviderQuery, pisInstanceQuery: ?*BOOL, ppszConstraintValue: ?*?*u16) HRESULT {
         return self.vtable.IsInstanceQuery(self, pisInstanceQuery, ppszConstraintValue);
     }
-    pub fn IsSubcategoryQuery(self: *const IFunctionDiscoveryProviderQuery, pisSubcategoryQuery: ?*BOOL, ppszConstraintValue: ?*?*u16) callconv(.Inline) HRESULT {
+    pub inline fn IsSubcategoryQuery(self: *const IFunctionDiscoveryProviderQuery, pisSubcategoryQuery: ?*BOOL, ppszConstraintValue: ?*?*u16) HRESULT {
         return self.vtable.IsSubcategoryQuery(self, pisSubcategoryQuery, ppszConstraintValue);
     }
-    pub fn GetQueryConstraints(self: *const IFunctionDiscoveryProviderQuery, ppIProviderQueryConstraints: ?*?*IProviderQueryConstraintCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetQueryConstraints(self: *const IFunctionDiscoveryProviderQuery, ppIProviderQueryConstraints: ?*?*IProviderQueryConstraintCollection) HRESULT {
         return self.vtable.GetQueryConstraints(self, ppIProviderQueryConstraints);
     }
-    pub fn GetPropertyConstraints(self: *const IFunctionDiscoveryProviderQuery, ppIProviderPropertyConstraints: ?*?*IProviderPropertyConstraintCollection) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyConstraints(self: *const IFunctionDiscoveryProviderQuery, ppIProviderPropertyConstraints: ?*?*IProviderPropertyConstraintCollection) HRESULT {
         return self.vtable.GetPropertyConstraints(self, ppIProviderPropertyConstraints);
     }
 };
@@ -1011,51 +1011,51 @@ pub const IID_IProviderQueryConstraintCollection = &IID_IProviderQueryConstraint
 pub const IProviderQueryConstraintCollection = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IProviderQueryConstraintCollection,
             pdwCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Get: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Get: *const fn (
             self: *const IProviderQueryConstraintCollection,
             pszConstraintName: ?[*:0]const u16,
             ppszConstraintValue: ?*?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const IProviderQueryConstraintCollection,
             dwIndex: u32,
             ppszConstraintName: ?*?*u16,
             ppszConstraintValue: ?*?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IProviderQueryConstraintCollection,
             ppszConstraintName: ?*?*u16,
             ppszConstraintValue: ?*?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IProviderQueryConstraintCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IProviderQueryConstraintCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IProviderQueryConstraintCollection, pdwCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IProviderQueryConstraintCollection, pdwCount: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pdwCount);
     }
-    pub fn Get(self: *const IProviderQueryConstraintCollection, pszConstraintName: ?[*:0]const u16, ppszConstraintValue: ?*?*u16) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const IProviderQueryConstraintCollection, pszConstraintName: ?[*:0]const u16, ppszConstraintValue: ?*?*u16) HRESULT {
         return self.vtable.Get(self, pszConstraintName, ppszConstraintValue);
     }
-    pub fn Item(self: *const IProviderQueryConstraintCollection, dwIndex: u32, ppszConstraintName: ?*?*u16, ppszConstraintValue: ?*?*u16) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const IProviderQueryConstraintCollection, dwIndex: u32, ppszConstraintName: ?*?*u16, ppszConstraintValue: ?*?*u16) HRESULT {
         return self.vtable.Item(self, dwIndex, ppszConstraintName, ppszConstraintValue);
     }
-    pub fn Next(self: *const IProviderQueryConstraintCollection, ppszConstraintName: ?*?*u16, ppszConstraintValue: ?*?*u16) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IProviderQueryConstraintCollection, ppszConstraintName: ?*?*u16, ppszConstraintValue: ?*?*u16) HRESULT {
         return self.vtable.Next(self, ppszConstraintName, ppszConstraintValue);
     }
-    pub fn Skip(self: *const IProviderQueryConstraintCollection) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IProviderQueryConstraintCollection) HRESULT {
         return self.vtable.Skip(self);
     }
-    pub fn Reset(self: *const IProviderQueryConstraintCollection) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IProviderQueryConstraintCollection) HRESULT {
         return self.vtable.Reset(self);
     }
 };
@@ -1066,54 +1066,54 @@ pub const IID_IProviderPropertyConstraintCollection = &IID_IProviderPropertyCons
 pub const IProviderPropertyConstraintCollection = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IProviderPropertyConstraintCollection,
             pdwCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Get: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Get: *const fn (
             self: *const IProviderPropertyConstraintCollection,
             Key: ?*const PROPERTYKEY,
             pPropVar: ?*PROPVARIANT,
             pdwPropertyConstraint: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const IProviderPropertyConstraintCollection,
             dwIndex: u32,
             pKey: ?*PROPERTYKEY,
             pPropVar: ?*PROPVARIANT,
             pdwPropertyConstraint: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IProviderPropertyConstraintCollection,
             pKey: ?*PROPERTYKEY,
             pPropVar: ?*PROPVARIANT,
             pdwPropertyConstraint: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IProviderPropertyConstraintCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IProviderPropertyConstraintCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IProviderPropertyConstraintCollection, pdwCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IProviderPropertyConstraintCollection, pdwCount: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pdwCount);
     }
-    pub fn Get(self: *const IProviderPropertyConstraintCollection, Key: ?*const PROPERTYKEY, pPropVar: ?*PROPVARIANT, pdwPropertyConstraint: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const IProviderPropertyConstraintCollection, Key: ?*const PROPERTYKEY, pPropVar: ?*PROPVARIANT, pdwPropertyConstraint: ?*u32) HRESULT {
         return self.vtable.Get(self, Key, pPropVar, pdwPropertyConstraint);
     }
-    pub fn Item(self: *const IProviderPropertyConstraintCollection, dwIndex: u32, pKey: ?*PROPERTYKEY, pPropVar: ?*PROPVARIANT, pdwPropertyConstraint: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const IProviderPropertyConstraintCollection, dwIndex: u32, pKey: ?*PROPERTYKEY, pPropVar: ?*PROPVARIANT, pdwPropertyConstraint: ?*u32) HRESULT {
         return self.vtable.Item(self, dwIndex, pKey, pPropVar, pdwPropertyConstraint);
     }
-    pub fn Next(self: *const IProviderPropertyConstraintCollection, pKey: ?*PROPERTYKEY, pPropVar: ?*PROPVARIANT, pdwPropertyConstraint: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IProviderPropertyConstraintCollection, pKey: ?*PROPERTYKEY, pPropVar: ?*PROPVARIANT, pdwPropertyConstraint: ?*u32) HRESULT {
         return self.vtable.Next(self, pKey, pPropVar, pdwPropertyConstraint);
     }
-    pub fn Skip(self: *const IProviderPropertyConstraintCollection) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IProviderPropertyConstraintCollection) HRESULT {
         return self.vtable.Skip(self);
     }
-    pub fn Reset(self: *const IProviderPropertyConstraintCollection) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IProviderPropertyConstraintCollection) HRESULT {
         return self.vtable.Reset(self);
     }
 };
@@ -1124,16 +1124,16 @@ pub const IID_IFunctionDiscoveryServiceProvider = &IID_IFunctionDiscoveryService
 pub const IFunctionDiscoveryServiceProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IFunctionDiscoveryServiceProvider,
             pIFunctionInstance: ?*IFunctionInstance,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IFunctionDiscoveryServiceProvider, pIFunctionInstance: ?*IFunctionInstance, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IFunctionDiscoveryServiceProvider, pIFunctionInstance: ?*IFunctionInstance, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.Initialize(self, pIFunctionInstance, riid, ppv);
     }
 };
@@ -1150,28 +1150,28 @@ pub const IID_IPNPXAssociation = &IID_IPNPXAssociation_Value;
 pub const IPNPXAssociation = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Associate: *const fn(
+        Associate: *const fn (
             self: *const IPNPXAssociation,
             pszSubcategory: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unassociate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unassociate: *const fn (
             self: *const IPNPXAssociation,
             pszSubcategory: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IPNPXAssociation,
             pszSubcategory: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Associate(self: *const IPNPXAssociation, pszSubcategory: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Associate(self: *const IPNPXAssociation, pszSubcategory: ?[*:0]const u16) HRESULT {
         return self.vtable.Associate(self, pszSubcategory);
     }
-    pub fn Unassociate(self: *const IPNPXAssociation, pszSubcategory: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Unassociate(self: *const IPNPXAssociation, pszSubcategory: ?[*:0]const u16) HRESULT {
         return self.vtable.Unassociate(self, pszSubcategory);
     }
-    pub fn Delete(self: *const IPNPXAssociation, pszSubcategory: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IPNPXAssociation, pszSubcategory: ?[*:0]const u16) HRESULT {
         return self.vtable.Delete(self, pszSubcategory);
     }
 };
@@ -1182,31 +1182,31 @@ pub const IID_IPNPXDeviceAssociation = &IID_IPNPXDeviceAssociation_Value;
 pub const IPNPXDeviceAssociation = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Associate: *const fn(
+        Associate: *const fn (
             self: *const IPNPXDeviceAssociation,
             pszSubCategory: ?[*:0]const u16,
             pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unassociate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unassociate: *const fn (
             self: *const IPNPXDeviceAssociation,
             pszSubCategory: ?[*:0]const u16,
             pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IPNPXDeviceAssociation,
             pszSubcategory: ?[*:0]const u16,
             pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Associate(self: *const IPNPXDeviceAssociation, pszSubCategory: ?[*:0]const u16, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification) callconv(.Inline) HRESULT {
+    pub inline fn Associate(self: *const IPNPXDeviceAssociation, pszSubCategory: ?[*:0]const u16, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification) HRESULT {
         return self.vtable.Associate(self, pszSubCategory, pIFunctionDiscoveryNotification);
     }
-    pub fn Unassociate(self: *const IPNPXDeviceAssociation, pszSubCategory: ?[*:0]const u16, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification) callconv(.Inline) HRESULT {
+    pub inline fn Unassociate(self: *const IPNPXDeviceAssociation, pszSubCategory: ?[*:0]const u16, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification) HRESULT {
         return self.vtable.Unassociate(self, pszSubCategory, pIFunctionDiscoveryNotification);
     }
-    pub fn Delete(self: *const IPNPXDeviceAssociation, pszSubcategory: ?[*:0]const u16, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IPNPXDeviceAssociation, pszSubcategory: ?[*:0]const u16, pIFunctionDiscoveryNotification: ?*IFunctionDiscoveryNotification) HRESULT {
         return self.vtable.Delete(self, pszSubcategory, pIFunctionDiscoveryNotification);
     }
 };
@@ -1222,7 +1222,6 @@ pub const CLSID_FunctionInstanceCollection = &CLSID_FunctionInstanceCollection_V
 
 const CLSID_PropertyStoreCollection_Value = Guid.initString("edd36029-d753-4862-aa5b-5bccad2a4d29");
 pub const CLSID_PropertyStoreCollection = &CLSID_PropertyStoreCollection_Value;
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -1246,9 +1245,7 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 const STGM = @import("../system/com/structured_storage.zig").STGM;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

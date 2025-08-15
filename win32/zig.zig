@@ -280,7 +280,7 @@ pub fn messageBoxThenPanic(
 /// Calls std.debug.panic with a message that indicates what failed and the
 /// associated win32 error code.
 pub fn panicWin32(what: []const u8, err: win32.WIN32_ERROR) noreturn {
-    std.debug.panic("{s} failed, error={}", .{ what, err });
+    std.debug.panic("{s} failed, error={t}", .{ what, err });
 }
 
 /// Calls std.debug.panic with a message that indicates what failed and the

@@ -20,36 +20,36 @@ pub const AUDIO_MIN_FRAMERATE = @as(f64, 10);
 pub const AUDIO_MAX_FRAMERATE = @as(f64, 384000);
 pub const AUDIO_MIN_CHANNELS = @as(u32, 1);
 pub const AUDIO_MAX_CHANNELS = @as(u32, 4096);
-pub const PKEY_FX_Association = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 0 };
-pub const PKEY_FX_PreMixEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 1 };
-pub const PKEY_FX_PostMixEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 2 };
-pub const PKEY_FX_UserInterfaceClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 3 };
-pub const PKEY_FX_FriendlyName = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 4 };
-pub const PKEY_FX_StreamEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 5 };
-pub const PKEY_FX_ModeEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 6 };
-pub const PKEY_FX_EndpointEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 7 };
-pub const PKEY_FX_KeywordDetector_StreamEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 8 };
-pub const PKEY_FX_KeywordDetector_ModeEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 9 };
-pub const PKEY_FX_KeywordDetector_EndpointEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 10 };
-pub const PKEY_FX_Offload_StreamEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 11 };
-pub const PKEY_FX_Offload_ModeEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 12 };
-pub const PKEY_CompositeFX_StreamEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 13 };
-pub const PKEY_CompositeFX_ModeEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 14 };
-pub const PKEY_CompositeFX_EndpointEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 15 };
-pub const PKEY_CompositeFX_KeywordDetector_StreamEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 16 };
-pub const PKEY_CompositeFX_KeywordDetector_ModeEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 17 };
-pub const PKEY_CompositeFX_KeywordDetector_EndpointEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 18 };
-pub const PKEY_CompositeFX_Offload_StreamEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 19 };
-pub const PKEY_CompositeFX_Offload_ModeEffectClsid = PROPERTYKEY { .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 20 };
-pub const PKEY_SFX_ProcessingModes_Supported_For_Streaming = PROPERTYKEY { .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 5 };
-pub const PKEY_MFX_ProcessingModes_Supported_For_Streaming = PROPERTYKEY { .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 6 };
-pub const PKEY_EFX_ProcessingModes_Supported_For_Streaming = PROPERTYKEY { .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 7 };
-pub const PKEY_SFX_KeywordDetector_ProcessingModes_Supported_For_Streaming = PROPERTYKEY { .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 8 };
-pub const PKEY_MFX_KeywordDetector_ProcessingModes_Supported_For_Streaming = PROPERTYKEY { .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 9 };
-pub const PKEY_EFX_KeywordDetector_ProcessingModes_Supported_For_Streaming = PROPERTYKEY { .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 10 };
-pub const PKEY_SFX_Offload_ProcessingModes_Supported_For_Streaming = PROPERTYKEY { .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 11 };
-pub const PKEY_MFX_Offload_ProcessingModes_Supported_For_Streaming = PROPERTYKEY { .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 12 };
-pub const PKEY_APO_SWFallback_ProcessingModes = PROPERTYKEY { .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 13 };
+pub const PKEY_FX_Association = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 0 };
+pub const PKEY_FX_PreMixEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 1 };
+pub const PKEY_FX_PostMixEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 2 };
+pub const PKEY_FX_UserInterfaceClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 3 };
+pub const PKEY_FX_FriendlyName = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 4 };
+pub const PKEY_FX_StreamEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 5 };
+pub const PKEY_FX_ModeEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 6 };
+pub const PKEY_FX_EndpointEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 7 };
+pub const PKEY_FX_KeywordDetector_StreamEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 8 };
+pub const PKEY_FX_KeywordDetector_ModeEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 9 };
+pub const PKEY_FX_KeywordDetector_EndpointEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 10 };
+pub const PKEY_FX_Offload_StreamEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 11 };
+pub const PKEY_FX_Offload_ModeEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 12 };
+pub const PKEY_CompositeFX_StreamEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 13 };
+pub const PKEY_CompositeFX_ModeEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 14 };
+pub const PKEY_CompositeFX_EndpointEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 15 };
+pub const PKEY_CompositeFX_KeywordDetector_StreamEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 16 };
+pub const PKEY_CompositeFX_KeywordDetector_ModeEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 17 };
+pub const PKEY_CompositeFX_KeywordDetector_EndpointEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 18 };
+pub const PKEY_CompositeFX_Offload_StreamEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 19 };
+pub const PKEY_CompositeFX_Offload_ModeEffectClsid = PROPERTYKEY{ .fmtid = Guid.initString("d04e05a6-594b-4fb6-a80d-01af5eed7d1d"), .pid = 20 };
+pub const PKEY_SFX_ProcessingModes_Supported_For_Streaming = PROPERTYKEY{ .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 5 };
+pub const PKEY_MFX_ProcessingModes_Supported_For_Streaming = PROPERTYKEY{ .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 6 };
+pub const PKEY_EFX_ProcessingModes_Supported_For_Streaming = PROPERTYKEY{ .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 7 };
+pub const PKEY_SFX_KeywordDetector_ProcessingModes_Supported_For_Streaming = PROPERTYKEY{ .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 8 };
+pub const PKEY_MFX_KeywordDetector_ProcessingModes_Supported_For_Streaming = PROPERTYKEY{ .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 9 };
+pub const PKEY_EFX_KeywordDetector_ProcessingModes_Supported_For_Streaming = PROPERTYKEY{ .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 10 };
+pub const PKEY_SFX_Offload_ProcessingModes_Supported_For_Streaming = PROPERTYKEY{ .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 11 };
+pub const PKEY_MFX_Offload_ProcessingModes_Supported_For_Streaming = PROPERTYKEY{ .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 12 };
+pub const PKEY_APO_SWFallback_ProcessingModes = PROPERTYKEY{ .fmtid = Guid.initString("d3993a3f-99c2-4402-b5ec-a92a0367664b"), .pid = 13 };
 pub const SID_AudioProcessingObjectRTQueue = Guid.initString("458c1a1f-6899-4c12-99ac-e2e6ac253104");
 pub const SID_AudioProcessingObjectLoggingService = Guid.initString("8b8008af-09f9-456e-a173-bdb58499bce7");
 pub const AUDIOMEDIATYPE_EQUAL_FORMAT_TYPES = @as(u32, 2);
@@ -73,35 +73,35 @@ pub const IID_IAudioMediaType = &IID_IAudioMediaType_Value;
 pub const IAudioMediaType = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        IsCompressedFormat: *const fn(
+        IsCompressedFormat: *const fn (
             self: *const IAudioMediaType,
             pfCompressed: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsEqual: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsEqual: *const fn (
             self: *const IAudioMediaType,
             pIAudioType: ?*IAudioMediaType,
             pdwFlags: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAudioFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAudioFormat: *const fn (
             self: *const IAudioMediaType,
-        ) callconv(@import("std").os.windows.WINAPI) ?*WAVEFORMATEX,
-        GetUncompressedAudioFormat: *const fn(
+        ) callconv(.winapi) ?*WAVEFORMATEX,
+        GetUncompressedAudioFormat: *const fn (
             self: *const IAudioMediaType,
             pUncompressedAudioFormat: ?*UNCOMPRESSEDAUDIOFORMAT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn IsCompressedFormat(self: *const IAudioMediaType, pfCompressed: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn IsCompressedFormat(self: *const IAudioMediaType, pfCompressed: ?*BOOL) HRESULT {
         return self.vtable.IsCompressedFormat(self, pfCompressed);
     }
-    pub fn IsEqual(self: *const IAudioMediaType, pIAudioType: ?*IAudioMediaType, pdwFlags: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn IsEqual(self: *const IAudioMediaType, pIAudioType: ?*IAudioMediaType, pdwFlags: ?*u32) HRESULT {
         return self.vtable.IsEqual(self, pIAudioType, pdwFlags);
     }
-    pub fn GetAudioFormat(self: *const IAudioMediaType) callconv(.Inline) ?*WAVEFORMATEX {
+    pub inline fn GetAudioFormat(self: *const IAudioMediaType) ?*WAVEFORMATEX {
         return self.vtable.GetAudioFormat(self);
     }
-    pub fn GetUncompressedAudioFormat(self: *const IAudioMediaType, pUncompressedAudioFormat: ?*UNCOMPRESSEDAUDIOFORMAT) callconv(.Inline) HRESULT {
+    pub inline fn GetUncompressedAudioFormat(self: *const IAudioMediaType, pUncompressedAudioFormat: ?*UNCOMPRESSEDAUDIOFORMAT) HRESULT {
         return self.vtable.GetUncompressedAudioFormat(self, pUncompressedAudioFormat);
     }
 };
@@ -207,31 +207,31 @@ pub const IID_IAudioProcessingObjectRT = &IID_IAudioProcessingObjectRT_Value;
 pub const IAudioProcessingObjectRT = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        APOProcess: *const fn(
+        APOProcess: *const fn (
             self: *const IAudioProcessingObjectRT,
             u32NumInputConnections: u32,
             ppInputConnections: ?*?*APO_CONNECTION_PROPERTY,
             u32NumOutputConnections: u32,
             ppOutputConnections: ?*?*APO_CONNECTION_PROPERTY,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        CalcInputFrames: *const fn(
+        ) callconv(.winapi) void,
+        CalcInputFrames: *const fn (
             self: *const IAudioProcessingObjectRT,
             u32OutputFrameCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        CalcOutputFrames: *const fn(
+        ) callconv(.winapi) u32,
+        CalcOutputFrames: *const fn (
             self: *const IAudioProcessingObjectRT,
             u32InputFrameCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
+        ) callconv(.winapi) u32,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn APOProcess(self: *const IAudioProcessingObjectRT, u32NumInputConnections: u32, ppInputConnections: ?*?*APO_CONNECTION_PROPERTY, u32NumOutputConnections: u32, ppOutputConnections: ?*?*APO_CONNECTION_PROPERTY) callconv(.Inline) void {
+    pub inline fn APOProcess(self: *const IAudioProcessingObjectRT, u32NumInputConnections: u32, ppInputConnections: ?*?*APO_CONNECTION_PROPERTY, u32NumOutputConnections: u32, ppOutputConnections: ?*?*APO_CONNECTION_PROPERTY) void {
         return self.vtable.APOProcess(self, u32NumInputConnections, ppInputConnections, u32NumOutputConnections, ppOutputConnections);
     }
-    pub fn CalcInputFrames(self: *const IAudioProcessingObjectRT, u32OutputFrameCount: u32) callconv(.Inline) u32 {
+    pub inline fn CalcInputFrames(self: *const IAudioProcessingObjectRT, u32OutputFrameCount: u32) u32 {
         return self.vtable.CalcInputFrames(self, u32OutputFrameCount);
     }
-    pub fn CalcOutputFrames(self: *const IAudioProcessingObjectRT, u32InputFrameCount: u32) callconv(.Inline) u32 {
+    pub inline fn CalcOutputFrames(self: *const IAudioProcessingObjectRT, u32InputFrameCount: u32) u32 {
         return self.vtable.CalcOutputFrames(self, u32InputFrameCount);
     }
 };
@@ -241,23 +241,23 @@ pub const IID_IAudioProcessingObjectVBR = &IID_IAudioProcessingObjectVBR_Value;
 pub const IAudioProcessingObjectVBR = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CalcMaxInputFrames: *const fn(
+        CalcMaxInputFrames: *const fn (
             self: *const IAudioProcessingObjectVBR,
             u32MaxOutputFrameCount: u32,
             pu32InputFrameCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CalcMaxOutputFrames: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CalcMaxOutputFrames: *const fn (
             self: *const IAudioProcessingObjectVBR,
             u32MaxInputFrameCount: u32,
             pu32OutputFrameCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CalcMaxInputFrames(self: *const IAudioProcessingObjectVBR, u32MaxOutputFrameCount: u32, pu32InputFrameCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn CalcMaxInputFrames(self: *const IAudioProcessingObjectVBR, u32MaxOutputFrameCount: u32, pu32InputFrameCount: ?*u32) HRESULT {
         return self.vtable.CalcMaxInputFrames(self, u32MaxOutputFrameCount, pu32InputFrameCount);
     }
-    pub fn CalcMaxOutputFrames(self: *const IAudioProcessingObjectVBR, u32MaxInputFrameCount: u32, pu32OutputFrameCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn CalcMaxOutputFrames(self: *const IAudioProcessingObjectVBR, u32MaxInputFrameCount: u32, pu32OutputFrameCount: ?*u32) HRESULT {
         return self.vtable.CalcMaxOutputFrames(self, u32MaxInputFrameCount, pu32OutputFrameCount);
     }
 };
@@ -267,23 +267,23 @@ pub const IID_IAudioProcessingObjectConfiguration = &IID_IAudioProcessingObjectC
 pub const IAudioProcessingObjectConfiguration = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        LockForProcess: *const fn(
+        LockForProcess: *const fn (
             self: *const IAudioProcessingObjectConfiguration,
             u32NumInputConnections: u32,
             ppInputConnections: ?*?*APO_CONNECTION_DESCRIPTOR,
             u32NumOutputConnections: u32,
             ppOutputConnections: ?*?*APO_CONNECTION_DESCRIPTOR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockForProcess: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockForProcess: *const fn (
             self: *const IAudioProcessingObjectConfiguration,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn LockForProcess(self: *const IAudioProcessingObjectConfiguration, u32NumInputConnections: u32, ppInputConnections: ?*?*APO_CONNECTION_DESCRIPTOR, u32NumOutputConnections: u32, ppOutputConnections: ?*?*APO_CONNECTION_DESCRIPTOR) callconv(.Inline) HRESULT {
+    pub inline fn LockForProcess(self: *const IAudioProcessingObjectConfiguration, u32NumInputConnections: u32, ppInputConnections: ?*?*APO_CONNECTION_DESCRIPTOR, u32NumOutputConnections: u32, ppOutputConnections: ?*?*APO_CONNECTION_DESCRIPTOR) HRESULT {
         return self.vtable.LockForProcess(self, u32NumInputConnections, ppInputConnections, u32NumOutputConnections, ppOutputConnections);
     }
-    pub fn UnlockForProcess(self: *const IAudioProcessingObjectConfiguration) callconv(.Inline) HRESULT {
+    pub inline fn UnlockForProcess(self: *const IAudioProcessingObjectConfiguration) HRESULT {
         return self.vtable.UnlockForProcess(self);
     }
 };
@@ -293,60 +293,60 @@ pub const IID_IAudioProcessingObject = &IID_IAudioProcessingObject_Value;
 pub const IAudioProcessingObject = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Reset: *const fn(
+        Reset: *const fn (
             self: *const IAudioProcessingObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLatency: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLatency: *const fn (
             self: *const IAudioProcessingObject,
             pTime: ?*i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRegistrationProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRegistrationProperties: *const fn (
             self: *const IAudioProcessingObject,
             ppRegProps: ?*?*APO_REG_PROPERTIES,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Initialize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Initialize: *const fn (
             self: *const IAudioProcessingObject,
             cbDataSize: u32,
             pbyData: [*:0]u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsInputFormatSupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsInputFormatSupported: *const fn (
             self: *const IAudioProcessingObject,
             pOppositeFormat: ?*IAudioMediaType,
             pRequestedInputFormat: ?*IAudioMediaType,
             ppSupportedInputFormat: ?*?*IAudioMediaType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsOutputFormatSupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsOutputFormatSupported: *const fn (
             self: *const IAudioProcessingObject,
             pOppositeFormat: ?*IAudioMediaType,
             pRequestedOutputFormat: ?*IAudioMediaType,
             ppSupportedOutputFormat: ?*?*IAudioMediaType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInputChannelCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInputChannelCount: *const fn (
             self: *const IAudioProcessingObject,
             pu32ChannelCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Reset(self: *const IAudioProcessingObject) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IAudioProcessingObject) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn GetLatency(self: *const IAudioProcessingObject, pTime: ?*i64) callconv(.Inline) HRESULT {
+    pub inline fn GetLatency(self: *const IAudioProcessingObject, pTime: ?*i64) HRESULT {
         return self.vtable.GetLatency(self, pTime);
     }
-    pub fn GetRegistrationProperties(self: *const IAudioProcessingObject, ppRegProps: ?*?*APO_REG_PROPERTIES) callconv(.Inline) HRESULT {
+    pub inline fn GetRegistrationProperties(self: *const IAudioProcessingObject, ppRegProps: ?*?*APO_REG_PROPERTIES) HRESULT {
         return self.vtable.GetRegistrationProperties(self, ppRegProps);
     }
-    pub fn Initialize(self: *const IAudioProcessingObject, cbDataSize: u32, pbyData: [*:0]u8) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IAudioProcessingObject, cbDataSize: u32, pbyData: [*:0]u8) HRESULT {
         return self.vtable.Initialize(self, cbDataSize, pbyData);
     }
-    pub fn IsInputFormatSupported(self: *const IAudioProcessingObject, pOppositeFormat: ?*IAudioMediaType, pRequestedInputFormat: ?*IAudioMediaType, ppSupportedInputFormat: ?*?*IAudioMediaType) callconv(.Inline) HRESULT {
+    pub inline fn IsInputFormatSupported(self: *const IAudioProcessingObject, pOppositeFormat: ?*IAudioMediaType, pRequestedInputFormat: ?*IAudioMediaType, ppSupportedInputFormat: ?*?*IAudioMediaType) HRESULT {
         return self.vtable.IsInputFormatSupported(self, pOppositeFormat, pRequestedInputFormat, ppSupportedInputFormat);
     }
-    pub fn IsOutputFormatSupported(self: *const IAudioProcessingObject, pOppositeFormat: ?*IAudioMediaType, pRequestedOutputFormat: ?*IAudioMediaType, ppSupportedOutputFormat: ?*?*IAudioMediaType) callconv(.Inline) HRESULT {
+    pub inline fn IsOutputFormatSupported(self: *const IAudioProcessingObject, pOppositeFormat: ?*IAudioMediaType, pRequestedOutputFormat: ?*IAudioMediaType, ppSupportedOutputFormat: ?*?*IAudioMediaType) HRESULT {
         return self.vtable.IsOutputFormatSupported(self, pOppositeFormat, pRequestedOutputFormat, ppSupportedOutputFormat);
     }
-    pub fn GetInputChannelCount(self: *const IAudioProcessingObject, pu32ChannelCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetInputChannelCount(self: *const IAudioProcessingObject, pu32ChannelCount: ?*u32) HRESULT {
         return self.vtable.GetInputChannelCount(self, pu32ChannelCount);
     }
 };
@@ -356,22 +356,22 @@ pub const IID_IAudioDeviceModulesClient = &IID_IAudioDeviceModulesClient_Value;
 pub const IAudioDeviceModulesClient = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetAudioDeviceModulesManager: *const fn(
+        SetAudioDeviceModulesManager: *const fn (
             self: *const IAudioDeviceModulesClient,
             pAudioDeviceModulesManager: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetAudioDeviceModulesManager(self: *const IAudioDeviceModulesClient, pAudioDeviceModulesManager: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn SetAudioDeviceModulesManager(self: *const IAudioDeviceModulesClient, pAudioDeviceModulesManager: ?*IUnknown) HRESULT {
         return self.vtable.SetAudioDeviceModulesManager(self, pAudioDeviceModulesManager);
     }
 };
 
-pub const FNAPONOTIFICATIONCALLBACK = *const fn(
+pub const FNAPONOTIFICATIONCALLBACK = *const fn (
     pProperties: ?*APO_REG_PROPERTIES,
     pvRefData: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 const IID_IAudioSystemEffects_Value = Guid.initString("5fa00f27-add6-499a-8a9d-6b98521fa75b");
 pub const IID_IAudioSystemEffects = &IID_IAudioSystemEffects_Value;
@@ -388,17 +388,17 @@ pub const IID_IAudioSystemEffects2 = &IID_IAudioSystemEffects2_Value;
 pub const IAudioSystemEffects2 = extern union {
     pub const VTable = extern struct {
         base: IAudioSystemEffects.VTable,
-        GetEffectsList: *const fn(
+        GetEffectsList: *const fn (
             self: *const IAudioSystemEffects2,
             ppEffectsIds: ?*?*Guid,
             pcEffects: ?*u32,
             Event: ?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IAudioSystemEffects: IAudioSystemEffects,
     IUnknown: IUnknown,
-    pub fn GetEffectsList(self: *const IAudioSystemEffects2, ppEffectsIds: ?*?*Guid, pcEffects: ?*u32, Event: ?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn GetEffectsList(self: *const IAudioSystemEffects2, ppEffectsIds: ?*?*Guid, pcEffects: ?*u32, Event: ?HANDLE) HRESULT {
         return self.vtable.GetEffectsList(self, ppEffectsIds, pcEffects, Event);
     }
 };
@@ -408,30 +408,30 @@ pub const IID_IAudioSystemEffectsCustomFormats = &IID_IAudioSystemEffectsCustomF
 pub const IAudioSystemEffectsCustomFormats = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetFormatCount: *const fn(
+        GetFormatCount: *const fn (
             self: *const IAudioSystemEffectsCustomFormats,
             pcFormats: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFormat: *const fn (
             self: *const IAudioSystemEffectsCustomFormats,
             nFormat: u32,
             ppFormat: ?*?*IAudioMediaType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFormatRepresentation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFormatRepresentation: *const fn (
             self: *const IAudioSystemEffectsCustomFormats,
             nFormat: u32,
             ppwstrFormatRep: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetFormatCount(self: *const IAudioSystemEffectsCustomFormats, pcFormats: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFormatCount(self: *const IAudioSystemEffectsCustomFormats, pcFormats: ?*u32) HRESULT {
         return self.vtable.GetFormatCount(self, pcFormats);
     }
-    pub fn GetFormat(self: *const IAudioSystemEffectsCustomFormats, nFormat: u32, ppFormat: ?*?*IAudioMediaType) callconv(.Inline) HRESULT {
+    pub inline fn GetFormat(self: *const IAudioSystemEffectsCustomFormats, nFormat: u32, ppFormat: ?*?*IAudioMediaType) HRESULT {
         return self.vtable.GetFormat(self, nFormat, ppFormat);
     }
-    pub fn GetFormatRepresentation(self: *const IAudioSystemEffectsCustomFormats, nFormat: u32, ppwstrFormatRep: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetFormatRepresentation(self: *const IAudioSystemEffectsCustomFormats, nFormat: u32, ppwstrFormatRep: ?*?PWSTR) HRESULT {
         return self.vtable.GetFormatRepresentation(self, nFormat, ppwstrFormatRep);
     }
 };
@@ -441,32 +441,32 @@ pub const IID_IApoAuxiliaryInputConfiguration = &IID_IApoAuxiliaryInputConfigura
 pub const IApoAuxiliaryInputConfiguration = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AddAuxiliaryInput: *const fn(
+        AddAuxiliaryInput: *const fn (
             self: *const IApoAuxiliaryInputConfiguration,
             dwInputId: u32,
             cbDataSize: u32,
             pbyData: [*:0]u8,
             pInputConnection: ?*APO_CONNECTION_DESCRIPTOR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAuxiliaryInput: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAuxiliaryInput: *const fn (
             self: *const IApoAuxiliaryInputConfiguration,
             dwInputId: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsInputFormatSupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsInputFormatSupported: *const fn (
             self: *const IApoAuxiliaryInputConfiguration,
             pRequestedInputFormat: ?*IAudioMediaType,
             ppSupportedInputFormat: ?*?*IAudioMediaType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AddAuxiliaryInput(self: *const IApoAuxiliaryInputConfiguration, dwInputId: u32, cbDataSize: u32, pbyData: [*:0]u8, pInputConnection: ?*APO_CONNECTION_DESCRIPTOR) callconv(.Inline) HRESULT {
+    pub inline fn AddAuxiliaryInput(self: *const IApoAuxiliaryInputConfiguration, dwInputId: u32, cbDataSize: u32, pbyData: [*:0]u8, pInputConnection: ?*APO_CONNECTION_DESCRIPTOR) HRESULT {
         return self.vtable.AddAuxiliaryInput(self, dwInputId, cbDataSize, pbyData, pInputConnection);
     }
-    pub fn RemoveAuxiliaryInput(self: *const IApoAuxiliaryInputConfiguration, dwInputId: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAuxiliaryInput(self: *const IApoAuxiliaryInputConfiguration, dwInputId: u32) HRESULT {
         return self.vtable.RemoveAuxiliaryInput(self, dwInputId);
     }
-    pub fn IsInputFormatSupported(self: *const IApoAuxiliaryInputConfiguration, pRequestedInputFormat: ?*IAudioMediaType, ppSupportedInputFormat: ?*?*IAudioMediaType) callconv(.Inline) HRESULT {
+    pub inline fn IsInputFormatSupported(self: *const IApoAuxiliaryInputConfiguration, pRequestedInputFormat: ?*IAudioMediaType, ppSupportedInputFormat: ?*?*IAudioMediaType) HRESULT {
         return self.vtable.IsInputFormatSupported(self, pRequestedInputFormat, ppSupportedInputFormat);
     }
 };
@@ -476,15 +476,15 @@ pub const IID_IApoAuxiliaryInputRT = &IID_IApoAuxiliaryInputRT_Value;
 pub const IApoAuxiliaryInputRT = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AcceptInput: *const fn(
+        AcceptInput: *const fn (
             self: *const IApoAuxiliaryInputRT,
             dwInputId: u32,
             pInputConnection: ?*const APO_CONNECTION_PROPERTY,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AcceptInput(self: *const IApoAuxiliaryInputRT, dwInputId: u32, pInputConnection: ?*const APO_CONNECTION_PROPERTY) callconv(.Inline) void {
+    pub inline fn AcceptInput(self: *const IApoAuxiliaryInputRT, dwInputId: u32, pInputConnection: ?*const APO_CONNECTION_PROPERTY) void {
         return self.vtable.AcceptInput(self, dwInputId, pInputConnection);
     }
 };
@@ -543,26 +543,26 @@ pub const IID_IAudioSystemEffects3 = &IID_IAudioSystemEffects3_Value;
 pub const IAudioSystemEffects3 = extern union {
     pub const VTable = extern struct {
         base: IAudioSystemEffects2.VTable,
-        GetControllableSystemEffectsList: *const fn(
+        GetControllableSystemEffectsList: *const fn (
             self: *const IAudioSystemEffects3,
             effects: ?*?*AUDIO_SYSTEMEFFECT,
             numEffects: ?*u32,
             event: ?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAudioSystemEffectState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAudioSystemEffectState: *const fn (
             self: *const IAudioSystemEffects3,
             effectId: Guid,
             state: AUDIO_SYSTEMEFFECT_STATE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IAudioSystemEffects2: IAudioSystemEffects2,
     IAudioSystemEffects: IAudioSystemEffects,
     IUnknown: IUnknown,
-    pub fn GetControllableSystemEffectsList(self: *const IAudioSystemEffects3, effects: ?*?*AUDIO_SYSTEMEFFECT, numEffects: ?*u32, event: ?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn GetControllableSystemEffectsList(self: *const IAudioSystemEffects3, effects: ?*?*AUDIO_SYSTEMEFFECT, numEffects: ?*u32, event: ?HANDLE) HRESULT {
         return self.vtable.GetControllableSystemEffectsList(self, effects, numEffects, event);
     }
-    pub fn SetAudioSystemEffectState(self: *const IAudioSystemEffects3, effectId: Guid, state: AUDIO_SYSTEMEFFECT_STATE) callconv(.Inline) HRESULT {
+    pub inline fn SetAudioSystemEffectState(self: *const IAudioSystemEffects3, effectId: Guid, state: AUDIO_SYSTEMEFFECT_STATE) HRESULT {
         return self.vtable.SetAudioSystemEffectState(self, effectId, state);
     }
 };
@@ -583,14 +583,14 @@ pub const IID_IAudioProcessingObjectRTQueueService = &IID_IAudioProcessingObject
 pub const IAudioProcessingObjectRTQueueService = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetRealTimeWorkQueue: *const fn(
+        GetRealTimeWorkQueue: *const fn (
             self: *const IAudioProcessingObjectRTQueueService,
             workQueueId: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetRealTimeWorkQueue(self: *const IAudioProcessingObjectRTQueueService, workQueueId: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetRealTimeWorkQueue(self: *const IAudioProcessingObjectRTQueueService, workQueueId: ?*u32) HRESULT {
         return self.vtable.GetRealTimeWorkQueue(self, workQueueId);
     }
 };
@@ -615,15 +615,15 @@ pub const IID_IAudioProcessingObjectLoggingService = &IID_IAudioProcessingObject
 pub const IAudioProcessingObjectLoggingService = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ApoLog: *const fn(
+        ApoLog: *const fn (
             self: *const IAudioProcessingObjectLoggingService,
             level: APO_LOG_LEVEL,
             format: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ApoLog(self: *const IAudioProcessingObjectLoggingService, level: APO_LOG_LEVEL, format: ?[*:0]const u16) callconv(.Inline) void {
+    pub inline fn ApoLog(self: *const IAudioProcessingObjectLoggingService, level: APO_LOG_LEVEL, format: ?[*:0]const u16) void {
         return self.vtable.ApoLog(self, level, format);
     }
 };
@@ -694,26 +694,25 @@ pub const IID_IAudioProcessingObjectNotifications = &IID_IAudioProcessingObjectN
 pub const IAudioProcessingObjectNotifications = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetApoNotificationRegistrationInfo: *const fn(
+        GetApoNotificationRegistrationInfo: *const fn (
             self: *const IAudioProcessingObjectNotifications,
             apoNotifications: [*]?*APO_NOTIFICATION_DESCRIPTOR,
             count: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        HandleNotification: *const fn(
+        ) callconv(.winapi) HRESULT,
+        HandleNotification: *const fn (
             self: *const IAudioProcessingObjectNotifications,
             apoNotification: ?*APO_NOTIFICATION,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetApoNotificationRegistrationInfo(self: *const IAudioProcessingObjectNotifications, apoNotifications: [*]?*APO_NOTIFICATION_DESCRIPTOR, count: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetApoNotificationRegistrationInfo(self: *const IAudioProcessingObjectNotifications, apoNotifications: [*]?*APO_NOTIFICATION_DESCRIPTOR, count: ?*u32) HRESULT {
         return self.vtable.GetApoNotificationRegistrationInfo(self, apoNotifications, count);
     }
-    pub fn HandleNotification(self: *const IAudioProcessingObjectNotifications, apoNotification: ?*APO_NOTIFICATION) callconv(.Inline) void {
+    pub inline fn HandleNotification(self: *const IAudioProcessingObjectNotifications, apoNotification: ?*APO_NOTIFICATION) void {
         return self.vtable.HandleNotification(self, apoNotification);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -743,11 +742,11 @@ const WAVEFORMATEX = @import("../../media/audio.zig").WAVEFORMATEX;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "FNAPONOTIFICATIONCALLBACK")) { _ = FNAPONOTIFICATIONCALLBACK; }
+    if (@hasDecl(@This(), "FNAPONOTIFICATIONCALLBACK")) {
+        _ = FNAPONOTIFICATIONCALLBACK;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

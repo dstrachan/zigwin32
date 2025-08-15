@@ -12,34 +12,34 @@ pub const IID_IWICImageEncoder = &IID_IWICImageEncoder_Value;
 pub const IWICImageEncoder = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        WriteFrame: *const fn(
+        WriteFrame: *const fn (
             self: *const IWICImageEncoder,
             pImage: ?*ID2D1Image,
             pFrameEncode: ?*IWICBitmapFrameEncode,
             pImageParameters: ?*const WICImageParameters,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteFrameThumbnail: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteFrameThumbnail: *const fn (
             self: *const IWICImageEncoder,
             pImage: ?*ID2D1Image,
             pFrameEncode: ?*IWICBitmapFrameEncode,
             pImageParameters: ?*const WICImageParameters,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteThumbnail: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteThumbnail: *const fn (
             self: *const IWICImageEncoder,
             pImage: ?*ID2D1Image,
             pEncoder: ?*IWICBitmapEncoder,
             pImageParameters: ?*const WICImageParameters,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn WriteFrame(self: *const IWICImageEncoder, pImage: ?*ID2D1Image, pFrameEncode: ?*IWICBitmapFrameEncode, pImageParameters: ?*const WICImageParameters) callconv(.Inline) HRESULT {
+    pub inline fn WriteFrame(self: *const IWICImageEncoder, pImage: ?*ID2D1Image, pFrameEncode: ?*IWICBitmapFrameEncode, pImageParameters: ?*const WICImageParameters) HRESULT {
         return self.vtable.WriteFrame(self, pImage, pFrameEncode, pImageParameters);
     }
-    pub fn WriteFrameThumbnail(self: *const IWICImageEncoder, pImage: ?*ID2D1Image, pFrameEncode: ?*IWICBitmapFrameEncode, pImageParameters: ?*const WICImageParameters) callconv(.Inline) HRESULT {
+    pub inline fn WriteFrameThumbnail(self: *const IWICImageEncoder, pImage: ?*ID2D1Image, pFrameEncode: ?*IWICBitmapFrameEncode, pImageParameters: ?*const WICImageParameters) HRESULT {
         return self.vtable.WriteFrameThumbnail(self, pImage, pFrameEncode, pImageParameters);
     }
-    pub fn WriteThumbnail(self: *const IWICImageEncoder, pImage: ?*ID2D1Image, pEncoder: ?*IWICBitmapEncoder, pImageParameters: ?*const WICImageParameters) callconv(.Inline) HRESULT {
+    pub inline fn WriteThumbnail(self: *const IWICImageEncoder, pImage: ?*ID2D1Image, pEncoder: ?*IWICBitmapEncoder, pImageParameters: ?*const WICImageParameters) HRESULT {
         return self.vtable.WriteThumbnail(self, pImage, pEncoder, pImageParameters);
     }
 };
@@ -50,20 +50,19 @@ pub const IID_IWICImagingFactory2 = &IID_IWICImagingFactory2_Value;
 pub const IWICImagingFactory2 = extern union {
     pub const VTable = extern struct {
         base: IWICImagingFactory.VTable,
-        CreateImageEncoder: *const fn(
+        CreateImageEncoder: *const fn (
             self: *const IWICImagingFactory2,
             pD2DDevice: ?*ID2D1Device,
             ppWICImageEncoder: ?*?*IWICImageEncoder,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWICImagingFactory: IWICImagingFactory,
     IUnknown: IUnknown,
-    pub fn CreateImageEncoder(self: *const IWICImagingFactory2, pD2DDevice: ?*ID2D1Device, ppWICImageEncoder: ?*?*IWICImageEncoder) callconv(.Inline) HRESULT {
+    pub inline fn CreateImageEncoder(self: *const IWICImagingFactory2, pD2DDevice: ?*ID2D1Device, ppWICImageEncoder: ?*?*IWICImageEncoder) HRESULT {
         return self.vtable.CreateImageEncoder(self, pD2DDevice, ppWICImageEncoder);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -86,9 +85,7 @@ const IWICImagingFactory = @import("../../graphics/imaging.zig").IWICImagingFact
 const WICImageParameters = @import("../../graphics/imaging.zig").WICImageParameters;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

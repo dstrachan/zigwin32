@@ -91,37 +91,37 @@ pub const SIP_INDIRECT_DATA = extern struct {
     Digest: CRYPTOAPI_BLOB,
 };
 
-pub const pCryptSIPGetSignedDataMsg = *const fn(
+pub const pCryptSIPGetSignedDataMsg = *const fn (
     pSubjectInfo: ?*SIP_SUBJECTINFO,
     pdwEncodingType: ?*u32,
     dwIndex: u32,
     pcbSignedDataMsg: ?*u32,
     pbSignedDataMsg: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const pCryptSIPPutSignedDataMsg = *const fn(
+pub const pCryptSIPPutSignedDataMsg = *const fn (
     pSubjectInfo: ?*SIP_SUBJECTINFO,
     dwEncodingType: u32,
     pdwIndex: ?*u32,
     cbSignedDataMsg: u32,
     pbSignedDataMsg: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const pCryptSIPCreateIndirectData = *const fn(
+pub const pCryptSIPCreateIndirectData = *const fn (
     pSubjectInfo: ?*SIP_SUBJECTINFO,
     pcbIndirectData: ?*u32,
     pIndirectData: ?*SIP_INDIRECT_DATA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const pCryptSIPVerifyIndirectData = *const fn(
+pub const pCryptSIPVerifyIndirectData = *const fn (
     pSubjectInfo: ?*SIP_SUBJECTINFO,
     pIndirectData: ?*SIP_INDIRECT_DATA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const pCryptSIPRemoveSignedDataMsg = *const fn(
+pub const pCryptSIPRemoveSignedDataMsg = *const fn (
     pSubjectInfo: ?*SIP_SUBJECTINFO,
     dwIndex: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const SIP_DISPATCH_INFO = extern struct {
     cbSize: u32,
@@ -133,15 +133,15 @@ pub const SIP_DISPATCH_INFO = extern struct {
     pfRemove: ?pCryptSIPRemoveSignedDataMsg,
 };
 
-pub const pfnIsFileSupported = *const fn(
+pub const pfnIsFileSupported = *const fn (
     hFile: ?HANDLE,
     pgSubject: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const pfnIsFileSupportedName = *const fn(
+pub const pfnIsFileSupportedName = *const fn (
     pwszFileName: ?PWSTR,
     pgSubject: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const SIP_ADD_NEWPROVIDER = extern struct {
     cbStruct: u32,
@@ -158,19 +158,18 @@ pub const SIP_ADD_NEWPROVIDER = extern struct {
     pwszGetCapFuncName: ?PWSTR,
 };
 
-pub const pCryptSIPGetCaps = *const fn(
+pub const pCryptSIPGetCaps = *const fn (
     pSubjInfo: ?*SIP_SUBJECTINFO,
     pCaps: ?*SIP_CAP_SET_V3,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const pCryptSIPGetSealedDigest = *const fn(
+pub const pCryptSIPGetSealedDigest = *const fn (
     pSubjectInfo: ?*SIP_SUBJECTINFO,
     pSig: ?[*:0]const u8,
     dwSig: u32,
     pbDigest: ?[*:0]u8,
     pcbDigest: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (12)
@@ -182,7 +181,7 @@ pub extern "wintrust" fn CryptSIPGetSignedDataMsg(
     dwIndex: u32,
     pcbSignedDataMsg: ?*u32,
     pbSignedDataMsg: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "wintrust" fn CryptSIPPutSignedDataMsg(
@@ -191,63 +190,63 @@ pub extern "wintrust" fn CryptSIPPutSignedDataMsg(
     pdwIndex: ?*u32,
     cbSignedDataMsg: u32,
     pbSignedDataMsg: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "wintrust" fn CryptSIPCreateIndirectData(
     pSubjectInfo: ?*SIP_SUBJECTINFO,
     pcbIndirectData: ?*u32,
     pIndirectData: ?*SIP_INDIRECT_DATA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "wintrust" fn CryptSIPVerifyIndirectData(
     pSubjectInfo: ?*SIP_SUBJECTINFO,
     pIndirectData: ?*SIP_INDIRECT_DATA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "wintrust" fn CryptSIPRemoveSignedDataMsg(
     pSubjectInfo: ?*SIP_SUBJECTINFO,
     dwIndex: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "crypt32" fn CryptSIPLoad(
     pgSubject: ?*const Guid,
     dwFlags: u32,
     pSipDispatch: ?*SIP_DISPATCH_INFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "crypt32" fn CryptSIPRetrieveSubjectGuid(
     FileName: ?[*:0]const u16,
     hFileIn: ?HANDLE,
     pgSubject: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "crypt32" fn CryptSIPRetrieveSubjectGuidForCatalogFile(
     FileName: ?[*:0]const u16,
     hFileIn: ?HANDLE,
     pgSubject: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "crypt32" fn CryptSIPAddProvider(
     psNewProv: ?*SIP_ADD_NEWPROVIDER,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "crypt32" fn CryptSIPRemoveProvider(
     pgProv: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "wintrust" fn CryptSIPGetCaps(
     pSubjInfo: ?*SIP_SUBJECTINFO,
     pCaps: ?*SIP_CAP_SET_V3,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "wintrust" fn CryptSIPGetSealedDigest(
     pSubjectInfo: ?*SIP_SUBJECTINFO,
@@ -255,8 +254,7 @@ pub extern "wintrust" fn CryptSIPGetSealedDigest(
     dwSig: u32,
     pbDigest: ?[*:0]u8,
     pcbDigest: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -276,19 +274,35 @@ const PWSTR = @import("../../foundation.zig").PWSTR;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "pCryptSIPGetSignedDataMsg")) { _ = pCryptSIPGetSignedDataMsg; }
-    if (@hasDecl(@This(), "pCryptSIPPutSignedDataMsg")) { _ = pCryptSIPPutSignedDataMsg; }
-    if (@hasDecl(@This(), "pCryptSIPCreateIndirectData")) { _ = pCryptSIPCreateIndirectData; }
-    if (@hasDecl(@This(), "pCryptSIPVerifyIndirectData")) { _ = pCryptSIPVerifyIndirectData; }
-    if (@hasDecl(@This(), "pCryptSIPRemoveSignedDataMsg")) { _ = pCryptSIPRemoveSignedDataMsg; }
-    if (@hasDecl(@This(), "pfnIsFileSupported")) { _ = pfnIsFileSupported; }
-    if (@hasDecl(@This(), "pfnIsFileSupportedName")) { _ = pfnIsFileSupportedName; }
-    if (@hasDecl(@This(), "pCryptSIPGetCaps")) { _ = pCryptSIPGetCaps; }
-    if (@hasDecl(@This(), "pCryptSIPGetSealedDigest")) { _ = pCryptSIPGetSealedDigest; }
+    if (@hasDecl(@This(), "pCryptSIPGetSignedDataMsg")) {
+        _ = pCryptSIPGetSignedDataMsg;
+    }
+    if (@hasDecl(@This(), "pCryptSIPPutSignedDataMsg")) {
+        _ = pCryptSIPPutSignedDataMsg;
+    }
+    if (@hasDecl(@This(), "pCryptSIPCreateIndirectData")) {
+        _ = pCryptSIPCreateIndirectData;
+    }
+    if (@hasDecl(@This(), "pCryptSIPVerifyIndirectData")) {
+        _ = pCryptSIPVerifyIndirectData;
+    }
+    if (@hasDecl(@This(), "pCryptSIPRemoveSignedDataMsg")) {
+        _ = pCryptSIPRemoveSignedDataMsg;
+    }
+    if (@hasDecl(@This(), "pfnIsFileSupported")) {
+        _ = pfnIsFileSupported;
+    }
+    if (@hasDecl(@This(), "pfnIsFileSupportedName")) {
+        _ = pfnIsFileSupportedName;
+    }
+    if (@hasDecl(@This(), "pCryptSIPGetCaps")) {
+        _ = pCryptSIPGetCaps;
+    }
+    if (@hasDecl(@This(), "pCryptSIPGetSealedDigest")) {
+        _ = pCryptSIPGetSealedDigest;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

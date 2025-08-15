@@ -1179,33 +1179,33 @@ pub const SSWF_WINDOW = SOUNDSENTRY_WINDOWS_EFFECT.WINDOW;
 
 // TODO: this type has a FreeFunc 'UnhookWinEvent', what can Zig do with this information?
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HWINEVENTHOOK = *opaque{};
+pub const HWINEVENTHOOK = *opaque {};
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HUIANODE = *opaque{};
+pub const HUIANODE = *opaque {};
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HUIAPATTERNOBJECT = *opaque{};
+pub const HUIAPATTERNOBJECT = *opaque {};
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HUIATEXTRANGE = *opaque{};
+pub const HUIATEXTRANGE = *opaque {};
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HUIAEVENT = *opaque{};
+pub const HUIAEVENT = *opaque {};
 
 // TODO: this type is limited to platform 'windows8.0'
 pub const IRicheditWindowlessAccessibility = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateProvider: *const fn(
+        CreateProvider: *const fn (
             self: *const IRicheditWindowlessAccessibility,
             pSite: ?*IRawElementProviderWindowlessSite,
             ppProvider: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateProvider(self: *const IRicheditWindowlessAccessibility, pSite: ?*IRawElementProviderWindowlessSite, ppProvider: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn CreateProvider(self: *const IRicheditWindowlessAccessibility, pSite: ?*IRawElementProviderWindowlessSite, ppProvider: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.CreateProvider(self, pSite, ppProvider);
     }
 };
@@ -1214,20 +1214,20 @@ pub const IRicheditWindowlessAccessibility = extern union {
 pub const IRichEditUiaInformation = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetBoundaryRectangle: *const fn(
+        GetBoundaryRectangle: *const fn (
             self: *const IRichEditUiaInformation,
             pUiaRect: ?*UiaRect,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsVisible: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsVisible: *const fn (
             self: *const IRichEditUiaInformation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetBoundaryRectangle(self: *const IRichEditUiaInformation, pUiaRect: ?*UiaRect) callconv(.Inline) HRESULT {
+    pub inline fn GetBoundaryRectangle(self: *const IRichEditUiaInformation, pUiaRect: ?*UiaRect) HRESULT {
         return self.vtable.GetBoundaryRectangle(self, pUiaRect);
     }
-    pub fn IsVisible(self: *const IRichEditUiaInformation) callconv(.Inline) HRESULT {
+    pub inline fn IsVisible(self: *const IRichEditUiaInformation) HRESULT {
         return self.vtable.IsVisible(self);
     }
 };
@@ -1235,46 +1235,46 @@ pub const IRichEditUiaInformation = extern union {
 const CLSID_CAccPropServices_Value = Guid.initString("b5f8350b-0548-48b1-a6ee-88bd00b4a5e7");
 pub const CLSID_CAccPropServices = &CLSID_CAccPropServices_Value;
 
-pub const LPFNLRESULTFROMOBJECT = *const fn(
+pub const LPFNLRESULTFROMOBJECT = *const fn (
     riid: ?*const Guid,
     wParam: WPARAM,
     punk: ?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
-pub const LPFNOBJECTFROMLRESULT = *const fn(
+pub const LPFNOBJECTFROMLRESULT = *const fn (
     lResult: LRESULT,
     riid: ?*const Guid,
     wParam: WPARAM,
     ppvObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const LPFNACCESSIBLEOBJECTFROMWINDOW = *const fn(
+pub const LPFNACCESSIBLEOBJECTFROMWINDOW = *const fn (
     hwnd: ?HWND,
     dwId: u32,
     riid: ?*const Guid,
     ppvObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const LPFNACCESSIBLEOBJECTFROMPOINT = *const fn(
+pub const LPFNACCESSIBLEOBJECTFROMPOINT = *const fn (
     ptScreen: POINT,
     ppacc: ?*?*IAccessible,
     pvarChild: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const LPFNCREATESTDACCESSIBLEOBJECT = *const fn(
+pub const LPFNCREATESTDACCESSIBLEOBJECT = *const fn (
     hwnd: ?HWND,
     idObject: i32,
     riid: ?*const Guid,
     ppvObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const LPFNACCESSIBLECHILDREN = *const fn(
+pub const LPFNACCESSIBLECHILDREN = *const fn (
     paccContainer: ?*IAccessible,
     iChildStart: i32,
     cChildren: i32,
     rgvarChildren: ?*VARIANT,
     pcObtained: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub const MSAAMENUINFO = extern struct {
     dwMSAASignature: u32,
@@ -1289,180 +1289,180 @@ pub const IAccessible = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_accParent: *const fn(
+        get_accParent: *const fn (
             self: *const IAccessible,
             ppdispParent: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_accChildCount: *const fn(
+        get_accChildCount: *const fn (
             self: *const IAccessible,
             pcountChildren: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accChild: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accChild: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             ppdispChild: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accName: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             pszName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accValue: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             pszValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accDescription: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             pszDescription: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accRole: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accRole: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             pvarRole: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accState: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             pvarState: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accHelp: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accHelp: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             pszHelp: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accHelpTopic: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accHelpTopic: *const fn (
             self: *const IAccessible,
             pszHelpFile: ?*?BSTR,
             varChild: VARIANT,
             pidTopic: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accKeyboardShortcut: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accKeyboardShortcut: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             pszKeyboardShortcut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_accFocus: *const fn(
+        get_accFocus: *const fn (
             self: *const IAccessible,
             pvarChild: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_accSelection: *const fn(
+        get_accSelection: *const fn (
             self: *const IAccessible,
             pvarChildren: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        get_accDefaultAction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        get_accDefaultAction: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             pszDefaultAction: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        accSelect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        accSelect: *const fn (
             self: *const IAccessible,
             flagsSelect: i32,
             varChild: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        accLocation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        accLocation: *const fn (
             self: *const IAccessible,
             pxLeft: ?*i32,
             pyTop: ?*i32,
             pcxWidth: ?*i32,
             pcyHeight: ?*i32,
             varChild: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        accNavigate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        accNavigate: *const fn (
             self: *const IAccessible,
             navDir: i32,
             varStart: VARIANT,
             pvarEndUpAt: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        accHitTest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        accHitTest: *const fn (
             self: *const IAccessible,
             xLeft: i32,
             yTop: i32,
             pvarChild: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        accDoDefaultAction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        accDoDefaultAction: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_accName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_accName: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             szName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        put_accValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        put_accValue: *const fn (
             self: *const IAccessible,
             varChild: VARIANT,
             szValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_accParent(self: *const IAccessible, ppdispParent: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn get_accParent(self: *const IAccessible, ppdispParent: ?*?*IDispatch) HRESULT {
         return self.vtable.get_accParent(self, ppdispParent);
     }
-    pub fn get_accChildCount(self: *const IAccessible, pcountChildren: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_accChildCount(self: *const IAccessible, pcountChildren: ?*i32) HRESULT {
         return self.vtable.get_accChildCount(self, pcountChildren);
     }
-    pub fn get_accChild(self: *const IAccessible, varChild: VARIANT, ppdispChild: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn get_accChild(self: *const IAccessible, varChild: VARIANT, ppdispChild: ?*?*IDispatch) HRESULT {
         return self.vtable.get_accChild(self, varChild, ppdispChild);
     }
-    pub fn get_accName(self: *const IAccessible, varChild: VARIANT, pszName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_accName(self: *const IAccessible, varChild: VARIANT, pszName: ?*?BSTR) HRESULT {
         return self.vtable.get_accName(self, varChild, pszName);
     }
-    pub fn get_accValue(self: *const IAccessible, varChild: VARIANT, pszValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_accValue(self: *const IAccessible, varChild: VARIANT, pszValue: ?*?BSTR) HRESULT {
         return self.vtable.get_accValue(self, varChild, pszValue);
     }
-    pub fn get_accDescription(self: *const IAccessible, varChild: VARIANT, pszDescription: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_accDescription(self: *const IAccessible, varChild: VARIANT, pszDescription: ?*?BSTR) HRESULT {
         return self.vtable.get_accDescription(self, varChild, pszDescription);
     }
-    pub fn get_accRole(self: *const IAccessible, varChild: VARIANT, pvarRole: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_accRole(self: *const IAccessible, varChild: VARIANT, pvarRole: ?*VARIANT) HRESULT {
         return self.vtable.get_accRole(self, varChild, pvarRole);
     }
-    pub fn get_accState(self: *const IAccessible, varChild: VARIANT, pvarState: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_accState(self: *const IAccessible, varChild: VARIANT, pvarState: ?*VARIANT) HRESULT {
         return self.vtable.get_accState(self, varChild, pvarState);
     }
-    pub fn get_accHelp(self: *const IAccessible, varChild: VARIANT, pszHelp: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_accHelp(self: *const IAccessible, varChild: VARIANT, pszHelp: ?*?BSTR) HRESULT {
         return self.vtable.get_accHelp(self, varChild, pszHelp);
     }
-    pub fn get_accHelpTopic(self: *const IAccessible, pszHelpFile: ?*?BSTR, varChild: VARIANT, pidTopic: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_accHelpTopic(self: *const IAccessible, pszHelpFile: ?*?BSTR, varChild: VARIANT, pidTopic: ?*i32) HRESULT {
         return self.vtable.get_accHelpTopic(self, pszHelpFile, varChild, pidTopic);
     }
-    pub fn get_accKeyboardShortcut(self: *const IAccessible, varChild: VARIANT, pszKeyboardShortcut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_accKeyboardShortcut(self: *const IAccessible, varChild: VARIANT, pszKeyboardShortcut: ?*?BSTR) HRESULT {
         return self.vtable.get_accKeyboardShortcut(self, varChild, pszKeyboardShortcut);
     }
-    pub fn get_accFocus(self: *const IAccessible, pvarChild: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_accFocus(self: *const IAccessible, pvarChild: ?*VARIANT) HRESULT {
         return self.vtable.get_accFocus(self, pvarChild);
     }
-    pub fn get_accSelection(self: *const IAccessible, pvarChildren: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_accSelection(self: *const IAccessible, pvarChildren: ?*VARIANT) HRESULT {
         return self.vtable.get_accSelection(self, pvarChildren);
     }
-    pub fn get_accDefaultAction(self: *const IAccessible, varChild: VARIANT, pszDefaultAction: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_accDefaultAction(self: *const IAccessible, varChild: VARIANT, pszDefaultAction: ?*?BSTR) HRESULT {
         return self.vtable.get_accDefaultAction(self, varChild, pszDefaultAction);
     }
-    pub fn accSelect(self: *const IAccessible, flagsSelect: i32, varChild: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn accSelect(self: *const IAccessible, flagsSelect: i32, varChild: VARIANT) HRESULT {
         return self.vtable.accSelect(self, flagsSelect, varChild);
     }
-    pub fn accLocation(self: *const IAccessible, pxLeft: ?*i32, pyTop: ?*i32, pcxWidth: ?*i32, pcyHeight: ?*i32, varChild: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn accLocation(self: *const IAccessible, pxLeft: ?*i32, pyTop: ?*i32, pcxWidth: ?*i32, pcyHeight: ?*i32, varChild: VARIANT) HRESULT {
         return self.vtable.accLocation(self, pxLeft, pyTop, pcxWidth, pcyHeight, varChild);
     }
-    pub fn accNavigate(self: *const IAccessible, navDir: i32, varStart: VARIANT, pvarEndUpAt: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn accNavigate(self: *const IAccessible, navDir: i32, varStart: VARIANT, pvarEndUpAt: ?*VARIANT) HRESULT {
         return self.vtable.accNavigate(self, navDir, varStart, pvarEndUpAt);
     }
-    pub fn accHitTest(self: *const IAccessible, xLeft: i32, yTop: i32, pvarChild: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn accHitTest(self: *const IAccessible, xLeft: i32, yTop: i32, pvarChild: ?*VARIANT) HRESULT {
         return self.vtable.accHitTest(self, xLeft, yTop, pvarChild);
     }
-    pub fn accDoDefaultAction(self: *const IAccessible, varChild: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn accDoDefaultAction(self: *const IAccessible, varChild: VARIANT) HRESULT {
         return self.vtable.accDoDefaultAction(self, varChild);
     }
-    pub fn put_accName(self: *const IAccessible, varChild: VARIANT, szName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_accName(self: *const IAccessible, varChild: VARIANT, szName: ?BSTR) HRESULT {
         return self.vtable.put_accName(self, varChild, szName);
     }
-    pub fn put_accValue(self: *const IAccessible, varChild: VARIANT, szValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_accValue(self: *const IAccessible, varChild: VARIANT, szValue: ?BSTR) HRESULT {
         return self.vtable.put_accValue(self, varChild, szValue);
     }
 };
@@ -1473,16 +1473,16 @@ pub const IID_IAccessibleHandler = &IID_IAccessibleHandler_Value;
 pub const IAccessibleHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AccessibleObjectFromID: *const fn(
+        AccessibleObjectFromID: *const fn (
             self: *const IAccessibleHandler,
             hwnd: i32,
             lObjectID: i32,
             pIAccessible: ?*?*IAccessible,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AccessibleObjectFromID(self: *const IAccessibleHandler, hwnd: i32, lObjectID: i32, pIAccessible: ?*?*IAccessible) callconv(.Inline) HRESULT {
+    pub inline fn AccessibleObjectFromID(self: *const IAccessibleHandler, hwnd: i32, lObjectID: i32, pIAccessible: ?*?*IAccessible) HRESULT {
         return self.vtable.AccessibleObjectFromID(self, hwnd, lObjectID, pIAccessible);
     }
 };
@@ -1493,39 +1493,39 @@ pub const IID_IAccessibleWindowlessSite = &IID_IAccessibleWindowlessSite_Value;
 pub const IAccessibleWindowlessSite = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AcquireObjectIdRange: *const fn(
+        AcquireObjectIdRange: *const fn (
             self: *const IAccessibleWindowlessSite,
             rangeSize: i32,
             pRangeOwner: ?*IAccessibleHandler,
             pRangeBase: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReleaseObjectIdRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReleaseObjectIdRange: *const fn (
             self: *const IAccessibleWindowlessSite,
             rangeBase: i32,
             pRangeOwner: ?*IAccessibleHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryObjectIdRanges: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryObjectIdRanges: *const fn (
             self: *const IAccessibleWindowlessSite,
             pRangesOwner: ?*IAccessibleHandler,
             psaRanges: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetParentAccessible: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetParentAccessible: *const fn (
             self: *const IAccessibleWindowlessSite,
             ppParent: ?*?*IAccessible,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AcquireObjectIdRange(self: *const IAccessibleWindowlessSite, rangeSize: i32, pRangeOwner: ?*IAccessibleHandler, pRangeBase: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn AcquireObjectIdRange(self: *const IAccessibleWindowlessSite, rangeSize: i32, pRangeOwner: ?*IAccessibleHandler, pRangeBase: ?*i32) HRESULT {
         return self.vtable.AcquireObjectIdRange(self, rangeSize, pRangeOwner, pRangeBase);
     }
-    pub fn ReleaseObjectIdRange(self: *const IAccessibleWindowlessSite, rangeBase: i32, pRangeOwner: ?*IAccessibleHandler) callconv(.Inline) HRESULT {
+    pub inline fn ReleaseObjectIdRange(self: *const IAccessibleWindowlessSite, rangeBase: i32, pRangeOwner: ?*IAccessibleHandler) HRESULT {
         return self.vtable.ReleaseObjectIdRange(self, rangeBase, pRangeOwner);
     }
-    pub fn QueryObjectIdRanges(self: *const IAccessibleWindowlessSite, pRangesOwner: ?*IAccessibleHandler, psaRanges: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn QueryObjectIdRanges(self: *const IAccessibleWindowlessSite, pRangesOwner: ?*IAccessibleHandler, psaRanges: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.QueryObjectIdRanges(self, pRangesOwner, psaRanges);
     }
-    pub fn GetParentAccessible(self: *const IAccessibleWindowlessSite, ppParent: ?*?*IAccessible) callconv(.Inline) HRESULT {
+    pub inline fn GetParentAccessible(self: *const IAccessibleWindowlessSite, ppParent: ?*?*IAccessible) HRESULT {
         return self.vtable.GetParentAccessible(self, ppParent);
     }
 };
@@ -1543,16 +1543,16 @@ pub const IID_IAccIdentity = &IID_IAccIdentity_Value;
 pub const IAccIdentity = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetIdentityString: *const fn(
+        GetIdentityString: *const fn (
             self: *const IAccIdentity,
             dwIDChild: u32,
             ppIDString: [*]?*u8,
             pdwIDStringLen: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetIdentityString(self: *const IAccIdentity, dwIDChild: u32, ppIDString: [*]?*u8, pdwIDStringLen: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetIdentityString(self: *const IAccIdentity, dwIDChild: u32, ppIDString: [*]?*u8, pdwIDStringLen: ?*u32) HRESULT {
         return self.vtable.GetIdentityString(self, dwIDChild, ppIDString, pdwIDStringLen);
     }
 };
@@ -1563,18 +1563,18 @@ pub const IID_IAccPropServer = &IID_IAccPropServer_Value;
 pub const IAccPropServer = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetPropValue: *const fn(
+        GetPropValue: *const fn (
             self: *const IAccPropServer,
             pIDString: [*:0]const u8,
             dwIDStringLen: u32,
             idProp: Guid,
             pvarValue: ?*VARIANT,
             pfHasProp: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetPropValue(self: *const IAccPropServer, pIDString: [*:0]const u8, dwIDStringLen: u32, idProp: Guid, pvarValue: ?*VARIANT, pfHasProp: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn GetPropValue(self: *const IAccPropServer, pIDString: [*:0]const u8, dwIDStringLen: u32, idProp: Guid, pvarValue: ?*VARIANT, pfHasProp: ?*BOOL) HRESULT {
         return self.vtable.GetPropValue(self, pIDString, dwIDStringLen, idProp, pvarValue, pfHasProp);
     }
 };
@@ -1585,14 +1585,14 @@ pub const IID_IAccPropServices = &IID_IAccPropServices_Value;
 pub const IAccPropServices = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetPropValue: *const fn(
+        SetPropValue: *const fn (
             self: *const IAccPropServices,
             pIDString: [*:0]const u8,
             dwIDStringLen: u32,
             idProp: Guid,
             @"var": VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPropServer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPropServer: *const fn (
             self: *const IAccPropServices,
             pIDString: [*:0]const u8,
             dwIDStringLen: u32,
@@ -1600,31 +1600,31 @@ pub const IAccPropServices = extern union {
             cProps: i32,
             pServer: ?*IAccPropServer,
             annoScope: AnnoScope,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ClearProps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ClearProps: *const fn (
             self: *const IAccPropServices,
             pIDString: [*:0]const u8,
             dwIDStringLen: u32,
             paProps: [*]const Guid,
             cProps: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHwndProp: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHwndProp: *const fn (
             self: *const IAccPropServices,
             hwnd: ?HWND,
             idObject: u32,
             idChild: u32,
             idProp: Guid,
             @"var": VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHwndPropStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHwndPropStr: *const fn (
             self: *const IAccPropServices,
             hwnd: ?HWND,
             idObject: u32,
             idChild: u32,
             idProp: Guid,
             str: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHwndPropServer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHwndPropServer: *const fn (
             self: *const IAccPropServices,
             hwnd: ?HWND,
             idObject: u32,
@@ -1633,46 +1633,46 @@ pub const IAccPropServices = extern union {
             cProps: i32,
             pServer: ?*IAccPropServer,
             annoScope: AnnoScope,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ClearHwndProps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ClearHwndProps: *const fn (
             self: *const IAccPropServices,
             hwnd: ?HWND,
             idObject: u32,
             idChild: u32,
             paProps: [*]const Guid,
             cProps: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ComposeHwndIdentityString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ComposeHwndIdentityString: *const fn (
             self: *const IAccPropServices,
             hwnd: ?HWND,
             idObject: u32,
             idChild: u32,
             ppIDString: [*]?*u8,
             pdwIDStringLen: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DecomposeHwndIdentityString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DecomposeHwndIdentityString: *const fn (
             self: *const IAccPropServices,
             pIDString: [*:0]const u8,
             dwIDStringLen: u32,
             phwnd: ?*?HWND,
             pidObject: ?*u32,
             pidChild: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHmenuProp: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHmenuProp: *const fn (
             self: *const IAccPropServices,
             hmenu: ?HMENU,
             idChild: u32,
             idProp: Guid,
             @"var": VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHmenuPropStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHmenuPropStr: *const fn (
             self: *const IAccPropServices,
             hmenu: ?HMENU,
             idChild: u32,
             idProp: Guid,
             str: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHmenuPropServer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHmenuPropServer: *const fn (
             self: *const IAccPropServices,
             hmenu: ?HMENU,
             idChild: u32,
@@ -1680,74 +1680,74 @@ pub const IAccPropServices = extern union {
             cProps: i32,
             pServer: ?*IAccPropServer,
             annoScope: AnnoScope,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ClearHmenuProps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ClearHmenuProps: *const fn (
             self: *const IAccPropServices,
             hmenu: ?HMENU,
             idChild: u32,
             paProps: [*]const Guid,
             cProps: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ComposeHmenuIdentityString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ComposeHmenuIdentityString: *const fn (
             self: *const IAccPropServices,
             hmenu: ?HMENU,
             idChild: u32,
             ppIDString: [*]?*u8,
             pdwIDStringLen: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DecomposeHmenuIdentityString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DecomposeHmenuIdentityString: *const fn (
             self: *const IAccPropServices,
             pIDString: [*:0]const u8,
             dwIDStringLen: u32,
             phmenu: ?*?HMENU,
             pidChild: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetPropValue(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, idProp: Guid, @"var": VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetPropValue(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, idProp: Guid, @"var": VARIANT) HRESULT {
         return self.vtable.SetPropValue(self, pIDString, dwIDStringLen, idProp, @"var");
     }
-    pub fn SetPropServer(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, paProps: [*]const Guid, cProps: i32, pServer: ?*IAccPropServer, annoScope: AnnoScope) callconv(.Inline) HRESULT {
+    pub inline fn SetPropServer(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, paProps: [*]const Guid, cProps: i32, pServer: ?*IAccPropServer, annoScope: AnnoScope) HRESULT {
         return self.vtable.SetPropServer(self, pIDString, dwIDStringLen, paProps, cProps, pServer, annoScope);
     }
-    pub fn ClearProps(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, paProps: [*]const Guid, cProps: i32) callconv(.Inline) HRESULT {
+    pub inline fn ClearProps(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, paProps: [*]const Guid, cProps: i32) HRESULT {
         return self.vtable.ClearProps(self, pIDString, dwIDStringLen, paProps, cProps);
     }
-    pub fn SetHwndProp(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, idProp: Guid, @"var": VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetHwndProp(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, idProp: Guid, @"var": VARIANT) HRESULT {
         return self.vtable.SetHwndProp(self, hwnd, idObject, idChild, idProp, @"var");
     }
-    pub fn SetHwndPropStr(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, idProp: Guid, str: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetHwndPropStr(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, idProp: Guid, str: ?[*:0]const u16) HRESULT {
         return self.vtable.SetHwndPropStr(self, hwnd, idObject, idChild, idProp, str);
     }
-    pub fn SetHwndPropServer(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, paProps: [*]const Guid, cProps: i32, pServer: ?*IAccPropServer, annoScope: AnnoScope) callconv(.Inline) HRESULT {
+    pub inline fn SetHwndPropServer(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, paProps: [*]const Guid, cProps: i32, pServer: ?*IAccPropServer, annoScope: AnnoScope) HRESULT {
         return self.vtable.SetHwndPropServer(self, hwnd, idObject, idChild, paProps, cProps, pServer, annoScope);
     }
-    pub fn ClearHwndProps(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, paProps: [*]const Guid, cProps: i32) callconv(.Inline) HRESULT {
+    pub inline fn ClearHwndProps(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, paProps: [*]const Guid, cProps: i32) HRESULT {
         return self.vtable.ClearHwndProps(self, hwnd, idObject, idChild, paProps, cProps);
     }
-    pub fn ComposeHwndIdentityString(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, ppIDString: [*]?*u8, pdwIDStringLen: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ComposeHwndIdentityString(self: *const IAccPropServices, hwnd: ?HWND, idObject: u32, idChild: u32, ppIDString: [*]?*u8, pdwIDStringLen: ?*u32) HRESULT {
         return self.vtable.ComposeHwndIdentityString(self, hwnd, idObject, idChild, ppIDString, pdwIDStringLen);
     }
-    pub fn DecomposeHwndIdentityString(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, phwnd: ?*?HWND, pidObject: ?*u32, pidChild: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn DecomposeHwndIdentityString(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, phwnd: ?*?HWND, pidObject: ?*u32, pidChild: ?*u32) HRESULT {
         return self.vtable.DecomposeHwndIdentityString(self, pIDString, dwIDStringLen, phwnd, pidObject, pidChild);
     }
-    pub fn SetHmenuProp(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, idProp: Guid, @"var": VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetHmenuProp(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, idProp: Guid, @"var": VARIANT) HRESULT {
         return self.vtable.SetHmenuProp(self, hmenu, idChild, idProp, @"var");
     }
-    pub fn SetHmenuPropStr(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, idProp: Guid, str: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetHmenuPropStr(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, idProp: Guid, str: ?[*:0]const u16) HRESULT {
         return self.vtable.SetHmenuPropStr(self, hmenu, idChild, idProp, str);
     }
-    pub fn SetHmenuPropServer(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, paProps: [*]const Guid, cProps: i32, pServer: ?*IAccPropServer, annoScope: AnnoScope) callconv(.Inline) HRESULT {
+    pub inline fn SetHmenuPropServer(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, paProps: [*]const Guid, cProps: i32, pServer: ?*IAccPropServer, annoScope: AnnoScope) HRESULT {
         return self.vtable.SetHmenuPropServer(self, hmenu, idChild, paProps, cProps, pServer, annoScope);
     }
-    pub fn ClearHmenuProps(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, paProps: [*]const Guid, cProps: i32) callconv(.Inline) HRESULT {
+    pub inline fn ClearHmenuProps(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, paProps: [*]const Guid, cProps: i32) HRESULT {
         return self.vtable.ClearHmenuProps(self, hmenu, idChild, paProps, cProps);
     }
-    pub fn ComposeHmenuIdentityString(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, ppIDString: [*]?*u8, pdwIDStringLen: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ComposeHmenuIdentityString(self: *const IAccPropServices, hmenu: ?HMENU, idChild: u32, ppIDString: [*]?*u8, pdwIDStringLen: ?*u32) HRESULT {
         return self.vtable.ComposeHmenuIdentityString(self, hmenu, idChild, ppIDString, pdwIDStringLen);
     }
-    pub fn DecomposeHmenuIdentityString(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, phmenu: ?*?HMENU, pidChild: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn DecomposeHmenuIdentityString(self: *const IAccPropServices, pIDString: [*:0]const u8, dwIDStringLen: u32, phmenu: ?*?HMENU, pidChild: ?*u32) HRESULT {
         return self.vtable.DecomposeHmenuIdentityString(self, pIDString, dwIDStringLen, phmenu, pidChild);
     }
 };
@@ -2375,38 +2375,38 @@ pub const IRawElementProviderSimple = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProviderOptions: *const fn(
+        get_ProviderOptions: *const fn (
             self: *const IRawElementProviderSimple,
             pRetVal: ?*ProviderOptions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPatternProvider: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPatternProvider: *const fn (
             self: *const IRawElementProviderSimple,
             patternId: i32,
             pRetVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyValue: *const fn (
             self: *const IRawElementProviderSimple,
             propertyId: i32,
             pRetVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HostRawElementProvider: *const fn(
+        get_HostRawElementProvider: *const fn (
             self: *const IRawElementProviderSimple,
             pRetVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_ProviderOptions(self: *const IRawElementProviderSimple, pRetVal: ?*ProviderOptions) callconv(.Inline) HRESULT {
+    pub inline fn get_ProviderOptions(self: *const IRawElementProviderSimple, pRetVal: ?*ProviderOptions) HRESULT {
         return self.vtable.get_ProviderOptions(self, pRetVal);
     }
-    pub fn GetPatternProvider(self: *const IRawElementProviderSimple, patternId: i32, pRetVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetPatternProvider(self: *const IRawElementProviderSimple, patternId: i32, pRetVal: ?*?*IUnknown) HRESULT {
         return self.vtable.GetPatternProvider(self, patternId, pRetVal);
     }
-    pub fn GetPropertyValue(self: *const IRawElementProviderSimple, propertyId: i32, pRetVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyValue(self: *const IRawElementProviderSimple, propertyId: i32, pRetVal: ?*VARIANT) HRESULT {
         return self.vtable.GetPropertyValue(self, propertyId, pRetVal);
     }
-    pub fn get_HostRawElementProvider(self: *const IRawElementProviderSimple, pRetVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn get_HostRawElementProvider(self: *const IRawElementProviderSimple, pRetVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.get_HostRawElementProvider(self, pRetVal);
     }
 };
@@ -2417,38 +2417,38 @@ pub const IID_IAccessibleEx = &IID_IAccessibleEx_Value;
 pub const IAccessibleEx = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetObjectForChild: *const fn(
+        GetObjectForChild: *const fn (
             self: *const IAccessibleEx,
             idChild: i32,
             pRetVal: ?*?*IAccessibleEx,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIAccessiblePair: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIAccessiblePair: *const fn (
             self: *const IAccessibleEx,
             ppAcc: ?*?*IAccessible,
             pidChild: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRuntimeId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRuntimeId: *const fn (
             self: *const IAccessibleEx,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertReturnedElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertReturnedElement: *const fn (
             self: *const IAccessibleEx,
             pIn: ?*IRawElementProviderSimple,
             ppRetValOut: ?*?*IAccessibleEx,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetObjectForChild(self: *const IAccessibleEx, idChild: i32, pRetVal: ?*?*IAccessibleEx) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectForChild(self: *const IAccessibleEx, idChild: i32, pRetVal: ?*?*IAccessibleEx) HRESULT {
         return self.vtable.GetObjectForChild(self, idChild, pRetVal);
     }
-    pub fn GetIAccessiblePair(self: *const IAccessibleEx, ppAcc: ?*?*IAccessible, pidChild: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetIAccessiblePair(self: *const IAccessibleEx, ppAcc: ?*?*IAccessible, pidChild: ?*i32) HRESULT {
         return self.vtable.GetIAccessiblePair(self, ppAcc, pidChild);
     }
-    pub fn GetRuntimeId(self: *const IAccessibleEx, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetRuntimeId(self: *const IAccessibleEx, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetRuntimeId(self, pRetVal);
     }
-    pub fn ConvertReturnedElement(self: *const IAccessibleEx, pIn: ?*IRawElementProviderSimple, ppRetValOut: ?*?*IAccessibleEx) callconv(.Inline) HRESULT {
+    pub inline fn ConvertReturnedElement(self: *const IAccessibleEx, pIn: ?*IRawElementProviderSimple, ppRetValOut: ?*?*IAccessibleEx) HRESULT {
         return self.vtable.ConvertReturnedElement(self, pIn, ppRetValOut);
     }
 };
@@ -2459,14 +2459,14 @@ pub const IID_IRawElementProviderSimple2 = &IID_IRawElementProviderSimple2_Value
 pub const IRawElementProviderSimple2 = extern union {
     pub const VTable = extern struct {
         base: IRawElementProviderSimple.VTable,
-        ShowContextMenu: *const fn(
+        ShowContextMenu: *const fn (
             self: *const IRawElementProviderSimple2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IRawElementProviderSimple: IRawElementProviderSimple,
     IUnknown: IUnknown,
-    pub fn ShowContextMenu(self: *const IRawElementProviderSimple2) callconv(.Inline) HRESULT {
+    pub inline fn ShowContextMenu(self: *const IRawElementProviderSimple2) HRESULT {
         return self.vtable.ShowContextMenu(self);
     }
 };
@@ -2477,18 +2477,18 @@ pub const IID_IRawElementProviderSimple3 = &IID_IRawElementProviderSimple3_Value
 pub const IRawElementProviderSimple3 = extern union {
     pub const VTable = extern struct {
         base: IRawElementProviderSimple2.VTable,
-        GetMetadataValue: *const fn(
+        GetMetadataValue: *const fn (
             self: *const IRawElementProviderSimple3,
             targetId: i32,
             metadataId: i32,
             returnVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IRawElementProviderSimple2: IRawElementProviderSimple2,
     IRawElementProviderSimple: IRawElementProviderSimple,
     IUnknown: IUnknown,
-    pub fn GetMetadataValue(self: *const IRawElementProviderSimple3, targetId: i32, metadataId: i32, returnVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetMetadataValue(self: *const IRawElementProviderSimple3, targetId: i32, metadataId: i32, returnVal: ?*VARIANT) HRESULT {
         return self.vtable.GetMetadataValue(self, targetId, metadataId, returnVal);
     }
 };
@@ -2499,23 +2499,23 @@ pub const IID_IRawElementProviderFragmentRoot = &IID_IRawElementProviderFragment
 pub const IRawElementProviderFragmentRoot = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ElementProviderFromPoint: *const fn(
+        ElementProviderFromPoint: *const fn (
             self: *const IRawElementProviderFragmentRoot,
             x: f64,
             y: f64,
             pRetVal: ?*?*IRawElementProviderFragment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFocus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFocus: *const fn (
             self: *const IRawElementProviderFragmentRoot,
             pRetVal: ?*?*IRawElementProviderFragment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ElementProviderFromPoint(self: *const IRawElementProviderFragmentRoot, x: f64, y: f64, pRetVal: ?*?*IRawElementProviderFragment) callconv(.Inline) HRESULT {
+    pub inline fn ElementProviderFromPoint(self: *const IRawElementProviderFragmentRoot, x: f64, y: f64, pRetVal: ?*?*IRawElementProviderFragment) HRESULT {
         return self.vtable.ElementProviderFromPoint(self, x, y, pRetVal);
     }
-    pub fn GetFocus(self: *const IRawElementProviderFragmentRoot, pRetVal: ?*?*IRawElementProviderFragment) callconv(.Inline) HRESULT {
+    pub inline fn GetFocus(self: *const IRawElementProviderFragmentRoot, pRetVal: ?*?*IRawElementProviderFragment) HRESULT {
         return self.vtable.GetFocus(self, pRetVal);
     }
 };
@@ -2526,51 +2526,51 @@ pub const IID_IRawElementProviderFragment = &IID_IRawElementProviderFragment_Val
 pub const IRawElementProviderFragment = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Navigate: *const fn(
+        Navigate: *const fn (
             self: *const IRawElementProviderFragment,
             direction: NavigateDirection,
             pRetVal: ?*?*IRawElementProviderFragment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRuntimeId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRuntimeId: *const fn (
             self: *const IRawElementProviderFragment,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BoundingRectangle: *const fn(
+        get_BoundingRectangle: *const fn (
             self: *const IRawElementProviderFragment,
             pRetVal: ?*UiaRect,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEmbeddedFragmentRoots: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEmbeddedFragmentRoots: *const fn (
             self: *const IRawElementProviderFragment,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFocus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFocus: *const fn (
             self: *const IRawElementProviderFragment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FragmentRoot: *const fn(
+        get_FragmentRoot: *const fn (
             self: *const IRawElementProviderFragment,
             pRetVal: ?*?*IRawElementProviderFragmentRoot,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Navigate(self: *const IRawElementProviderFragment, direction: NavigateDirection, pRetVal: ?*?*IRawElementProviderFragment) callconv(.Inline) HRESULT {
+    pub inline fn Navigate(self: *const IRawElementProviderFragment, direction: NavigateDirection, pRetVal: ?*?*IRawElementProviderFragment) HRESULT {
         return self.vtable.Navigate(self, direction, pRetVal);
     }
-    pub fn GetRuntimeId(self: *const IRawElementProviderFragment, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetRuntimeId(self: *const IRawElementProviderFragment, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetRuntimeId(self, pRetVal);
     }
-    pub fn get_BoundingRectangle(self: *const IRawElementProviderFragment, pRetVal: ?*UiaRect) callconv(.Inline) HRESULT {
+    pub inline fn get_BoundingRectangle(self: *const IRawElementProviderFragment, pRetVal: ?*UiaRect) HRESULT {
         return self.vtable.get_BoundingRectangle(self, pRetVal);
     }
-    pub fn GetEmbeddedFragmentRoots(self: *const IRawElementProviderFragment, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetEmbeddedFragmentRoots(self: *const IRawElementProviderFragment, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetEmbeddedFragmentRoots(self, pRetVal);
     }
-    pub fn SetFocus(self: *const IRawElementProviderFragment) callconv(.Inline) HRESULT {
+    pub inline fn SetFocus(self: *const IRawElementProviderFragment) HRESULT {
         return self.vtable.SetFocus(self);
     }
-    pub fn get_FragmentRoot(self: *const IRawElementProviderFragment, pRetVal: ?*?*IRawElementProviderFragmentRoot) callconv(.Inline) HRESULT {
+    pub inline fn get_FragmentRoot(self: *const IRawElementProviderFragment, pRetVal: ?*?*IRawElementProviderFragmentRoot) HRESULT {
         return self.vtable.get_FragmentRoot(self, pRetVal);
     }
 };
@@ -2581,23 +2581,23 @@ pub const IID_IRawElementProviderAdviseEvents = &IID_IRawElementProviderAdviseEv
 pub const IRawElementProviderAdviseEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AdviseEventAdded: *const fn(
+        AdviseEventAdded: *const fn (
             self: *const IRawElementProviderAdviseEvents,
             eventId: i32,
             propertyIDs: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AdviseEventRemoved: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AdviseEventRemoved: *const fn (
             self: *const IRawElementProviderAdviseEvents,
             eventId: i32,
             propertyIDs: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AdviseEventAdded(self: *const IRawElementProviderAdviseEvents, eventId: i32, propertyIDs: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn AdviseEventAdded(self: *const IRawElementProviderAdviseEvents, eventId: i32, propertyIDs: ?*SAFEARRAY) HRESULT {
         return self.vtable.AdviseEventAdded(self, eventId, propertyIDs);
     }
-    pub fn AdviseEventRemoved(self: *const IRawElementProviderAdviseEvents, eventId: i32, propertyIDs: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn AdviseEventRemoved(self: *const IRawElementProviderAdviseEvents, eventId: i32, propertyIDs: ?*SAFEARRAY) HRESULT {
         return self.vtable.AdviseEventRemoved(self, eventId, propertyIDs);
     }
 };
@@ -2608,15 +2608,15 @@ pub const IID_IRawElementProviderHwndOverride = &IID_IRawElementProviderHwndOver
 pub const IRawElementProviderHwndOverride = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetOverrideProviderForHwnd: *const fn(
+        GetOverrideProviderForHwnd: *const fn (
             self: *const IRawElementProviderHwndOverride,
             hwnd: ?HWND,
             pRetVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetOverrideProviderForHwnd(self: *const IRawElementProviderHwndOverride, hwnd: ?HWND, pRetVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn GetOverrideProviderForHwnd(self: *const IRawElementProviderHwndOverride, hwnd: ?HWND, pRetVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.GetOverrideProviderForHwnd(self, hwnd, pRetVal);
     }
 };
@@ -2627,33 +2627,33 @@ pub const IID_IProxyProviderWinEventSink = &IID_IProxyProviderWinEventSink_Value
 pub const IProxyProviderWinEventSink = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AddAutomationPropertyChangedEvent: *const fn(
+        AddAutomationPropertyChangedEvent: *const fn (
             self: *const IProxyProviderWinEventSink,
             pProvider: ?*IRawElementProviderSimple,
             id: i32,
             newValue: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddAutomationEvent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddAutomationEvent: *const fn (
             self: *const IProxyProviderWinEventSink,
             pProvider: ?*IRawElementProviderSimple,
             id: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddStructureChangedEvent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddStructureChangedEvent: *const fn (
             self: *const IProxyProviderWinEventSink,
             pProvider: ?*IRawElementProviderSimple,
             structureChangeType: StructureChangeType,
             runtimeId: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AddAutomationPropertyChangedEvent(self: *const IProxyProviderWinEventSink, pProvider: ?*IRawElementProviderSimple, id: i32, newValue: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn AddAutomationPropertyChangedEvent(self: *const IProxyProviderWinEventSink, pProvider: ?*IRawElementProviderSimple, id: i32, newValue: VARIANT) HRESULT {
         return self.vtable.AddAutomationPropertyChangedEvent(self, pProvider, id, newValue);
     }
-    pub fn AddAutomationEvent(self: *const IProxyProviderWinEventSink, pProvider: ?*IRawElementProviderSimple, id: i32) callconv(.Inline) HRESULT {
+    pub inline fn AddAutomationEvent(self: *const IProxyProviderWinEventSink, pProvider: ?*IRawElementProviderSimple, id: i32) HRESULT {
         return self.vtable.AddAutomationEvent(self, pProvider, id);
     }
-    pub fn AddStructureChangedEvent(self: *const IProxyProviderWinEventSink, pProvider: ?*IRawElementProviderSimple, structureChangeType: StructureChangeType, runtimeId: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn AddStructureChangedEvent(self: *const IProxyProviderWinEventSink, pProvider: ?*IRawElementProviderSimple, structureChangeType: StructureChangeType, runtimeId: ?*SAFEARRAY) HRESULT {
         return self.vtable.AddStructureChangedEvent(self, pProvider, structureChangeType, runtimeId);
     }
 };
@@ -2664,18 +2664,18 @@ pub const IID_IProxyProviderWinEventHandler = &IID_IProxyProviderWinEventHandler
 pub const IProxyProviderWinEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RespondToWinEvent: *const fn(
+        RespondToWinEvent: *const fn (
             self: *const IProxyProviderWinEventHandler,
             idWinEvent: u32,
             hwnd: ?HWND,
             idObject: i32,
             idChild: i32,
             pSink: ?*IProxyProviderWinEventSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RespondToWinEvent(self: *const IProxyProviderWinEventHandler, idWinEvent: u32, hwnd: ?HWND, idObject: i32, idChild: i32, pSink: ?*IProxyProviderWinEventSink) callconv(.Inline) HRESULT {
+    pub inline fn RespondToWinEvent(self: *const IProxyProviderWinEventHandler, idWinEvent: u32, hwnd: ?HWND, idObject: i32, idChild: i32, pSink: ?*IProxyProviderWinEventSink) HRESULT {
         return self.vtable.RespondToWinEvent(self, idWinEvent, hwnd, idObject, idChild, pSink);
     }
 };
@@ -2686,22 +2686,22 @@ pub const IID_IRawElementProviderWindowlessSite = &IID_IRawElementProviderWindow
 pub const IRawElementProviderWindowlessSite = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetAdjacentFragment: *const fn(
+        GetAdjacentFragment: *const fn (
             self: *const IRawElementProviderWindowlessSite,
             direction: NavigateDirection,
             ppParent: ?*?*IRawElementProviderFragment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRuntimeIdPrefix: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRuntimeIdPrefix: *const fn (
             self: *const IRawElementProviderWindowlessSite,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetAdjacentFragment(self: *const IRawElementProviderWindowlessSite, direction: NavigateDirection, ppParent: ?*?*IRawElementProviderFragment) callconv(.Inline) HRESULT {
+    pub inline fn GetAdjacentFragment(self: *const IRawElementProviderWindowlessSite, direction: NavigateDirection, ppParent: ?*?*IRawElementProviderFragment) HRESULT {
         return self.vtable.GetAdjacentFragment(self, direction, ppParent);
     }
-    pub fn GetRuntimeIdPrefix(self: *const IRawElementProviderWindowlessSite, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetRuntimeIdPrefix(self: *const IRawElementProviderWindowlessSite, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetRuntimeIdPrefix(self, pRetVal);
     }
 };
@@ -2712,22 +2712,22 @@ pub const IID_IAccessibleHostingElementProviders = &IID_IAccessibleHostingElemen
 pub const IAccessibleHostingElementProviders = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetEmbeddedFragmentRoots: *const fn(
+        GetEmbeddedFragmentRoots: *const fn (
             self: *const IAccessibleHostingElementProviders,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObjectIdForProvider: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObjectIdForProvider: *const fn (
             self: *const IAccessibleHostingElementProviders,
             pProvider: ?*IRawElementProviderSimple,
             pidObject: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetEmbeddedFragmentRoots(self: *const IAccessibleHostingElementProviders, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetEmbeddedFragmentRoots(self: *const IAccessibleHostingElementProviders, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetEmbeddedFragmentRoots(self, pRetVal);
     }
-    pub fn GetObjectIdForProvider(self: *const IAccessibleHostingElementProviders, pProvider: ?*IRawElementProviderSimple, pidObject: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectIdForProvider(self: *const IAccessibleHostingElementProviders, pProvider: ?*IRawElementProviderSimple, pidObject: ?*i32) HRESULT {
         return self.vtable.GetObjectIdForProvider(self, pProvider, pidObject);
     }
 };
@@ -2738,14 +2738,14 @@ pub const IID_IRawElementProviderHostingAccessibles = &IID_IRawElementProviderHo
 pub const IRawElementProviderHostingAccessibles = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetEmbeddedAccessibles: *const fn(
+        GetEmbeddedAccessibles: *const fn (
             self: *const IRawElementProviderHostingAccessibles,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetEmbeddedAccessibles(self: *const IRawElementProviderHostingAccessibles, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetEmbeddedAccessibles(self: *const IRawElementProviderHostingAccessibles, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetEmbeddedAccessibles(self, pRetVal);
     }
 };
@@ -2756,22 +2756,22 @@ pub const IID_IDockProvider = &IID_IDockProvider_Value;
 pub const IDockProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetDockPosition: *const fn(
+        SetDockPosition: *const fn (
             self: *const IDockProvider,
             dockPosition: DockPosition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DockPosition: *const fn(
+        get_DockPosition: *const fn (
             self: *const IDockProvider,
             pRetVal: ?*DockPosition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetDockPosition(self: *const IDockProvider, dockPosition: DockPosition) callconv(.Inline) HRESULT {
+    pub inline fn SetDockPosition(self: *const IDockProvider, dockPosition: DockPosition) HRESULT {
         return self.vtable.SetDockPosition(self, dockPosition);
     }
-    pub fn get_DockPosition(self: *const IDockProvider, pRetVal: ?*DockPosition) callconv(.Inline) HRESULT {
+    pub inline fn get_DockPosition(self: *const IDockProvider, pRetVal: ?*DockPosition) HRESULT {
         return self.vtable.get_DockPosition(self, pRetVal);
     }
 };
@@ -2782,27 +2782,27 @@ pub const IID_IExpandCollapseProvider = &IID_IExpandCollapseProvider_Value;
 pub const IExpandCollapseProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Expand: *const fn(
+        Expand: *const fn (
             self: *const IExpandCollapseProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Collapse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Collapse: *const fn (
             self: *const IExpandCollapseProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ExpandCollapseState: *const fn(
+        get_ExpandCollapseState: *const fn (
             self: *const IExpandCollapseProvider,
             pRetVal: ?*ExpandCollapseState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Expand(self: *const IExpandCollapseProvider) callconv(.Inline) HRESULT {
+    pub inline fn Expand(self: *const IExpandCollapseProvider) HRESULT {
         return self.vtable.Expand(self);
     }
-    pub fn Collapse(self: *const IExpandCollapseProvider) callconv(.Inline) HRESULT {
+    pub inline fn Collapse(self: *const IExpandCollapseProvider) HRESULT {
         return self.vtable.Collapse(self);
     }
-    pub fn get_ExpandCollapseState(self: *const IExpandCollapseProvider, pRetVal: ?*ExpandCollapseState) callconv(.Inline) HRESULT {
+    pub inline fn get_ExpandCollapseState(self: *const IExpandCollapseProvider, pRetVal: ?*ExpandCollapseState) HRESULT {
         return self.vtable.get_ExpandCollapseState(self, pRetVal);
     }
 };
@@ -2813,32 +2813,32 @@ pub const IID_IGridProvider = &IID_IGridProvider_Value;
 pub const IGridProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetItem: *const fn(
+        GetItem: *const fn (
             self: *const IGridProvider,
             row: i32,
             column: i32,
             pRetVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RowCount: *const fn(
+        get_RowCount: *const fn (
             self: *const IGridProvider,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ColumnCount: *const fn(
+        get_ColumnCount: *const fn (
             self: *const IGridProvider,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetItem(self: *const IGridProvider, row: i32, column: i32, pRetVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn GetItem(self: *const IGridProvider, row: i32, column: i32, pRetVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.GetItem(self, row, column, pRetVal);
     }
-    pub fn get_RowCount(self: *const IGridProvider, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_RowCount(self: *const IGridProvider, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_RowCount(self, pRetVal);
     }
-    pub fn get_ColumnCount(self: *const IGridProvider, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ColumnCount(self: *const IGridProvider, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_ColumnCount(self, pRetVal);
     }
 };
@@ -2850,46 +2850,46 @@ pub const IGridItemProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Row: *const fn(
+        get_Row: *const fn (
             self: *const IGridItemProvider,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Column: *const fn(
+        get_Column: *const fn (
             self: *const IGridItemProvider,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RowSpan: *const fn(
+        get_RowSpan: *const fn (
             self: *const IGridItemProvider,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ColumnSpan: *const fn(
+        get_ColumnSpan: *const fn (
             self: *const IGridItemProvider,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ContainingGrid: *const fn(
+        get_ContainingGrid: *const fn (
             self: *const IGridItemProvider,
             pRetVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_Row(self: *const IGridItemProvider, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Row(self: *const IGridItemProvider, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_Row(self, pRetVal);
     }
-    pub fn get_Column(self: *const IGridItemProvider, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Column(self: *const IGridItemProvider, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_Column(self, pRetVal);
     }
-    pub fn get_RowSpan(self: *const IGridItemProvider, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_RowSpan(self: *const IGridItemProvider, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_RowSpan(self, pRetVal);
     }
-    pub fn get_ColumnSpan(self: *const IGridItemProvider, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ColumnSpan(self: *const IGridItemProvider, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_ColumnSpan(self, pRetVal);
     }
-    pub fn get_ContainingGrid(self: *const IGridItemProvider, pRetVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn get_ContainingGrid(self: *const IGridItemProvider, pRetVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.get_ContainingGrid(self, pRetVal);
     }
 };
@@ -2900,13 +2900,13 @@ pub const IID_IInvokeProvider = &IID_IInvokeProvider_Value;
 pub const IInvokeProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Invoke: *const fn(
+        Invoke: *const fn (
             self: *const IInvokeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Invoke(self: *const IInvokeProvider) callconv(.Inline) HRESULT {
+    pub inline fn Invoke(self: *const IInvokeProvider) HRESULT {
         return self.vtable.Invoke(self);
     }
 };
@@ -2917,37 +2917,37 @@ pub const IID_IMultipleViewProvider = &IID_IMultipleViewProvider_Value;
 pub const IMultipleViewProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetViewName: *const fn(
+        GetViewName: *const fn (
             self: *const IMultipleViewProvider,
             viewId: i32,
             pRetVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCurrentView: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCurrentView: *const fn (
             self: *const IMultipleViewProvider,
             viewId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentView: *const fn(
+        get_CurrentView: *const fn (
             self: *const IMultipleViewProvider,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSupportedViews: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSupportedViews: *const fn (
             self: *const IMultipleViewProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetViewName(self: *const IMultipleViewProvider, viewId: i32, pRetVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetViewName(self: *const IMultipleViewProvider, viewId: i32, pRetVal: ?*?BSTR) HRESULT {
         return self.vtable.GetViewName(self, viewId, pRetVal);
     }
-    pub fn SetCurrentView(self: *const IMultipleViewProvider, viewId: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCurrentView(self: *const IMultipleViewProvider, viewId: i32) HRESULT {
         return self.vtable.SetCurrentView(self, viewId);
     }
-    pub fn get_CurrentView(self: *const IMultipleViewProvider, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentView(self: *const IMultipleViewProvider, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentView(self, pRetVal);
     }
-    pub fn GetSupportedViews(self: *const IMultipleViewProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetSupportedViews(self: *const IMultipleViewProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetSupportedViews(self, pRetVal);
     }
 };
@@ -2958,62 +2958,62 @@ pub const IID_IRangeValueProvider = &IID_IRangeValueProvider_Value;
 pub const IRangeValueProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetValue: *const fn(
+        SetValue: *const fn (
             self: *const IRangeValueProvider,
             val: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const IRangeValueProvider,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsReadOnly: *const fn(
+        get_IsReadOnly: *const fn (
             self: *const IRangeValueProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Maximum: *const fn(
+        get_Maximum: *const fn (
             self: *const IRangeValueProvider,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Minimum: *const fn(
+        get_Minimum: *const fn (
             self: *const IRangeValueProvider,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LargeChange: *const fn(
+        get_LargeChange: *const fn (
             self: *const IRangeValueProvider,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SmallChange: *const fn(
+        get_SmallChange: *const fn (
             self: *const IRangeValueProvider,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetValue(self: *const IRangeValueProvider, val: f64) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const IRangeValueProvider, val: f64) HRESULT {
         return self.vtable.SetValue(self, val);
     }
-    pub fn get_Value(self: *const IRangeValueProvider, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const IRangeValueProvider, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_Value(self, pRetVal);
     }
-    pub fn get_IsReadOnly(self: *const IRangeValueProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_IsReadOnly(self: *const IRangeValueProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_IsReadOnly(self, pRetVal);
     }
-    pub fn get_Maximum(self: *const IRangeValueProvider, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_Maximum(self: *const IRangeValueProvider, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_Maximum(self, pRetVal);
     }
-    pub fn get_Minimum(self: *const IRangeValueProvider, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_Minimum(self: *const IRangeValueProvider, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_Minimum(self, pRetVal);
     }
-    pub fn get_LargeChange(self: *const IRangeValueProvider, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_LargeChange(self: *const IRangeValueProvider, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_LargeChange(self, pRetVal);
     }
-    pub fn get_SmallChange(self: *const IRangeValueProvider, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_SmallChange(self: *const IRangeValueProvider, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_SmallChange(self, pRetVal);
     }
 };
@@ -3024,13 +3024,13 @@ pub const IID_IScrollItemProvider = &IID_IScrollItemProvider_Value;
 pub const IScrollItemProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ScrollIntoView: *const fn(
+        ScrollIntoView: *const fn (
             self: *const IScrollItemProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ScrollIntoView(self: *const IScrollItemProvider) callconv(.Inline) HRESULT {
+    pub inline fn ScrollIntoView(self: *const IScrollItemProvider) HRESULT {
         return self.vtable.ScrollIntoView(self);
     }
 };
@@ -3041,30 +3041,30 @@ pub const IID_ISelectionProvider = &IID_ISelectionProvider_Value;
 pub const ISelectionProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetSelection: *const fn(
+        GetSelection: *const fn (
             self: *const ISelectionProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CanSelectMultiple: *const fn(
+        get_CanSelectMultiple: *const fn (
             self: *const ISelectionProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsSelectionRequired: *const fn(
+        get_IsSelectionRequired: *const fn (
             self: *const ISelectionProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetSelection(self: *const ISelectionProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetSelection(self: *const ISelectionProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetSelection(self, pRetVal);
     }
-    pub fn get_CanSelectMultiple(self: *const ISelectionProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CanSelectMultiple(self: *const ISelectionProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_CanSelectMultiple(self, pRetVal);
     }
-    pub fn get_IsSelectionRequired(self: *const ISelectionProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_IsSelectionRequired(self: *const ISelectionProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_IsSelectionRequired(self, pRetVal);
     }
 };
@@ -3076,39 +3076,39 @@ pub const ISelectionProvider2 = extern union {
     pub const VTable = extern struct {
         base: ISelectionProvider.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FirstSelectedItem: *const fn(
+        get_FirstSelectedItem: *const fn (
             self: *const ISelectionProvider2,
             retVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LastSelectedItem: *const fn(
+        get_LastSelectedItem: *const fn (
             self: *const ISelectionProvider2,
             retVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentSelectedItem: *const fn(
+        get_CurrentSelectedItem: *const fn (
             self: *const ISelectionProvider2,
             retVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ItemCount: *const fn(
+        get_ItemCount: *const fn (
             self: *const ISelectionProvider2,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ISelectionProvider: ISelectionProvider,
     IUnknown: IUnknown,
-    pub fn get_FirstSelectedItem(self: *const ISelectionProvider2, retVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn get_FirstSelectedItem(self: *const ISelectionProvider2, retVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.get_FirstSelectedItem(self, retVal);
     }
-    pub fn get_LastSelectedItem(self: *const ISelectionProvider2, retVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn get_LastSelectedItem(self: *const ISelectionProvider2, retVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.get_LastSelectedItem(self, retVal);
     }
-    pub fn get_CurrentSelectedItem(self: *const ISelectionProvider2, retVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentSelectedItem(self: *const ISelectionProvider2, retVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.get_CurrentSelectedItem(self, retVal);
     }
-    pub fn get_ItemCount(self: *const ISelectionProvider2, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ItemCount(self: *const ISelectionProvider2, retVal: ?*i32) HRESULT {
         return self.vtable.get_ItemCount(self, retVal);
     }
 };
@@ -3119,71 +3119,71 @@ pub const IID_IScrollProvider = &IID_IScrollProvider_Value;
 pub const IScrollProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Scroll: *const fn(
+        Scroll: *const fn (
             self: *const IScrollProvider,
             horizontalAmount: ScrollAmount,
             verticalAmount: ScrollAmount,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetScrollPercent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetScrollPercent: *const fn (
             self: *const IScrollProvider,
             horizontalPercent: f64,
             verticalPercent: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HorizontalScrollPercent: *const fn(
+        get_HorizontalScrollPercent: *const fn (
             self: *const IScrollProvider,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_VerticalScrollPercent: *const fn(
+        get_VerticalScrollPercent: *const fn (
             self: *const IScrollProvider,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HorizontalViewSize: *const fn(
+        get_HorizontalViewSize: *const fn (
             self: *const IScrollProvider,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_VerticalViewSize: *const fn(
+        get_VerticalViewSize: *const fn (
             self: *const IScrollProvider,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HorizontallyScrollable: *const fn(
+        get_HorizontallyScrollable: *const fn (
             self: *const IScrollProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_VerticallyScrollable: *const fn(
+        get_VerticallyScrollable: *const fn (
             self: *const IScrollProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Scroll(self: *const IScrollProvider, horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) callconv(.Inline) HRESULT {
+    pub inline fn Scroll(self: *const IScrollProvider, horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) HRESULT {
         return self.vtable.Scroll(self, horizontalAmount, verticalAmount);
     }
-    pub fn SetScrollPercent(self: *const IScrollProvider, horizontalPercent: f64, verticalPercent: f64) callconv(.Inline) HRESULT {
+    pub inline fn SetScrollPercent(self: *const IScrollProvider, horizontalPercent: f64, verticalPercent: f64) HRESULT {
         return self.vtable.SetScrollPercent(self, horizontalPercent, verticalPercent);
     }
-    pub fn get_HorizontalScrollPercent(self: *const IScrollProvider, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_HorizontalScrollPercent(self: *const IScrollProvider, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_HorizontalScrollPercent(self, pRetVal);
     }
-    pub fn get_VerticalScrollPercent(self: *const IScrollProvider, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_VerticalScrollPercent(self: *const IScrollProvider, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_VerticalScrollPercent(self, pRetVal);
     }
-    pub fn get_HorizontalViewSize(self: *const IScrollProvider, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_HorizontalViewSize(self: *const IScrollProvider, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_HorizontalViewSize(self, pRetVal);
     }
-    pub fn get_VerticalViewSize(self: *const IScrollProvider, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_VerticalViewSize(self: *const IScrollProvider, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_VerticalViewSize(self, pRetVal);
     }
-    pub fn get_HorizontallyScrollable(self: *const IScrollProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_HorizontallyScrollable(self: *const IScrollProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_HorizontallyScrollable(self, pRetVal);
     }
-    pub fn get_VerticallyScrollable(self: *const IScrollProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_VerticallyScrollable(self: *const IScrollProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_VerticallyScrollable(self, pRetVal);
     }
 };
@@ -3194,41 +3194,41 @@ pub const IID_ISelectionItemProvider = &IID_ISelectionItemProvider_Value;
 pub const ISelectionItemProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Select: *const fn(
+        Select: *const fn (
             self: *const ISelectionItemProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddToSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddToSelection: *const fn (
             self: *const ISelectionItemProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveFromSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveFromSelection: *const fn (
             self: *const ISelectionItemProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsSelected: *const fn(
+        get_IsSelected: *const fn (
             self: *const ISelectionItemProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SelectionContainer: *const fn(
+        get_SelectionContainer: *const fn (
             self: *const ISelectionItemProvider,
             pRetVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Select(self: *const ISelectionItemProvider) callconv(.Inline) HRESULT {
+    pub inline fn Select(self: *const ISelectionItemProvider) HRESULT {
         return self.vtable.Select(self);
     }
-    pub fn AddToSelection(self: *const ISelectionItemProvider) callconv(.Inline) HRESULT {
+    pub inline fn AddToSelection(self: *const ISelectionItemProvider) HRESULT {
         return self.vtable.AddToSelection(self);
     }
-    pub fn RemoveFromSelection(self: *const ISelectionItemProvider) callconv(.Inline) HRESULT {
+    pub inline fn RemoveFromSelection(self: *const ISelectionItemProvider) HRESULT {
         return self.vtable.RemoveFromSelection(self);
     }
-    pub fn get_IsSelected(self: *const ISelectionItemProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_IsSelected(self: *const ISelectionItemProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_IsSelected(self, pRetVal);
     }
-    pub fn get_SelectionContainer(self: *const ISelectionItemProvider, pRetVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn get_SelectionContainer(self: *const ISelectionItemProvider, pRetVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.get_SelectionContainer(self, pRetVal);
     }
 };
@@ -3239,20 +3239,20 @@ pub const IID_ISynchronizedInputProvider = &IID_ISynchronizedInputProvider_Value
 pub const ISynchronizedInputProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        StartListening: *const fn(
+        StartListening: *const fn (
             self: *const ISynchronizedInputProvider,
             inputType: SynchronizedInputType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const ISynchronizedInputProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn StartListening(self: *const ISynchronizedInputProvider, inputType: SynchronizedInputType) callconv(.Inline) HRESULT {
+    pub inline fn StartListening(self: *const ISynchronizedInputProvider, inputType: SynchronizedInputType) HRESULT {
         return self.vtable.StartListening(self, inputType);
     }
-    pub fn Cancel(self: *const ISynchronizedInputProvider) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const ISynchronizedInputProvider) HRESULT {
         return self.vtable.Cancel(self);
     }
 };
@@ -3263,29 +3263,29 @@ pub const IID_ITableProvider = &IID_ITableProvider_Value;
 pub const ITableProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetRowHeaders: *const fn(
+        GetRowHeaders: *const fn (
             self: *const ITableProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetColumnHeaders: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetColumnHeaders: *const fn (
             self: *const ITableProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RowOrColumnMajor: *const fn(
+        get_RowOrColumnMajor: *const fn (
             self: *const ITableProvider,
             pRetVal: ?*RowOrColumnMajor,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetRowHeaders(self: *const ITableProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetRowHeaders(self: *const ITableProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetRowHeaders(self, pRetVal);
     }
-    pub fn GetColumnHeaders(self: *const ITableProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetColumnHeaders(self: *const ITableProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetColumnHeaders(self, pRetVal);
     }
-    pub fn get_RowOrColumnMajor(self: *const ITableProvider, pRetVal: ?*RowOrColumnMajor) callconv(.Inline) HRESULT {
+    pub inline fn get_RowOrColumnMajor(self: *const ITableProvider, pRetVal: ?*RowOrColumnMajor) HRESULT {
         return self.vtable.get_RowOrColumnMajor(self, pRetVal);
     }
 };
@@ -3296,21 +3296,21 @@ pub const IID_ITableItemProvider = &IID_ITableItemProvider_Value;
 pub const ITableItemProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetRowHeaderItems: *const fn(
+        GetRowHeaderItems: *const fn (
             self: *const ITableItemProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetColumnHeaderItems: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetColumnHeaderItems: *const fn (
             self: *const ITableItemProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetRowHeaderItems(self: *const ITableItemProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetRowHeaderItems(self: *const ITableItemProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetRowHeaderItems(self, pRetVal);
     }
-    pub fn GetColumnHeaderItems(self: *const ITableItemProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetColumnHeaderItems(self: *const ITableItemProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetColumnHeaderItems(self, pRetVal);
     }
 };
@@ -3321,21 +3321,21 @@ pub const IID_IToggleProvider = &IID_IToggleProvider_Value;
 pub const IToggleProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Toggle: *const fn(
+        Toggle: *const fn (
             self: *const IToggleProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ToggleState: *const fn(
+        get_ToggleState: *const fn (
             self: *const IToggleProvider,
             pRetVal: ?*ToggleState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Toggle(self: *const IToggleProvider) callconv(.Inline) HRESULT {
+    pub inline fn Toggle(self: *const IToggleProvider) HRESULT {
         return self.vtable.Toggle(self);
     }
-    pub fn get_ToggleState(self: *const IToggleProvider, pRetVal: ?*ToggleState) callconv(.Inline) HRESULT {
+    pub inline fn get_ToggleState(self: *const IToggleProvider, pRetVal: ?*ToggleState) HRESULT {
         return self.vtable.get_ToggleState(self, pRetVal);
     }
 };
@@ -3346,54 +3346,54 @@ pub const IID_ITransformProvider = &IID_ITransformProvider_Value;
 pub const ITransformProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Move: *const fn(
+        Move: *const fn (
             self: *const ITransformProvider,
             x: f64,
             y: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Resize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Resize: *const fn (
             self: *const ITransformProvider,
             width: f64,
             height: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Rotate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Rotate: *const fn (
             self: *const ITransformProvider,
             degrees: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CanMove: *const fn(
+        get_CanMove: *const fn (
             self: *const ITransformProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CanResize: *const fn(
+        get_CanResize: *const fn (
             self: *const ITransformProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CanRotate: *const fn(
+        get_CanRotate: *const fn (
             self: *const ITransformProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Move(self: *const ITransformProvider, x: f64, y: f64) callconv(.Inline) HRESULT {
+    pub inline fn Move(self: *const ITransformProvider, x: f64, y: f64) HRESULT {
         return self.vtable.Move(self, x, y);
     }
-    pub fn Resize(self: *const ITransformProvider, width: f64, height: f64) callconv(.Inline) HRESULT {
+    pub inline fn Resize(self: *const ITransformProvider, width: f64, height: f64) HRESULT {
         return self.vtable.Resize(self, width, height);
     }
-    pub fn Rotate(self: *const ITransformProvider, degrees: f64) callconv(.Inline) HRESULT {
+    pub inline fn Rotate(self: *const ITransformProvider, degrees: f64) HRESULT {
         return self.vtable.Rotate(self, degrees);
     }
-    pub fn get_CanMove(self: *const ITransformProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CanMove(self: *const ITransformProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_CanMove(self, pRetVal);
     }
-    pub fn get_CanResize(self: *const ITransformProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CanResize(self: *const ITransformProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_CanResize(self, pRetVal);
     }
-    pub fn get_CanRotate(self: *const ITransformProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CanRotate(self: *const ITransformProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_CanRotate(self, pRetVal);
     }
 };
@@ -3404,30 +3404,30 @@ pub const IID_IValueProvider = &IID_IValueProvider_Value;
 pub const IValueProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetValue: *const fn(
+        SetValue: *const fn (
             self: *const IValueProvider,
             val: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const IValueProvider,
             pRetVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsReadOnly: *const fn(
+        get_IsReadOnly: *const fn (
             self: *const IValueProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetValue(self: *const IValueProvider, val: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const IValueProvider, val: ?[*:0]const u16) HRESULT {
         return self.vtable.SetValue(self, val);
     }
-    pub fn get_Value(self: *const IValueProvider, pRetVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const IValueProvider, pRetVal: ?*?BSTR) HRESULT {
         return self.vtable.get_Value(self, pRetVal);
     }
-    pub fn get_IsReadOnly(self: *const IValueProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_IsReadOnly(self: *const IValueProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_IsReadOnly(self, pRetVal);
     }
 };
@@ -3438,76 +3438,76 @@ pub const IID_IWindowProvider = &IID_IWindowProvider_Value;
 pub const IWindowProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetVisualState: *const fn(
+        SetVisualState: *const fn (
             self: *const IWindowProvider,
             state: WindowVisualState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Close: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Close: *const fn (
             self: *const IWindowProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WaitForInputIdle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WaitForInputIdle: *const fn (
             self: *const IWindowProvider,
             milliseconds: i32,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CanMaximize: *const fn(
+        get_CanMaximize: *const fn (
             self: *const IWindowProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CanMinimize: *const fn(
+        get_CanMinimize: *const fn (
             self: *const IWindowProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsModal: *const fn(
+        get_IsModal: *const fn (
             self: *const IWindowProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_WindowVisualState: *const fn(
+        get_WindowVisualState: *const fn (
             self: *const IWindowProvider,
             pRetVal: ?*WindowVisualState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_WindowInteractionState: *const fn(
+        get_WindowInteractionState: *const fn (
             self: *const IWindowProvider,
             pRetVal: ?*WindowInteractionState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsTopmost: *const fn(
+        get_IsTopmost: *const fn (
             self: *const IWindowProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetVisualState(self: *const IWindowProvider, state: WindowVisualState) callconv(.Inline) HRESULT {
+    pub inline fn SetVisualState(self: *const IWindowProvider, state: WindowVisualState) HRESULT {
         return self.vtable.SetVisualState(self, state);
     }
-    pub fn Close(self: *const IWindowProvider) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const IWindowProvider) HRESULT {
         return self.vtable.Close(self);
     }
-    pub fn WaitForInputIdle(self: *const IWindowProvider, milliseconds: i32, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn WaitForInputIdle(self: *const IWindowProvider, milliseconds: i32, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.WaitForInputIdle(self, milliseconds, pRetVal);
     }
-    pub fn get_CanMaximize(self: *const IWindowProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CanMaximize(self: *const IWindowProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_CanMaximize(self, pRetVal);
     }
-    pub fn get_CanMinimize(self: *const IWindowProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CanMinimize(self: *const IWindowProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_CanMinimize(self, pRetVal);
     }
-    pub fn get_IsModal(self: *const IWindowProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_IsModal(self: *const IWindowProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_IsModal(self, pRetVal);
     }
-    pub fn get_WindowVisualState(self: *const IWindowProvider, pRetVal: ?*WindowVisualState) callconv(.Inline) HRESULT {
+    pub inline fn get_WindowVisualState(self: *const IWindowProvider, pRetVal: ?*WindowVisualState) HRESULT {
         return self.vtable.get_WindowVisualState(self, pRetVal);
     }
-    pub fn get_WindowInteractionState(self: *const IWindowProvider, pRetVal: ?*WindowInteractionState) callconv(.Inline) HRESULT {
+    pub inline fn get_WindowInteractionState(self: *const IWindowProvider, pRetVal: ?*WindowInteractionState) HRESULT {
         return self.vtable.get_WindowInteractionState(self, pRetVal);
     }
-    pub fn get_IsTopmost(self: *const IWindowProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_IsTopmost(self: *const IWindowProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_IsTopmost(self, pRetVal);
     }
 };
@@ -3518,113 +3518,113 @@ pub const IID_ILegacyIAccessibleProvider = &IID_ILegacyIAccessibleProvider_Value
 pub const ILegacyIAccessibleProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Select: *const fn(
+        Select: *const fn (
             self: *const ILegacyIAccessibleProvider,
             flagsSelect: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DoDefaultAction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DoDefaultAction: *const fn (
             self: *const ILegacyIAccessibleProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const ILegacyIAccessibleProvider,
             szValue: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIAccessible: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIAccessible: *const fn (
             self: *const ILegacyIAccessibleProvider,
             ppAccessible: ?*?*IAccessible,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ChildId: *const fn(
+        get_ChildId: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pszName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Value: *const fn(
+        get_Value: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pszValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pszDescription: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Role: *const fn(
+        get_Role: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pdwRole: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_State: *const fn(
+        get_State: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pdwState: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Help: *const fn(
+        get_Help: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pszHelp: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_KeyboardShortcut: *const fn(
+        get_KeyboardShortcut: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pszKeyboardShortcut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSelection: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pvarSelectedChildren: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DefaultAction: *const fn(
+        get_DefaultAction: *const fn (
             self: *const ILegacyIAccessibleProvider,
             pszDefaultAction: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Select(self: *const ILegacyIAccessibleProvider, flagsSelect: i32) callconv(.Inline) HRESULT {
+    pub inline fn Select(self: *const ILegacyIAccessibleProvider, flagsSelect: i32) HRESULT {
         return self.vtable.Select(self, flagsSelect);
     }
-    pub fn DoDefaultAction(self: *const ILegacyIAccessibleProvider) callconv(.Inline) HRESULT {
+    pub inline fn DoDefaultAction(self: *const ILegacyIAccessibleProvider) HRESULT {
         return self.vtable.DoDefaultAction(self);
     }
-    pub fn SetValue(self: *const ILegacyIAccessibleProvider, szValue: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const ILegacyIAccessibleProvider, szValue: ?[*:0]const u16) HRESULT {
         return self.vtable.SetValue(self, szValue);
     }
-    pub fn GetIAccessible(self: *const ILegacyIAccessibleProvider, ppAccessible: ?*?*IAccessible) callconv(.Inline) HRESULT {
+    pub inline fn GetIAccessible(self: *const ILegacyIAccessibleProvider, ppAccessible: ?*?*IAccessible) HRESULT {
         return self.vtable.GetIAccessible(self, ppAccessible);
     }
-    pub fn get_ChildId(self: *const ILegacyIAccessibleProvider, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ChildId(self: *const ILegacyIAccessibleProvider, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_ChildId(self, pRetVal);
     }
-    pub fn get_Name(self: *const ILegacyIAccessibleProvider, pszName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const ILegacyIAccessibleProvider, pszName: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, pszName);
     }
-    pub fn get_Value(self: *const ILegacyIAccessibleProvider, pszValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Value(self: *const ILegacyIAccessibleProvider, pszValue: ?*?BSTR) HRESULT {
         return self.vtable.get_Value(self, pszValue);
     }
-    pub fn get_Description(self: *const ILegacyIAccessibleProvider, pszDescription: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const ILegacyIAccessibleProvider, pszDescription: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, pszDescription);
     }
-    pub fn get_Role(self: *const ILegacyIAccessibleProvider, pdwRole: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_Role(self: *const ILegacyIAccessibleProvider, pdwRole: ?*u32) HRESULT {
         return self.vtable.get_Role(self, pdwRole);
     }
-    pub fn get_State(self: *const ILegacyIAccessibleProvider, pdwState: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_State(self: *const ILegacyIAccessibleProvider, pdwState: ?*u32) HRESULT {
         return self.vtable.get_State(self, pdwState);
     }
-    pub fn get_Help(self: *const ILegacyIAccessibleProvider, pszHelp: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Help(self: *const ILegacyIAccessibleProvider, pszHelp: ?*?BSTR) HRESULT {
         return self.vtable.get_Help(self, pszHelp);
     }
-    pub fn get_KeyboardShortcut(self: *const ILegacyIAccessibleProvider, pszKeyboardShortcut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_KeyboardShortcut(self: *const ILegacyIAccessibleProvider, pszKeyboardShortcut: ?*?BSTR) HRESULT {
         return self.vtable.get_KeyboardShortcut(self, pszKeyboardShortcut);
     }
-    pub fn GetSelection(self: *const ILegacyIAccessibleProvider, pvarSelectedChildren: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetSelection(self: *const ILegacyIAccessibleProvider, pvarSelectedChildren: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetSelection(self, pvarSelectedChildren);
     }
-    pub fn get_DefaultAction(self: *const ILegacyIAccessibleProvider, pszDefaultAction: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DefaultAction(self: *const ILegacyIAccessibleProvider, pszDefaultAction: ?*?BSTR) HRESULT {
         return self.vtable.get_DefaultAction(self, pszDefaultAction);
     }
 };
@@ -3635,17 +3635,17 @@ pub const IID_IItemContainerProvider = &IID_IItemContainerProvider_Value;
 pub const IItemContainerProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        FindItemByProperty: *const fn(
+        FindItemByProperty: *const fn (
             self: *const IItemContainerProvider,
             pStartAfter: ?*IRawElementProviderSimple,
             propertyId: i32,
             value: VARIANT,
             pFound: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn FindItemByProperty(self: *const IItemContainerProvider, pStartAfter: ?*IRawElementProviderSimple, propertyId: i32, value: VARIANT, pFound: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn FindItemByProperty(self: *const IItemContainerProvider, pStartAfter: ?*IRawElementProviderSimple, propertyId: i32, value: VARIANT, pFound: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.FindItemByProperty(self, pStartAfter, propertyId, value, pFound);
     }
 };
@@ -3656,13 +3656,13 @@ pub const IID_IVirtualizedItemProvider = &IID_IVirtualizedItemProvider_Value;
 pub const IVirtualizedItemProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Realize: *const fn(
+        Realize: *const fn (
             self: *const IVirtualizedItemProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Realize(self: *const IVirtualizedItemProvider) callconv(.Inline) HRESULT {
+    pub inline fn Realize(self: *const IVirtualizedItemProvider) HRESULT {
         return self.vtable.Realize(self);
     }
 };
@@ -3673,14 +3673,14 @@ pub const IID_IObjectModelProvider = &IID_IObjectModelProvider_Value;
 pub const IObjectModelProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetUnderlyingObjectModel: *const fn(
+        GetUnderlyingObjectModel: *const fn (
             self: *const IObjectModelProvider,
             ppUnknown: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetUnderlyingObjectModel(self: *const IObjectModelProvider, ppUnknown: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetUnderlyingObjectModel(self: *const IObjectModelProvider, ppUnknown: ?*?*IUnknown) HRESULT {
         return self.vtable.GetUnderlyingObjectModel(self, ppUnknown);
     }
 };
@@ -3692,46 +3692,46 @@ pub const IAnnotationProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AnnotationTypeId: *const fn(
+        get_AnnotationTypeId: *const fn (
             self: *const IAnnotationProvider,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AnnotationTypeName: *const fn(
+        get_AnnotationTypeName: *const fn (
             self: *const IAnnotationProvider,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Author: *const fn(
+        get_Author: *const fn (
             self: *const IAnnotationProvider,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DateTime: *const fn(
+        get_DateTime: *const fn (
             self: *const IAnnotationProvider,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Target: *const fn(
+        get_Target: *const fn (
             self: *const IAnnotationProvider,
             retVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_AnnotationTypeId(self: *const IAnnotationProvider, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_AnnotationTypeId(self: *const IAnnotationProvider, retVal: ?*i32) HRESULT {
         return self.vtable.get_AnnotationTypeId(self, retVal);
     }
-    pub fn get_AnnotationTypeName(self: *const IAnnotationProvider, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_AnnotationTypeName(self: *const IAnnotationProvider, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_AnnotationTypeName(self, retVal);
     }
-    pub fn get_Author(self: *const IAnnotationProvider, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Author(self: *const IAnnotationProvider, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_Author(self, retVal);
     }
-    pub fn get_DateTime(self: *const IAnnotationProvider, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DateTime(self: *const IAnnotationProvider, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_DateTime(self, retVal);
     }
-    pub fn get_Target(self: *const IAnnotationProvider, retVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn get_Target(self: *const IAnnotationProvider, retVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.get_Target(self, retVal);
     }
 };
@@ -3743,62 +3743,62 @@ pub const IStylesProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StyleId: *const fn(
+        get_StyleId: *const fn (
             self: *const IStylesProvider,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StyleName: *const fn(
+        get_StyleName: *const fn (
             self: *const IStylesProvider,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FillColor: *const fn(
+        get_FillColor: *const fn (
             self: *const IStylesProvider,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FillPatternStyle: *const fn(
+        get_FillPatternStyle: *const fn (
             self: *const IStylesProvider,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Shape: *const fn(
+        get_Shape: *const fn (
             self: *const IStylesProvider,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FillPatternColor: *const fn(
+        get_FillPatternColor: *const fn (
             self: *const IStylesProvider,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ExtendedProperties: *const fn(
+        get_ExtendedProperties: *const fn (
             self: *const IStylesProvider,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_StyleId(self: *const IStylesProvider, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_StyleId(self: *const IStylesProvider, retVal: ?*i32) HRESULT {
         return self.vtable.get_StyleId(self, retVal);
     }
-    pub fn get_StyleName(self: *const IStylesProvider, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_StyleName(self: *const IStylesProvider, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_StyleName(self, retVal);
     }
-    pub fn get_FillColor(self: *const IStylesProvider, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_FillColor(self: *const IStylesProvider, retVal: ?*i32) HRESULT {
         return self.vtable.get_FillColor(self, retVal);
     }
-    pub fn get_FillPatternStyle(self: *const IStylesProvider, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_FillPatternStyle(self: *const IStylesProvider, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_FillPatternStyle(self, retVal);
     }
-    pub fn get_Shape(self: *const IStylesProvider, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Shape(self: *const IStylesProvider, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_Shape(self, retVal);
     }
-    pub fn get_FillPatternColor(self: *const IStylesProvider, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_FillPatternColor(self: *const IStylesProvider, retVal: ?*i32) HRESULT {
         return self.vtable.get_FillPatternColor(self, retVal);
     }
-    pub fn get_ExtendedProperties(self: *const IStylesProvider, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ExtendedProperties(self: *const IStylesProvider, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_ExtendedProperties(self, retVal);
     }
 };
@@ -3809,15 +3809,15 @@ pub const IID_ISpreadsheetProvider = &IID_ISpreadsheetProvider_Value;
 pub const ISpreadsheetProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetItemByName: *const fn(
+        GetItemByName: *const fn (
             self: *const ISpreadsheetProvider,
             name: ?[*:0]const u16,
             pRetVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetItemByName(self: *const ISpreadsheetProvider, name: ?[*:0]const u16, pRetVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn GetItemByName(self: *const ISpreadsheetProvider, name: ?[*:0]const u16, pRetVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.GetItemByName(self, name, pRetVal);
     }
 };
@@ -3829,28 +3829,28 @@ pub const ISpreadsheetItemProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Formula: *const fn(
+        get_Formula: *const fn (
             self: *const ISpreadsheetItemProvider,
             pRetVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAnnotationObjects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAnnotationObjects: *const fn (
             self: *const ISpreadsheetItemProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAnnotationTypes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAnnotationTypes: *const fn (
             self: *const ISpreadsheetItemProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_Formula(self: *const ISpreadsheetItemProvider, pRetVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Formula(self: *const ISpreadsheetItemProvider, pRetVal: ?*?BSTR) HRESULT {
         return self.vtable.get_Formula(self, pRetVal);
     }
-    pub fn GetAnnotationObjects(self: *const ISpreadsheetItemProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetAnnotationObjects(self: *const ISpreadsheetItemProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetAnnotationObjects(self, pRetVal);
     }
-    pub fn GetAnnotationTypes(self: *const ISpreadsheetItemProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetAnnotationTypes(self: *const ISpreadsheetItemProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetAnnotationTypes(self, pRetVal);
     }
 };
@@ -3861,54 +3861,54 @@ pub const IID_ITransformProvider2 = &IID_ITransformProvider2_Value;
 pub const ITransformProvider2 = extern union {
     pub const VTable = extern struct {
         base: ITransformProvider.VTable,
-        Zoom: *const fn(
+        Zoom: *const fn (
             self: *const ITransformProvider2,
             zoom: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CanZoom: *const fn(
+        get_CanZoom: *const fn (
             self: *const ITransformProvider2,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ZoomLevel: *const fn(
+        get_ZoomLevel: *const fn (
             self: *const ITransformProvider2,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ZoomMinimum: *const fn(
+        get_ZoomMinimum: *const fn (
             self: *const ITransformProvider2,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ZoomMaximum: *const fn(
+        get_ZoomMaximum: *const fn (
             self: *const ITransformProvider2,
             pRetVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ZoomByUnit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ZoomByUnit: *const fn (
             self: *const ITransformProvider2,
             zoomUnit: ZoomUnit,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITransformProvider: ITransformProvider,
     IUnknown: IUnknown,
-    pub fn Zoom(self: *const ITransformProvider2, zoom: f64) callconv(.Inline) HRESULT {
+    pub inline fn Zoom(self: *const ITransformProvider2, zoom: f64) HRESULT {
         return self.vtable.Zoom(self, zoom);
     }
-    pub fn get_CanZoom(self: *const ITransformProvider2, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CanZoom(self: *const ITransformProvider2, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_CanZoom(self, pRetVal);
     }
-    pub fn get_ZoomLevel(self: *const ITransformProvider2, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_ZoomLevel(self: *const ITransformProvider2, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_ZoomLevel(self, pRetVal);
     }
-    pub fn get_ZoomMinimum(self: *const ITransformProvider2, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_ZoomMinimum(self: *const ITransformProvider2, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_ZoomMinimum(self, pRetVal);
     }
-    pub fn get_ZoomMaximum(self: *const ITransformProvider2, pRetVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_ZoomMaximum(self: *const ITransformProvider2, pRetVal: ?*f64) HRESULT {
         return self.vtable.get_ZoomMaximum(self, pRetVal);
     }
-    pub fn ZoomByUnit(self: *const ITransformProvider2, zoomUnit: ZoomUnit) callconv(.Inline) HRESULT {
+    pub inline fn ZoomByUnit(self: *const ITransformProvider2, zoomUnit: ZoomUnit) HRESULT {
         return self.vtable.ZoomByUnit(self, zoomUnit);
     }
 };
@@ -3920,37 +3920,37 @@ pub const IDragProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsGrabbed: *const fn(
+        get_IsGrabbed: *const fn (
             self: *const IDragProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DropEffect: *const fn(
+        get_DropEffect: *const fn (
             self: *const IDragProvider,
             pRetVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DropEffects: *const fn(
+        get_DropEffects: *const fn (
             self: *const IDragProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetGrabbedItems: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetGrabbedItems: *const fn (
             self: *const IDragProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_IsGrabbed(self: *const IDragProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_IsGrabbed(self: *const IDragProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.get_IsGrabbed(self, pRetVal);
     }
-    pub fn get_DropEffect(self: *const IDragProvider, pRetVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DropEffect(self: *const IDragProvider, pRetVal: ?*?BSTR) HRESULT {
         return self.vtable.get_DropEffect(self, pRetVal);
     }
-    pub fn get_DropEffects(self: *const IDragProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn get_DropEffects(self: *const IDragProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.get_DropEffects(self, pRetVal);
     }
-    pub fn GetGrabbedItems(self: *const IDragProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetGrabbedItems(self: *const IDragProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetGrabbedItems(self, pRetVal);
     }
 };
@@ -3962,22 +3962,22 @@ pub const IDropTargetProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DropTargetEffect: *const fn(
+        get_DropTargetEffect: *const fn (
             self: *const IDropTargetProvider,
             pRetVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DropTargetEffects: *const fn(
+        get_DropTargetEffects: *const fn (
             self: *const IDropTargetProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_DropTargetEffect(self: *const IDropTargetProvider, pRetVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DropTargetEffect(self: *const IDropTargetProvider, pRetVal: ?*?BSTR) HRESULT {
         return self.vtable.get_DropTargetEffect(self, pRetVal);
     }
-    pub fn get_DropTargetEffects(self: *const IDropTargetProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn get_DropTargetEffects(self: *const IDropTargetProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.get_DropTargetEffects(self, pRetVal);
     }
 };
@@ -3988,149 +3988,149 @@ pub const IID_ITextRangeProvider = &IID_ITextRangeProvider_Value;
 pub const ITextRangeProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Clone: *const fn(
+        Clone: *const fn (
             self: *const ITextRangeProvider,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Compare: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Compare: *const fn (
             self: *const ITextRangeProvider,
             range: ?*ITextRangeProvider,
             pRetVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CompareEndpoints: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CompareEndpoints: *const fn (
             self: *const ITextRangeProvider,
             endpoint: TextPatternRangeEndpoint,
             targetRange: ?*ITextRangeProvider,
             targetEndpoint: TextPatternRangeEndpoint,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExpandToEnclosingUnit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExpandToEnclosingUnit: *const fn (
             self: *const ITextRangeProvider,
             unit: TextUnit,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindAttribute: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindAttribute: *const fn (
             self: *const ITextRangeProvider,
             attributeId: i32,
             val: VARIANT,
             backward: BOOL,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindText: *const fn (
             self: *const ITextRangeProvider,
             text: ?BSTR,
             backward: BOOL,
             ignoreCase: BOOL,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAttributeValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAttributeValue: *const fn (
             self: *const ITextRangeProvider,
             attributeId: i32,
             pRetVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBoundingRectangles: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBoundingRectangles: *const fn (
             self: *const ITextRangeProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEnclosingElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEnclosingElement: *const fn (
             self: *const ITextRangeProvider,
             pRetVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetText: *const fn (
             self: *const ITextRangeProvider,
             maxLength: i32,
             pRetVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Move: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Move: *const fn (
             self: *const ITextRangeProvider,
             unit: TextUnit,
             count: i32,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveEndpointByUnit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveEndpointByUnit: *const fn (
             self: *const ITextRangeProvider,
             endpoint: TextPatternRangeEndpoint,
             unit: TextUnit,
             count: i32,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveEndpointByRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveEndpointByRange: *const fn (
             self: *const ITextRangeProvider,
             endpoint: TextPatternRangeEndpoint,
             targetRange: ?*ITextRangeProvider,
             targetEndpoint: TextPatternRangeEndpoint,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Select: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Select: *const fn (
             self: *const ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddToSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddToSelection: *const fn (
             self: *const ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveFromSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveFromSelection: *const fn (
             self: *const ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ScrollIntoView: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ScrollIntoView: *const fn (
             self: *const ITextRangeProvider,
             alignToTop: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChildren: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChildren: *const fn (
             self: *const ITextRangeProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Clone(self: *const ITextRangeProvider, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const ITextRangeProvider, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.Clone(self, pRetVal);
     }
-    pub fn Compare(self: *const ITextRangeProvider, range: ?*ITextRangeProvider, pRetVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn Compare(self: *const ITextRangeProvider, range: ?*ITextRangeProvider, pRetVal: ?*BOOL) HRESULT {
         return self.vtable.Compare(self, range, pRetVal);
     }
-    pub fn CompareEndpoints(self: *const ITextRangeProvider, endpoint: TextPatternRangeEndpoint, targetRange: ?*ITextRangeProvider, targetEndpoint: TextPatternRangeEndpoint, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CompareEndpoints(self: *const ITextRangeProvider, endpoint: TextPatternRangeEndpoint, targetRange: ?*ITextRangeProvider, targetEndpoint: TextPatternRangeEndpoint, pRetVal: ?*i32) HRESULT {
         return self.vtable.CompareEndpoints(self, endpoint, targetRange, targetEndpoint, pRetVal);
     }
-    pub fn ExpandToEnclosingUnit(self: *const ITextRangeProvider, unit: TextUnit) callconv(.Inline) HRESULT {
+    pub inline fn ExpandToEnclosingUnit(self: *const ITextRangeProvider, unit: TextUnit) HRESULT {
         return self.vtable.ExpandToEnclosingUnit(self, unit);
     }
-    pub fn FindAttribute(self: *const ITextRangeProvider, attributeId: i32, val: VARIANT, backward: BOOL, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn FindAttribute(self: *const ITextRangeProvider, attributeId: i32, val: VARIANT, backward: BOOL, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.FindAttribute(self, attributeId, val, backward, pRetVal);
     }
-    pub fn FindText(self: *const ITextRangeProvider, text: ?BSTR, backward: BOOL, ignoreCase: BOOL, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn FindText(self: *const ITextRangeProvider, text: ?BSTR, backward: BOOL, ignoreCase: BOOL, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.FindText(self, text, backward, ignoreCase, pRetVal);
     }
-    pub fn GetAttributeValue(self: *const ITextRangeProvider, attributeId: i32, pRetVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetAttributeValue(self: *const ITextRangeProvider, attributeId: i32, pRetVal: ?*VARIANT) HRESULT {
         return self.vtable.GetAttributeValue(self, attributeId, pRetVal);
     }
-    pub fn GetBoundingRectangles(self: *const ITextRangeProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetBoundingRectangles(self: *const ITextRangeProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetBoundingRectangles(self, pRetVal);
     }
-    pub fn GetEnclosingElement(self: *const ITextRangeProvider, pRetVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn GetEnclosingElement(self: *const ITextRangeProvider, pRetVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.GetEnclosingElement(self, pRetVal);
     }
-    pub fn GetText(self: *const ITextRangeProvider, maxLength: i32, pRetVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetText(self: *const ITextRangeProvider, maxLength: i32, pRetVal: ?*?BSTR) HRESULT {
         return self.vtable.GetText(self, maxLength, pRetVal);
     }
-    pub fn Move(self: *const ITextRangeProvider, unit: TextUnit, count: i32, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Move(self: *const ITextRangeProvider, unit: TextUnit, count: i32, pRetVal: ?*i32) HRESULT {
         return self.vtable.Move(self, unit, count, pRetVal);
     }
-    pub fn MoveEndpointByUnit(self: *const ITextRangeProvider, endpoint: TextPatternRangeEndpoint, unit: TextUnit, count: i32, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveEndpointByUnit(self: *const ITextRangeProvider, endpoint: TextPatternRangeEndpoint, unit: TextUnit, count: i32, pRetVal: ?*i32) HRESULT {
         return self.vtable.MoveEndpointByUnit(self, endpoint, unit, count, pRetVal);
     }
-    pub fn MoveEndpointByRange(self: *const ITextRangeProvider, endpoint: TextPatternRangeEndpoint, targetRange: ?*ITextRangeProvider, targetEndpoint: TextPatternRangeEndpoint) callconv(.Inline) HRESULT {
+    pub inline fn MoveEndpointByRange(self: *const ITextRangeProvider, endpoint: TextPatternRangeEndpoint, targetRange: ?*ITextRangeProvider, targetEndpoint: TextPatternRangeEndpoint) HRESULT {
         return self.vtable.MoveEndpointByRange(self, endpoint, targetRange, targetEndpoint);
     }
-    pub fn Select(self: *const ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn Select(self: *const ITextRangeProvider) HRESULT {
         return self.vtable.Select(self);
     }
-    pub fn AddToSelection(self: *const ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn AddToSelection(self: *const ITextRangeProvider) HRESULT {
         return self.vtable.AddToSelection(self);
     }
-    pub fn RemoveFromSelection(self: *const ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn RemoveFromSelection(self: *const ITextRangeProvider) HRESULT {
         return self.vtable.RemoveFromSelection(self);
     }
-    pub fn ScrollIntoView(self: *const ITextRangeProvider, alignToTop: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn ScrollIntoView(self: *const ITextRangeProvider, alignToTop: BOOL) HRESULT {
         return self.vtable.ScrollIntoView(self, alignToTop);
     }
-    pub fn GetChildren(self: *const ITextRangeProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetChildren(self: *const ITextRangeProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetChildren(self, pRetVal);
     }
 };
@@ -4141,53 +4141,53 @@ pub const IID_ITextProvider = &IID_ITextProvider_Value;
 pub const ITextProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetSelection: *const fn(
+        GetSelection: *const fn (
             self: *const ITextProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVisibleRanges: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVisibleRanges: *const fn (
             self: *const ITextProvider,
             pRetVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RangeFromChild: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RangeFromChild: *const fn (
             self: *const ITextProvider,
             childElement: ?*IRawElementProviderSimple,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RangeFromPoint: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RangeFromPoint: *const fn (
             self: *const ITextProvider,
             point: UiaPoint,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DocumentRange: *const fn(
+        get_DocumentRange: *const fn (
             self: *const ITextProvider,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SupportedTextSelection: *const fn(
+        get_SupportedTextSelection: *const fn (
             self: *const ITextProvider,
             pRetVal: ?*SupportedTextSelection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetSelection(self: *const ITextProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetSelection(self: *const ITextProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetSelection(self, pRetVal);
     }
-    pub fn GetVisibleRanges(self: *const ITextProvider, pRetVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetVisibleRanges(self: *const ITextProvider, pRetVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetVisibleRanges(self, pRetVal);
     }
-    pub fn RangeFromChild(self: *const ITextProvider, childElement: ?*IRawElementProviderSimple, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn RangeFromChild(self: *const ITextProvider, childElement: ?*IRawElementProviderSimple, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.RangeFromChild(self, childElement, pRetVal);
     }
-    pub fn RangeFromPoint(self: *const ITextProvider, point: UiaPoint, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn RangeFromPoint(self: *const ITextProvider, point: UiaPoint, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.RangeFromPoint(self, point, pRetVal);
     }
-    pub fn get_DocumentRange(self: *const ITextProvider, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn get_DocumentRange(self: *const ITextProvider, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.get_DocumentRange(self, pRetVal);
     }
-    pub fn get_SupportedTextSelection(self: *const ITextProvider, pRetVal: ?*SupportedTextSelection) callconv(.Inline) HRESULT {
+    pub inline fn get_SupportedTextSelection(self: *const ITextProvider, pRetVal: ?*SupportedTextSelection) HRESULT {
         return self.vtable.get_SupportedTextSelection(self, pRetVal);
     }
 };
@@ -4198,24 +4198,24 @@ pub const IID_ITextProvider2 = &IID_ITextProvider2_Value;
 pub const ITextProvider2 = extern union {
     pub const VTable = extern struct {
         base: ITextProvider.VTable,
-        RangeFromAnnotation: *const fn(
+        RangeFromAnnotation: *const fn (
             self: *const ITextProvider2,
             annotationElement: ?*IRawElementProviderSimple,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCaretRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCaretRange: *const fn (
             self: *const ITextProvider2,
             isActive: ?*BOOL,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextProvider: ITextProvider,
     IUnknown: IUnknown,
-    pub fn RangeFromAnnotation(self: *const ITextProvider2, annotationElement: ?*IRawElementProviderSimple, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn RangeFromAnnotation(self: *const ITextProvider2, annotationElement: ?*IRawElementProviderSimple, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.RangeFromAnnotation(self, annotationElement, pRetVal);
     }
-    pub fn GetCaretRange(self: *const ITextProvider2, isActive: ?*BOOL, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn GetCaretRange(self: *const ITextProvider2, isActive: ?*BOOL, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.GetCaretRange(self, isActive, pRetVal);
     }
 };
@@ -4226,22 +4226,22 @@ pub const IID_ITextEditProvider = &IID_ITextEditProvider_Value;
 pub const ITextEditProvider = extern union {
     pub const VTable = extern struct {
         base: ITextProvider.VTable,
-        GetActiveComposition: *const fn(
+        GetActiveComposition: *const fn (
             self: *const ITextEditProvider,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConversionTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConversionTarget: *const fn (
             self: *const ITextEditProvider,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextProvider: ITextProvider,
     IUnknown: IUnknown,
-    pub fn GetActiveComposition(self: *const ITextEditProvider, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn GetActiveComposition(self: *const ITextEditProvider, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.GetActiveComposition(self, pRetVal);
     }
-    pub fn GetConversionTarget(self: *const ITextEditProvider, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn GetConversionTarget(self: *const ITextEditProvider, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.GetConversionTarget(self, pRetVal);
     }
 };
@@ -4252,14 +4252,14 @@ pub const IID_ITextRangeProvider2 = &IID_ITextRangeProvider2_Value;
 pub const ITextRangeProvider2 = extern union {
     pub const VTable = extern struct {
         base: ITextRangeProvider.VTable,
-        ShowContextMenu: *const fn(
+        ShowContextMenu: *const fn (
             self: *const ITextRangeProvider2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ITextRangeProvider: ITextRangeProvider,
     IUnknown: IUnknown,
-    pub fn ShowContextMenu(self: *const ITextRangeProvider2) callconv(.Inline) HRESULT {
+    pub inline fn ShowContextMenu(self: *const ITextRangeProvider2) HRESULT {
         return self.vtable.ShowContextMenu(self);
     }
 };
@@ -4271,22 +4271,22 @@ pub const ITextChildProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TextContainer: *const fn(
+        get_TextContainer: *const fn (
             self: *const ITextChildProvider,
             pRetVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TextRange: *const fn(
+        get_TextRange: *const fn (
             self: *const ITextChildProvider,
             pRetVal: ?*?*ITextRangeProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_TextContainer(self: *const ITextChildProvider, pRetVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn get_TextContainer(self: *const ITextChildProvider, pRetVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.get_TextContainer(self, pRetVal);
     }
-    pub fn get_TextRange(self: *const ITextChildProvider, pRetVal: ?*?*ITextRangeProvider) callconv(.Inline) HRESULT {
+    pub inline fn get_TextRange(self: *const ITextChildProvider, pRetVal: ?*?*ITextRangeProvider) HRESULT {
         return self.vtable.get_TextRange(self, pRetVal);
     }
 };
@@ -4296,15 +4296,15 @@ pub const IID_ICustomNavigationProvider = &IID_ICustomNavigationProvider_Value;
 pub const ICustomNavigationProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Navigate: *const fn(
+        Navigate: *const fn (
             self: *const ICustomNavigationProvider,
             direction: NavigateDirection,
             pRetVal: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Navigate(self: *const ICustomNavigationProvider, direction: NavigateDirection, pRetVal: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn Navigate(self: *const ICustomNavigationProvider, direction: NavigateDirection, pRetVal: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.Navigate(self, direction, pRetVal);
     }
 };
@@ -4315,26 +4315,26 @@ pub const IID_IUIAutomationPatternInstance = &IID_IUIAutomationPatternInstance_V
 pub const IUIAutomationPatternInstance = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProperty: *const fn(
+        GetProperty: *const fn (
             self: *const IUIAutomationPatternInstance,
             index: u32,
             cached: BOOL,
             type: UIAutomationType,
             pPtr: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CallMethod: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CallMethod: *const fn (
             self: *const IUIAutomationPatternInstance,
             index: u32,
             pParams: ?*const UIAutomationParameter,
             cParams: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProperty(self: *const IUIAutomationPatternInstance, index: u32, cached: BOOL, @"type": UIAutomationType, pPtr: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const IUIAutomationPatternInstance, index: u32, cached: BOOL, @"type": UIAutomationType, pPtr: ?*anyopaque) HRESULT {
         return self.vtable.GetProperty(self, index, cached, @"type", pPtr);
     }
-    pub fn CallMethod(self: *const IUIAutomationPatternInstance, index: u32, pParams: ?*const UIAutomationParameter, cParams: u32) callconv(.Inline) HRESULT {
+    pub inline fn CallMethod(self: *const IUIAutomationPatternInstance, index: u32, pParams: ?*const UIAutomationParameter, cParams: u32) HRESULT {
         return self.vtable.CallMethod(self, index, pParams, cParams);
     }
 };
@@ -4345,25 +4345,25 @@ pub const IID_IUIAutomationPatternHandler = &IID_IUIAutomationPatternHandler_Val
 pub const IUIAutomationPatternHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateClientWrapper: *const fn(
+        CreateClientWrapper: *const fn (
             self: *const IUIAutomationPatternHandler,
             pPatternInstance: ?*IUIAutomationPatternInstance,
             pClientWrapper: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Dispatch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Dispatch: *const fn (
             self: *const IUIAutomationPatternHandler,
             pTarget: ?*IUnknown,
             index: u32,
             pParams: ?*const UIAutomationParameter,
             cParams: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateClientWrapper(self: *const IUIAutomationPatternHandler, pPatternInstance: ?*IUIAutomationPatternInstance, pClientWrapper: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn CreateClientWrapper(self: *const IUIAutomationPatternHandler, pPatternInstance: ?*IUIAutomationPatternInstance, pClientWrapper: ?*?*IUnknown) HRESULT {
         return self.vtable.CreateClientWrapper(self, pPatternInstance, pClientWrapper);
     }
-    pub fn Dispatch(self: *const IUIAutomationPatternHandler, pTarget: ?*IUnknown, index: u32, pParams: ?*const UIAutomationParameter, cParams: u32) callconv(.Inline) HRESULT {
+    pub inline fn Dispatch(self: *const IUIAutomationPatternHandler, pTarget: ?*IUnknown, index: u32, pParams: ?*const UIAutomationParameter, cParams: u32) HRESULT {
         return self.vtable.Dispatch(self, pTarget, index, pParams, cParams);
     }
 };
@@ -4374,17 +4374,17 @@ pub const IID_IUIAutomationRegistrar = &IID_IUIAutomationRegistrar_Value;
 pub const IUIAutomationRegistrar = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RegisterProperty: *const fn(
+        RegisterProperty: *const fn (
             self: *const IUIAutomationRegistrar,
             property: ?*const UIAutomationPropertyInfo,
             propertyId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RegisterEvent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RegisterEvent: *const fn (
             self: *const IUIAutomationRegistrar,
             event: ?*const UIAutomationEventInfo,
             eventId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RegisterPattern: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RegisterPattern: *const fn (
             self: *const IUIAutomationRegistrar,
             pattern: ?*const UIAutomationPatternInfo,
             pPatternId: ?*i32,
@@ -4393,17 +4393,17 @@ pub const IUIAutomationRegistrar = extern union {
             pPropertyIds: [*]i32,
             eventIdCount: u32,
             pEventIds: [*]i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RegisterProperty(self: *const IUIAutomationRegistrar, property: ?*const UIAutomationPropertyInfo, propertyId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn RegisterProperty(self: *const IUIAutomationRegistrar, property: ?*const UIAutomationPropertyInfo, propertyId: ?*i32) HRESULT {
         return self.vtable.RegisterProperty(self, property, propertyId);
     }
-    pub fn RegisterEvent(self: *const IUIAutomationRegistrar, event: ?*const UIAutomationEventInfo, eventId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn RegisterEvent(self: *const IUIAutomationRegistrar, event: ?*const UIAutomationEventInfo, eventId: ?*i32) HRESULT {
         return self.vtable.RegisterEvent(self, event, eventId);
     }
-    pub fn RegisterPattern(self: *const IUIAutomationRegistrar, pattern: ?*const UIAutomationPatternInfo, pPatternId: ?*i32, pPatternAvailablePropertyId: ?*i32, propertyIdCount: u32, pPropertyIds: [*]i32, eventIdCount: u32, pEventIds: [*]i32) callconv(.Inline) HRESULT {
+    pub inline fn RegisterPattern(self: *const IUIAutomationRegistrar, pattern: ?*const UIAutomationPatternInfo, pPatternId: ?*i32, pPatternAvailablePropertyId: ?*i32, propertyIdCount: u32, pPropertyIds: [*]i32, eventIdCount: u32, pEventIds: [*]i32) HRESULT {
         return self.vtable.RegisterPattern(self, pattern, pPatternId, pPatternAvailablePropertyId, propertyIdCount, pPropertyIds, eventIdCount, pEventIds);
     }
 };
@@ -4475,668 +4475,668 @@ pub const IID_IUIAutomationElement = &IID_IUIAutomationElement_Value;
 pub const IUIAutomationElement = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetFocus: *const fn(
+        SetFocus: *const fn (
             self: *const IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRuntimeId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRuntimeId: *const fn (
             self: *const IUIAutomationElement,
             runtimeId: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindFirst: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindFirst: *const fn (
             self: *const IUIAutomationElement,
             scope: TreeScope,
             condition: ?*IUIAutomationCondition,
             found: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindAll: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindAll: *const fn (
             self: *const IUIAutomationElement,
             scope: TreeScope,
             condition: ?*IUIAutomationCondition,
             found: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindFirstBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindFirstBuildCache: *const fn (
             self: *const IUIAutomationElement,
             scope: TreeScope,
             condition: ?*IUIAutomationCondition,
             cacheRequest: ?*IUIAutomationCacheRequest,
             found: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindAllBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindAllBuildCache: *const fn (
             self: *const IUIAutomationElement,
             scope: TreeScope,
             condition: ?*IUIAutomationCondition,
             cacheRequest: ?*IUIAutomationCacheRequest,
             found: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BuildUpdatedCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BuildUpdatedCache: *const fn (
             self: *const IUIAutomationElement,
             cacheRequest: ?*IUIAutomationCacheRequest,
             updatedElement: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentPropertyValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentPropertyValue: *const fn (
             self: *const IUIAutomationElement,
             propertyId: i32,
             retVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentPropertyValueEx: *const fn(
-            self: *const IUIAutomationElement,
-            propertyId: i32,
-            ignoreDefaultValue: BOOL,
-            retVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedPropertyValue: *const fn(
-            self: *const IUIAutomationElement,
-            propertyId: i32,
-            retVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedPropertyValueEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentPropertyValueEx: *const fn (
             self: *const IUIAutomationElement,
             propertyId: i32,
             ignoreDefaultValue: BOOL,
             retVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentPatternAs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedPropertyValue: *const fn (
+            self: *const IUIAutomationElement,
+            propertyId: i32,
+            retVal: ?*VARIANT,
+        ) callconv(.winapi) HRESULT,
+        GetCachedPropertyValueEx: *const fn (
+            self: *const IUIAutomationElement,
+            propertyId: i32,
+            ignoreDefaultValue: BOOL,
+            retVal: ?*VARIANT,
+        ) callconv(.winapi) HRESULT,
+        GetCurrentPatternAs: *const fn (
             self: *const IUIAutomationElement,
             patternId: i32,
             riid: ?*const Guid,
             patternObject: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedPatternAs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedPatternAs: *const fn (
             self: *const IUIAutomationElement,
             patternId: i32,
             riid: ?*const Guid,
             patternObject: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentPattern: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentPattern: *const fn (
             self: *const IUIAutomationElement,
             patternId: i32,
             patternObject: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedPattern: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedPattern: *const fn (
             self: *const IUIAutomationElement,
             patternId: i32,
             patternObject: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedParent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedParent: *const fn (
             self: *const IUIAutomationElement,
             parent: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedChildren: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedChildren: *const fn (
             self: *const IUIAutomationElement,
             children: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentProcessId: *const fn(
+        get_CurrentProcessId: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentControlType: *const fn(
+        get_CurrentControlType: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentLocalizedControlType: *const fn(
+        get_CurrentLocalizedControlType: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentName: *const fn(
+        get_CurrentName: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAcceleratorKey: *const fn(
+        get_CurrentAcceleratorKey: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAccessKey: *const fn(
+        get_CurrentAccessKey: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentHasKeyboardFocus: *const fn(
+        get_CurrentHasKeyboardFocus: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsKeyboardFocusable: *const fn(
+        get_CurrentIsKeyboardFocusable: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsEnabled: *const fn(
+        get_CurrentIsEnabled: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAutomationId: *const fn(
+        get_CurrentAutomationId: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentClassName: *const fn(
+        get_CurrentClassName: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentHelpText: *const fn(
+        get_CurrentHelpText: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCulture: *const fn(
+        get_CurrentCulture: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsControlElement: *const fn(
+        get_CurrentIsControlElement: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsContentElement: *const fn(
+        get_CurrentIsContentElement: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsPassword: *const fn(
+        get_CurrentIsPassword: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentNativeWindowHandle: *const fn(
+        get_CurrentNativeWindowHandle: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentItemType: *const fn(
+        get_CurrentItemType: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsOffscreen: *const fn(
+        get_CurrentIsOffscreen: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentOrientation: *const fn(
+        get_CurrentOrientation: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*OrientationType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentFrameworkId: *const fn(
+        get_CurrentFrameworkId: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsRequiredForForm: *const fn(
+        get_CurrentIsRequiredForForm: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentItemStatus: *const fn(
+        get_CurrentItemStatus: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentBoundingRectangle: *const fn(
+        get_CurrentBoundingRectangle: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentLabeledBy: *const fn(
+        get_CurrentLabeledBy: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAriaRole: *const fn(
+        get_CurrentAriaRole: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAriaProperties: *const fn(
+        get_CurrentAriaProperties: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsDataValidForForm: *const fn(
+        get_CurrentIsDataValidForForm: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentControllerFor: *const fn(
+        get_CurrentControllerFor: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentDescribedBy: *const fn(
+        get_CurrentDescribedBy: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentFlowsTo: *const fn(
+        get_CurrentFlowsTo: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentProviderDescription: *const fn(
+        get_CurrentProviderDescription: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedProcessId: *const fn(
+        get_CachedProcessId: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedControlType: *const fn(
+        get_CachedControlType: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedLocalizedControlType: *const fn(
+        get_CachedLocalizedControlType: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedName: *const fn(
+        get_CachedName: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAcceleratorKey: *const fn(
+        get_CachedAcceleratorKey: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAccessKey: *const fn(
+        get_CachedAccessKey: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedHasKeyboardFocus: *const fn(
+        get_CachedHasKeyboardFocus: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsKeyboardFocusable: *const fn(
+        get_CachedIsKeyboardFocusable: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsEnabled: *const fn(
+        get_CachedIsEnabled: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAutomationId: *const fn(
+        get_CachedAutomationId: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedClassName: *const fn(
+        get_CachedClassName: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedHelpText: *const fn(
+        get_CachedHelpText: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCulture: *const fn(
+        get_CachedCulture: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsControlElement: *const fn(
+        get_CachedIsControlElement: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsContentElement: *const fn(
+        get_CachedIsContentElement: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsPassword: *const fn(
+        get_CachedIsPassword: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedNativeWindowHandle: *const fn(
+        get_CachedNativeWindowHandle: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedItemType: *const fn(
+        get_CachedItemType: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsOffscreen: *const fn(
+        get_CachedIsOffscreen: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedOrientation: *const fn(
+        get_CachedOrientation: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*OrientationType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedFrameworkId: *const fn(
+        get_CachedFrameworkId: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsRequiredForForm: *const fn(
+        get_CachedIsRequiredForForm: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedItemStatus: *const fn(
+        get_CachedItemStatus: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedBoundingRectangle: *const fn(
+        get_CachedBoundingRectangle: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedLabeledBy: *const fn(
+        get_CachedLabeledBy: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAriaRole: *const fn(
+        get_CachedAriaRole: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAriaProperties: *const fn(
+        get_CachedAriaProperties: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsDataValidForForm: *const fn(
+        get_CachedIsDataValidForForm: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedControllerFor: *const fn(
+        get_CachedControllerFor: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedDescribedBy: *const fn(
+        get_CachedDescribedBy: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedFlowsTo: *const fn(
+        get_CachedFlowsTo: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedProviderDescription: *const fn(
+        get_CachedProviderDescription: *const fn (
             self: *const IUIAutomationElement,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetClickablePoint: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetClickablePoint: *const fn (
             self: *const IUIAutomationElement,
             clickable: ?*POINT,
             gotClickable: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetFocus(self: *const IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn SetFocus(self: *const IUIAutomationElement) HRESULT {
         return self.vtable.SetFocus(self);
     }
-    pub fn GetRuntimeId(self: *const IUIAutomationElement, runtimeId: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetRuntimeId(self: *const IUIAutomationElement, runtimeId: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetRuntimeId(self, runtimeId);
     }
-    pub fn FindFirst(self: *const IUIAutomationElement, scope: TreeScope, condition: ?*IUIAutomationCondition, found: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn FindFirst(self: *const IUIAutomationElement, scope: TreeScope, condition: ?*IUIAutomationCondition, found: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.FindFirst(self, scope, condition, found);
     }
-    pub fn FindAll(self: *const IUIAutomationElement, scope: TreeScope, condition: ?*IUIAutomationCondition, found: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn FindAll(self: *const IUIAutomationElement, scope: TreeScope, condition: ?*IUIAutomationCondition, found: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.FindAll(self, scope, condition, found);
     }
-    pub fn FindFirstBuildCache(self: *const IUIAutomationElement, scope: TreeScope, condition: ?*IUIAutomationCondition, cacheRequest: ?*IUIAutomationCacheRequest, found: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn FindFirstBuildCache(self: *const IUIAutomationElement, scope: TreeScope, condition: ?*IUIAutomationCondition, cacheRequest: ?*IUIAutomationCacheRequest, found: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.FindFirstBuildCache(self, scope, condition, cacheRequest, found);
     }
-    pub fn FindAllBuildCache(self: *const IUIAutomationElement, scope: TreeScope, condition: ?*IUIAutomationCondition, cacheRequest: ?*IUIAutomationCacheRequest, found: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn FindAllBuildCache(self: *const IUIAutomationElement, scope: TreeScope, condition: ?*IUIAutomationCondition, cacheRequest: ?*IUIAutomationCacheRequest, found: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.FindAllBuildCache(self, scope, condition, cacheRequest, found);
     }
-    pub fn BuildUpdatedCache(self: *const IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, updatedElement: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn BuildUpdatedCache(self: *const IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, updatedElement: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.BuildUpdatedCache(self, cacheRequest, updatedElement);
     }
-    pub fn GetCurrentPropertyValue(self: *const IUIAutomationElement, propertyId: i32, retVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentPropertyValue(self: *const IUIAutomationElement, propertyId: i32, retVal: ?*VARIANT) HRESULT {
         return self.vtable.GetCurrentPropertyValue(self, propertyId, retVal);
     }
-    pub fn GetCurrentPropertyValueEx(self: *const IUIAutomationElement, propertyId: i32, ignoreDefaultValue: BOOL, retVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentPropertyValueEx(self: *const IUIAutomationElement, propertyId: i32, ignoreDefaultValue: BOOL, retVal: ?*VARIANT) HRESULT {
         return self.vtable.GetCurrentPropertyValueEx(self, propertyId, ignoreDefaultValue, retVal);
     }
-    pub fn GetCachedPropertyValue(self: *const IUIAutomationElement, propertyId: i32, retVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedPropertyValue(self: *const IUIAutomationElement, propertyId: i32, retVal: ?*VARIANT) HRESULT {
         return self.vtable.GetCachedPropertyValue(self, propertyId, retVal);
     }
-    pub fn GetCachedPropertyValueEx(self: *const IUIAutomationElement, propertyId: i32, ignoreDefaultValue: BOOL, retVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedPropertyValueEx(self: *const IUIAutomationElement, propertyId: i32, ignoreDefaultValue: BOOL, retVal: ?*VARIANT) HRESULT {
         return self.vtable.GetCachedPropertyValueEx(self, propertyId, ignoreDefaultValue, retVal);
     }
-    pub fn GetCurrentPatternAs(self: *const IUIAutomationElement, patternId: i32, riid: ?*const Guid, patternObject: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentPatternAs(self: *const IUIAutomationElement, patternId: i32, riid: ?*const Guid, patternObject: **anyopaque) HRESULT {
         return self.vtable.GetCurrentPatternAs(self, patternId, riid, patternObject);
     }
-    pub fn GetCachedPatternAs(self: *const IUIAutomationElement, patternId: i32, riid: ?*const Guid, patternObject: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedPatternAs(self: *const IUIAutomationElement, patternId: i32, riid: ?*const Guid, patternObject: **anyopaque) HRESULT {
         return self.vtable.GetCachedPatternAs(self, patternId, riid, patternObject);
     }
-    pub fn GetCurrentPattern(self: *const IUIAutomationElement, patternId: i32, patternObject: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentPattern(self: *const IUIAutomationElement, patternId: i32, patternObject: ?*?*IUnknown) HRESULT {
         return self.vtable.GetCurrentPattern(self, patternId, patternObject);
     }
-    pub fn GetCachedPattern(self: *const IUIAutomationElement, patternId: i32, patternObject: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedPattern(self: *const IUIAutomationElement, patternId: i32, patternObject: ?*?*IUnknown) HRESULT {
         return self.vtable.GetCachedPattern(self, patternId, patternObject);
     }
-    pub fn GetCachedParent(self: *const IUIAutomationElement, parent: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedParent(self: *const IUIAutomationElement, parent: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetCachedParent(self, parent);
     }
-    pub fn GetCachedChildren(self: *const IUIAutomationElement, children: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedChildren(self: *const IUIAutomationElement, children: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCachedChildren(self, children);
     }
-    pub fn get_CurrentProcessId(self: *const IUIAutomationElement, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentProcessId(self: *const IUIAutomationElement, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentProcessId(self, retVal);
     }
-    pub fn get_CurrentControlType(self: *const IUIAutomationElement, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentControlType(self: *const IUIAutomationElement, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentControlType(self, retVal);
     }
-    pub fn get_CurrentLocalizedControlType(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentLocalizedControlType(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentLocalizedControlType(self, retVal);
     }
-    pub fn get_CurrentName(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentName(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentName(self, retVal);
     }
-    pub fn get_CurrentAcceleratorKey(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAcceleratorKey(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentAcceleratorKey(self, retVal);
     }
-    pub fn get_CurrentAccessKey(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAccessKey(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentAccessKey(self, retVal);
     }
-    pub fn get_CurrentHasKeyboardFocus(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentHasKeyboardFocus(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentHasKeyboardFocus(self, retVal);
     }
-    pub fn get_CurrentIsKeyboardFocusable(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsKeyboardFocusable(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsKeyboardFocusable(self, retVal);
     }
-    pub fn get_CurrentIsEnabled(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsEnabled(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsEnabled(self, retVal);
     }
-    pub fn get_CurrentAutomationId(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAutomationId(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentAutomationId(self, retVal);
     }
-    pub fn get_CurrentClassName(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentClassName(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentClassName(self, retVal);
     }
-    pub fn get_CurrentHelpText(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentHelpText(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentHelpText(self, retVal);
     }
-    pub fn get_CurrentCulture(self: *const IUIAutomationElement, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCulture(self: *const IUIAutomationElement, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentCulture(self, retVal);
     }
-    pub fn get_CurrentIsControlElement(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsControlElement(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsControlElement(self, retVal);
     }
-    pub fn get_CurrentIsContentElement(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsContentElement(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsContentElement(self, retVal);
     }
-    pub fn get_CurrentIsPassword(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsPassword(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsPassword(self, retVal);
     }
-    pub fn get_CurrentNativeWindowHandle(self: *const IUIAutomationElement, retVal: ?*?HWND) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentNativeWindowHandle(self: *const IUIAutomationElement, retVal: ?*?HWND) HRESULT {
         return self.vtable.get_CurrentNativeWindowHandle(self, retVal);
     }
-    pub fn get_CurrentItemType(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentItemType(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentItemType(self, retVal);
     }
-    pub fn get_CurrentIsOffscreen(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsOffscreen(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsOffscreen(self, retVal);
     }
-    pub fn get_CurrentOrientation(self: *const IUIAutomationElement, retVal: ?*OrientationType) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentOrientation(self: *const IUIAutomationElement, retVal: ?*OrientationType) HRESULT {
         return self.vtable.get_CurrentOrientation(self, retVal);
     }
-    pub fn get_CurrentFrameworkId(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentFrameworkId(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentFrameworkId(self, retVal);
     }
-    pub fn get_CurrentIsRequiredForForm(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsRequiredForForm(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsRequiredForForm(self, retVal);
     }
-    pub fn get_CurrentItemStatus(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentItemStatus(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentItemStatus(self, retVal);
     }
-    pub fn get_CurrentBoundingRectangle(self: *const IUIAutomationElement, retVal: ?*RECT) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentBoundingRectangle(self: *const IUIAutomationElement, retVal: ?*RECT) HRESULT {
         return self.vtable.get_CurrentBoundingRectangle(self, retVal);
     }
-    pub fn get_CurrentLabeledBy(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentLabeledBy(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CurrentLabeledBy(self, retVal);
     }
-    pub fn get_CurrentAriaRole(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAriaRole(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentAriaRole(self, retVal);
     }
-    pub fn get_CurrentAriaProperties(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAriaProperties(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentAriaProperties(self, retVal);
     }
-    pub fn get_CurrentIsDataValidForForm(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsDataValidForForm(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsDataValidForForm(self, retVal);
     }
-    pub fn get_CurrentControllerFor(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentControllerFor(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CurrentControllerFor(self, retVal);
     }
-    pub fn get_CurrentDescribedBy(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentDescribedBy(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CurrentDescribedBy(self, retVal);
     }
-    pub fn get_CurrentFlowsTo(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentFlowsTo(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CurrentFlowsTo(self, retVal);
     }
-    pub fn get_CurrentProviderDescription(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentProviderDescription(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentProviderDescription(self, retVal);
     }
-    pub fn get_CachedProcessId(self: *const IUIAutomationElement, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedProcessId(self: *const IUIAutomationElement, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedProcessId(self, retVal);
     }
-    pub fn get_CachedControlType(self: *const IUIAutomationElement, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedControlType(self: *const IUIAutomationElement, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedControlType(self, retVal);
     }
-    pub fn get_CachedLocalizedControlType(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedLocalizedControlType(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedLocalizedControlType(self, retVal);
     }
-    pub fn get_CachedName(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedName(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedName(self, retVal);
     }
-    pub fn get_CachedAcceleratorKey(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAcceleratorKey(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedAcceleratorKey(self, retVal);
     }
-    pub fn get_CachedAccessKey(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAccessKey(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedAccessKey(self, retVal);
     }
-    pub fn get_CachedHasKeyboardFocus(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedHasKeyboardFocus(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedHasKeyboardFocus(self, retVal);
     }
-    pub fn get_CachedIsKeyboardFocusable(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsKeyboardFocusable(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsKeyboardFocusable(self, retVal);
     }
-    pub fn get_CachedIsEnabled(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsEnabled(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsEnabled(self, retVal);
     }
-    pub fn get_CachedAutomationId(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAutomationId(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedAutomationId(self, retVal);
     }
-    pub fn get_CachedClassName(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedClassName(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedClassName(self, retVal);
     }
-    pub fn get_CachedHelpText(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedHelpText(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedHelpText(self, retVal);
     }
-    pub fn get_CachedCulture(self: *const IUIAutomationElement, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCulture(self: *const IUIAutomationElement, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedCulture(self, retVal);
     }
-    pub fn get_CachedIsControlElement(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsControlElement(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsControlElement(self, retVal);
     }
-    pub fn get_CachedIsContentElement(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsContentElement(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsContentElement(self, retVal);
     }
-    pub fn get_CachedIsPassword(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsPassword(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsPassword(self, retVal);
     }
-    pub fn get_CachedNativeWindowHandle(self: *const IUIAutomationElement, retVal: ?*?HWND) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedNativeWindowHandle(self: *const IUIAutomationElement, retVal: ?*?HWND) HRESULT {
         return self.vtable.get_CachedNativeWindowHandle(self, retVal);
     }
-    pub fn get_CachedItemType(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedItemType(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedItemType(self, retVal);
     }
-    pub fn get_CachedIsOffscreen(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsOffscreen(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsOffscreen(self, retVal);
     }
-    pub fn get_CachedOrientation(self: *const IUIAutomationElement, retVal: ?*OrientationType) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedOrientation(self: *const IUIAutomationElement, retVal: ?*OrientationType) HRESULT {
         return self.vtable.get_CachedOrientation(self, retVal);
     }
-    pub fn get_CachedFrameworkId(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedFrameworkId(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedFrameworkId(self, retVal);
     }
-    pub fn get_CachedIsRequiredForForm(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsRequiredForForm(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsRequiredForForm(self, retVal);
     }
-    pub fn get_CachedItemStatus(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedItemStatus(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedItemStatus(self, retVal);
     }
-    pub fn get_CachedBoundingRectangle(self: *const IUIAutomationElement, retVal: ?*RECT) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedBoundingRectangle(self: *const IUIAutomationElement, retVal: ?*RECT) HRESULT {
         return self.vtable.get_CachedBoundingRectangle(self, retVal);
     }
-    pub fn get_CachedLabeledBy(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedLabeledBy(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CachedLabeledBy(self, retVal);
     }
-    pub fn get_CachedAriaRole(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAriaRole(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedAriaRole(self, retVal);
     }
-    pub fn get_CachedAriaProperties(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAriaProperties(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedAriaProperties(self, retVal);
     }
-    pub fn get_CachedIsDataValidForForm(self: *const IUIAutomationElement, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsDataValidForForm(self: *const IUIAutomationElement, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsDataValidForForm(self, retVal);
     }
-    pub fn get_CachedControllerFor(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedControllerFor(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CachedControllerFor(self, retVal);
     }
-    pub fn get_CachedDescribedBy(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedDescribedBy(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CachedDescribedBy(self, retVal);
     }
-    pub fn get_CachedFlowsTo(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedFlowsTo(self: *const IUIAutomationElement, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CachedFlowsTo(self, retVal);
     }
-    pub fn get_CachedProviderDescription(self: *const IUIAutomationElement, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedProviderDescription(self: *const IUIAutomationElement, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedProviderDescription(self, retVal);
     }
-    pub fn GetClickablePoint(self: *const IUIAutomationElement, clickable: ?*POINT, gotClickable: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn GetClickablePoint(self: *const IUIAutomationElement, clickable: ?*POINT, gotClickable: ?*BOOL) HRESULT {
         return self.vtable.GetClickablePoint(self, clickable, gotClickable);
     }
 };
@@ -5148,22 +5148,22 @@ pub const IUIAutomationElementArray = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Length: *const fn(
+        get_Length: *const fn (
             self: *const IUIAutomationElementArray,
             length: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetElement: *const fn (
             self: *const IUIAutomationElementArray,
             index: i32,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_Length(self: *const IUIAutomationElementArray, length: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Length(self: *const IUIAutomationElementArray, length: ?*i32) HRESULT {
         return self.vtable.get_Length(self, length);
     }
-    pub fn GetElement(self: *const IUIAutomationElementArray, index: i32, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetElement(self: *const IUIAutomationElementArray, index: i32, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetElement(self, index, element);
     }
 };
@@ -5186,15 +5186,15 @@ pub const IUIAutomationBoolCondition = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationCondition.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BooleanValue: *const fn(
+        get_BooleanValue: *const fn (
             self: *const IUIAutomationBoolCondition,
             boolVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationCondition: IUIAutomationCondition,
     IUnknown: IUnknown,
-    pub fn get_BooleanValue(self: *const IUIAutomationBoolCondition, boolVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_BooleanValue(self: *const IUIAutomationBoolCondition, boolVal: ?*BOOL) HRESULT {
         return self.vtable.get_BooleanValue(self, boolVal);
     }
 };
@@ -5206,31 +5206,31 @@ pub const IUIAutomationPropertyCondition = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationCondition.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PropertyId: *const fn(
+        get_PropertyId: *const fn (
             self: *const IUIAutomationPropertyCondition,
             propertyId: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PropertyValue: *const fn(
+        get_PropertyValue: *const fn (
             self: *const IUIAutomationPropertyCondition,
             propertyValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PropertyConditionFlags: *const fn(
+        get_PropertyConditionFlags: *const fn (
             self: *const IUIAutomationPropertyCondition,
             flags: ?*PropertyConditionFlags,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationCondition: IUIAutomationCondition,
     IUnknown: IUnknown,
-    pub fn get_PropertyId(self: *const IUIAutomationPropertyCondition, propertyId: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_PropertyId(self: *const IUIAutomationPropertyCondition, propertyId: ?*i32) HRESULT {
         return self.vtable.get_PropertyId(self, propertyId);
     }
-    pub fn get_PropertyValue(self: *const IUIAutomationPropertyCondition, propertyValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_PropertyValue(self: *const IUIAutomationPropertyCondition, propertyValue: ?*VARIANT) HRESULT {
         return self.vtable.get_PropertyValue(self, propertyValue);
     }
-    pub fn get_PropertyConditionFlags(self: *const IUIAutomationPropertyCondition, flags: ?*PropertyConditionFlags) callconv(.Inline) HRESULT {
+    pub inline fn get_PropertyConditionFlags(self: *const IUIAutomationPropertyCondition, flags: ?*PropertyConditionFlags) HRESULT {
         return self.vtable.get_PropertyConditionFlags(self, flags);
     }
 };
@@ -5242,30 +5242,30 @@ pub const IUIAutomationAndCondition = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationCondition.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ChildCount: *const fn(
+        get_ChildCount: *const fn (
             self: *const IUIAutomationAndCondition,
             childCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChildrenAsNativeArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChildrenAsNativeArray: *const fn (
             self: *const IUIAutomationAndCondition,
             childArray: [*]?*?*IUIAutomationCondition,
             childArrayCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChildren: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChildren: *const fn (
             self: *const IUIAutomationAndCondition,
             childArray: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationCondition: IUIAutomationCondition,
     IUnknown: IUnknown,
-    pub fn get_ChildCount(self: *const IUIAutomationAndCondition, childCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ChildCount(self: *const IUIAutomationAndCondition, childCount: ?*i32) HRESULT {
         return self.vtable.get_ChildCount(self, childCount);
     }
-    pub fn GetChildrenAsNativeArray(self: *const IUIAutomationAndCondition, childArray: [*]?*?*IUIAutomationCondition, childArrayCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetChildrenAsNativeArray(self: *const IUIAutomationAndCondition, childArray: [*]?*?*IUIAutomationCondition, childArrayCount: ?*i32) HRESULT {
         return self.vtable.GetChildrenAsNativeArray(self, childArray, childArrayCount);
     }
-    pub fn GetChildren(self: *const IUIAutomationAndCondition, childArray: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetChildren(self: *const IUIAutomationAndCondition, childArray: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetChildren(self, childArray);
     }
 };
@@ -5277,30 +5277,30 @@ pub const IUIAutomationOrCondition = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationCondition.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ChildCount: *const fn(
+        get_ChildCount: *const fn (
             self: *const IUIAutomationOrCondition,
             childCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChildrenAsNativeArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChildrenAsNativeArray: *const fn (
             self: *const IUIAutomationOrCondition,
             childArray: [*]?*?*IUIAutomationCondition,
             childArrayCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChildren: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChildren: *const fn (
             self: *const IUIAutomationOrCondition,
             childArray: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationCondition: IUIAutomationCondition,
     IUnknown: IUnknown,
-    pub fn get_ChildCount(self: *const IUIAutomationOrCondition, childCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ChildCount(self: *const IUIAutomationOrCondition, childCount: ?*i32) HRESULT {
         return self.vtable.get_ChildCount(self, childCount);
     }
-    pub fn GetChildrenAsNativeArray(self: *const IUIAutomationOrCondition, childArray: [*]?*?*IUIAutomationCondition, childArrayCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetChildrenAsNativeArray(self: *const IUIAutomationOrCondition, childArray: [*]?*?*IUIAutomationCondition, childArrayCount: ?*i32) HRESULT {
         return self.vtable.GetChildrenAsNativeArray(self, childArray, childArrayCount);
     }
-    pub fn GetChildren(self: *const IUIAutomationOrCondition, childArray: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetChildren(self: *const IUIAutomationOrCondition, childArray: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetChildren(self, childArray);
     }
 };
@@ -5311,15 +5311,15 @@ pub const IID_IUIAutomationNotCondition = &IID_IUIAutomationNotCondition_Value;
 pub const IUIAutomationNotCondition = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationCondition.VTable,
-        GetChild: *const fn(
+        GetChild: *const fn (
             self: *const IUIAutomationNotCondition,
             condition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationCondition: IUIAutomationCondition,
     IUnknown: IUnknown,
-    pub fn GetChild(self: *const IUIAutomationNotCondition, condition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn GetChild(self: *const IUIAutomationNotCondition, condition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.GetChild(self, condition);
     }
 };
@@ -5330,76 +5330,76 @@ pub const IID_IUIAutomationCacheRequest = &IID_IUIAutomationCacheRequest_Value;
 pub const IUIAutomationCacheRequest = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AddProperty: *const fn(
+        AddProperty: *const fn (
             self: *const IUIAutomationCacheRequest,
             propertyId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPattern: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPattern: *const fn (
             self: *const IUIAutomationCacheRequest,
             patternId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IUIAutomationCacheRequest,
             clonedRequest: ?*?*IUIAutomationCacheRequest,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TreeScope: *const fn(
+        get_TreeScope: *const fn (
             self: *const IUIAutomationCacheRequest,
             scope: ?*TreeScope,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TreeScope: *const fn(
+        put_TreeScope: *const fn (
             self: *const IUIAutomationCacheRequest,
             scope: TreeScope,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TreeFilter: *const fn(
+        get_TreeFilter: *const fn (
             self: *const IUIAutomationCacheRequest,
             filter: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TreeFilter: *const fn(
+        put_TreeFilter: *const fn (
             self: *const IUIAutomationCacheRequest,
             filter: ?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AutomationElementMode: *const fn(
+        get_AutomationElementMode: *const fn (
             self: *const IUIAutomationCacheRequest,
             mode: ?*AutomationElementMode,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AutomationElementMode: *const fn(
+        put_AutomationElementMode: *const fn (
             self: *const IUIAutomationCacheRequest,
             mode: AutomationElementMode,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AddProperty(self: *const IUIAutomationCacheRequest, propertyId: i32) callconv(.Inline) HRESULT {
+    pub inline fn AddProperty(self: *const IUIAutomationCacheRequest, propertyId: i32) HRESULT {
         return self.vtable.AddProperty(self, propertyId);
     }
-    pub fn AddPattern(self: *const IUIAutomationCacheRequest, patternId: i32) callconv(.Inline) HRESULT {
+    pub inline fn AddPattern(self: *const IUIAutomationCacheRequest, patternId: i32) HRESULT {
         return self.vtable.AddPattern(self, patternId);
     }
-    pub fn Clone(self: *const IUIAutomationCacheRequest, clonedRequest: ?*?*IUIAutomationCacheRequest) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IUIAutomationCacheRequest, clonedRequest: ?*?*IUIAutomationCacheRequest) HRESULT {
         return self.vtable.Clone(self, clonedRequest);
     }
-    pub fn get_TreeScope(self: *const IUIAutomationCacheRequest, scope: ?*TreeScope) callconv(.Inline) HRESULT {
+    pub inline fn get_TreeScope(self: *const IUIAutomationCacheRequest, scope: ?*TreeScope) HRESULT {
         return self.vtable.get_TreeScope(self, scope);
     }
-    pub fn put_TreeScope(self: *const IUIAutomationCacheRequest, scope: TreeScope) callconv(.Inline) HRESULT {
+    pub inline fn put_TreeScope(self: *const IUIAutomationCacheRequest, scope: TreeScope) HRESULT {
         return self.vtable.put_TreeScope(self, scope);
     }
-    pub fn get_TreeFilter(self: *const IUIAutomationCacheRequest, filter: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn get_TreeFilter(self: *const IUIAutomationCacheRequest, filter: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.get_TreeFilter(self, filter);
     }
-    pub fn put_TreeFilter(self: *const IUIAutomationCacheRequest, filter: ?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn put_TreeFilter(self: *const IUIAutomationCacheRequest, filter: ?*IUIAutomationCondition) HRESULT {
         return self.vtable.put_TreeFilter(self, filter);
     }
-    pub fn get_AutomationElementMode(self: *const IUIAutomationCacheRequest, mode: ?*AutomationElementMode) callconv(.Inline) HRESULT {
+    pub inline fn get_AutomationElementMode(self: *const IUIAutomationCacheRequest, mode: ?*AutomationElementMode) HRESULT {
         return self.vtable.get_AutomationElementMode(self, mode);
     }
-    pub fn put_AutomationElementMode(self: *const IUIAutomationCacheRequest, mode: AutomationElementMode) callconv(.Inline) HRESULT {
+    pub inline fn put_AutomationElementMode(self: *const IUIAutomationCacheRequest, mode: AutomationElementMode) HRESULT {
         return self.vtable.put_AutomationElementMode(self, mode);
     }
 };
@@ -5410,117 +5410,117 @@ pub const IID_IUIAutomationTreeWalker = &IID_IUIAutomationTreeWalker_Value;
 pub const IUIAutomationTreeWalker = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetParentElement: *const fn(
+        GetParentElement: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             parent: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFirstChildElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFirstChildElement: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             first: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLastChildElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLastChildElement: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             last: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNextSiblingElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNextSiblingElement: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             next: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPreviousSiblingElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPreviousSiblingElement: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             previous: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NormalizeElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NormalizeElement: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             normalized: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetParentElementBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetParentElementBuildCache: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             cacheRequest: ?*IUIAutomationCacheRequest,
             parent: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFirstChildElementBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFirstChildElementBuildCache: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             cacheRequest: ?*IUIAutomationCacheRequest,
             first: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLastChildElementBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLastChildElementBuildCache: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             cacheRequest: ?*IUIAutomationCacheRequest,
             last: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNextSiblingElementBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNextSiblingElementBuildCache: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             cacheRequest: ?*IUIAutomationCacheRequest,
             next: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPreviousSiblingElementBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPreviousSiblingElementBuildCache: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             cacheRequest: ?*IUIAutomationCacheRequest,
             previous: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NormalizeElementBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NormalizeElementBuildCache: *const fn (
             self: *const IUIAutomationTreeWalker,
             element: ?*IUIAutomationElement,
             cacheRequest: ?*IUIAutomationCacheRequest,
             normalized: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Condition: *const fn(
+        get_Condition: *const fn (
             self: *const IUIAutomationTreeWalker,
             condition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetParentElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, parent: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetParentElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, parent: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetParentElement(self, element, parent);
     }
-    pub fn GetFirstChildElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, first: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetFirstChildElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, first: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetFirstChildElement(self, element, first);
     }
-    pub fn GetLastChildElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, last: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetLastChildElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, last: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetLastChildElement(self, element, last);
     }
-    pub fn GetNextSiblingElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, next: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetNextSiblingElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, next: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetNextSiblingElement(self, element, next);
     }
-    pub fn GetPreviousSiblingElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, previous: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetPreviousSiblingElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, previous: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetPreviousSiblingElement(self, element, previous);
     }
-    pub fn NormalizeElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, normalized: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn NormalizeElement(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, normalized: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.NormalizeElement(self, element, normalized);
     }
-    pub fn GetParentElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, parent: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetParentElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, parent: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetParentElementBuildCache(self, element, cacheRequest, parent);
     }
-    pub fn GetFirstChildElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, first: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetFirstChildElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, first: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetFirstChildElementBuildCache(self, element, cacheRequest, first);
     }
-    pub fn GetLastChildElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, last: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetLastChildElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, last: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetLastChildElementBuildCache(self, element, cacheRequest, last);
     }
-    pub fn GetNextSiblingElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, next: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetNextSiblingElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, next: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetNextSiblingElementBuildCache(self, element, cacheRequest, next);
     }
-    pub fn GetPreviousSiblingElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, previous: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetPreviousSiblingElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, previous: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetPreviousSiblingElementBuildCache(self, element, cacheRequest, previous);
     }
-    pub fn NormalizeElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, normalized: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn NormalizeElementBuildCache(self: *const IUIAutomationTreeWalker, element: ?*IUIAutomationElement, cacheRequest: ?*IUIAutomationCacheRequest, normalized: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.NormalizeElementBuildCache(self, element, cacheRequest, normalized);
     }
-    pub fn get_Condition(self: *const IUIAutomationTreeWalker, condition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn get_Condition(self: *const IUIAutomationTreeWalker, condition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.get_Condition(self, condition);
     }
 };
@@ -5531,15 +5531,15 @@ pub const IID_IUIAutomationEventHandler = &IID_IUIAutomationEventHandler_Value;
 pub const IUIAutomationEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandleAutomationEvent: *const fn(
+        HandleAutomationEvent: *const fn (
             self: *const IUIAutomationEventHandler,
             sender: ?*IUIAutomationElement,
             eventId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandleAutomationEvent(self: *const IUIAutomationEventHandler, sender: ?*IUIAutomationElement, eventId: i32) callconv(.Inline) HRESULT {
+    pub inline fn HandleAutomationEvent(self: *const IUIAutomationEventHandler, sender: ?*IUIAutomationElement, eventId: i32) HRESULT {
         return self.vtable.HandleAutomationEvent(self, sender, eventId);
     }
 };
@@ -5550,16 +5550,16 @@ pub const IID_IUIAutomationPropertyChangedEventHandler = &IID_IUIAutomationPrope
 pub const IUIAutomationPropertyChangedEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandlePropertyChangedEvent: *const fn(
+        HandlePropertyChangedEvent: *const fn (
             self: *const IUIAutomationPropertyChangedEventHandler,
             sender: ?*IUIAutomationElement,
             propertyId: i32,
             newValue: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandlePropertyChangedEvent(self: *const IUIAutomationPropertyChangedEventHandler, sender: ?*IUIAutomationElement, propertyId: i32, newValue: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn HandlePropertyChangedEvent(self: *const IUIAutomationPropertyChangedEventHandler, sender: ?*IUIAutomationElement, propertyId: i32, newValue: VARIANT) HRESULT {
         return self.vtable.HandlePropertyChangedEvent(self, sender, propertyId, newValue);
     }
 };
@@ -5570,16 +5570,16 @@ pub const IID_IUIAutomationStructureChangedEventHandler = &IID_IUIAutomationStru
 pub const IUIAutomationStructureChangedEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandleStructureChangedEvent: *const fn(
+        HandleStructureChangedEvent: *const fn (
             self: *const IUIAutomationStructureChangedEventHandler,
             sender: ?*IUIAutomationElement,
             changeType: StructureChangeType,
             runtimeId: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandleStructureChangedEvent(self: *const IUIAutomationStructureChangedEventHandler, sender: ?*IUIAutomationElement, changeType: StructureChangeType, runtimeId: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn HandleStructureChangedEvent(self: *const IUIAutomationStructureChangedEventHandler, sender: ?*IUIAutomationElement, changeType: StructureChangeType, runtimeId: ?*SAFEARRAY) HRESULT {
         return self.vtable.HandleStructureChangedEvent(self, sender, changeType, runtimeId);
     }
 };
@@ -5590,14 +5590,14 @@ pub const IID_IUIAutomationFocusChangedEventHandler = &IID_IUIAutomationFocusCha
 pub const IUIAutomationFocusChangedEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandleFocusChangedEvent: *const fn(
+        HandleFocusChangedEvent: *const fn (
             self: *const IUIAutomationFocusChangedEventHandler,
             sender: ?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandleFocusChangedEvent(self: *const IUIAutomationFocusChangedEventHandler, sender: ?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn HandleFocusChangedEvent(self: *const IUIAutomationFocusChangedEventHandler, sender: ?*IUIAutomationElement) HRESULT {
         return self.vtable.HandleFocusChangedEvent(self, sender);
     }
 };
@@ -5608,16 +5608,16 @@ pub const IID_IUIAutomationTextEditTextChangedEventHandler = &IID_IUIAutomationT
 pub const IUIAutomationTextEditTextChangedEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandleTextEditTextChangedEvent: *const fn(
+        HandleTextEditTextChangedEvent: *const fn (
             self: *const IUIAutomationTextEditTextChangedEventHandler,
             sender: ?*IUIAutomationElement,
             textEditChangeType: TextEditChangeType,
             eventStrings: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandleTextEditTextChangedEvent(self: *const IUIAutomationTextEditTextChangedEventHandler, sender: ?*IUIAutomationElement, textEditChangeType: TextEditChangeType, eventStrings: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn HandleTextEditTextChangedEvent(self: *const IUIAutomationTextEditTextChangedEventHandler, sender: ?*IUIAutomationElement, textEditChangeType: TextEditChangeType, eventStrings: ?*SAFEARRAY) HRESULT {
         return self.vtable.HandleTextEditTextChangedEvent(self, sender, textEditChangeType, eventStrings);
     }
 };
@@ -5628,16 +5628,16 @@ pub const IID_IUIAutomationChangesEventHandler = &IID_IUIAutomationChangesEventH
 pub const IUIAutomationChangesEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandleChangesEvent: *const fn(
+        HandleChangesEvent: *const fn (
             self: *const IUIAutomationChangesEventHandler,
             sender: ?*IUIAutomationElement,
             uiaChanges: [*]UiaChangeInfo,
             changesCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandleChangesEvent(self: *const IUIAutomationChangesEventHandler, sender: ?*IUIAutomationElement, uiaChanges: [*]UiaChangeInfo, changesCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn HandleChangesEvent(self: *const IUIAutomationChangesEventHandler, sender: ?*IUIAutomationElement, uiaChanges: [*]UiaChangeInfo, changesCount: i32) HRESULT {
         return self.vtable.HandleChangesEvent(self, sender, uiaChanges, changesCount);
     }
 };
@@ -5648,18 +5648,18 @@ pub const IID_IUIAutomationNotificationEventHandler = &IID_IUIAutomationNotifica
 pub const IUIAutomationNotificationEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandleNotificationEvent: *const fn(
+        HandleNotificationEvent: *const fn (
             self: *const IUIAutomationNotificationEventHandler,
             sender: ?*IUIAutomationElement,
             notificationKind: NotificationKind,
             notificationProcessing: NotificationProcessing,
             displayString: ?BSTR,
             activityId: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandleNotificationEvent(self: *const IUIAutomationNotificationEventHandler, sender: ?*IUIAutomationElement, notificationKind: NotificationKind, notificationProcessing: NotificationProcessing, displayString: ?BSTR, activityId: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn HandleNotificationEvent(self: *const IUIAutomationNotificationEventHandler, sender: ?*IUIAutomationElement, notificationKind: NotificationKind, notificationProcessing: NotificationProcessing, displayString: ?BSTR, activityId: ?BSTR) HRESULT {
         return self.vtable.HandleNotificationEvent(self, sender, notificationKind, notificationProcessing, displayString, activityId);
     }
 };
@@ -5670,13 +5670,13 @@ pub const IID_IUIAutomationInvokePattern = &IID_IUIAutomationInvokePattern_Value
 pub const IUIAutomationInvokePattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Invoke: *const fn(
+        Invoke: *const fn (
             self: *const IUIAutomationInvokePattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Invoke(self: *const IUIAutomationInvokePattern) callconv(.Inline) HRESULT {
+    pub inline fn Invoke(self: *const IUIAutomationInvokePattern) HRESULT {
         return self.vtable.Invoke(self);
     }
 };
@@ -5687,30 +5687,30 @@ pub const IID_IUIAutomationDockPattern = &IID_IUIAutomationDockPattern_Value;
 pub const IUIAutomationDockPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetDockPosition: *const fn(
+        SetDockPosition: *const fn (
             self: *const IUIAutomationDockPattern,
             dockPos: DockPosition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentDockPosition: *const fn(
+        get_CurrentDockPosition: *const fn (
             self: *const IUIAutomationDockPattern,
             retVal: ?*DockPosition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedDockPosition: *const fn(
+        get_CachedDockPosition: *const fn (
             self: *const IUIAutomationDockPattern,
             retVal: ?*DockPosition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetDockPosition(self: *const IUIAutomationDockPattern, dockPos: DockPosition) callconv(.Inline) HRESULT {
+    pub inline fn SetDockPosition(self: *const IUIAutomationDockPattern, dockPos: DockPosition) HRESULT {
         return self.vtable.SetDockPosition(self, dockPos);
     }
-    pub fn get_CurrentDockPosition(self: *const IUIAutomationDockPattern, retVal: ?*DockPosition) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentDockPosition(self: *const IUIAutomationDockPattern, retVal: ?*DockPosition) HRESULT {
         return self.vtable.get_CurrentDockPosition(self, retVal);
     }
-    pub fn get_CachedDockPosition(self: *const IUIAutomationDockPattern, retVal: ?*DockPosition) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedDockPosition(self: *const IUIAutomationDockPattern, retVal: ?*DockPosition) HRESULT {
         return self.vtable.get_CachedDockPosition(self, retVal);
     }
 };
@@ -5721,35 +5721,35 @@ pub const IID_IUIAutomationExpandCollapsePattern = &IID_IUIAutomationExpandColla
 pub const IUIAutomationExpandCollapsePattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Expand: *const fn(
+        Expand: *const fn (
             self: *const IUIAutomationExpandCollapsePattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Collapse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Collapse: *const fn (
             self: *const IUIAutomationExpandCollapsePattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentExpandCollapseState: *const fn(
+        get_CurrentExpandCollapseState: *const fn (
             self: *const IUIAutomationExpandCollapsePattern,
             retVal: ?*ExpandCollapseState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedExpandCollapseState: *const fn(
+        get_CachedExpandCollapseState: *const fn (
             self: *const IUIAutomationExpandCollapsePattern,
             retVal: ?*ExpandCollapseState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Expand(self: *const IUIAutomationExpandCollapsePattern) callconv(.Inline) HRESULT {
+    pub inline fn Expand(self: *const IUIAutomationExpandCollapsePattern) HRESULT {
         return self.vtable.Expand(self);
     }
-    pub fn Collapse(self: *const IUIAutomationExpandCollapsePattern) callconv(.Inline) HRESULT {
+    pub inline fn Collapse(self: *const IUIAutomationExpandCollapsePattern) HRESULT {
         return self.vtable.Collapse(self);
     }
-    pub fn get_CurrentExpandCollapseState(self: *const IUIAutomationExpandCollapsePattern, retVal: ?*ExpandCollapseState) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentExpandCollapseState(self: *const IUIAutomationExpandCollapsePattern, retVal: ?*ExpandCollapseState) HRESULT {
         return self.vtable.get_CurrentExpandCollapseState(self, retVal);
     }
-    pub fn get_CachedExpandCollapseState(self: *const IUIAutomationExpandCollapsePattern, retVal: ?*ExpandCollapseState) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedExpandCollapseState(self: *const IUIAutomationExpandCollapsePattern, retVal: ?*ExpandCollapseState) HRESULT {
         return self.vtable.get_CachedExpandCollapseState(self, retVal);
     }
 };
@@ -5760,48 +5760,48 @@ pub const IID_IUIAutomationGridPattern = &IID_IUIAutomationGridPattern_Value;
 pub const IUIAutomationGridPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetItem: *const fn(
+        GetItem: *const fn (
             self: *const IUIAutomationGridPattern,
             row: i32,
             column: i32,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentRowCount: *const fn(
+        get_CurrentRowCount: *const fn (
             self: *const IUIAutomationGridPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentColumnCount: *const fn(
+        get_CurrentColumnCount: *const fn (
             self: *const IUIAutomationGridPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedRowCount: *const fn(
+        get_CachedRowCount: *const fn (
             self: *const IUIAutomationGridPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedColumnCount: *const fn(
+        get_CachedColumnCount: *const fn (
             self: *const IUIAutomationGridPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetItem(self: *const IUIAutomationGridPattern, row: i32, column: i32, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetItem(self: *const IUIAutomationGridPattern, row: i32, column: i32, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetItem(self, row, column, element);
     }
-    pub fn get_CurrentRowCount(self: *const IUIAutomationGridPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentRowCount(self: *const IUIAutomationGridPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentRowCount(self, retVal);
     }
-    pub fn get_CurrentColumnCount(self: *const IUIAutomationGridPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentColumnCount(self: *const IUIAutomationGridPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentColumnCount(self, retVal);
     }
-    pub fn get_CachedRowCount(self: *const IUIAutomationGridPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedRowCount(self: *const IUIAutomationGridPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedRowCount(self, retVal);
     }
-    pub fn get_CachedColumnCount(self: *const IUIAutomationGridPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedColumnCount(self: *const IUIAutomationGridPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedColumnCount(self, retVal);
     }
 };
@@ -5813,86 +5813,86 @@ pub const IUIAutomationGridItemPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentContainingGrid: *const fn(
+        get_CurrentContainingGrid: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentRow: *const fn(
+        get_CurrentRow: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentColumn: *const fn(
+        get_CurrentColumn: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentRowSpan: *const fn(
+        get_CurrentRowSpan: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentColumnSpan: *const fn(
+        get_CurrentColumnSpan: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedContainingGrid: *const fn(
+        get_CachedContainingGrid: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedRow: *const fn(
+        get_CachedRow: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedColumn: *const fn(
+        get_CachedColumn: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedRowSpan: *const fn(
+        get_CachedRowSpan: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedColumnSpan: *const fn(
+        get_CachedColumnSpan: *const fn (
             self: *const IUIAutomationGridItemPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_CurrentContainingGrid(self: *const IUIAutomationGridItemPattern, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentContainingGrid(self: *const IUIAutomationGridItemPattern, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CurrentContainingGrid(self, retVal);
     }
-    pub fn get_CurrentRow(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentRow(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentRow(self, retVal);
     }
-    pub fn get_CurrentColumn(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentColumn(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentColumn(self, retVal);
     }
-    pub fn get_CurrentRowSpan(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentRowSpan(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentRowSpan(self, retVal);
     }
-    pub fn get_CurrentColumnSpan(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentColumnSpan(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentColumnSpan(self, retVal);
     }
-    pub fn get_CachedContainingGrid(self: *const IUIAutomationGridItemPattern, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedContainingGrid(self: *const IUIAutomationGridItemPattern, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CachedContainingGrid(self, retVal);
     }
-    pub fn get_CachedRow(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedRow(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedRow(self, retVal);
     }
-    pub fn get_CachedColumn(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedColumn(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedColumn(self, retVal);
     }
-    pub fn get_CachedRowSpan(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedRowSpan(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedRowSpan(self, retVal);
     }
-    pub fn get_CachedColumnSpan(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedColumnSpan(self: *const IUIAutomationGridItemPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedColumnSpan(self, retVal);
     }
 };
@@ -5903,52 +5903,52 @@ pub const IID_IUIAutomationMultipleViewPattern = &IID_IUIAutomationMultipleViewP
 pub const IUIAutomationMultipleViewPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetViewName: *const fn(
+        GetViewName: *const fn (
             self: *const IUIAutomationMultipleViewPattern,
             view: i32,
             name: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCurrentView: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCurrentView: *const fn (
             self: *const IUIAutomationMultipleViewPattern,
             view: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCurrentView: *const fn(
+        get_CurrentCurrentView: *const fn (
             self: *const IUIAutomationMultipleViewPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentSupportedViews: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentSupportedViews: *const fn (
             self: *const IUIAutomationMultipleViewPattern,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCurrentView: *const fn(
+        get_CachedCurrentView: *const fn (
             self: *const IUIAutomationMultipleViewPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedSupportedViews: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedSupportedViews: *const fn (
             self: *const IUIAutomationMultipleViewPattern,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetViewName(self: *const IUIAutomationMultipleViewPattern, view: i32, name: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetViewName(self: *const IUIAutomationMultipleViewPattern, view: i32, name: ?*?BSTR) HRESULT {
         return self.vtable.GetViewName(self, view, name);
     }
-    pub fn SetCurrentView(self: *const IUIAutomationMultipleViewPattern, view: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetCurrentView(self: *const IUIAutomationMultipleViewPattern, view: i32) HRESULT {
         return self.vtable.SetCurrentView(self, view);
     }
-    pub fn get_CurrentCurrentView(self: *const IUIAutomationMultipleViewPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCurrentView(self: *const IUIAutomationMultipleViewPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentCurrentView(self, retVal);
     }
-    pub fn GetCurrentSupportedViews(self: *const IUIAutomationMultipleViewPattern, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentSupportedViews(self: *const IUIAutomationMultipleViewPattern, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetCurrentSupportedViews(self, retVal);
     }
-    pub fn get_CachedCurrentView(self: *const IUIAutomationMultipleViewPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCurrentView(self: *const IUIAutomationMultipleViewPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedCurrentView(self, retVal);
     }
-    pub fn GetCachedSupportedViews(self: *const IUIAutomationMultipleViewPattern, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedSupportedViews(self: *const IUIAutomationMultipleViewPattern, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetCachedSupportedViews(self, retVal);
     }
 };
@@ -5959,14 +5959,14 @@ pub const IID_IUIAutomationObjectModelPattern = &IID_IUIAutomationObjectModelPat
 pub const IUIAutomationObjectModelPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetUnderlyingObjectModel: *const fn(
+        GetUnderlyingObjectModel: *const fn (
             self: *const IUIAutomationObjectModelPattern,
             retVal: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetUnderlyingObjectModel(self: *const IUIAutomationObjectModelPattern, retVal: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn GetUnderlyingObjectModel(self: *const IUIAutomationObjectModelPattern, retVal: ?*?*IUnknown) HRESULT {
         return self.vtable.GetUnderlyingObjectModel(self, retVal);
     }
 };
@@ -5977,110 +5977,110 @@ pub const IID_IUIAutomationRangeValuePattern = &IID_IUIAutomationRangeValuePatte
 pub const IUIAutomationRangeValuePattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetValue: *const fn(
+        SetValue: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             val: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentValue: *const fn(
+        get_CurrentValue: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsReadOnly: *const fn(
+        get_CurrentIsReadOnly: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentMaximum: *const fn(
+        get_CurrentMaximum: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentMinimum: *const fn(
+        get_CurrentMinimum: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentLargeChange: *const fn(
+        get_CurrentLargeChange: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentSmallChange: *const fn(
+        get_CurrentSmallChange: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedValue: *const fn(
+        get_CachedValue: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsReadOnly: *const fn(
+        get_CachedIsReadOnly: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedMaximum: *const fn(
+        get_CachedMaximum: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedMinimum: *const fn(
+        get_CachedMinimum: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedLargeChange: *const fn(
+        get_CachedLargeChange: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedSmallChange: *const fn(
+        get_CachedSmallChange: *const fn (
             self: *const IUIAutomationRangeValuePattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetValue(self: *const IUIAutomationRangeValuePattern, val: f64) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const IUIAutomationRangeValuePattern, val: f64) HRESULT {
         return self.vtable.SetValue(self, val);
     }
-    pub fn get_CurrentValue(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentValue(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentValue(self, retVal);
     }
-    pub fn get_CurrentIsReadOnly(self: *const IUIAutomationRangeValuePattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsReadOnly(self: *const IUIAutomationRangeValuePattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsReadOnly(self, retVal);
     }
-    pub fn get_CurrentMaximum(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentMaximum(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentMaximum(self, retVal);
     }
-    pub fn get_CurrentMinimum(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentMinimum(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentMinimum(self, retVal);
     }
-    pub fn get_CurrentLargeChange(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentLargeChange(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentLargeChange(self, retVal);
     }
-    pub fn get_CurrentSmallChange(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentSmallChange(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentSmallChange(self, retVal);
     }
-    pub fn get_CachedValue(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedValue(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedValue(self, retVal);
     }
-    pub fn get_CachedIsReadOnly(self: *const IUIAutomationRangeValuePattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsReadOnly(self: *const IUIAutomationRangeValuePattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsReadOnly(self, retVal);
     }
-    pub fn get_CachedMaximum(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedMaximum(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedMaximum(self, retVal);
     }
-    pub fn get_CachedMinimum(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedMinimum(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedMinimum(self, retVal);
     }
-    pub fn get_CachedLargeChange(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedLargeChange(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedLargeChange(self, retVal);
     }
-    pub fn get_CachedSmallChange(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedSmallChange(self: *const IUIAutomationRangeValuePattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedSmallChange(self, retVal);
     }
 };
@@ -6091,119 +6091,119 @@ pub const IID_IUIAutomationScrollPattern = &IID_IUIAutomationScrollPattern_Value
 pub const IUIAutomationScrollPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Scroll: *const fn(
+        Scroll: *const fn (
             self: *const IUIAutomationScrollPattern,
             horizontalAmount: ScrollAmount,
             verticalAmount: ScrollAmount,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetScrollPercent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetScrollPercent: *const fn (
             self: *const IUIAutomationScrollPattern,
             horizontalPercent: f64,
             verticalPercent: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentHorizontalScrollPercent: *const fn(
+        get_CurrentHorizontalScrollPercent: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentVerticalScrollPercent: *const fn(
+        get_CurrentVerticalScrollPercent: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentHorizontalViewSize: *const fn(
+        get_CurrentHorizontalViewSize: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentVerticalViewSize: *const fn(
+        get_CurrentVerticalViewSize: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentHorizontallyScrollable: *const fn(
+        get_CurrentHorizontallyScrollable: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentVerticallyScrollable: *const fn(
+        get_CurrentVerticallyScrollable: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedHorizontalScrollPercent: *const fn(
+        get_CachedHorizontalScrollPercent: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedVerticalScrollPercent: *const fn(
+        get_CachedVerticalScrollPercent: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedHorizontalViewSize: *const fn(
+        get_CachedHorizontalViewSize: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedVerticalViewSize: *const fn(
+        get_CachedVerticalViewSize: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedHorizontallyScrollable: *const fn(
+        get_CachedHorizontallyScrollable: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedVerticallyScrollable: *const fn(
+        get_CachedVerticallyScrollable: *const fn (
             self: *const IUIAutomationScrollPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Scroll(self: *const IUIAutomationScrollPattern, horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) callconv(.Inline) HRESULT {
+    pub inline fn Scroll(self: *const IUIAutomationScrollPattern, horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) HRESULT {
         return self.vtable.Scroll(self, horizontalAmount, verticalAmount);
     }
-    pub fn SetScrollPercent(self: *const IUIAutomationScrollPattern, horizontalPercent: f64, verticalPercent: f64) callconv(.Inline) HRESULT {
+    pub inline fn SetScrollPercent(self: *const IUIAutomationScrollPattern, horizontalPercent: f64, verticalPercent: f64) HRESULT {
         return self.vtable.SetScrollPercent(self, horizontalPercent, verticalPercent);
     }
-    pub fn get_CurrentHorizontalScrollPercent(self: *const IUIAutomationScrollPattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentHorizontalScrollPercent(self: *const IUIAutomationScrollPattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentHorizontalScrollPercent(self, retVal);
     }
-    pub fn get_CurrentVerticalScrollPercent(self: *const IUIAutomationScrollPattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentVerticalScrollPercent(self: *const IUIAutomationScrollPattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentVerticalScrollPercent(self, retVal);
     }
-    pub fn get_CurrentHorizontalViewSize(self: *const IUIAutomationScrollPattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentHorizontalViewSize(self: *const IUIAutomationScrollPattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentHorizontalViewSize(self, retVal);
     }
-    pub fn get_CurrentVerticalViewSize(self: *const IUIAutomationScrollPattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentVerticalViewSize(self: *const IUIAutomationScrollPattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentVerticalViewSize(self, retVal);
     }
-    pub fn get_CurrentHorizontallyScrollable(self: *const IUIAutomationScrollPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentHorizontallyScrollable(self: *const IUIAutomationScrollPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentHorizontallyScrollable(self, retVal);
     }
-    pub fn get_CurrentVerticallyScrollable(self: *const IUIAutomationScrollPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentVerticallyScrollable(self: *const IUIAutomationScrollPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentVerticallyScrollable(self, retVal);
     }
-    pub fn get_CachedHorizontalScrollPercent(self: *const IUIAutomationScrollPattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedHorizontalScrollPercent(self: *const IUIAutomationScrollPattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedHorizontalScrollPercent(self, retVal);
     }
-    pub fn get_CachedVerticalScrollPercent(self: *const IUIAutomationScrollPattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedVerticalScrollPercent(self: *const IUIAutomationScrollPattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedVerticalScrollPercent(self, retVal);
     }
-    pub fn get_CachedHorizontalViewSize(self: *const IUIAutomationScrollPattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedHorizontalViewSize(self: *const IUIAutomationScrollPattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedHorizontalViewSize(self, retVal);
     }
-    pub fn get_CachedVerticalViewSize(self: *const IUIAutomationScrollPattern, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedVerticalViewSize(self: *const IUIAutomationScrollPattern, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedVerticalViewSize(self, retVal);
     }
-    pub fn get_CachedHorizontallyScrollable(self: *const IUIAutomationScrollPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedHorizontallyScrollable(self: *const IUIAutomationScrollPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedHorizontallyScrollable(self, retVal);
     }
-    pub fn get_CachedVerticallyScrollable(self: *const IUIAutomationScrollPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedVerticallyScrollable(self: *const IUIAutomationScrollPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedVerticallyScrollable(self, retVal);
     }
 };
@@ -6214,13 +6214,13 @@ pub const IID_IUIAutomationScrollItemPattern = &IID_IUIAutomationScrollItemPatte
 pub const IUIAutomationScrollItemPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ScrollIntoView: *const fn(
+        ScrollIntoView: *const fn (
             self: *const IUIAutomationScrollItemPattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ScrollIntoView(self: *const IUIAutomationScrollItemPattern) callconv(.Inline) HRESULT {
+    pub inline fn ScrollIntoView(self: *const IUIAutomationScrollItemPattern) HRESULT {
         return self.vtable.ScrollIntoView(self);
     }
 };
@@ -6231,53 +6231,53 @@ pub const IID_IUIAutomationSelectionPattern = &IID_IUIAutomationSelectionPattern
 pub const IUIAutomationSelectionPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCurrentSelection: *const fn(
+        GetCurrentSelection: *const fn (
             self: *const IUIAutomationSelectionPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCanSelectMultiple: *const fn(
+        get_CurrentCanSelectMultiple: *const fn (
             self: *const IUIAutomationSelectionPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsSelectionRequired: *const fn(
+        get_CurrentIsSelectionRequired: *const fn (
             self: *const IUIAutomationSelectionPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedSelection: *const fn (
             self: *const IUIAutomationSelectionPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCanSelectMultiple: *const fn(
+        get_CachedCanSelectMultiple: *const fn (
             self: *const IUIAutomationSelectionPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsSelectionRequired: *const fn(
+        get_CachedIsSelectionRequired: *const fn (
             self: *const IUIAutomationSelectionPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCurrentSelection(self: *const IUIAutomationSelectionPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentSelection(self: *const IUIAutomationSelectionPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCurrentSelection(self, retVal);
     }
-    pub fn get_CurrentCanSelectMultiple(self: *const IUIAutomationSelectionPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCanSelectMultiple(self: *const IUIAutomationSelectionPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentCanSelectMultiple(self, retVal);
     }
-    pub fn get_CurrentIsSelectionRequired(self: *const IUIAutomationSelectionPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsSelectionRequired(self: *const IUIAutomationSelectionPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsSelectionRequired(self, retVal);
     }
-    pub fn GetCachedSelection(self: *const IUIAutomationSelectionPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedSelection(self: *const IUIAutomationSelectionPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCachedSelection(self, retVal);
     }
-    pub fn get_CachedCanSelectMultiple(self: *const IUIAutomationSelectionPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCanSelectMultiple(self: *const IUIAutomationSelectionPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedCanSelectMultiple(self, retVal);
     }
-    pub fn get_CachedIsSelectionRequired(self: *const IUIAutomationSelectionPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsSelectionRequired(self: *const IUIAutomationSelectionPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsSelectionRequired(self, retVal);
     }
 };
@@ -6289,71 +6289,71 @@ pub const IUIAutomationSelectionPattern2 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationSelectionPattern.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentFirstSelectedItem: *const fn(
+        get_CurrentFirstSelectedItem: *const fn (
             self: *const IUIAutomationSelectionPattern2,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentLastSelectedItem: *const fn(
+        get_CurrentLastSelectedItem: *const fn (
             self: *const IUIAutomationSelectionPattern2,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCurrentSelectedItem: *const fn(
+        get_CurrentCurrentSelectedItem: *const fn (
             self: *const IUIAutomationSelectionPattern2,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentItemCount: *const fn(
+        get_CurrentItemCount: *const fn (
             self: *const IUIAutomationSelectionPattern2,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedFirstSelectedItem: *const fn(
+        get_CachedFirstSelectedItem: *const fn (
             self: *const IUIAutomationSelectionPattern2,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedLastSelectedItem: *const fn(
+        get_CachedLastSelectedItem: *const fn (
             self: *const IUIAutomationSelectionPattern2,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCurrentSelectedItem: *const fn(
+        get_CachedCurrentSelectedItem: *const fn (
             self: *const IUIAutomationSelectionPattern2,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedItemCount: *const fn(
+        get_CachedItemCount: *const fn (
             self: *const IUIAutomationSelectionPattern2,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationSelectionPattern: IUIAutomationSelectionPattern,
     IUnknown: IUnknown,
-    pub fn get_CurrentFirstSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentFirstSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CurrentFirstSelectedItem(self, retVal);
     }
-    pub fn get_CurrentLastSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentLastSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CurrentLastSelectedItem(self, retVal);
     }
-    pub fn get_CurrentCurrentSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCurrentSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CurrentCurrentSelectedItem(self, retVal);
     }
-    pub fn get_CurrentItemCount(self: *const IUIAutomationSelectionPattern2, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentItemCount(self: *const IUIAutomationSelectionPattern2, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentItemCount(self, retVal);
     }
-    pub fn get_CachedFirstSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedFirstSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CachedFirstSelectedItem(self, retVal);
     }
-    pub fn get_CachedLastSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedLastSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CachedLastSelectedItem(self, retVal);
     }
-    pub fn get_CachedCurrentSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCurrentSelectedItem(self: *const IUIAutomationSelectionPattern2, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CachedCurrentSelectedItem(self, retVal);
     }
-    pub fn get_CachedItemCount(self: *const IUIAutomationSelectionPattern2, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedItemCount(self: *const IUIAutomationSelectionPattern2, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedItemCount(self, retVal);
     }
 };
@@ -6364,57 +6364,57 @@ pub const IID_IUIAutomationSelectionItemPattern = &IID_IUIAutomationSelectionIte
 pub const IUIAutomationSelectionItemPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Select: *const fn(
+        Select: *const fn (
             self: *const IUIAutomationSelectionItemPattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddToSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddToSelection: *const fn (
             self: *const IUIAutomationSelectionItemPattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveFromSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveFromSelection: *const fn (
             self: *const IUIAutomationSelectionItemPattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsSelected: *const fn(
+        get_CurrentIsSelected: *const fn (
             self: *const IUIAutomationSelectionItemPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentSelectionContainer: *const fn(
+        get_CurrentSelectionContainer: *const fn (
             self: *const IUIAutomationSelectionItemPattern,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsSelected: *const fn(
+        get_CachedIsSelected: *const fn (
             self: *const IUIAutomationSelectionItemPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedSelectionContainer: *const fn(
+        get_CachedSelectionContainer: *const fn (
             self: *const IUIAutomationSelectionItemPattern,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Select(self: *const IUIAutomationSelectionItemPattern) callconv(.Inline) HRESULT {
+    pub inline fn Select(self: *const IUIAutomationSelectionItemPattern) HRESULT {
         return self.vtable.Select(self);
     }
-    pub fn AddToSelection(self: *const IUIAutomationSelectionItemPattern) callconv(.Inline) HRESULT {
+    pub inline fn AddToSelection(self: *const IUIAutomationSelectionItemPattern) HRESULT {
         return self.vtable.AddToSelection(self);
     }
-    pub fn RemoveFromSelection(self: *const IUIAutomationSelectionItemPattern) callconv(.Inline) HRESULT {
+    pub inline fn RemoveFromSelection(self: *const IUIAutomationSelectionItemPattern) HRESULT {
         return self.vtable.RemoveFromSelection(self);
     }
-    pub fn get_CurrentIsSelected(self: *const IUIAutomationSelectionItemPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsSelected(self: *const IUIAutomationSelectionItemPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsSelected(self, retVal);
     }
-    pub fn get_CurrentSelectionContainer(self: *const IUIAutomationSelectionItemPattern, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentSelectionContainer(self: *const IUIAutomationSelectionItemPattern, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CurrentSelectionContainer(self, retVal);
     }
-    pub fn get_CachedIsSelected(self: *const IUIAutomationSelectionItemPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsSelected(self: *const IUIAutomationSelectionItemPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsSelected(self, retVal);
     }
-    pub fn get_CachedSelectionContainer(self: *const IUIAutomationSelectionItemPattern, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedSelectionContainer(self: *const IUIAutomationSelectionItemPattern, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CachedSelectionContainer(self, retVal);
     }
 };
@@ -6425,20 +6425,20 @@ pub const IID_IUIAutomationSynchronizedInputPattern = &IID_IUIAutomationSynchron
 pub const IUIAutomationSynchronizedInputPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        StartListening: *const fn(
+        StartListening: *const fn (
             self: *const IUIAutomationSynchronizedInputPattern,
             inputType: SynchronizedInputType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Cancel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Cancel: *const fn (
             self: *const IUIAutomationSynchronizedInputPattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn StartListening(self: *const IUIAutomationSynchronizedInputPattern, inputType: SynchronizedInputType) callconv(.Inline) HRESULT {
+    pub inline fn StartListening(self: *const IUIAutomationSynchronizedInputPattern, inputType: SynchronizedInputType) HRESULT {
         return self.vtable.StartListening(self, inputType);
     }
-    pub fn Cancel(self: *const IUIAutomationSynchronizedInputPattern) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const IUIAutomationSynchronizedInputPattern) HRESULT {
         return self.vtable.Cancel(self);
     }
 };
@@ -6449,51 +6449,51 @@ pub const IID_IUIAutomationTablePattern = &IID_IUIAutomationTablePattern_Value;
 pub const IUIAutomationTablePattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCurrentRowHeaders: *const fn(
+        GetCurrentRowHeaders: *const fn (
             self: *const IUIAutomationTablePattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentColumnHeaders: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentColumnHeaders: *const fn (
             self: *const IUIAutomationTablePattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentRowOrColumnMajor: *const fn(
+        get_CurrentRowOrColumnMajor: *const fn (
             self: *const IUIAutomationTablePattern,
             retVal: ?*RowOrColumnMajor,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedRowHeaders: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedRowHeaders: *const fn (
             self: *const IUIAutomationTablePattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedColumnHeaders: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedColumnHeaders: *const fn (
             self: *const IUIAutomationTablePattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedRowOrColumnMajor: *const fn(
+        get_CachedRowOrColumnMajor: *const fn (
             self: *const IUIAutomationTablePattern,
             retVal: ?*RowOrColumnMajor,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCurrentRowHeaders(self: *const IUIAutomationTablePattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentRowHeaders(self: *const IUIAutomationTablePattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCurrentRowHeaders(self, retVal);
     }
-    pub fn GetCurrentColumnHeaders(self: *const IUIAutomationTablePattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentColumnHeaders(self: *const IUIAutomationTablePattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCurrentColumnHeaders(self, retVal);
     }
-    pub fn get_CurrentRowOrColumnMajor(self: *const IUIAutomationTablePattern, retVal: ?*RowOrColumnMajor) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentRowOrColumnMajor(self: *const IUIAutomationTablePattern, retVal: ?*RowOrColumnMajor) HRESULT {
         return self.vtable.get_CurrentRowOrColumnMajor(self, retVal);
     }
-    pub fn GetCachedRowHeaders(self: *const IUIAutomationTablePattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedRowHeaders(self: *const IUIAutomationTablePattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCachedRowHeaders(self, retVal);
     }
-    pub fn GetCachedColumnHeaders(self: *const IUIAutomationTablePattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedColumnHeaders(self: *const IUIAutomationTablePattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCachedColumnHeaders(self, retVal);
     }
-    pub fn get_CachedRowOrColumnMajor(self: *const IUIAutomationTablePattern, retVal: ?*RowOrColumnMajor) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedRowOrColumnMajor(self: *const IUIAutomationTablePattern, retVal: ?*RowOrColumnMajor) HRESULT {
         return self.vtable.get_CachedRowOrColumnMajor(self, retVal);
     }
 };
@@ -6504,35 +6504,35 @@ pub const IID_IUIAutomationTableItemPattern = &IID_IUIAutomationTableItemPattern
 pub const IUIAutomationTableItemPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCurrentRowHeaderItems: *const fn(
+        GetCurrentRowHeaderItems: *const fn (
             self: *const IUIAutomationTableItemPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentColumnHeaderItems: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentColumnHeaderItems: *const fn (
             self: *const IUIAutomationTableItemPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedRowHeaderItems: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedRowHeaderItems: *const fn (
             self: *const IUIAutomationTableItemPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedColumnHeaderItems: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedColumnHeaderItems: *const fn (
             self: *const IUIAutomationTableItemPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCurrentRowHeaderItems(self: *const IUIAutomationTableItemPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentRowHeaderItems(self: *const IUIAutomationTableItemPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCurrentRowHeaderItems(self, retVal);
     }
-    pub fn GetCurrentColumnHeaderItems(self: *const IUIAutomationTableItemPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentColumnHeaderItems(self: *const IUIAutomationTableItemPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCurrentColumnHeaderItems(self, retVal);
     }
-    pub fn GetCachedRowHeaderItems(self: *const IUIAutomationTableItemPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedRowHeaderItems(self: *const IUIAutomationTableItemPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCachedRowHeaderItems(self, retVal);
     }
-    pub fn GetCachedColumnHeaderItems(self: *const IUIAutomationTableItemPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedColumnHeaderItems(self: *const IUIAutomationTableItemPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCachedColumnHeaderItems(self, retVal);
     }
 };
@@ -6543,29 +6543,29 @@ pub const IID_IUIAutomationTogglePattern = &IID_IUIAutomationTogglePattern_Value
 pub const IUIAutomationTogglePattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Toggle: *const fn(
+        Toggle: *const fn (
             self: *const IUIAutomationTogglePattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentToggleState: *const fn(
+        get_CurrentToggleState: *const fn (
             self: *const IUIAutomationTogglePattern,
             retVal: ?*ToggleState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedToggleState: *const fn(
+        get_CachedToggleState: *const fn (
             self: *const IUIAutomationTogglePattern,
             retVal: ?*ToggleState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Toggle(self: *const IUIAutomationTogglePattern) callconv(.Inline) HRESULT {
+    pub inline fn Toggle(self: *const IUIAutomationTogglePattern) HRESULT {
         return self.vtable.Toggle(self);
     }
-    pub fn get_CurrentToggleState(self: *const IUIAutomationTogglePattern, retVal: ?*ToggleState) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentToggleState(self: *const IUIAutomationTogglePattern, retVal: ?*ToggleState) HRESULT {
         return self.vtable.get_CurrentToggleState(self, retVal);
     }
-    pub fn get_CachedToggleState(self: *const IUIAutomationTogglePattern, retVal: ?*ToggleState) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedToggleState(self: *const IUIAutomationTogglePattern, retVal: ?*ToggleState) HRESULT {
         return self.vtable.get_CachedToggleState(self, retVal);
     }
 };
@@ -6576,78 +6576,78 @@ pub const IID_IUIAutomationTransformPattern = &IID_IUIAutomationTransformPattern
 pub const IUIAutomationTransformPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Move: *const fn(
+        Move: *const fn (
             self: *const IUIAutomationTransformPattern,
             x: f64,
             y: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Resize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Resize: *const fn (
             self: *const IUIAutomationTransformPattern,
             width: f64,
             height: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Rotate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Rotate: *const fn (
             self: *const IUIAutomationTransformPattern,
             degrees: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCanMove: *const fn(
+        get_CurrentCanMove: *const fn (
             self: *const IUIAutomationTransformPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCanResize: *const fn(
+        get_CurrentCanResize: *const fn (
             self: *const IUIAutomationTransformPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCanRotate: *const fn(
+        get_CurrentCanRotate: *const fn (
             self: *const IUIAutomationTransformPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCanMove: *const fn(
+        get_CachedCanMove: *const fn (
             self: *const IUIAutomationTransformPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCanResize: *const fn(
+        get_CachedCanResize: *const fn (
             self: *const IUIAutomationTransformPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCanRotate: *const fn(
+        get_CachedCanRotate: *const fn (
             self: *const IUIAutomationTransformPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Move(self: *const IUIAutomationTransformPattern, x: f64, y: f64) callconv(.Inline) HRESULT {
+    pub inline fn Move(self: *const IUIAutomationTransformPattern, x: f64, y: f64) HRESULT {
         return self.vtable.Move(self, x, y);
     }
-    pub fn Resize(self: *const IUIAutomationTransformPattern, width: f64, height: f64) callconv(.Inline) HRESULT {
+    pub inline fn Resize(self: *const IUIAutomationTransformPattern, width: f64, height: f64) HRESULT {
         return self.vtable.Resize(self, width, height);
     }
-    pub fn Rotate(self: *const IUIAutomationTransformPattern, degrees: f64) callconv(.Inline) HRESULT {
+    pub inline fn Rotate(self: *const IUIAutomationTransformPattern, degrees: f64) HRESULT {
         return self.vtable.Rotate(self, degrees);
     }
-    pub fn get_CurrentCanMove(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCanMove(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentCanMove(self, retVal);
     }
-    pub fn get_CurrentCanResize(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCanResize(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentCanResize(self, retVal);
     }
-    pub fn get_CurrentCanRotate(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCanRotate(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentCanRotate(self, retVal);
     }
-    pub fn get_CachedCanMove(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCanMove(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedCanMove(self, retVal);
     }
-    pub fn get_CachedCanResize(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCanResize(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedCanResize(self, retVal);
     }
-    pub fn get_CachedCanRotate(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCanRotate(self: *const IUIAutomationTransformPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedCanRotate(self, retVal);
     }
 };
@@ -6658,46 +6658,46 @@ pub const IID_IUIAutomationValuePattern = &IID_IUIAutomationValuePattern_Value;
 pub const IUIAutomationValuePattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetValue: *const fn(
+        SetValue: *const fn (
             self: *const IUIAutomationValuePattern,
             val: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentValue: *const fn(
+        get_CurrentValue: *const fn (
             self: *const IUIAutomationValuePattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsReadOnly: *const fn(
+        get_CurrentIsReadOnly: *const fn (
             self: *const IUIAutomationValuePattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedValue: *const fn(
+        get_CachedValue: *const fn (
             self: *const IUIAutomationValuePattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsReadOnly: *const fn(
+        get_CachedIsReadOnly: *const fn (
             self: *const IUIAutomationValuePattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetValue(self: *const IUIAutomationValuePattern, val: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const IUIAutomationValuePattern, val: ?BSTR) HRESULT {
         return self.vtable.SetValue(self, val);
     }
-    pub fn get_CurrentValue(self: *const IUIAutomationValuePattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentValue(self: *const IUIAutomationValuePattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentValue(self, retVal);
     }
-    pub fn get_CurrentIsReadOnly(self: *const IUIAutomationValuePattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsReadOnly(self: *const IUIAutomationValuePattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsReadOnly(self, retVal);
     }
-    pub fn get_CachedValue(self: *const IUIAutomationValuePattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedValue(self: *const IUIAutomationValuePattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedValue(self, retVal);
     }
-    pub fn get_CachedIsReadOnly(self: *const IUIAutomationValuePattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsReadOnly(self: *const IUIAutomationValuePattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsReadOnly(self, retVal);
     }
 };
@@ -6708,124 +6708,124 @@ pub const IID_IUIAutomationWindowPattern = &IID_IUIAutomationWindowPattern_Value
 pub const IUIAutomationWindowPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Close: *const fn(
+        Close: *const fn (
             self: *const IUIAutomationWindowPattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WaitForInputIdle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WaitForInputIdle: *const fn (
             self: *const IUIAutomationWindowPattern,
             milliseconds: i32,
             success: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetWindowVisualState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetWindowVisualState: *const fn (
             self: *const IUIAutomationWindowPattern,
             state: WindowVisualState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCanMaximize: *const fn(
+        get_CurrentCanMaximize: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCanMinimize: *const fn(
+        get_CurrentCanMinimize: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsModal: *const fn(
+        get_CurrentIsModal: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsTopmost: *const fn(
+        get_CurrentIsTopmost: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentWindowVisualState: *const fn(
+        get_CurrentWindowVisualState: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*WindowVisualState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentWindowInteractionState: *const fn(
+        get_CurrentWindowInteractionState: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*WindowInteractionState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCanMaximize: *const fn(
+        get_CachedCanMaximize: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCanMinimize: *const fn(
+        get_CachedCanMinimize: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsModal: *const fn(
+        get_CachedIsModal: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsTopmost: *const fn(
+        get_CachedIsTopmost: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedWindowVisualState: *const fn(
+        get_CachedWindowVisualState: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*WindowVisualState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedWindowInteractionState: *const fn(
+        get_CachedWindowInteractionState: *const fn (
             self: *const IUIAutomationWindowPattern,
             retVal: ?*WindowInteractionState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Close(self: *const IUIAutomationWindowPattern) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const IUIAutomationWindowPattern) HRESULT {
         return self.vtable.Close(self);
     }
-    pub fn WaitForInputIdle(self: *const IUIAutomationWindowPattern, milliseconds: i32, success: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn WaitForInputIdle(self: *const IUIAutomationWindowPattern, milliseconds: i32, success: ?*BOOL) HRESULT {
         return self.vtable.WaitForInputIdle(self, milliseconds, success);
     }
-    pub fn SetWindowVisualState(self: *const IUIAutomationWindowPattern, state: WindowVisualState) callconv(.Inline) HRESULT {
+    pub inline fn SetWindowVisualState(self: *const IUIAutomationWindowPattern, state: WindowVisualState) HRESULT {
         return self.vtable.SetWindowVisualState(self, state);
     }
-    pub fn get_CurrentCanMaximize(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCanMaximize(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentCanMaximize(self, retVal);
     }
-    pub fn get_CurrentCanMinimize(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCanMinimize(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentCanMinimize(self, retVal);
     }
-    pub fn get_CurrentIsModal(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsModal(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsModal(self, retVal);
     }
-    pub fn get_CurrentIsTopmost(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsTopmost(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsTopmost(self, retVal);
     }
-    pub fn get_CurrentWindowVisualState(self: *const IUIAutomationWindowPattern, retVal: ?*WindowVisualState) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentWindowVisualState(self: *const IUIAutomationWindowPattern, retVal: ?*WindowVisualState) HRESULT {
         return self.vtable.get_CurrentWindowVisualState(self, retVal);
     }
-    pub fn get_CurrentWindowInteractionState(self: *const IUIAutomationWindowPattern, retVal: ?*WindowInteractionState) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentWindowInteractionState(self: *const IUIAutomationWindowPattern, retVal: ?*WindowInteractionState) HRESULT {
         return self.vtable.get_CurrentWindowInteractionState(self, retVal);
     }
-    pub fn get_CachedCanMaximize(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCanMaximize(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedCanMaximize(self, retVal);
     }
-    pub fn get_CachedCanMinimize(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCanMinimize(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedCanMinimize(self, retVal);
     }
-    pub fn get_CachedIsModal(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsModal(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsModal(self, retVal);
     }
-    pub fn get_CachedIsTopmost(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsTopmost(self: *const IUIAutomationWindowPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsTopmost(self, retVal);
     }
-    pub fn get_CachedWindowVisualState(self: *const IUIAutomationWindowPattern, retVal: ?*WindowVisualState) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedWindowVisualState(self: *const IUIAutomationWindowPattern, retVal: ?*WindowVisualState) HRESULT {
         return self.vtable.get_CachedWindowVisualState(self, retVal);
     }
-    pub fn get_CachedWindowInteractionState(self: *const IUIAutomationWindowPattern, retVal: ?*WindowInteractionState) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedWindowInteractionState(self: *const IUIAutomationWindowPattern, retVal: ?*WindowInteractionState) HRESULT {
         return self.vtable.get_CachedWindowInteractionState(self, retVal);
     }
 };
@@ -6836,149 +6836,149 @@ pub const IID_IUIAutomationTextRange = &IID_IUIAutomationTextRange_Value;
 pub const IUIAutomationTextRange = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Clone: *const fn(
+        Clone: *const fn (
             self: *const IUIAutomationTextRange,
             clonedRange: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Compare: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Compare: *const fn (
             self: *const IUIAutomationTextRange,
             range: ?*IUIAutomationTextRange,
             areSame: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CompareEndpoints: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CompareEndpoints: *const fn (
             self: *const IUIAutomationTextRange,
             srcEndPoint: TextPatternRangeEndpoint,
             range: ?*IUIAutomationTextRange,
             targetEndPoint: TextPatternRangeEndpoint,
             compValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExpandToEnclosingUnit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExpandToEnclosingUnit: *const fn (
             self: *const IUIAutomationTextRange,
             textUnit: TextUnit,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindAttribute: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindAttribute: *const fn (
             self: *const IUIAutomationTextRange,
             attr: i32,
             val: VARIANT,
             backward: BOOL,
             found: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindText: *const fn (
             self: *const IUIAutomationTextRange,
             text: ?BSTR,
             backward: BOOL,
             ignoreCase: BOOL,
             found: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAttributeValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAttributeValue: *const fn (
             self: *const IUIAutomationTextRange,
             attr: i32,
             value: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBoundingRectangles: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBoundingRectangles: *const fn (
             self: *const IUIAutomationTextRange,
             boundingRects: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEnclosingElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEnclosingElement: *const fn (
             self: *const IUIAutomationTextRange,
             enclosingElement: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetText: *const fn (
             self: *const IUIAutomationTextRange,
             maxLength: i32,
             text: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Move: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Move: *const fn (
             self: *const IUIAutomationTextRange,
             unit: TextUnit,
             count: i32,
             moved: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveEndpointByUnit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveEndpointByUnit: *const fn (
             self: *const IUIAutomationTextRange,
             endpoint: TextPatternRangeEndpoint,
             unit: TextUnit,
             count: i32,
             moved: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveEndpointByRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveEndpointByRange: *const fn (
             self: *const IUIAutomationTextRange,
             srcEndPoint: TextPatternRangeEndpoint,
             range: ?*IUIAutomationTextRange,
             targetEndPoint: TextPatternRangeEndpoint,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Select: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Select: *const fn (
             self: *const IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddToSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddToSelection: *const fn (
             self: *const IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveFromSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveFromSelection: *const fn (
             self: *const IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ScrollIntoView: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ScrollIntoView: *const fn (
             self: *const IUIAutomationTextRange,
             alignToTop: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChildren: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChildren: *const fn (
             self: *const IUIAutomationTextRange,
             children: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Clone(self: *const IUIAutomationTextRange, clonedRange: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IUIAutomationTextRange, clonedRange: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.Clone(self, clonedRange);
     }
-    pub fn Compare(self: *const IUIAutomationTextRange, range: ?*IUIAutomationTextRange, areSame: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn Compare(self: *const IUIAutomationTextRange, range: ?*IUIAutomationTextRange, areSame: ?*BOOL) HRESULT {
         return self.vtable.Compare(self, range, areSame);
     }
-    pub fn CompareEndpoints(self: *const IUIAutomationTextRange, srcEndPoint: TextPatternRangeEndpoint, range: ?*IUIAutomationTextRange, targetEndPoint: TextPatternRangeEndpoint, compValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn CompareEndpoints(self: *const IUIAutomationTextRange, srcEndPoint: TextPatternRangeEndpoint, range: ?*IUIAutomationTextRange, targetEndPoint: TextPatternRangeEndpoint, compValue: ?*i32) HRESULT {
         return self.vtable.CompareEndpoints(self, srcEndPoint, range, targetEndPoint, compValue);
     }
-    pub fn ExpandToEnclosingUnit(self: *const IUIAutomationTextRange, textUnit: TextUnit) callconv(.Inline) HRESULT {
+    pub inline fn ExpandToEnclosingUnit(self: *const IUIAutomationTextRange, textUnit: TextUnit) HRESULT {
         return self.vtable.ExpandToEnclosingUnit(self, textUnit);
     }
-    pub fn FindAttribute(self: *const IUIAutomationTextRange, attr: i32, val: VARIANT, backward: BOOL, found: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn FindAttribute(self: *const IUIAutomationTextRange, attr: i32, val: VARIANT, backward: BOOL, found: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.FindAttribute(self, attr, val, backward, found);
     }
-    pub fn FindText(self: *const IUIAutomationTextRange, text: ?BSTR, backward: BOOL, ignoreCase: BOOL, found: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn FindText(self: *const IUIAutomationTextRange, text: ?BSTR, backward: BOOL, ignoreCase: BOOL, found: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.FindText(self, text, backward, ignoreCase, found);
     }
-    pub fn GetAttributeValue(self: *const IUIAutomationTextRange, attr: i32, value: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetAttributeValue(self: *const IUIAutomationTextRange, attr: i32, value: ?*VARIANT) HRESULT {
         return self.vtable.GetAttributeValue(self, attr, value);
     }
-    pub fn GetBoundingRectangles(self: *const IUIAutomationTextRange, boundingRects: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetBoundingRectangles(self: *const IUIAutomationTextRange, boundingRects: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetBoundingRectangles(self, boundingRects);
     }
-    pub fn GetEnclosingElement(self: *const IUIAutomationTextRange, enclosingElement: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetEnclosingElement(self: *const IUIAutomationTextRange, enclosingElement: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetEnclosingElement(self, enclosingElement);
     }
-    pub fn GetText(self: *const IUIAutomationTextRange, maxLength: i32, text: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetText(self: *const IUIAutomationTextRange, maxLength: i32, text: ?*?BSTR) HRESULT {
         return self.vtable.GetText(self, maxLength, text);
     }
-    pub fn Move(self: *const IUIAutomationTextRange, unit: TextUnit, count: i32, moved: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Move(self: *const IUIAutomationTextRange, unit: TextUnit, count: i32, moved: ?*i32) HRESULT {
         return self.vtable.Move(self, unit, count, moved);
     }
-    pub fn MoveEndpointByUnit(self: *const IUIAutomationTextRange, endpoint: TextPatternRangeEndpoint, unit: TextUnit, count: i32, moved: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn MoveEndpointByUnit(self: *const IUIAutomationTextRange, endpoint: TextPatternRangeEndpoint, unit: TextUnit, count: i32, moved: ?*i32) HRESULT {
         return self.vtable.MoveEndpointByUnit(self, endpoint, unit, count, moved);
     }
-    pub fn MoveEndpointByRange(self: *const IUIAutomationTextRange, srcEndPoint: TextPatternRangeEndpoint, range: ?*IUIAutomationTextRange, targetEndPoint: TextPatternRangeEndpoint) callconv(.Inline) HRESULT {
+    pub inline fn MoveEndpointByRange(self: *const IUIAutomationTextRange, srcEndPoint: TextPatternRangeEndpoint, range: ?*IUIAutomationTextRange, targetEndPoint: TextPatternRangeEndpoint) HRESULT {
         return self.vtable.MoveEndpointByRange(self, srcEndPoint, range, targetEndPoint);
     }
-    pub fn Select(self: *const IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn Select(self: *const IUIAutomationTextRange) HRESULT {
         return self.vtable.Select(self);
     }
-    pub fn AddToSelection(self: *const IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn AddToSelection(self: *const IUIAutomationTextRange) HRESULT {
         return self.vtable.AddToSelection(self);
     }
-    pub fn RemoveFromSelection(self: *const IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn RemoveFromSelection(self: *const IUIAutomationTextRange) HRESULT {
         return self.vtable.RemoveFromSelection(self);
     }
-    pub fn ScrollIntoView(self: *const IUIAutomationTextRange, alignToTop: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn ScrollIntoView(self: *const IUIAutomationTextRange, alignToTop: BOOL) HRESULT {
         return self.vtable.ScrollIntoView(self, alignToTop);
     }
-    pub fn GetChildren(self: *const IUIAutomationTextRange, children: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetChildren(self: *const IUIAutomationTextRange, children: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetChildren(self, children);
     }
 };
@@ -6989,14 +6989,14 @@ pub const IID_IUIAutomationTextRange2 = &IID_IUIAutomationTextRange2_Value;
 pub const IUIAutomationTextRange2 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationTextRange.VTable,
-        ShowContextMenu: *const fn(
+        ShowContextMenu: *const fn (
             self: *const IUIAutomationTextRange2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationTextRange: IUIAutomationTextRange,
     IUnknown: IUnknown,
-    pub fn ShowContextMenu(self: *const IUIAutomationTextRange2) callconv(.Inline) HRESULT {
+    pub inline fn ShowContextMenu(self: *const IUIAutomationTextRange2) HRESULT {
         return self.vtable.ShowContextMenu(self);
     }
 };
@@ -7007,34 +7007,34 @@ pub const IID_IUIAutomationTextRange3 = &IID_IUIAutomationTextRange3_Value;
 pub const IUIAutomationTextRange3 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationTextRange2.VTable,
-        GetEnclosingElementBuildCache: *const fn(
+        GetEnclosingElementBuildCache: *const fn (
             self: *const IUIAutomationTextRange3,
             cacheRequest: ?*IUIAutomationCacheRequest,
             enclosingElement: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChildrenBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChildrenBuildCache: *const fn (
             self: *const IUIAutomationTextRange3,
             cacheRequest: ?*IUIAutomationCacheRequest,
             children: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAttributeValues: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAttributeValues: *const fn (
             self: *const IUIAutomationTextRange3,
             attributeIds: [*]const i32,
             attributeIdCount: i32,
             attributeValues: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationTextRange2: IUIAutomationTextRange2,
     IUIAutomationTextRange: IUIAutomationTextRange,
     IUnknown: IUnknown,
-    pub fn GetEnclosingElementBuildCache(self: *const IUIAutomationTextRange3, cacheRequest: ?*IUIAutomationCacheRequest, enclosingElement: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetEnclosingElementBuildCache(self: *const IUIAutomationTextRange3, cacheRequest: ?*IUIAutomationCacheRequest, enclosingElement: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetEnclosingElementBuildCache(self, cacheRequest, enclosingElement);
     }
-    pub fn GetChildrenBuildCache(self: *const IUIAutomationTextRange3, cacheRequest: ?*IUIAutomationCacheRequest, children: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetChildrenBuildCache(self: *const IUIAutomationTextRange3, cacheRequest: ?*IUIAutomationCacheRequest, children: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetChildrenBuildCache(self, cacheRequest, children);
     }
-    pub fn GetAttributeValues(self: *const IUIAutomationTextRange3, attributeIds: [*]const i32, attributeIdCount: i32, attributeValues: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetAttributeValues(self: *const IUIAutomationTextRange3, attributeIds: [*]const i32, attributeIdCount: i32, attributeValues: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetAttributeValues(self, attributeIds, attributeIdCount, attributeValues);
     }
 };
@@ -7046,22 +7046,22 @@ pub const IUIAutomationTextRangeArray = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Length: *const fn(
+        get_Length: *const fn (
             self: *const IUIAutomationTextRangeArray,
             length: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetElement: *const fn (
             self: *const IUIAutomationTextRangeArray,
             index: i32,
             element: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_Length(self: *const IUIAutomationTextRangeArray, length: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Length(self: *const IUIAutomationTextRangeArray, length: ?*i32) HRESULT {
         return self.vtable.get_Length(self, length);
     }
-    pub fn GetElement(self: *const IUIAutomationTextRangeArray, index: i32, element: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn GetElement(self: *const IUIAutomationTextRangeArray, index: i32, element: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.GetElement(self, index, element);
     }
 };
@@ -7072,53 +7072,53 @@ pub const IID_IUIAutomationTextPattern = &IID_IUIAutomationTextPattern_Value;
 pub const IUIAutomationTextPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RangeFromPoint: *const fn(
+        RangeFromPoint: *const fn (
             self: *const IUIAutomationTextPattern,
             pt: POINT,
             range: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RangeFromChild: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RangeFromChild: *const fn (
             self: *const IUIAutomationTextPattern,
             child: ?*IUIAutomationElement,
             range: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSelection: *const fn (
             self: *const IUIAutomationTextPattern,
             ranges: ?*?*IUIAutomationTextRangeArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVisibleRanges: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVisibleRanges: *const fn (
             self: *const IUIAutomationTextPattern,
             ranges: ?*?*IUIAutomationTextRangeArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DocumentRange: *const fn(
+        get_DocumentRange: *const fn (
             self: *const IUIAutomationTextPattern,
             range: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SupportedTextSelection: *const fn(
+        get_SupportedTextSelection: *const fn (
             self: *const IUIAutomationTextPattern,
             supportedTextSelection: ?*SupportedTextSelection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RangeFromPoint(self: *const IUIAutomationTextPattern, pt: POINT, range: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn RangeFromPoint(self: *const IUIAutomationTextPattern, pt: POINT, range: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.RangeFromPoint(self, pt, range);
     }
-    pub fn RangeFromChild(self: *const IUIAutomationTextPattern, child: ?*IUIAutomationElement, range: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn RangeFromChild(self: *const IUIAutomationTextPattern, child: ?*IUIAutomationElement, range: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.RangeFromChild(self, child, range);
     }
-    pub fn GetSelection(self: *const IUIAutomationTextPattern, ranges: ?*?*IUIAutomationTextRangeArray) callconv(.Inline) HRESULT {
+    pub inline fn GetSelection(self: *const IUIAutomationTextPattern, ranges: ?*?*IUIAutomationTextRangeArray) HRESULT {
         return self.vtable.GetSelection(self, ranges);
     }
-    pub fn GetVisibleRanges(self: *const IUIAutomationTextPattern, ranges: ?*?*IUIAutomationTextRangeArray) callconv(.Inline) HRESULT {
+    pub inline fn GetVisibleRanges(self: *const IUIAutomationTextPattern, ranges: ?*?*IUIAutomationTextRangeArray) HRESULT {
         return self.vtable.GetVisibleRanges(self, ranges);
     }
-    pub fn get_DocumentRange(self: *const IUIAutomationTextPattern, range: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn get_DocumentRange(self: *const IUIAutomationTextPattern, range: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.get_DocumentRange(self, range);
     }
-    pub fn get_SupportedTextSelection(self: *const IUIAutomationTextPattern, supportedTextSelection: ?*SupportedTextSelection) callconv(.Inline) HRESULT {
+    pub inline fn get_SupportedTextSelection(self: *const IUIAutomationTextPattern, supportedTextSelection: ?*SupportedTextSelection) HRESULT {
         return self.vtable.get_SupportedTextSelection(self, supportedTextSelection);
     }
 };
@@ -7129,24 +7129,24 @@ pub const IID_IUIAutomationTextPattern2 = &IID_IUIAutomationTextPattern2_Value;
 pub const IUIAutomationTextPattern2 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationTextPattern.VTable,
-        RangeFromAnnotation: *const fn(
+        RangeFromAnnotation: *const fn (
             self: *const IUIAutomationTextPattern2,
             annotation: ?*IUIAutomationElement,
             range: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCaretRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCaretRange: *const fn (
             self: *const IUIAutomationTextPattern2,
             isActive: ?*BOOL,
             range: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationTextPattern: IUIAutomationTextPattern,
     IUnknown: IUnknown,
-    pub fn RangeFromAnnotation(self: *const IUIAutomationTextPattern2, annotation: ?*IUIAutomationElement, range: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn RangeFromAnnotation(self: *const IUIAutomationTextPattern2, annotation: ?*IUIAutomationElement, range: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.RangeFromAnnotation(self, annotation, range);
     }
-    pub fn GetCaretRange(self: *const IUIAutomationTextPattern2, isActive: ?*BOOL, range: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn GetCaretRange(self: *const IUIAutomationTextPattern2, isActive: ?*BOOL, range: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.GetCaretRange(self, isActive, range);
     }
 };
@@ -7157,22 +7157,22 @@ pub const IID_IUIAutomationTextEditPattern = &IID_IUIAutomationTextEditPattern_V
 pub const IUIAutomationTextEditPattern = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationTextPattern.VTable,
-        GetActiveComposition: *const fn(
+        GetActiveComposition: *const fn (
             self: *const IUIAutomationTextEditPattern,
             range: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConversionTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConversionTarget: *const fn (
             self: *const IUIAutomationTextEditPattern,
             range: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationTextPattern: IUIAutomationTextPattern,
     IUnknown: IUnknown,
-    pub fn GetActiveComposition(self: *const IUIAutomationTextEditPattern, range: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn GetActiveComposition(self: *const IUIAutomationTextEditPattern, range: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.GetActiveComposition(self, range);
     }
-    pub fn GetConversionTarget(self: *const IUIAutomationTextEditPattern, range: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn GetConversionTarget(self: *const IUIAutomationTextEditPattern, range: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.GetConversionTarget(self, range);
     }
 };
@@ -7183,15 +7183,15 @@ pub const IID_IUIAutomationCustomNavigationPattern = &IID_IUIAutomationCustomNav
 pub const IUIAutomationCustomNavigationPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Navigate: *const fn(
+        Navigate: *const fn (
             self: *const IUIAutomationCustomNavigationPattern,
             direction: NavigateDirection,
             pRetVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Navigate(self: *const IUIAutomationCustomNavigationPattern, direction: NavigateDirection, pRetVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn Navigate(self: *const IUIAutomationCustomNavigationPattern, direction: NavigateDirection, pRetVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.Navigate(self, direction, pRetVal);
     }
 };
@@ -7202,15 +7202,15 @@ pub const IID_IUIAutomationActiveTextPositionChangedEventHandler = &IID_IUIAutom
 pub const IUIAutomationActiveTextPositionChangedEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        HandleActiveTextPositionChangedEvent: *const fn(
+        HandleActiveTextPositionChangedEvent: *const fn (
             self: *const IUIAutomationActiveTextPositionChangedEventHandler,
             sender: ?*IUIAutomationElement,
             range: ?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn HandleActiveTextPositionChangedEvent(self: *const IUIAutomationActiveTextPositionChangedEventHandler, sender: ?*IUIAutomationElement, range: ?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn HandleActiveTextPositionChangedEvent(self: *const IUIAutomationActiveTextPositionChangedEventHandler, sender: ?*IUIAutomationElement, range: ?*IUIAutomationTextRange) HRESULT {
         return self.vtable.HandleActiveTextPositionChangedEvent(self, sender, range);
     }
 };
@@ -7221,192 +7221,192 @@ pub const IID_IUIAutomationLegacyIAccessiblePattern = &IID_IUIAutomationLegacyIA
 pub const IUIAutomationLegacyIAccessiblePattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Select: *const fn(
+        Select: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             flagsSelect: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DoDefaultAction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DoDefaultAction: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             szValue: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentChildId: *const fn(
+        get_CurrentChildId: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentName: *const fn(
+        get_CurrentName: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentValue: *const fn(
+        get_CurrentValue: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentDescription: *const fn(
+        get_CurrentDescription: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszDescription: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentRole: *const fn(
+        get_CurrentRole: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pdwRole: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentState: *const fn(
+        get_CurrentState: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pdwState: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentHelp: *const fn(
+        get_CurrentHelp: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszHelp: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentKeyboardShortcut: *const fn(
+        get_CurrentKeyboardShortcut: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszKeyboardShortcut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentSelection: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pvarSelectedChildren: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentDefaultAction: *const fn(
+        get_CurrentDefaultAction: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszDefaultAction: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedChildId: *const fn(
+        get_CachedChildId: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pRetVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedName: *const fn(
+        get_CachedName: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedValue: *const fn(
+        get_CachedValue: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszValue: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedDescription: *const fn(
+        get_CachedDescription: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszDescription: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedRole: *const fn(
+        get_CachedRole: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pdwRole: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedState: *const fn(
+        get_CachedState: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pdwState: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedHelp: *const fn(
+        get_CachedHelp: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszHelp: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedKeyboardShortcut: *const fn(
+        get_CachedKeyboardShortcut: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszKeyboardShortcut: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedSelection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedSelection: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pvarSelectedChildren: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedDefaultAction: *const fn(
+        get_CachedDefaultAction: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             pszDefaultAction: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIAccessible: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIAccessible: *const fn (
             self: *const IUIAutomationLegacyIAccessiblePattern,
             ppAccessible: ?*?*IAccessible,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Select(self: *const IUIAutomationLegacyIAccessiblePattern, flagsSelect: i32) callconv(.Inline) HRESULT {
+    pub inline fn Select(self: *const IUIAutomationLegacyIAccessiblePattern, flagsSelect: i32) HRESULT {
         return self.vtable.Select(self, flagsSelect);
     }
-    pub fn DoDefaultAction(self: *const IUIAutomationLegacyIAccessiblePattern) callconv(.Inline) HRESULT {
+    pub inline fn DoDefaultAction(self: *const IUIAutomationLegacyIAccessiblePattern) HRESULT {
         return self.vtable.DoDefaultAction(self);
     }
-    pub fn SetValue(self: *const IUIAutomationLegacyIAccessiblePattern, szValue: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const IUIAutomationLegacyIAccessiblePattern, szValue: ?[*:0]const u16) HRESULT {
         return self.vtable.SetValue(self, szValue);
     }
-    pub fn get_CurrentChildId(self: *const IUIAutomationLegacyIAccessiblePattern, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentChildId(self: *const IUIAutomationLegacyIAccessiblePattern, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentChildId(self, pRetVal);
     }
-    pub fn get_CurrentName(self: *const IUIAutomationLegacyIAccessiblePattern, pszName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentName(self: *const IUIAutomationLegacyIAccessiblePattern, pszName: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentName(self, pszName);
     }
-    pub fn get_CurrentValue(self: *const IUIAutomationLegacyIAccessiblePattern, pszValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentValue(self: *const IUIAutomationLegacyIAccessiblePattern, pszValue: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentValue(self, pszValue);
     }
-    pub fn get_CurrentDescription(self: *const IUIAutomationLegacyIAccessiblePattern, pszDescription: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentDescription(self: *const IUIAutomationLegacyIAccessiblePattern, pszDescription: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentDescription(self, pszDescription);
     }
-    pub fn get_CurrentRole(self: *const IUIAutomationLegacyIAccessiblePattern, pdwRole: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentRole(self: *const IUIAutomationLegacyIAccessiblePattern, pdwRole: ?*u32) HRESULT {
         return self.vtable.get_CurrentRole(self, pdwRole);
     }
-    pub fn get_CurrentState(self: *const IUIAutomationLegacyIAccessiblePattern, pdwState: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentState(self: *const IUIAutomationLegacyIAccessiblePattern, pdwState: ?*u32) HRESULT {
         return self.vtable.get_CurrentState(self, pdwState);
     }
-    pub fn get_CurrentHelp(self: *const IUIAutomationLegacyIAccessiblePattern, pszHelp: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentHelp(self: *const IUIAutomationLegacyIAccessiblePattern, pszHelp: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentHelp(self, pszHelp);
     }
-    pub fn get_CurrentKeyboardShortcut(self: *const IUIAutomationLegacyIAccessiblePattern, pszKeyboardShortcut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentKeyboardShortcut(self: *const IUIAutomationLegacyIAccessiblePattern, pszKeyboardShortcut: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentKeyboardShortcut(self, pszKeyboardShortcut);
     }
-    pub fn GetCurrentSelection(self: *const IUIAutomationLegacyIAccessiblePattern, pvarSelectedChildren: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentSelection(self: *const IUIAutomationLegacyIAccessiblePattern, pvarSelectedChildren: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCurrentSelection(self, pvarSelectedChildren);
     }
-    pub fn get_CurrentDefaultAction(self: *const IUIAutomationLegacyIAccessiblePattern, pszDefaultAction: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentDefaultAction(self: *const IUIAutomationLegacyIAccessiblePattern, pszDefaultAction: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentDefaultAction(self, pszDefaultAction);
     }
-    pub fn get_CachedChildId(self: *const IUIAutomationLegacyIAccessiblePattern, pRetVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedChildId(self: *const IUIAutomationLegacyIAccessiblePattern, pRetVal: ?*i32) HRESULT {
         return self.vtable.get_CachedChildId(self, pRetVal);
     }
-    pub fn get_CachedName(self: *const IUIAutomationLegacyIAccessiblePattern, pszName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedName(self: *const IUIAutomationLegacyIAccessiblePattern, pszName: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedName(self, pszName);
     }
-    pub fn get_CachedValue(self: *const IUIAutomationLegacyIAccessiblePattern, pszValue: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedValue(self: *const IUIAutomationLegacyIAccessiblePattern, pszValue: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedValue(self, pszValue);
     }
-    pub fn get_CachedDescription(self: *const IUIAutomationLegacyIAccessiblePattern, pszDescription: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedDescription(self: *const IUIAutomationLegacyIAccessiblePattern, pszDescription: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedDescription(self, pszDescription);
     }
-    pub fn get_CachedRole(self: *const IUIAutomationLegacyIAccessiblePattern, pdwRole: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedRole(self: *const IUIAutomationLegacyIAccessiblePattern, pdwRole: ?*u32) HRESULT {
         return self.vtable.get_CachedRole(self, pdwRole);
     }
-    pub fn get_CachedState(self: *const IUIAutomationLegacyIAccessiblePattern, pdwState: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedState(self: *const IUIAutomationLegacyIAccessiblePattern, pdwState: ?*u32) HRESULT {
         return self.vtable.get_CachedState(self, pdwState);
     }
-    pub fn get_CachedHelp(self: *const IUIAutomationLegacyIAccessiblePattern, pszHelp: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedHelp(self: *const IUIAutomationLegacyIAccessiblePattern, pszHelp: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedHelp(self, pszHelp);
     }
-    pub fn get_CachedKeyboardShortcut(self: *const IUIAutomationLegacyIAccessiblePattern, pszKeyboardShortcut: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedKeyboardShortcut(self: *const IUIAutomationLegacyIAccessiblePattern, pszKeyboardShortcut: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedKeyboardShortcut(self, pszKeyboardShortcut);
     }
-    pub fn GetCachedSelection(self: *const IUIAutomationLegacyIAccessiblePattern, pvarSelectedChildren: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedSelection(self: *const IUIAutomationLegacyIAccessiblePattern, pvarSelectedChildren: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCachedSelection(self, pvarSelectedChildren);
     }
-    pub fn get_CachedDefaultAction(self: *const IUIAutomationLegacyIAccessiblePattern, pszDefaultAction: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedDefaultAction(self: *const IUIAutomationLegacyIAccessiblePattern, pszDefaultAction: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedDefaultAction(self, pszDefaultAction);
     }
-    pub fn GetIAccessible(self: *const IUIAutomationLegacyIAccessiblePattern, ppAccessible: ?*?*IAccessible) callconv(.Inline) HRESULT {
+    pub inline fn GetIAccessible(self: *const IUIAutomationLegacyIAccessiblePattern, ppAccessible: ?*?*IAccessible) HRESULT {
         return self.vtable.GetIAccessible(self, ppAccessible);
     }
 };
@@ -7417,17 +7417,17 @@ pub const IID_IUIAutomationItemContainerPattern = &IID_IUIAutomationItemContaine
 pub const IUIAutomationItemContainerPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        FindItemByProperty: *const fn(
+        FindItemByProperty: *const fn (
             self: *const IUIAutomationItemContainerPattern,
             pStartAfter: ?*IUIAutomationElement,
             propertyId: i32,
             value: VARIANT,
             pFound: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn FindItemByProperty(self: *const IUIAutomationItemContainerPattern, pStartAfter: ?*IUIAutomationElement, propertyId: i32, value: VARIANT, pFound: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn FindItemByProperty(self: *const IUIAutomationItemContainerPattern, pStartAfter: ?*IUIAutomationElement, propertyId: i32, value: VARIANT, pFound: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.FindItemByProperty(self, pStartAfter, propertyId, value, pFound);
     }
 };
@@ -7438,13 +7438,13 @@ pub const IID_IUIAutomationVirtualizedItemPattern = &IID_IUIAutomationVirtualize
 pub const IUIAutomationVirtualizedItemPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Realize: *const fn(
+        Realize: *const fn (
             self: *const IUIAutomationVirtualizedItemPattern,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Realize(self: *const IUIAutomationVirtualizedItemPattern) callconv(.Inline) HRESULT {
+    pub inline fn Realize(self: *const IUIAutomationVirtualizedItemPattern) HRESULT {
         return self.vtable.Realize(self);
     }
 };
@@ -7456,86 +7456,86 @@ pub const IUIAutomationAnnotationPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAnnotationTypeId: *const fn(
+        get_CurrentAnnotationTypeId: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAnnotationTypeName: *const fn(
+        get_CurrentAnnotationTypeName: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAuthor: *const fn(
+        get_CurrentAuthor: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentDateTime: *const fn(
+        get_CurrentDateTime: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentTarget: *const fn(
+        get_CurrentTarget: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAnnotationTypeId: *const fn(
+        get_CachedAnnotationTypeId: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAnnotationTypeName: *const fn(
+        get_CachedAnnotationTypeName: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAuthor: *const fn(
+        get_CachedAuthor: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedDateTime: *const fn(
+        get_CachedDateTime: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedTarget: *const fn(
+        get_CachedTarget: *const fn (
             self: *const IUIAutomationAnnotationPattern,
             retVal: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_CurrentAnnotationTypeId(self: *const IUIAutomationAnnotationPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAnnotationTypeId(self: *const IUIAutomationAnnotationPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentAnnotationTypeId(self, retVal);
     }
-    pub fn get_CurrentAnnotationTypeName(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAnnotationTypeName(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentAnnotationTypeName(self, retVal);
     }
-    pub fn get_CurrentAuthor(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAuthor(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentAuthor(self, retVal);
     }
-    pub fn get_CurrentDateTime(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentDateTime(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentDateTime(self, retVal);
     }
-    pub fn get_CurrentTarget(self: *const IUIAutomationAnnotationPattern, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentTarget(self: *const IUIAutomationAnnotationPattern, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CurrentTarget(self, retVal);
     }
-    pub fn get_CachedAnnotationTypeId(self: *const IUIAutomationAnnotationPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAnnotationTypeId(self: *const IUIAutomationAnnotationPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedAnnotationTypeId(self, retVal);
     }
-    pub fn get_CachedAnnotationTypeName(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAnnotationTypeName(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedAnnotationTypeName(self, retVal);
     }
-    pub fn get_CachedAuthor(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAuthor(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedAuthor(self, retVal);
     }
-    pub fn get_CachedDateTime(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedDateTime(self: *const IUIAutomationAnnotationPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedDateTime(self, retVal);
     }
-    pub fn get_CachedTarget(self: *const IUIAutomationAnnotationPattern, retVal: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedTarget(self: *const IUIAutomationAnnotationPattern, retVal: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_CachedTarget(self, retVal);
     }
 };
@@ -7547,134 +7547,134 @@ pub const IUIAutomationStylesPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentStyleId: *const fn(
+        get_CurrentStyleId: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentStyleName: *const fn(
+        get_CurrentStyleName: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentFillColor: *const fn(
+        get_CurrentFillColor: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentFillPatternStyle: *const fn(
+        get_CurrentFillPatternStyle: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentShape: *const fn(
+        get_CurrentShape: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentFillPatternColor: *const fn(
+        get_CurrentFillPatternColor: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentExtendedProperties: *const fn(
+        get_CurrentExtendedProperties: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentExtendedPropertiesAsArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentExtendedPropertiesAsArray: *const fn (
             self: *const IUIAutomationStylesPattern,
             propertyArray: ?*?*ExtendedProperty,
             propertyCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedStyleId: *const fn(
+        get_CachedStyleId: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedStyleName: *const fn(
+        get_CachedStyleName: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedFillColor: *const fn(
+        get_CachedFillColor: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedFillPatternStyle: *const fn(
+        get_CachedFillPatternStyle: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedShape: *const fn(
+        get_CachedShape: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedFillPatternColor: *const fn(
+        get_CachedFillPatternColor: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedExtendedProperties: *const fn(
+        get_CachedExtendedProperties: *const fn (
             self: *const IUIAutomationStylesPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedExtendedPropertiesAsArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedExtendedPropertiesAsArray: *const fn (
             self: *const IUIAutomationStylesPattern,
             propertyArray: ?*?*ExtendedProperty,
             propertyCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_CurrentStyleId(self: *const IUIAutomationStylesPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentStyleId(self: *const IUIAutomationStylesPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentStyleId(self, retVal);
     }
-    pub fn get_CurrentStyleName(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentStyleName(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentStyleName(self, retVal);
     }
-    pub fn get_CurrentFillColor(self: *const IUIAutomationStylesPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentFillColor(self: *const IUIAutomationStylesPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentFillColor(self, retVal);
     }
-    pub fn get_CurrentFillPatternStyle(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentFillPatternStyle(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentFillPatternStyle(self, retVal);
     }
-    pub fn get_CurrentShape(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentShape(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentShape(self, retVal);
     }
-    pub fn get_CurrentFillPatternColor(self: *const IUIAutomationStylesPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentFillPatternColor(self: *const IUIAutomationStylesPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentFillPatternColor(self, retVal);
     }
-    pub fn get_CurrentExtendedProperties(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentExtendedProperties(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentExtendedProperties(self, retVal);
     }
-    pub fn GetCurrentExtendedPropertiesAsArray(self: *const IUIAutomationStylesPattern, propertyArray: ?*?*ExtendedProperty, propertyCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentExtendedPropertiesAsArray(self: *const IUIAutomationStylesPattern, propertyArray: ?*?*ExtendedProperty, propertyCount: ?*i32) HRESULT {
         return self.vtable.GetCurrentExtendedPropertiesAsArray(self, propertyArray, propertyCount);
     }
-    pub fn get_CachedStyleId(self: *const IUIAutomationStylesPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedStyleId(self: *const IUIAutomationStylesPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedStyleId(self, retVal);
     }
-    pub fn get_CachedStyleName(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedStyleName(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedStyleName(self, retVal);
     }
-    pub fn get_CachedFillColor(self: *const IUIAutomationStylesPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedFillColor(self: *const IUIAutomationStylesPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedFillColor(self, retVal);
     }
-    pub fn get_CachedFillPatternStyle(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedFillPatternStyle(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedFillPatternStyle(self, retVal);
     }
-    pub fn get_CachedShape(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedShape(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedShape(self, retVal);
     }
-    pub fn get_CachedFillPatternColor(self: *const IUIAutomationStylesPattern, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedFillPatternColor(self: *const IUIAutomationStylesPattern, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedFillPatternColor(self, retVal);
     }
-    pub fn get_CachedExtendedProperties(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedExtendedProperties(self: *const IUIAutomationStylesPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedExtendedProperties(self, retVal);
     }
-    pub fn GetCachedExtendedPropertiesAsArray(self: *const IUIAutomationStylesPattern, propertyArray: ?*?*ExtendedProperty, propertyCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedExtendedPropertiesAsArray(self: *const IUIAutomationStylesPattern, propertyArray: ?*?*ExtendedProperty, propertyCount: ?*i32) HRESULT {
         return self.vtable.GetCachedExtendedPropertiesAsArray(self, propertyArray, propertyCount);
     }
 };
@@ -7685,15 +7685,15 @@ pub const IID_IUIAutomationSpreadsheetPattern = &IID_IUIAutomationSpreadsheetPat
 pub const IUIAutomationSpreadsheetPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetItemByName: *const fn(
+        GetItemByName: *const fn (
             self: *const IUIAutomationSpreadsheetPattern,
             name: ?BSTR,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetItemByName(self: *const IUIAutomationSpreadsheetPattern, name: ?BSTR, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetItemByName(self: *const IUIAutomationSpreadsheetPattern, name: ?BSTR, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetItemByName(self, name, element);
     }
 };
@@ -7705,50 +7705,50 @@ pub const IUIAutomationSpreadsheetItemPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentFormula: *const fn(
+        get_CurrentFormula: *const fn (
             self: *const IUIAutomationSpreadsheetItemPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentAnnotationObjects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentAnnotationObjects: *const fn (
             self: *const IUIAutomationSpreadsheetItemPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentAnnotationTypes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentAnnotationTypes: *const fn (
             self: *const IUIAutomationSpreadsheetItemPattern,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedFormula: *const fn(
+        get_CachedFormula: *const fn (
             self: *const IUIAutomationSpreadsheetItemPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedAnnotationObjects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedAnnotationObjects: *const fn (
             self: *const IUIAutomationSpreadsheetItemPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedAnnotationTypes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedAnnotationTypes: *const fn (
             self: *const IUIAutomationSpreadsheetItemPattern,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_CurrentFormula(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentFormula(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentFormula(self, retVal);
     }
-    pub fn GetCurrentAnnotationObjects(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentAnnotationObjects(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCurrentAnnotationObjects(self, retVal);
     }
-    pub fn GetCurrentAnnotationTypes(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentAnnotationTypes(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetCurrentAnnotationTypes(self, retVal);
     }
-    pub fn get_CachedFormula(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedFormula(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedFormula(self, retVal);
     }
-    pub fn GetCachedAnnotationObjects(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedAnnotationObjects(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCachedAnnotationObjects(self, retVal);
     }
-    pub fn GetCachedAnnotationTypes(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedAnnotationTypes(self: *const IUIAutomationSpreadsheetItemPattern, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetCachedAnnotationTypes(self, retVal);
     }
 };
@@ -7759,86 +7759,86 @@ pub const IID_IUIAutomationTransformPattern2 = &IID_IUIAutomationTransformPatter
 pub const IUIAutomationTransformPattern2 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationTransformPattern.VTable,
-        Zoom: *const fn(
+        Zoom: *const fn (
             self: *const IUIAutomationTransformPattern2,
             zoomValue: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ZoomByUnit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ZoomByUnit: *const fn (
             self: *const IUIAutomationTransformPattern2,
             zoomUnit: ZoomUnit,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentCanZoom: *const fn(
+        get_CurrentCanZoom: *const fn (
             self: *const IUIAutomationTransformPattern2,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedCanZoom: *const fn(
+        get_CachedCanZoom: *const fn (
             self: *const IUIAutomationTransformPattern2,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentZoomLevel: *const fn(
+        get_CurrentZoomLevel: *const fn (
             self: *const IUIAutomationTransformPattern2,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedZoomLevel: *const fn(
+        get_CachedZoomLevel: *const fn (
             self: *const IUIAutomationTransformPattern2,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentZoomMinimum: *const fn(
+        get_CurrentZoomMinimum: *const fn (
             self: *const IUIAutomationTransformPattern2,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedZoomMinimum: *const fn(
+        get_CachedZoomMinimum: *const fn (
             self: *const IUIAutomationTransformPattern2,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentZoomMaximum: *const fn(
+        get_CurrentZoomMaximum: *const fn (
             self: *const IUIAutomationTransformPattern2,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedZoomMaximum: *const fn(
+        get_CachedZoomMaximum: *const fn (
             self: *const IUIAutomationTransformPattern2,
             retVal: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationTransformPattern: IUIAutomationTransformPattern,
     IUnknown: IUnknown,
-    pub fn Zoom(self: *const IUIAutomationTransformPattern2, zoomValue: f64) callconv(.Inline) HRESULT {
+    pub inline fn Zoom(self: *const IUIAutomationTransformPattern2, zoomValue: f64) HRESULT {
         return self.vtable.Zoom(self, zoomValue);
     }
-    pub fn ZoomByUnit(self: *const IUIAutomationTransformPattern2, zoomUnit: ZoomUnit) callconv(.Inline) HRESULT {
+    pub inline fn ZoomByUnit(self: *const IUIAutomationTransformPattern2, zoomUnit: ZoomUnit) HRESULT {
         return self.vtable.ZoomByUnit(self, zoomUnit);
     }
-    pub fn get_CurrentCanZoom(self: *const IUIAutomationTransformPattern2, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentCanZoom(self: *const IUIAutomationTransformPattern2, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentCanZoom(self, retVal);
     }
-    pub fn get_CachedCanZoom(self: *const IUIAutomationTransformPattern2, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedCanZoom(self: *const IUIAutomationTransformPattern2, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedCanZoom(self, retVal);
     }
-    pub fn get_CurrentZoomLevel(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentZoomLevel(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentZoomLevel(self, retVal);
     }
-    pub fn get_CachedZoomLevel(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedZoomLevel(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedZoomLevel(self, retVal);
     }
-    pub fn get_CurrentZoomMinimum(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentZoomMinimum(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentZoomMinimum(self, retVal);
     }
-    pub fn get_CachedZoomMinimum(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedZoomMinimum(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedZoomMinimum(self, retVal);
     }
-    pub fn get_CurrentZoomMaximum(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentZoomMaximum(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) HRESULT {
         return self.vtable.get_CurrentZoomMaximum(self, retVal);
     }
-    pub fn get_CachedZoomMaximum(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedZoomMaximum(self: *const IUIAutomationTransformPattern2, retVal: ?*f64) HRESULT {
         return self.vtable.get_CachedZoomMaximum(self, retVal);
     }
 };
@@ -7850,22 +7850,22 @@ pub const IUIAutomationTextChildPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TextContainer: *const fn(
+        get_TextContainer: *const fn (
             self: *const IUIAutomationTextChildPattern,
             container: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TextRange: *const fn(
+        get_TextRange: *const fn (
             self: *const IUIAutomationTextChildPattern,
             range: ?*?*IUIAutomationTextRange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_TextContainer(self: *const IUIAutomationTextChildPattern, container: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn get_TextContainer(self: *const IUIAutomationTextChildPattern, container: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.get_TextContainer(self, container);
     }
-    pub fn get_TextRange(self: *const IUIAutomationTextChildPattern, range: ?*?*IUIAutomationTextRange) callconv(.Inline) HRESULT {
+    pub inline fn get_TextRange(self: *const IUIAutomationTextChildPattern, range: ?*?*IUIAutomationTextRange) HRESULT {
         return self.vtable.get_TextRange(self, range);
     }
 };
@@ -7877,68 +7877,68 @@ pub const IUIAutomationDragPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsGrabbed: *const fn(
+        get_CurrentIsGrabbed: *const fn (
             self: *const IUIAutomationDragPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsGrabbed: *const fn(
+        get_CachedIsGrabbed: *const fn (
             self: *const IUIAutomationDragPattern,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentDropEffect: *const fn(
+        get_CurrentDropEffect: *const fn (
             self: *const IUIAutomationDragPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedDropEffect: *const fn(
+        get_CachedDropEffect: *const fn (
             self: *const IUIAutomationDragPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentDropEffects: *const fn(
+        get_CurrentDropEffects: *const fn (
             self: *const IUIAutomationDragPattern,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedDropEffects: *const fn(
+        get_CachedDropEffects: *const fn (
             self: *const IUIAutomationDragPattern,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentGrabbedItems: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentGrabbedItems: *const fn (
             self: *const IUIAutomationDragPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCachedGrabbedItems: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCachedGrabbedItems: *const fn (
             self: *const IUIAutomationDragPattern,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_CurrentIsGrabbed(self: *const IUIAutomationDragPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsGrabbed(self: *const IUIAutomationDragPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsGrabbed(self, retVal);
     }
-    pub fn get_CachedIsGrabbed(self: *const IUIAutomationDragPattern, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsGrabbed(self: *const IUIAutomationDragPattern, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsGrabbed(self, retVal);
     }
-    pub fn get_CurrentDropEffect(self: *const IUIAutomationDragPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentDropEffect(self: *const IUIAutomationDragPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentDropEffect(self, retVal);
     }
-    pub fn get_CachedDropEffect(self: *const IUIAutomationDragPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedDropEffect(self: *const IUIAutomationDragPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedDropEffect(self, retVal);
     }
-    pub fn get_CurrentDropEffects(self: *const IUIAutomationDragPattern, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentDropEffects(self: *const IUIAutomationDragPattern, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.get_CurrentDropEffects(self, retVal);
     }
-    pub fn get_CachedDropEffects(self: *const IUIAutomationDragPattern, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedDropEffects(self: *const IUIAutomationDragPattern, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.get_CachedDropEffects(self, retVal);
     }
-    pub fn GetCurrentGrabbedItems(self: *const IUIAutomationDragPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentGrabbedItems(self: *const IUIAutomationDragPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCurrentGrabbedItems(self, retVal);
     }
-    pub fn GetCachedGrabbedItems(self: *const IUIAutomationDragPattern, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn GetCachedGrabbedItems(self: *const IUIAutomationDragPattern, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.GetCachedGrabbedItems(self, retVal);
     }
 };
@@ -7950,38 +7950,38 @@ pub const IUIAutomationDropTargetPattern = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentDropTargetEffect: *const fn(
+        get_CurrentDropTargetEffect: *const fn (
             self: *const IUIAutomationDropTargetPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedDropTargetEffect: *const fn(
+        get_CachedDropTargetEffect: *const fn (
             self: *const IUIAutomationDropTargetPattern,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentDropTargetEffects: *const fn(
+        get_CurrentDropTargetEffects: *const fn (
             self: *const IUIAutomationDropTargetPattern,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedDropTargetEffects: *const fn(
+        get_CachedDropTargetEffects: *const fn (
             self: *const IUIAutomationDropTargetPattern,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_CurrentDropTargetEffect(self: *const IUIAutomationDropTargetPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentDropTargetEffect(self: *const IUIAutomationDropTargetPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentDropTargetEffect(self, retVal);
     }
-    pub fn get_CachedDropTargetEffect(self: *const IUIAutomationDropTargetPattern, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedDropTargetEffect(self: *const IUIAutomationDropTargetPattern, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedDropTargetEffect(self, retVal);
     }
-    pub fn get_CurrentDropTargetEffects(self: *const IUIAutomationDropTargetPattern, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentDropTargetEffects(self: *const IUIAutomationDropTargetPattern, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.get_CurrentDropTargetEffects(self, retVal);
     }
-    pub fn get_CachedDropTargetEffects(self: *const IUIAutomationDropTargetPattern, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedDropTargetEffects(self: *const IUIAutomationDropTargetPattern, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.get_CachedDropTargetEffects(self, retVal);
     }
 };
@@ -7993,55 +7993,55 @@ pub const IUIAutomationElement2 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationElement.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentOptimizeForVisualContent: *const fn(
+        get_CurrentOptimizeForVisualContent: *const fn (
             self: *const IUIAutomationElement2,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedOptimizeForVisualContent: *const fn(
+        get_CachedOptimizeForVisualContent: *const fn (
             self: *const IUIAutomationElement2,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentLiveSetting: *const fn(
+        get_CurrentLiveSetting: *const fn (
             self: *const IUIAutomationElement2,
             retVal: ?*LiveSetting,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedLiveSetting: *const fn(
+        get_CachedLiveSetting: *const fn (
             self: *const IUIAutomationElement2,
             retVal: ?*LiveSetting,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentFlowsFrom: *const fn(
+        get_CurrentFlowsFrom: *const fn (
             self: *const IUIAutomationElement2,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedFlowsFrom: *const fn(
+        get_CachedFlowsFrom: *const fn (
             self: *const IUIAutomationElement2,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationElement: IUIAutomationElement,
     IUnknown: IUnknown,
-    pub fn get_CurrentOptimizeForVisualContent(self: *const IUIAutomationElement2, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentOptimizeForVisualContent(self: *const IUIAutomationElement2, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentOptimizeForVisualContent(self, retVal);
     }
-    pub fn get_CachedOptimizeForVisualContent(self: *const IUIAutomationElement2, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedOptimizeForVisualContent(self: *const IUIAutomationElement2, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedOptimizeForVisualContent(self, retVal);
     }
-    pub fn get_CurrentLiveSetting(self: *const IUIAutomationElement2, retVal: ?*LiveSetting) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentLiveSetting(self: *const IUIAutomationElement2, retVal: ?*LiveSetting) HRESULT {
         return self.vtable.get_CurrentLiveSetting(self, retVal);
     }
-    pub fn get_CachedLiveSetting(self: *const IUIAutomationElement2, retVal: ?*LiveSetting) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedLiveSetting(self: *const IUIAutomationElement2, retVal: ?*LiveSetting) HRESULT {
         return self.vtable.get_CachedLiveSetting(self, retVal);
     }
-    pub fn get_CurrentFlowsFrom(self: *const IUIAutomationElement2, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentFlowsFrom(self: *const IUIAutomationElement2, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CurrentFlowsFrom(self, retVal);
     }
-    pub fn get_CachedFlowsFrom(self: *const IUIAutomationElement2, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedFlowsFrom(self: *const IUIAutomationElement2, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CachedFlowsFrom(self, retVal);
     }
 };
@@ -8052,31 +8052,31 @@ pub const IID_IUIAutomationElement3 = &IID_IUIAutomationElement3_Value;
 pub const IUIAutomationElement3 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationElement2.VTable,
-        ShowContextMenu: *const fn(
+        ShowContextMenu: *const fn (
             self: *const IUIAutomationElement3,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsPeripheral: *const fn(
+        get_CurrentIsPeripheral: *const fn (
             self: *const IUIAutomationElement3,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsPeripheral: *const fn(
+        get_CachedIsPeripheral: *const fn (
             self: *const IUIAutomationElement3,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationElement2: IUIAutomationElement2,
     IUIAutomationElement: IUIAutomationElement,
     IUnknown: IUnknown,
-    pub fn ShowContextMenu(self: *const IUIAutomationElement3) callconv(.Inline) HRESULT {
+    pub inline fn ShowContextMenu(self: *const IUIAutomationElement3) HRESULT {
         return self.vtable.ShowContextMenu(self);
     }
-    pub fn get_CurrentIsPeripheral(self: *const IUIAutomationElement3, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsPeripheral(self: *const IUIAutomationElement3, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsPeripheral(self, retVal);
     }
-    pub fn get_CachedIsPeripheral(self: *const IUIAutomationElement3, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsPeripheral(self: *const IUIAutomationElement3, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsPeripheral(self, retVal);
     }
 };
@@ -8088,89 +8088,89 @@ pub const IUIAutomationElement4 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationElement3.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentPositionInSet: *const fn(
+        get_CurrentPositionInSet: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentSizeOfSet: *const fn(
+        get_CurrentSizeOfSet: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentLevel: *const fn(
+        get_CurrentLevel: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAnnotationTypes: *const fn(
+        get_CurrentAnnotationTypes: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentAnnotationObjects: *const fn(
+        get_CurrentAnnotationObjects: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedPositionInSet: *const fn(
+        get_CachedPositionInSet: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedSizeOfSet: *const fn(
+        get_CachedSizeOfSet: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedLevel: *const fn(
+        get_CachedLevel: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAnnotationTypes: *const fn(
+        get_CachedAnnotationTypes: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedAnnotationObjects: *const fn(
+        get_CachedAnnotationObjects: *const fn (
             self: *const IUIAutomationElement4,
             retVal: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationElement3: IUIAutomationElement3,
     IUIAutomationElement2: IUIAutomationElement2,
     IUIAutomationElement: IUIAutomationElement,
     IUnknown: IUnknown,
-    pub fn get_CurrentPositionInSet(self: *const IUIAutomationElement4, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentPositionInSet(self: *const IUIAutomationElement4, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentPositionInSet(self, retVal);
     }
-    pub fn get_CurrentSizeOfSet(self: *const IUIAutomationElement4, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentSizeOfSet(self: *const IUIAutomationElement4, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentSizeOfSet(self, retVal);
     }
-    pub fn get_CurrentLevel(self: *const IUIAutomationElement4, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentLevel(self: *const IUIAutomationElement4, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentLevel(self, retVal);
     }
-    pub fn get_CurrentAnnotationTypes(self: *const IUIAutomationElement4, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAnnotationTypes(self: *const IUIAutomationElement4, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.get_CurrentAnnotationTypes(self, retVal);
     }
-    pub fn get_CurrentAnnotationObjects(self: *const IUIAutomationElement4, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentAnnotationObjects(self: *const IUIAutomationElement4, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CurrentAnnotationObjects(self, retVal);
     }
-    pub fn get_CachedPositionInSet(self: *const IUIAutomationElement4, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedPositionInSet(self: *const IUIAutomationElement4, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedPositionInSet(self, retVal);
     }
-    pub fn get_CachedSizeOfSet(self: *const IUIAutomationElement4, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedSizeOfSet(self: *const IUIAutomationElement4, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedSizeOfSet(self, retVal);
     }
-    pub fn get_CachedLevel(self: *const IUIAutomationElement4, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedLevel(self: *const IUIAutomationElement4, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedLevel(self, retVal);
     }
-    pub fn get_CachedAnnotationTypes(self: *const IUIAutomationElement4, retVal: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAnnotationTypes(self: *const IUIAutomationElement4, retVal: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.get_CachedAnnotationTypes(self, retVal);
     }
-    pub fn get_CachedAnnotationObjects(self: *const IUIAutomationElement4, retVal: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedAnnotationObjects(self: *const IUIAutomationElement4, retVal: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.get_CachedAnnotationObjects(self, retVal);
     }
 };
@@ -8182,25 +8182,25 @@ pub const IUIAutomationElement5 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationElement4.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentLandmarkType: *const fn(
+        get_CurrentLandmarkType: *const fn (
             self: *const IUIAutomationElement5,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentLocalizedLandmarkType: *const fn(
+        get_CurrentLocalizedLandmarkType: *const fn (
             self: *const IUIAutomationElement5,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedLandmarkType: *const fn(
+        get_CachedLandmarkType: *const fn (
             self: *const IUIAutomationElement5,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedLocalizedLandmarkType: *const fn(
+        get_CachedLocalizedLandmarkType: *const fn (
             self: *const IUIAutomationElement5,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationElement4: IUIAutomationElement4,
@@ -8208,16 +8208,16 @@ pub const IUIAutomationElement5 = extern union {
     IUIAutomationElement2: IUIAutomationElement2,
     IUIAutomationElement: IUIAutomationElement,
     IUnknown: IUnknown,
-    pub fn get_CurrentLandmarkType(self: *const IUIAutomationElement5, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentLandmarkType(self: *const IUIAutomationElement5, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentLandmarkType(self, retVal);
     }
-    pub fn get_CurrentLocalizedLandmarkType(self: *const IUIAutomationElement5, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentLocalizedLandmarkType(self: *const IUIAutomationElement5, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentLocalizedLandmarkType(self, retVal);
     }
-    pub fn get_CachedLandmarkType(self: *const IUIAutomationElement5, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedLandmarkType(self: *const IUIAutomationElement5, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedLandmarkType(self, retVal);
     }
-    pub fn get_CachedLocalizedLandmarkType(self: *const IUIAutomationElement5, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedLocalizedLandmarkType(self: *const IUIAutomationElement5, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedLocalizedLandmarkType(self, retVal);
     }
 };
@@ -8229,15 +8229,15 @@ pub const IUIAutomationElement6 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationElement5.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentFullDescription: *const fn(
+        get_CurrentFullDescription: *const fn (
             self: *const IUIAutomationElement6,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedFullDescription: *const fn(
+        get_CachedFullDescription: *const fn (
             self: *const IUIAutomationElement6,
             retVal: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationElement5: IUIAutomationElement5,
@@ -8246,10 +8246,10 @@ pub const IUIAutomationElement6 = extern union {
     IUIAutomationElement2: IUIAutomationElement2,
     IUIAutomationElement: IUIAutomationElement,
     IUnknown: IUnknown,
-    pub fn get_CurrentFullDescription(self: *const IUIAutomationElement6, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentFullDescription(self: *const IUIAutomationElement6, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CurrentFullDescription(self, retVal);
     }
-    pub fn get_CachedFullDescription(self: *const IUIAutomationElement6, retVal: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedFullDescription(self: *const IUIAutomationElement6, retVal: ?*?BSTR) HRESULT {
         return self.vtable.get_CachedFullDescription(self, retVal);
     }
 };
@@ -8260,23 +8260,23 @@ pub const IID_IUIAutomationElement7 = &IID_IUIAutomationElement7_Value;
 pub const IUIAutomationElement7 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationElement6.VTable,
-        FindFirstWithOptions: *const fn(
+        FindFirstWithOptions: *const fn (
             self: *const IUIAutomationElement7,
             scope: TreeScope,
             condition: ?*IUIAutomationCondition,
             traversalOptions: TreeTraversalOptions,
             root: ?*IUIAutomationElement,
             found: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindAllWithOptions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindAllWithOptions: *const fn (
             self: *const IUIAutomationElement7,
             scope: TreeScope,
             condition: ?*IUIAutomationCondition,
             traversalOptions: TreeTraversalOptions,
             root: ?*IUIAutomationElement,
             found: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindFirstWithOptionsBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindFirstWithOptionsBuildCache: *const fn (
             self: *const IUIAutomationElement7,
             scope: TreeScope,
             condition: ?*IUIAutomationCondition,
@@ -8284,8 +8284,8 @@ pub const IUIAutomationElement7 = extern union {
             traversalOptions: TreeTraversalOptions,
             root: ?*IUIAutomationElement,
             found: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindAllWithOptionsBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindAllWithOptionsBuildCache: *const fn (
             self: *const IUIAutomationElement7,
             scope: TreeScope,
             condition: ?*IUIAutomationCondition,
@@ -8293,13 +8293,13 @@ pub const IUIAutomationElement7 = extern union {
             traversalOptions: TreeTraversalOptions,
             root: ?*IUIAutomationElement,
             found: ?*?*IUIAutomationElementArray,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentMetadataValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentMetadataValue: *const fn (
             self: *const IUIAutomationElement7,
             targetId: i32,
             metadataId: i32,
             returnVal: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationElement6: IUIAutomationElement6,
@@ -8309,19 +8309,19 @@ pub const IUIAutomationElement7 = extern union {
     IUIAutomationElement2: IUIAutomationElement2,
     IUIAutomationElement: IUIAutomationElement,
     IUnknown: IUnknown,
-    pub fn FindFirstWithOptions(self: *const IUIAutomationElement7, scope: TreeScope, condition: ?*IUIAutomationCondition, traversalOptions: TreeTraversalOptions, root: ?*IUIAutomationElement, found: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn FindFirstWithOptions(self: *const IUIAutomationElement7, scope: TreeScope, condition: ?*IUIAutomationCondition, traversalOptions: TreeTraversalOptions, root: ?*IUIAutomationElement, found: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.FindFirstWithOptions(self, scope, condition, traversalOptions, root, found);
     }
-    pub fn FindAllWithOptions(self: *const IUIAutomationElement7, scope: TreeScope, condition: ?*IUIAutomationCondition, traversalOptions: TreeTraversalOptions, root: ?*IUIAutomationElement, found: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn FindAllWithOptions(self: *const IUIAutomationElement7, scope: TreeScope, condition: ?*IUIAutomationCondition, traversalOptions: TreeTraversalOptions, root: ?*IUIAutomationElement, found: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.FindAllWithOptions(self, scope, condition, traversalOptions, root, found);
     }
-    pub fn FindFirstWithOptionsBuildCache(self: *const IUIAutomationElement7, scope: TreeScope, condition: ?*IUIAutomationCondition, cacheRequest: ?*IUIAutomationCacheRequest, traversalOptions: TreeTraversalOptions, root: ?*IUIAutomationElement, found: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn FindFirstWithOptionsBuildCache(self: *const IUIAutomationElement7, scope: TreeScope, condition: ?*IUIAutomationCondition, cacheRequest: ?*IUIAutomationCacheRequest, traversalOptions: TreeTraversalOptions, root: ?*IUIAutomationElement, found: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.FindFirstWithOptionsBuildCache(self, scope, condition, cacheRequest, traversalOptions, root, found);
     }
-    pub fn FindAllWithOptionsBuildCache(self: *const IUIAutomationElement7, scope: TreeScope, condition: ?*IUIAutomationCondition, cacheRequest: ?*IUIAutomationCacheRequest, traversalOptions: TreeTraversalOptions, root: ?*IUIAutomationElement, found: ?*?*IUIAutomationElementArray) callconv(.Inline) HRESULT {
+    pub inline fn FindAllWithOptionsBuildCache(self: *const IUIAutomationElement7, scope: TreeScope, condition: ?*IUIAutomationCondition, cacheRequest: ?*IUIAutomationCacheRequest, traversalOptions: TreeTraversalOptions, root: ?*IUIAutomationElement, found: ?*?*IUIAutomationElementArray) HRESULT {
         return self.vtable.FindAllWithOptionsBuildCache(self, scope, condition, cacheRequest, traversalOptions, root, found);
     }
-    pub fn GetCurrentMetadataValue(self: *const IUIAutomationElement7, targetId: i32, metadataId: i32, returnVal: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentMetadataValue(self: *const IUIAutomationElement7, targetId: i32, metadataId: i32, returnVal: ?*VARIANT) HRESULT {
         return self.vtable.GetCurrentMetadataValue(self, targetId, metadataId, returnVal);
     }
 };
@@ -8333,15 +8333,15 @@ pub const IUIAutomationElement8 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationElement7.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentHeadingLevel: *const fn(
+        get_CurrentHeadingLevel: *const fn (
             self: *const IUIAutomationElement8,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedHeadingLevel: *const fn(
+        get_CachedHeadingLevel: *const fn (
             self: *const IUIAutomationElement8,
             retVal: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationElement7: IUIAutomationElement7,
@@ -8352,10 +8352,10 @@ pub const IUIAutomationElement8 = extern union {
     IUIAutomationElement2: IUIAutomationElement2,
     IUIAutomationElement: IUIAutomationElement,
     IUnknown: IUnknown,
-    pub fn get_CurrentHeadingLevel(self: *const IUIAutomationElement8, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentHeadingLevel(self: *const IUIAutomationElement8, retVal: ?*i32) HRESULT {
         return self.vtable.get_CurrentHeadingLevel(self, retVal);
     }
-    pub fn get_CachedHeadingLevel(self: *const IUIAutomationElement8, retVal: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedHeadingLevel(self: *const IUIAutomationElement8, retVal: ?*i32) HRESULT {
         return self.vtable.get_CachedHeadingLevel(self, retVal);
     }
 };
@@ -8367,15 +8367,15 @@ pub const IUIAutomationElement9 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomationElement8.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentIsDialog: *const fn(
+        get_CurrentIsDialog: *const fn (
             self: *const IUIAutomationElement9,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CachedIsDialog: *const fn(
+        get_CachedIsDialog: *const fn (
             self: *const IUIAutomationElement9,
             retVal: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomationElement8: IUIAutomationElement8,
@@ -8387,10 +8387,10 @@ pub const IUIAutomationElement9 = extern union {
     IUIAutomationElement2: IUIAutomationElement2,
     IUIAutomationElement: IUIAutomationElement,
     IUnknown: IUnknown,
-    pub fn get_CurrentIsDialog(self: *const IUIAutomationElement9, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentIsDialog(self: *const IUIAutomationElement9, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CurrentIsDialog(self, retVal);
     }
-    pub fn get_CachedIsDialog(self: *const IUIAutomationElement9, retVal: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CachedIsDialog(self: *const IUIAutomationElement9, retVal: ?*BOOL) HRESULT {
         return self.vtable.get_CachedIsDialog(self, retVal);
     }
 };
@@ -8401,25 +8401,25 @@ pub const IID_IUIAutomationProxyFactory = &IID_IUIAutomationProxyFactory_Value;
 pub const IUIAutomationProxyFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateProvider: *const fn(
+        CreateProvider: *const fn (
             self: *const IUIAutomationProxyFactory,
             hwnd: ?HWND,
             idObject: i32,
             idChild: i32,
             provider: ?*?*IRawElementProviderSimple,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProxyFactoryId: *const fn(
+        get_ProxyFactoryId: *const fn (
             self: *const IUIAutomationProxyFactory,
             factoryId: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateProvider(self: *const IUIAutomationProxyFactory, hwnd: ?HWND, idObject: i32, idChild: i32, provider: ?*?*IRawElementProviderSimple) callconv(.Inline) HRESULT {
+    pub inline fn CreateProvider(self: *const IUIAutomationProxyFactory, hwnd: ?HWND, idObject: i32, idChild: i32, provider: ?*?*IRawElementProviderSimple) HRESULT {
         return self.vtable.CreateProvider(self, hwnd, idObject, idChild, provider);
     }
-    pub fn get_ProxyFactoryId(self: *const IUIAutomationProxyFactory, factoryId: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProxyFactoryId(self: *const IUIAutomationProxyFactory, factoryId: ?*?BSTR) HRESULT {
         return self.vtable.get_ProxyFactoryId(self, factoryId);
     }
 };
@@ -8431,112 +8431,112 @@ pub const IUIAutomationProxyFactoryEntry = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProxyFactory: *const fn(
+        get_ProxyFactory: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             factory: ?*?*IUIAutomationProxyFactory,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ClassName: *const fn(
+        get_ClassName: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             className: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ImageName: *const fn(
+        get_ImageName: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             imageName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AllowSubstringMatch: *const fn(
+        get_AllowSubstringMatch: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             allowSubstringMatch: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CanCheckBaseClass: *const fn(
+        get_CanCheckBaseClass: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             canCheckBaseClass: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NeedsAdviseEvents: *const fn(
+        get_NeedsAdviseEvents: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             adviseEvents: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ClassName: *const fn(
+        put_ClassName: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             className: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ImageName: *const fn(
+        put_ImageName: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             imageName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AllowSubstringMatch: *const fn(
+        put_AllowSubstringMatch: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             allowSubstringMatch: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CanCheckBaseClass: *const fn(
+        put_CanCheckBaseClass: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             canCheckBaseClass: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NeedsAdviseEvents: *const fn(
+        put_NeedsAdviseEvents: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             adviseEvents: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetWinEventsForAutomationEvent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetWinEventsForAutomationEvent: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             eventId: i32,
             propertyId: i32,
             winEvents: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetWinEventsForAutomationEvent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetWinEventsForAutomationEvent: *const fn (
             self: *const IUIAutomationProxyFactoryEntry,
             eventId: i32,
             propertyId: i32,
             winEvents: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_ProxyFactory(self: *const IUIAutomationProxyFactoryEntry, factory: ?*?*IUIAutomationProxyFactory) callconv(.Inline) HRESULT {
+    pub inline fn get_ProxyFactory(self: *const IUIAutomationProxyFactoryEntry, factory: ?*?*IUIAutomationProxyFactory) HRESULT {
         return self.vtable.get_ProxyFactory(self, factory);
     }
-    pub fn get_ClassName(self: *const IUIAutomationProxyFactoryEntry, className: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ClassName(self: *const IUIAutomationProxyFactoryEntry, className: ?*?BSTR) HRESULT {
         return self.vtable.get_ClassName(self, className);
     }
-    pub fn get_ImageName(self: *const IUIAutomationProxyFactoryEntry, imageName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ImageName(self: *const IUIAutomationProxyFactoryEntry, imageName: ?*?BSTR) HRESULT {
         return self.vtable.get_ImageName(self, imageName);
     }
-    pub fn get_AllowSubstringMatch(self: *const IUIAutomationProxyFactoryEntry, allowSubstringMatch: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_AllowSubstringMatch(self: *const IUIAutomationProxyFactoryEntry, allowSubstringMatch: ?*BOOL) HRESULT {
         return self.vtable.get_AllowSubstringMatch(self, allowSubstringMatch);
     }
-    pub fn get_CanCheckBaseClass(self: *const IUIAutomationProxyFactoryEntry, canCheckBaseClass: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_CanCheckBaseClass(self: *const IUIAutomationProxyFactoryEntry, canCheckBaseClass: ?*BOOL) HRESULT {
         return self.vtable.get_CanCheckBaseClass(self, canCheckBaseClass);
     }
-    pub fn get_NeedsAdviseEvents(self: *const IUIAutomationProxyFactoryEntry, adviseEvents: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_NeedsAdviseEvents(self: *const IUIAutomationProxyFactoryEntry, adviseEvents: ?*BOOL) HRESULT {
         return self.vtable.get_NeedsAdviseEvents(self, adviseEvents);
     }
-    pub fn put_ClassName(self: *const IUIAutomationProxyFactoryEntry, className: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn put_ClassName(self: *const IUIAutomationProxyFactoryEntry, className: ?[*:0]const u16) HRESULT {
         return self.vtable.put_ClassName(self, className);
     }
-    pub fn put_ImageName(self: *const IUIAutomationProxyFactoryEntry, imageName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn put_ImageName(self: *const IUIAutomationProxyFactoryEntry, imageName: ?[*:0]const u16) HRESULT {
         return self.vtable.put_ImageName(self, imageName);
     }
-    pub fn put_AllowSubstringMatch(self: *const IUIAutomationProxyFactoryEntry, allowSubstringMatch: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_AllowSubstringMatch(self: *const IUIAutomationProxyFactoryEntry, allowSubstringMatch: BOOL) HRESULT {
         return self.vtable.put_AllowSubstringMatch(self, allowSubstringMatch);
     }
-    pub fn put_CanCheckBaseClass(self: *const IUIAutomationProxyFactoryEntry, canCheckBaseClass: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_CanCheckBaseClass(self: *const IUIAutomationProxyFactoryEntry, canCheckBaseClass: BOOL) HRESULT {
         return self.vtable.put_CanCheckBaseClass(self, canCheckBaseClass);
     }
-    pub fn put_NeedsAdviseEvents(self: *const IUIAutomationProxyFactoryEntry, adviseEvents: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_NeedsAdviseEvents(self: *const IUIAutomationProxyFactoryEntry, adviseEvents: BOOL) HRESULT {
         return self.vtable.put_NeedsAdviseEvents(self, adviseEvents);
     }
-    pub fn SetWinEventsForAutomationEvent(self: *const IUIAutomationProxyFactoryEntry, eventId: i32, propertyId: i32, winEvents: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn SetWinEventsForAutomationEvent(self: *const IUIAutomationProxyFactoryEntry, eventId: i32, propertyId: i32, winEvents: ?*SAFEARRAY) HRESULT {
         return self.vtable.SetWinEventsForAutomationEvent(self, eventId, propertyId, winEvents);
     }
-    pub fn GetWinEventsForAutomationEvent(self: *const IUIAutomationProxyFactoryEntry, eventId: i32, propertyId: i32, winEvents: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetWinEventsForAutomationEvent(self: *const IUIAutomationProxyFactoryEntry, eventId: i32, propertyId: i32, winEvents: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetWinEventsForAutomationEvent(self, eventId, propertyId, winEvents);
     }
 };
@@ -8548,71 +8548,71 @@ pub const IUIAutomationProxyFactoryMapping = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IUIAutomationProxyFactoryMapping,
             count: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTable: *const fn (
             self: *const IUIAutomationProxyFactoryMapping,
             table: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEntry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEntry: *const fn (
             self: *const IUIAutomationProxyFactoryMapping,
             index: u32,
             entry: ?*?*IUIAutomationProxyFactoryEntry,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTable: *const fn (
             self: *const IUIAutomationProxyFactoryMapping,
             factoryList: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InsertEntries: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InsertEntries: *const fn (
             self: *const IUIAutomationProxyFactoryMapping,
             before: u32,
             factoryList: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InsertEntry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InsertEntry: *const fn (
             self: *const IUIAutomationProxyFactoryMapping,
             before: u32,
             factory: ?*IUIAutomationProxyFactoryEntry,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveEntry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveEntry: *const fn (
             self: *const IUIAutomationProxyFactoryMapping,
             index: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ClearTable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ClearTable: *const fn (
             self: *const IUIAutomationProxyFactoryMapping,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RestoreDefaultTable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RestoreDefaultTable: *const fn (
             self: *const IUIAutomationProxyFactoryMapping,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_Count(self: *const IUIAutomationProxyFactoryMapping, count: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IUIAutomationProxyFactoryMapping, count: ?*u32) HRESULT {
         return self.vtable.get_Count(self, count);
     }
-    pub fn GetTable(self: *const IUIAutomationProxyFactoryMapping, table: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn GetTable(self: *const IUIAutomationProxyFactoryMapping, table: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.GetTable(self, table);
     }
-    pub fn GetEntry(self: *const IUIAutomationProxyFactoryMapping, index: u32, entry: ?*?*IUIAutomationProxyFactoryEntry) callconv(.Inline) HRESULT {
+    pub inline fn GetEntry(self: *const IUIAutomationProxyFactoryMapping, index: u32, entry: ?*?*IUIAutomationProxyFactoryEntry) HRESULT {
         return self.vtable.GetEntry(self, index, entry);
     }
-    pub fn SetTable(self: *const IUIAutomationProxyFactoryMapping, factoryList: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn SetTable(self: *const IUIAutomationProxyFactoryMapping, factoryList: ?*SAFEARRAY) HRESULT {
         return self.vtable.SetTable(self, factoryList);
     }
-    pub fn InsertEntries(self: *const IUIAutomationProxyFactoryMapping, before: u32, factoryList: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn InsertEntries(self: *const IUIAutomationProxyFactoryMapping, before: u32, factoryList: ?*SAFEARRAY) HRESULT {
         return self.vtable.InsertEntries(self, before, factoryList);
     }
-    pub fn InsertEntry(self: *const IUIAutomationProxyFactoryMapping, before: u32, factory: ?*IUIAutomationProxyFactoryEntry) callconv(.Inline) HRESULT {
+    pub inline fn InsertEntry(self: *const IUIAutomationProxyFactoryMapping, before: u32, factory: ?*IUIAutomationProxyFactoryEntry) HRESULT {
         return self.vtable.InsertEntry(self, before, factory);
     }
-    pub fn RemoveEntry(self: *const IUIAutomationProxyFactoryMapping, index: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveEntry(self: *const IUIAutomationProxyFactoryMapping, index: u32) HRESULT {
         return self.vtable.RemoveEntry(self, index);
     }
-    pub fn ClearTable(self: *const IUIAutomationProxyFactoryMapping) callconv(.Inline) HRESULT {
+    pub inline fn ClearTable(self: *const IUIAutomationProxyFactoryMapping) HRESULT {
         return self.vtable.ClearTable(self);
     }
-    pub fn RestoreDefaultTable(self: *const IUIAutomationProxyFactoryMapping) callconv(.Inline) HRESULT {
+    pub inline fn RestoreDefaultTable(self: *const IUIAutomationProxyFactoryMapping) HRESULT {
         return self.vtable.RestoreDefaultTable(self);
     }
 };
@@ -8623,76 +8623,76 @@ pub const IID_IUIAutomationEventHandlerGroup = &IID_IUIAutomationEventHandlerGro
 pub const IUIAutomationEventHandlerGroup = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AddActiveTextPositionChangedEventHandler: *const fn(
+        AddActiveTextPositionChangedEventHandler: *const fn (
             self: *const IUIAutomationEventHandlerGroup,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationActiveTextPositionChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddAutomationEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddAutomationEventHandler: *const fn (
             self: *const IUIAutomationEventHandlerGroup,
             eventId: i32,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddChangesEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddChangesEventHandler: *const fn (
             self: *const IUIAutomationEventHandlerGroup,
             scope: TreeScope,
             changeTypes: [*]i32,
             changesCount: i32,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationChangesEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddNotificationEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddNotificationEventHandler: *const fn (
             self: *const IUIAutomationEventHandlerGroup,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationNotificationEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPropertyChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPropertyChangedEventHandler: *const fn (
             self: *const IUIAutomationEventHandlerGroup,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationPropertyChangedEventHandler,
             propertyArray: [*]i32,
             propertyCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddStructureChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddStructureChangedEventHandler: *const fn (
             self: *const IUIAutomationEventHandlerGroup,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationStructureChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddTextEditTextChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddTextEditTextChangedEventHandler: *const fn (
             self: *const IUIAutomationEventHandlerGroup,
             scope: TreeScope,
             textEditChangeType: TextEditChangeType,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationTextEditTextChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AddActiveTextPositionChangedEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationActiveTextPositionChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddActiveTextPositionChangedEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationActiveTextPositionChangedEventHandler) HRESULT {
         return self.vtable.AddActiveTextPositionChangedEventHandler(self, scope, cacheRequest, handler);
     }
-    pub fn AddAutomationEventHandler(self: *const IUIAutomationEventHandlerGroup, eventId: i32, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddAutomationEventHandler(self: *const IUIAutomationEventHandlerGroup, eventId: i32, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationEventHandler) HRESULT {
         return self.vtable.AddAutomationEventHandler(self, eventId, scope, cacheRequest, handler);
     }
-    pub fn AddChangesEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, changeTypes: [*]i32, changesCount: i32, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationChangesEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddChangesEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, changeTypes: [*]i32, changesCount: i32, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationChangesEventHandler) HRESULT {
         return self.vtable.AddChangesEventHandler(self, scope, changeTypes, changesCount, cacheRequest, handler);
     }
-    pub fn AddNotificationEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationNotificationEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddNotificationEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationNotificationEventHandler) HRESULT {
         return self.vtable.AddNotificationEventHandler(self, scope, cacheRequest, handler);
     }
-    pub fn AddPropertyChangedEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationPropertyChangedEventHandler, propertyArray: [*]i32, propertyCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn AddPropertyChangedEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationPropertyChangedEventHandler, propertyArray: [*]i32, propertyCount: i32) HRESULT {
         return self.vtable.AddPropertyChangedEventHandler(self, scope, cacheRequest, handler, propertyArray, propertyCount);
     }
-    pub fn AddStructureChangedEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationStructureChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddStructureChangedEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationStructureChangedEventHandler) HRESULT {
         return self.vtable.AddStructureChangedEventHandler(self, scope, cacheRequest, handler);
     }
-    pub fn AddTextEditTextChangedEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, textEditChangeType: TextEditChangeType, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationTextEditTextChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddTextEditTextChangedEventHandler(self: *const IUIAutomationEventHandlerGroup, scope: TreeScope, textEditChangeType: TextEditChangeType, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationTextEditTextChangedEventHandler) HRESULT {
         return self.vtable.AddTextEditTextChangedEventHandler(self, scope, textEditChangeType, cacheRequest, handler);
     }
 };
@@ -8703,172 +8703,172 @@ pub const IID_IUIAutomation = &IID_IUIAutomation_Value;
 pub const IUIAutomation = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CompareElements: *const fn(
+        CompareElements: *const fn (
             self: *const IUIAutomation,
             el1: ?*IUIAutomationElement,
             el2: ?*IUIAutomationElement,
             areSame: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CompareRuntimeIds: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CompareRuntimeIds: *const fn (
             self: *const IUIAutomation,
             runtimeId1: ?*SAFEARRAY,
             runtimeId2: ?*SAFEARRAY,
             areSame: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRootElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRootElement: *const fn (
             self: *const IUIAutomation,
             root: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ElementFromHandle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ElementFromHandle: *const fn (
             self: *const IUIAutomation,
             hwnd: ?HWND,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ElementFromPoint: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ElementFromPoint: *const fn (
             self: *const IUIAutomation,
             pt: POINT,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFocusedElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFocusedElement: *const fn (
             self: *const IUIAutomation,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRootElementBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRootElementBuildCache: *const fn (
             self: *const IUIAutomation,
             cacheRequest: ?*IUIAutomationCacheRequest,
             root: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ElementFromHandleBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ElementFromHandleBuildCache: *const fn (
             self: *const IUIAutomation,
             hwnd: ?HWND,
             cacheRequest: ?*IUIAutomationCacheRequest,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ElementFromPointBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ElementFromPointBuildCache: *const fn (
             self: *const IUIAutomation,
             pt: POINT,
             cacheRequest: ?*IUIAutomationCacheRequest,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFocusedElementBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFocusedElementBuildCache: *const fn (
             self: *const IUIAutomation,
             cacheRequest: ?*IUIAutomationCacheRequest,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateTreeWalker: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateTreeWalker: *const fn (
             self: *const IUIAutomation,
             pCondition: ?*IUIAutomationCondition,
             walker: ?*?*IUIAutomationTreeWalker,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ControlViewWalker: *const fn(
+        get_ControlViewWalker: *const fn (
             self: *const IUIAutomation,
             walker: ?*?*IUIAutomationTreeWalker,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ContentViewWalker: *const fn(
+        get_ContentViewWalker: *const fn (
             self: *const IUIAutomation,
             walker: ?*?*IUIAutomationTreeWalker,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RawViewWalker: *const fn(
+        get_RawViewWalker: *const fn (
             self: *const IUIAutomation,
             walker: ?*?*IUIAutomationTreeWalker,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RawViewCondition: *const fn(
+        get_RawViewCondition: *const fn (
             self: *const IUIAutomation,
             condition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ControlViewCondition: *const fn(
+        get_ControlViewCondition: *const fn (
             self: *const IUIAutomation,
             condition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ContentViewCondition: *const fn(
+        get_ContentViewCondition: *const fn (
             self: *const IUIAutomation,
             condition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateCacheRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateCacheRequest: *const fn (
             self: *const IUIAutomation,
             cacheRequest: ?*?*IUIAutomationCacheRequest,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateTrueCondition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateTrueCondition: *const fn (
             self: *const IUIAutomation,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateFalseCondition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateFalseCondition: *const fn (
             self: *const IUIAutomation,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreatePropertyCondition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreatePropertyCondition: *const fn (
             self: *const IUIAutomation,
             propertyId: i32,
             value: VARIANT,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreatePropertyConditionEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreatePropertyConditionEx: *const fn (
             self: *const IUIAutomation,
             propertyId: i32,
             value: VARIANT,
             flags: PropertyConditionFlags,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateAndCondition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateAndCondition: *const fn (
             self: *const IUIAutomation,
             condition1: ?*IUIAutomationCondition,
             condition2: ?*IUIAutomationCondition,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateAndConditionFromArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateAndConditionFromArray: *const fn (
             self: *const IUIAutomation,
             conditions: ?*SAFEARRAY,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateAndConditionFromNativeArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateAndConditionFromNativeArray: *const fn (
             self: *const IUIAutomation,
             conditions: [*]?*IUIAutomationCondition,
             conditionCount: i32,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateOrCondition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateOrCondition: *const fn (
             self: *const IUIAutomation,
             condition1: ?*IUIAutomationCondition,
             condition2: ?*IUIAutomationCondition,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateOrConditionFromArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateOrConditionFromArray: *const fn (
             self: *const IUIAutomation,
             conditions: ?*SAFEARRAY,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateOrConditionFromNativeArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateOrConditionFromNativeArray: *const fn (
             self: *const IUIAutomation,
             conditions: [*]?*IUIAutomationCondition,
             conditionCount: i32,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateNotCondition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateNotCondition: *const fn (
             self: *const IUIAutomation,
             condition: ?*IUIAutomationCondition,
             newCondition: ?*?*IUIAutomationCondition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddAutomationEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddAutomationEventHandler: *const fn (
             self: *const IUIAutomation,
             eventId: i32,
             element: ?*IUIAutomationElement,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAutomationEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAutomationEventHandler: *const fn (
             self: *const IUIAutomation,
             eventId: i32,
             element: ?*IUIAutomationElement,
             handler: ?*IUIAutomationEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPropertyChangedEventHandlerNativeArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPropertyChangedEventHandlerNativeArray: *const fn (
             self: *const IUIAutomation,
             element: ?*IUIAutomationElement,
             scope: TreeScope,
@@ -8876,298 +8876,298 @@ pub const IUIAutomation = extern union {
             handler: ?*IUIAutomationPropertyChangedEventHandler,
             propertyArray: [*]i32,
             propertyCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPropertyChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPropertyChangedEventHandler: *const fn (
             self: *const IUIAutomation,
             element: ?*IUIAutomationElement,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationPropertyChangedEventHandler,
             propertyArray: ?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemovePropertyChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemovePropertyChangedEventHandler: *const fn (
             self: *const IUIAutomation,
             element: ?*IUIAutomationElement,
             handler: ?*IUIAutomationPropertyChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddStructureChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddStructureChangedEventHandler: *const fn (
             self: *const IUIAutomation,
             element: ?*IUIAutomationElement,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationStructureChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveStructureChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveStructureChangedEventHandler: *const fn (
             self: *const IUIAutomation,
             element: ?*IUIAutomationElement,
             handler: ?*IUIAutomationStructureChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddFocusChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddFocusChangedEventHandler: *const fn (
             self: *const IUIAutomation,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationFocusChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveFocusChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveFocusChangedEventHandler: *const fn (
             self: *const IUIAutomation,
             handler: ?*IUIAutomationFocusChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAllEventHandlers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAllEventHandlers: *const fn (
             self: *const IUIAutomation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IntNativeArrayToSafeArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IntNativeArrayToSafeArray: *const fn (
             self: *const IUIAutomation,
             array: [*]i32,
             arrayCount: i32,
             safeArray: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IntSafeArrayToNativeArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IntSafeArrayToNativeArray: *const fn (
             self: *const IUIAutomation,
             intArray: ?*SAFEARRAY,
             array: [*]?*i32,
             arrayCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RectToVariant: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RectToVariant: *const fn (
             self: *const IUIAutomation,
             rc: RECT,
             @"var": ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        VariantToRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        VariantToRect: *const fn (
             self: *const IUIAutomation,
             @"var": VARIANT,
             rc: ?*RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SafeArrayToRectNativeArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SafeArrayToRectNativeArray: *const fn (
             self: *const IUIAutomation,
             rects: ?*SAFEARRAY,
             rectArray: [*]?*RECT,
             rectArrayCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateProxyFactoryEntry: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateProxyFactoryEntry: *const fn (
             self: *const IUIAutomation,
             factory: ?*IUIAutomationProxyFactory,
             factoryEntry: ?*?*IUIAutomationProxyFactoryEntry,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProxyFactoryMapping: *const fn(
+        get_ProxyFactoryMapping: *const fn (
             self: *const IUIAutomation,
             factoryMapping: ?*?*IUIAutomationProxyFactoryMapping,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyProgrammaticName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyProgrammaticName: *const fn (
             self: *const IUIAutomation,
             property: i32,
             name: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPatternProgrammaticName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPatternProgrammaticName: *const fn (
             self: *const IUIAutomation,
             pattern: i32,
             name: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PollForPotentialSupportedPatterns: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PollForPotentialSupportedPatterns: *const fn (
             self: *const IUIAutomation,
             pElement: ?*IUIAutomationElement,
             patternIds: ?*?*SAFEARRAY,
             patternNames: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PollForPotentialSupportedProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PollForPotentialSupportedProperties: *const fn (
             self: *const IUIAutomation,
             pElement: ?*IUIAutomationElement,
             propertyIds: ?*?*SAFEARRAY,
             propertyNames: ?*?*SAFEARRAY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckNotSupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckNotSupported: *const fn (
             self: *const IUIAutomation,
             value: VARIANT,
             isNotSupported: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReservedNotSupportedValue: *const fn(
+        get_ReservedNotSupportedValue: *const fn (
             self: *const IUIAutomation,
             notSupportedValue: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReservedMixedAttributeValue: *const fn(
+        get_ReservedMixedAttributeValue: *const fn (
             self: *const IUIAutomation,
             mixedAttributeValue: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ElementFromIAccessible: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ElementFromIAccessible: *const fn (
             self: *const IUIAutomation,
             accessible: ?*IAccessible,
             childId: i32,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ElementFromIAccessibleBuildCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ElementFromIAccessibleBuildCache: *const fn (
             self: *const IUIAutomation,
             accessible: ?*IAccessible,
             childId: i32,
             cacheRequest: ?*IUIAutomationCacheRequest,
             element: ?*?*IUIAutomationElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CompareElements(self: *const IUIAutomation, el1: ?*IUIAutomationElement, el2: ?*IUIAutomationElement, areSame: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn CompareElements(self: *const IUIAutomation, el1: ?*IUIAutomationElement, el2: ?*IUIAutomationElement, areSame: ?*BOOL) HRESULT {
         return self.vtable.CompareElements(self, el1, el2, areSame);
     }
-    pub fn CompareRuntimeIds(self: *const IUIAutomation, runtimeId1: ?*SAFEARRAY, runtimeId2: ?*SAFEARRAY, areSame: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn CompareRuntimeIds(self: *const IUIAutomation, runtimeId1: ?*SAFEARRAY, runtimeId2: ?*SAFEARRAY, areSame: ?*BOOL) HRESULT {
         return self.vtable.CompareRuntimeIds(self, runtimeId1, runtimeId2, areSame);
     }
-    pub fn GetRootElement(self: *const IUIAutomation, root: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetRootElement(self: *const IUIAutomation, root: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetRootElement(self, root);
     }
-    pub fn ElementFromHandle(self: *const IUIAutomation, hwnd: ?HWND, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn ElementFromHandle(self: *const IUIAutomation, hwnd: ?HWND, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.ElementFromHandle(self, hwnd, element);
     }
-    pub fn ElementFromPoint(self: *const IUIAutomation, pt: POINT, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn ElementFromPoint(self: *const IUIAutomation, pt: POINT, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.ElementFromPoint(self, pt, element);
     }
-    pub fn GetFocusedElement(self: *const IUIAutomation, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetFocusedElement(self: *const IUIAutomation, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetFocusedElement(self, element);
     }
-    pub fn GetRootElementBuildCache(self: *const IUIAutomation, cacheRequest: ?*IUIAutomationCacheRequest, root: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetRootElementBuildCache(self: *const IUIAutomation, cacheRequest: ?*IUIAutomationCacheRequest, root: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetRootElementBuildCache(self, cacheRequest, root);
     }
-    pub fn ElementFromHandleBuildCache(self: *const IUIAutomation, hwnd: ?HWND, cacheRequest: ?*IUIAutomationCacheRequest, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn ElementFromHandleBuildCache(self: *const IUIAutomation, hwnd: ?HWND, cacheRequest: ?*IUIAutomationCacheRequest, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.ElementFromHandleBuildCache(self, hwnd, cacheRequest, element);
     }
-    pub fn ElementFromPointBuildCache(self: *const IUIAutomation, pt: POINT, cacheRequest: ?*IUIAutomationCacheRequest, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn ElementFromPointBuildCache(self: *const IUIAutomation, pt: POINT, cacheRequest: ?*IUIAutomationCacheRequest, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.ElementFromPointBuildCache(self, pt, cacheRequest, element);
     }
-    pub fn GetFocusedElementBuildCache(self: *const IUIAutomation, cacheRequest: ?*IUIAutomationCacheRequest, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn GetFocusedElementBuildCache(self: *const IUIAutomation, cacheRequest: ?*IUIAutomationCacheRequest, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.GetFocusedElementBuildCache(self, cacheRequest, element);
     }
-    pub fn CreateTreeWalker(self: *const IUIAutomation, pCondition: ?*IUIAutomationCondition, walker: ?*?*IUIAutomationTreeWalker) callconv(.Inline) HRESULT {
+    pub inline fn CreateTreeWalker(self: *const IUIAutomation, pCondition: ?*IUIAutomationCondition, walker: ?*?*IUIAutomationTreeWalker) HRESULT {
         return self.vtable.CreateTreeWalker(self, pCondition, walker);
     }
-    pub fn get_ControlViewWalker(self: *const IUIAutomation, walker: ?*?*IUIAutomationTreeWalker) callconv(.Inline) HRESULT {
+    pub inline fn get_ControlViewWalker(self: *const IUIAutomation, walker: ?*?*IUIAutomationTreeWalker) HRESULT {
         return self.vtable.get_ControlViewWalker(self, walker);
     }
-    pub fn get_ContentViewWalker(self: *const IUIAutomation, walker: ?*?*IUIAutomationTreeWalker) callconv(.Inline) HRESULT {
+    pub inline fn get_ContentViewWalker(self: *const IUIAutomation, walker: ?*?*IUIAutomationTreeWalker) HRESULT {
         return self.vtable.get_ContentViewWalker(self, walker);
     }
-    pub fn get_RawViewWalker(self: *const IUIAutomation, walker: ?*?*IUIAutomationTreeWalker) callconv(.Inline) HRESULT {
+    pub inline fn get_RawViewWalker(self: *const IUIAutomation, walker: ?*?*IUIAutomationTreeWalker) HRESULT {
         return self.vtable.get_RawViewWalker(self, walker);
     }
-    pub fn get_RawViewCondition(self: *const IUIAutomation, condition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn get_RawViewCondition(self: *const IUIAutomation, condition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.get_RawViewCondition(self, condition);
     }
-    pub fn get_ControlViewCondition(self: *const IUIAutomation, condition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn get_ControlViewCondition(self: *const IUIAutomation, condition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.get_ControlViewCondition(self, condition);
     }
-    pub fn get_ContentViewCondition(self: *const IUIAutomation, condition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn get_ContentViewCondition(self: *const IUIAutomation, condition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.get_ContentViewCondition(self, condition);
     }
-    pub fn CreateCacheRequest(self: *const IUIAutomation, cacheRequest: ?*?*IUIAutomationCacheRequest) callconv(.Inline) HRESULT {
+    pub inline fn CreateCacheRequest(self: *const IUIAutomation, cacheRequest: ?*?*IUIAutomationCacheRequest) HRESULT {
         return self.vtable.CreateCacheRequest(self, cacheRequest);
     }
-    pub fn CreateTrueCondition(self: *const IUIAutomation, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreateTrueCondition(self: *const IUIAutomation, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreateTrueCondition(self, newCondition);
     }
-    pub fn CreateFalseCondition(self: *const IUIAutomation, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreateFalseCondition(self: *const IUIAutomation, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreateFalseCondition(self, newCondition);
     }
-    pub fn CreatePropertyCondition(self: *const IUIAutomation, propertyId: i32, value: VARIANT, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreatePropertyCondition(self: *const IUIAutomation, propertyId: i32, value: VARIANT, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreatePropertyCondition(self, propertyId, value, newCondition);
     }
-    pub fn CreatePropertyConditionEx(self: *const IUIAutomation, propertyId: i32, value: VARIANT, flags: PropertyConditionFlags, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreatePropertyConditionEx(self: *const IUIAutomation, propertyId: i32, value: VARIANT, flags: PropertyConditionFlags, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreatePropertyConditionEx(self, propertyId, value, flags, newCondition);
     }
-    pub fn CreateAndCondition(self: *const IUIAutomation, condition1: ?*IUIAutomationCondition, condition2: ?*IUIAutomationCondition, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreateAndCondition(self: *const IUIAutomation, condition1: ?*IUIAutomationCondition, condition2: ?*IUIAutomationCondition, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreateAndCondition(self, condition1, condition2, newCondition);
     }
-    pub fn CreateAndConditionFromArray(self: *const IUIAutomation, conditions: ?*SAFEARRAY, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreateAndConditionFromArray(self: *const IUIAutomation, conditions: ?*SAFEARRAY, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreateAndConditionFromArray(self, conditions, newCondition);
     }
-    pub fn CreateAndConditionFromNativeArray(self: *const IUIAutomation, conditions: [*]?*IUIAutomationCondition, conditionCount: i32, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreateAndConditionFromNativeArray(self: *const IUIAutomation, conditions: [*]?*IUIAutomationCondition, conditionCount: i32, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreateAndConditionFromNativeArray(self, conditions, conditionCount, newCondition);
     }
-    pub fn CreateOrCondition(self: *const IUIAutomation, condition1: ?*IUIAutomationCondition, condition2: ?*IUIAutomationCondition, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreateOrCondition(self: *const IUIAutomation, condition1: ?*IUIAutomationCondition, condition2: ?*IUIAutomationCondition, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreateOrCondition(self, condition1, condition2, newCondition);
     }
-    pub fn CreateOrConditionFromArray(self: *const IUIAutomation, conditions: ?*SAFEARRAY, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreateOrConditionFromArray(self: *const IUIAutomation, conditions: ?*SAFEARRAY, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreateOrConditionFromArray(self, conditions, newCondition);
     }
-    pub fn CreateOrConditionFromNativeArray(self: *const IUIAutomation, conditions: [*]?*IUIAutomationCondition, conditionCount: i32, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreateOrConditionFromNativeArray(self: *const IUIAutomation, conditions: [*]?*IUIAutomationCondition, conditionCount: i32, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreateOrConditionFromNativeArray(self, conditions, conditionCount, newCondition);
     }
-    pub fn CreateNotCondition(self: *const IUIAutomation, condition: ?*IUIAutomationCondition, newCondition: ?*?*IUIAutomationCondition) callconv(.Inline) HRESULT {
+    pub inline fn CreateNotCondition(self: *const IUIAutomation, condition: ?*IUIAutomationCondition, newCondition: ?*?*IUIAutomationCondition) HRESULT {
         return self.vtable.CreateNotCondition(self, condition, newCondition);
     }
-    pub fn AddAutomationEventHandler(self: *const IUIAutomation, eventId: i32, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddAutomationEventHandler(self: *const IUIAutomation, eventId: i32, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationEventHandler) HRESULT {
         return self.vtable.AddAutomationEventHandler(self, eventId, element, scope, cacheRequest, handler);
     }
-    pub fn RemoveAutomationEventHandler(self: *const IUIAutomation, eventId: i32, element: ?*IUIAutomationElement, handler: ?*IUIAutomationEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAutomationEventHandler(self: *const IUIAutomation, eventId: i32, element: ?*IUIAutomationElement, handler: ?*IUIAutomationEventHandler) HRESULT {
         return self.vtable.RemoveAutomationEventHandler(self, eventId, element, handler);
     }
-    pub fn AddPropertyChangedEventHandlerNativeArray(self: *const IUIAutomation, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationPropertyChangedEventHandler, propertyArray: [*]i32, propertyCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn AddPropertyChangedEventHandlerNativeArray(self: *const IUIAutomation, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationPropertyChangedEventHandler, propertyArray: [*]i32, propertyCount: i32) HRESULT {
         return self.vtable.AddPropertyChangedEventHandlerNativeArray(self, element, scope, cacheRequest, handler, propertyArray, propertyCount);
     }
-    pub fn AddPropertyChangedEventHandler(self: *const IUIAutomation, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationPropertyChangedEventHandler, propertyArray: ?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn AddPropertyChangedEventHandler(self: *const IUIAutomation, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationPropertyChangedEventHandler, propertyArray: ?*SAFEARRAY) HRESULT {
         return self.vtable.AddPropertyChangedEventHandler(self, element, scope, cacheRequest, handler, propertyArray);
     }
-    pub fn RemovePropertyChangedEventHandler(self: *const IUIAutomation, element: ?*IUIAutomationElement, handler: ?*IUIAutomationPropertyChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn RemovePropertyChangedEventHandler(self: *const IUIAutomation, element: ?*IUIAutomationElement, handler: ?*IUIAutomationPropertyChangedEventHandler) HRESULT {
         return self.vtable.RemovePropertyChangedEventHandler(self, element, handler);
     }
-    pub fn AddStructureChangedEventHandler(self: *const IUIAutomation, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationStructureChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddStructureChangedEventHandler(self: *const IUIAutomation, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationStructureChangedEventHandler) HRESULT {
         return self.vtable.AddStructureChangedEventHandler(self, element, scope, cacheRequest, handler);
     }
-    pub fn RemoveStructureChangedEventHandler(self: *const IUIAutomation, element: ?*IUIAutomationElement, handler: ?*IUIAutomationStructureChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn RemoveStructureChangedEventHandler(self: *const IUIAutomation, element: ?*IUIAutomationElement, handler: ?*IUIAutomationStructureChangedEventHandler) HRESULT {
         return self.vtable.RemoveStructureChangedEventHandler(self, element, handler);
     }
-    pub fn AddFocusChangedEventHandler(self: *const IUIAutomation, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationFocusChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddFocusChangedEventHandler(self: *const IUIAutomation, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationFocusChangedEventHandler) HRESULT {
         return self.vtable.AddFocusChangedEventHandler(self, cacheRequest, handler);
     }
-    pub fn RemoveFocusChangedEventHandler(self: *const IUIAutomation, handler: ?*IUIAutomationFocusChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn RemoveFocusChangedEventHandler(self: *const IUIAutomation, handler: ?*IUIAutomationFocusChangedEventHandler) HRESULT {
         return self.vtable.RemoveFocusChangedEventHandler(self, handler);
     }
-    pub fn RemoveAllEventHandlers(self: *const IUIAutomation) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAllEventHandlers(self: *const IUIAutomation) HRESULT {
         return self.vtable.RemoveAllEventHandlers(self);
     }
-    pub fn IntNativeArrayToSafeArray(self: *const IUIAutomation, array: [*]i32, arrayCount: i32, safeArray: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn IntNativeArrayToSafeArray(self: *const IUIAutomation, array: [*]i32, arrayCount: i32, safeArray: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.IntNativeArrayToSafeArray(self, array, arrayCount, safeArray);
     }
-    pub fn IntSafeArrayToNativeArray(self: *const IUIAutomation, intArray: ?*SAFEARRAY, array: [*]?*i32, arrayCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn IntSafeArrayToNativeArray(self: *const IUIAutomation, intArray: ?*SAFEARRAY, array: [*]?*i32, arrayCount: ?*i32) HRESULT {
         return self.vtable.IntSafeArrayToNativeArray(self, intArray, array, arrayCount);
     }
-    pub fn RectToVariant(self: *const IUIAutomation, rc: RECT, @"var": ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn RectToVariant(self: *const IUIAutomation, rc: RECT, @"var": ?*VARIANT) HRESULT {
         return self.vtable.RectToVariant(self, rc, @"var");
     }
-    pub fn VariantToRect(self: *const IUIAutomation, @"var": VARIANT, rc: ?*RECT) callconv(.Inline) HRESULT {
+    pub inline fn VariantToRect(self: *const IUIAutomation, @"var": VARIANT, rc: ?*RECT) HRESULT {
         return self.vtable.VariantToRect(self, @"var", rc);
     }
-    pub fn SafeArrayToRectNativeArray(self: *const IUIAutomation, rects: ?*SAFEARRAY, rectArray: [*]?*RECT, rectArrayCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn SafeArrayToRectNativeArray(self: *const IUIAutomation, rects: ?*SAFEARRAY, rectArray: [*]?*RECT, rectArrayCount: ?*i32) HRESULT {
         return self.vtable.SafeArrayToRectNativeArray(self, rects, rectArray, rectArrayCount);
     }
-    pub fn CreateProxyFactoryEntry(self: *const IUIAutomation, factory: ?*IUIAutomationProxyFactory, factoryEntry: ?*?*IUIAutomationProxyFactoryEntry) callconv(.Inline) HRESULT {
+    pub inline fn CreateProxyFactoryEntry(self: *const IUIAutomation, factory: ?*IUIAutomationProxyFactory, factoryEntry: ?*?*IUIAutomationProxyFactoryEntry) HRESULT {
         return self.vtable.CreateProxyFactoryEntry(self, factory, factoryEntry);
     }
-    pub fn get_ProxyFactoryMapping(self: *const IUIAutomation, factoryMapping: ?*?*IUIAutomationProxyFactoryMapping) callconv(.Inline) HRESULT {
+    pub inline fn get_ProxyFactoryMapping(self: *const IUIAutomation, factoryMapping: ?*?*IUIAutomationProxyFactoryMapping) HRESULT {
         return self.vtable.get_ProxyFactoryMapping(self, factoryMapping);
     }
-    pub fn GetPropertyProgrammaticName(self: *const IUIAutomation, property: i32, name: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyProgrammaticName(self: *const IUIAutomation, property: i32, name: ?*?BSTR) HRESULT {
         return self.vtable.GetPropertyProgrammaticName(self, property, name);
     }
-    pub fn GetPatternProgrammaticName(self: *const IUIAutomation, pattern: i32, name: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetPatternProgrammaticName(self: *const IUIAutomation, pattern: i32, name: ?*?BSTR) HRESULT {
         return self.vtable.GetPatternProgrammaticName(self, pattern, name);
     }
-    pub fn PollForPotentialSupportedPatterns(self: *const IUIAutomation, pElement: ?*IUIAutomationElement, patternIds: ?*?*SAFEARRAY, patternNames: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn PollForPotentialSupportedPatterns(self: *const IUIAutomation, pElement: ?*IUIAutomationElement, patternIds: ?*?*SAFEARRAY, patternNames: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.PollForPotentialSupportedPatterns(self, pElement, patternIds, patternNames);
     }
-    pub fn PollForPotentialSupportedProperties(self: *const IUIAutomation, pElement: ?*IUIAutomationElement, propertyIds: ?*?*SAFEARRAY, propertyNames: ?*?*SAFEARRAY) callconv(.Inline) HRESULT {
+    pub inline fn PollForPotentialSupportedProperties(self: *const IUIAutomation, pElement: ?*IUIAutomationElement, propertyIds: ?*?*SAFEARRAY, propertyNames: ?*?*SAFEARRAY) HRESULT {
         return self.vtable.PollForPotentialSupportedProperties(self, pElement, propertyIds, propertyNames);
     }
-    pub fn CheckNotSupported(self: *const IUIAutomation, value: VARIANT, isNotSupported: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn CheckNotSupported(self: *const IUIAutomation, value: VARIANT, isNotSupported: ?*BOOL) HRESULT {
         return self.vtable.CheckNotSupported(self, value, isNotSupported);
     }
-    pub fn get_ReservedNotSupportedValue(self: *const IUIAutomation, notSupportedValue: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get_ReservedNotSupportedValue(self: *const IUIAutomation, notSupportedValue: ?*?*IUnknown) HRESULT {
         return self.vtable.get_ReservedNotSupportedValue(self, notSupportedValue);
     }
-    pub fn get_ReservedMixedAttributeValue(self: *const IUIAutomation, mixedAttributeValue: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get_ReservedMixedAttributeValue(self: *const IUIAutomation, mixedAttributeValue: ?*?*IUnknown) HRESULT {
         return self.vtable.get_ReservedMixedAttributeValue(self, mixedAttributeValue);
     }
-    pub fn ElementFromIAccessible(self: *const IUIAutomation, accessible: ?*IAccessible, childId: i32, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn ElementFromIAccessible(self: *const IUIAutomation, accessible: ?*IAccessible, childId: i32, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.ElementFromIAccessible(self, accessible, childId, element);
     }
-    pub fn ElementFromIAccessibleBuildCache(self: *const IUIAutomation, accessible: ?*IAccessible, childId: i32, cacheRequest: ?*IUIAutomationCacheRequest, element: ?*?*IUIAutomationElement) callconv(.Inline) HRESULT {
+    pub inline fn ElementFromIAccessibleBuildCache(self: *const IUIAutomation, accessible: ?*IAccessible, childId: i32, cacheRequest: ?*IUIAutomationCacheRequest, element: ?*?*IUIAutomationElement) HRESULT {
         return self.vtable.ElementFromIAccessibleBuildCache(self, accessible, childId, cacheRequest, element);
     }
 };
@@ -9179,55 +9179,55 @@ pub const IUIAutomation2 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomation.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AutoSetFocus: *const fn(
+        get_AutoSetFocus: *const fn (
             self: *const IUIAutomation2,
             autoSetFocus: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AutoSetFocus: *const fn(
+        put_AutoSetFocus: *const fn (
             self: *const IUIAutomation2,
             autoSetFocus: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ConnectionTimeout: *const fn(
+        get_ConnectionTimeout: *const fn (
             self: *const IUIAutomation2,
             timeout: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ConnectionTimeout: *const fn(
+        put_ConnectionTimeout: *const fn (
             self: *const IUIAutomation2,
             timeout: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TransactionTimeout: *const fn(
+        get_TransactionTimeout: *const fn (
             self: *const IUIAutomation2,
             timeout: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TransactionTimeout: *const fn(
+        put_TransactionTimeout: *const fn (
             self: *const IUIAutomation2,
             timeout: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomation: IUIAutomation,
     IUnknown: IUnknown,
-    pub fn get_AutoSetFocus(self: *const IUIAutomation2, autoSetFocus: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn get_AutoSetFocus(self: *const IUIAutomation2, autoSetFocus: ?*BOOL) HRESULT {
         return self.vtable.get_AutoSetFocus(self, autoSetFocus);
     }
-    pub fn put_AutoSetFocus(self: *const IUIAutomation2, autoSetFocus: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn put_AutoSetFocus(self: *const IUIAutomation2, autoSetFocus: BOOL) HRESULT {
         return self.vtable.put_AutoSetFocus(self, autoSetFocus);
     }
-    pub fn get_ConnectionTimeout(self: *const IUIAutomation2, timeout: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_ConnectionTimeout(self: *const IUIAutomation2, timeout: ?*u32) HRESULT {
         return self.vtable.get_ConnectionTimeout(self, timeout);
     }
-    pub fn put_ConnectionTimeout(self: *const IUIAutomation2, timeout: u32) callconv(.Inline) HRESULT {
+    pub inline fn put_ConnectionTimeout(self: *const IUIAutomation2, timeout: u32) HRESULT {
         return self.vtable.put_ConnectionTimeout(self, timeout);
     }
-    pub fn get_TransactionTimeout(self: *const IUIAutomation2, timeout: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_TransactionTimeout(self: *const IUIAutomation2, timeout: ?*u32) HRESULT {
         return self.vtable.get_TransactionTimeout(self, timeout);
     }
-    pub fn put_TransactionTimeout(self: *const IUIAutomation2, timeout: u32) callconv(.Inline) HRESULT {
+    pub inline fn put_TransactionTimeout(self: *const IUIAutomation2, timeout: u32) HRESULT {
         return self.vtable.put_TransactionTimeout(self, timeout);
     }
 };
@@ -9238,28 +9238,28 @@ pub const IID_IUIAutomation3 = &IID_IUIAutomation3_Value;
 pub const IUIAutomation3 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomation2.VTable,
-        AddTextEditTextChangedEventHandler: *const fn(
+        AddTextEditTextChangedEventHandler: *const fn (
             self: *const IUIAutomation3,
             element: ?*IUIAutomationElement,
             scope: TreeScope,
             textEditChangeType: TextEditChangeType,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationTextEditTextChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveTextEditTextChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveTextEditTextChangedEventHandler: *const fn (
             self: *const IUIAutomation3,
             element: ?*IUIAutomationElement,
             handler: ?*IUIAutomationTextEditTextChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomation2: IUIAutomation2,
     IUIAutomation: IUIAutomation,
     IUnknown: IUnknown,
-    pub fn AddTextEditTextChangedEventHandler(self: *const IUIAutomation3, element: ?*IUIAutomationElement, scope: TreeScope, textEditChangeType: TextEditChangeType, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationTextEditTextChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddTextEditTextChangedEventHandler(self: *const IUIAutomation3, element: ?*IUIAutomationElement, scope: TreeScope, textEditChangeType: TextEditChangeType, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationTextEditTextChangedEventHandler) HRESULT {
         return self.vtable.AddTextEditTextChangedEventHandler(self, element, scope, textEditChangeType, cacheRequest, handler);
     }
-    pub fn RemoveTextEditTextChangedEventHandler(self: *const IUIAutomation3, element: ?*IUIAutomationElement, handler: ?*IUIAutomationTextEditTextChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn RemoveTextEditTextChangedEventHandler(self: *const IUIAutomation3, element: ?*IUIAutomationElement, handler: ?*IUIAutomationTextEditTextChangedEventHandler) HRESULT {
         return self.vtable.RemoveTextEditTextChangedEventHandler(self, element, handler);
     }
 };
@@ -9270,7 +9270,7 @@ pub const IID_IUIAutomation4 = &IID_IUIAutomation4_Value;
 pub const IUIAutomation4 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomation3.VTable,
-        AddChangesEventHandler: *const fn(
+        AddChangesEventHandler: *const fn (
             self: *const IUIAutomation4,
             element: ?*IUIAutomationElement,
             scope: TreeScope,
@@ -9278,22 +9278,22 @@ pub const IUIAutomation4 = extern union {
             changesCount: i32,
             pCacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationChangesEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveChangesEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveChangesEventHandler: *const fn (
             self: *const IUIAutomation4,
             element: ?*IUIAutomationElement,
             handler: ?*IUIAutomationChangesEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomation3: IUIAutomation3,
     IUIAutomation2: IUIAutomation2,
     IUIAutomation: IUIAutomation,
     IUnknown: IUnknown,
-    pub fn AddChangesEventHandler(self: *const IUIAutomation4, element: ?*IUIAutomationElement, scope: TreeScope, changeTypes: [*]i32, changesCount: i32, pCacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationChangesEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddChangesEventHandler(self: *const IUIAutomation4, element: ?*IUIAutomationElement, scope: TreeScope, changeTypes: [*]i32, changesCount: i32, pCacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationChangesEventHandler) HRESULT {
         return self.vtable.AddChangesEventHandler(self, element, scope, changeTypes, changesCount, pCacheRequest, handler);
     }
-    pub fn RemoveChangesEventHandler(self: *const IUIAutomation4, element: ?*IUIAutomationElement, handler: ?*IUIAutomationChangesEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn RemoveChangesEventHandler(self: *const IUIAutomation4, element: ?*IUIAutomationElement, handler: ?*IUIAutomationChangesEventHandler) HRESULT {
         return self.vtable.RemoveChangesEventHandler(self, element, handler);
     }
 };
@@ -9304,18 +9304,18 @@ pub const IID_IUIAutomation5 = &IID_IUIAutomation5_Value;
 pub const IUIAutomation5 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomation4.VTable,
-        AddNotificationEventHandler: *const fn(
+        AddNotificationEventHandler: *const fn (
             self: *const IUIAutomation5,
             element: ?*IUIAutomationElement,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationNotificationEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveNotificationEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveNotificationEventHandler: *const fn (
             self: *const IUIAutomation5,
             element: ?*IUIAutomationElement,
             handler: ?*IUIAutomationNotificationEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomation4: IUIAutomation4,
@@ -9323,10 +9323,10 @@ pub const IUIAutomation5 = extern union {
     IUIAutomation2: IUIAutomation2,
     IUIAutomation: IUIAutomation,
     IUnknown: IUnknown,
-    pub fn AddNotificationEventHandler(self: *const IUIAutomation5, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationNotificationEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddNotificationEventHandler(self: *const IUIAutomation5, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationNotificationEventHandler) HRESULT {
         return self.vtable.AddNotificationEventHandler(self, element, scope, cacheRequest, handler);
     }
-    pub fn RemoveNotificationEventHandler(self: *const IUIAutomation5, element: ?*IUIAutomationElement, handler: ?*IUIAutomationNotificationEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn RemoveNotificationEventHandler(self: *const IUIAutomation5, element: ?*IUIAutomationElement, handler: ?*IUIAutomationNotificationEventHandler) HRESULT {
         return self.vtable.RemoveNotificationEventHandler(self, element, handler);
     }
 };
@@ -9337,52 +9337,52 @@ pub const IID_IUIAutomation6 = &IID_IUIAutomation6_Value;
 pub const IUIAutomation6 = extern union {
     pub const VTable = extern struct {
         base: IUIAutomation5.VTable,
-        CreateEventHandlerGroup: *const fn(
+        CreateEventHandlerGroup: *const fn (
             self: *const IUIAutomation6,
             handlerGroup: ?*?*IUIAutomationEventHandlerGroup,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddEventHandlerGroup: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddEventHandlerGroup: *const fn (
             self: *const IUIAutomation6,
             element: ?*IUIAutomationElement,
             handlerGroup: ?*IUIAutomationEventHandlerGroup,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveEventHandlerGroup: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveEventHandlerGroup: *const fn (
             self: *const IUIAutomation6,
             element: ?*IUIAutomationElement,
             handlerGroup: ?*IUIAutomationEventHandlerGroup,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ConnectionRecoveryBehavior: *const fn(
+        get_ConnectionRecoveryBehavior: *const fn (
             self: *const IUIAutomation6,
             connectionRecoveryBehaviorOptions: ?*ConnectionRecoveryBehaviorOptions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ConnectionRecoveryBehavior: *const fn(
+        put_ConnectionRecoveryBehavior: *const fn (
             self: *const IUIAutomation6,
             connectionRecoveryBehaviorOptions: ConnectionRecoveryBehaviorOptions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CoalesceEvents: *const fn(
+        get_CoalesceEvents: *const fn (
             self: *const IUIAutomation6,
             coalesceEventsOptions: ?*CoalesceEventsOptions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CoalesceEvents: *const fn(
+        put_CoalesceEvents: *const fn (
             self: *const IUIAutomation6,
             coalesceEventsOptions: CoalesceEventsOptions,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddActiveTextPositionChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddActiveTextPositionChangedEventHandler: *const fn (
             self: *const IUIAutomation6,
             element: ?*IUIAutomationElement,
             scope: TreeScope,
             cacheRequest: ?*IUIAutomationCacheRequest,
             handler: ?*IUIAutomationActiveTextPositionChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveActiveTextPositionChangedEventHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveActiveTextPositionChangedEventHandler: *const fn (
             self: *const IUIAutomation6,
             element: ?*IUIAutomationElement,
             handler: ?*IUIAutomationActiveTextPositionChangedEventHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUIAutomation5: IUIAutomation5,
@@ -9391,31 +9391,31 @@ pub const IUIAutomation6 = extern union {
     IUIAutomation2: IUIAutomation2,
     IUIAutomation: IUIAutomation,
     IUnknown: IUnknown,
-    pub fn CreateEventHandlerGroup(self: *const IUIAutomation6, handlerGroup: ?*?*IUIAutomationEventHandlerGroup) callconv(.Inline) HRESULT {
+    pub inline fn CreateEventHandlerGroup(self: *const IUIAutomation6, handlerGroup: ?*?*IUIAutomationEventHandlerGroup) HRESULT {
         return self.vtable.CreateEventHandlerGroup(self, handlerGroup);
     }
-    pub fn AddEventHandlerGroup(self: *const IUIAutomation6, element: ?*IUIAutomationElement, handlerGroup: ?*IUIAutomationEventHandlerGroup) callconv(.Inline) HRESULT {
+    pub inline fn AddEventHandlerGroup(self: *const IUIAutomation6, element: ?*IUIAutomationElement, handlerGroup: ?*IUIAutomationEventHandlerGroup) HRESULT {
         return self.vtable.AddEventHandlerGroup(self, element, handlerGroup);
     }
-    pub fn RemoveEventHandlerGroup(self: *const IUIAutomation6, element: ?*IUIAutomationElement, handlerGroup: ?*IUIAutomationEventHandlerGroup) callconv(.Inline) HRESULT {
+    pub inline fn RemoveEventHandlerGroup(self: *const IUIAutomation6, element: ?*IUIAutomationElement, handlerGroup: ?*IUIAutomationEventHandlerGroup) HRESULT {
         return self.vtable.RemoveEventHandlerGroup(self, element, handlerGroup);
     }
-    pub fn get_ConnectionRecoveryBehavior(self: *const IUIAutomation6, connectionRecoveryBehaviorOptions: ?*ConnectionRecoveryBehaviorOptions) callconv(.Inline) HRESULT {
+    pub inline fn get_ConnectionRecoveryBehavior(self: *const IUIAutomation6, connectionRecoveryBehaviorOptions: ?*ConnectionRecoveryBehaviorOptions) HRESULT {
         return self.vtable.get_ConnectionRecoveryBehavior(self, connectionRecoveryBehaviorOptions);
     }
-    pub fn put_ConnectionRecoveryBehavior(self: *const IUIAutomation6, connectionRecoveryBehaviorOptions: ConnectionRecoveryBehaviorOptions) callconv(.Inline) HRESULT {
+    pub inline fn put_ConnectionRecoveryBehavior(self: *const IUIAutomation6, connectionRecoveryBehaviorOptions: ConnectionRecoveryBehaviorOptions) HRESULT {
         return self.vtable.put_ConnectionRecoveryBehavior(self, connectionRecoveryBehaviorOptions);
     }
-    pub fn get_CoalesceEvents(self: *const IUIAutomation6, coalesceEventsOptions: ?*CoalesceEventsOptions) callconv(.Inline) HRESULT {
+    pub inline fn get_CoalesceEvents(self: *const IUIAutomation6, coalesceEventsOptions: ?*CoalesceEventsOptions) HRESULT {
         return self.vtable.get_CoalesceEvents(self, coalesceEventsOptions);
     }
-    pub fn put_CoalesceEvents(self: *const IUIAutomation6, coalesceEventsOptions: CoalesceEventsOptions) callconv(.Inline) HRESULT {
+    pub inline fn put_CoalesceEvents(self: *const IUIAutomation6, coalesceEventsOptions: CoalesceEventsOptions) HRESULT {
         return self.vtable.put_CoalesceEvents(self, coalesceEventsOptions);
     }
-    pub fn AddActiveTextPositionChangedEventHandler(self: *const IUIAutomation6, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationActiveTextPositionChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn AddActiveTextPositionChangedEventHandler(self: *const IUIAutomation6, element: ?*IUIAutomationElement, scope: TreeScope, cacheRequest: ?*IUIAutomationCacheRequest, handler: ?*IUIAutomationActiveTextPositionChangedEventHandler) HRESULT {
         return self.vtable.AddActiveTextPositionChangedEventHandler(self, element, scope, cacheRequest, handler);
     }
-    pub fn RemoveActiveTextPositionChangedEventHandler(self: *const IUIAutomation6, element: ?*IUIAutomationElement, handler: ?*IUIAutomationActiveTextPositionChangedEventHandler) callconv(.Inline) HRESULT {
+    pub inline fn RemoveActiveTextPositionChangedEventHandler(self: *const IUIAutomation6, element: ?*IUIAutomationElement, handler: ?*IUIAutomationActiveTextPositionChangedEventHandler) HRESULT {
         return self.vtable.RemoveActiveTextPositionChangedEventHandler(self, element, handler);
     }
 };
@@ -9492,10 +9492,10 @@ pub const ProviderType_BaseHwnd = ProviderType.BaseHwnd;
 pub const ProviderType_Proxy = ProviderType.Proxy;
 pub const ProviderType_NonClientArea = ProviderType.NonClientArea;
 
-pub const UiaProviderCallback = *const fn(
+pub const UiaProviderCallback = *const fn (
     hwnd: ?HWND,
     providerType: ProviderType,
-) callconv(@import("std").os.windows.WINAPI) ?*SAFEARRAY;
+) callconv(.winapi) ?*SAFEARRAY;
 
 pub const AutomationIdentifierType = enum(i32) {
     Property = 0,
@@ -9599,11 +9599,11 @@ pub const UiaWindowClosedEventArgs = extern struct {
     cRuntimeIdLen: i32,
 };
 
-pub const UiaEventCallback = *const fn(
+pub const UiaEventCallback = *const fn (
     pArgs: ?*UiaEventArgs,
     pRequestedData: ?*SAFEARRAY,
     pTreeStructure: ?BSTR,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const SERIALKEYSA = extern struct {
     cbSize: u32,
@@ -9702,7 +9702,7 @@ pub const TOGGLEKEYS = extern struct {
     dwFlags: u32,
 };
 
-pub const WINEVENTPROC = *const fn(
+pub const WINEVENTPROC = *const fn (
     hWinEventHook: ?HWINEVENTHOOK,
     event: u32,
     hwnd: ?HWND,
@@ -9710,8 +9710,7 @@ pub const WINEVENTPROC = *const fn(
     idChild: i32,
     idEventThread: u32,
     dwmsEventTime: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
-
+) callconv(.winapi) void;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (123)
@@ -9721,7 +9720,7 @@ pub extern "oleacc" fn LresultFromObject(
     riid: ?*const Guid,
     wParam: WPARAM,
     punk: ?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "oleacc" fn ObjectFromLresult(
@@ -9729,13 +9728,13 @@ pub extern "oleacc" fn ObjectFromLresult(
     riid: ?*const Guid,
     wParam: WPARAM,
     ppvObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn WindowFromAccessibleObject(
     param0: ?*IAccessible,
     phwnd: ?*?HWND,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn AccessibleObjectFromWindow(
@@ -9743,7 +9742,7 @@ pub extern "oleacc" fn AccessibleObjectFromWindow(
     dwId: u32,
     riid: ?*const Guid,
     ppvObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn AccessibleObjectFromEvent(
@@ -9752,14 +9751,14 @@ pub extern "oleacc" fn AccessibleObjectFromEvent(
     dwChildId: u32,
     ppacc: ?*?*IAccessible,
     pvarChild: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn AccessibleObjectFromPoint(
     ptScreen: POINT,
     ppacc: ?*?*IAccessible,
     pvarChild: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn AccessibleChildren(
@@ -9768,41 +9767,41 @@ pub extern "oleacc" fn AccessibleChildren(
     cChildren: i32,
     rgvarChildren: [*]VARIANT,
     pcObtained: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn GetRoleTextA(
     lRole: u32,
     lpszRole: ?[*:0]u8,
     cchRoleMax: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn GetRoleTextW(
     lRole: u32,
     lpszRole: ?[*:0]u16,
     cchRoleMax: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn GetStateTextA(
     lStateBit: u32,
     lpszState: ?[*:0]u8,
     cchState: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn GetStateTextW(
     lStateBit: u32,
     lpszState: ?[*:0]u16,
     cchState: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn GetOleaccVersionInfo(
     pVer: ?*u32,
     pBuild: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn CreateStdAccessibleObject(
@@ -9810,7 +9809,7 @@ pub extern "oleacc" fn CreateStdAccessibleObject(
     idObject: i32,
     riid: ?*const Guid,
     ppvObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn CreateStdAccessibleProxyA(
@@ -9819,7 +9818,7 @@ pub extern "oleacc" fn CreateStdAccessibleProxyA(
     idObject: i32,
     riid: ?*const Guid,
     ppvObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "oleacc" fn CreateStdAccessibleProxyW(
@@ -9828,74 +9827,74 @@ pub extern "oleacc" fn CreateStdAccessibleProxyW(
     idObject: i32,
     riid: ?*const Guid,
     ppvObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "oleacc" fn AccSetRunningUtilityState(
     hwndApp: ?HWND,
     dwUtilityStateMask: u32,
     dwUtilityState: ACC_UTILITY_STATE_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "oleacc" fn AccNotifyTouchInteraction(
     hwndApp: ?HWND,
     hwndTarget: ?HWND,
     ptTarget: POINT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaGetErrorDescription(
     pDescription: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaHUiaNodeFromVariant(
     pvar: ?*VARIANT,
     phnode: ?*?HUIANODE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaHPatternObjectFromVariant(
     pvar: ?*VARIANT,
     phobj: ?*?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaHTextRangeFromVariant(
     pvar: ?*VARIANT,
     phtextrange: ?*?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaNodeRelease(
     hnode: ?HUIANODE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaGetPropertyValue(
     hnode: ?HUIANODE,
     propertyId: i32,
     pValue: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaGetPatternProvider(
     hnode: ?HUIANODE,
     patternId: i32,
     phobj: ?*?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaGetRuntimeId(
     hnode: ?HUIANODE,
     pruntimeId: ?*?*SAFEARRAY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaSetFocus(
     hnode: ?HUIANODE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaNavigate(
@@ -9905,7 +9904,7 @@ pub extern "uiautomationcore" fn UiaNavigate(
     pRequest: ?*UiaCacheRequest,
     ppRequestedData: ?*?*SAFEARRAY,
     ppTreeStructure: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaGetUpdatedCache(
@@ -9915,7 +9914,7 @@ pub extern "uiautomationcore" fn UiaGetUpdatedCache(
     pNormalizeCondition: ?*UiaCondition,
     ppRequestedData: ?*?*SAFEARRAY,
     ppTreeStructure: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaFind(
@@ -9925,7 +9924,7 @@ pub extern "uiautomationcore" fn UiaFind(
     ppRequestedData: ?*?*SAFEARRAY,
     ppOffsets: ?*?*SAFEARRAY,
     ppTreeStructures: ?*?*SAFEARRAY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaNodeFromPoint(
@@ -9934,56 +9933,55 @@ pub extern "uiautomationcore" fn UiaNodeFromPoint(
     pRequest: ?*UiaCacheRequest,
     ppRequestedData: ?*?*SAFEARRAY,
     ppTreeStructure: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaNodeFromFocus(
     pRequest: ?*UiaCacheRequest,
     ppRequestedData: ?*?*SAFEARRAY,
     ppTreeStructure: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaNodeFromHandle(
     hwnd: ?HWND,
     phnode: ?*?HUIANODE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaNodeFromProvider(
     pProvider: ?*IRawElementProviderSimple,
     phnode: ?*?HUIANODE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaGetRootNode(
     phnode: ?*?HUIANODE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaRegisterProviderCallback(
     pCallback: ?*?UiaProviderCallback,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaLookupId(
     type: AutomationIdentifierType,
     pGuid: ?*const Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaGetReservedNotSupportedValue(
     punkNotSupportedValue: ?*?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaGetReservedMixedAttributeValue(
     punkMixedAttributeValue: ?*?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
-pub extern "uiautomationcore" fn UiaClientsAreListening(
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+pub extern "uiautomationcore" fn UiaClientsAreListening() callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaRaiseAutomationPropertyChangedEvent(
@@ -9991,13 +9989,13 @@ pub extern "uiautomationcore" fn UiaRaiseAutomationPropertyChangedEvent(
     id: i32,
     oldValue: VARIANT,
     newValue: VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaRaiseAutomationEvent(
     pProvider: ?*IRawElementProviderSimple,
     id: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaRaiseStructureChangedEvent(
@@ -10005,28 +10003,28 @@ pub extern "uiautomationcore" fn UiaRaiseStructureChangedEvent(
     structureChangeType: StructureChangeType,
     pRuntimeId: ?*i32,
     cRuntimeIdLen: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaRaiseAsyncContentLoadedEvent(
     pProvider: ?*IRawElementProviderSimple,
     asyncContentLoadedState: AsyncContentLoadedState,
     percentComplete: f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "uiautomationcore" fn UiaRaiseTextEditTextChangedEvent(
     pProvider: ?*IRawElementProviderSimple,
     textEditChangeType: TextEditChangeType,
     pChangedData: ?*SAFEARRAY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "uiautomationcore" fn UiaRaiseChangesEvent(
     pProvider: ?*IRawElementProviderSimple,
     eventIdCount: i32,
     pUiaChanges: ?*UiaChangeInfo,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "uiautomationcore" fn UiaRaiseNotificationEvent(
@@ -10035,13 +10033,13 @@ pub extern "uiautomationcore" fn UiaRaiseNotificationEvent(
     notificationProcessing: NotificationProcessing,
     displayString: ?BSTR,
     activityId: ?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "uiautomationcore" fn UiaRaiseActiveTextPositionChangedEvent(
     provider: ?*IRawElementProviderSimple,
     textRange: ?*ITextRangeProvider,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaAddEvent(
@@ -10053,40 +10051,40 @@ pub extern "uiautomationcore" fn UiaAddEvent(
     cProperties: i32,
     pRequest: ?*UiaCacheRequest,
     phEvent: ?*?HUIAEVENT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaRemoveEvent(
     hEvent: ?HUIAEVENT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaEventAddWindow(
     hEvent: ?HUIAEVENT,
     hwnd: ?HWND,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaEventRemoveWindow(
     hEvent: ?HUIAEVENT,
     hwnd: ?HWND,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn DockPattern_SetDockPosition(
     hobj: ?HUIAPATTERNOBJECT,
     dockPosition: DockPosition,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn ExpandCollapsePattern_Collapse(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn ExpandCollapsePattern_Expand(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn GridPattern_GetItem(
@@ -10094,165 +10092,165 @@ pub extern "uiautomationcore" fn GridPattern_GetItem(
     row: i32,
     column: i32,
     pResult: ?*?HUIANODE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn InvokePattern_Invoke(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn MultipleViewPattern_GetViewName(
     hobj: ?HUIAPATTERNOBJECT,
     viewId: i32,
     ppStr: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn MultipleViewPattern_SetCurrentView(
     hobj: ?HUIAPATTERNOBJECT,
     viewId: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn RangeValuePattern_SetValue(
     hobj: ?HUIAPATTERNOBJECT,
     val: f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn ScrollItemPattern_ScrollIntoView(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn ScrollPattern_Scroll(
     hobj: ?HUIAPATTERNOBJECT,
     horizontalAmount: ScrollAmount,
     verticalAmount: ScrollAmount,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn ScrollPattern_SetScrollPercent(
     hobj: ?HUIAPATTERNOBJECT,
     horizontalPercent: f64,
     verticalPercent: f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn SelectionItemPattern_AddToSelection(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn SelectionItemPattern_RemoveFromSelection(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn SelectionItemPattern_Select(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TogglePattern_Toggle(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TransformPattern_Move(
     hobj: ?HUIAPATTERNOBJECT,
     x: f64,
     y: f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TransformPattern_Resize(
     hobj: ?HUIAPATTERNOBJECT,
     width: f64,
     height: f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TransformPattern_Rotate(
     hobj: ?HUIAPATTERNOBJECT,
     degrees: f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn ValuePattern_SetValue(
     hobj: ?HUIAPATTERNOBJECT,
     pVal: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn WindowPattern_Close(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn WindowPattern_SetWindowVisualState(
     hobj: ?HUIAPATTERNOBJECT,
     state: WindowVisualState,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn WindowPattern_WaitForInputIdle(
     hobj: ?HUIAPATTERNOBJECT,
     milliseconds: i32,
     pResult: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextPattern_GetSelection(
     hobj: ?HUIAPATTERNOBJECT,
     pRetVal: ?*?*SAFEARRAY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextPattern_GetVisibleRanges(
     hobj: ?HUIAPATTERNOBJECT,
     pRetVal: ?*?*SAFEARRAY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextPattern_RangeFromChild(
     hobj: ?HUIAPATTERNOBJECT,
     hnodeChild: ?HUIANODE,
     pRetVal: ?*?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextPattern_RangeFromPoint(
     hobj: ?HUIAPATTERNOBJECT,
     point: UiaPoint,
     pRetVal: ?*?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextPattern_get_DocumentRange(
     hobj: ?HUIAPATTERNOBJECT,
     pRetVal: ?*?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextPattern_get_SupportedTextSelection(
     hobj: ?HUIAPATTERNOBJECT,
     pRetVal: ?*SupportedTextSelection,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_Clone(
     hobj: ?HUIATEXTRANGE,
     pRetVal: ?*?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_Compare(
     hobj: ?HUIATEXTRANGE,
     range: ?HUIATEXTRANGE,
     pRetVal: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_CompareEndpoints(
@@ -10261,20 +10259,20 @@ pub extern "uiautomationcore" fn TextRange_CompareEndpoints(
     targetRange: ?HUIATEXTRANGE,
     targetEndpoint: TextPatternRangeEndpoint,
     pRetVal: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_ExpandToEnclosingUnit(
     hobj: ?HUIATEXTRANGE,
     unit: TextUnit,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_GetAttributeValue(
     hobj: ?HUIATEXTRANGE,
     attributeId: i32,
     pRetVal: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_FindAttribute(
@@ -10283,7 +10281,7 @@ pub extern "uiautomationcore" fn TextRange_FindAttribute(
     val: VARIANT,
     backward: BOOL,
     pRetVal: ?*?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_FindText(
@@ -10292,26 +10290,26 @@ pub extern "uiautomationcore" fn TextRange_FindText(
     backward: BOOL,
     ignoreCase: BOOL,
     pRetVal: ?*?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_GetBoundingRectangles(
     hobj: ?HUIATEXTRANGE,
     pRetVal: ?*?*SAFEARRAY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_GetEnclosingElement(
     hobj: ?HUIATEXTRANGE,
     pRetVal: ?*?HUIANODE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_GetText(
     hobj: ?HUIATEXTRANGE,
     maxLength: i32,
     pRetVal: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_Move(
@@ -10319,7 +10317,7 @@ pub extern "uiautomationcore" fn TextRange_Move(
     unit: TextUnit,
     count: i32,
     pRetVal: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_MoveEndpointByUnit(
@@ -10328,7 +10326,7 @@ pub extern "uiautomationcore" fn TextRange_MoveEndpointByUnit(
     unit: TextUnit,
     count: i32,
     pRetVal: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_MoveEndpointByRange(
@@ -10336,34 +10334,34 @@ pub extern "uiautomationcore" fn TextRange_MoveEndpointByRange(
     endpoint: TextPatternRangeEndpoint,
     targetRange: ?HUIATEXTRANGE,
     targetEndpoint: TextPatternRangeEndpoint,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_Select(
     hobj: ?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_AddToSelection(
     hobj: ?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_RemoveFromSelection(
     hobj: ?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_ScrollIntoView(
     hobj: ?HUIATEXTRANGE,
     alignToTop: BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn TextRange_GetChildren(
     hobj: ?HUIATEXTRANGE,
     pRetVal: ?*?*SAFEARRAY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "uiautomationcore" fn ItemContainerPattern_FindItemByProperty(
@@ -10372,56 +10370,56 @@ pub extern "uiautomationcore" fn ItemContainerPattern_FindItemByProperty(
     propertyId: i32,
     value: VARIANT,
     pFound: ?*?HUIANODE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "uiautomationcore" fn LegacyIAccessiblePattern_Select(
     hobj: ?HUIAPATTERNOBJECT,
     flagsSelect: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "uiautomationcore" fn LegacyIAccessiblePattern_DoDefaultAction(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "uiautomationcore" fn LegacyIAccessiblePattern_SetValue(
     hobj: ?HUIAPATTERNOBJECT,
     szValue: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "uiautomationcore" fn LegacyIAccessiblePattern_GetIAccessible(
     hobj: ?HUIAPATTERNOBJECT,
     pAccessible: ?*?*IAccessible,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "uiautomationcore" fn SynchronizedInputPattern_StartListening(
     hobj: ?HUIAPATTERNOBJECT,
     inputType: SynchronizedInputType,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "uiautomationcore" fn SynchronizedInputPattern_Cancel(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "uiautomationcore" fn VirtualizedItemPattern_Realize(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaPatternRelease(
     hobj: ?HUIAPATTERNOBJECT,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaTextRangeRelease(
     hobj: ?HUIATEXTRANGE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaReturnRawElementProvider(
@@ -10429,13 +10427,13 @@ pub extern "uiautomationcore" fn UiaReturnRawElementProvider(
     wParam: WPARAM,
     lParam: LPARAM,
     el: ?*IRawElementProviderSimple,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaHostProviderFromHwnd(
     hwnd: ?HWND,
     ppProvider: ?*?*IRawElementProviderSimple,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "uiautomationcore" fn UiaProviderForNonClient(
@@ -10443,7 +10441,7 @@ pub extern "uiautomationcore" fn UiaProviderForNonClient(
     idObject: i32,
     idChild: i32,
     ppProvider: ?*?*IRawElementProviderSimple,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "uiautomationcore" fn UiaIAccessibleFromProvider(
@@ -10451,7 +10449,7 @@ pub extern "uiautomationcore" fn UiaIAccessibleFromProvider(
     dwFlags: u32,
     ppAccessible: ?*?*IAccessible,
     pvarChild: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "uiautomationcore" fn UiaProviderFromIAccessible(
@@ -10459,46 +10457,45 @@ pub extern "uiautomationcore" fn UiaProviderFromIAccessible(
     idChild: i32,
     dwFlags: u32,
     ppProvider: ?*?*IRawElementProviderSimple,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
-pub extern "uiautomationcore" fn UiaDisconnectAllProviders(
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+pub extern "uiautomationcore" fn UiaDisconnectAllProviders() callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "uiautomationcore" fn UiaDisconnectProvider(
     pProvider: ?*IRawElementProviderSimple,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "uiautomationcore" fn UiaHasServerSideProvider(
     hwnd: ?HWND,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "user32" fn RegisterPointerInputTarget(
     hwnd: ?HWND,
     pointerType: POINTER_INPUT_TYPE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "user32" fn UnregisterPointerInputTarget(
     hwnd: ?HWND,
     pointerType: POINTER_INPUT_TYPE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "user32" fn RegisterPointerInputTargetEx(
     hwnd: ?HWND,
     pointerType: POINTER_INPUT_TYPE,
     fObserve: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "user32" fn UnregisterPointerInputTargetEx(
     hwnd: ?HWND,
     pointerType: POINTER_INPUT_TYPE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "user32" fn NotifyWinEvent(
@@ -10506,7 +10503,7 @@ pub extern "user32" fn NotifyWinEvent(
     hwnd: ?HWND,
     idObject: i32,
     idChild: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "user32" fn SetWinEventHook(
@@ -10517,18 +10514,17 @@ pub extern "user32" fn SetWinEventHook(
     idProcess: u32,
     idThread: u32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) ?HWINEVENTHOOK;
+) callconv(.winapi) ?HWINEVENTHOOK;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "user32" fn IsWinEventHookInstalled(
     event: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "user32" fn UnhookWinEvent(
     hWinEventHook: ?HWINEVENTHOOK,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (6)
@@ -10600,19 +10596,35 @@ const WPARAM = @import("../foundation.zig").WPARAM;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "LPFNLRESULTFROMOBJECT")) { _ = LPFNLRESULTFROMOBJECT; }
-    if (@hasDecl(@This(), "LPFNOBJECTFROMLRESULT")) { _ = LPFNOBJECTFROMLRESULT; }
-    if (@hasDecl(@This(), "LPFNACCESSIBLEOBJECTFROMWINDOW")) { _ = LPFNACCESSIBLEOBJECTFROMWINDOW; }
-    if (@hasDecl(@This(), "LPFNACCESSIBLEOBJECTFROMPOINT")) { _ = LPFNACCESSIBLEOBJECTFROMPOINT; }
-    if (@hasDecl(@This(), "LPFNCREATESTDACCESSIBLEOBJECT")) { _ = LPFNCREATESTDACCESSIBLEOBJECT; }
-    if (@hasDecl(@This(), "LPFNACCESSIBLECHILDREN")) { _ = LPFNACCESSIBLECHILDREN; }
-    if (@hasDecl(@This(), "UiaProviderCallback")) { _ = UiaProviderCallback; }
-    if (@hasDecl(@This(), "UiaEventCallback")) { _ = UiaEventCallback; }
-    if (@hasDecl(@This(), "WINEVENTPROC")) { _ = WINEVENTPROC; }
+    if (@hasDecl(@This(), "LPFNLRESULTFROMOBJECT")) {
+        _ = LPFNLRESULTFROMOBJECT;
+    }
+    if (@hasDecl(@This(), "LPFNOBJECTFROMLRESULT")) {
+        _ = LPFNOBJECTFROMLRESULT;
+    }
+    if (@hasDecl(@This(), "LPFNACCESSIBLEOBJECTFROMWINDOW")) {
+        _ = LPFNACCESSIBLEOBJECTFROMWINDOW;
+    }
+    if (@hasDecl(@This(), "LPFNACCESSIBLEOBJECTFROMPOINT")) {
+        _ = LPFNACCESSIBLEOBJECTFROMPOINT;
+    }
+    if (@hasDecl(@This(), "LPFNCREATESTDACCESSIBLEOBJECT")) {
+        _ = LPFNCREATESTDACCESSIBLEOBJECT;
+    }
+    if (@hasDecl(@This(), "LPFNACCESSIBLECHILDREN")) {
+        _ = LPFNACCESSIBLECHILDREN;
+    }
+    if (@hasDecl(@This(), "UiaProviderCallback")) {
+        _ = UiaProviderCallback;
+    }
+    if (@hasDecl(@This(), "UiaEventCallback")) {
+        _ = UiaEventCallback;
+    }
+    if (@hasDecl(@This(), "WINEVENTPROC")) {
+        _ = WINEVENTPROC;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

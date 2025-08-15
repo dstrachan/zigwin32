@@ -40,33 +40,32 @@ pub const WSL_DISTRIBUTION_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const WSL_DISTRIBUTION_FLAGS_NONE = WSL_DISTRIBUTION_FLAGS{ };
+pub const WSL_DISTRIBUTION_FLAGS_NONE = WSL_DISTRIBUTION_FLAGS{};
 pub const WSL_DISTRIBUTION_FLAGS_ENABLE_INTEROP = WSL_DISTRIBUTION_FLAGS{ .ENABLE_INTEROP = 1 };
 pub const WSL_DISTRIBUTION_FLAGS_APPEND_NT_PATH = WSL_DISTRIBUTION_FLAGS{ .APPEND_NT_PATH = 1 };
 pub const WSL_DISTRIBUTION_FLAGS_ENABLE_DRIVE_MOUNTING = WSL_DISTRIBUTION_FLAGS{ .ENABLE_DRIVE_MOUNTING = 1 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (7)
 //--------------------------------------------------------------------------------
 pub extern "api-ms-win-wsl-api-l1-1-0" fn WslIsDistributionRegistered(
     distributionName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "api-ms-win-wsl-api-l1-1-0" fn WslRegisterDistribution(
     distributionName: ?[*:0]const u16,
     tarGzFilename: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-wsl-api-l1-1-0" fn WslUnregisterDistribution(
     distributionName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-wsl-api-l1-1-0" fn WslConfigureDistribution(
     distributionName: ?[*:0]const u16,
     defaultUID: u32,
     wslDistributionFlags: WSL_DISTRIBUTION_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-wsl-api-l1-1-0" fn WslGetDistributionConfiguration(
     distributionName: ?[*:0]const u16,
@@ -75,14 +74,14 @@ pub extern "api-ms-win-wsl-api-l1-1-0" fn WslGetDistributionConfiguration(
     wslDistributionFlags: ?*WSL_DISTRIBUTION_FLAGS,
     defaultEnvironmentVariables: ?*?*?PSTR,
     defaultEnvironmentVariableCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-wsl-api-l1-1-0" fn WslLaunchInteractive(
     distributionName: ?[*:0]const u16,
     command: ?[*:0]const u16,
     useCurrentWorkingDirectory: BOOL,
     exitCode: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-wsl-api-l1-1-0" fn WslLaunch(
     distributionName: ?[*:0]const u16,
@@ -92,8 +91,7 @@ pub extern "api-ms-win-wsl-api-l1-1-0" fn WslLaunch(
     stdOut: ?HANDLE,
     stdErr: ?HANDLE,
     process: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -108,9 +106,7 @@ const PSTR = @import("../foundation.zig").PSTR;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

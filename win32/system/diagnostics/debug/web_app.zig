@@ -12,24 +12,24 @@ pub const IID_IWebApplicationScriptEvents = &IID_IWebApplicationScriptEvents_Val
 pub const IWebApplicationScriptEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        BeforeScriptExecute: *const fn(
+        BeforeScriptExecute: *const fn (
             self: *const IWebApplicationScriptEvents,
             htmlWindow: ?*IHTMLWindow2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ScriptError: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ScriptError: *const fn (
             self: *const IWebApplicationScriptEvents,
             htmlWindow: ?*IHTMLWindow2,
             scriptError: ?*IActiveScriptError,
             url: ?[*:0]const u16,
             errorHandled: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn BeforeScriptExecute(self: *const IWebApplicationScriptEvents, htmlWindow: ?*IHTMLWindow2) callconv(.Inline) HRESULT {
+    pub inline fn BeforeScriptExecute(self: *const IWebApplicationScriptEvents, htmlWindow: ?*IHTMLWindow2) HRESULT {
         return self.vtable.BeforeScriptExecute(self, htmlWindow);
     }
-    pub fn ScriptError(self: *const IWebApplicationScriptEvents, htmlWindow: ?*IHTMLWindow2, scriptError: ?*IActiveScriptError, url: ?[*:0]const u16, errorHandled: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn ScriptError(self: *const IWebApplicationScriptEvents, htmlWindow: ?*IHTMLWindow2, scriptError: ?*IActiveScriptError, url: ?[*:0]const u16, errorHandled: BOOL) HRESULT {
         return self.vtable.ScriptError(self, htmlWindow, scriptError, url, errorHandled);
     }
 };
@@ -40,55 +40,55 @@ pub const IID_IWebApplicationNavigationEvents = &IID_IWebApplicationNavigationEv
 pub const IWebApplicationNavigationEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        BeforeNavigate: *const fn(
+        BeforeNavigate: *const fn (
             self: *const IWebApplicationNavigationEvents,
             htmlWindow: ?*IHTMLWindow2,
             url: ?[*:0]const u16,
             navigationFlags: u32,
             targetFrameName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NavigateComplete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NavigateComplete: *const fn (
             self: *const IWebApplicationNavigationEvents,
             htmlWindow: ?*IHTMLWindow2,
             url: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NavigateError: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NavigateError: *const fn (
             self: *const IWebApplicationNavigationEvents,
             htmlWindow: ?*IHTMLWindow2,
             url: ?[*:0]const u16,
             targetFrameName: ?[*:0]const u16,
             statusCode: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DocumentComplete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DocumentComplete: *const fn (
             self: *const IWebApplicationNavigationEvents,
             htmlWindow: ?*IHTMLWindow2,
             url: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DownloadBegin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DownloadBegin: *const fn (
             self: *const IWebApplicationNavigationEvents,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DownloadComplete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DownloadComplete: *const fn (
             self: *const IWebApplicationNavigationEvents,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn BeforeNavigate(self: *const IWebApplicationNavigationEvents, htmlWindow: ?*IHTMLWindow2, url: ?[*:0]const u16, navigationFlags: u32, targetFrameName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn BeforeNavigate(self: *const IWebApplicationNavigationEvents, htmlWindow: ?*IHTMLWindow2, url: ?[*:0]const u16, navigationFlags: u32, targetFrameName: ?[*:0]const u16) HRESULT {
         return self.vtable.BeforeNavigate(self, htmlWindow, url, navigationFlags, targetFrameName);
     }
-    pub fn NavigateComplete(self: *const IWebApplicationNavigationEvents, htmlWindow: ?*IHTMLWindow2, url: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn NavigateComplete(self: *const IWebApplicationNavigationEvents, htmlWindow: ?*IHTMLWindow2, url: ?[*:0]const u16) HRESULT {
         return self.vtable.NavigateComplete(self, htmlWindow, url);
     }
-    pub fn NavigateError(self: *const IWebApplicationNavigationEvents, htmlWindow: ?*IHTMLWindow2, url: ?[*:0]const u16, targetFrameName: ?[*:0]const u16, statusCode: u32) callconv(.Inline) HRESULT {
+    pub inline fn NavigateError(self: *const IWebApplicationNavigationEvents, htmlWindow: ?*IHTMLWindow2, url: ?[*:0]const u16, targetFrameName: ?[*:0]const u16, statusCode: u32) HRESULT {
         return self.vtable.NavigateError(self, htmlWindow, url, targetFrameName, statusCode);
     }
-    pub fn DocumentComplete(self: *const IWebApplicationNavigationEvents, htmlWindow: ?*IHTMLWindow2, url: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn DocumentComplete(self: *const IWebApplicationNavigationEvents, htmlWindow: ?*IHTMLWindow2, url: ?[*:0]const u16) HRESULT {
         return self.vtable.DocumentComplete(self, htmlWindow, url);
     }
-    pub fn DownloadBegin(self: *const IWebApplicationNavigationEvents) callconv(.Inline) HRESULT {
+    pub inline fn DownloadBegin(self: *const IWebApplicationNavigationEvents) HRESULT {
         return self.vtable.DownloadBegin(self);
     }
-    pub fn DownloadComplete(self: *const IWebApplicationNavigationEvents) callconv(.Inline) HRESULT {
+    pub inline fn DownloadComplete(self: *const IWebApplicationNavigationEvents) HRESULT {
         return self.vtable.DownloadComplete(self);
     }
 };
@@ -99,15 +99,15 @@ pub const IID_IWebApplicationUIEvents = &IID_IWebApplicationUIEvents_Value;
 pub const IWebApplicationUIEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SecurityProblem: *const fn(
+        SecurityProblem: *const fn (
             self: *const IWebApplicationUIEvents,
             securityProblem: u32,
             result: ?*HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SecurityProblem(self: *const IWebApplicationUIEvents, securityProblem: u32, result: ?*HRESULT) callconv(.Inline) HRESULT {
+    pub inline fn SecurityProblem(self: *const IWebApplicationUIEvents, securityProblem: u32, result: ?*HRESULT) HRESULT {
         return self.vtable.SecurityProblem(self, securityProblem, result);
     }
 };
@@ -118,19 +118,19 @@ pub const IID_IWebApplicationUpdateEvents = &IID_IWebApplicationUpdateEvents_Val
 pub const IWebApplicationUpdateEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnPaint: *const fn(
+        OnPaint: *const fn (
             self: *const IWebApplicationUpdateEvents,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnCssChanged: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnCssChanged: *const fn (
             self: *const IWebApplicationUpdateEvents,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnPaint(self: *const IWebApplicationUpdateEvents) callconv(.Inline) HRESULT {
+    pub inline fn OnPaint(self: *const IWebApplicationUpdateEvents) HRESULT {
         return self.vtable.OnPaint(self);
     }
-    pub fn OnCssChanged(self: *const IWebApplicationUpdateEvents) callconv(.Inline) HRESULT {
+    pub inline fn OnCssChanged(self: *const IWebApplicationUpdateEvents) HRESULT {
         return self.vtable.OnCssChanged(self);
     }
 };
@@ -142,44 +142,44 @@ pub const IWebApplicationHost = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HWND: *const fn(
+        get_HWND: *const fn (
             self: *const IWebApplicationHost,
             hwnd: ?*?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Document: *const fn(
+        get_Document: *const fn (
             self: *const IWebApplicationHost,
             htmlDocument: ?*?*IHTMLDocument2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Refresh: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Refresh: *const fn (
             self: *const IWebApplicationHost,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Advise: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Advise: *const fn (
             self: *const IWebApplicationHost,
             interfaceId: ?*const Guid,
             callback: ?*IUnknown,
             cookie: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unadvise: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unadvise: *const fn (
             self: *const IWebApplicationHost,
             cookie: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_HWND(self: *const IWebApplicationHost, hwnd: ?*?HWND) callconv(.Inline) HRESULT {
+    pub inline fn get_HWND(self: *const IWebApplicationHost, hwnd: ?*?HWND) HRESULT {
         return self.vtable.get_HWND(self, hwnd);
     }
-    pub fn get_Document(self: *const IWebApplicationHost, htmlDocument: ?*?*IHTMLDocument2) callconv(.Inline) HRESULT {
+    pub inline fn get_Document(self: *const IWebApplicationHost, htmlDocument: ?*?*IHTMLDocument2) HRESULT {
         return self.vtable.get_Document(self, htmlDocument);
     }
-    pub fn Refresh(self: *const IWebApplicationHost) callconv(.Inline) HRESULT {
+    pub inline fn Refresh(self: *const IWebApplicationHost) HRESULT {
         return self.vtable.Refresh(self);
     }
-    pub fn Advise(self: *const IWebApplicationHost, interfaceId: ?*const Guid, callback: ?*IUnknown, cookie: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Advise(self: *const IWebApplicationHost, interfaceId: ?*const Guid, callback: ?*IUnknown, cookie: ?*u32) HRESULT {
         return self.vtable.Advise(self, interfaceId, callback, cookie);
     }
-    pub fn Unadvise(self: *const IWebApplicationHost, cookie: u32) callconv(.Inline) HRESULT {
+    pub inline fn Unadvise(self: *const IWebApplicationHost, cookie: u32) HRESULT {
         return self.vtable.Unadvise(self, cookie);
     }
 };
@@ -190,13 +190,13 @@ pub const IID_IWebApplicationActivation = &IID_IWebApplicationActivation_Value;
 pub const IWebApplicationActivation = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CancelPendingActivation: *const fn(
+        CancelPendingActivation: *const fn (
             self: *const IWebApplicationActivation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CancelPendingActivation(self: *const IWebApplicationActivation) callconv(.Inline) HRESULT {
+    pub inline fn CancelPendingActivation(self: *const IWebApplicationActivation) HRESULT {
         return self.vtable.CancelPendingActivation(self);
     }
 };
@@ -208,28 +208,27 @@ pub const IWebApplicationAuthoringMode = extern union {
     pub const VTable = extern struct {
         base: IServiceProvider.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AuthoringClientBinary: *const fn(
+        get_AuthoringClientBinary: *const fn (
             self: *const IWebApplicationAuthoringMode,
             designModeDllPath: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IServiceProvider: IServiceProvider,
     IUnknown: IUnknown,
-    pub fn get_AuthoringClientBinary(self: *const IWebApplicationAuthoringMode, designModeDllPath: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_AuthoringClientBinary(self: *const IWebApplicationAuthoringMode, designModeDllPath: ?*?BSTR) HRESULT {
         return self.vtable.get_AuthoringClientBinary(self, designModeDllPath);
     }
 };
 
-pub const RegisterAuthoringClientFunctionType = *const fn(
+pub const RegisterAuthoringClientFunctionType = *const fn (
     authoringModeObject: ?*IWebApplicationAuthoringMode,
     host: ?*IWebApplicationHost,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const UnregisterAuthoringClientFunctionType = *const fn(
+pub const UnregisterAuthoringClientFunctionType = *const fn (
     host: ?*IWebApplicationHost,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -255,12 +254,14 @@ const PWSTR = @import("../../../foundation.zig").PWSTR;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "RegisterAuthoringClientFunctionType")) { _ = RegisterAuthoringClientFunctionType; }
-    if (@hasDecl(@This(), "UnregisterAuthoringClientFunctionType")) { _ = UnregisterAuthoringClientFunctionType; }
+    if (@hasDecl(@This(), "RegisterAuthoringClientFunctionType")) {
+        _ = RegisterAuthoringClientFunctionType;
+    }
+    if (@hasDecl(@This(), "UnregisterAuthoringClientFunctionType")) {
+        _ = UnregisterAuthoringClientFunctionType;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

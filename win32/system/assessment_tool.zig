@@ -79,31 +79,31 @@ pub const IProvideWinSATAssessmentInfo = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Score: *const fn(
+        get_Score: *const fn (
             self: *const IProvideWinSATAssessmentInfo,
             score: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Title: *const fn(
+        get_Title: *const fn (
             self: *const IProvideWinSATAssessmentInfo,
             title: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IProvideWinSATAssessmentInfo,
             description: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Score(self: *const IProvideWinSATAssessmentInfo, score: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn get_Score(self: *const IProvideWinSATAssessmentInfo, score: ?*f32) HRESULT {
         return self.vtable.get_Score(self, score);
     }
-    pub fn get_Title(self: *const IProvideWinSATAssessmentInfo, title: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Title(self: *const IProvideWinSATAssessmentInfo, title: ?*?BSTR) HRESULT {
         return self.vtable.get_Title(self, title);
     }
-    pub fn get_Description(self: *const IProvideWinSATAssessmentInfo, description: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IProvideWinSATAssessmentInfo, description: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, description);
     }
 };
@@ -114,48 +114,48 @@ pub const IID_IProvideWinSATResultsInfo = &IID_IProvideWinSATResultsInfo_Value;
 pub const IProvideWinSATResultsInfo = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetAssessmentInfo: *const fn(
+        GetAssessmentInfo: *const fn (
             self: *const IProvideWinSATResultsInfo,
             assessment: WINSAT_ASSESSMENT_TYPE,
             ppinfo: ?*?*IProvideWinSATAssessmentInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AssessmentState: *const fn(
+        get_AssessmentState: *const fn (
             self: *const IProvideWinSATResultsInfo,
             state: ?*WINSAT_ASSESSMENT_STATE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AssessmentDateTime: *const fn(
+        get_AssessmentDateTime: *const fn (
             self: *const IProvideWinSATResultsInfo,
             fileTime: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SystemRating: *const fn(
+        get_SystemRating: *const fn (
             self: *const IProvideWinSATResultsInfo,
             level: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RatingStateDesc: *const fn(
+        get_RatingStateDesc: *const fn (
             self: *const IProvideWinSATResultsInfo,
             description: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetAssessmentInfo(self: *const IProvideWinSATResultsInfo, assessment: WINSAT_ASSESSMENT_TYPE, ppinfo: ?*?*IProvideWinSATAssessmentInfo) callconv(.Inline) HRESULT {
+    pub inline fn GetAssessmentInfo(self: *const IProvideWinSATResultsInfo, assessment: WINSAT_ASSESSMENT_TYPE, ppinfo: ?*?*IProvideWinSATAssessmentInfo) HRESULT {
         return self.vtable.GetAssessmentInfo(self, assessment, ppinfo);
     }
-    pub fn get_AssessmentState(self: *const IProvideWinSATResultsInfo, state: ?*WINSAT_ASSESSMENT_STATE) callconv(.Inline) HRESULT {
+    pub inline fn get_AssessmentState(self: *const IProvideWinSATResultsInfo, state: ?*WINSAT_ASSESSMENT_STATE) HRESULT {
         return self.vtable.get_AssessmentState(self, state);
     }
-    pub fn get_AssessmentDateTime(self: *const IProvideWinSATResultsInfo, fileTime: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_AssessmentDateTime(self: *const IProvideWinSATResultsInfo, fileTime: ?*VARIANT) HRESULT {
         return self.vtable.get_AssessmentDateTime(self, fileTime);
     }
-    pub fn get_SystemRating(self: *const IProvideWinSATResultsInfo, level: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn get_SystemRating(self: *const IProvideWinSATResultsInfo, level: ?*f32) HRESULT {
         return self.vtable.get_SystemRating(self, level);
     }
-    pub fn get_RatingStateDesc(self: *const IProvideWinSATResultsInfo, description: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_RatingStateDesc(self: *const IProvideWinSATResultsInfo, description: ?*?BSTR) HRESULT {
         return self.vtable.get_RatingStateDesc(self, description);
     }
 };
@@ -166,25 +166,25 @@ pub const IID_IQueryRecentWinSATAssessment = &IID_IQueryRecentWinSATAssessment_V
 pub const IQueryRecentWinSATAssessment = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_XML: *const fn(
+        get_XML: *const fn (
             self: *const IQueryRecentWinSATAssessment,
             xPath: ?BSTR,
             namespaces: ?BSTR,
             ppDomNodeList: ?*?*IXMLDOMNodeList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Info: *const fn(
+        get_Info: *const fn (
             self: *const IQueryRecentWinSATAssessment,
             ppWinSATAssessmentInfo: ?*?*IProvideWinSATResultsInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_XML(self: *const IQueryRecentWinSATAssessment, xPath: ?BSTR, namespaces: ?BSTR, ppDomNodeList: ?*?*IXMLDOMNodeList) callconv(.Inline) HRESULT {
+    pub inline fn get_XML(self: *const IQueryRecentWinSATAssessment, xPath: ?BSTR, namespaces: ?BSTR, ppDomNodeList: ?*?*IXMLDOMNodeList) HRESULT {
         return self.vtable.get_XML(self, xPath, namespaces, ppDomNodeList);
     }
-    pub fn get_Info(self: *const IQueryRecentWinSATAssessment, ppWinSATAssessmentInfo: ?*?*IProvideWinSATResultsInfo) callconv(.Inline) HRESULT {
+    pub inline fn get_Info(self: *const IQueryRecentWinSATAssessment, ppWinSATAssessmentInfo: ?*?*IProvideWinSATResultsInfo) HRESULT {
         return self.vtable.get_Info(self, ppWinSATAssessmentInfo);
     }
 };
@@ -195,17 +195,17 @@ pub const IID_IProvideWinSATVisuals = &IID_IProvideWinSATVisuals_Value;
 pub const IProvideWinSATVisuals = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        get_Bitmap: *const fn(
+        get_Bitmap: *const fn (
             self: *const IProvideWinSATVisuals,
             bitmapSize: WINSAT_BITMAP_SIZE,
             state: WINSAT_ASSESSMENT_STATE,
             rating: f32,
             pBitmap: ?*?HBITMAP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_Bitmap(self: *const IProvideWinSATVisuals, bitmapSize: WINSAT_BITMAP_SIZE, state: WINSAT_ASSESSMENT_STATE, rating: f32, pBitmap: ?*?HBITMAP) callconv(.Inline) HRESULT {
+    pub inline fn get_Bitmap(self: *const IProvideWinSATVisuals, bitmapSize: WINSAT_BITMAP_SIZE, state: WINSAT_ASSESSMENT_STATE, rating: f32, pBitmap: ?*?HBITMAP) HRESULT {
         return self.vtable.get_Bitmap(self, bitmapSize, state, rating, pBitmap);
     }
 };
@@ -216,17 +216,17 @@ pub const IID_IQueryAllWinSATAssessments = &IID_IQueryAllWinSATAssessments_Value
 pub const IQueryAllWinSATAssessments = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        get_AllXML: *const fn(
+        get_AllXML: *const fn (
             self: *const IQueryAllWinSATAssessments,
             xPath: ?BSTR,
             namespaces: ?BSTR,
             ppDomNodeList: ?*?*IXMLDOMNodeList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_AllXML(self: *const IQueryAllWinSATAssessments, xPath: ?BSTR, namespaces: ?BSTR, ppDomNodeList: ?*?*IXMLDOMNodeList) callconv(.Inline) HRESULT {
+    pub inline fn get_AllXML(self: *const IQueryAllWinSATAssessments, xPath: ?BSTR, namespaces: ?BSTR, ppDomNodeList: ?*?*IXMLDOMNodeList) HRESULT {
         return self.vtable.get_AllXML(self, xPath, namespaces, ppDomNodeList);
     }
 };
@@ -237,24 +237,24 @@ pub const IID_IWinSATInitiateEvents = &IID_IWinSATInitiateEvents_Value;
 pub const IWinSATInitiateEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        WinSATComplete: *const fn(
+        WinSATComplete: *const fn (
             self: *const IWinSATInitiateEvents,
             hresult: HRESULT,
             strDescription: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WinSATUpdate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WinSATUpdate: *const fn (
             self: *const IWinSATInitiateEvents,
             uCurrentTick: u32,
             uTickTotal: u32,
             strCurrentState: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn WinSATComplete(self: *const IWinSATInitiateEvents, hresult: HRESULT, strDescription: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn WinSATComplete(self: *const IWinSATInitiateEvents, hresult: HRESULT, strDescription: ?[*:0]const u16) HRESULT {
         return self.vtable.WinSATComplete(self, hresult, strDescription);
     }
-    pub fn WinSATUpdate(self: *const IWinSATInitiateEvents, uCurrentTick: u32, uTickTotal: u32, strCurrentState: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn WinSATUpdate(self: *const IWinSATInitiateEvents, uCurrentTick: u32, uTickTotal: u32, strCurrentState: ?[*:0]const u16) HRESULT {
         return self.vtable.WinSATUpdate(self, uCurrentTick, uTickTotal, strCurrentState);
     }
 };
@@ -265,30 +265,30 @@ pub const IID_IInitiateWinSATAssessment = &IID_IInitiateWinSATAssessment_Value;
 pub const IInitiateWinSATAssessment = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        InitiateAssessment: *const fn(
+        InitiateAssessment: *const fn (
             self: *const IInitiateWinSATAssessment,
             cmdLine: ?[*:0]const u16,
             pCallbacks: ?*IWinSATInitiateEvents,
             callerHwnd: ?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitiateFormalAssessment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitiateFormalAssessment: *const fn (
             self: *const IInitiateWinSATAssessment,
             pCallbacks: ?*IWinSATInitiateEvents,
             callerHwnd: ?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CancelAssessment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CancelAssessment: *const fn (
             self: *const IInitiateWinSATAssessment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn InitiateAssessment(self: *const IInitiateWinSATAssessment, cmdLine: ?[*:0]const u16, pCallbacks: ?*IWinSATInitiateEvents, callerHwnd: ?HWND) callconv(.Inline) HRESULT {
+    pub inline fn InitiateAssessment(self: *const IInitiateWinSATAssessment, cmdLine: ?[*:0]const u16, pCallbacks: ?*IWinSATInitiateEvents, callerHwnd: ?HWND) HRESULT {
         return self.vtable.InitiateAssessment(self, cmdLine, pCallbacks, callerHwnd);
     }
-    pub fn InitiateFormalAssessment(self: *const IInitiateWinSATAssessment, pCallbacks: ?*IWinSATInitiateEvents, callerHwnd: ?HWND) callconv(.Inline) HRESULT {
+    pub inline fn InitiateFormalAssessment(self: *const IInitiateWinSATAssessment, pCallbacks: ?*IWinSATInitiateEvents, callerHwnd: ?HWND) HRESULT {
         return self.vtable.InitiateFormalAssessment(self, pCallbacks, callerHwnd);
     }
-    pub fn CancelAssessment(self: *const IInitiateWinSATAssessment) callconv(.Inline) HRESULT {
+    pub inline fn CancelAssessment(self: *const IInitiateWinSATAssessment) HRESULT {
         return self.vtable.CancelAssessment(self);
     }
 };
@@ -298,18 +298,18 @@ pub const IID_IAccessibleWinSAT = &IID_IAccessibleWinSAT_Value;
 pub const IAccessibleWinSAT = extern union {
     pub const VTable = extern struct {
         base: IAccessible.VTable,
-        SetAccessiblityData: *const fn(
+        SetAccessiblityData: *const fn (
             self: *const IAccessibleWinSAT,
             wsName: ?[*:0]const u16,
             wsValue: ?[*:0]const u16,
             wsDesc: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IAccessible: IAccessible,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn SetAccessiblityData(self: *const IAccessibleWinSAT, wsName: ?[*:0]const u16, wsValue: ?[*:0]const u16, wsDesc: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetAccessiblityData(self: *const IAccessibleWinSAT, wsName: ?[*:0]const u16, wsValue: ?[*:0]const u16, wsDesc: ?[*:0]const u16) HRESULT {
         return self.vtable.SetAccessiblityData(self, wsName, wsValue, wsDesc);
     }
 };
@@ -319,18 +319,17 @@ pub const IID_IQueryOEMWinSATCustomization = &IID_IQueryOEMWinSATCustomization_V
 pub const IQueryOEMWinSATCustomization = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetOEMPrePopulationInfo: *const fn(
+        GetOEMPrePopulationInfo: *const fn (
             self: *const IQueryOEMWinSATCustomization,
             state: ?*WINSAT_OEM_DATA_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetOEMPrePopulationInfo(self: *const IQueryOEMWinSATCustomization, state: ?*WINSAT_OEM_DATA_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetOEMPrePopulationInfo(self: *const IQueryOEMWinSATCustomization, state: ?*WINSAT_OEM_DATA_TYPE) HRESULT {
         return self.vtable.GetOEMPrePopulationInfo(self, state);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -355,9 +354,7 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 const VARIANT = @import("../system/com.zig").VARIANT;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

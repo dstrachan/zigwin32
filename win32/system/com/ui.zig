@@ -11,7 +11,7 @@ pub const IID_IThumbnailExtractor = &IID_IThumbnailExtractor_Value;
 pub const IThumbnailExtractor = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ExtractThumbnail: *const fn(
+        ExtractThumbnail: *const fn (
             self: *const IThumbnailExtractor,
             pStg: ?*IStorage,
             ulLength: u32,
@@ -19,18 +19,18 @@ pub const IThumbnailExtractor = extern union {
             pulOutputLength: ?*u32,
             pulOutputHeight: ?*u32,
             phOutputBitmap: ?*?HBITMAP,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnFileUpdated: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnFileUpdated: *const fn (
             self: *const IThumbnailExtractor,
             pStg: ?*IStorage,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ExtractThumbnail(self: *const IThumbnailExtractor, pStg: ?*IStorage, ulLength: u32, ulHeight: u32, pulOutputLength: ?*u32, pulOutputHeight: ?*u32, phOutputBitmap: ?*?HBITMAP) callconv(.Inline) HRESULT {
+    pub inline fn ExtractThumbnail(self: *const IThumbnailExtractor, pStg: ?*IStorage, ulLength: u32, ulHeight: u32, pulOutputLength: ?*u32, pulOutputHeight: ?*u32, phOutputBitmap: ?*?HBITMAP) HRESULT {
         return self.vtable.ExtractThumbnail(self, pStg, ulLength, ulHeight, pulOutputLength, pulOutputHeight, phOutputBitmap);
     }
-    pub fn OnFileUpdated(self: *const IThumbnailExtractor, pStg: ?*IStorage) callconv(.Inline) HRESULT {
+    pub inline fn OnFileUpdated(self: *const IThumbnailExtractor, pStg: ?*IStorage) HRESULT {
         return self.vtable.OnFileUpdated(self, pStg);
     }
 };
@@ -40,19 +40,18 @@ pub const IID_IDummyHICONIncluder = &IID_IDummyHICONIncluder_Value;
 pub const IDummyHICONIncluder = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Dummy: *const fn(
+        Dummy: *const fn (
             self: *const IDummyHICONIncluder,
             h1: ?HICON,
             h2: ?HDC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Dummy(self: *const IDummyHICONIncluder, h1: ?HICON, h2: ?HDC) callconv(.Inline) HRESULT {
+    pub inline fn Dummy(self: *const IDummyHICONIncluder, h1: ?HICON, h2: ?HDC) HRESULT {
         return self.vtable.Dummy(self, h1, h2);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -73,9 +72,7 @@ const IStorage = @import("../../system/com/structured_storage.zig").IStorage;
 const IUnknown = @import("../../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

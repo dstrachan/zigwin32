@@ -42,7 +42,7 @@ pub const DEVPROP_OPERATOR = packed struct(u32) {
 };
 pub const DEVPROP_OPERATOR_MODIFIER_NOT = DEVPROP_OPERATOR{ .MODIFIER_NOT = 1 };
 pub const DEVPROP_OPERATOR_MODIFIER_IGNORE_CASE = DEVPROP_OPERATOR{ .MODIFIER_IGNORE_CASE = 1 };
-pub const DEVPROP_OPERATOR_NONE = DEVPROP_OPERATOR{ };
+pub const DEVPROP_OPERATOR_NONE = DEVPROP_OPERATOR{};
 pub const DEVPROP_OPERATOR_EXISTS = DEVPROP_OPERATOR{ .EXISTS = 1 };
 pub const DEVPROP_OPERATOR_NOT_EXISTS = DEVPROP_OPERATOR{
     .EXISTS = 1,
@@ -313,12 +313,11 @@ pub const HDEVQUERY__ = extern struct {
     unused: i32,
 };
 
-pub const PDEV_QUERY_RESULT_CALLBACK = *const fn(
+pub const PDEV_QUERY_RESULT_CALLBACK = *const fn (
     hDevQuery: ?*HDEVQUERY__,
     pContext: ?*anyopaque,
     pActionData: ?*const DEV_QUERY_RESULT_ACTION_DATA,
-) callconv(@import("std").os.windows.WINAPI) void;
-
+) callconv(.winapi) void;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (14)
@@ -333,7 +332,7 @@ pub extern "api-ms-win-devices-query-l1-1-0" fn DevCreateObjectQuery(
     pCallback: ?PDEV_QUERY_RESULT_CALLBACK,
     pContext: ?*anyopaque,
     phDevQuery: ?*?*HDEVQUERY__,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-1" fn DevCreateObjectQueryEx(
     ObjectType: DEV_OBJECT_TYPE,
@@ -347,7 +346,7 @@ pub extern "api-ms-win-devices-query-l1-1-1" fn DevCreateObjectQueryEx(
     pCallback: ?PDEV_QUERY_RESULT_CALLBACK,
     pContext: ?*anyopaque,
     phDevQuery: ?*?*HDEVQUERY__,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-0" fn DevCreateObjectQueryFromId(
     ObjectType: DEV_OBJECT_TYPE,
@@ -360,7 +359,7 @@ pub extern "api-ms-win-devices-query-l1-1-0" fn DevCreateObjectQueryFromId(
     pCallback: ?PDEV_QUERY_RESULT_CALLBACK,
     pContext: ?*anyopaque,
     phDevQuery: ?*?*HDEVQUERY__,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-1" fn DevCreateObjectQueryFromIdEx(
     ObjectType: DEV_OBJECT_TYPE,
@@ -375,7 +374,7 @@ pub extern "api-ms-win-devices-query-l1-1-1" fn DevCreateObjectQueryFromIdEx(
     pCallback: ?PDEV_QUERY_RESULT_CALLBACK,
     pContext: ?*anyopaque,
     phDevQuery: ?*?*HDEVQUERY__,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-0" fn DevCreateObjectQueryFromIds(
     ObjectType: DEV_OBJECT_TYPE,
@@ -388,7 +387,7 @@ pub extern "api-ms-win-devices-query-l1-1-0" fn DevCreateObjectQueryFromIds(
     pCallback: ?PDEV_QUERY_RESULT_CALLBACK,
     pContext: ?*anyopaque,
     phDevQuery: ?*?*HDEVQUERY__,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-1" fn DevCreateObjectQueryFromIdsEx(
     ObjectType: DEV_OBJECT_TYPE,
@@ -403,11 +402,11 @@ pub extern "api-ms-win-devices-query-l1-1-1" fn DevCreateObjectQueryFromIdsEx(
     pCallback: ?PDEV_QUERY_RESULT_CALLBACK,
     pContext: ?*anyopaque,
     phDevQuery: ?*?*HDEVQUERY__,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-0" fn DevCloseObjectQuery(
     hDevQuery: ?*HDEVQUERY__,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "api-ms-win-devices-query-l1-1-0" fn DevGetObjects(
     ObjectType: DEV_OBJECT_TYPE,
@@ -418,7 +417,7 @@ pub extern "api-ms-win-devices-query-l1-1-0" fn DevGetObjects(
     pFilter: ?[*]const DEVPROP_FILTER_EXPRESSION,
     pcObjectCount: ?*u32,
     ppObjects: ?*const ?*DEV_OBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-1" fn DevGetObjectsEx(
     ObjectType: DEV_OBJECT_TYPE,
@@ -431,12 +430,12 @@ pub extern "api-ms-win-devices-query-l1-1-1" fn DevGetObjectsEx(
     pExtendedParameters: ?[*]const DEV_QUERY_PARAMETER,
     pcObjectCount: ?*u32,
     ppObjects: ?*const ?*DEV_OBJECT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-0" fn DevFreeObjects(
     cObjectCount: u32,
     pObjects: [*]const DEV_OBJECT,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "api-ms-win-devices-query-l1-1-0" fn DevGetObjectProperties(
     ObjectType: DEV_OBJECT_TYPE,
@@ -446,7 +445,7 @@ pub extern "api-ms-win-devices-query-l1-1-0" fn DevGetObjectProperties(
     pRequestedProperties: [*]const DEVPROPCOMPKEY,
     pcPropertyCount: ?*u32,
     ppProperties: ?*const ?*DEVPROPERTY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-1" fn DevGetObjectPropertiesEx(
     ObjectType: DEV_OBJECT_TYPE,
@@ -458,12 +457,12 @@ pub extern "api-ms-win-devices-query-l1-1-1" fn DevGetObjectPropertiesEx(
     pExtendedParameters: ?[*]const DEV_QUERY_PARAMETER,
     pcPropertyCount: ?*u32,
     ppProperties: ?*const ?*DEVPROPERTY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "api-ms-win-devices-query-l1-1-0" fn DevFreeObjectProperties(
     cPropertyCount: u32,
     pProperties: [*]const DEVPROPERTY,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "api-ms-win-devices-query-l1-1-0" fn DevFindProperty(
     pKey: ?*const DEVPROPKEY,
@@ -471,8 +470,7 @@ pub extern "api-ms-win-devices-query-l1-1-0" fn DevFindProperty(
     pszLocaleName: ?[*:0]const u16,
     cProperties: u32,
     pProperties: ?[*]const DEVPROPERTY,
-) callconv(@import("std").os.windows.WINAPI) ?*DEVPROPERTY;
-
+) callconv(.winapi) ?*DEVPROPERTY;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -489,11 +487,11 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "PDEV_QUERY_RESULT_CALLBACK")) { _ = PDEV_QUERY_RESULT_CALLBACK; }
+    if (@hasDecl(@This(), "PDEV_QUERY_RESULT_CALLBACK")) {
+        _ = PDEV_QUERY_RESULT_CALLBACK;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

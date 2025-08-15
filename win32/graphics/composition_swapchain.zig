@@ -33,21 +33,21 @@ pub const IID_IPresentationBuffer = &IID_IPresentationBuffer_Value;
 pub const IPresentationBuffer = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetAvailableEvent: *const fn(
+        GetAvailableEvent: *const fn (
             self: *const IPresentationBuffer,
             availableEventHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsAvailable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsAvailable: *const fn (
             self: *const IPresentationBuffer,
             isAvailable: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetAvailableEvent(self: *const IPresentationBuffer, availableEventHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn GetAvailableEvent(self: *const IPresentationBuffer, availableEventHandle: ?*?HANDLE) HRESULT {
         return self.vtable.GetAvailableEvent(self, availableEventHandle);
     }
-    pub fn IsAvailable(self: *const IPresentationBuffer, isAvailable: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn IsAvailable(self: *const IPresentationBuffer, isAvailable: ?*u8) HRESULT {
         return self.vtable.IsAvailable(self, isAvailable);
     }
 };
@@ -57,14 +57,14 @@ pub const IID_IPresentationContent = &IID_IPresentationContent_Value;
 pub const IPresentationContent = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetTag: *const fn(
+        SetTag: *const fn (
             self: *const IPresentationContent,
             tag: usize,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetTag(self: *const IPresentationContent, tag: usize) callconv(.Inline) void {
+    pub inline fn SetTag(self: *const IPresentationContent, tag: usize) void {
         return self.vtable.SetTag(self, tag);
     }
 };
@@ -74,67 +74,67 @@ pub const IID_IPresentationSurface = &IID_IPresentationSurface_Value;
 pub const IPresentationSurface = extern union {
     pub const VTable = extern struct {
         base: IPresentationContent.VTable,
-        SetBuffer: *const fn(
+        SetBuffer: *const fn (
             self: *const IPresentationSurface,
             presentationBuffer: ?*IPresentationBuffer,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetColorSpace: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetColorSpace: *const fn (
             self: *const IPresentationSurface,
             colorSpace: DXGI_COLOR_SPACE_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAlphaMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAlphaMode: *const fn (
             self: *const IPresentationSurface,
             alphaMode: DXGI_ALPHA_MODE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSourceRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSourceRect: *const fn (
             self: *const IPresentationSurface,
             sourceRect: ?*const RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTransform: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTransform: *const fn (
             self: *const IPresentationSurface,
             transform: ?*PresentationTransform,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RestrictToOutput: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RestrictToOutput: *const fn (
             self: *const IPresentationSurface,
             output: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDisableReadback: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDisableReadback: *const fn (
             self: *const IPresentationSurface,
             value: u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLetterboxingMargins: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLetterboxingMargins: *const fn (
             self: *const IPresentationSurface,
             leftLetterboxSize: f32,
             topLetterboxSize: f32,
             rightLetterboxSize: f32,
             bottomLetterboxSize: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPresentationContent: IPresentationContent,
     IUnknown: IUnknown,
-    pub fn SetBuffer(self: *const IPresentationSurface, presentationBuffer: ?*IPresentationBuffer) callconv(.Inline) HRESULT {
+    pub inline fn SetBuffer(self: *const IPresentationSurface, presentationBuffer: ?*IPresentationBuffer) HRESULT {
         return self.vtable.SetBuffer(self, presentationBuffer);
     }
-    pub fn SetColorSpace(self: *const IPresentationSurface, colorSpace: DXGI_COLOR_SPACE_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn SetColorSpace(self: *const IPresentationSurface, colorSpace: DXGI_COLOR_SPACE_TYPE) HRESULT {
         return self.vtable.SetColorSpace(self, colorSpace);
     }
-    pub fn SetAlphaMode(self: *const IPresentationSurface, alphaMode: DXGI_ALPHA_MODE) callconv(.Inline) HRESULT {
+    pub inline fn SetAlphaMode(self: *const IPresentationSurface, alphaMode: DXGI_ALPHA_MODE) HRESULT {
         return self.vtable.SetAlphaMode(self, alphaMode);
     }
-    pub fn SetSourceRect(self: *const IPresentationSurface, sourceRect: ?*const RECT) callconv(.Inline) HRESULT {
+    pub inline fn SetSourceRect(self: *const IPresentationSurface, sourceRect: ?*const RECT) HRESULT {
         return self.vtable.SetSourceRect(self, sourceRect);
     }
-    pub fn SetTransform(self: *const IPresentationSurface, transform: ?*PresentationTransform) callconv(.Inline) HRESULT {
+    pub inline fn SetTransform(self: *const IPresentationSurface, transform: ?*PresentationTransform) HRESULT {
         return self.vtable.SetTransform(self, transform);
     }
-    pub fn RestrictToOutput(self: *const IPresentationSurface, output: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn RestrictToOutput(self: *const IPresentationSurface, output: ?*IUnknown) HRESULT {
         return self.vtable.RestrictToOutput(self, output);
     }
-    pub fn SetDisableReadback(self: *const IPresentationSurface, value: u8) callconv(.Inline) HRESULT {
+    pub inline fn SetDisableReadback(self: *const IPresentationSurface, value: u8) HRESULT {
         return self.vtable.SetDisableReadback(self, value);
     }
-    pub fn SetLetterboxingMargins(self: *const IPresentationSurface, leftLetterboxSize: f32, topLetterboxSize: f32, rightLetterboxSize: f32, bottomLetterboxSize: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetLetterboxingMargins(self: *const IPresentationSurface, leftLetterboxSize: f32, topLetterboxSize: f32, rightLetterboxSize: f32, bottomLetterboxSize: f32) HRESULT {
         return self.vtable.SetLetterboxingMargins(self, leftLetterboxSize, topLetterboxSize, rightLetterboxSize, bottomLetterboxSize);
     }
 };
@@ -144,19 +144,19 @@ pub const IID_IPresentStatistics = &IID_IPresentStatistics_Value;
 pub const IPresentStatistics = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetPresentId: *const fn(
+        GetPresentId: *const fn (
             self: *const IPresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) u64,
-        GetKind: *const fn(
+        ) callconv(.winapi) u64,
+        GetKind: *const fn (
             self: *const IPresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) PresentStatisticsKind,
+        ) callconv(.winapi) PresentStatisticsKind,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetPresentId(self: *const IPresentStatistics) callconv(.Inline) u64 {
+    pub inline fn GetPresentId(self: *const IPresentStatistics) u64 {
         return self.vtable.GetPresentId(self);
     }
-    pub fn GetKind(self: *const IPresentStatistics) callconv(.Inline) PresentStatisticsKind {
+    pub inline fn GetKind(self: *const IPresentStatistics) PresentStatisticsKind {
         return self.vtable.GetKind(self);
     }
 };
@@ -166,101 +166,101 @@ pub const IID_IPresentationManager = &IID_IPresentationManager_Value;
 pub const IPresentationManager = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        AddBufferFromResource: *const fn(
+        AddBufferFromResource: *const fn (
             self: *const IPresentationManager,
             resource: ?*IUnknown,
             presentationBuffer: ?*?*IPresentationBuffer,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreatePresentationSurface: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreatePresentationSurface: *const fn (
             self: *const IPresentationManager,
             compositionSurfaceHandle: ?HANDLE,
             presentationSurface: ?*?*IPresentationSurface,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNextPresentId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNextPresentId: *const fn (
             self: *const IPresentationManager,
-        ) callconv(@import("std").os.windows.WINAPI) u64,
-        SetTargetTime: *const fn(
+        ) callconv(.winapi) u64,
+        SetTargetTime: *const fn (
             self: *const IPresentationManager,
             targetTime: SystemInterruptTime,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPreferredPresentDuration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPreferredPresentDuration: *const fn (
             self: *const IPresentationManager,
             preferredDuration: SystemInterruptTime,
             deviationTolerance: SystemInterruptTime,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ForceVSyncInterrupt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ForceVSyncInterrupt: *const fn (
             self: *const IPresentationManager,
             forceVsyncInterrupt: u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Present: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Present: *const fn (
             self: *const IPresentationManager,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPresentRetiringFence: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPresentRetiringFence: *const fn (
             self: *const IPresentationManager,
             riid: ?*const Guid,
             fence: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CancelPresentsFrom: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CancelPresentsFrom: *const fn (
             self: *const IPresentationManager,
             presentIdToCancelFrom: u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLostEvent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLostEvent: *const fn (
             self: *const IPresentationManager,
             lostEventHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPresentStatisticsAvailableEvent: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPresentStatisticsAvailableEvent: *const fn (
             self: *const IPresentationManager,
             presentStatisticsAvailableEventHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnablePresentStatisticsKind: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnablePresentStatisticsKind: *const fn (
             self: *const IPresentationManager,
             presentStatisticsKind: PresentStatisticsKind,
             enabled: u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNextPresentStatistics: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNextPresentStatistics: *const fn (
             self: *const IPresentationManager,
             nextPresentStatistics: ?*?*IPresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn AddBufferFromResource(self: *const IPresentationManager, resource: ?*IUnknown, presentationBuffer: ?*?*IPresentationBuffer) callconv(.Inline) HRESULT {
+    pub inline fn AddBufferFromResource(self: *const IPresentationManager, resource: ?*IUnknown, presentationBuffer: ?*?*IPresentationBuffer) HRESULT {
         return self.vtable.AddBufferFromResource(self, resource, presentationBuffer);
     }
-    pub fn CreatePresentationSurface(self: *const IPresentationManager, compositionSurfaceHandle: ?HANDLE, presentationSurface: ?*?*IPresentationSurface) callconv(.Inline) HRESULT {
+    pub inline fn CreatePresentationSurface(self: *const IPresentationManager, compositionSurfaceHandle: ?HANDLE, presentationSurface: ?*?*IPresentationSurface) HRESULT {
         return self.vtable.CreatePresentationSurface(self, compositionSurfaceHandle, presentationSurface);
     }
-    pub fn GetNextPresentId(self: *const IPresentationManager) callconv(.Inline) u64 {
+    pub inline fn GetNextPresentId(self: *const IPresentationManager) u64 {
         return self.vtable.GetNextPresentId(self);
     }
-    pub fn SetTargetTime(self: *const IPresentationManager, targetTime: SystemInterruptTime) callconv(.Inline) HRESULT {
+    pub inline fn SetTargetTime(self: *const IPresentationManager, targetTime: SystemInterruptTime) HRESULT {
         return self.vtable.SetTargetTime(self, targetTime);
     }
-    pub fn SetPreferredPresentDuration(self: *const IPresentationManager, preferredDuration: SystemInterruptTime, deviationTolerance: SystemInterruptTime) callconv(.Inline) HRESULT {
+    pub inline fn SetPreferredPresentDuration(self: *const IPresentationManager, preferredDuration: SystemInterruptTime, deviationTolerance: SystemInterruptTime) HRESULT {
         return self.vtable.SetPreferredPresentDuration(self, preferredDuration, deviationTolerance);
     }
-    pub fn ForceVSyncInterrupt(self: *const IPresentationManager, forceVsyncInterrupt: u8) callconv(.Inline) HRESULT {
+    pub inline fn ForceVSyncInterrupt(self: *const IPresentationManager, forceVsyncInterrupt: u8) HRESULT {
         return self.vtable.ForceVSyncInterrupt(self, forceVsyncInterrupt);
     }
-    pub fn Present(self: *const IPresentationManager) callconv(.Inline) HRESULT {
+    pub inline fn Present(self: *const IPresentationManager) HRESULT {
         return self.vtable.Present(self);
     }
-    pub fn GetPresentRetiringFence(self: *const IPresentationManager, riid: ?*const Guid, fence: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetPresentRetiringFence(self: *const IPresentationManager, riid: ?*const Guid, fence: ?*?*anyopaque) HRESULT {
         return self.vtable.GetPresentRetiringFence(self, riid, fence);
     }
-    pub fn CancelPresentsFrom(self: *const IPresentationManager, presentIdToCancelFrom: u64) callconv(.Inline) HRESULT {
+    pub inline fn CancelPresentsFrom(self: *const IPresentationManager, presentIdToCancelFrom: u64) HRESULT {
         return self.vtable.CancelPresentsFrom(self, presentIdToCancelFrom);
     }
-    pub fn GetLostEvent(self: *const IPresentationManager, lostEventHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn GetLostEvent(self: *const IPresentationManager, lostEventHandle: ?*?HANDLE) HRESULT {
         return self.vtable.GetLostEvent(self, lostEventHandle);
     }
-    pub fn GetPresentStatisticsAvailableEvent(self: *const IPresentationManager, presentStatisticsAvailableEventHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn GetPresentStatisticsAvailableEvent(self: *const IPresentationManager, presentStatisticsAvailableEventHandle: ?*?HANDLE) HRESULT {
         return self.vtable.GetPresentStatisticsAvailableEvent(self, presentStatisticsAvailableEventHandle);
     }
-    pub fn EnablePresentStatisticsKind(self: *const IPresentationManager, presentStatisticsKind: PresentStatisticsKind, enabled: u8) callconv(.Inline) HRESULT {
+    pub inline fn EnablePresentStatisticsKind(self: *const IPresentationManager, presentStatisticsKind: PresentStatisticsKind, enabled: u8) HRESULT {
         return self.vtable.EnablePresentStatisticsKind(self, presentStatisticsKind, enabled);
     }
-    pub fn GetNextPresentStatistics(self: *const IPresentationManager, nextPresentStatistics: ?*?*IPresentStatistics) callconv(.Inline) HRESULT {
+    pub inline fn GetNextPresentStatistics(self: *const IPresentationManager, nextPresentStatistics: ?*?*IPresentStatistics) HRESULT {
         return self.vtable.GetNextPresentStatistics(self, nextPresentStatistics);
     }
 };
@@ -270,26 +270,26 @@ pub const IID_IPresentationFactory = &IID_IPresentationFactory_Value;
 pub const IPresentationFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        IsPresentationSupported: *const fn(
+        IsPresentationSupported: *const fn (
             self: *const IPresentationFactory,
-        ) callconv(@import("std").os.windows.WINAPI) u8,
-        IsPresentationSupportedWithIndependentFlip: *const fn(
+        ) callconv(.winapi) u8,
+        IsPresentationSupportedWithIndependentFlip: *const fn (
             self: *const IPresentationFactory,
-        ) callconv(@import("std").os.windows.WINAPI) u8,
-        CreatePresentationManager: *const fn(
+        ) callconv(.winapi) u8,
+        CreatePresentationManager: *const fn (
             self: *const IPresentationFactory,
             ppPresentationManager: ?*?*IPresentationManager,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn IsPresentationSupported(self: *const IPresentationFactory) callconv(.Inline) u8 {
+    pub inline fn IsPresentationSupported(self: *const IPresentationFactory) u8 {
         return self.vtable.IsPresentationSupported(self);
     }
-    pub fn IsPresentationSupportedWithIndependentFlip(self: *const IPresentationFactory) callconv(.Inline) u8 {
+    pub inline fn IsPresentationSupportedWithIndependentFlip(self: *const IPresentationFactory) u8 {
         return self.vtable.IsPresentationSupportedWithIndependentFlip(self);
     }
-    pub fn CreatePresentationManager(self: *const IPresentationFactory, ppPresentationManager: ?*?*IPresentationManager) callconv(.Inline) HRESULT {
+    pub inline fn CreatePresentationManager(self: *const IPresentationFactory, ppPresentationManager: ?*?*IPresentationManager) HRESULT {
         return self.vtable.CreatePresentationManager(self, ppPresentationManager);
     }
 };
@@ -308,20 +308,20 @@ pub const IID_IPresentStatusPresentStatistics = &IID_IPresentStatusPresentStatis
 pub const IPresentStatusPresentStatistics = extern union {
     pub const VTable = extern struct {
         base: IPresentStatistics.VTable,
-        GetCompositionFrameId: *const fn(
+        GetCompositionFrameId: *const fn (
             self: *const IPresentStatusPresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) u64,
-        GetPresentStatus: *const fn(
+        ) callconv(.winapi) u64,
+        GetPresentStatus: *const fn (
             self: *const IPresentStatusPresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) PresentStatus,
+        ) callconv(.winapi) PresentStatus,
     };
     vtable: *const VTable,
     IPresentStatistics: IPresentStatistics,
     IUnknown: IUnknown,
-    pub fn GetCompositionFrameId(self: *const IPresentStatusPresentStatistics) callconv(.Inline) u64 {
+    pub inline fn GetCompositionFrameId(self: *const IPresentStatusPresentStatistics) u64 {
         return self.vtable.GetCompositionFrameId(self);
     }
-    pub fn GetPresentStatus(self: *const IPresentStatusPresentStatistics) callconv(.Inline) PresentStatus {
+    pub inline fn GetPresentStatus(self: *const IPresentStatusPresentStatistics) PresentStatus {
         return self.vtable.GetPresentStatus(self);
     }
 };
@@ -351,28 +351,28 @@ pub const IID_ICompositionFramePresentStatistics = &IID_ICompositionFramePresent
 pub const ICompositionFramePresentStatistics = extern union {
     pub const VTable = extern struct {
         base: IPresentStatistics.VTable,
-        GetContentTag: *const fn(
+        GetContentTag: *const fn (
             self: *const ICompositionFramePresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) usize,
-        GetCompositionFrameId: *const fn(
+        ) callconv(.winapi) usize,
+        GetCompositionFrameId: *const fn (
             self: *const ICompositionFramePresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) u64,
-        GetDisplayInstanceArray: *const fn(
+        ) callconv(.winapi) u64,
+        GetDisplayInstanceArray: *const fn (
             self: *const ICompositionFramePresentStatistics,
             displayInstanceArrayCount: ?*u32,
             displayInstanceArray: ?*const ?*CompositionFrameDisplayInstance,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IPresentStatistics: IPresentStatistics,
     IUnknown: IUnknown,
-    pub fn GetContentTag(self: *const ICompositionFramePresentStatistics) callconv(.Inline) usize {
+    pub inline fn GetContentTag(self: *const ICompositionFramePresentStatistics) usize {
         return self.vtable.GetContentTag(self);
     }
-    pub fn GetCompositionFrameId(self: *const ICompositionFramePresentStatistics) callconv(.Inline) u64 {
+    pub inline fn GetCompositionFrameId(self: *const ICompositionFramePresentStatistics) u64 {
         return self.vtable.GetCompositionFrameId(self);
     }
-    pub fn GetDisplayInstanceArray(self: *const ICompositionFramePresentStatistics, displayInstanceArrayCount: ?*u32, displayInstanceArray: ?*const ?*CompositionFrameDisplayInstance) callconv(.Inline) void {
+    pub inline fn GetDisplayInstanceArray(self: *const ICompositionFramePresentStatistics, displayInstanceArrayCount: ?*u32, displayInstanceArray: ?*const ?*CompositionFrameDisplayInstance) void {
         return self.vtable.GetDisplayInstanceArray(self, displayInstanceArrayCount, displayInstanceArray);
     }
 };
@@ -382,42 +382,41 @@ pub const IID_IIndependentFlipFramePresentStatistics = &IID_IIndependentFlipFram
 pub const IIndependentFlipFramePresentStatistics = extern union {
     pub const VTable = extern struct {
         base: IPresentStatistics.VTable,
-        GetOutputAdapterLUID: *const fn(
+        GetOutputAdapterLUID: *const fn (
             self: *const IIndependentFlipFramePresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) LUID,
-        GetOutputVidPnSourceId: *const fn(
+        ) callconv(.winapi) LUID,
+        GetOutputVidPnSourceId: *const fn (
             self: *const IIndependentFlipFramePresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        GetContentTag: *const fn(
+        ) callconv(.winapi) u32,
+        GetContentTag: *const fn (
             self: *const IIndependentFlipFramePresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) usize,
-        GetDisplayedTime: *const fn(
+        ) callconv(.winapi) usize,
+        GetDisplayedTime: *const fn (
             self: *const IIndependentFlipFramePresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) SystemInterruptTime,
-        GetPresentDuration: *const fn(
+        ) callconv(.winapi) SystemInterruptTime,
+        GetPresentDuration: *const fn (
             self: *const IIndependentFlipFramePresentStatistics,
-        ) callconv(@import("std").os.windows.WINAPI) SystemInterruptTime,
+        ) callconv(.winapi) SystemInterruptTime,
     };
     vtable: *const VTable,
     IPresentStatistics: IPresentStatistics,
     IUnknown: IUnknown,
-    pub fn GetOutputAdapterLUID(self: *const IIndependentFlipFramePresentStatistics) callconv(.Inline) LUID {
+    pub inline fn GetOutputAdapterLUID(self: *const IIndependentFlipFramePresentStatistics) LUID {
         return self.vtable.GetOutputAdapterLUID(self);
     }
-    pub fn GetOutputVidPnSourceId(self: *const IIndependentFlipFramePresentStatistics) callconv(.Inline) u32 {
+    pub inline fn GetOutputVidPnSourceId(self: *const IIndependentFlipFramePresentStatistics) u32 {
         return self.vtable.GetOutputVidPnSourceId(self);
     }
-    pub fn GetContentTag(self: *const IIndependentFlipFramePresentStatistics) callconv(.Inline) usize {
+    pub inline fn GetContentTag(self: *const IIndependentFlipFramePresentStatistics) usize {
         return self.vtable.GetContentTag(self);
     }
-    pub fn GetDisplayedTime(self: *const IIndependentFlipFramePresentStatistics) callconv(.Inline) SystemInterruptTime {
+    pub inline fn GetDisplayedTime(self: *const IIndependentFlipFramePresentStatistics) SystemInterruptTime {
         return self.vtable.GetDisplayedTime(self);
     }
-    pub fn GetPresentDuration(self: *const IIndependentFlipFramePresentStatistics) callconv(.Inline) SystemInterruptTime {
+    pub inline fn GetPresentDuration(self: *const IIndependentFlipFramePresentStatistics) SystemInterruptTime {
         return self.vtable.GetPresentDuration(self);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (1)
@@ -426,8 +425,7 @@ pub extern "dcomp" fn CreatePresentationFactory(
     d3dDevice: ?*IUnknown,
     riid: ?*const Guid,
     presentationFactory: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -445,9 +443,7 @@ const LUID = @import("../foundation.zig").LUID;
 const RECT = @import("../foundation.zig").RECT;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

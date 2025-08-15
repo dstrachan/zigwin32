@@ -88,7 +88,7 @@ pub const VIRTUAL_DISK_ACCESS_MASK = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const VIRTUAL_DISK_ACCESS_NONE = VIRTUAL_DISK_ACCESS_MASK{ };
+pub const VIRTUAL_DISK_ACCESS_NONE = VIRTUAL_DISK_ACCESS_MASK{};
 pub const VIRTUAL_DISK_ACCESS_ATTACH_RO = VIRTUAL_DISK_ACCESS_MASK{ .ATTACH_RO = 1 };
 pub const VIRTUAL_DISK_ACCESS_ATTACH_RW = VIRTUAL_DISK_ACCESS_MASK{ .ATTACH_RW = 1 };
 pub const VIRTUAL_DISK_ACCESS_DETACH = VIRTUAL_DISK_ACCESS_MASK{ .DETACH = 1 };
@@ -148,7 +148,7 @@ pub const OPEN_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const OPEN_VIRTUAL_DISK_FLAG_NONE = OPEN_VIRTUAL_DISK_FLAG{ };
+pub const OPEN_VIRTUAL_DISK_FLAG_NONE = OPEN_VIRTUAL_DISK_FLAG{};
 pub const OPEN_VIRTUAL_DISK_FLAG_NO_PARENTS = OPEN_VIRTUAL_DISK_FLAG{ .NO_PARENTS = 1 };
 pub const OPEN_VIRTUAL_DISK_FLAG_BLANK_FILE = OPEN_VIRTUAL_DISK_FLAG{ .BLANK_FILE = 1 };
 pub const OPEN_VIRTUAL_DISK_FLAG_BOOT_DRIVE = OPEN_VIRTUAL_DISK_FLAG{ .BOOT_DRIVE = 1 };
@@ -268,7 +268,7 @@ pub const CREATE_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const CREATE_VIRTUAL_DISK_FLAG_NONE = CREATE_VIRTUAL_DISK_FLAG{ };
+pub const CREATE_VIRTUAL_DISK_FLAG_NONE = CREATE_VIRTUAL_DISK_FLAG{};
 pub const CREATE_VIRTUAL_DISK_FLAG_FULL_PHYSICAL_ALLOCATION = CREATE_VIRTUAL_DISK_FLAG{ .FULL_PHYSICAL_ALLOCATION = 1 };
 pub const CREATE_VIRTUAL_DISK_FLAG_PREVENT_WRITES_TO_SOURCE_DISK = CREATE_VIRTUAL_DISK_FLAG{ .PREVENT_WRITES_TO_SOURCE_DISK = 1 };
 pub const CREATE_VIRTUAL_DISK_FLAG_DO_NOT_COPY_METADATA_FROM_PARENT = CREATE_VIRTUAL_DISK_FLAG{ .DO_NOT_COPY_METADATA_FROM_PARENT = 1 };
@@ -337,7 +337,7 @@ pub const ATTACH_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const ATTACH_VIRTUAL_DISK_FLAG_NONE = ATTACH_VIRTUAL_DISK_FLAG{ };
+pub const ATTACH_VIRTUAL_DISK_FLAG_NONE = ATTACH_VIRTUAL_DISK_FLAG{};
 pub const ATTACH_VIRTUAL_DISK_FLAG_READ_ONLY = ATTACH_VIRTUAL_DISK_FLAG{ .READ_ONLY = 1 };
 pub const ATTACH_VIRTUAL_DISK_FLAG_NO_DRIVE_LETTER = ATTACH_VIRTUAL_DISK_FLAG{ .NO_DRIVE_LETTER = 1 };
 pub const ATTACH_VIRTUAL_DISK_FLAG_PERMANENT_LIFETIME = ATTACH_VIRTUAL_DISK_FLAG{ .PERMANENT_LIFETIME = 1 };
@@ -383,7 +383,7 @@ pub const DETACH_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const DETACH_VIRTUAL_DISK_FLAG_NONE = DETACH_VIRTUAL_DISK_FLAG{ };
+pub const DETACH_VIRTUAL_DISK_FLAG_NONE = DETACH_VIRTUAL_DISK_FLAG{};
 
 pub const DEPENDENT_DISK_FLAG = packed struct(u32) {
     MULT_BACKING_FILES: u1 = 0,
@@ -419,7 +419,7 @@ pub const DEPENDENT_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const DEPENDENT_DISK_FLAG_NONE = DEPENDENT_DISK_FLAG{ };
+pub const DEPENDENT_DISK_FLAG_NONE = DEPENDENT_DISK_FLAG{};
 pub const DEPENDENT_DISK_FLAG_MULT_BACKING_FILES = DEPENDENT_DISK_FLAG{ .MULT_BACKING_FILES = 1 };
 pub const DEPENDENT_DISK_FLAG_FULLY_ALLOCATED = DEPENDENT_DISK_FLAG{ .FULLY_ALLOCATED = 1 };
 pub const DEPENDENT_DISK_FLAG_READ_ONLY = DEPENDENT_DISK_FLAG{ .READ_ONLY = 1 };
@@ -504,7 +504,7 @@ pub const GET_STORAGE_DEPENDENCY_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const GET_STORAGE_DEPENDENCY_FLAG_NONE = GET_STORAGE_DEPENDENCY_FLAG{ };
+pub const GET_STORAGE_DEPENDENCY_FLAG_NONE = GET_STORAGE_DEPENDENCY_FLAG{};
 pub const GET_STORAGE_DEPENDENCY_FLAG_HOST_VOLUMES = GET_STORAGE_DEPENDENCY_FLAG{ .HOST_VOLUMES = 1 };
 pub const GET_STORAGE_DEPENDENCY_FLAG_DISK_HANDLE = GET_STORAGE_DEPENDENCY_FLAG{ .DISK_HANDLE = 1 };
 
@@ -674,7 +674,7 @@ pub const COMPACT_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const COMPACT_VIRTUAL_DISK_FLAG_NONE = COMPACT_VIRTUAL_DISK_FLAG{ };
+pub const COMPACT_VIRTUAL_DISK_FLAG_NONE = COMPACT_VIRTUAL_DISK_FLAG{};
 pub const COMPACT_VIRTUAL_DISK_FLAG_NO_ZERO_SCAN = COMPACT_VIRTUAL_DISK_FLAG{ ._ZERO_SCAN = 1 };
 pub const COMPACT_VIRTUAL_DISK_FLAG_NO_BLOCK_MOVES = COMPACT_VIRTUAL_DISK_FLAG{ ._BLOCK_MOVES = 1 };
 
@@ -734,7 +734,7 @@ pub const MERGE_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const MERGE_VIRTUAL_DISK_FLAG_NONE = MERGE_VIRTUAL_DISK_FLAG{ };
+pub const MERGE_VIRTUAL_DISK_FLAG_NONE = MERGE_VIRTUAL_DISK_FLAG{};
 
 pub const EXPAND_VIRTUAL_DISK_VERSION = enum(i32) {
     UNSPECIFIED = 0,
@@ -786,7 +786,7 @@ pub const EXPAND_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const EXPAND_VIRTUAL_DISK_FLAG_NONE = EXPAND_VIRTUAL_DISK_FLAG{ };
+pub const EXPAND_VIRTUAL_DISK_FLAG_NONE = EXPAND_VIRTUAL_DISK_FLAG{};
 pub const EXPAND_VIRTUAL_DISK_FLAG_NOTIFY_CHANGE = EXPAND_VIRTUAL_DISK_FLAG{ .TIFY_CHANGE = 1 };
 
 pub const RESIZE_VIRTUAL_DISK_VERSION = enum(i32) {
@@ -839,7 +839,7 @@ pub const RESIZE_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const RESIZE_VIRTUAL_DISK_FLAG_NONE = RESIZE_VIRTUAL_DISK_FLAG{ };
+pub const RESIZE_VIRTUAL_DISK_FLAG_NONE = RESIZE_VIRTUAL_DISK_FLAG{};
 pub const RESIZE_VIRTUAL_DISK_FLAG_ALLOW_UNSAFE_VIRTUAL_SIZE = RESIZE_VIRTUAL_DISK_FLAG{ .ALLOW_UNSAFE_VIRTUAL_SIZE = 1 };
 pub const RESIZE_VIRTUAL_DISK_FLAG_RESIZE_TO_SMALLEST_SAFE_VIRTUAL_SIZE = RESIZE_VIRTUAL_DISK_FLAG{ .RESIZE_TO_SMALLEST_SAFE_VIRTUAL_SIZE = 1 };
 
@@ -893,7 +893,7 @@ pub const MIRROR_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const MIRROR_VIRTUAL_DISK_FLAG_NONE = MIRROR_VIRTUAL_DISK_FLAG{ };
+pub const MIRROR_VIRTUAL_DISK_FLAG_NONE = MIRROR_VIRTUAL_DISK_FLAG{};
 pub const MIRROR_VIRTUAL_DISK_FLAG_EXISTING_FILE = MIRROR_VIRTUAL_DISK_FLAG{ .EXISTING_FILE = 1 };
 pub const MIRROR_VIRTUAL_DISK_FLAG_SKIP_MIRROR_ACTIVATION = MIRROR_VIRTUAL_DISK_FLAG{ .SKIP_MIRROR_ACTIVATION = 1 };
 pub const MIRROR_VIRTUAL_DISK_FLAG_ENABLE_SMB_COMPRESSION = MIRROR_VIRTUAL_DISK_FLAG{ .ENABLE_SMB_COMPRESSION = 1 };
@@ -939,7 +939,7 @@ pub const QUERY_CHANGES_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const QUERY_CHANGES_VIRTUAL_DISK_FLAG_NONE = QUERY_CHANGES_VIRTUAL_DISK_FLAG{ };
+pub const QUERY_CHANGES_VIRTUAL_DISK_FLAG_NONE = QUERY_CHANGES_VIRTUAL_DISK_FLAG{};
 
 pub const TAKE_SNAPSHOT_VHDSET_FLAG = packed struct(u32) {
     WRITEABLE: u1 = 0,
@@ -975,7 +975,7 @@ pub const TAKE_SNAPSHOT_VHDSET_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const TAKE_SNAPSHOT_VHDSET_FLAG_NONE = TAKE_SNAPSHOT_VHDSET_FLAG{ };
+pub const TAKE_SNAPSHOT_VHDSET_FLAG_NONE = TAKE_SNAPSHOT_VHDSET_FLAG{};
 pub const TAKE_SNAPSHOT_VHDSET_FLAG_WRITEABLE = TAKE_SNAPSHOT_VHDSET_FLAG{ .WRITEABLE = 1 };
 
 pub const TAKE_SNAPSHOT_VHDSET_VERSION = enum(i32) {
@@ -1028,7 +1028,7 @@ pub const DELETE_SNAPSHOT_VHDSET_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const DELETE_SNAPSHOT_VHDSET_FLAG_NONE = DELETE_SNAPSHOT_VHDSET_FLAG{ };
+pub const DELETE_SNAPSHOT_VHDSET_FLAG_NONE = DELETE_SNAPSHOT_VHDSET_FLAG{};
 pub const DELETE_SNAPSHOT_VHDSET_FLAG_PERSIST_RCT = DELETE_SNAPSHOT_VHDSET_FLAG{ .PERSIST_RCT = 1 };
 
 pub const DELETE_SNAPSHOT_VHDSET_VERSION = enum(i32) {
@@ -1092,7 +1092,7 @@ pub const MODIFY_VHDSET_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const MODIFY_VHDSET_FLAG_NONE = MODIFY_VHDSET_FLAG{ };
+pub const MODIFY_VHDSET_FLAG_NONE = MODIFY_VHDSET_FLAG{};
 pub const MODIFY_VHDSET_FLAG_WRITEABLE_SNAPSHOT = MODIFY_VHDSET_FLAG{ .WRITEABLE_SNAPSHOT = 1 };
 
 pub const MODIFY_VHDSET_PARAMETERS = extern struct {
@@ -1141,7 +1141,7 @@ pub const APPLY_SNAPSHOT_VHDSET_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const APPLY_SNAPSHOT_VHDSET_FLAG_NONE = APPLY_SNAPSHOT_VHDSET_FLAG{ };
+pub const APPLY_SNAPSHOT_VHDSET_FLAG_NONE = APPLY_SNAPSHOT_VHDSET_FLAG{};
 pub const APPLY_SNAPSHOT_VHDSET_FLAG_WRITEABLE = APPLY_SNAPSHOT_VHDSET_FLAG{ .WRITEABLE = 1 };
 
 pub const APPLY_SNAPSHOT_VHDSET_VERSION = enum(i32) {
@@ -1195,7 +1195,7 @@ pub const RAW_SCSI_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const RAW_SCSI_VIRTUAL_DISK_FLAG_NONE = RAW_SCSI_VIRTUAL_DISK_FLAG{ };
+pub const RAW_SCSI_VIRTUAL_DISK_FLAG_NONE = RAW_SCSI_VIRTUAL_DISK_FLAG{};
 
 pub const RAW_SCSI_VIRTUAL_DISK_VERSION = enum(i32) {
     UNSPECIFIED = 0,
@@ -1282,9 +1282,8 @@ pub const FORK_VIRTUAL_DISK_FLAG = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const FORK_VIRTUAL_DISK_FLAG_NONE = FORK_VIRTUAL_DISK_FLAG{ };
+pub const FORK_VIRTUAL_DISK_FLAG_NONE = FORK_VIRTUAL_DISK_FLAG{};
 pub const FORK_VIRTUAL_DISK_FLAG_EXISTING_FILE = FORK_VIRTUAL_DISK_FLAG{ .EXISTING_FILE = 1 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (29)
@@ -1297,7 +1296,7 @@ pub extern "virtdisk" fn OpenVirtualDisk(
     Flags: OPEN_VIRTUAL_DISK_FLAG,
     Parameters: ?*OPEN_VIRTUAL_DISK_PARAMETERS,
     Handle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn CreateVirtualDisk(
@@ -1310,7 +1309,7 @@ pub extern "virtdisk" fn CreateVirtualDisk(
     Parameters: ?*CREATE_VIRTUAL_DISK_PARAMETERS,
     Overlapped: ?*OVERLAPPED,
     Handle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn AttachVirtualDisk(
@@ -1320,14 +1319,14 @@ pub extern "virtdisk" fn AttachVirtualDisk(
     ProviderSpecificFlags: u32,
     Parameters: ?*ATTACH_VIRTUAL_DISK_PARAMETERS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn DetachVirtualDisk(
     VirtualDiskHandle: ?HANDLE,
     Flags: DETACH_VIRTUAL_DISK_FLAG,
     ProviderSpecificFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn GetVirtualDiskPhysicalPath(
@@ -1335,13 +1334,13 @@ pub extern "virtdisk" fn GetVirtualDiskPhysicalPath(
     DiskPathSizeInBytes: ?*u32,
     // TODO: what to do with BytesParamIndex 1?
     DiskPath: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 pub extern "virtdisk" fn GetAllAttachedVirtualDiskPhysicalPaths(
     PathsBufferSizeInBytes: ?*u32,
     // TODO: what to do with BytesParamIndex 0?
     PathsBuffer: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn GetStorageDependencyInformation(
@@ -1350,7 +1349,7 @@ pub extern "virtdisk" fn GetStorageDependencyInformation(
     StorageDependencyInfoSize: u32,
     StorageDependencyInfo: ?*STORAGE_DEPENDENCY_INFO,
     SizeUsed: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn GetVirtualDiskInformation(
@@ -1359,20 +1358,20 @@ pub extern "virtdisk" fn GetVirtualDiskInformation(
     // TODO: what to do with BytesParamIndex 1?
     VirtualDiskInfo: ?*GET_VIRTUAL_DISK_INFO,
     SizeUsed: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn SetVirtualDiskInformation(
     VirtualDiskHandle: ?HANDLE,
     VirtualDiskInfo: ?*SET_VIRTUAL_DISK_INFO,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "virtdisk" fn EnumerateVirtualDiskMetadata(
     VirtualDiskHandle: ?HANDLE,
     NumberOfItems: ?*u32,
     Items: [*]Guid,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "virtdisk" fn GetVirtualDiskMetadata(
@@ -1381,7 +1380,7 @@ pub extern "virtdisk" fn GetVirtualDiskMetadata(
     MetaDataSize: ?*u32,
     // TODO: what to do with BytesParamIndex 2?
     MetaData: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "virtdisk" fn SetVirtualDiskMetadata(
@@ -1390,20 +1389,20 @@ pub extern "virtdisk" fn SetVirtualDiskMetadata(
     MetaDataSize: u32,
     // TODO: what to do with BytesParamIndex 2?
     MetaData: ?*const anyopaque,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "virtdisk" fn DeleteVirtualDiskMetadata(
     VirtualDiskHandle: ?HANDLE,
     Item: ?*const Guid,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn GetVirtualDiskOperationProgress(
     VirtualDiskHandle: ?HANDLE,
     Overlapped: ?*OVERLAPPED,
     Progress: ?*VIRTUAL_DISK_PROGRESS,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn CompactVirtualDisk(
@@ -1411,7 +1410,7 @@ pub extern "virtdisk" fn CompactVirtualDisk(
     Flags: COMPACT_VIRTUAL_DISK_FLAG,
     Parameters: ?*COMPACT_VIRTUAL_DISK_PARAMETERS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn MergeVirtualDisk(
@@ -1419,7 +1418,7 @@ pub extern "virtdisk" fn MergeVirtualDisk(
     Flags: MERGE_VIRTUAL_DISK_FLAG,
     Parameters: ?*MERGE_VIRTUAL_DISK_PARAMETERS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "virtdisk" fn ExpandVirtualDisk(
@@ -1427,7 +1426,7 @@ pub extern "virtdisk" fn ExpandVirtualDisk(
     Flags: EXPAND_VIRTUAL_DISK_FLAG,
     Parameters: ?*EXPAND_VIRTUAL_DISK_PARAMETERS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "virtdisk" fn ResizeVirtualDisk(
@@ -1435,7 +1434,7 @@ pub extern "virtdisk" fn ResizeVirtualDisk(
     Flags: RESIZE_VIRTUAL_DISK_FLAG,
     Parameters: ?*RESIZE_VIRTUAL_DISK_PARAMETERS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "virtdisk" fn MirrorVirtualDisk(
@@ -1443,18 +1442,18 @@ pub extern "virtdisk" fn MirrorVirtualDisk(
     Flags: MIRROR_VIRTUAL_DISK_FLAG,
     Parameters: ?*MIRROR_VIRTUAL_DISK_PARAMETERS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "virtdisk" fn BreakMirrorVirtualDisk(
     VirtualDiskHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "virtdisk" fn AddVirtualDiskParent(
     VirtualDiskHandle: ?HANDLE,
     ParentPath: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "virtdisk" fn QueryChangesVirtualDisk(
@@ -1466,35 +1465,35 @@ pub extern "virtdisk" fn QueryChangesVirtualDisk(
     Ranges: [*]QUERY_CHANGES_VIRTUAL_DISK_RANGE,
     RangeCount: ?*u32,
     ProcessedLength: ?*u64,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "virtdisk" fn TakeSnapshotVhdSet(
     VirtualDiskHandle: ?HANDLE,
     Parameters: ?*const TAKE_SNAPSHOT_VHDSET_PARAMETERS,
     Flags: TAKE_SNAPSHOT_VHDSET_FLAG,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "virtdisk" fn DeleteSnapshotVhdSet(
     VirtualDiskHandle: ?HANDLE,
     Parameters: ?*const DELETE_SNAPSHOT_VHDSET_PARAMETERS,
     Flags: DELETE_SNAPSHOT_VHDSET_FLAG,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "virtdisk" fn ModifyVhdSet(
     VirtualDiskHandle: ?HANDLE,
     Parameters: ?*const MODIFY_VHDSET_PARAMETERS,
     Flags: MODIFY_VHDSET_FLAG,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "virtdisk" fn ApplySnapshotVhdSet(
     VirtualDiskHandle: ?HANDLE,
     Parameters: ?*const APPLY_SNAPSHOT_VHDSET_PARAMETERS,
     Flags: APPLY_SNAPSHOT_VHDSET_FLAG,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "virtdisk" fn RawSCSIVirtualDisk(
@@ -1502,19 +1501,18 @@ pub extern "virtdisk" fn RawSCSIVirtualDisk(
     Parameters: ?*const RAW_SCSI_VIRTUAL_DISK_PARAMETERS,
     Flags: RAW_SCSI_VIRTUAL_DISK_FLAG,
     Response: ?*RAW_SCSI_VIRTUAL_DISK_RESPONSE,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 pub extern "virtdisk" fn ForkVirtualDisk(
     VirtualDiskHandle: ?HANDLE,
     Flags: FORK_VIRTUAL_DISK_FLAG,
     Parameters: ?*const FORK_VIRTUAL_DISK_PARAMETERS,
     Overlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+) callconv(.winapi) WIN32_ERROR;
 
 pub extern "virtdisk" fn CompleteForkVirtualDisk(
     VirtualDiskHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
-
+) callconv(.winapi) WIN32_ERROR;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -1531,9 +1529,7 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 const WIN32_ERROR = @import("../foundation.zig").WIN32_ERROR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

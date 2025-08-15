@@ -118,7 +118,6 @@ pub const WEB_SOCKET_BUFFER = extern union {
     },
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (13)
 //--------------------------------------------------------------------------------
@@ -127,7 +126,7 @@ pub extern "websocket" fn WebSocketCreateClientHandle(
     pProperties: [*]const WEB_SOCKET_PROPERTY,
     ulPropertyCount: u32,
     phWebSocket: ?*WEB_SOCKET_HANDLE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketBeginClientHandshake(
@@ -140,7 +139,7 @@ pub extern "websocket" fn WebSocketBeginClientHandshake(
     ulInitialHeaderCount: u32,
     pAdditionalHeaders: [*]?*WEB_SOCKET_HTTP_HEADER,
     pulAdditionalHeaderCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketEndClientHandshake(
@@ -150,14 +149,14 @@ pub extern "websocket" fn WebSocketEndClientHandshake(
     pulSelectedExtensions: ?[*]u32,
     pulSelectedExtensionCount: ?*u32,
     pulSelectedSubprotocol: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketCreateServerHandle(
     pProperties: [*]const WEB_SOCKET_PROPERTY,
     ulPropertyCount: u32,
     phWebSocket: ?*WEB_SOCKET_HANDLE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketBeginServerHandshake(
@@ -169,12 +168,12 @@ pub extern "websocket" fn WebSocketBeginServerHandshake(
     ulRequestHeaderCount: u32,
     pResponseHeaders: [*]?*WEB_SOCKET_HTTP_HEADER,
     pulResponseHeaderCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketEndServerHandshake(
     hWebSocket: WEB_SOCKET_HANDLE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketSend(
@@ -182,14 +181,14 @@ pub extern "websocket" fn WebSocketSend(
     BufferType: WEB_SOCKET_BUFFER_TYPE,
     pBuffer: ?*WEB_SOCKET_BUFFER,
     Context: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketReceive(
     hWebSocket: WEB_SOCKET_HANDLE,
     pBuffer: ?*WEB_SOCKET_BUFFER,
     pvContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketGetAction(
@@ -201,32 +200,31 @@ pub extern "websocket" fn WebSocketGetAction(
     pBufferType: ?*WEB_SOCKET_BUFFER_TYPE,
     pvApplicationContext: ?*?*anyopaque,
     pvActionContext: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketCompleteAction(
     hWebSocket: WEB_SOCKET_HANDLE,
     pvActionContext: ?*anyopaque,
     ulBytesTransferred: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketAbortHandle(
     hWebSocket: WEB_SOCKET_HANDLE,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketDeleteHandle(
     hWebSocket: WEB_SOCKET_HANDLE,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "websocket" fn WebSocketGetGlobalProperty(
     eType: WEB_SOCKET_PROPERTY_TYPE,
     pvValue: [*]u8,
     ulSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -238,9 +236,7 @@ const HRESULT = @import("../foundation.zig").HRESULT;
 const PSTR = @import("../foundation.zig").PSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

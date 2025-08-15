@@ -168,29 +168,28 @@ pub const XINPUT_KEYSTROKE = extern struct {
     HidCode: u8,
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (7)
 //--------------------------------------------------------------------------------
 pub extern "xinputuap" fn XInputGetState(
     dwUserIndex: u32,
     pState: ?*XINPUT_STATE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "xinputuap" fn XInputSetState(
     dwUserIndex: u32,
     pVibration: ?*XINPUT_VIBRATION,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "xinputuap" fn XInputGetCapabilities(
     dwUserIndex: u32,
     dwFlags: u32,
     pCapabilities: ?*XINPUT_CAPABILITIES,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "xinputuap" fn XInputEnable(
     enable: BOOL,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "xinputuap" fn XInputGetAudioDeviceIds(
     dwUserIndex: u32,
@@ -198,20 +197,19 @@ pub extern "xinputuap" fn XInputGetAudioDeviceIds(
     pRenderCount: ?*u32,
     pCaptureDeviceId: ?[*:0]u16,
     pCaptureCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "xinputuap" fn XInputGetBatteryInformation(
     dwUserIndex: u32,
     devType: u8,
     pBatteryInformation: ?*XINPUT_BATTERY_INFORMATION,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "xinputuap" fn XInputGetKeystroke(
     dwUserIndex: u32,
     dwReserved: u32,
     pKeystroke: ?*XINPUT_KEYSTROKE,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -222,9 +220,7 @@ pub extern "xinputuap" fn XInputGetKeystroke(
 const BOOL = @import("../../foundation.zig").BOOL;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -4655,16 +4655,16 @@ pub const MCI_OVLY_WHERE_VIDEO = @as(i32, 1048576);
 // Section: Types (190)
 //--------------------------------------------------------------------------------
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HMMIO = *opaque{};
+pub const HMMIO = *opaque {};
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HDRVR = *opaque{};
+pub const HDRVR = *opaque {};
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HIC = *opaque{};
+pub const HIC = *opaque {};
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HVIDEO = *opaque{};
+pub const HVIDEO = *opaque {};
 
 const CLSID_KSDATAFORMAT_SUBTYPE_IEEE_FLOAT_Value = Guid.initString("00000003-0000-0010-8000-00aa00389b71");
 pub const CLSID_KSDATAFORMAT_SUBTYPE_IEEE_FLOAT = &CLSID_KSDATAFORMAT_SUBTYPE_IEEE_FLOAT_Value;
@@ -4894,10 +4894,10 @@ pub const JPEGINFOHEADER = extern struct {
     JPEGVSubSampling: u32 align(1),
 };
 
-pub const YIELDPROC = *const fn(
+pub const YIELDPROC = *const fn (
     mciId: u32,
     dwYieldData: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub const MCI_GENERIC_PARMS = extern struct {
     dwCallback: usize align(1),
@@ -5217,28 +5217,28 @@ pub const DRVCONFIGINFO = extern struct {
     lpszDCIAliasName: ?[*:0]const u16 align(1),
 };
 
-pub const DRIVERPROC = *const fn(
+pub const DRIVERPROC = *const fn (
     param0: usize,
     param1: ?HDRVR,
     param2: u32,
     param3: LPARAM,
     param4: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
-pub const DRIVERMSGPROC = *const fn(
+pub const DRIVERMSGPROC = *const fn (
     param0: u32,
     param1: u32,
     param2: usize,
     param3: usize,
     param4: usize,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMMIOPROC = *const fn(
+pub const LPMMIOPROC = *const fn (
     lpmmioinfo: ?PSTR,
     uMsg: u32,
     lParam1: LPARAM,
     lParam2: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 pub const MMIOINFO = extern struct {
     dwFlags: u32 align(1),
@@ -5909,9 +5909,9 @@ pub const AVIFILEINFOA = extern struct {
     szFileType: [64]CHAR,
 };
 
-pub const AVISAVECALLBACK = *const fn(
+pub const AVISAVECALLBACK = *const fn (
     param0: i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const AVICOMPRESSOPTIONS = extern struct {
     fccType: u32,
@@ -5933,37 +5933,37 @@ pub const IID_IAVIStream = &IID_IAVIStream_Value;
 pub const IAVIStream = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Create: *const fn(
+        Create: *const fn (
             self: *const IAVIStream,
             lParam1: LPARAM,
             lParam2: LPARAM,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Info: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Info: *const fn (
             self: *const IAVIStream,
             // TODO: what to do with BytesParamIndex 1?
             psi: ?*AVISTREAMINFOW,
             lSize: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindSample: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindSample: *const fn (
             self: *const IAVIStream,
             lPos: i32,
             lFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) i32,
-        ReadFormat: *const fn(
+        ) callconv(.winapi) i32,
+        ReadFormat: *const fn (
             self: *const IAVIStream,
             lPos: i32,
             // TODO: what to do with BytesParamIndex 2?
             lpFormat: ?*anyopaque,
             lpcbFormat: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFormat: *const fn (
             self: *const IAVIStream,
             lPos: i32,
             // TODO: what to do with BytesParamIndex 2?
             lpFormat: ?*anyopaque,
             cbFormat: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Read: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Read: *const fn (
             self: *const IAVIStream,
             lStart: i32,
             lSamples: i32,
@@ -5972,8 +5972,8 @@ pub const IAVIStream = extern union {
             cbBuffer: i32,
             plBytes: ?*i32,
             plSamples: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Write: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Write: *const fn (
             self: *const IAVIStream,
             lStart: i32,
             lSamples: i32,
@@ -5983,66 +5983,66 @@ pub const IAVIStream = extern union {
             dwFlags: u32,
             plSampWritten: ?*i32,
             plBytesWritten: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IAVIStream,
             lStart: i32,
             lSamples: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReadData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReadData: *const fn (
             self: *const IAVIStream,
             fcc: u32,
             // TODO: what to do with BytesParamIndex 2?
             lp: ?*anyopaque,
             lpcb: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteData: *const fn (
             self: *const IAVIStream,
             fcc: u32,
             // TODO: what to do with BytesParamIndex 2?
             lp: ?*anyopaque,
             cb: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetInfo: *const fn (
             self: *const IAVIStream,
             // TODO: what to do with BytesParamIndex 1?
             lpInfo: ?*AVISTREAMINFOW,
             cbInfo: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Create(self: *const IAVIStream, lParam1: LPARAM, lParam2: LPARAM) callconv(.Inline) HRESULT {
+    pub inline fn Create(self: *const IAVIStream, lParam1: LPARAM, lParam2: LPARAM) HRESULT {
         return self.vtable.Create(self, lParam1, lParam2);
     }
-    pub fn Info(self: *const IAVIStream, psi: ?*AVISTREAMINFOW, lSize: i32) callconv(.Inline) HRESULT {
+    pub inline fn Info(self: *const IAVIStream, psi: ?*AVISTREAMINFOW, lSize: i32) HRESULT {
         return self.vtable.Info(self, psi, lSize);
     }
-    pub fn FindSample(self: *const IAVIStream, lPos: i32, lFlags: i32) callconv(.Inline) i32 {
+    pub inline fn FindSample(self: *const IAVIStream, lPos: i32, lFlags: i32) i32 {
         return self.vtable.FindSample(self, lPos, lFlags);
     }
-    pub fn ReadFormat(self: *const IAVIStream, lPos: i32, lpFormat: ?*anyopaque, lpcbFormat: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn ReadFormat(self: *const IAVIStream, lPos: i32, lpFormat: ?*anyopaque, lpcbFormat: ?*i32) HRESULT {
         return self.vtable.ReadFormat(self, lPos, lpFormat, lpcbFormat);
     }
-    pub fn SetFormat(self: *const IAVIStream, lPos: i32, lpFormat: ?*anyopaque, cbFormat: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetFormat(self: *const IAVIStream, lPos: i32, lpFormat: ?*anyopaque, cbFormat: i32) HRESULT {
         return self.vtable.SetFormat(self, lPos, lpFormat, cbFormat);
     }
-    pub fn Read(self: *const IAVIStream, lStart: i32, lSamples: i32, lpBuffer: ?*anyopaque, cbBuffer: i32, plBytes: ?*i32, plSamples: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Read(self: *const IAVIStream, lStart: i32, lSamples: i32, lpBuffer: ?*anyopaque, cbBuffer: i32, plBytes: ?*i32, plSamples: ?*i32) HRESULT {
         return self.vtable.Read(self, lStart, lSamples, lpBuffer, cbBuffer, plBytes, plSamples);
     }
-    pub fn Write(self: *const IAVIStream, lStart: i32, lSamples: i32, lpBuffer: ?*anyopaque, cbBuffer: i32, dwFlags: u32, plSampWritten: ?*i32, plBytesWritten: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Write(self: *const IAVIStream, lStart: i32, lSamples: i32, lpBuffer: ?*anyopaque, cbBuffer: i32, dwFlags: u32, plSampWritten: ?*i32, plBytesWritten: ?*i32) HRESULT {
         return self.vtable.Write(self, lStart, lSamples, lpBuffer, cbBuffer, dwFlags, plSampWritten, plBytesWritten);
     }
-    pub fn Delete(self: *const IAVIStream, lStart: i32, lSamples: i32) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IAVIStream, lStart: i32, lSamples: i32) HRESULT {
         return self.vtable.Delete(self, lStart, lSamples);
     }
-    pub fn ReadData(self: *const IAVIStream, fcc: u32, lp: ?*anyopaque, lpcb: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn ReadData(self: *const IAVIStream, fcc: u32, lp: ?*anyopaque, lpcb: ?*i32) HRESULT {
         return self.vtable.ReadData(self, fcc, lp, lpcb);
     }
-    pub fn WriteData(self: *const IAVIStream, fcc: u32, lp: ?*anyopaque, cb: i32) callconv(.Inline) HRESULT {
+    pub inline fn WriteData(self: *const IAVIStream, fcc: u32, lp: ?*anyopaque, cb: i32) HRESULT {
         return self.vtable.WriteData(self, fcc, lp, cb);
     }
-    pub fn SetInfo(self: *const IAVIStream, lpInfo: ?*AVISTREAMINFOW, cbInfo: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetInfo(self: *const IAVIStream, lpInfo: ?*AVISTREAMINFOW, cbInfo: i32) HRESULT {
         return self.vtable.SetInfo(self, lpInfo, cbInfo);
     }
 };
@@ -6053,22 +6053,22 @@ pub const IID_IAVIStreaming = &IID_IAVIStreaming_Value;
 pub const IAVIStreaming = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Begin: *const fn(
+        Begin: *const fn (
             self: *const IAVIStreaming,
             lStart: i32,
             lEnd: i32,
             lRate: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        End: *const fn(
+        ) callconv(.winapi) HRESULT,
+        End: *const fn (
             self: *const IAVIStreaming,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Begin(self: *const IAVIStreaming, lStart: i32, lEnd: i32, lRate: i32) callconv(.Inline) HRESULT {
+    pub inline fn Begin(self: *const IAVIStreaming, lStart: i32, lEnd: i32, lRate: i32) HRESULT {
         return self.vtable.Begin(self, lStart, lEnd, lRate);
     }
-    pub fn End(self: *const IAVIStreaming) callconv(.Inline) HRESULT {
+    pub inline fn End(self: *const IAVIStreaming) HRESULT {
         return self.vtable.End(self);
     }
 };
@@ -6079,52 +6079,52 @@ pub const IID_IAVIEditStream = &IID_IAVIEditStream_Value;
 pub const IAVIEditStream = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Cut: *const fn(
+        Cut: *const fn (
             self: *const IAVIEditStream,
             plStart: ?*i32,
             plLength: ?*i32,
             ppResult: ?*?*IAVIStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Copy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Copy: *const fn (
             self: *const IAVIEditStream,
             plStart: ?*i32,
             plLength: ?*i32,
             ppResult: ?*?*IAVIStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Paste: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Paste: *const fn (
             self: *const IAVIEditStream,
             plPos: ?*i32,
             plLength: ?*i32,
             pstream: ?*IAVIStream,
             lStart: i32,
             lEnd: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IAVIEditStream,
             ppResult: ?*?*IAVIStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetInfo: *const fn (
             self: *const IAVIEditStream,
             // TODO: what to do with BytesParamIndex 1?
             lpInfo: ?*AVISTREAMINFOW,
             cbInfo: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Cut(self: *const IAVIEditStream, plStart: ?*i32, plLength: ?*i32, ppResult: ?*?*IAVIStream) callconv(.Inline) HRESULT {
+    pub inline fn Cut(self: *const IAVIEditStream, plStart: ?*i32, plLength: ?*i32, ppResult: ?*?*IAVIStream) HRESULT {
         return self.vtable.Cut(self, plStart, plLength, ppResult);
     }
-    pub fn Copy(self: *const IAVIEditStream, plStart: ?*i32, plLength: ?*i32, ppResult: ?*?*IAVIStream) callconv(.Inline) HRESULT {
+    pub inline fn Copy(self: *const IAVIEditStream, plStart: ?*i32, plLength: ?*i32, ppResult: ?*?*IAVIStream) HRESULT {
         return self.vtable.Copy(self, plStart, plLength, ppResult);
     }
-    pub fn Paste(self: *const IAVIEditStream, plPos: ?*i32, plLength: ?*i32, pstream: ?*IAVIStream, lStart: i32, lEnd: i32) callconv(.Inline) HRESULT {
+    pub inline fn Paste(self: *const IAVIEditStream, plPos: ?*i32, plLength: ?*i32, pstream: ?*IAVIStream, lStart: i32, lEnd: i32) HRESULT {
         return self.vtable.Paste(self, plPos, plLength, pstream, lStart, lEnd);
     }
-    pub fn Clone(self: *const IAVIEditStream, ppResult: ?*?*IAVIStream) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IAVIEditStream, ppResult: ?*?*IAVIStream) HRESULT {
         return self.vtable.Clone(self, ppResult);
     }
-    pub fn SetInfo(self: *const IAVIEditStream, lpInfo: ?*AVISTREAMINFOW, cbInfo: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetInfo(self: *const IAVIEditStream, lpInfo: ?*AVISTREAMINFOW, cbInfo: i32) HRESULT {
         return self.vtable.SetInfo(self, lpInfo, cbInfo);
     }
 };
@@ -6134,15 +6134,15 @@ pub const IID_IAVIPersistFile = &IID_IAVIPersistFile_Value;
 pub const IAVIPersistFile = extern union {
     pub const VTable = extern struct {
         base: IPersistFile.VTable,
-        Reserved1: *const fn(
+        Reserved1: *const fn (
             self: *const IAVIPersistFile,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPersistFile: IPersistFile,
     IPersist: IPersist,
     IUnknown: IUnknown,
-    pub fn Reserved1(self: *const IAVIPersistFile) callconv(.Inline) HRESULT {
+    pub inline fn Reserved1(self: *const IAVIPersistFile) HRESULT {
         return self.vtable.Reserved1(self);
     }
 };
@@ -6153,67 +6153,67 @@ pub const IID_IAVIFile = &IID_IAVIFile_Value;
 pub const IAVIFile = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Info: *const fn(
+        Info: *const fn (
             self: *const IAVIFile,
             // TODO: what to do with BytesParamIndex 1?
             pfi: ?*AVIFILEINFOW,
             lSize: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStream: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStream: *const fn (
             self: *const IAVIFile,
             ppStream: ?*?*IAVIStream,
             fccType: u32,
             lParam: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateStream: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateStream: *const fn (
             self: *const IAVIFile,
             ppStream: ?*?*IAVIStream,
             psi: ?*AVISTREAMINFOW,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteData: *const fn (
             self: *const IAVIFile,
             ckid: u32,
             // TODO: what to do with BytesParamIndex 2?
             lpData: ?*anyopaque,
             cbData: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReadData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReadData: *const fn (
             self: *const IAVIFile,
             ckid: u32,
             // TODO: what to do with BytesParamIndex 2?
             lpData: ?*anyopaque,
             lpcbData: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndRecord: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndRecord: *const fn (
             self: *const IAVIFile,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteStream: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteStream: *const fn (
             self: *const IAVIFile,
             fccType: u32,
             lParam: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Info(self: *const IAVIFile, pfi: ?*AVIFILEINFOW, lSize: i32) callconv(.Inline) HRESULT {
+    pub inline fn Info(self: *const IAVIFile, pfi: ?*AVIFILEINFOW, lSize: i32) HRESULT {
         return self.vtable.Info(self, pfi, lSize);
     }
-    pub fn GetStream(self: *const IAVIFile, ppStream: ?*?*IAVIStream, fccType: u32, lParam: i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStream(self: *const IAVIFile, ppStream: ?*?*IAVIStream, fccType: u32, lParam: i32) HRESULT {
         return self.vtable.GetStream(self, ppStream, fccType, lParam);
     }
-    pub fn CreateStream(self: *const IAVIFile, ppStream: ?*?*IAVIStream, psi: ?*AVISTREAMINFOW) callconv(.Inline) HRESULT {
+    pub inline fn CreateStream(self: *const IAVIFile, ppStream: ?*?*IAVIStream, psi: ?*AVISTREAMINFOW) HRESULT {
         return self.vtable.CreateStream(self, ppStream, psi);
     }
-    pub fn WriteData(self: *const IAVIFile, ckid: u32, lpData: ?*anyopaque, cbData: i32) callconv(.Inline) HRESULT {
+    pub inline fn WriteData(self: *const IAVIFile, ckid: u32, lpData: ?*anyopaque, cbData: i32) HRESULT {
         return self.vtable.WriteData(self, ckid, lpData, cbData);
     }
-    pub fn ReadData(self: *const IAVIFile, ckid: u32, lpData: ?*anyopaque, lpcbData: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn ReadData(self: *const IAVIFile, ckid: u32, lpData: ?*anyopaque, lpcbData: ?*i32) HRESULT {
         return self.vtable.ReadData(self, ckid, lpData, lpcbData);
     }
-    pub fn EndRecord(self: *const IAVIFile) callconv(.Inline) HRESULT {
+    pub inline fn EndRecord(self: *const IAVIFile) HRESULT {
         return self.vtable.EndRecord(self);
     }
-    pub fn DeleteStream(self: *const IAVIFile, fccType: u32, lParam: i32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteStream(self: *const IAVIFile, fccType: u32, lParam: i32) HRESULT {
         return self.vtable.DeleteStream(self, fccType, lParam);
     }
 };
@@ -6224,20 +6224,20 @@ pub const IID_IGetFrame = &IID_IGetFrame_Value;
 pub const IGetFrame = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetFrame: *const fn(
+        GetFrame: *const fn (
             self: *const IGetFrame,
             lPos: i32,
-        ) callconv(@import("std").os.windows.WINAPI) ?*anyopaque,
-        Begin: *const fn(
+        ) callconv(.winapi) ?*anyopaque,
+        Begin: *const fn (
             self: *const IGetFrame,
             lStart: i32,
             lEnd: i32,
             lRate: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        End: *const fn(
+        ) callconv(.winapi) HRESULT,
+        End: *const fn (
             self: *const IGetFrame,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFormat: *const fn (
             self: *const IGetFrame,
             lpbi: ?*BITMAPINFOHEADER,
             lpBits: ?*anyopaque,
@@ -6245,20 +6245,20 @@ pub const IGetFrame = extern union {
             y: i32,
             dx: i32,
             dy: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetFrame(self: *const IGetFrame, lPos: i32) callconv(.Inline) ?*anyopaque {
+    pub inline fn GetFrame(self: *const IGetFrame, lPos: i32) ?*anyopaque {
         return self.vtable.GetFrame(self, lPos);
     }
-    pub fn Begin(self: *const IGetFrame, lStart: i32, lEnd: i32, lRate: i32) callconv(.Inline) HRESULT {
+    pub inline fn Begin(self: *const IGetFrame, lStart: i32, lEnd: i32, lRate: i32) HRESULT {
         return self.vtable.Begin(self, lStart, lEnd, lRate);
     }
-    pub fn End(self: *const IGetFrame) callconv(.Inline) HRESULT {
+    pub inline fn End(self: *const IGetFrame) HRESULT {
         return self.vtable.End(self);
     }
-    pub fn SetFormat(self: *const IGetFrame, lpbi: ?*BITMAPINFOHEADER, lpBits: ?*anyopaque, x: i32, y: i32, dx: i32, dy: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetFormat(self: *const IGetFrame, lpbi: ?*BITMAPINFOHEADER, lpBits: ?*anyopaque, x: i32, y: i32, dx: i32, dy: i32) HRESULT {
         return self.vtable.SetFormat(self, lpbi, lpBits, x, y, dx, dy);
     }
 };
@@ -6353,48 +6353,48 @@ pub const CAPINFOCHUNK = extern struct {
     cbData: i32,
 };
 
-pub const CAPYIELDCALLBACK = *const fn(
+pub const CAPYIELDCALLBACK = *const fn (
     hWnd: ?HWND,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
-pub const CAPSTATUSCALLBACKW = *const fn(
-    hWnd: ?HWND,
-    nID: i32,
-    lpsz: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
-
-pub const CAPERRORCALLBACKW = *const fn(
+pub const CAPSTATUSCALLBACKW = *const fn (
     hWnd: ?HWND,
     nID: i32,
     lpsz: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
-pub const CAPSTATUSCALLBACKA = *const fn(
+pub const CAPERRORCALLBACKW = *const fn (
+    hWnd: ?HWND,
+    nID: i32,
+    lpsz: ?[*:0]const u16,
+) callconv(.winapi) LRESULT;
+
+pub const CAPSTATUSCALLBACKA = *const fn (
     hWnd: ?HWND,
     nID: i32,
     lpsz: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
-pub const CAPERRORCALLBACKA = *const fn(
+pub const CAPERRORCALLBACKA = *const fn (
     hWnd: ?HWND,
     nID: i32,
     lpsz: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
-pub const CAPVIDEOCALLBACK = *const fn(
+pub const CAPVIDEOCALLBACK = *const fn (
     hWnd: ?HWND,
     lpVHdr: ?*VIDEOHDR,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
-pub const CAPWAVECALLBACK = *const fn(
+pub const CAPWAVECALLBACK = *const fn (
     hWnd: ?HWND,
     lpWHdr: ?*WAVEHDR,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
-pub const CAPCONTROLCALLBACK = *const fn(
+pub const CAPCONTROLCALLBACK = *const fn (
     hWnd: ?HWND,
     nState: i32,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 pub const DRVM_IOCTL_DATA = extern struct {
     dwSize: u32 align(1),
@@ -6439,17 +6439,17 @@ pub const MCI_OPEN_DRIVER_PARMS = extern struct {
     wType: u32 align(1),
 };
 
-pub const LPTASKCALLBACK = *const fn(
+pub const LPTASKCALLBACK = *const fn (
     dwInst: usize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const VFWWDMExtensionProc = *const fn(
+pub const VFWWDMExtensionProc = *const fn (
     pfnDeviceIoControl: ?*anyopaque,
     pfnAddPropertyPage: ?LPFNSVADDPROPSHEETPAGE,
     lParam: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPFNEXTDEVIO = *const fn(
+pub const LPFNEXTDEVIO = *const fn (
     lParam: LPARAM,
     dwFlags: u32,
     dwIoControlCode: u32,
@@ -6459,8 +6459,7 @@ pub const LPFNEXTDEVIO = *const fn(
     nOutBufferSize: u32,
     lpBytesReturned: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (170)
@@ -6470,116 +6469,116 @@ pub extern "winmm" fn mciSendCommandA(
     uMsg: u32,
     dwParam1: usize,
     dwParam2: usize,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciSendCommandW(
     mciId: u32,
     uMsg: u32,
     dwParam1: usize,
     dwParam2: usize,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciSendStringA(
     lpstrCommand: ?[*:0]const u8,
     lpstrReturnString: ?[*:0]u8,
     uReturnLength: u32,
     hwndCallback: ?HWND,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciSendStringW(
     lpstrCommand: ?[*:0]const u16,
     lpstrReturnString: ?[*:0]u16,
     uReturnLength: u32,
     hwndCallback: ?HWND,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciGetDeviceIDA(
     pszDevice: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciGetDeviceIDW(
     pszDevice: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciGetDeviceIDFromElementIDA(
     dwElementID: u32,
     lpstrType: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciGetDeviceIDFromElementIDW(
     dwElementID: u32,
     lpstrType: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciGetErrorStringA(
     mcierr: u32,
     pszText: [*:0]u8,
     cchText: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "winmm" fn mciGetErrorStringW(
     mcierr: u32,
     pszText: [*:0]u16,
     cchText: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "winmm" fn mciSetYieldProc(
     mciId: u32,
     fpYieldProc: ?YIELDPROC,
     dwYieldData: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "winmm" fn mciGetCreatorTask(
     mciId: u32,
-) callconv(@import("std").os.windows.WINAPI) ?HTASK;
+) callconv(.winapi) ?HTASK;
 
 pub extern "winmm" fn mciGetYieldProc(
     mciId: u32,
     pdwYieldData: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) ?YIELDPROC;
+) callconv(.winapi) ?YIELDPROC;
 
 pub extern "winmm" fn mciGetDriverData(
     wDeviceID: u32,
-) callconv(@import("std").os.windows.WINAPI) usize;
+) callconv(.winapi) usize;
 
 pub extern "winmm" fn mciLoadCommandResource(
     hInstance: ?HANDLE,
     lpResName: ?[*:0]const u16,
     wType: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciSetDriverData(
     wDeviceID: u32,
     dwData: usize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "winmm" fn mciDriverYield(
     wDeviceID: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mciDriverNotify(
     hwndCallback: ?HANDLE,
     wDeviceID: u32,
     uStatus: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "winmm" fn mciFreeCommandResource(
     wTable: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn CloseDriver(
     hDriver: ?HDRVR,
     lParam1: LPARAM,
     lParam2: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn OpenDriver(
     szDriverName: ?[*:0]const u16,
     szSectionName: ?[*:0]const u16,
     lParam2: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) ?HDRVR;
+) callconv(.winapi) ?HDRVR;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn SendDriverMessage(
@@ -6587,17 +6586,17 @@ pub extern "winmm" fn SendDriverMessage(
     message: u32,
     lParam1: LPARAM,
     lParam2: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn DrvGetModuleHandle(
     hDriver: ?HDRVR,
-) callconv(@import("std").os.windows.WINAPI) ?HINSTANCE;
+) callconv(.winapi) ?HINSTANCE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn GetDriverModuleHandle(
     hDriver: ?HDRVR,
-) callconv(@import("std").os.windows.WINAPI) ?HINSTANCE;
+) callconv(.winapi) ?HINSTANCE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn DefDriverProc(
@@ -6606,7 +6605,7 @@ pub extern "winmm" fn DefDriverProc(
     uMsg: u32,
     lParam1: LPARAM,
     lParam2: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn DriverCallback(
@@ -6617,7 +6616,7 @@ pub extern "winmm" fn DriverCallback(
     dwUser: usize,
     dwParam1: usize,
     dwParam2: usize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "api-ms-win-mm-misc-l1-1-1" fn sndOpenSound(
@@ -6625,54 +6624,54 @@ pub extern "api-ms-win-mm-misc-l1-1-1" fn sndOpenSound(
     AppName: ?[*:0]const u16,
     Flags: i32,
     FileHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "winmm" fn mmDrvInstall(
     hDriver: ?HDRVR,
     wszDrvEntry: ?[*:0]const u16,
     drvMessage: ?DRIVERMSGPROC,
     wFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioStringToFOURCCA(
     sz: ?[*:0]const u8,
     uFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioStringToFOURCCW(
     sz: ?[*:0]const u16,
     uFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioInstallIOProcA(
     fccIOProc: u32,
     pIOProc: ?LPMMIOPROC,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) ?LPMMIOPROC;
+) callconv(.winapi) ?LPMMIOPROC;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioInstallIOProcW(
     fccIOProc: u32,
     pIOProc: ?LPMMIOPROC,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) ?LPMMIOPROC;
+) callconv(.winapi) ?LPMMIOPROC;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioOpenA(
     pszFileName: ?*[128]u8,
     pmmioinfo: ?*MMIOINFO,
     fdwOpen: u32,
-) callconv(@import("std").os.windows.WINAPI) ?HMMIO;
+) callconv(.winapi) ?HMMIO;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioOpenW(
     pszFileName: ?*[128]u16,
     pmmioinfo: ?*MMIOINFO,
     fdwOpen: u32,
-) callconv(@import("std").os.windows.WINAPI) ?HMMIO;
+) callconv(.winapi) ?HMMIO;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioRenameA(
@@ -6680,7 +6679,7 @@ pub extern "winmm" fn mmioRenameA(
     pszNewFileName: ?[*:0]const u8,
     pmmioinfo: ?*MMIOINFO,
     fdwRename: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioRenameW(
@@ -6688,13 +6687,13 @@ pub extern "winmm" fn mmioRenameW(
     pszNewFileName: ?[*:0]const u16,
     pmmioinfo: ?*MMIOINFO,
     fdwRename: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioClose(
     hmmio: ?HMMIO,
     fuClose: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioRead(
@@ -6702,7 +6701,7 @@ pub extern "winmm" fn mmioRead(
     // TODO: what to do with BytesParamIndex 2?
     pch: ?*i8,
     cch: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioWrite(
@@ -6710,28 +6709,28 @@ pub extern "winmm" fn mmioWrite(
     // TODO: what to do with BytesParamIndex 2?
     pch: ?[*:0]const u8,
     cch: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioSeek(
     hmmio: ?HMMIO,
     lOffset: i32,
     iOrigin: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioGetInfo(
     hmmio: ?HMMIO,
     pmmioinfo: ?*MMIOINFO,
     fuInfo: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioSetInfo(
     hmmio: ?HMMIO,
     pmmioinfo: ?*MMIOINFO,
     fuInfo: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioSetBuffer(
@@ -6739,20 +6738,20 @@ pub extern "winmm" fn mmioSetBuffer(
     pchBuffer: ?[*:0]u8,
     cchBuffer: i32,
     fuBuffer: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioFlush(
     hmmio: ?HMMIO,
     fuFlush: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioAdvance(
     hmmio: ?HMMIO,
     pmmioinfo: ?*MMIOINFO,
     fuAdvance: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioSendMessage(
@@ -6760,7 +6759,7 @@ pub extern "winmm" fn mmioSendMessage(
     uMsg: u32,
     lParam1: LPARAM,
     lParam2: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioDescend(
@@ -6768,38 +6767,37 @@ pub extern "winmm" fn mmioDescend(
     pmmcki: ?*MMCKINFO,
     pmmckiParent: ?*const MMCKINFO,
     fuDescend: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioAscend(
     hmmio: ?HMMIO,
     pmmcki: ?*MMCKINFO,
     fuAscend: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn mmioCreateChunk(
     hmmio: ?HMMIO,
     pmmcki: ?*MMCKINFO,
     fuCreate: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn joyGetPosEx(
     uJoyID: u32,
     pji: ?*JOYINFOEX,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "winmm" fn joyGetNumDevs(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "winmm" fn joyGetNumDevs() callconv(.winapi) u32;
 
 pub extern "winmm" fn joyGetDevCapsA(
     uJoyID: usize,
     // TODO: what to do with BytesParamIndex 2?
     pjc: ?*JOYCAPSA,
     cbjc: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn joyGetDevCapsW(
@@ -6807,24 +6805,24 @@ pub extern "winmm" fn joyGetDevCapsW(
     // TODO: what to do with BytesParamIndex 2?
     pjc: ?*JOYCAPSW,
     cbjc: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn joyGetPos(
     uJoyID: u32,
     pji: ?*JOYINFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn joyGetThreshold(
     uJoyID: u32,
     puThreshold: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn joyReleaseCapture(
     uJoyID: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn joySetCapture(
@@ -6832,23 +6830,22 @@ pub extern "winmm" fn joySetCapture(
     uJoyID: u32,
     uPeriod: u32,
     fChanged: BOOL,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn joySetThreshold(
     uJoyID: u32,
     uThreshold: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub extern "msvfw32" fn VideoForWindowsVersion(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "msvfw32" fn VideoForWindowsVersion() callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICInfo(
     fccType: u32,
     fccHandler: u32,
     lpicinfo: ?*ICINFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICInstall(
@@ -6857,14 +6854,14 @@ pub extern "msvfw32" fn ICInstall(
     lParam: LPARAM,
     szDesc: ?PSTR,
     wFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICRemove(
     fccType: u32,
     fccHandler: u32,
     wFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICGetInfo(
@@ -6872,14 +6869,14 @@ pub extern "msvfw32" fn ICGetInfo(
     // TODO: what to do with BytesParamIndex 2?
     picinfo: ?*ICINFO,
     cb: u32,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICOpen(
     fccType: u32,
     fccHandler: u32,
     wMode: u32,
-) callconv(@import("std").os.windows.WINAPI) ?HIC;
+) callconv(.winapi) ?HIC;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICOpenFunction(
@@ -6887,12 +6884,12 @@ pub extern "msvfw32" fn ICOpenFunction(
     fccHandler: u32,
     wMode: u32,
     lpfnHandler: ?FARPROC,
-) callconv(@import("std").os.windows.WINAPI) ?HIC;
+) callconv(.winapi) ?HIC;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICClose(
     hic: ?HIC,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICSendMessage(
@@ -6900,7 +6897,7 @@ pub extern "msvfw32" fn ICSendMessage(
     msg: u32,
     dw1: usize,
     dw2: usize,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICCompress(
@@ -6917,7 +6914,7 @@ pub extern "msvfw32" fn ICCompress(
     dwQuality: u32,
     lpbiPrev: ?*BITMAPINFOHEADER,
     lpPrev: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICDecompress(
@@ -6927,7 +6924,7 @@ pub extern "msvfw32" fn ICDecompress(
     lpData: ?*anyopaque,
     lpbi: ?*BITMAPINFOHEADER,
     lpBits: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICDrawBegin(
@@ -6947,7 +6944,7 @@ pub extern "msvfw32" fn ICDrawBegin(
     dySrc: i32,
     dwRate: u32,
     dwScale: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICDraw(
@@ -6958,7 +6955,7 @@ pub extern "msvfw32" fn ICDraw(
     lpData: ?*anyopaque,
     cbData: u32,
     lTime: i32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICLocate(
@@ -6967,7 +6964,7 @@ pub extern "msvfw32" fn ICLocate(
     lpbiIn: ?*BITMAPINFOHEADER,
     lpbiOut: ?*BITMAPINFOHEADER,
     wFlags: u16,
-) callconv(@import("std").os.windows.WINAPI) ?HIC;
+) callconv(.winapi) ?HIC;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICGetDisplayFormat(
@@ -6977,7 +6974,7 @@ pub extern "msvfw32" fn ICGetDisplayFormat(
     BitDepth: i32,
     dx: i32,
     dy: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HIC;
+) callconv(.winapi) ?HIC;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICImageCompress(
@@ -6988,7 +6985,7 @@ pub extern "msvfw32" fn ICImageCompress(
     lpbiOut: ?*BITMAPINFO,
     lQuality: i32,
     plSize: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICImageDecompress(
@@ -6997,7 +6994,7 @@ pub extern "msvfw32" fn ICImageDecompress(
     lpbiIn: ?*BITMAPINFO,
     lpBits: ?*anyopaque,
     lpbiOut: ?*BITMAPINFO,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICCompressorChoose(
@@ -7007,18 +7004,18 @@ pub extern "msvfw32" fn ICCompressorChoose(
     lpData: ?*anyopaque,
     pc: ?*COMPVARS,
     lpszTitle: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICSeqCompressFrameStart(
     pc: ?*COMPVARS,
     lpbiIn: ?*BITMAPINFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICSeqCompressFrameEnd(
     pc: ?*COMPVARS,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICSeqCompressFrame(
@@ -7027,21 +7024,20 @@ pub extern "msvfw32" fn ICSeqCompressFrame(
     lpBits: ?*anyopaque,
     pfKey: ?*BOOL,
     plSize: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn ICCompressorFree(
     pc: ?*COMPVARS,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "msvfw32" fn DrawDibOpen(
-) callconv(@import("std").os.windows.WINAPI) isize;
+pub extern "msvfw32" fn DrawDibOpen() callconv(.winapi) isize;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibClose(
     hdd: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibGetBuffer(
@@ -7049,18 +7045,18 @@ pub extern "msvfw32" fn DrawDibGetBuffer(
     lpbi: ?*BITMAPINFOHEADER,
     dwSize: u32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibGetPalette(
     hdd: isize,
-) callconv(@import("std").os.windows.WINAPI) ?HPALETTE;
+) callconv(.winapi) ?HPALETTE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibSetPalette(
     hdd: isize,
     hpal: ?HPALETTE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibChangePalette(
@@ -7068,25 +7064,25 @@ pub extern "msvfw32" fn DrawDibChangePalette(
     iStart: i32,
     iLen: i32,
     lppe: [*]PALETTEENTRY,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibRealize(
     hdd: isize,
     hdc: ?HDC,
     fBackground: BOOL,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibStart(
     hdd: isize,
     rate: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibStop(
     hdd: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibBegin(
@@ -7098,7 +7094,7 @@ pub extern "msvfw32" fn DrawDibBegin(
     dxSrc: i32,
     dySrc: i32,
     wFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibDraw(
@@ -7115,41 +7111,39 @@ pub extern "msvfw32" fn DrawDibDraw(
     dxSrc: i32,
     dySrc: i32,
     wFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibEnd(
     hdd: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibTime(
     hdd: isize,
     lpddtime: ?*DRAWDIBTIME,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn DrawDibProfileDisplay(
     lpbi: ?*BITMAPINFOHEADER,
-) callconv(@import("std").os.windows.WINAPI) LRESULT;
+) callconv(.winapi) LRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "avifil32" fn AVIFileInit(
-) callconv(@import("std").os.windows.WINAPI) void;
+pub extern "avifil32" fn AVIFileInit() callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "avifil32" fn AVIFileExit(
-) callconv(@import("std").os.windows.WINAPI) void;
+pub extern "avifil32" fn AVIFileExit() callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileAddRef(
     pfile: ?*IAVIFile,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileRelease(
     pfile: ?*IAVIFile,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileOpenA(
@@ -7157,7 +7151,7 @@ pub extern "avifil32" fn AVIFileOpenA(
     szFile: ?[*:0]const u8,
     uMode: u32,
     lpHandler: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileOpenW(
@@ -7165,7 +7159,7 @@ pub extern "avifil32" fn AVIFileOpenW(
     szFile: ?[*:0]const u16,
     uMode: u32,
     lpHandler: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileInfoW(
@@ -7173,7 +7167,7 @@ pub extern "avifil32" fn AVIFileInfoW(
     // TODO: what to do with BytesParamIndex 2?
     pfi: ?*AVIFILEINFOW,
     lSize: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileInfoA(
@@ -7181,7 +7175,7 @@ pub extern "avifil32" fn AVIFileInfoA(
     // TODO: what to do with BytesParamIndex 2?
     pfi: ?*AVIFILEINFOA,
     lSize: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileGetStream(
@@ -7189,21 +7183,21 @@ pub extern "avifil32" fn AVIFileGetStream(
     ppavi: ?*?*IAVIStream,
     fccType: u32,
     lParam: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileCreateStreamW(
     pfile: ?*IAVIFile,
     ppavi: ?*?*IAVIStream,
     psi: ?*AVISTREAMINFOW,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileCreateStreamA(
     pfile: ?*IAVIFile,
     ppavi: ?*?*IAVIStream,
     psi: ?*AVISTREAMINFOA,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileWriteData(
@@ -7212,7 +7206,7 @@ pub extern "avifil32" fn AVIFileWriteData(
     // TODO: what to do with BytesParamIndex 3?
     lpData: ?*anyopaque,
     cbData: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileReadData(
@@ -7221,22 +7215,22 @@ pub extern "avifil32" fn AVIFileReadData(
     // TODO: what to do with BytesParamIndex 3?
     lpData: ?*anyopaque,
     lpcbData: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIFileEndRecord(
     pfile: ?*IAVIFile,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamAddRef(
     pavi: ?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamRelease(
     pavi: ?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamInfoW(
@@ -7244,7 +7238,7 @@ pub extern "avifil32" fn AVIStreamInfoW(
     // TODO: what to do with BytesParamIndex 2?
     psi: ?*AVISTREAMINFOW,
     lSize: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamInfoA(
@@ -7252,14 +7246,14 @@ pub extern "avifil32" fn AVIStreamInfoA(
     // TODO: what to do with BytesParamIndex 2?
     psi: ?*AVISTREAMINFOA,
     lSize: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamFindSample(
     pavi: ?*IAVIStream,
     lPos: i32,
     lFlags: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamReadFormat(
@@ -7268,7 +7262,7 @@ pub extern "avifil32" fn AVIStreamReadFormat(
     // TODO: what to do with BytesParamIndex 3?
     lpFormat: ?*anyopaque,
     lpcbFormat: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamSetFormat(
@@ -7277,7 +7271,7 @@ pub extern "avifil32" fn AVIStreamSetFormat(
     // TODO: what to do with BytesParamIndex 3?
     lpFormat: ?*anyopaque,
     cbFormat: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamReadData(
@@ -7286,7 +7280,7 @@ pub extern "avifil32" fn AVIStreamReadData(
     // TODO: what to do with BytesParamIndex 3?
     lp: ?*anyopaque,
     lpcb: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamWriteData(
@@ -7295,7 +7289,7 @@ pub extern "avifil32" fn AVIStreamWriteData(
     // TODO: what to do with BytesParamIndex 3?
     lp: ?*anyopaque,
     cb: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamRead(
@@ -7307,7 +7301,7 @@ pub extern "avifil32" fn AVIStreamRead(
     cbBuffer: i32,
     plBytes: ?*i32,
     plSamples: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamWrite(
@@ -7320,29 +7314,29 @@ pub extern "avifil32" fn AVIStreamWrite(
     dwFlags: u32,
     plSampWritten: ?*i32,
     plBytesWritten: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamStart(
     pavi: ?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamLength(
     pavi: ?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamTimeToSample(
     pavi: ?*IAVIStream,
     lTime: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamSampleToTime(
     pavi: ?*IAVIStream,
     lSample: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamBeginStreaming(
@@ -7350,29 +7344,29 @@ pub extern "avifil32" fn AVIStreamBeginStreaming(
     lStart: i32,
     lEnd: i32,
     lRate: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamEndStreaming(
     pavi: ?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamGetFrameOpen(
     pavi: ?*IAVIStream,
     lpbiWanted: ?*BITMAPINFOHEADER,
-) callconv(@import("std").os.windows.WINAPI) ?*IGetFrame;
+) callconv(.winapi) ?*IGetFrame;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamGetFrame(
     pg: ?*IGetFrame,
     lPos: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamGetFrameClose(
     pg: ?*IGetFrame,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamOpenFromFileA(
@@ -7382,7 +7376,7 @@ pub extern "avifil32" fn AVIStreamOpenFromFileA(
     lParam: i32,
     mode: u32,
     pclsidHandler: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamOpenFromFileW(
@@ -7392,7 +7386,7 @@ pub extern "avifil32" fn AVIStreamOpenFromFileW(
     lParam: i32,
     mode: u32,
     pclsidHandler: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIStreamCreate(
@@ -7400,7 +7394,7 @@ pub extern "avifil32" fn AVIStreamCreate(
     lParam1: i32,
     lParam2: i32,
     pclsidHandler: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIMakeCompressedStream(
@@ -7408,7 +7402,7 @@ pub extern "avifil32" fn AVIMakeCompressedStream(
     ppsSource: ?*IAVIStream,
     lpOptions: ?*AVICOMPRESSOPTIONS,
     pclsidHandler: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVISaveA(
@@ -7418,7 +7412,7 @@ pub extern "avifil32" fn AVISaveA(
     nStreams: i32,
     pfile: ?*IAVIStream,
     lpOptions: ?*AVICOMPRESSOPTIONS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVISaveVA(
@@ -7428,7 +7422,7 @@ pub extern "avifil32" fn AVISaveVA(
     nStreams: i32,
     ppavi: [*]?*IAVIStream,
     plpOptions: [*]?*AVICOMPRESSOPTIONS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVISaveW(
@@ -7438,7 +7432,7 @@ pub extern "avifil32" fn AVISaveW(
     nStreams: i32,
     pfile: ?*IAVIStream,
     lpOptions: ?*AVICOMPRESSOPTIONS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVISaveVW(
@@ -7448,7 +7442,7 @@ pub extern "avifil32" fn AVISaveVW(
     nStreams: i32,
     ppavi: [*]?*IAVIStream,
     plpOptions: [*]?*AVICOMPRESSOPTIONS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVISaveOptions(
@@ -7457,61 +7451,60 @@ pub extern "avifil32" fn AVISaveOptions(
     nStreams: i32,
     ppavi: [*]?*IAVIStream,
     plpOptions: [*]?*AVICOMPRESSOPTIONS,
-) callconv(@import("std").os.windows.WINAPI) isize;
+) callconv(.winapi) isize;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVISaveOptionsFree(
     nStreams: i32,
     plpOptions: [*]?*AVICOMPRESSOPTIONS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIBuildFilterW(
     lpszFilter: [*:0]u16,
     cbFilter: i32,
     fSaving: BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIBuildFilterA(
     lpszFilter: [*:0]u8,
     cbFilter: i32,
     fSaving: BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIMakeFileFromStreams(
     ppfile: ?*?*IAVIFile,
     nStreams: i32,
     papStreams: [*]?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIMakeStreamFromClipboard(
     cfFormat: u32,
     hGlobal: ?HANDLE,
     ppstream: ?*?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIPutFileOnClipboard(
     pf: ?*IAVIFile,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn AVIGetFromClipboard(
     lppf: ?*?*IAVIFile,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "avifil32" fn AVIClearClipboard(
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+pub extern "avifil32" fn AVIClearClipboard() callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn CreateEditableStream(
     ppsEditable: ?*?*IAVIStream,
     psSource: ?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn EditStreamCut(
@@ -7519,7 +7512,7 @@ pub extern "avifil32" fn EditStreamCut(
     plStart: ?*i32,
     plLength: ?*i32,
     ppResult: ?*?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn EditStreamCopy(
@@ -7527,7 +7520,7 @@ pub extern "avifil32" fn EditStreamCopy(
     plStart: ?*i32,
     plLength: ?*i32,
     ppResult: ?*?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn EditStreamPaste(
@@ -7537,25 +7530,25 @@ pub extern "avifil32" fn EditStreamPaste(
     pstream: ?*IAVIStream,
     lStart: i32,
     lEnd: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn EditStreamClone(
     pavi: ?*IAVIStream,
     ppResult: ?*?*IAVIStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn EditStreamSetNameA(
     pavi: ?*IAVIStream,
     lpszName: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn EditStreamSetNameW(
     pavi: ?*IAVIStream,
     lpszName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn EditStreamSetInfoW(
@@ -7563,7 +7556,7 @@ pub extern "avifil32" fn EditStreamSetInfoW(
     // TODO: what to do with BytesParamIndex 2?
     lpInfo: ?*AVISTREAMINFOW,
     cbInfo: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avifil32" fn EditStreamSetInfoA(
@@ -7571,7 +7564,7 @@ pub extern "avifil32" fn EditStreamSetInfoA(
     // TODO: what to do with BytesParamIndex 2?
     lpInfo: ?*AVISTREAMINFOA,
     cbInfo: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn MCIWndCreateA(
@@ -7579,7 +7572,7 @@ pub extern "msvfw32" fn MCIWndCreateA(
     hInstance: ?HINSTANCE,
     dwStyle: u32,
     szFile: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?HWND;
+) callconv(.winapi) ?HWND;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn MCIWndCreateW(
@@ -7587,11 +7580,10 @@ pub extern "msvfw32" fn MCIWndCreateW(
     hInstance: ?HINSTANCE,
     dwStyle: u32,
     szFile: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) ?HWND;
+) callconv(.winapi) ?HWND;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "msvfw32" fn MCIWndRegisterClass(
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+pub extern "msvfw32" fn MCIWndRegisterClass() callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avicap32" fn capCreateCaptureWindowA(
@@ -7603,7 +7595,7 @@ pub extern "avicap32" fn capCreateCaptureWindowA(
     nHeight: i32,
     hwndParent: ?HWND,
     nID: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HWND;
+) callconv(.winapi) ?HWND;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avicap32" fn capGetDriverDescriptionA(
@@ -7612,7 +7604,7 @@ pub extern "avicap32" fn capGetDriverDescriptionA(
     cbName: i32,
     lpszVer: [*:0]u8,
     cbVer: i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avicap32" fn capCreateCaptureWindowW(
@@ -7624,7 +7616,7 @@ pub extern "avicap32" fn capCreateCaptureWindowW(
     nHeight: i32,
     hwndParent: ?HWND,
     nID: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HWND;
+) callconv(.winapi) ?HWND;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "avicap32" fn capGetDriverDescriptionW(
@@ -7633,48 +7625,45 @@ pub extern "avicap32" fn capGetDriverDescriptionW(
     cbName: i32,
     lpszVer: [*:0]u16,
     cbVer: i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn GetOpenFileNamePreviewA(
     lpofn: ?*OPENFILENAMEA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn GetSaveFileNamePreviewA(
     lpofn: ?*OPENFILENAMEA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn GetOpenFileNamePreviewW(
     lpofn: ?*OPENFILENAMEW,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "msvfw32" fn GetSaveFileNamePreviewW(
     lpofn: ?*OPENFILENAMEW,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "winmm" fn mmTaskCreate(
     lpfn: ?LPTASKCALLBACK,
     lph: ?*?HANDLE,
     dwInst: usize,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn mmTaskBlock(
     h: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "winmm" fn mmTaskSignal(
     h: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub extern "winmm" fn mmTaskYield(
-) callconv(@import("std").os.windows.WINAPI) void;
+pub extern "winmm" fn mmTaskYield() callconv(.winapi) void;
 
-pub extern "winmm" fn mmGetCurrentTask(
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+pub extern "winmm" fn mmGetCurrentTask() callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (56)
@@ -8110,26 +8099,56 @@ const WAVEHDR = @import("../media/audio.zig").WAVEHDR;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "YIELDPROC")) { _ = YIELDPROC; }
-    if (@hasDecl(@This(), "DRIVERPROC")) { _ = DRIVERPROC; }
-    if (@hasDecl(@This(), "DRIVERMSGPROC")) { _ = DRIVERMSGPROC; }
-    if (@hasDecl(@This(), "LPMMIOPROC")) { _ = LPMMIOPROC; }
-    if (@hasDecl(@This(), "AVISAVECALLBACK")) { _ = AVISAVECALLBACK; }
-    if (@hasDecl(@This(), "CAPYIELDCALLBACK")) { _ = CAPYIELDCALLBACK; }
-    if (@hasDecl(@This(), "CAPSTATUSCALLBACKW")) { _ = CAPSTATUSCALLBACKW; }
-    if (@hasDecl(@This(), "CAPERRORCALLBACKW")) { _ = CAPERRORCALLBACKW; }
-    if (@hasDecl(@This(), "CAPSTATUSCALLBACKA")) { _ = CAPSTATUSCALLBACKA; }
-    if (@hasDecl(@This(), "CAPERRORCALLBACKA")) { _ = CAPERRORCALLBACKA; }
-    if (@hasDecl(@This(), "CAPVIDEOCALLBACK")) { _ = CAPVIDEOCALLBACK; }
-    if (@hasDecl(@This(), "CAPWAVECALLBACK")) { _ = CAPWAVECALLBACK; }
-    if (@hasDecl(@This(), "CAPCONTROLCALLBACK")) { _ = CAPCONTROLCALLBACK; }
-    if (@hasDecl(@This(), "LPTASKCALLBACK")) { _ = LPTASKCALLBACK; }
-    if (@hasDecl(@This(), "VFWWDMExtensionProc")) { _ = VFWWDMExtensionProc; }
-    if (@hasDecl(@This(), "LPFNEXTDEVIO")) { _ = LPFNEXTDEVIO; }
+    if (@hasDecl(@This(), "YIELDPROC")) {
+        _ = YIELDPROC;
+    }
+    if (@hasDecl(@This(), "DRIVERPROC")) {
+        _ = DRIVERPROC;
+    }
+    if (@hasDecl(@This(), "DRIVERMSGPROC")) {
+        _ = DRIVERMSGPROC;
+    }
+    if (@hasDecl(@This(), "LPMMIOPROC")) {
+        _ = LPMMIOPROC;
+    }
+    if (@hasDecl(@This(), "AVISAVECALLBACK")) {
+        _ = AVISAVECALLBACK;
+    }
+    if (@hasDecl(@This(), "CAPYIELDCALLBACK")) {
+        _ = CAPYIELDCALLBACK;
+    }
+    if (@hasDecl(@This(), "CAPSTATUSCALLBACKW")) {
+        _ = CAPSTATUSCALLBACKW;
+    }
+    if (@hasDecl(@This(), "CAPERRORCALLBACKW")) {
+        _ = CAPERRORCALLBACKW;
+    }
+    if (@hasDecl(@This(), "CAPSTATUSCALLBACKA")) {
+        _ = CAPSTATUSCALLBACKA;
+    }
+    if (@hasDecl(@This(), "CAPERRORCALLBACKA")) {
+        _ = CAPERRORCALLBACKA;
+    }
+    if (@hasDecl(@This(), "CAPVIDEOCALLBACK")) {
+        _ = CAPVIDEOCALLBACK;
+    }
+    if (@hasDecl(@This(), "CAPWAVECALLBACK")) {
+        _ = CAPWAVECALLBACK;
+    }
+    if (@hasDecl(@This(), "CAPCONTROLCALLBACK")) {
+        _ = CAPCONTROLCALLBACK;
+    }
+    if (@hasDecl(@This(), "LPTASKCALLBACK")) {
+        _ = LPTASKCALLBACK;
+    }
+    if (@hasDecl(@This(), "VFWWDMExtensionProc")) {
+        _ = VFWWDMExtensionProc;
+    }
+    if (@hasDecl(@This(), "LPFNEXTDEVIO")) {
+        _ = LPFNEXTDEVIO;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

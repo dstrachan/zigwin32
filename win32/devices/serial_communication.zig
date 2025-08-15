@@ -11,19 +11,18 @@ pub const CDB_REPORT_BYTES = @as(u32, 1);
 // Section: Types (1)
 //--------------------------------------------------------------------------------
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HCOMDB = *opaque{};
-
+pub const HCOMDB = *opaque {};
 
 //--------------------------------------------------------------------------------
 // Section: Functions (7)
 //--------------------------------------------------------------------------------
 pub extern "msports" fn ComDBOpen(
     PHComDB: ?*isize,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "msports" fn ComDBClose(
     HComDB: ?HCOMDB,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "msports" fn ComDBGetCurrentPortUsage(
     HComDB: ?HCOMDB,
@@ -32,30 +31,29 @@ pub extern "msports" fn ComDBGetCurrentPortUsage(
     BufferSize: u32,
     ReportType: u32,
     MaxPortsReported: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "msports" fn ComDBClaimNextFreePort(
     HComDB: ?HCOMDB,
     ComNumber: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "msports" fn ComDBClaimPort(
     HComDB: ?HCOMDB,
     ComNumber: u32,
     ForceClaim: BOOL,
     Forced: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "msports" fn ComDBReleasePort(
     HComDB: ?HCOMDB,
     ComNumber: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "msports" fn ComDBResizeDatabase(
     HComDB: ?HCOMDB,
     NewSize: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
+) callconv(.winapi) i32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -66,9 +64,7 @@ pub extern "msports" fn ComDBResizeDatabase(
 const BOOL = @import("../foundation.zig").BOOL;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

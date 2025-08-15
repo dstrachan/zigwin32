@@ -1429,7 +1429,7 @@ pub const RIO_RQ_t = extern struct {
 
 // TODO: this type has a FreeFunc 'WSACloseEvent', what can Zig do with this information?
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HWSAEVENT = *opaque{};
+pub const HWSAEVENT = *opaque {};
 
 // TODO: this type has a FreeFunc 'closesocket', what can Zig do with this information?
 pub const SOCKET = @import("std").os.windows.ws2_32.SOCKET;
@@ -1830,13 +1830,11 @@ pub const netent = extern struct {
     n_net: u32,
 };
 
-
 pub const protoent = extern struct {
     p_name: ?PSTR,
     p_aliases: ?*?*i8,
     p_proto: i16,
 };
-
 
 pub const sockproto = extern struct {
     sp_family: u16,
@@ -1910,7 +1908,7 @@ pub const WSAPROTOCOL_INFOW = extern struct {
     szProtocol: [256]u16,
 };
 
-pub const LPCONDITIONPROC = *const fn(
+pub const LPCONDITIONPROC = *const fn (
     lpCallerId: ?*WSABUF,
     lpCallerData: ?*WSABUF,
     lpSQOS: ?*QOS,
@@ -1919,14 +1917,14 @@ pub const LPCONDITIONPROC = *const fn(
     lpCalleeData: ?*WSABUF,
     g: ?*u32,
     dwCallbackData: usize,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSAOVERLAPPED_COMPLETION_ROUTINE = *const fn(
+pub const LPWSAOVERLAPPED_COMPLETION_ROUTINE = *const fn (
     dwError: u32,
     cbTransferred: u32,
     lpOverlapped: ?*OVERLAPPED,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const WSACOMPLETIONTYPE = enum(i32) {
     IMMEDIATELY = 0,
@@ -3344,7 +3342,7 @@ pub const TRANSMIT_FILE_BUFFERS = extern struct {
     TailLength: u32,
 };
 
-pub const LPFN_TRANSMITFILE = *const fn(
+pub const LPFN_TRANSMITFILE = *const fn (
     hSocket: ?SOCKET,
     hFile: ?HANDLE,
     nNumberOfBytesToWrite: u32,
@@ -3352,9 +3350,9 @@ pub const LPFN_TRANSMITFILE = *const fn(
     lpOverlapped: ?*OVERLAPPED,
     lpTransmitBuffers: ?*TRANSMIT_FILE_BUFFERS,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPFN_ACCEPTEX = *const fn(
+pub const LPFN_ACCEPTEX = *const fn (
     sListenSocket: ?SOCKET,
     sAcceptSocket: ?SOCKET,
     lpOutputBuffer: ?*anyopaque,
@@ -3363,9 +3361,9 @@ pub const LPFN_ACCEPTEX = *const fn(
     dwRemoteAddressLength: u32,
     lpdwBytesReceived: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPFN_GETACCEPTEXSOCKADDRS = *const fn(
+pub const LPFN_GETACCEPTEXSOCKADDRS = *const fn (
     lpOutputBuffer: ?*anyopaque,
     dwReceiveDataLength: u32,
     dwLocalAddressLength: u32,
@@ -3374,7 +3372,7 @@ pub const LPFN_GETACCEPTEXSOCKADDRS = *const fn(
     LocalSockaddrLength: ?*i32,
     RemoteSockaddr: ?*?*SOCKADDR,
     RemoteSockaddrLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const TRANSMIT_PACKETS_ELEMENT = extern struct {
     dwElFlags: u32,
@@ -3388,16 +3386,16 @@ pub const TRANSMIT_PACKETS_ELEMENT = extern struct {
     },
 };
 
-pub const LPFN_TRANSMITPACKETS = *const fn(
+pub const LPFN_TRANSMITPACKETS = *const fn (
     hSocket: ?SOCKET,
     lpPacketArray: ?*TRANSMIT_PACKETS_ELEMENT,
     nElementCount: u32,
     nSendSize: u32,
     lpOverlapped: ?*OVERLAPPED,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPFN_CONNECTEX = *const fn(
+pub const LPFN_CONNECTEX = *const fn (
     s: ?SOCKET,
     // TODO: what to do with BytesParamIndex 2?
     name: ?*const SOCKADDR,
@@ -3407,14 +3405,14 @@ pub const LPFN_CONNECTEX = *const fn(
     dwSendDataLength: u32,
     lpdwBytesSent: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPFN_DISCONNECTEX = *const fn(
+pub const LPFN_DISCONNECTEX = *const fn (
     s: ?SOCKET,
     lpOverlapped: ?*OVERLAPPED,
     dwFlags: u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const NLA_BLOB_DATA_TYPE = enum(i32) {
     RAW_DATA = 0,
@@ -3481,13 +3479,13 @@ pub const NLA_BLOB = extern struct {
     },
 };
 
-pub const LPFN_WSARECVMSG = *const fn(
+pub const LPFN_WSARECVMSG = *const fn (
     s: ?SOCKET,
     lpMsg: ?*WSAMSG,
     lpdwNumberOfBytesRecvd: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSAPOLLDATA = extern struct {
     result: i32,
@@ -3504,50 +3502,30 @@ pub const WSASENDMSG = extern struct {
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
 };
 
-pub const LPFN_WSASENDMSG = *const fn(
+pub const LPFN_WSASENDMSG = *const fn (
     s: ?SOCKET,
     lpMsg: ?*WSAMSG,
     dwFlags: u32,
     lpNumberOfBytesSent: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPFN_WSAPOLL = *const fn(
+pub const LPFN_WSAPOLL = *const fn (
     fdarray: ?*WSAPOLLFD,
     nfds: u32,
     timeout: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPFN_RIORECEIVE = *const fn(
+pub const LPFN_RIORECEIVE = *const fn (
     SocketQueue: ?*RIO_RQ_t,
     pData: [*]RIO_BUF,
     DataBufferCount: u32,
     Flags: u32,
     RequestContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPFN_RIORECEIVEEX = *const fn(
-    SocketQueue: ?*RIO_RQ_t,
-    pData: [*]RIO_BUF,
-    DataBufferCount: u32,
-    pLocalAddress: ?*RIO_BUF,
-    pRemoteAddress: ?*RIO_BUF,
-    pControlContext: ?*RIO_BUF,
-    pFlags: ?*RIO_BUF,
-    Flags: u32,
-    RequestContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-pub const LPFN_RIOSEND = *const fn(
-    SocketQueue: ?*RIO_RQ_t,
-    pData: [*]RIO_BUF,
-    DataBufferCount: u32,
-    Flags: u32,
-    RequestContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
-pub const LPFN_RIOSENDEX = *const fn(
+pub const LPFN_RIORECEIVEEX = *const fn (
     SocketQueue: ?*RIO_RQ_t,
     pData: [*]RIO_BUF,
     DataBufferCount: u32,
@@ -3557,11 +3535,31 @@ pub const LPFN_RIOSENDEX = *const fn(
     pFlags: ?*RIO_BUF,
     Flags: u32,
     RequestContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) i32;
 
-pub const LPFN_RIOCLOSECOMPLETIONQUEUE = *const fn(
+pub const LPFN_RIOSEND = *const fn (
+    SocketQueue: ?*RIO_RQ_t,
+    pData: [*]RIO_BUF,
+    DataBufferCount: u32,
+    Flags: u32,
+    RequestContext: ?*anyopaque,
+) callconv(.winapi) BOOL;
+
+pub const LPFN_RIOSENDEX = *const fn (
+    SocketQueue: ?*RIO_RQ_t,
+    pData: [*]RIO_BUF,
+    DataBufferCount: u32,
+    pLocalAddress: ?*RIO_BUF,
+    pRemoteAddress: ?*RIO_BUF,
+    pControlContext: ?*RIO_BUF,
+    pFlags: ?*RIO_BUF,
+    Flags: u32,
+    RequestContext: ?*anyopaque,
+) callconv(.winapi) BOOL;
+
+pub const LPFN_RIOCLOSECOMPLETIONQUEUE = *const fn (
     CQ: ?*RIO_CQ_t,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const RIO_NOTIFICATION_COMPLETION_TYPE = enum(i32) {
     EVENT_COMPLETION = 1,
@@ -3585,12 +3583,12 @@ pub const RIO_NOTIFICATION_COMPLETION = extern struct {
     },
 };
 
-pub const LPFN_RIOCREATECOMPLETIONQUEUE = *const fn(
+pub const LPFN_RIOCREATECOMPLETIONQUEUE = *const fn (
     QueueSize: u32,
     NotificationCompletion: ?*RIO_NOTIFICATION_COMPLETION,
-) callconv(@import("std").os.windows.WINAPI) ?*RIO_CQ_t;
+) callconv(.winapi) ?*RIO_CQ_t;
 
-pub const LPFN_RIOCREATEREQUESTQUEUE = *const fn(
+pub const LPFN_RIOCREATEREQUESTQUEUE = *const fn (
     Socket: ?SOCKET,
     MaxOutstandingReceive: u32,
     MaxReceiveDataBuffers: u32,
@@ -3599,37 +3597,37 @@ pub const LPFN_RIOCREATEREQUESTQUEUE = *const fn(
     ReceiveCQ: ?*RIO_CQ_t,
     SendCQ: ?*RIO_CQ_t,
     SocketContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) ?*RIO_RQ_t;
+) callconv(.winapi) ?*RIO_RQ_t;
 
-pub const LPFN_RIODEQUEUECOMPLETION = *const fn(
+pub const LPFN_RIODEQUEUECOMPLETION = *const fn (
     CQ: ?*RIO_CQ_t,
     Array: [*]RIORESULT,
     ArraySize: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPFN_RIODEREGISTERBUFFER = *const fn(
+pub const LPFN_RIODEREGISTERBUFFER = *const fn (
     BufferId: ?*RIO_BUFFERID_t,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const LPFN_RIONOTIFY = *const fn(
+pub const LPFN_RIONOTIFY = *const fn (
     CQ: ?*RIO_CQ_t,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPFN_RIOREGISTERBUFFER = *const fn(
+pub const LPFN_RIOREGISTERBUFFER = *const fn (
     DataBuffer: ?[*]u8,
     DataLength: u32,
-) callconv(@import("std").os.windows.WINAPI) ?*RIO_BUFFERID_t;
+) callconv(.winapi) ?*RIO_BUFFERID_t;
 
-pub const LPFN_RIORESIZECOMPLETIONQUEUE = *const fn(
+pub const LPFN_RIORESIZECOMPLETIONQUEUE = *const fn (
     CQ: ?*RIO_CQ_t,
     QueueSize: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPFN_RIORESIZEREQUESTQUEUE = *const fn(
+pub const LPFN_RIORESIZEREQUESTQUEUE = *const fn (
     RQ: ?*RIO_RQ_t,
     MaxOutstandingReceive: u32,
     MaxOutstandingSend: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const RIO_EXTENSION_FUNCTION_TABLE = extern struct {
     cbSize: u32,
@@ -3659,15 +3657,15 @@ pub const WSATHREADID = extern struct {
     Reserved: usize,
 };
 
-pub const LPBLOCKINGCALLBACK = *const fn(
+pub const LPBLOCKINGCALLBACK = *const fn (
     dwContext: usize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPWSAUSERAPC = *const fn(
+pub const LPWSAUSERAPC = *const fn (
     dwContext: usize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const LPWSPACCEPT = *const fn(
+pub const LPWSPACCEPT = *const fn (
     s: ?SOCKET,
     // TODO: what to do with BytesParamIndex 2?
     addr: ?*SOCKADDR,
@@ -3675,9 +3673,9 @@ pub const LPWSPACCEPT = *const fn(
     lpfnCondition: ?LPCONDITIONPROC,
     dwCallbackData: usize,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?SOCKET;
+) callconv(.winapi) ?SOCKET;
 
-pub const LPWSPADDRESSTOSTRING = *const fn(
+pub const LPWSPADDRESSTOSTRING = *const fn (
     // TODO: what to do with BytesParamIndex 1?
     lpsaAddress: ?*SOCKADDR,
     dwAddressLength: u32,
@@ -3685,38 +3683,38 @@ pub const LPWSPADDRESSTOSTRING = *const fn(
     lpszAddressString: [*:0]u16,
     lpdwAddressStringLength: ?*u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPASYNCSELECT = *const fn(
+pub const LPWSPASYNCSELECT = *const fn (
     s: ?SOCKET,
     hWnd: ?HWND,
     wMsg: u32,
     lEvent: i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPBIND = *const fn(
+pub const LPWSPBIND = *const fn (
     s: ?SOCKET,
     // TODO: what to do with BytesParamIndex 2?
     name: ?*const SOCKADDR,
     namelen: i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPCANCELBLOCKINGCALL = *const fn(
+pub const LPWSPCANCELBLOCKINGCALL = *const fn (
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPCLEANUP = *const fn(
+pub const LPWSPCLEANUP = *const fn (
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPCLOSESOCKET = *const fn(
+pub const LPWSPCLOSESOCKET = *const fn (
     s: ?SOCKET,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPCONNECT = *const fn(
+pub const LPWSPCONNECT = *const fn (
     s: ?SOCKET,
     // TODO: what to do with BytesParamIndex 2?
     name: ?*const SOCKADDR,
@@ -3726,55 +3724,55 @@ pub const LPWSPCONNECT = *const fn(
     lpSQOS: ?*QOS,
     lpGQOS: ?*QOS,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPDUPLICATESOCKET = *const fn(
+pub const LPWSPDUPLICATESOCKET = *const fn (
     s: ?SOCKET,
     dwProcessId: u32,
     lpProtocolInfo: ?*WSAPROTOCOL_INFOW,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPENUMNETWORKEVENTS = *const fn(
+pub const LPWSPENUMNETWORKEVENTS = *const fn (
     s: ?SOCKET,
     hEventObject: ?HANDLE,
     lpNetworkEvents: ?*WSANETWORKEVENTS,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPEVENTSELECT = *const fn(
+pub const LPWSPEVENTSELECT = *const fn (
     s: ?SOCKET,
     hEventObject: ?HANDLE,
     lNetworkEvents: i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPGETOVERLAPPEDRESULT = *const fn(
+pub const LPWSPGETOVERLAPPEDRESULT = *const fn (
     s: ?SOCKET,
     lpOverlapped: ?*OVERLAPPED,
     lpcbTransfer: ?*u32,
     fWait: BOOL,
     lpdwFlags: ?*u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPWSPGETPEERNAME = *const fn(
+pub const LPWSPGETPEERNAME = *const fn (
     s: ?SOCKET,
     // TODO: what to do with BytesParamIndex 2?
     name: ?*SOCKADDR,
     namelen: ?*i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPGETSOCKNAME = *const fn(
+pub const LPWSPGETSOCKNAME = *const fn (
     s: ?SOCKET,
     // TODO: what to do with BytesParamIndex 2?
     name: ?*SOCKADDR,
     namelen: ?*i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPGETSOCKOPT = *const fn(
+pub const LPWSPGETSOCKOPT = *const fn (
     s: ?SOCKET,
     level: i32,
     optname: i32,
@@ -3782,16 +3780,16 @@ pub const LPWSPGETSOCKOPT = *const fn(
     optval: ?PSTR,
     optlen: ?*i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPGETQOSBYNAME = *const fn(
+pub const LPWSPGETQOSBYNAME = *const fn (
     s: ?SOCKET,
     lpQOSName: ?*WSABUF,
     lpQOS: ?*QOS,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPWSPIOCTL = *const fn(
+pub const LPWSPIOCTL = *const fn (
     s: ?SOCKET,
     dwIoControlCode: u32,
     // TODO: what to do with BytesParamIndex 3?
@@ -3805,9 +3803,9 @@ pub const LPWSPIOCTL = *const fn(
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
     lpThreadId: ?*WSATHREADID,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPJOINLEAF = *const fn(
+pub const LPWSPJOINLEAF = *const fn (
     s: ?SOCKET,
     // TODO: what to do with BytesParamIndex 2?
     name: ?*const SOCKADDR,
@@ -3818,15 +3816,15 @@ pub const LPWSPJOINLEAF = *const fn(
     lpGQOS: ?*QOS,
     dwFlags: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?SOCKET;
+) callconv(.winapi) ?SOCKET;
 
-pub const LPWSPLISTEN = *const fn(
+pub const LPWSPLISTEN = *const fn (
     s: ?SOCKET,
     backlog: i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPRECV = *const fn(
+pub const LPWSPRECV = *const fn (
     s: ?SOCKET,
     lpBuffers: [*]WSABUF,
     dwBufferCount: u32,
@@ -3836,15 +3834,15 @@ pub const LPWSPRECV = *const fn(
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
     lpThreadId: ?*WSATHREADID,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPRECVDISCONNECT = *const fn(
+pub const LPWSPRECVDISCONNECT = *const fn (
     s: ?SOCKET,
     lpInboundDisconnectData: ?*WSABUF,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPRECVFROM = *const fn(
+pub const LPWSPRECVFROM = *const fn (
     s: ?SOCKET,
     lpBuffers: [*]WSABUF,
     dwBufferCount: u32,
@@ -3857,18 +3855,18 @@ pub const LPWSPRECVFROM = *const fn(
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
     lpThreadId: ?*WSATHREADID,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPSELECT = *const fn(
+pub const LPWSPSELECT = *const fn (
     nfds: i32,
     readfds: ?*fd_set,
     writefds: ?*fd_set,
     exceptfds: ?*fd_set,
     timeout: ?*const timeval,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPSEND = *const fn(
+pub const LPWSPSEND = *const fn (
     s: ?SOCKET,
     lpBuffers: [*]WSABUF,
     dwBufferCount: u32,
@@ -3878,15 +3876,15 @@ pub const LPWSPSEND = *const fn(
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
     lpThreadId: ?*WSATHREADID,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPSENDDISCONNECT = *const fn(
+pub const LPWSPSENDDISCONNECT = *const fn (
     s: ?SOCKET,
     lpOutboundDisconnectData: ?*WSABUF,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPSENDTO = *const fn(
+pub const LPWSPSENDTO = *const fn (
     s: ?SOCKET,
     lpBuffers: [*]WSABUF,
     dwBufferCount: u32,
@@ -3899,9 +3897,9 @@ pub const LPWSPSENDTO = *const fn(
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
     lpThreadId: ?*WSATHREADID,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPSETSOCKOPT = *const fn(
+pub const LPWSPSETSOCKOPT = *const fn (
     s: ?SOCKET,
     level: i32,
     optname: i32,
@@ -3909,15 +3907,15 @@ pub const LPWSPSETSOCKOPT = *const fn(
     optval: ?[*:0]const u8,
     optlen: i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPSHUTDOWN = *const fn(
+pub const LPWSPSHUTDOWN = *const fn (
     s: ?SOCKET,
     how: i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSPSOCKET = *const fn(
+pub const LPWSPSOCKET = *const fn (
     af: i32,
     type: i32,
     protocol: i32,
@@ -3925,9 +3923,9 @@ pub const LPWSPSOCKET = *const fn(
     g: u32,
     dwFlags: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?SOCKET;
+) callconv(.winapi) ?SOCKET;
 
-pub const LPWSPSTRINGTOADDRESS = *const fn(
+pub const LPWSPSTRINGTOADDRESS = *const fn (
     AddressString: ?PWSTR,
     AddressFamily: i32,
     lpProtocolInfo: ?*WSAPROTOCOL_INFOW,
@@ -3935,7 +3933,7 @@ pub const LPWSPSTRINGTOADDRESS = *const fn(
     lpAddress: ?*SOCKADDR,
     lpAddressLength: ?*i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSPPROC_TABLE = extern struct {
     lpWSPAccept: ?LPWSPACCEPT,
@@ -3970,98 +3968,98 @@ pub const WSPPROC_TABLE = extern struct {
     lpWSPStringToAddress: ?LPWSPSTRINGTOADDRESS,
 };
 
-pub const LPWPUCLOSEEVENT = *const fn(
+pub const LPWPUCLOSEEVENT = *const fn (
     hEvent: ?HANDLE,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPWPUCLOSESOCKETHANDLE = *const fn(
+pub const LPWPUCLOSESOCKETHANDLE = *const fn (
     s: ?SOCKET,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWPUCREATEEVENT = *const fn(
+pub const LPWPUCREATEEVENT = *const fn (
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
-pub const LPWPUCREATESOCKETHANDLE = *const fn(
+pub const LPWPUCREATESOCKETHANDLE = *const fn (
     dwCatalogEntryId: u32,
     dwContext: usize,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?SOCKET;
+) callconv(.winapi) ?SOCKET;
 
-pub const LPWPUFDISSET = *const fn(
+pub const LPWPUFDISSET = *const fn (
     s: ?SOCKET,
     fdset: ?*fd_set,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWPUGETPROVIDERPATH = *const fn(
+pub const LPWPUGETPROVIDERPATH = *const fn (
     lpProviderId: ?*Guid,
     lpszProviderDllPath: [*:0]u16,
     lpProviderDllPathLen: ?*i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWPUMODIFYIFSHANDLE = *const fn(
+pub const LPWPUMODIFYIFSHANDLE = *const fn (
     dwCatalogEntryId: u32,
     ProposedHandle: ?SOCKET,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?SOCKET;
+) callconv(.winapi) ?SOCKET;
 
-pub const LPWPUPOSTMESSAGE = *const fn(
+pub const LPWPUPOSTMESSAGE = *const fn (
     hWnd: ?HWND,
     Msg: u32,
     wParam: WPARAM,
     lParam: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPWPUQUERYBLOCKINGCALLBACK = *const fn(
+pub const LPWPUQUERYBLOCKINGCALLBACK = *const fn (
     dwCatalogEntryId: u32,
     lplpfnCallback: ?*?LPBLOCKINGCALLBACK,
     lpdwContext: ?*usize,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWPUQUERYSOCKETHANDLECONTEXT = *const fn(
+pub const LPWPUQUERYSOCKETHANDLECONTEXT = *const fn (
     s: ?SOCKET,
     lpContext: ?*usize,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWPUQUEUEAPC = *const fn(
+pub const LPWPUQUEUEAPC = *const fn (
     lpThreadId: ?*WSATHREADID,
     lpfnUserApc: ?LPWSAUSERAPC,
     dwContext: usize,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWPURESETEVENT = *const fn(
+pub const LPWPURESETEVENT = *const fn (
     hEvent: ?HANDLE,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPWPUSETEVENT = *const fn(
+pub const LPWPUSETEVENT = *const fn (
     hEvent: ?HANDLE,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LPWPUOPENCURRENTTHREAD = *const fn(
+pub const LPWPUOPENCURRENTTHREAD = *const fn (
     lpThreadId: ?*WSATHREADID,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWPUCLOSETHREAD = *const fn(
+pub const LPWPUCLOSETHREAD = *const fn (
     lpThreadId: ?*WSATHREADID,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWPUCOMPLETEOVERLAPPEDREQUEST = *const fn(
+pub const LPWPUCOMPLETEOVERLAPPEDREQUEST = *const fn (
     s: ?SOCKET,
     lpOverlapped: ?*OVERLAPPED,
     dwError: u32,
     cbTransferred: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSPUPCALLTABLE = extern struct {
     lpWPUCloseEvent: ?LPWPUCLOSEEVENT,
@@ -4081,49 +4079,49 @@ pub const WSPUPCALLTABLE = extern struct {
     lpWPUCloseThread: ?LPWPUCLOSETHREAD,
 };
 
-pub const LPWSPSTARTUP = *const fn(
+pub const LPWSPSTARTUP = *const fn (
     wVersionRequested: u16,
     lpWSPData: ?*WSPData,
     lpProtocolInfo: ?*WSAPROTOCOL_INFOW,
     UpcallTable: WSPUPCALLTABLE,
     lpProcTable: ?*WSPPROC_TABLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSCENUMPROTOCOLS = *const fn(
+pub const LPWSCENUMPROTOCOLS = *const fn (
     lpiProtocols: ?*i32,
     // TODO: what to do with BytesParamIndex 2?
     lpProtocolBuffer: ?*WSAPROTOCOL_INFOW,
     lpdwBufferLength: ?*u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSCDEINSTALLPROVIDER = *const fn(
+pub const LPWSCDEINSTALLPROVIDER = *const fn (
     lpProviderId: ?*Guid,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSCINSTALLPROVIDER = *const fn(
+pub const LPWSCINSTALLPROVIDER = *const fn (
     lpProviderId: ?*Guid,
     lpszProviderDllPath: ?[*:0]const u16,
     lpProtocolInfoList: [*]const WSAPROTOCOL_INFOW,
     dwNumberOfEntries: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSCGETPROVIDERPATH = *const fn(
+pub const LPWSCGETPROVIDERPATH = *const fn (
     lpProviderId: ?*Guid,
     lpszProviderDllPath: [*:0]u16,
     lpProviderDllPathLen: ?*i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSCUPDATEPROVIDER = *const fn(
+pub const LPWSCUPDATEPROVIDER = *const fn (
     lpProviderId: ?*Guid,
     lpszProviderDllPath: ?[*:0]const u16,
     lpProtocolInfoList: [*]const WSAPROTOCOL_INFOW,
     dwNumberOfEntries: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSC_PROVIDER_INFO_TYPE = enum(i32) {
     LspCategories = 0,
@@ -4137,44 +4135,44 @@ pub const WSC_PROVIDER_AUDIT_INFO = extern struct {
     Reserved: ?*anyopaque,
 };
 
-pub const LPWSCINSTALLNAMESPACE = *const fn(
+pub const LPWSCINSTALLNAMESPACE = *const fn (
     lpszIdentifier: ?PWSTR,
     lpszPathName: ?PWSTR,
     dwNameSpace: u32,
     dwVersion: u32,
     lpProviderId: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSCUNINSTALLNAMESPACE = *const fn(
+pub const LPWSCUNINSTALLNAMESPACE = *const fn (
     lpProviderId: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSCENABLENSPROVIDER = *const fn(
+pub const LPWSCENABLENSPROVIDER = *const fn (
     lpProviderId: ?*Guid,
     fEnable: BOOL,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPCLEANUP = *const fn(
+pub const LPNSPCLEANUP = *const fn (
     lpProviderId: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPLOOKUPSERVICEBEGIN = *const fn(
+pub const LPNSPLOOKUPSERVICEBEGIN = *const fn (
     lpProviderId: ?*Guid,
     lpqsRestrictions: ?*WSAQUERYSETW,
     lpServiceClassInfo: ?*WSASERVICECLASSINFOW,
     dwControlFlags: u32,
     lphLookup: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPLOOKUPSERVICENEXT = *const fn(
+pub const LPNSPLOOKUPSERVICENEXT = *const fn (
     hLookup: ?HANDLE,
     dwControlFlags: u32,
     lpdwBufferLength: ?*u32,
     // TODO: what to do with BytesParamIndex 2?
     lpqsResults: ?*WSAQUERYSETW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPIOCTL = *const fn(
+pub const LPNSPIOCTL = *const fn (
     hLookup: ?HANDLE,
     dwControlCode: u32,
     // TODO: what to do with BytesParamIndex 3?
@@ -4186,35 +4184,35 @@ pub const LPNSPIOCTL = *const fn(
     lpcbBytesReturned: ?*u32,
     lpCompletion: ?*WSACOMPLETION,
     lpThreadId: ?*WSATHREADID,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPLOOKUPSERVICEEND = *const fn(
+pub const LPNSPLOOKUPSERVICEEND = *const fn (
     hLookup: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPSETSERVICE = *const fn(
+pub const LPNSPSETSERVICE = *const fn (
     lpProviderId: ?*Guid,
     lpServiceClassInfo: ?*WSASERVICECLASSINFOW,
     lpqsRegInfo: ?*WSAQUERYSETW,
     essOperation: WSAESETSERVICEOP,
     dwControlFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPINSTALLSERVICECLASS = *const fn(
+pub const LPNSPINSTALLSERVICECLASS = *const fn (
     lpProviderId: ?*Guid,
     lpServiceClassInfo: ?*WSASERVICECLASSINFOW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPREMOVESERVICECLASS = *const fn(
+pub const LPNSPREMOVESERVICECLASS = *const fn (
     lpProviderId: ?*Guid,
     lpServiceClassId: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPGETSERVICECLASSINFO = *const fn(
+pub const LPNSPGETSERVICECLASSINFO = *const fn (
     lpProviderId: ?*Guid,
     lpdwBufSize: ?*u32,
     lpServiceClassInfo: ?*WSASERVICECLASSINFOW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const NSP_ROUTINE = extern struct {
     cbSize: u32,
@@ -4231,54 +4229,54 @@ pub const NSP_ROUTINE = extern struct {
     NSPIoctl: ?LPNSPIOCTL,
 };
 
-pub const LPNSPSTARTUP = *const fn(
+pub const LPNSPSTARTUP = *const fn (
     lpProviderId: ?*Guid,
     lpnspRoutines: ?*NSP_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPV2STARTUP = *const fn(
+pub const LPNSPV2STARTUP = *const fn (
     lpProviderId: ?*Guid,
     ppvClientSessionArg: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPV2CLEANUP = *const fn(
+pub const LPNSPV2CLEANUP = *const fn (
     lpProviderId: ?*Guid,
     pvClientSessionArg: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPV2LOOKUPSERVICEBEGIN = *const fn(
+pub const LPNSPV2LOOKUPSERVICEBEGIN = *const fn (
     lpProviderId: ?*Guid,
     lpqsRestrictions: ?*WSAQUERYSET2W,
     dwControlFlags: u32,
     lpvClientSessionArg: ?*anyopaque,
     lphLookup: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPV2LOOKUPSERVICENEXTEX = *const fn(
+pub const LPNSPV2LOOKUPSERVICENEXTEX = *const fn (
     hAsyncCall: ?HANDLE,
     hLookup: ?HANDLE,
     dwControlFlags: u32,
     lpdwBufferLength: ?*u32,
     lpqsResults: ?*WSAQUERYSET2W,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const LPNSPV2LOOKUPSERVICEEND = *const fn(
+pub const LPNSPV2LOOKUPSERVICEEND = *const fn (
     hLookup: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPNSPV2SETSERVICEEX = *const fn(
+pub const LPNSPV2SETSERVICEEX = *const fn (
     hAsyncCall: ?HANDLE,
     lpProviderId: ?*Guid,
     lpqsRegInfo: ?*WSAQUERYSET2W,
     essOperation: WSAESETSERVICEOP,
     dwControlFlags: u32,
     lpvClientSessionArg: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const LPNSPV2CLIENTSESSIONRUNDOWN = *const fn(
+pub const LPNSPV2CLIENTSESSIONRUNDOWN = *const fn (
     lpProviderId: ?*Guid,
     pvClientSessionArg: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const NSPV2_ROUTINE = extern struct {
     cbSize: u32,
@@ -4447,13 +4445,12 @@ pub const NETRESOURCE2W = extern struct {
     lpiProtocols: ?*i32,
 };
 
-pub const LPFN_NSPAPI = *const fn(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub const LPFN_NSPAPI = *const fn () callconv(.winapi) u32;
 
-pub const LPSERVICE_CALLBACK_PROC = *const fn(
+pub const LPSERVICE_CALLBACK_PROC = *const fn (
     lParam: LPARAM,
     hAsyncTaskHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const SERVICE_ASYNC_INFO = extern struct {
     lpServiceCallbackProc: ?LPSERVICE_CALLBACK_PROC,
@@ -4461,21 +4458,21 @@ pub const SERVICE_ASYNC_INFO = extern struct {
     hAsyncTaskHandle: ?HANDLE,
 };
 
-pub const LPLOOKUPSERVICE_COMPLETION_ROUTINE = *const fn(
+pub const LPLOOKUPSERVICE_COMPLETION_ROUTINE = *const fn (
     dwError: u32,
     dwBytes: u32,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const LPWSCWRITEPROVIDERORDER = *const fn(
+pub const LPWSCWRITEPROVIDERORDER = *const fn (
     lpwdCatalogEntryId: ?*u32,
     dwNumberOfEntries: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub const LPWSCWRITENAMESPACEORDER = *const fn(
+pub const LPWSCWRITENAMESPACEORDER = *const fn (
     lpProviderId: ?*Guid,
     dwNumberOfEntries: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const sockaddr_un = extern struct {
     sun_family: u16,
@@ -5207,9 +5204,7 @@ pub const FALLBACK_INDEX = enum(i32) {
 pub const FallbackIndexTcpFastopen = FALLBACK_INDEX.TcpFastopen;
 pub const FallbackIndexMax = FALLBACK_INDEX.Max;
 
-
-
-pub const servent = switch(@import("../zig.zig").arch) {
+pub const servent = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         s_name: ?PSTR,
         s_aliases: ?*?*i8,
@@ -5223,7 +5218,7 @@ pub const servent = switch(@import("../zig.zig").arch) {
         s_proto: ?PSTR,
     },
 };
-pub const WSAData = switch(@import("../zig.zig").arch) {
+pub const WSAData = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         wVersion: u16,
         wHighVersion: u16,
@@ -5251,7 +5246,7 @@ pub const WSAData = switch(@import("../zig.zig").arch) {
 pub extern "ws2_32" fn __WSAFDIsSet(
     fd: ?SOCKET,
     param1: ?*fd_set,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn accept(
@@ -5259,7 +5254,7 @@ pub extern "ws2_32" fn accept(
     // TODO: what to do with BytesParamIndex 2?
     addr: ?*SOCKADDR,
     addrlen: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) SOCKET;
+) callconv(.winapi) SOCKET;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn bind(
@@ -5267,12 +5262,12 @@ pub extern "ws2_32" fn bind(
     // TODO: what to do with BytesParamIndex 2?
     name: ?*const SOCKADDR,
     namelen: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn closesocket(
     s: ?SOCKET,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ws2_32" fn connect(
@@ -5280,14 +5275,14 @@ pub extern "ws2_32" fn connect(
     // TODO: what to do with BytesParamIndex 2?
     name: ?*const SOCKADDR,
     namelen: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn ioctlsocket(
     s: ?SOCKET,
     cmd: i32,
     argp: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn getpeername(
@@ -5295,7 +5290,7 @@ pub extern "ws2_32" fn getpeername(
     // TODO: what to do with BytesParamIndex 2?
     name: ?*SOCKADDR,
     namelen: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn getsockname(
@@ -5303,7 +5298,7 @@ pub extern "ws2_32" fn getsockname(
     // TODO: what to do with BytesParamIndex 2?
     name: ?*SOCKADDR,
     namelen: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn getsockopt(
@@ -5313,43 +5308,43 @@ pub extern "ws2_32" fn getsockopt(
     // TODO: what to do with BytesParamIndex 4?
     optval: ?PSTR,
     optlen: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn htonl(
     hostlong: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn htons(
     hostshort: u16,
-) callconv(@import("std").os.windows.WINAPI) u16;
+) callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn inet_addr(
     cp: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn inet_ntoa(
     in: IN_ADDR,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn listen(
     s: ?SOCKET,
     backlog: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn ntohl(
     netlong: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn ntohs(
     netshort: u16,
-) callconv(@import("std").os.windows.WINAPI) u16;
+) callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn recv(
@@ -5358,7 +5353,7 @@ pub extern "ws2_32" fn recv(
     buf: ?PSTR,
     len: i32,
     flags: SEND_RECV_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn recvfrom(
@@ -5370,7 +5365,7 @@ pub extern "ws2_32" fn recvfrom(
     // TODO: what to do with BytesParamIndex 5?
     from: ?*SOCKADDR,
     fromlen: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn select(
@@ -5379,7 +5374,7 @@ pub extern "ws2_32" fn select(
     writefds: ?*fd_set,
     exceptfds: ?*fd_set,
     timeout: ?*const timeval,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn send(
@@ -5388,7 +5383,7 @@ pub extern "ws2_32" fn send(
     buf: ?[*:0]const u8,
     len: i32,
     flags: SEND_RECV_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn sendto(
@@ -5400,7 +5395,7 @@ pub extern "ws2_32" fn sendto(
     // TODO: what to do with BytesParamIndex 5?
     to: ?*const SOCKADDR,
     tolen: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn setsockopt(
@@ -5410,20 +5405,20 @@ pub extern "ws2_32" fn setsockopt(
     // TODO: what to do with BytesParamIndex 4?
     optval: ?[*:0]const u8,
     optlen: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn shutdown(
     s: ?SOCKET,
     how: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn socket(
     af: i32,
     type: i32,
     protocol: i32,
-) callconv(@import("std").os.windows.WINAPI) SOCKET;
+) callconv(.winapi) SOCKET;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn gethostbyaddr(
@@ -5431,79 +5426,74 @@ pub extern "ws2_32" fn gethostbyaddr(
     addr: ?[*:0]const u8,
     len: i32,
     type: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*hostent;
+) callconv(.winapi) ?*hostent;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn gethostbyname(
     name: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?*hostent;
+) callconv(.winapi) ?*hostent;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn gethostname(
     // TODO: what to do with BytesParamIndex 1?
     name: ?PSTR,
     namelen: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn GetHostNameW(
     name: [*:0]u16,
     namelen: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn getservbyport(
     port: i32,
     proto: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?*servent;
+) callconv(.winapi) ?*servent;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn getservbyname(
     name: ?[*:0]const u8,
     proto: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?*servent;
+) callconv(.winapi) ?*servent;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn getprotobynumber(
     number: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*protoent;
+) callconv(.winapi) ?*protoent;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn getprotobyname(
     name: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?*protoent;
+) callconv(.winapi) ?*protoent;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAStartup(
     wVersionRequested: u16,
     lpWSAData: ?*WSAData,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
-pub extern "ws2_32" fn WSACleanup(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "ws2_32" fn WSACleanup() callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSASetLastError(
     iError: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows8.1'
-pub extern "ws2_32" fn WSAGetLastError(
-) callconv(@import("std").os.windows.WINAPI) WSA_ERROR;
+pub extern "ws2_32" fn WSAGetLastError() callconv(.winapi) WSA_ERROR;
 
-pub extern "ws2_32" fn WSAIsBlocking(
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+pub extern "ws2_32" fn WSAIsBlocking() callconv(.winapi) BOOL;
 
-pub extern "ws2_32" fn WSAUnhookBlockingHook(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "ws2_32" fn WSAUnhookBlockingHook() callconv(.winapi) i32;
 
 pub extern "ws2_32" fn WSASetBlockingHook(
     lpBlockFunc: ?FARPROC,
-) callconv(@import("std").os.windows.WINAPI) ?FARPROC;
+) callconv(.winapi) ?FARPROC;
 
-pub extern "ws2_32" fn WSACancelBlockingCall(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "ws2_32" fn WSACancelBlockingCall() callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAAsyncGetServByName(
@@ -5514,7 +5504,7 @@ pub extern "ws2_32" fn WSAAsyncGetServByName(
     // TODO: what to do with BytesParamIndex 5?
     buf: ?PSTR,
     buflen: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAAsyncGetServByPort(
@@ -5525,7 +5515,7 @@ pub extern "ws2_32" fn WSAAsyncGetServByPort(
     // TODO: what to do with BytesParamIndex 5?
     buf: ?PSTR,
     buflen: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAAsyncGetProtoByName(
@@ -5535,7 +5525,7 @@ pub extern "ws2_32" fn WSAAsyncGetProtoByName(
     // TODO: what to do with BytesParamIndex 4?
     buf: ?PSTR,
     buflen: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAAsyncGetProtoByNumber(
@@ -5545,7 +5535,7 @@ pub extern "ws2_32" fn WSAAsyncGetProtoByNumber(
     // TODO: what to do with BytesParamIndex 4?
     buf: ?PSTR,
     buflen: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAAsyncGetHostByName(
@@ -5555,7 +5545,7 @@ pub extern "ws2_32" fn WSAAsyncGetHostByName(
     // TODO: what to do with BytesParamIndex 4?
     buf: ?PSTR,
     buflen: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAAsyncGetHostByAddr(
@@ -5568,12 +5558,12 @@ pub extern "ws2_32" fn WSAAsyncGetHostByAddr(
     // TODO: what to do with BytesParamIndex 6?
     buf: ?PSTR,
     buflen: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSACancelAsyncRequest(
     hAsyncTaskHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAAsyncSelect(
@@ -5581,7 +5571,7 @@ pub extern "ws2_32" fn WSAAsyncSelect(
     hWnd: ?HWND,
     wMsg: u32,
     lEvent: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAAccept(
@@ -5591,12 +5581,12 @@ pub extern "ws2_32" fn WSAAccept(
     addrlen: ?*i32,
     lpfnCondition: ?LPCONDITIONPROC,
     dwCallbackData: usize,
-) callconv(@import("std").os.windows.WINAPI) ?SOCKET;
+) callconv(.winapi) ?SOCKET;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSACloseEvent(
     hEvent: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAConnect(
@@ -5608,7 +5598,7 @@ pub extern "ws2_32" fn WSAConnect(
     lpCalleeData: ?*WSABUF,
     lpSQOS: ?*QOS,
     lpGQOS: ?*QOS,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAConnectByNameW(
@@ -5623,7 +5613,7 @@ pub extern "ws2_32" fn WSAConnectByNameW(
     RemoteAddress: ?*SOCKADDR,
     timeout: ?*const timeval,
     Reserved: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAConnectByNameA(
@@ -5638,7 +5628,7 @@ pub extern "ws2_32" fn WSAConnectByNameA(
     RemoteAddress: ?*SOCKADDR,
     timeout: ?*const timeval,
     Reserved: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAConnectByList(
@@ -5652,32 +5642,31 @@ pub extern "ws2_32" fn WSAConnectByList(
     RemoteAddress: ?*SOCKADDR,
     timeout: ?*const timeval,
     Reserved: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
-pub extern "ws2_32" fn WSACreateEvent(
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+pub extern "ws2_32" fn WSACreateEvent() callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSADuplicateSocketA(
     s: ?SOCKET,
     dwProcessId: u32,
     lpProtocolInfo: ?*WSAPROTOCOL_INFOA,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSADuplicateSocketW(
     s: ?SOCKET,
     dwProcessId: u32,
     lpProtocolInfo: ?*WSAPROTOCOL_INFOW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAEnumNetworkEvents(
     s: ?SOCKET,
     hEventObject: ?HANDLE,
     lpNetworkEvents: ?*WSANETWORKEVENTS,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAEnumProtocolsA(
@@ -5685,7 +5674,7 @@ pub extern "ws2_32" fn WSAEnumProtocolsA(
     // TODO: what to do with BytesParamIndex 2?
     lpProtocolBuffer: ?*WSAPROTOCOL_INFOA,
     lpdwBufferLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAEnumProtocolsW(
@@ -5693,14 +5682,14 @@ pub extern "ws2_32" fn WSAEnumProtocolsW(
     // TODO: what to do with BytesParamIndex 2?
     lpProtocolBuffer: ?*WSAPROTOCOL_INFOW,
     lpdwBufferLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAEventSelect(
     s: ?SOCKET,
     hEventObject: ?HANDLE,
     lNetworkEvents: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAGetOverlappedResult(
@@ -5709,28 +5698,28 @@ pub extern "ws2_32" fn WSAGetOverlappedResult(
     lpcbTransfer: ?*u32,
     fWait: BOOL,
     lpdwFlags: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAGetQOSByName(
     s: ?SOCKET,
     lpQOSName: ?*WSABUF,
     lpQOS: ?*QOS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAHtonl(
     s: ?SOCKET,
     hostlong: u32,
     lpnetlong: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAHtons(
     s: ?SOCKET,
     hostshort: u16,
     lpnetshort: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAIoctl(
@@ -5745,7 +5734,7 @@ pub extern "ws2_32" fn WSAIoctl(
     lpcbBytesReturned: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAJoinLeaf(
@@ -5758,21 +5747,21 @@ pub extern "ws2_32" fn WSAJoinLeaf(
     lpSQOS: ?*QOS,
     lpGQOS: ?*QOS,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) ?SOCKET;
+) callconv(.winapi) ?SOCKET;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSANtohl(
     s: ?SOCKET,
     netlong: u32,
     lphostlong: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSANtohs(
     s: ?SOCKET,
     netshort: u16,
     lphostshort: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSARecv(
@@ -5783,13 +5772,13 @@ pub extern "ws2_32" fn WSARecv(
     lpFlags: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSARecvDisconnect(
     s: ?SOCKET,
     lpInboundDisconnectData: ?*WSABUF,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSARecvFrom(
@@ -5803,12 +5792,12 @@ pub extern "ws2_32" fn WSARecvFrom(
     lpFromlen: ?*i32,
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAResetEvent(
     hEvent: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSASend(
@@ -5819,7 +5808,7 @@ pub extern "ws2_32" fn WSASend(
     dwFlags: u32,
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSASendMsg(
@@ -5829,13 +5818,13 @@ pub extern "ws2_32" fn WSASendMsg(
     lpNumberOfBytesSent: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSASendDisconnect(
     s: ?SOCKET,
     lpOutboundDisconnectData: ?*WSABUF,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSASendTo(
@@ -5849,12 +5838,12 @@ pub extern "ws2_32" fn WSASendTo(
     iTolen: i32,
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSASetEvent(
     hEvent: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSASocketA(
@@ -5864,7 +5853,7 @@ pub extern "ws2_32" fn WSASocketA(
     lpProtocolInfo: ?*WSAPROTOCOL_INFOA,
     g: u32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) SOCKET;
+) callconv(.winapi) SOCKET;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSASocketW(
@@ -5874,7 +5863,7 @@ pub extern "ws2_32" fn WSASocketW(
     lpProtocolInfo: ?*WSAPROTOCOL_INFOW,
     g: u32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) SOCKET;
+) callconv(.winapi) SOCKET;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAWaitForMultipleEvents(
@@ -5883,7 +5872,7 @@ pub extern "ws2_32" fn WSAWaitForMultipleEvents(
     fWaitAll: BOOL,
     dwTimeout: u32,
     fAlertable: BOOL,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAAddressToStringA(
@@ -5893,7 +5882,7 @@ pub extern "ws2_32" fn WSAAddressToStringA(
     lpProtocolInfo: ?*WSAPROTOCOL_INFOA,
     lpszAddressString: [*:0]u8,
     lpdwAddressStringLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAAddressToStringW(
@@ -5903,7 +5892,7 @@ pub extern "ws2_32" fn WSAAddressToStringW(
     lpProtocolInfo: ?*WSAPROTOCOL_INFOW,
     lpszAddressString: [*:0]u16,
     lpdwAddressStringLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAStringToAddressA(
@@ -5913,7 +5902,7 @@ pub extern "ws2_32" fn WSAStringToAddressA(
     // TODO: what to do with BytesParamIndex 4?
     lpAddress: ?*SOCKADDR,
     lpAddressLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAStringToAddressW(
@@ -5923,21 +5912,21 @@ pub extern "ws2_32" fn WSAStringToAddressW(
     // TODO: what to do with BytesParamIndex 4?
     lpAddress: ?*SOCKADDR,
     lpAddressLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSALookupServiceBeginA(
     lpqsRestrictions: ?*WSAQUERYSETA,
     dwControlFlags: u32,
     lphLookup: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSALookupServiceBeginW(
     lpqsRestrictions: ?*WSAQUERYSETW,
     dwControlFlags: u32,
     lphLookup: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSALookupServiceNextA(
@@ -5946,7 +5935,7 @@ pub extern "ws2_32" fn WSALookupServiceNextA(
     lpdwBufferLength: ?*u32,
     // TODO: what to do with BytesParamIndex 2?
     lpqsResults: ?*WSAQUERYSETA,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSALookupServiceNextW(
@@ -5955,7 +5944,7 @@ pub extern "ws2_32" fn WSALookupServiceNextW(
     lpdwBufferLength: ?*u32,
     // TODO: what to do with BytesParamIndex 2?
     lpqsResults: ?*WSAQUERYSETW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSANSPIoctl(
@@ -5969,27 +5958,27 @@ pub extern "ws2_32" fn WSANSPIoctl(
     cbOutBuffer: u32,
     lpcbBytesReturned: ?*u32,
     lpCompletion: ?*WSACOMPLETION,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSALookupServiceEnd(
     hLookup: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAInstallServiceClassA(
     lpServiceClassInfo: ?*WSASERVICECLASSINFOA,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAInstallServiceClassW(
     lpServiceClassInfo: ?*WSASERVICECLASSINFOW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSARemoveServiceClass(
     lpServiceClassId: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAGetServiceClassInfoA(
@@ -5998,7 +5987,7 @@ pub extern "ws2_32" fn WSAGetServiceClassInfoA(
     lpdwBufSize: ?*u32,
     // TODO: what to do with BytesParamIndex 2?
     lpServiceClassInfo: ?*WSASERVICECLASSINFOA,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAGetServiceClassInfoW(
@@ -6007,35 +5996,35 @@ pub extern "ws2_32" fn WSAGetServiceClassInfoW(
     lpdwBufSize: ?*u32,
     // TODO: what to do with BytesParamIndex 2?
     lpServiceClassInfo: ?*WSASERVICECLASSINFOW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAEnumNameSpaceProvidersA(
     lpdwBufferLength: ?*u32,
     // TODO: what to do with BytesParamIndex 0?
     lpnspBuffer: ?*WSANAMESPACE_INFOA,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAEnumNameSpaceProvidersW(
     lpdwBufferLength: ?*u32,
     // TODO: what to do with BytesParamIndex 0?
     lpnspBuffer: ?*WSANAMESPACE_INFOW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAEnumNameSpaceProvidersExA(
     lpdwBufferLength: ?*u32,
     // TODO: what to do with BytesParamIndex 0?
     lpnspBuffer: ?*WSANAMESPACE_INFOEXA,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAEnumNameSpaceProvidersExW(
     lpdwBufferLength: ?*u32,
     // TODO: what to do with BytesParamIndex 0?
     lpnspBuffer: ?*WSANAMESPACE_INFOEXW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAGetServiceClassNameByClassIdA(
@@ -6043,7 +6032,7 @@ pub extern "ws2_32" fn WSAGetServiceClassNameByClassIdA(
     // TODO: what to do with BytesParamIndex 2?
     lpszServiceClassName: ?PSTR,
     lpdwBufferLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSAGetServiceClassNameByClassIdW(
@@ -6051,35 +6040,35 @@ pub extern "ws2_32" fn WSAGetServiceClassNameByClassIdW(
     // TODO: what to do with BytesParamIndex 2?
     lpszServiceClassName: ?PWSTR,
     lpdwBufferLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSASetServiceA(
     lpqsRegInfo: ?*WSAQUERYSETA,
     essoperation: WSAESETSERVICEOP,
     dwControlFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSASetServiceW(
     lpqsRegInfo: ?*WSAQUERYSETW,
     essoperation: WSAESETSERVICEOP,
     dwControlFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAProviderConfigChange(
     lpNotificationHandle: ?*?HANDLE,
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn WSAPoll(
     fdArray: ?*WSAPOLLFD,
     fds: u32,
     timeout: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "ws2_32" fn ProcessSocketNotifications(
     completionPort: ?HANDLE,
@@ -6089,26 +6078,26 @@ pub extern "ws2_32" fn ProcessSocketNotifications(
     completionCount: u32,
     completionPortEntries: ?[*]OVERLAPPED_ENTRY,
     receivedEntryCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv4AddressToStringA(
     Addr: ?*const IN_ADDR,
     S: *[16]u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "ntdll" fn RtlIpv4AddressToStringExA(
     Address: ?*const IN_ADDR,
     Port: u16,
     AddressString: [*:0]u8,
     AddressStringLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv4AddressToStringW(
     Addr: ?*const IN_ADDR,
     S: *[16]u16,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv4AddressToStringExW(
@@ -6116,7 +6105,7 @@ pub extern "ntdll" fn RtlIpv4AddressToStringExW(
     Port: u16,
     AddressString: [*:0]u16,
     AddressStringLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv4StringToAddressA(
@@ -6124,14 +6113,14 @@ pub extern "ntdll" fn RtlIpv4StringToAddressA(
     Strict: BOOLEAN,
     Terminator: ?*?PSTR,
     Addr: ?*IN_ADDR,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "ntdll" fn RtlIpv4StringToAddressExA(
     AddressString: ?[*:0]const u8,
     Strict: BOOLEAN,
     Address: ?*IN_ADDR,
     Port: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv4StringToAddressW(
@@ -6139,7 +6128,7 @@ pub extern "ntdll" fn RtlIpv4StringToAddressW(
     Strict: BOOLEAN,
     Terminator: ?*?PWSTR,
     Addr: ?*IN_ADDR,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv4StringToAddressExW(
@@ -6147,13 +6136,13 @@ pub extern "ntdll" fn RtlIpv4StringToAddressExW(
     Strict: BOOLEAN,
     Address: ?*IN_ADDR,
     Port: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv6AddressToStringA(
     Addr: ?*const IN6_ADDR,
     S: *[46]u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "ntdll" fn RtlIpv6AddressToStringExA(
     Address: ?*const IN6_ADDR,
@@ -6161,13 +6150,13 @@ pub extern "ntdll" fn RtlIpv6AddressToStringExA(
     Port: u16,
     AddressString: [*:0]u8,
     AddressStringLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv6AddressToStringW(
     Addr: ?*const IN6_ADDR,
     S: *[46]u16,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv6AddressToStringExW(
@@ -6176,28 +6165,28 @@ pub extern "ntdll" fn RtlIpv6AddressToStringExW(
     Port: u16,
     AddressString: [*:0]u16,
     AddressStringLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv6StringToAddressA(
     S: ?[*:0]const u8,
     Terminator: ?*?PSTR,
     Addr: ?*IN6_ADDR,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "ntdll" fn RtlIpv6StringToAddressExA(
     AddressString: ?[*:0]const u8,
     Address: ?*IN6_ADDR,
     ScopeId: ?*u32,
     Port: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv6StringToAddressW(
     S: ?[*:0]const u16,
     Terminator: ?*?PWSTR,
     Addr: ?*IN6_ADDR,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdll" fn RtlIpv6StringToAddressExW(
@@ -6205,33 +6194,33 @@ pub extern "ntdll" fn RtlIpv6StringToAddressExW(
     Address: ?*IN6_ADDR,
     ScopeId: ?*u32,
     Port: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "ntdll" fn RtlEthernetAddressToStringA(
     Addr: ?*const DL_EUI48,
     S: *[18]u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "ntdll" fn RtlEthernetAddressToStringW(
     Addr: ?*const DL_EUI48,
     S: *[18]u16,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "ntdll" fn RtlEthernetStringToAddressA(
     S: ?[*:0]const u8,
     Terminator: ?*?PSTR,
     Addr: ?*DL_EUI48,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "ntdll" fn RtlEthernetStringToAddressW(
     S: ?[*:0]const u16,
     Terminator: ?*?PWSTR,
     Addr: ?*DL_EUI48,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn WSARecvEx(
@@ -6240,7 +6229,7 @@ pub extern "mswsock" fn WSARecvEx(
     buf: ?PSTR,
     len: i32,
     flags: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "mswsock" fn TransmitFile(
@@ -6251,7 +6240,7 @@ pub extern "mswsock" fn TransmitFile(
     lpOverlapped: ?*OVERLAPPED,
     lpTransmitBuffers: ?*TRANSMIT_FILE_BUFFERS,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "mswsock" fn AcceptEx(
@@ -6263,7 +6252,7 @@ pub extern "mswsock" fn AcceptEx(
     dwRemoteAddressLength: u32,
     lpdwBytesReceived: ?*u32,
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "mswsock" fn GetAcceptExSockaddrs(
@@ -6275,7 +6264,7 @@ pub extern "mswsock" fn GetAcceptExSockaddrs(
     LocalSockaddrLength: ?*i32,
     RemoteSockaddr: ?*?*SOCKADDR,
     RemoteSockaddrLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSCEnumProtocols(
@@ -6284,21 +6273,20 @@ pub extern "ws2_32" fn WSCEnumProtocols(
     lpProtocolBuffer: ?*WSAPROTOCOL_INFOW,
     lpdwBufferLength: ?*u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCEnumProtocols32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCEnumProtocols32(
-    lpiProtocols: ?*i32,
-    // TODO: what to do with BytesParamIndex 2?
-    lpProtocolBuffer: ?*WSAPROTOCOL_INFOW,
-    lpdwBufferLength: ?*u32,
-    lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCEnumProtocols32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCEnumProtocols32(
+            lpiProtocols: ?*i32,
+            // TODO: what to do with BytesParamIndex 2?
+            lpProtocolBuffer: ?*WSAPROTOCOL_INFOW,
+            lpdwBufferLength: ?*u32,
+            lpErrno: ?*i32,
+        ) callconv(.winapi) i32;
+    }).WSCEnumProtocols32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCEnumProtocols32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6306,18 +6294,17 @@ pub extern "ws2_32" fn WSCEnumProtocols32(
 pub extern "ws2_32" fn WSCDeinstallProvider(
     lpProviderId: ?*Guid,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCDeinstallProvider32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCDeinstallProvider32(
-    lpProviderId: ?*Guid,
-    lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCDeinstallProvider32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCDeinstallProvider32(
+            lpProviderId: ?*Guid,
+            lpErrno: ?*i32,
+        ) callconv(.winapi) i32;
+    }).WSCDeinstallProvider32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCDeinstallProvider32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6328,21 +6315,20 @@ pub extern "ws2_32" fn WSCInstallProvider(
     lpProtocolInfoList: [*]const WSAPROTOCOL_INFOW,
     dwNumberOfEntries: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCInstallProvider64_32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows5.1.2600'
-pub extern "ws2_32" fn WSCInstallProvider64_32(
-    lpProviderId: ?*Guid,
-    lpszProviderDllPath: ?[*:0]const u16,
-    lpProtocolInfoList: [*]const WSAPROTOCOL_INFOW,
-    dwNumberOfEntries: u32,
-    lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCInstallProvider64_32,
+        // TODO: this type is limited to platform 'windows5.1.2600'
+        pub extern "ws2_32" fn WSCInstallProvider64_32(
+            lpProviderId: ?*Guid,
+            lpszProviderDllPath: ?[*:0]const u16,
+            lpProtocolInfoList: [*]const WSAPROTOCOL_INFOW,
+            dwNumberOfEntries: u32,
+            lpErrno: ?*i32,
+        ) callconv(.winapi) i32;
+    }).WSCInstallProvider64_32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCInstallProvider64_32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6352,20 +6338,19 @@ pub extern "ws2_32" fn WSCGetProviderPath(
     lpszProviderDllPath: [*:0]u16,
     lpProviderDllPathLen: ?*i32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCGetProviderPath32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCGetProviderPath32(
-    lpProviderId: ?*Guid,
-    lpszProviderDllPath: [*:0]u16,
-    lpProviderDllPathLen: ?*i32,
-    lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCGetProviderPath32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCGetProviderPath32(
+            lpProviderId: ?*Guid,
+            lpszProviderDllPath: [*:0]u16,
+            lpProviderDllPathLen: ?*i32,
+            lpErrno: ?*i32,
+        ) callconv(.winapi) i32;
+    }).WSCGetProviderPath32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCGetProviderPath32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6376,21 +6361,20 @@ pub extern "ws2_32" fn WSCUpdateProvider(
     lpProtocolInfoList: [*]const WSAPROTOCOL_INFOW,
     dwNumberOfEntries: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCUpdateProvider32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCUpdateProvider32(
-    lpProviderId: ?*Guid,
-    lpszProviderDllPath: ?[*:0]const u16,
-    lpProtocolInfoList: [*]const WSAPROTOCOL_INFOW,
-    dwNumberOfEntries: u32,
-    lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCUpdateProvider32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCUpdateProvider32(
+            lpProviderId: ?*Guid,
+            lpszProviderDllPath: ?[*:0]const u16,
+            lpProtocolInfoList: [*]const WSAPROTOCOL_INFOW,
+            dwNumberOfEntries: u32,
+            lpErrno: ?*i32,
+        ) callconv(.winapi) i32;
+    }).WSCUpdateProvider32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCUpdateProvider32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6403,7 +6387,7 @@ pub extern "ws2_32" fn WSCSetProviderInfo(
     InfoSize: usize,
     Flags: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ws2_32" fn WSCGetProviderInfo(
@@ -6414,41 +6398,39 @@ pub extern "ws2_32" fn WSCGetProviderInfo(
     InfoSize: ?*usize,
     Flags: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCSetProviderInfo32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCSetProviderInfo32(
-    lpProviderId: ?*Guid,
-    InfoType: WSC_PROVIDER_INFO_TYPE,
-    // TODO: what to do with BytesParamIndex 3?
-    Info: ?*u8,
-    InfoSize: usize,
-    Flags: u32,
-    lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCSetProviderInfo32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCSetProviderInfo32(
+            lpProviderId: ?*Guid,
+            InfoType: WSC_PROVIDER_INFO_TYPE,
+            // TODO: what to do with BytesParamIndex 3?
+            Info: ?*u8,
+            InfoSize: usize,
+            Flags: u32,
+            lpErrno: ?*i32,
+        ) callconv(.winapi) i32;
+    }).WSCSetProviderInfo32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCSetProviderInfo32' is not supported on architecture " ++ @tagName(a)),
 };
 
 pub const WSCGetProviderInfo32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCGetProviderInfo32(
-    lpProviderId: ?*Guid,
-    InfoType: WSC_PROVIDER_INFO_TYPE,
-    // TODO: what to do with BytesParamIndex 3?
-    Info: ?*u8,
-    InfoSize: ?*usize,
-    Flags: u32,
-    lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCGetProviderInfo32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCGetProviderInfo32(
+            lpProviderId: ?*Guid,
+            InfoType: WSC_PROVIDER_INFO_TYPE,
+            // TODO: what to do with BytesParamIndex 3?
+            Info: ?*u8,
+            InfoSize: ?*usize,
+            Flags: u32,
+            lpErrno: ?*i32,
+        ) callconv(.winapi) i32;
+    }).WSCGetProviderInfo32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCGetProviderInfo32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6461,7 +6443,7 @@ pub extern "ws2_32" fn WSCSetApplicationCategory(
     PermittedLspCategories: u32,
     pPrevPermLspCat: ?*u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ws2_32" fn WSCGetApplicationCategory(
@@ -6471,7 +6453,7 @@ pub extern "ws2_32" fn WSCGetApplicationCategory(
     ExtraLength: u32,
     pPermittedLspCategories: ?*u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WPUCompleteOverlappedRequest(
@@ -6480,33 +6462,31 @@ pub extern "ws2_32" fn WPUCompleteOverlappedRequest(
     dwError: u32,
     cbTransferred: u32,
     lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCEnumNameSpaceProviders32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCEnumNameSpaceProviders32(
-    lpdwBufferLength: ?*u32,
-    // TODO: what to do with BytesParamIndex 0?
-    lpnspBuffer: ?*WSANAMESPACE_INFOW,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCEnumNameSpaceProviders32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCEnumNameSpaceProviders32(
+            lpdwBufferLength: ?*u32,
+            // TODO: what to do with BytesParamIndex 0?
+            lpnspBuffer: ?*WSANAMESPACE_INFOW,
+        ) callconv(.winapi) i32;
+    }).WSCEnumNameSpaceProviders32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCEnumNameSpaceProviders32' is not supported on architecture " ++ @tagName(a)),
 };
 
 pub const WSCEnumNameSpaceProvidersEx32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCEnumNameSpaceProvidersEx32(
-    lpdwBufferLength: ?*u32,
-    // TODO: what to do with BytesParamIndex 0?
-    lpnspBuffer: ?*WSANAMESPACE_INFOEXW,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCEnumNameSpaceProvidersEx32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCEnumNameSpaceProvidersEx32(
+            lpdwBufferLength: ?*u32,
+            // TODO: what to do with BytesParamIndex 0?
+            lpnspBuffer: ?*WSANAMESPACE_INFOEXW,
+        ) callconv(.winapi) i32;
+    }).WSCEnumNameSpaceProvidersEx32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCEnumNameSpaceProvidersEx32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6517,28 +6497,27 @@ pub extern "ws2_32" fn WSCInstallNameSpace(
     dwNameSpace: u32,
     dwVersion: u32,
     lpProviderId: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCInstallNameSpace32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCInstallNameSpace32(
-    lpszIdentifier: ?PWSTR,
-    lpszPathName: ?PWSTR,
-    dwNameSpace: u32,
-    dwVersion: u32,
-    lpProviderId: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCInstallNameSpace32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCInstallNameSpace32(
+            lpszIdentifier: ?PWSTR,
+            lpszPathName: ?PWSTR,
+            dwNameSpace: u32,
+            dwVersion: u32,
+            lpProviderId: ?*Guid,
+        ) callconv(.winapi) i32;
+    }).WSCInstallNameSpace32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCInstallNameSpace32' is not supported on architecture " ++ @tagName(a)),
 };
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSCUnInstallNameSpace(
     lpProviderId: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ws2_32" fn WSCInstallNameSpaceEx(
@@ -6548,34 +6527,32 @@ pub extern "ws2_32" fn WSCInstallNameSpaceEx(
     dwVersion: u32,
     lpProviderId: ?*Guid,
     lpProviderSpecific: ?*BLOB,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCInstallNameSpaceEx32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCInstallNameSpaceEx32(
-    lpszIdentifier: ?PWSTR,
-    lpszPathName: ?PWSTR,
-    dwNameSpace: u32,
-    dwVersion: u32,
-    lpProviderId: ?*Guid,
-    lpProviderSpecific: ?*BLOB,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCInstallNameSpaceEx32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCInstallNameSpaceEx32(
+            lpszIdentifier: ?PWSTR,
+            lpszPathName: ?PWSTR,
+            dwNameSpace: u32,
+            dwVersion: u32,
+            lpProviderId: ?*Guid,
+            lpProviderSpecific: ?*BLOB,
+        ) callconv(.winapi) i32;
+    }).WSCInstallNameSpaceEx32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCInstallNameSpaceEx32' is not supported on architecture " ++ @tagName(a)),
 };
 
 pub const WSCUnInstallNameSpace32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCUnInstallNameSpace32(
-    lpProviderId: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCUnInstallNameSpace32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCUnInstallNameSpace32(
+            lpProviderId: ?*Guid,
+        ) callconv(.winapi) i32;
+    }).WSCUnInstallNameSpace32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCUnInstallNameSpace32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6583,38 +6560,36 @@ pub extern "ws2_32" fn WSCUnInstallNameSpace32(
 pub extern "ws2_32" fn WSCEnableNSProvider(
     lpProviderId: ?*Guid,
     fEnable: BOOL,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCEnableNSProvider32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCEnableNSProvider32(
-    lpProviderId: ?*Guid,
-    fEnable: BOOL,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCEnableNSProvider32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCEnableNSProvider32(
+            lpProviderId: ?*Guid,
+            fEnable: BOOL,
+        ) callconv(.winapi) i32;
+    }).WSCEnableNSProvider32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCEnableNSProvider32' is not supported on architecture " ++ @tagName(a)),
 };
 
 pub const WSCInstallProviderAndChains64_32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCInstallProviderAndChains64_32(
-    lpProviderId: ?*Guid,
-    lpszProviderDllPath: ?[*:0]const u16,
-    lpszProviderDllPath32: ?[*:0]const u16,
-    lpszLspName: ?[*:0]const u16,
-    dwServiceFlags: u32,
-    lpProtocolInfoList: [*]WSAPROTOCOL_INFOW,
-    dwNumberOfEntries: u32,
-    lpdwCatalogEntryId: ?*u32,
-    lpErrno: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCInstallProviderAndChains64_32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCInstallProviderAndChains64_32(
+            lpProviderId: ?*Guid,
+            lpszProviderDllPath: ?[*:0]const u16,
+            lpszProviderDllPath32: ?[*:0]const u16,
+            lpszLspName: ?[*:0]const u16,
+            dwServiceFlags: u32,
+            lpProtocolInfoList: [*]WSAPROTOCOL_INFOW,
+            dwNumberOfEntries: u32,
+            lpdwCatalogEntryId: ?*u32,
+            lpErrno: ?*i32,
+        ) callconv(.winapi) i32;
+    }).WSCInstallProviderAndChains64_32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCInstallProviderAndChains64_32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6622,18 +6597,18 @@ pub extern "ws2_32" fn WSCInstallProviderAndChains64_32(
 pub extern "ws2_32" fn WSAAdvertiseProvider(
     puuidProviderId: ?*const Guid,
     pNSPv2Routine: ?*const NSPV2_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ws2_32" fn WSAUnadvertiseProvider(
     puuidProviderId: ?*const Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ws2_32" fn WSAProviderCompleteAsyncCall(
     hAsyncCall: ?HANDLE,
     iRetCode: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn EnumProtocolsA(
@@ -6641,7 +6616,7 @@ pub extern "mswsock" fn EnumProtocolsA(
     // TODO: what to do with BytesParamIndex 2?
     lpProtocolBuffer: ?*anyopaque,
     lpdwBufferLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn EnumProtocolsW(
@@ -6649,7 +6624,7 @@ pub extern "mswsock" fn EnumProtocolsW(
     // TODO: what to do with BytesParamIndex 2?
     lpProtocolBuffer: ?*anyopaque,
     lpdwBufferLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn GetAddressByNameA(
@@ -6664,7 +6639,7 @@ pub extern "mswsock" fn GetAddressByNameA(
     lpdwBufferLength: ?*u32,
     lpAliasBuffer: ?[*:0]u8,
     lpdwAliasBufferLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn GetAddressByNameW(
@@ -6679,19 +6654,19 @@ pub extern "mswsock" fn GetAddressByNameW(
     lpdwBufferLength: ?*u32,
     lpAliasBuffer: ?[*:0]u16,
     lpdwAliasBufferLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn GetTypeByNameA(
     lpServiceName: ?PSTR,
     lpServiceType: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn GetTypeByNameW(
     lpServiceName: ?PWSTR,
     lpServiceType: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn GetNameByTypeA(
@@ -6699,7 +6674,7 @@ pub extern "mswsock" fn GetNameByTypeA(
     // TODO: what to do with BytesParamIndex 2?
     lpServiceName: ?PSTR,
     dwNameLength: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn GetNameByTypeW(
@@ -6707,7 +6682,7 @@ pub extern "mswsock" fn GetNameByTypeW(
     // TODO: what to do with BytesParamIndex 2?
     lpServiceName: ?PWSTR,
     dwNameLength: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn SetServiceA(
@@ -6717,7 +6692,7 @@ pub extern "mswsock" fn SetServiceA(
     lpServiceInfo: ?*SERVICE_INFOA,
     lpServiceAsyncInfo: ?*SERVICE_ASYNC_INFO,
     lpdwStatusFlags: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn SetServiceW(
@@ -6727,7 +6702,7 @@ pub extern "mswsock" fn SetServiceW(
     lpServiceInfo: ?*SERVICE_INFOW,
     lpServiceAsyncInfo: ?*SERVICE_ASYNC_INFO,
     lpdwStatusFlags: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn GetServiceA(
@@ -6739,7 +6714,7 @@ pub extern "mswsock" fn GetServiceA(
     lpBuffer: ?*anyopaque,
     lpdwBufferSize: ?*u32,
     lpServiceAsyncInfo: ?*SERVICE_ASYNC_INFO,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "mswsock" fn GetServiceW(
@@ -6751,7 +6726,7 @@ pub extern "mswsock" fn GetServiceW(
     lpBuffer: ?*anyopaque,
     lpdwBufferSize: ?*u32,
     lpServiceAsyncInfo: ?*SERVICE_ASYNC_INFO,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn getaddrinfo(
@@ -6759,7 +6734,7 @@ pub extern "ws2_32" fn getaddrinfo(
     pServiceName: ?[*:0]const u8,
     pHints: ?*const ADDRINFOA,
     ppResult: ?*?*ADDRINFOA,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn GetAddrInfoW(
@@ -6767,7 +6742,7 @@ pub extern "ws2_32" fn GetAddrInfoW(
     pServiceName: ?[*:0]const u16,
     pHints: ?*const addrinfoW,
     ppResult: ?*?*addrinfoW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ws2_32" fn GetAddrInfoExA(
@@ -6781,7 +6756,7 @@ pub extern "ws2_32" fn GetAddrInfoExA(
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPLOOKUPSERVICE_COMPLETION_ROUTINE,
     lpNameHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ws2_32" fn GetAddrInfoExW(
@@ -6795,17 +6770,17 @@ pub extern "ws2_32" fn GetAddrInfoExW(
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPLOOKUPSERVICE_COMPLETION_ROUTINE,
     lpHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn GetAddrInfoExCancel(
     lpHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn GetAddrInfoExOverlappedResult(
     lpOverlapped: ?*OVERLAPPED,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn SetAddrInfoExA(
@@ -6821,7 +6796,7 @@ pub extern "ws2_32" fn SetAddrInfoExA(
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPLOOKUPSERVICE_COMPLETION_ROUTINE,
     lpNameHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn SetAddrInfoExW(
@@ -6837,27 +6812,27 @@ pub extern "ws2_32" fn SetAddrInfoExW(
     lpOverlapped: ?*OVERLAPPED,
     lpCompletionRoutine: ?LPLOOKUPSERVICE_COMPLETION_ROUTINE,
     lpNameHandle: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn freeaddrinfo(
     pAddrInfo: ?*ADDRINFOA,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn FreeAddrInfoW(
     pAddrInfo: ?*addrinfoW,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn FreeAddrInfoEx(
     pAddrInfoEx: ?*addrinfoexA,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn FreeAddrInfoExW(
     pAddrInfoEx: ?*addrinfoexW,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn getnameinfo(
@@ -6869,7 +6844,7 @@ pub extern "ws2_32" fn getnameinfo(
     pServiceBuffer: ?[*]u8,
     ServiceBufferSize: u32,
     Flags: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn GetNameInfoW(
@@ -6881,21 +6856,21 @@ pub extern "ws2_32" fn GetNameInfoW(
     pServiceBuffer: ?[*]u16,
     ServiceBufferSize: u32,
     Flags: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn inet_pton(
     Family: i32,
     pszAddrString: ?[*:0]const u8,
     pAddrBuf: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn InetPtonW(
     Family: i32,
     pszAddrString: ?[*:0]const u16,
     pAddrBuf: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn inet_ntop(
@@ -6903,7 +6878,7 @@ pub extern "ws2_32" fn inet_ntop(
     pAddr: ?*const anyopaque,
     pStringBuf: [*:0]u8,
     StringBufSize: usize,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 // TODO: this type is limited to platform 'windows8.1'
 pub extern "ws2_32" fn InetNtopW(
@@ -6911,7 +6886,7 @@ pub extern "ws2_32" fn InetNtopW(
     pAddr: ?*const anyopaque,
     pStringBuf: [*:0]u16,
     StringBufSize: usize,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "fwpuclnt" fn WSASetSocketSecurity(
@@ -6921,7 +6896,7 @@ pub extern "fwpuclnt" fn WSASetSocketSecurity(
     SecuritySettingsLen: u32,
     Overlapped: ?*OVERLAPPED,
     CompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "fwpuclnt" fn WSAQuerySocketSecurity(
@@ -6934,7 +6909,7 @@ pub extern "fwpuclnt" fn WSAQuerySocketSecurity(
     SecurityQueryInfoLen: ?*u32,
     Overlapped: ?*OVERLAPPED,
     CompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "fwpuclnt" fn WSASetSocketPeerTargetName(
@@ -6944,7 +6919,7 @@ pub extern "fwpuclnt" fn WSASetSocketPeerTargetName(
     PeerTargetNameLen: u32,
     Overlapped: ?*OVERLAPPED,
     CompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "fwpuclnt" fn WSADeleteSocketPeerTargetName(
@@ -6954,7 +6929,7 @@ pub extern "fwpuclnt" fn WSADeleteSocketPeerTargetName(
     PeerAddrLen: u32,
     Overlapped: ?*OVERLAPPED,
     CompletionRoutine: ?LPWSAOVERLAPPED_COMPLETION_ROUTINE,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "fwpuclnt" fn WSAImpersonateSocketPeer(
@@ -6962,33 +6937,31 @@ pub extern "fwpuclnt" fn WSAImpersonateSocketPeer(
     // TODO: what to do with BytesParamIndex 2?
     PeerAddr: ?*const SOCKADDR,
     PeerAddrLen: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "fwpuclnt" fn WSARevertImpersonation(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "fwpuclnt" fn WSARevertImpersonation() callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "windows.networking" fn SetSocketMediaStreamingMode(
     value: BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "ws2_32" fn WSCWriteProviderOrder(
     lpwdCatalogEntryId: ?*u32,
     dwNumberOfEntries: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCWriteProviderOrder32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCWriteProviderOrder32(
-    lpwdCatalogEntryId: ?*u32,
-    dwNumberOfEntries: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCWriteProviderOrder32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCWriteProviderOrder32(
+            lpwdCatalogEntryId: ?*u32,
+            dwNumberOfEntries: u32,
+        ) callconv(.winapi) i32;
+    }).WSCWriteProviderOrder32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCWriteProviderOrder32' is not supported on architecture " ++ @tagName(a)),
 };
 
@@ -6996,21 +6969,19 @@ pub extern "ws2_32" fn WSCWriteProviderOrder32(
 pub extern "ws2_32" fn WSCWriteNameSpaceOrder(
     lpProviderId: ?*Guid,
     dwNumberOfEntries: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const WSCWriteNameSpaceOrder32 = switch (@import("../zig.zig").arch) {
-.X64, .Arm64 => (struct {
+    .X64, .Arm64 => (struct {
 
-// TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "ws2_32" fn WSCWriteNameSpaceOrder32(
-    lpProviderId: ?*Guid,
-    dwNumberOfEntries: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
-
-}).WSCWriteNameSpaceOrder32,
+        // TODO: this type is limited to platform 'windows6.0.6000'
+        pub extern "ws2_32" fn WSCWriteNameSpaceOrder32(
+            lpProviderId: ?*Guid,
+            dwNumberOfEntries: u32,
+        ) callconv(.winapi) i32;
+    }).WSCWriteNameSpaceOrder32,
     else => |a| if (@import("builtin").is_test) void else @compileError("function 'WSCWriteNameSpaceOrder32' is not supported on architecture " ++ @tagName(a)),
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (48)
@@ -7376,113 +7347,317 @@ const WPARAM = @import("../foundation.zig").WPARAM;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "LPCONDITIONPROC")) { _ = LPCONDITIONPROC; }
-    if (@hasDecl(@This(), "LPWSAOVERLAPPED_COMPLETION_ROUTINE")) { _ = LPWSAOVERLAPPED_COMPLETION_ROUTINE; }
-    if (@hasDecl(@This(), "LPFN_TRANSMITFILE")) { _ = LPFN_TRANSMITFILE; }
-    if (@hasDecl(@This(), "LPFN_ACCEPTEX")) { _ = LPFN_ACCEPTEX; }
-    if (@hasDecl(@This(), "LPFN_GETACCEPTEXSOCKADDRS")) { _ = LPFN_GETACCEPTEXSOCKADDRS; }
-    if (@hasDecl(@This(), "LPFN_TRANSMITPACKETS")) { _ = LPFN_TRANSMITPACKETS; }
-    if (@hasDecl(@This(), "LPFN_CONNECTEX")) { _ = LPFN_CONNECTEX; }
-    if (@hasDecl(@This(), "LPFN_DISCONNECTEX")) { _ = LPFN_DISCONNECTEX; }
-    if (@hasDecl(@This(), "LPFN_WSARECVMSG")) { _ = LPFN_WSARECVMSG; }
-    if (@hasDecl(@This(), "LPFN_WSASENDMSG")) { _ = LPFN_WSASENDMSG; }
-    if (@hasDecl(@This(), "LPFN_WSAPOLL")) { _ = LPFN_WSAPOLL; }
-    if (@hasDecl(@This(), "LPFN_RIORECEIVE")) { _ = LPFN_RIORECEIVE; }
-    if (@hasDecl(@This(), "LPFN_RIORECEIVEEX")) { _ = LPFN_RIORECEIVEEX; }
-    if (@hasDecl(@This(), "LPFN_RIOSEND")) { _ = LPFN_RIOSEND; }
-    if (@hasDecl(@This(), "LPFN_RIOSENDEX")) { _ = LPFN_RIOSENDEX; }
-    if (@hasDecl(@This(), "LPFN_RIOCLOSECOMPLETIONQUEUE")) { _ = LPFN_RIOCLOSECOMPLETIONQUEUE; }
-    if (@hasDecl(@This(), "LPFN_RIOCREATECOMPLETIONQUEUE")) { _ = LPFN_RIOCREATECOMPLETIONQUEUE; }
-    if (@hasDecl(@This(), "LPFN_RIOCREATEREQUESTQUEUE")) { _ = LPFN_RIOCREATEREQUESTQUEUE; }
-    if (@hasDecl(@This(), "LPFN_RIODEQUEUECOMPLETION")) { _ = LPFN_RIODEQUEUECOMPLETION; }
-    if (@hasDecl(@This(), "LPFN_RIODEREGISTERBUFFER")) { _ = LPFN_RIODEREGISTERBUFFER; }
-    if (@hasDecl(@This(), "LPFN_RIONOTIFY")) { _ = LPFN_RIONOTIFY; }
-    if (@hasDecl(@This(), "LPFN_RIOREGISTERBUFFER")) { _ = LPFN_RIOREGISTERBUFFER; }
-    if (@hasDecl(@This(), "LPFN_RIORESIZECOMPLETIONQUEUE")) { _ = LPFN_RIORESIZECOMPLETIONQUEUE; }
-    if (@hasDecl(@This(), "LPFN_RIORESIZEREQUESTQUEUE")) { _ = LPFN_RIORESIZEREQUESTQUEUE; }
-    if (@hasDecl(@This(), "LPBLOCKINGCALLBACK")) { _ = LPBLOCKINGCALLBACK; }
-    if (@hasDecl(@This(), "LPWSAUSERAPC")) { _ = LPWSAUSERAPC; }
-    if (@hasDecl(@This(), "LPWSPACCEPT")) { _ = LPWSPACCEPT; }
-    if (@hasDecl(@This(), "LPWSPADDRESSTOSTRING")) { _ = LPWSPADDRESSTOSTRING; }
-    if (@hasDecl(@This(), "LPWSPASYNCSELECT")) { _ = LPWSPASYNCSELECT; }
-    if (@hasDecl(@This(), "LPWSPBIND")) { _ = LPWSPBIND; }
-    if (@hasDecl(@This(), "LPWSPCANCELBLOCKINGCALL")) { _ = LPWSPCANCELBLOCKINGCALL; }
-    if (@hasDecl(@This(), "LPWSPCLEANUP")) { _ = LPWSPCLEANUP; }
-    if (@hasDecl(@This(), "LPWSPCLOSESOCKET")) { _ = LPWSPCLOSESOCKET; }
-    if (@hasDecl(@This(), "LPWSPCONNECT")) { _ = LPWSPCONNECT; }
-    if (@hasDecl(@This(), "LPWSPDUPLICATESOCKET")) { _ = LPWSPDUPLICATESOCKET; }
-    if (@hasDecl(@This(), "LPWSPENUMNETWORKEVENTS")) { _ = LPWSPENUMNETWORKEVENTS; }
-    if (@hasDecl(@This(), "LPWSPEVENTSELECT")) { _ = LPWSPEVENTSELECT; }
-    if (@hasDecl(@This(), "LPWSPGETOVERLAPPEDRESULT")) { _ = LPWSPGETOVERLAPPEDRESULT; }
-    if (@hasDecl(@This(), "LPWSPGETPEERNAME")) { _ = LPWSPGETPEERNAME; }
-    if (@hasDecl(@This(), "LPWSPGETSOCKNAME")) { _ = LPWSPGETSOCKNAME; }
-    if (@hasDecl(@This(), "LPWSPGETSOCKOPT")) { _ = LPWSPGETSOCKOPT; }
-    if (@hasDecl(@This(), "LPWSPGETQOSBYNAME")) { _ = LPWSPGETQOSBYNAME; }
-    if (@hasDecl(@This(), "LPWSPIOCTL")) { _ = LPWSPIOCTL; }
-    if (@hasDecl(@This(), "LPWSPJOINLEAF")) { _ = LPWSPJOINLEAF; }
-    if (@hasDecl(@This(), "LPWSPLISTEN")) { _ = LPWSPLISTEN; }
-    if (@hasDecl(@This(), "LPWSPRECV")) { _ = LPWSPRECV; }
-    if (@hasDecl(@This(), "LPWSPRECVDISCONNECT")) { _ = LPWSPRECVDISCONNECT; }
-    if (@hasDecl(@This(), "LPWSPRECVFROM")) { _ = LPWSPRECVFROM; }
-    if (@hasDecl(@This(), "LPWSPSELECT")) { _ = LPWSPSELECT; }
-    if (@hasDecl(@This(), "LPWSPSEND")) { _ = LPWSPSEND; }
-    if (@hasDecl(@This(), "LPWSPSENDDISCONNECT")) { _ = LPWSPSENDDISCONNECT; }
-    if (@hasDecl(@This(), "LPWSPSENDTO")) { _ = LPWSPSENDTO; }
-    if (@hasDecl(@This(), "LPWSPSETSOCKOPT")) { _ = LPWSPSETSOCKOPT; }
-    if (@hasDecl(@This(), "LPWSPSHUTDOWN")) { _ = LPWSPSHUTDOWN; }
-    if (@hasDecl(@This(), "LPWSPSOCKET")) { _ = LPWSPSOCKET; }
-    if (@hasDecl(@This(), "LPWSPSTRINGTOADDRESS")) { _ = LPWSPSTRINGTOADDRESS; }
-    if (@hasDecl(@This(), "LPWPUCLOSEEVENT")) { _ = LPWPUCLOSEEVENT; }
-    if (@hasDecl(@This(), "LPWPUCLOSESOCKETHANDLE")) { _ = LPWPUCLOSESOCKETHANDLE; }
-    if (@hasDecl(@This(), "LPWPUCREATEEVENT")) { _ = LPWPUCREATEEVENT; }
-    if (@hasDecl(@This(), "LPWPUCREATESOCKETHANDLE")) { _ = LPWPUCREATESOCKETHANDLE; }
-    if (@hasDecl(@This(), "LPWPUFDISSET")) { _ = LPWPUFDISSET; }
-    if (@hasDecl(@This(), "LPWPUGETPROVIDERPATH")) { _ = LPWPUGETPROVIDERPATH; }
-    if (@hasDecl(@This(), "LPWPUMODIFYIFSHANDLE")) { _ = LPWPUMODIFYIFSHANDLE; }
-    if (@hasDecl(@This(), "LPWPUPOSTMESSAGE")) { _ = LPWPUPOSTMESSAGE; }
-    if (@hasDecl(@This(), "LPWPUQUERYBLOCKINGCALLBACK")) { _ = LPWPUQUERYBLOCKINGCALLBACK; }
-    if (@hasDecl(@This(), "LPWPUQUERYSOCKETHANDLECONTEXT")) { _ = LPWPUQUERYSOCKETHANDLECONTEXT; }
-    if (@hasDecl(@This(), "LPWPUQUEUEAPC")) { _ = LPWPUQUEUEAPC; }
-    if (@hasDecl(@This(), "LPWPURESETEVENT")) { _ = LPWPURESETEVENT; }
-    if (@hasDecl(@This(), "LPWPUSETEVENT")) { _ = LPWPUSETEVENT; }
-    if (@hasDecl(@This(), "LPWPUOPENCURRENTTHREAD")) { _ = LPWPUOPENCURRENTTHREAD; }
-    if (@hasDecl(@This(), "LPWPUCLOSETHREAD")) { _ = LPWPUCLOSETHREAD; }
-    if (@hasDecl(@This(), "LPWPUCOMPLETEOVERLAPPEDREQUEST")) { _ = LPWPUCOMPLETEOVERLAPPEDREQUEST; }
-    if (@hasDecl(@This(), "LPWSPSTARTUP")) { _ = LPWSPSTARTUP; }
-    if (@hasDecl(@This(), "LPWSCENUMPROTOCOLS")) { _ = LPWSCENUMPROTOCOLS; }
-    if (@hasDecl(@This(), "LPWSCDEINSTALLPROVIDER")) { _ = LPWSCDEINSTALLPROVIDER; }
-    if (@hasDecl(@This(), "LPWSCINSTALLPROVIDER")) { _ = LPWSCINSTALLPROVIDER; }
-    if (@hasDecl(@This(), "LPWSCGETPROVIDERPATH")) { _ = LPWSCGETPROVIDERPATH; }
-    if (@hasDecl(@This(), "LPWSCUPDATEPROVIDER")) { _ = LPWSCUPDATEPROVIDER; }
-    if (@hasDecl(@This(), "LPWSCINSTALLNAMESPACE")) { _ = LPWSCINSTALLNAMESPACE; }
-    if (@hasDecl(@This(), "LPWSCUNINSTALLNAMESPACE")) { _ = LPWSCUNINSTALLNAMESPACE; }
-    if (@hasDecl(@This(), "LPWSCENABLENSPROVIDER")) { _ = LPWSCENABLENSPROVIDER; }
-    if (@hasDecl(@This(), "LPNSPCLEANUP")) { _ = LPNSPCLEANUP; }
-    if (@hasDecl(@This(), "LPNSPLOOKUPSERVICEBEGIN")) { _ = LPNSPLOOKUPSERVICEBEGIN; }
-    if (@hasDecl(@This(), "LPNSPLOOKUPSERVICENEXT")) { _ = LPNSPLOOKUPSERVICENEXT; }
-    if (@hasDecl(@This(), "LPNSPIOCTL")) { _ = LPNSPIOCTL; }
-    if (@hasDecl(@This(), "LPNSPLOOKUPSERVICEEND")) { _ = LPNSPLOOKUPSERVICEEND; }
-    if (@hasDecl(@This(), "LPNSPSETSERVICE")) { _ = LPNSPSETSERVICE; }
-    if (@hasDecl(@This(), "LPNSPINSTALLSERVICECLASS")) { _ = LPNSPINSTALLSERVICECLASS; }
-    if (@hasDecl(@This(), "LPNSPREMOVESERVICECLASS")) { _ = LPNSPREMOVESERVICECLASS; }
-    if (@hasDecl(@This(), "LPNSPGETSERVICECLASSINFO")) { _ = LPNSPGETSERVICECLASSINFO; }
-    if (@hasDecl(@This(), "LPNSPSTARTUP")) { _ = LPNSPSTARTUP; }
-    if (@hasDecl(@This(), "LPNSPV2STARTUP")) { _ = LPNSPV2STARTUP; }
-    if (@hasDecl(@This(), "LPNSPV2CLEANUP")) { _ = LPNSPV2CLEANUP; }
-    if (@hasDecl(@This(), "LPNSPV2LOOKUPSERVICEBEGIN")) { _ = LPNSPV2LOOKUPSERVICEBEGIN; }
-    if (@hasDecl(@This(), "LPNSPV2LOOKUPSERVICENEXTEX")) { _ = LPNSPV2LOOKUPSERVICENEXTEX; }
-    if (@hasDecl(@This(), "LPNSPV2LOOKUPSERVICEEND")) { _ = LPNSPV2LOOKUPSERVICEEND; }
-    if (@hasDecl(@This(), "LPNSPV2SETSERVICEEX")) { _ = LPNSPV2SETSERVICEEX; }
-    if (@hasDecl(@This(), "LPNSPV2CLIENTSESSIONRUNDOWN")) { _ = LPNSPV2CLIENTSESSIONRUNDOWN; }
-    if (@hasDecl(@This(), "LPFN_NSPAPI")) { _ = LPFN_NSPAPI; }
-    if (@hasDecl(@This(), "LPSERVICE_CALLBACK_PROC")) { _ = LPSERVICE_CALLBACK_PROC; }
-    if (@hasDecl(@This(), "LPLOOKUPSERVICE_COMPLETION_ROUTINE")) { _ = LPLOOKUPSERVICE_COMPLETION_ROUTINE; }
-    if (@hasDecl(@This(), "LPWSCWRITEPROVIDERORDER")) { _ = LPWSCWRITEPROVIDERORDER; }
-    if (@hasDecl(@This(), "LPWSCWRITENAMESPACEORDER")) { _ = LPWSCWRITENAMESPACEORDER; }
+    if (@hasDecl(@This(), "LPCONDITIONPROC")) {
+        _ = LPCONDITIONPROC;
+    }
+    if (@hasDecl(@This(), "LPWSAOVERLAPPED_COMPLETION_ROUTINE")) {
+        _ = LPWSAOVERLAPPED_COMPLETION_ROUTINE;
+    }
+    if (@hasDecl(@This(), "LPFN_TRANSMITFILE")) {
+        _ = LPFN_TRANSMITFILE;
+    }
+    if (@hasDecl(@This(), "LPFN_ACCEPTEX")) {
+        _ = LPFN_ACCEPTEX;
+    }
+    if (@hasDecl(@This(), "LPFN_GETACCEPTEXSOCKADDRS")) {
+        _ = LPFN_GETACCEPTEXSOCKADDRS;
+    }
+    if (@hasDecl(@This(), "LPFN_TRANSMITPACKETS")) {
+        _ = LPFN_TRANSMITPACKETS;
+    }
+    if (@hasDecl(@This(), "LPFN_CONNECTEX")) {
+        _ = LPFN_CONNECTEX;
+    }
+    if (@hasDecl(@This(), "LPFN_DISCONNECTEX")) {
+        _ = LPFN_DISCONNECTEX;
+    }
+    if (@hasDecl(@This(), "LPFN_WSARECVMSG")) {
+        _ = LPFN_WSARECVMSG;
+    }
+    if (@hasDecl(@This(), "LPFN_WSASENDMSG")) {
+        _ = LPFN_WSASENDMSG;
+    }
+    if (@hasDecl(@This(), "LPFN_WSAPOLL")) {
+        _ = LPFN_WSAPOLL;
+    }
+    if (@hasDecl(@This(), "LPFN_RIORECEIVE")) {
+        _ = LPFN_RIORECEIVE;
+    }
+    if (@hasDecl(@This(), "LPFN_RIORECEIVEEX")) {
+        _ = LPFN_RIORECEIVEEX;
+    }
+    if (@hasDecl(@This(), "LPFN_RIOSEND")) {
+        _ = LPFN_RIOSEND;
+    }
+    if (@hasDecl(@This(), "LPFN_RIOSENDEX")) {
+        _ = LPFN_RIOSENDEX;
+    }
+    if (@hasDecl(@This(), "LPFN_RIOCLOSECOMPLETIONQUEUE")) {
+        _ = LPFN_RIOCLOSECOMPLETIONQUEUE;
+    }
+    if (@hasDecl(@This(), "LPFN_RIOCREATECOMPLETIONQUEUE")) {
+        _ = LPFN_RIOCREATECOMPLETIONQUEUE;
+    }
+    if (@hasDecl(@This(), "LPFN_RIOCREATEREQUESTQUEUE")) {
+        _ = LPFN_RIOCREATEREQUESTQUEUE;
+    }
+    if (@hasDecl(@This(), "LPFN_RIODEQUEUECOMPLETION")) {
+        _ = LPFN_RIODEQUEUECOMPLETION;
+    }
+    if (@hasDecl(@This(), "LPFN_RIODEREGISTERBUFFER")) {
+        _ = LPFN_RIODEREGISTERBUFFER;
+    }
+    if (@hasDecl(@This(), "LPFN_RIONOTIFY")) {
+        _ = LPFN_RIONOTIFY;
+    }
+    if (@hasDecl(@This(), "LPFN_RIOREGISTERBUFFER")) {
+        _ = LPFN_RIOREGISTERBUFFER;
+    }
+    if (@hasDecl(@This(), "LPFN_RIORESIZECOMPLETIONQUEUE")) {
+        _ = LPFN_RIORESIZECOMPLETIONQUEUE;
+    }
+    if (@hasDecl(@This(), "LPFN_RIORESIZEREQUESTQUEUE")) {
+        _ = LPFN_RIORESIZEREQUESTQUEUE;
+    }
+    if (@hasDecl(@This(), "LPBLOCKINGCALLBACK")) {
+        _ = LPBLOCKINGCALLBACK;
+    }
+    if (@hasDecl(@This(), "LPWSAUSERAPC")) {
+        _ = LPWSAUSERAPC;
+    }
+    if (@hasDecl(@This(), "LPWSPACCEPT")) {
+        _ = LPWSPACCEPT;
+    }
+    if (@hasDecl(@This(), "LPWSPADDRESSTOSTRING")) {
+        _ = LPWSPADDRESSTOSTRING;
+    }
+    if (@hasDecl(@This(), "LPWSPASYNCSELECT")) {
+        _ = LPWSPASYNCSELECT;
+    }
+    if (@hasDecl(@This(), "LPWSPBIND")) {
+        _ = LPWSPBIND;
+    }
+    if (@hasDecl(@This(), "LPWSPCANCELBLOCKINGCALL")) {
+        _ = LPWSPCANCELBLOCKINGCALL;
+    }
+    if (@hasDecl(@This(), "LPWSPCLEANUP")) {
+        _ = LPWSPCLEANUP;
+    }
+    if (@hasDecl(@This(), "LPWSPCLOSESOCKET")) {
+        _ = LPWSPCLOSESOCKET;
+    }
+    if (@hasDecl(@This(), "LPWSPCONNECT")) {
+        _ = LPWSPCONNECT;
+    }
+    if (@hasDecl(@This(), "LPWSPDUPLICATESOCKET")) {
+        _ = LPWSPDUPLICATESOCKET;
+    }
+    if (@hasDecl(@This(), "LPWSPENUMNETWORKEVENTS")) {
+        _ = LPWSPENUMNETWORKEVENTS;
+    }
+    if (@hasDecl(@This(), "LPWSPEVENTSELECT")) {
+        _ = LPWSPEVENTSELECT;
+    }
+    if (@hasDecl(@This(), "LPWSPGETOVERLAPPEDRESULT")) {
+        _ = LPWSPGETOVERLAPPEDRESULT;
+    }
+    if (@hasDecl(@This(), "LPWSPGETPEERNAME")) {
+        _ = LPWSPGETPEERNAME;
+    }
+    if (@hasDecl(@This(), "LPWSPGETSOCKNAME")) {
+        _ = LPWSPGETSOCKNAME;
+    }
+    if (@hasDecl(@This(), "LPWSPGETSOCKOPT")) {
+        _ = LPWSPGETSOCKOPT;
+    }
+    if (@hasDecl(@This(), "LPWSPGETQOSBYNAME")) {
+        _ = LPWSPGETQOSBYNAME;
+    }
+    if (@hasDecl(@This(), "LPWSPIOCTL")) {
+        _ = LPWSPIOCTL;
+    }
+    if (@hasDecl(@This(), "LPWSPJOINLEAF")) {
+        _ = LPWSPJOINLEAF;
+    }
+    if (@hasDecl(@This(), "LPWSPLISTEN")) {
+        _ = LPWSPLISTEN;
+    }
+    if (@hasDecl(@This(), "LPWSPRECV")) {
+        _ = LPWSPRECV;
+    }
+    if (@hasDecl(@This(), "LPWSPRECVDISCONNECT")) {
+        _ = LPWSPRECVDISCONNECT;
+    }
+    if (@hasDecl(@This(), "LPWSPRECVFROM")) {
+        _ = LPWSPRECVFROM;
+    }
+    if (@hasDecl(@This(), "LPWSPSELECT")) {
+        _ = LPWSPSELECT;
+    }
+    if (@hasDecl(@This(), "LPWSPSEND")) {
+        _ = LPWSPSEND;
+    }
+    if (@hasDecl(@This(), "LPWSPSENDDISCONNECT")) {
+        _ = LPWSPSENDDISCONNECT;
+    }
+    if (@hasDecl(@This(), "LPWSPSENDTO")) {
+        _ = LPWSPSENDTO;
+    }
+    if (@hasDecl(@This(), "LPWSPSETSOCKOPT")) {
+        _ = LPWSPSETSOCKOPT;
+    }
+    if (@hasDecl(@This(), "LPWSPSHUTDOWN")) {
+        _ = LPWSPSHUTDOWN;
+    }
+    if (@hasDecl(@This(), "LPWSPSOCKET")) {
+        _ = LPWSPSOCKET;
+    }
+    if (@hasDecl(@This(), "LPWSPSTRINGTOADDRESS")) {
+        _ = LPWSPSTRINGTOADDRESS;
+    }
+    if (@hasDecl(@This(), "LPWPUCLOSEEVENT")) {
+        _ = LPWPUCLOSEEVENT;
+    }
+    if (@hasDecl(@This(), "LPWPUCLOSESOCKETHANDLE")) {
+        _ = LPWPUCLOSESOCKETHANDLE;
+    }
+    if (@hasDecl(@This(), "LPWPUCREATEEVENT")) {
+        _ = LPWPUCREATEEVENT;
+    }
+    if (@hasDecl(@This(), "LPWPUCREATESOCKETHANDLE")) {
+        _ = LPWPUCREATESOCKETHANDLE;
+    }
+    if (@hasDecl(@This(), "LPWPUFDISSET")) {
+        _ = LPWPUFDISSET;
+    }
+    if (@hasDecl(@This(), "LPWPUGETPROVIDERPATH")) {
+        _ = LPWPUGETPROVIDERPATH;
+    }
+    if (@hasDecl(@This(), "LPWPUMODIFYIFSHANDLE")) {
+        _ = LPWPUMODIFYIFSHANDLE;
+    }
+    if (@hasDecl(@This(), "LPWPUPOSTMESSAGE")) {
+        _ = LPWPUPOSTMESSAGE;
+    }
+    if (@hasDecl(@This(), "LPWPUQUERYBLOCKINGCALLBACK")) {
+        _ = LPWPUQUERYBLOCKINGCALLBACK;
+    }
+    if (@hasDecl(@This(), "LPWPUQUERYSOCKETHANDLECONTEXT")) {
+        _ = LPWPUQUERYSOCKETHANDLECONTEXT;
+    }
+    if (@hasDecl(@This(), "LPWPUQUEUEAPC")) {
+        _ = LPWPUQUEUEAPC;
+    }
+    if (@hasDecl(@This(), "LPWPURESETEVENT")) {
+        _ = LPWPURESETEVENT;
+    }
+    if (@hasDecl(@This(), "LPWPUSETEVENT")) {
+        _ = LPWPUSETEVENT;
+    }
+    if (@hasDecl(@This(), "LPWPUOPENCURRENTTHREAD")) {
+        _ = LPWPUOPENCURRENTTHREAD;
+    }
+    if (@hasDecl(@This(), "LPWPUCLOSETHREAD")) {
+        _ = LPWPUCLOSETHREAD;
+    }
+    if (@hasDecl(@This(), "LPWPUCOMPLETEOVERLAPPEDREQUEST")) {
+        _ = LPWPUCOMPLETEOVERLAPPEDREQUEST;
+    }
+    if (@hasDecl(@This(), "LPWSPSTARTUP")) {
+        _ = LPWSPSTARTUP;
+    }
+    if (@hasDecl(@This(), "LPWSCENUMPROTOCOLS")) {
+        _ = LPWSCENUMPROTOCOLS;
+    }
+    if (@hasDecl(@This(), "LPWSCDEINSTALLPROVIDER")) {
+        _ = LPWSCDEINSTALLPROVIDER;
+    }
+    if (@hasDecl(@This(), "LPWSCINSTALLPROVIDER")) {
+        _ = LPWSCINSTALLPROVIDER;
+    }
+    if (@hasDecl(@This(), "LPWSCGETPROVIDERPATH")) {
+        _ = LPWSCGETPROVIDERPATH;
+    }
+    if (@hasDecl(@This(), "LPWSCUPDATEPROVIDER")) {
+        _ = LPWSCUPDATEPROVIDER;
+    }
+    if (@hasDecl(@This(), "LPWSCINSTALLNAMESPACE")) {
+        _ = LPWSCINSTALLNAMESPACE;
+    }
+    if (@hasDecl(@This(), "LPWSCUNINSTALLNAMESPACE")) {
+        _ = LPWSCUNINSTALLNAMESPACE;
+    }
+    if (@hasDecl(@This(), "LPWSCENABLENSPROVIDER")) {
+        _ = LPWSCENABLENSPROVIDER;
+    }
+    if (@hasDecl(@This(), "LPNSPCLEANUP")) {
+        _ = LPNSPCLEANUP;
+    }
+    if (@hasDecl(@This(), "LPNSPLOOKUPSERVICEBEGIN")) {
+        _ = LPNSPLOOKUPSERVICEBEGIN;
+    }
+    if (@hasDecl(@This(), "LPNSPLOOKUPSERVICENEXT")) {
+        _ = LPNSPLOOKUPSERVICENEXT;
+    }
+    if (@hasDecl(@This(), "LPNSPIOCTL")) {
+        _ = LPNSPIOCTL;
+    }
+    if (@hasDecl(@This(), "LPNSPLOOKUPSERVICEEND")) {
+        _ = LPNSPLOOKUPSERVICEEND;
+    }
+    if (@hasDecl(@This(), "LPNSPSETSERVICE")) {
+        _ = LPNSPSETSERVICE;
+    }
+    if (@hasDecl(@This(), "LPNSPINSTALLSERVICECLASS")) {
+        _ = LPNSPINSTALLSERVICECLASS;
+    }
+    if (@hasDecl(@This(), "LPNSPREMOVESERVICECLASS")) {
+        _ = LPNSPREMOVESERVICECLASS;
+    }
+    if (@hasDecl(@This(), "LPNSPGETSERVICECLASSINFO")) {
+        _ = LPNSPGETSERVICECLASSINFO;
+    }
+    if (@hasDecl(@This(), "LPNSPSTARTUP")) {
+        _ = LPNSPSTARTUP;
+    }
+    if (@hasDecl(@This(), "LPNSPV2STARTUP")) {
+        _ = LPNSPV2STARTUP;
+    }
+    if (@hasDecl(@This(), "LPNSPV2CLEANUP")) {
+        _ = LPNSPV2CLEANUP;
+    }
+    if (@hasDecl(@This(), "LPNSPV2LOOKUPSERVICEBEGIN")) {
+        _ = LPNSPV2LOOKUPSERVICEBEGIN;
+    }
+    if (@hasDecl(@This(), "LPNSPV2LOOKUPSERVICENEXTEX")) {
+        _ = LPNSPV2LOOKUPSERVICENEXTEX;
+    }
+    if (@hasDecl(@This(), "LPNSPV2LOOKUPSERVICEEND")) {
+        _ = LPNSPV2LOOKUPSERVICEEND;
+    }
+    if (@hasDecl(@This(), "LPNSPV2SETSERVICEEX")) {
+        _ = LPNSPV2SETSERVICEEX;
+    }
+    if (@hasDecl(@This(), "LPNSPV2CLIENTSESSIONRUNDOWN")) {
+        _ = LPNSPV2CLIENTSESSIONRUNDOWN;
+    }
+    if (@hasDecl(@This(), "LPFN_NSPAPI")) {
+        _ = LPFN_NSPAPI;
+    }
+    if (@hasDecl(@This(), "LPSERVICE_CALLBACK_PROC")) {
+        _ = LPSERVICE_CALLBACK_PROC;
+    }
+    if (@hasDecl(@This(), "LPLOOKUPSERVICE_COMPLETION_ROUTINE")) {
+        _ = LPLOOKUPSERVICE_COMPLETION_ROUTINE;
+    }
+    if (@hasDecl(@This(), "LPWSCWRITEPROVIDERORDER")) {
+        _ = LPWSCWRITEPROVIDERORDER;
+    }
+    if (@hasDecl(@This(), "LPWSCWRITENAMESPACEORDER")) {
+        _ = LPWSCWRITENAMESPACEORDER;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

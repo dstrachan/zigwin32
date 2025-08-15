@@ -1039,10 +1039,10 @@ pub const BLUETOOTH_COD_PAIRS = extern struct {
     pcszDescription: ?[*:0]const u16,
 };
 
-pub const PFN_DEVICE_CALLBACK = *const fn(
+pub const PFN_DEVICE_CALLBACK = *const fn (
     pvParam: ?*anyopaque,
     pDevice: ?*const BLUETOOTH_DEVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const BLUETOOTH_SELECT_DEVICE_PARAMS = extern struct {
     dwSize: u32,
@@ -1080,15 +1080,15 @@ pub const BLUETOOTH_PASSKEY_INFO = extern struct {
     passkey: u32,
 };
 
-pub const PFN_AUTHENTICATION_CALLBACK = *const fn(
+pub const PFN_AUTHENTICATION_CALLBACK = *const fn (
     pvParam: ?*anyopaque,
     pDevice: ?*BLUETOOTH_DEVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const PFN_AUTHENTICATION_CALLBACK_EX = *const fn(
+pub const PFN_AUTHENTICATION_CALLBACK_EX = *const fn (
     pvParam: ?*anyopaque,
     pAuthCallbackParams: ?*BLUETOOTH_AUTHENTICATION_CALLBACK_PARAMS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const BLUETOOTH_AUTHENTICATE_RESPONSE = extern struct {
     bthAddressRemote: BLUETOOTH_ADDRESS,
@@ -1145,13 +1145,13 @@ pub const SDP_STRING_TYPE_DATA = extern struct {
     attributeId: u16,
 };
 
-pub const PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK = *const fn(
+pub const PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK = *const fn (
     uAttribId: u32,
     // TODO: what to do with BytesParamIndex 2?
     pValueStream: ?*u8,
     cbStreamSize: u32,
     pvParam: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const BTH_LE_UUID = extern struct {
     IsShortUuid: BOOLEAN,
@@ -1243,11 +1243,11 @@ pub const BTH_LE_GATT_EVENT_TYPE = enum(i32) {
 };
 pub const CharacteristicValueChangedEvent = BTH_LE_GATT_EVENT_TYPE.t;
 
-pub const PFNBLUETOOTH_GATT_EVENT_CALLBACK = *const fn(
+pub const PFNBLUETOOTH_GATT_EVENT_CALLBACK = *const fn (
     EventType: BTH_LE_GATT_EVENT_TYPE,
     EventOutParameter: ?*anyopaque,
     Context: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const BLUETOOTH_GATT_VALUE_CHANGED_EVENT_REGISTRATION = extern struct {
     NumCharacteristics: u16,
@@ -1342,7 +1342,6 @@ pub const BTH_INFO_RSP = extern struct {
     } align(1),
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (47)
 //--------------------------------------------------------------------------------
@@ -1350,73 +1349,73 @@ pub const BTH_INFO_RSP = extern struct {
 pub extern "bluetoothapis" fn BluetoothFindFirstRadio(
     pbtfrp: ?*const BLUETOOTH_FIND_RADIO_PARAMS,
     phRadio: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) isize;
+) callconv(.winapi) isize;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothFindNextRadio(
     hFind: isize,
     phRadio: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothFindRadioClose(
     hFind: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothGetRadioInfo(
     hRadio: ?HANDLE,
     pRadioInfo: ?*BLUETOOTH_RADIO_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothFindFirstDevice(
     pbtsp: ?*const BLUETOOTH_DEVICE_SEARCH_PARAMS,
     pbtdi: ?*BLUETOOTH_DEVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) isize;
+) callconv(.winapi) isize;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothFindNextDevice(
     hFind: isize,
     pbtdi: ?*BLUETOOTH_DEVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothFindDeviceClose(
     hFind: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothGetDeviceInfo(
     hRadio: ?HANDLE,
     pbtdi: ?*BLUETOOTH_DEVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothUpdateDeviceRecord(
     pbtdi: ?*const BLUETOOTH_DEVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothRemoveDevice(
     pAddress: ?*const BLUETOOTH_ADDRESS,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bthprops.cpl" fn BluetoothSelectDevices(
     pbtsdp: ?*BLUETOOTH_SELECT_DEVICE_PARAMS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bthprops.cpl" fn BluetoothSelectDevicesFree(
     pbtsdp: ?*BLUETOOTH_SELECT_DEVICE_PARAMS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bthprops.cpl" fn BluetoothDisplayDeviceProperties(
     hwndParent: ?HWND,
     pbtdi: ?*BLUETOOTH_DEVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bthprops.cpl" fn BluetoothAuthenticateDevice(
@@ -1425,7 +1424,7 @@ pub extern "bthprops.cpl" fn BluetoothAuthenticateDevice(
     pbtbi: ?*BLUETOOTH_DEVICE_INFO,
     pszPasskey: ?[*:0]u16,
     ulPasskeyLength: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "bthprops.cpl" fn BluetoothAuthenticateDeviceEx(
@@ -1434,7 +1433,7 @@ pub extern "bthprops.cpl" fn BluetoothAuthenticateDeviceEx(
     pbtdiInout: ?*BLUETOOTH_DEVICE_INFO,
     pbtOobData: ?*BLUETOOTH_OOB_DATA_INFO,
     authenticationRequirement: AUTHENTICATION_REQUIREMENTS,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bthprops.cpl" fn BluetoothAuthenticateMultipleDevices(
@@ -1442,7 +1441,7 @@ pub extern "bthprops.cpl" fn BluetoothAuthenticateMultipleDevices(
     hRadio: ?HANDLE,
     cDevices: u32,
     rgbtdi: [*]BLUETOOTH_DEVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothSetServiceState(
@@ -1450,7 +1449,7 @@ pub extern "bluetoothapis" fn BluetoothSetServiceState(
     pbtdi: ?*const BLUETOOTH_DEVICE_INFO,
     pGuidService: ?*const Guid,
     dwServiceFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothEnumerateInstalledServices(
@@ -1458,29 +1457,29 @@ pub extern "bluetoothapis" fn BluetoothEnumerateInstalledServices(
     pbtdi: ?*const BLUETOOTH_DEVICE_INFO,
     pcServiceInout: ?*u32,
     pGuidServices: ?[*]Guid,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothEnableDiscovery(
     hRadio: ?HANDLE,
     fEnabled: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothIsDiscoverable(
     hRadio: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothEnableIncomingConnections(
     hRadio: ?HANDLE,
     fEnabled: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothIsConnectable(
     hRadio: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothRegisterForAuthentication(
@@ -1488,7 +1487,7 @@ pub extern "bluetoothapis" fn BluetoothRegisterForAuthentication(
     phRegHandle: ?*isize,
     pfnCallback: ?PFN_AUTHENTICATION_CALLBACK,
     pvParam: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothRegisterForAuthenticationEx(
@@ -1496,25 +1495,25 @@ pub extern "bluetoothapis" fn BluetoothRegisterForAuthenticationEx(
     phRegHandleOut: ?*isize,
     pfnCallbackIn: ?PFN_AUTHENTICATION_CALLBACK_EX,
     pvParam: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothUnregisterAuthentication(
     hRegHandle: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothSendAuthenticationResponse(
     hRadio: ?HANDLE,
     pbtdi: ?*const BLUETOOTH_DEVICE_INFO,
     pszPasskey: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothSendAuthenticationResponseEx(
     hRadioIn: ?HANDLE,
     pauthResponse: ?*BLUETOOTH_AUTHENTICATE_RESPONSE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothSdpGetElementData(
@@ -1522,7 +1521,7 @@ pub extern "bluetoothapis" fn BluetoothSdpGetElementData(
     pSdpStream: ?*u8,
     cbSdpStreamLength: u32,
     pData: ?*SDP_ELEMENT_DATA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothSdpGetContainerElementData(
@@ -1531,7 +1530,7 @@ pub extern "bluetoothapis" fn BluetoothSdpGetContainerElementData(
     cbContainerLength: u32,
     pElement: ?*isize,
     pData: ?*SDP_ELEMENT_DATA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothSdpGetAttributeValue(
@@ -1540,7 +1539,7 @@ pub extern "bluetoothapis" fn BluetoothSdpGetAttributeValue(
     cbRecordLength: u32,
     usAttributeId: u16,
     pAttributeData: ?*SDP_ELEMENT_DATA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothSdpGetString(
@@ -1551,7 +1550,7 @@ pub extern "bluetoothapis" fn BluetoothSdpGetString(
     usStringOffset: u16,
     pszString: [*:0]u16,
     pcchStringLength: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothSdpEnumAttributes(
@@ -1560,7 +1559,7 @@ pub extern "bluetoothapis" fn BluetoothSdpEnumAttributes(
     cbStreamSize: u32,
     pfnCallback: ?PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK,
     pvParam: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothSetLocalServiceInfo(
@@ -1568,13 +1567,13 @@ pub extern "bluetoothapis" fn BluetoothSetLocalServiceInfo(
     pClassGuid: ?*const Guid,
     ulInstance: u32,
     pServiceInfoIn: ?*const BLUETOOTH_LOCAL_SERVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "bluetoothapis" fn BluetoothIsVersionAvailable(
     MajorVersion: u8,
     MinorVersion: u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTGetServices(
@@ -1583,7 +1582,7 @@ pub extern "bluetoothapis" fn BluetoothGATTGetServices(
     ServicesBuffer: ?[*]BTH_LE_GATT_SERVICE,
     ServicesBufferActual: ?*u16,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTGetIncludedServices(
@@ -1593,7 +1592,7 @@ pub extern "bluetoothapis" fn BluetoothGATTGetIncludedServices(
     IncludedServicesBuffer: ?[*]BTH_LE_GATT_SERVICE,
     IncludedServicesBufferActual: ?*u16,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTGetCharacteristics(
@@ -1603,7 +1602,7 @@ pub extern "bluetoothapis" fn BluetoothGATTGetCharacteristics(
     CharacteristicsBuffer: ?[*]BTH_LE_GATT_CHARACTERISTIC,
     CharacteristicsBufferActual: ?*u16,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTGetDescriptors(
@@ -1613,7 +1612,7 @@ pub extern "bluetoothapis" fn BluetoothGATTGetDescriptors(
     DescriptorsBuffer: ?[*]BTH_LE_GATT_DESCRIPTOR,
     DescriptorsBufferActual: ?*u16,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTGetCharacteristicValue(
@@ -1623,7 +1622,7 @@ pub extern "bluetoothapis" fn BluetoothGATTGetCharacteristicValue(
     CharacteristicValue: ?*BTH_LE_GATT_CHARACTERISTIC_VALUE,
     CharacteristicValueSizeRequired: ?*u16,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTGetDescriptorValue(
@@ -1633,14 +1632,14 @@ pub extern "bluetoothapis" fn BluetoothGATTGetDescriptorValue(
     DescriptorValue: ?*BTH_LE_GATT_DESCRIPTOR_VALUE,
     DescriptorValueSizeRequired: ?*u16,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTBeginReliableWrite(
     hDevice: ?HANDLE,
     ReliableWriteContext: ?*u64,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTSetCharacteristicValue(
@@ -1649,21 +1648,21 @@ pub extern "bluetoothapis" fn BluetoothGATTSetCharacteristicValue(
     CharacteristicValue: ?*BTH_LE_GATT_CHARACTERISTIC_VALUE,
     ReliableWriteContext: u64,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTEndReliableWrite(
     hDevice: ?HANDLE,
     ReliableWriteContext: u64,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTAbortReliableWrite(
     hDevice: ?HANDLE,
     ReliableWriteContext: u64,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTSetDescriptorValue(
@@ -1671,7 +1670,7 @@ pub extern "bluetoothapis" fn BluetoothGATTSetDescriptorValue(
     Descriptor: ?*BTH_LE_GATT_DESCRIPTOR,
     DescriptorValue: ?*BTH_LE_GATT_DESCRIPTOR_VALUE,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTRegisterEvent(
@@ -1682,14 +1681,13 @@ pub extern "bluetoothapis" fn BluetoothGATTRegisterEvent(
     CallbackContext: ?*anyopaque,
     pEventHandle: ?*isize,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "bluetoothapis" fn BluetoothGATTUnregisterEvent(
     EventHandle: isize,
     Flags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -1709,15 +1707,23 @@ const SYSTEMTIME = @import("../foundation.zig").SYSTEMTIME;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "PFN_DEVICE_CALLBACK")) { _ = PFN_DEVICE_CALLBACK; }
-    if (@hasDecl(@This(), "PFN_AUTHENTICATION_CALLBACK")) { _ = PFN_AUTHENTICATION_CALLBACK; }
-    if (@hasDecl(@This(), "PFN_AUTHENTICATION_CALLBACK_EX")) { _ = PFN_AUTHENTICATION_CALLBACK_EX; }
-    if (@hasDecl(@This(), "PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK")) { _ = PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK; }
-    if (@hasDecl(@This(), "PFNBLUETOOTH_GATT_EVENT_CALLBACK")) { _ = PFNBLUETOOTH_GATT_EVENT_CALLBACK; }
+    if (@hasDecl(@This(), "PFN_DEVICE_CALLBACK")) {
+        _ = PFN_DEVICE_CALLBACK;
+    }
+    if (@hasDecl(@This(), "PFN_AUTHENTICATION_CALLBACK")) {
+        _ = PFN_AUTHENTICATION_CALLBACK;
+    }
+    if (@hasDecl(@This(), "PFN_AUTHENTICATION_CALLBACK_EX")) {
+        _ = PFN_AUTHENTICATION_CALLBACK_EX;
+    }
+    if (@hasDecl(@This(), "PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK")) {
+        _ = PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK;
+    }
+    if (@hasDecl(@This(), "PFNBLUETOOTH_GATT_EVENT_CALLBACK")) {
+        _ = PFNBLUETOOTH_GATT_EVENT_CALLBACK;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

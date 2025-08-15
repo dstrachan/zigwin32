@@ -45,7 +45,6 @@ pub const RESTART_NO_HANG = REGISTER_APPLICATION_RESTART_FLAGS{ .HANG = 1 };
 pub const RESTART_NO_PATCH = REGISTER_APPLICATION_RESTART_FLAGS{ .PATCH = 1 };
 pub const RESTART_NO_REBOOT = REGISTER_APPLICATION_RESTART_FLAGS{ .REBOOT = 1 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (8)
 //--------------------------------------------------------------------------------
@@ -55,21 +54,19 @@ pub extern "kernel32" fn RegisterApplicationRecoveryCallback(
     pvParameter: ?*anyopaque,
     dwPingInterval: u32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "kernel32" fn UnregisterApplicationRecoveryCallback(
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+pub extern "kernel32" fn UnregisterApplicationRecoveryCallback() callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn RegisterApplicationRestart(
     pwzCommandline: ?[*:0]const u16,
     dwFlags: REGISTER_APPLICATION_RESTART_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "kernel32" fn UnregisterApplicationRestart(
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+pub extern "kernel32" fn UnregisterApplicationRestart() callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetApplicationRecoveryCallback(
@@ -78,7 +75,7 @@ pub extern "kernel32" fn GetApplicationRecoveryCallback(
     ppvParameter: ?*?*anyopaque,
     pdwPingInterval: ?*u32,
     pdwFlags: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetApplicationRestartSettings(
@@ -86,18 +83,17 @@ pub extern "kernel32" fn GetApplicationRestartSettings(
     pwzCommandline: ?[*:0]u16,
     pcchSize: ?*u32,
     pdwFlags: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn ApplicationRecoveryInProgress(
     pbCancelled: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn ApplicationRecoveryFinished(
     bSuccess: BOOL,
-) callconv(@import("std").os.windows.WINAPI) void;
-
+) callconv(.winapi) void;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -112,9 +108,7 @@ const HRESULT = @import("../foundation.zig").HRESULT;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

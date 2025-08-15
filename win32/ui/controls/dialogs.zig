@@ -274,7 +274,7 @@ pub const OPEN_FILENAME_FLAGS_EX = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const OFN_EX_NONE = OPEN_FILENAME_FLAGS_EX{ };
+pub const OFN_EX_NONE = OPEN_FILENAME_FLAGS_EX{};
 pub const OFN_EX_NOPLACESBAR = OPEN_FILENAME_FLAGS_EX{ .PLACESBAR = 1 };
 
 pub const PAGESETUPDLG_FLAGS = packed struct(u32) {
@@ -311,7 +311,7 @@ pub const PAGESETUPDLG_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PSD_DEFAULTMINMARGINS = PAGESETUPDLG_FLAGS{ };
+pub const PSD_DEFAULTMINMARGINS = PAGESETUPDLG_FLAGS{};
 pub const PSD_DISABLEMARGINS = PAGESETUPDLG_FLAGS{ .DISABLEMARGINS = 1 };
 pub const PSD_DISABLEORIENTATION = PAGESETUPDLG_FLAGS{ .DISABLEORIENTATION = 1 };
 pub const PSD_DISABLEPAGEPAINTING = PAGESETUPDLG_FLAGS{ .DISABLEPAGEPAINTING = 1 };
@@ -323,7 +323,7 @@ pub const PSD_ENABLEPAGESETUPTEMPLATE = PAGESETUPDLG_FLAGS{ .ENABLEPAGESETUPTEMP
 pub const PSD_ENABLEPAGESETUPTEMPLATEHANDLE = PAGESETUPDLG_FLAGS{ .ENABLEPAGESETUPTEMPLATEHANDLE = 1 };
 pub const PSD_INHUNDREDTHSOFMILLIMETERS = PAGESETUPDLG_FLAGS{ .INHUNDREDTHSOFMILLIMETERS = 1 };
 pub const PSD_INTHOUSANDTHSOFINCHES = PAGESETUPDLG_FLAGS{ .INTHOUSANDTHSOFINCHES = 1 };
-pub const PSD_INWININIINTLMEASURE = PAGESETUPDLG_FLAGS{ };
+pub const PSD_INWININIINTLMEASURE = PAGESETUPDLG_FLAGS{};
 pub const PSD_MARGINS = PAGESETUPDLG_FLAGS{ .MARGINS = 1 };
 pub const PSD_MINMARGINS = PAGESETUPDLG_FLAGS{ .MINMARGINS = 1 };
 pub const PSD_NONETWORKBUTTON = PAGESETUPDLG_FLAGS{ .NONETWORKBUTTON = 1 };
@@ -487,7 +487,7 @@ pub const PRINTDLGEX_FLAGS = packed struct(u32) {
     _31: u1 = 0,
     // USEDEVMODECOPIESANDCOLLATE (bit index 18) conflicts with USEDEVMODECOPIES
 };
-pub const PD_ALLPAGES = PRINTDLGEX_FLAGS{ };
+pub const PD_ALLPAGES = PRINTDLGEX_FLAGS{};
 pub const PD_COLLATE = PRINTDLGEX_FLAGS{ .COLLATE = 1 };
 pub const PD_CURRENTPAGE = PRINTDLGEX_FLAGS{ .CURRENTPAGE = 1 };
 pub const PD_DISABLEPRINTTOFILE = PRINTDLGEX_FLAGS{ .DISABLEPRINTTOFILE = 1 };
@@ -541,63 +541,47 @@ pub const REGULAR_FONTTYPE = CHOOSEFONT_FONT_TYPE{ .REGULAR_FONTTYPE = 1 };
 pub const SCREEN_FONTTYPE = CHOOSEFONT_FONT_TYPE{ .SCREEN_FONTTYPE = 1 };
 pub const SIMULATED_FONTTYPE = CHOOSEFONT_FONT_TYPE{ .SIMULATED_FONTTYPE = 1 };
 
-pub const LPOFNHOOKPROC = *const fn(
+pub const LPOFNHOOKPROC = *const fn (
     param0: ?HWND,
     param1: u32,
     param2: WPARAM,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) usize;
+) callconv(.winapi) usize;
 
-
-
-
-
-pub const LPCCHOOKPROC = *const fn(
+pub const LPCCHOOKPROC = *const fn (
     param0: ?HWND,
     param1: u32,
     param2: WPARAM,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) usize;
+) callconv(.winapi) usize;
 
-
-
-
-
-
-
-pub const LPFRHOOKPROC = *const fn(
+pub const LPFRHOOKPROC = *const fn (
     param0: ?HWND,
     param1: u32,
     param2: WPARAM,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) usize;
+) callconv(.winapi) usize;
 
-
-
-pub const LPCFHOOKPROC = *const fn(
+pub const LPCFHOOKPROC = *const fn (
     param0: ?HWND,
     param1: u32,
     param2: WPARAM,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) usize;
+) callconv(.winapi) usize;
 
-
-
-pub const LPPRINTHOOKPROC = *const fn(
+pub const LPPRINTHOOKPROC = *const fn (
     param0: ?HWND,
     param1: u32,
     param2: WPARAM,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) usize;
+) callconv(.winapi) usize;
 
-pub const LPSETUPHOOKPROC = *const fn(
+pub const LPSETUPHOOKPROC = *const fn (
     param0: ?HWND,
     param1: u32,
     param2: WPARAM,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) usize;
-
-
+) callconv(.winapi) usize;
 
 // TODO: this type is limited to platform 'windows5.0'
 const IID_IPrintDialogCallback_Value = Guid.initString("5852a2c3-6530-11d1-b6a3-0000f8757bf9");
@@ -605,30 +589,30 @@ pub const IID_IPrintDialogCallback = &IID_IPrintDialogCallback_Value;
 pub const IPrintDialogCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        InitDone: *const fn(
+        InitDone: *const fn (
             self: *const IPrintDialogCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SelectionChange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SelectionChange: *const fn (
             self: *const IPrintDialogCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        HandleMessage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        HandleMessage: *const fn (
             self: *const IPrintDialogCallback,
             hDlg: ?HWND,
             uMsg: u32,
             wParam: WPARAM,
             lParam: LPARAM,
             pResult: ?*LRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn InitDone(self: *const IPrintDialogCallback) callconv(.Inline) HRESULT {
+    pub inline fn InitDone(self: *const IPrintDialogCallback) HRESULT {
         return self.vtable.InitDone(self);
     }
-    pub fn SelectionChange(self: *const IPrintDialogCallback) callconv(.Inline) HRESULT {
+    pub inline fn SelectionChange(self: *const IPrintDialogCallback) HRESULT {
         return self.vtable.SelectionChange(self);
     }
-    pub fn HandleMessage(self: *const IPrintDialogCallback, hDlg: ?HWND, uMsg: u32, wParam: WPARAM, lParam: LPARAM, pResult: ?*LRESULT) callconv(.Inline) HRESULT {
+    pub inline fn HandleMessage(self: *const IPrintDialogCallback, hDlg: ?HWND, uMsg: u32, wParam: WPARAM, lParam: LPARAM, pResult: ?*LRESULT) HRESULT {
         return self.vtable.HandleMessage(self, hDlg, uMsg, wParam, lParam, pResult);
     }
 };
@@ -639,78 +623,50 @@ pub const IID_IPrintDialogServices = &IID_IPrintDialogServices_Value;
 pub const IPrintDialogServices = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCurrentDevMode: *const fn(
+        GetCurrentDevMode: *const fn (
             self: *const IPrintDialogServices,
             pDevMode: ?*DEVMODEA,
             pcbSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentPrinterName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentPrinterName: *const fn (
             self: *const IPrintDialogServices,
             pPrinterName: ?[*:0]u16,
             pcchSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentPortName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentPortName: *const fn (
             self: *const IPrintDialogServices,
             pPortName: ?[*:0]u16,
             pcchSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCurrentDevMode(self: *const IPrintDialogServices, pDevMode: ?*DEVMODEA, pcbSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentDevMode(self: *const IPrintDialogServices, pDevMode: ?*DEVMODEA, pcbSize: ?*u32) HRESULT {
         return self.vtable.GetCurrentDevMode(self, pDevMode, pcbSize);
     }
-    pub fn GetCurrentPrinterName(self: *const IPrintDialogServices, pPrinterName: ?[*:0]u16, pcchSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentPrinterName(self: *const IPrintDialogServices, pPrinterName: ?[*:0]u16, pcchSize: ?*u32) HRESULT {
         return self.vtable.GetCurrentPrinterName(self, pPrinterName, pcchSize);
     }
-    pub fn GetCurrentPortName(self: *const IPrintDialogServices, pPortName: ?[*:0]u16, pcchSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentPortName(self: *const IPrintDialogServices, pPortName: ?[*:0]u16, pcchSize: ?*u32) HRESULT {
         return self.vtable.GetCurrentPortName(self, pPortName, pcchSize);
     }
 };
 
-
-
-
-
-pub const LPPAGEPAINTHOOK = *const fn(
+pub const LPPAGEPAINTHOOK = *const fn (
     param0: ?HWND,
     param1: u32,
     param2: WPARAM,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) usize;
+) callconv(.winapi) usize;
 
-pub const LPPAGESETUPHOOK = *const fn(
+pub const LPPAGESETUPHOOK = *const fn (
     param0: ?HWND,
     param1: u32,
     param2: WPARAM,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) usize;
+) callconv(.winapi) usize;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-pub const OPENFILENAME_NT4A = switch(@import("../../zig.zig").arch) {
+pub const OPENFILENAME_NT4A = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -756,7 +712,7 @@ pub const OPENFILENAME_NT4A = switch(@import("../../zig.zig").arch) {
         lpTemplateName: ?[*:0]const u8 align(1),
     },
 };
-pub const OPENFILENAME_NT4W = switch(@import("../../zig.zig").arch) {
+pub const OPENFILENAME_NT4W = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -802,7 +758,7 @@ pub const OPENFILENAME_NT4W = switch(@import("../../zig.zig").arch) {
         lpTemplateName: ?[*:0]const u16 align(1),
     },
 };
-pub const OPENFILENAMEA = switch(@import("../../zig.zig").arch) {
+pub const OPENFILENAMEA = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -854,7 +810,7 @@ pub const OPENFILENAMEA = switch(@import("../../zig.zig").arch) {
         FlagsEx: OPEN_FILENAME_FLAGS_EX align(1),
     },
 };
-pub const OPENFILENAMEW = switch(@import("../../zig.zig").arch) {
+pub const OPENFILENAMEW = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -906,7 +862,7 @@ pub const OPENFILENAMEW = switch(@import("../../zig.zig").arch) {
         FlagsEx: OPEN_FILENAME_FLAGS_EX align(1),
     },
 };
-pub const OFNOTIFYA = switch(@import("../../zig.zig").arch) {
+pub const OFNOTIFYA = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         hdr: NMHDR,
         lpOFN: ?*OPENFILENAMEA,
@@ -918,7 +874,7 @@ pub const OFNOTIFYA = switch(@import("../../zig.zig").arch) {
         pszFile: ?PSTR align(1),
     },
 };
-pub const OFNOTIFYW = switch(@import("../../zig.zig").arch) {
+pub const OFNOTIFYW = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         hdr: NMHDR,
         lpOFN: ?*OPENFILENAMEW,
@@ -930,7 +886,7 @@ pub const OFNOTIFYW = switch(@import("../../zig.zig").arch) {
         pszFile: ?PWSTR align(1),
     },
 };
-pub const OFNOTIFYEXA = switch(@import("../../zig.zig").arch) {
+pub const OFNOTIFYEXA = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         hdr: NMHDR,
         lpOFN: ?*OPENFILENAMEA,
@@ -944,7 +900,7 @@ pub const OFNOTIFYEXA = switch(@import("../../zig.zig").arch) {
         pidl: ?*anyopaque align(1),
     },
 };
-pub const OFNOTIFYEXW = switch(@import("../../zig.zig").arch) {
+pub const OFNOTIFYEXW = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         hdr: NMHDR,
         lpOFN: ?*OPENFILENAMEW,
@@ -958,7 +914,7 @@ pub const OFNOTIFYEXW = switch(@import("../../zig.zig").arch) {
         pidl: ?*anyopaque align(1),
     },
 };
-pub const CHOOSECOLORA = switch(@import("../../zig.zig").arch) {
+pub const CHOOSECOLORA = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -982,7 +938,7 @@ pub const CHOOSECOLORA = switch(@import("../../zig.zig").arch) {
         lpTemplateName: ?[*:0]const u8 align(1),
     },
 };
-pub const CHOOSECOLORW = switch(@import("../../zig.zig").arch) {
+pub const CHOOSECOLORW = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1006,7 +962,7 @@ pub const CHOOSECOLORW = switch(@import("../../zig.zig").arch) {
         lpTemplateName: ?[*:0]const u16 align(1),
     },
 };
-pub const FINDREPLACEA = switch(@import("../../zig.zig").arch) {
+pub const FINDREPLACEA = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1034,7 +990,7 @@ pub const FINDREPLACEA = switch(@import("../../zig.zig").arch) {
         lpTemplateName: ?[*:0]const u8 align(1),
     },
 };
-pub const FINDREPLACEW = switch(@import("../../zig.zig").arch) {
+pub const FINDREPLACEW = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1062,7 +1018,7 @@ pub const FINDREPLACEW = switch(@import("../../zig.zig").arch) {
         lpTemplateName: ?[*:0]const u16 align(1),
     },
 };
-pub const CHOOSEFONTA = switch(@import("../../zig.zig").arch) {
+pub const CHOOSEFONTA = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1100,7 +1056,7 @@ pub const CHOOSEFONTA = switch(@import("../../zig.zig").arch) {
         nSizeMax: i32 align(1),
     },
 };
-pub const CHOOSEFONTW = switch(@import("../../zig.zig").arch) {
+pub const CHOOSEFONTW = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1138,7 +1094,7 @@ pub const CHOOSEFONTW = switch(@import("../../zig.zig").arch) {
         nSizeMax: i32 align(1),
     },
 };
-pub const PRINTDLGA = switch(@import("../../zig.zig").arch) {
+pub const PRINTDLGA = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1182,7 +1138,7 @@ pub const PRINTDLGA = switch(@import("../../zig.zig").arch) {
         hSetupTemplate: isize align(1),
     },
 };
-pub const PRINTDLGW = switch(@import("../../zig.zig").arch) {
+pub const PRINTDLGW = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1226,7 +1182,7 @@ pub const PRINTDLGW = switch(@import("../../zig.zig").arch) {
         hSetupTemplate: isize align(1),
     },
 };
-pub const PRINTPAGERANGE = switch(@import("../../zig.zig").arch) {
+pub const PRINTPAGERANGE = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         nFromPage: u32,
         nToPage: u32,
@@ -1236,7 +1192,7 @@ pub const PRINTPAGERANGE = switch(@import("../../zig.zig").arch) {
         nToPage: u32 align(1),
     },
 };
-pub const PRINTDLGEXA = switch(@import("../../zig.zig").arch) {
+pub const PRINTDLGEXA = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1284,7 +1240,7 @@ pub const PRINTDLGEXA = switch(@import("../../zig.zig").arch) {
         dwResultAction: u32 align(1),
     },
 };
-pub const PRINTDLGEXW = switch(@import("../../zig.zig").arch) {
+pub const PRINTDLGEXW = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1332,7 +1288,7 @@ pub const PRINTDLGEXW = switch(@import("../../zig.zig").arch) {
         dwResultAction: u32 align(1),
     },
 };
-pub const DEVNAMES = switch(@import("../../zig.zig").arch) {
+pub const DEVNAMES = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         wDriverOffset: u16,
         wDeviceOffset: u16,
@@ -1346,7 +1302,7 @@ pub const DEVNAMES = switch(@import("../../zig.zig").arch) {
         wDefault: u16 align(1),
     },
 };
-pub const PAGESETUPDLGA = switch(@import("../../zig.zig").arch) {
+pub const PAGESETUPDLGA = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1380,7 +1336,7 @@ pub const PAGESETUPDLGA = switch(@import("../../zig.zig").arch) {
         hPageSetupTemplate: isize align(1),
     },
 };
-pub const PAGESETUPDLGW = switch(@import("../../zig.zig").arch) {
+pub const PAGESETUPDLGW = switch (@import("../../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         lStructSize: u32,
         hwndOwner: ?HWND,
@@ -1421,101 +1377,99 @@ pub const PAGESETUPDLGW = switch(@import("../../zig.zig").arch) {
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn GetOpenFileNameA(
     param0: ?*OPENFILENAMEA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn GetOpenFileNameW(
     param0: ?*OPENFILENAMEW,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn GetSaveFileNameA(
     param0: ?*OPENFILENAMEA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn GetSaveFileNameW(
     param0: ?*OPENFILENAMEW,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn GetFileTitleA(
     param0: ?[*:0]const u8,
     Buf: [*:0]u8,
     cchSize: u16,
-) callconv(@import("std").os.windows.WINAPI) i16;
+) callconv(.winapi) i16;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn GetFileTitleW(
     param0: ?[*:0]const u16,
     Buf: [*:0]u16,
     cchSize: u16,
-) callconv(@import("std").os.windows.WINAPI) i16;
+) callconv(.winapi) i16;
 
 pub extern "comdlg32" fn ChooseColorA(
     param0: ?*CHOOSECOLORA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "comdlg32" fn ChooseColorW(
     param0: ?*CHOOSECOLORW,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn FindTextA(
     param0: ?*FINDREPLACEA,
-) callconv(@import("std").os.windows.WINAPI) ?HWND;
+) callconv(.winapi) ?HWND;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn FindTextW(
     param0: ?*FINDREPLACEW,
-) callconv(@import("std").os.windows.WINAPI) ?HWND;
+) callconv(.winapi) ?HWND;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn ReplaceTextA(
     param0: ?*FINDREPLACEA,
-) callconv(@import("std").os.windows.WINAPI) ?HWND;
+) callconv(.winapi) ?HWND;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "comdlg32" fn ReplaceTextW(
     param0: ?*FINDREPLACEW,
-) callconv(@import("std").os.windows.WINAPI) ?HWND;
+) callconv(.winapi) ?HWND;
 
 pub extern "comdlg32" fn ChooseFontA(
     param0: ?*CHOOSEFONTA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "comdlg32" fn ChooseFontW(
     param0: ?*CHOOSEFONTW,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "comdlg32" fn PrintDlgA(
     pPD: ?*PRINTDLGA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "comdlg32" fn PrintDlgW(
     pPD: ?*PRINTDLGW,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "comdlg32" fn PrintDlgExA(
     pPD: ?*PRINTDLGEXA,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "comdlg32" fn PrintDlgExW(
     pPD: ?*PRINTDLGEXW,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "comdlg32" fn CommDlgExtendedError(
-) callconv(@import("std").os.windows.WINAPI) COMMON_DLG_ERRORS;
+pub extern "comdlg32" fn CommDlgExtendedError() callconv(.winapi) COMMON_DLG_ERRORS;
 
 pub extern "comdlg32" fn PageSetupDlgA(
     param0: ?*PAGESETUPDLGA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "comdlg32" fn PageSetupDlgW(
     param0: ?*PAGESETUPDLGW,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (20)
@@ -1685,18 +1639,32 @@ const WPARAM = @import("../../foundation.zig").WPARAM;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "LPOFNHOOKPROC")) { _ = LPOFNHOOKPROC; }
-    if (@hasDecl(@This(), "LPCCHOOKPROC")) { _ = LPCCHOOKPROC; }
-    if (@hasDecl(@This(), "LPFRHOOKPROC")) { _ = LPFRHOOKPROC; }
-    if (@hasDecl(@This(), "LPCFHOOKPROC")) { _ = LPCFHOOKPROC; }
-    if (@hasDecl(@This(), "LPPRINTHOOKPROC")) { _ = LPPRINTHOOKPROC; }
-    if (@hasDecl(@This(), "LPSETUPHOOKPROC")) { _ = LPSETUPHOOKPROC; }
-    if (@hasDecl(@This(), "LPPAGEPAINTHOOK")) { _ = LPPAGEPAINTHOOK; }
-    if (@hasDecl(@This(), "LPPAGESETUPHOOK")) { _ = LPPAGESETUPHOOK; }
+    if (@hasDecl(@This(), "LPOFNHOOKPROC")) {
+        _ = LPOFNHOOKPROC;
+    }
+    if (@hasDecl(@This(), "LPCCHOOKPROC")) {
+        _ = LPCCHOOKPROC;
+    }
+    if (@hasDecl(@This(), "LPFRHOOKPROC")) {
+        _ = LPFRHOOKPROC;
+    }
+    if (@hasDecl(@This(), "LPCFHOOKPROC")) {
+        _ = LPCFHOOKPROC;
+    }
+    if (@hasDecl(@This(), "LPPRINTHOOKPROC")) {
+        _ = LPPRINTHOOKPROC;
+    }
+    if (@hasDecl(@This(), "LPSETUPHOOKPROC")) {
+        _ = LPSETUPHOOKPROC;
+    }
+    if (@hasDecl(@This(), "LPPAGEPAINTHOOK")) {
+        _ = LPPAGEPAINTHOOK;
+    }
+    if (@hasDecl(@This(), "LPPAGESETUPHOOK")) {
+        _ = LPPAGESETUPHOOK;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

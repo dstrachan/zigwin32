@@ -11,51 +11,51 @@ pub const IID_IHolographicCameraInterop = &IID_IHolographicCameraInterop_Value;
 pub const IHolographicCameraInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CreateDirect3D12BackBufferResource: *const fn(
+        CreateDirect3D12BackBufferResource: *const fn (
             self: *const IHolographicCameraInterop,
             pDevice: ?*ID3D12Device,
             pTexture2DDesc: ?*D3D12_RESOURCE_DESC,
             ppCreatedTexture2DResource: ?*?*ID3D12Resource,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateDirect3D12HardwareProtectedBackBufferResource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateDirect3D12HardwareProtectedBackBufferResource: *const fn (
             self: *const IHolographicCameraInterop,
             pDevice: ?*ID3D12Device,
             pTexture2DDesc: ?*D3D12_RESOURCE_DESC,
             pProtectedResourceSession: ?*ID3D12ProtectedResourceSession,
             ppCreatedTexture2DResource: ?*?*ID3D12Resource,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AcquireDirect3D12BufferResource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AcquireDirect3D12BufferResource: *const fn (
             self: *const IHolographicCameraInterop,
             pResourceToAcquire: ?*ID3D12Resource,
             pCommandQueue: ?*ID3D12CommandQueue,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AcquireDirect3D12BufferResourceWithTimeout: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AcquireDirect3D12BufferResourceWithTimeout: *const fn (
             self: *const IHolographicCameraInterop,
             pResourceToAcquire: ?*ID3D12Resource,
             pCommandQueue: ?*ID3D12CommandQueue,
             duration: u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnacquireDirect3D12BufferResource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnacquireDirect3D12BufferResource: *const fn (
             self: *const IHolographicCameraInterop,
             pResourceToUnacquire: ?*ID3D12Resource,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CreateDirect3D12BackBufferResource(self: *const IHolographicCameraInterop, pDevice: ?*ID3D12Device, pTexture2DDesc: ?*D3D12_RESOURCE_DESC, ppCreatedTexture2DResource: ?*?*ID3D12Resource) callconv(.Inline) HRESULT {
+    pub inline fn CreateDirect3D12BackBufferResource(self: *const IHolographicCameraInterop, pDevice: ?*ID3D12Device, pTexture2DDesc: ?*D3D12_RESOURCE_DESC, ppCreatedTexture2DResource: ?*?*ID3D12Resource) HRESULT {
         return self.vtable.CreateDirect3D12BackBufferResource(self, pDevice, pTexture2DDesc, ppCreatedTexture2DResource);
     }
-    pub fn CreateDirect3D12HardwareProtectedBackBufferResource(self: *const IHolographicCameraInterop, pDevice: ?*ID3D12Device, pTexture2DDesc: ?*D3D12_RESOURCE_DESC, pProtectedResourceSession: ?*ID3D12ProtectedResourceSession, ppCreatedTexture2DResource: ?*?*ID3D12Resource) callconv(.Inline) HRESULT {
+    pub inline fn CreateDirect3D12HardwareProtectedBackBufferResource(self: *const IHolographicCameraInterop, pDevice: ?*ID3D12Device, pTexture2DDesc: ?*D3D12_RESOURCE_DESC, pProtectedResourceSession: ?*ID3D12ProtectedResourceSession, ppCreatedTexture2DResource: ?*?*ID3D12Resource) HRESULT {
         return self.vtable.CreateDirect3D12HardwareProtectedBackBufferResource(self, pDevice, pTexture2DDesc, pProtectedResourceSession, ppCreatedTexture2DResource);
     }
-    pub fn AcquireDirect3D12BufferResource(self: *const IHolographicCameraInterop, pResourceToAcquire: ?*ID3D12Resource, pCommandQueue: ?*ID3D12CommandQueue) callconv(.Inline) HRESULT {
+    pub inline fn AcquireDirect3D12BufferResource(self: *const IHolographicCameraInterop, pResourceToAcquire: ?*ID3D12Resource, pCommandQueue: ?*ID3D12CommandQueue) HRESULT {
         return self.vtable.AcquireDirect3D12BufferResource(self, pResourceToAcquire, pCommandQueue);
     }
-    pub fn AcquireDirect3D12BufferResourceWithTimeout(self: *const IHolographicCameraInterop, pResourceToAcquire: ?*ID3D12Resource, pCommandQueue: ?*ID3D12CommandQueue, duration: u64) callconv(.Inline) HRESULT {
+    pub inline fn AcquireDirect3D12BufferResourceWithTimeout(self: *const IHolographicCameraInterop, pResourceToAcquire: ?*ID3D12Resource, pCommandQueue: ?*ID3D12CommandQueue, duration: u64) HRESULT {
         return self.vtable.AcquireDirect3D12BufferResourceWithTimeout(self, pResourceToAcquire, pCommandQueue, duration);
     }
-    pub fn UnacquireDirect3D12BufferResource(self: *const IHolographicCameraInterop, pResourceToUnacquire: ?*ID3D12Resource) callconv(.Inline) HRESULT {
+    pub inline fn UnacquireDirect3D12BufferResource(self: *const IHolographicCameraInterop, pResourceToUnacquire: ?*ID3D12Resource) HRESULT {
         return self.vtable.UnacquireDirect3D12BufferResource(self, pResourceToUnacquire);
     }
 };
@@ -65,13 +65,13 @@ pub const IID_IHolographicCameraRenderingParametersInterop = &IID_IHolographicCa
 pub const IHolographicCameraRenderingParametersInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CommitDirect3D12Resource: *const fn(
+        CommitDirect3D12Resource: *const fn (
             self: *const IHolographicCameraRenderingParametersInterop,
             pColorResourceToCommit: ?*ID3D12Resource,
             pColorResourceFence: ?*ID3D12Fence,
             colorResourceFenceSignalValue: u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CommitDirect3D12ResourceWithDepthData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CommitDirect3D12ResourceWithDepthData: *const fn (
             self: *const IHolographicCameraRenderingParametersInterop,
             pColorResourceToCommit: ?*ID3D12Resource,
             pColorResourceFence: ?*ID3D12Fence,
@@ -79,15 +79,15 @@ pub const IHolographicCameraRenderingParametersInterop = extern union {
             pDepthResourceToCommit: ?*ID3D12Resource,
             pDepthResourceFence: ?*ID3D12Fence,
             depthResourceFenceSignalValue: u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CommitDirect3D12Resource(self: *const IHolographicCameraRenderingParametersInterop, pColorResourceToCommit: ?*ID3D12Resource, pColorResourceFence: ?*ID3D12Fence, colorResourceFenceSignalValue: u64) callconv(.Inline) HRESULT {
+    pub inline fn CommitDirect3D12Resource(self: *const IHolographicCameraRenderingParametersInterop, pColorResourceToCommit: ?*ID3D12Resource, pColorResourceFence: ?*ID3D12Fence, colorResourceFenceSignalValue: u64) HRESULT {
         return self.vtable.CommitDirect3D12Resource(self, pColorResourceToCommit, pColorResourceFence, colorResourceFenceSignalValue);
     }
-    pub fn CommitDirect3D12ResourceWithDepthData(self: *const IHolographicCameraRenderingParametersInterop, pColorResourceToCommit: ?*ID3D12Resource, pColorResourceFence: ?*ID3D12Fence, colorResourceFenceSignalValue: u64, pDepthResourceToCommit: ?*ID3D12Resource, pDepthResourceFence: ?*ID3D12Fence, depthResourceFenceSignalValue: u64) callconv(.Inline) HRESULT {
+    pub inline fn CommitDirect3D12ResourceWithDepthData(self: *const IHolographicCameraRenderingParametersInterop, pColorResourceToCommit: ?*ID3D12Resource, pColorResourceFence: ?*ID3D12Fence, colorResourceFenceSignalValue: u64, pDepthResourceToCommit: ?*ID3D12Resource, pDepthResourceFence: ?*ID3D12Fence, depthResourceFenceSignalValue: u64) HRESULT {
         return self.vtable.CommitDirect3D12ResourceWithDepthData(self, pColorResourceToCommit, pColorResourceFence, colorResourceFenceSignalValue, pDepthResourceToCommit, pDepthResourceFence, depthResourceFenceSignalValue);
     }
 };
@@ -97,51 +97,51 @@ pub const IID_IHolographicQuadLayerInterop = &IID_IHolographicQuadLayerInterop_V
 pub const IHolographicQuadLayerInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CreateDirect3D12ContentBufferResource: *const fn(
+        CreateDirect3D12ContentBufferResource: *const fn (
             self: *const IHolographicQuadLayerInterop,
             pDevice: ?*ID3D12Device,
             pTexture2DDesc: ?*D3D12_RESOURCE_DESC,
             ppTexture2DResource: ?*?*ID3D12Resource,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateDirect3D12HardwareProtectedContentBufferResource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateDirect3D12HardwareProtectedContentBufferResource: *const fn (
             self: *const IHolographicQuadLayerInterop,
             pDevice: ?*ID3D12Device,
             pTexture2DDesc: ?*D3D12_RESOURCE_DESC,
             pProtectedResourceSession: ?*ID3D12ProtectedResourceSession,
             ppCreatedTexture2DResource: ?*?*ID3D12Resource,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AcquireDirect3D12BufferResource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AcquireDirect3D12BufferResource: *const fn (
             self: *const IHolographicQuadLayerInterop,
             pResourceToAcquire: ?*ID3D12Resource,
             pCommandQueue: ?*ID3D12CommandQueue,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AcquireDirect3D12BufferResourceWithTimeout: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AcquireDirect3D12BufferResourceWithTimeout: *const fn (
             self: *const IHolographicQuadLayerInterop,
             pResourceToAcquire: ?*ID3D12Resource,
             pCommandQueue: ?*ID3D12CommandQueue,
             duration: u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnacquireDirect3D12BufferResource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnacquireDirect3D12BufferResource: *const fn (
             self: *const IHolographicQuadLayerInterop,
             pResourceToUnacquire: ?*ID3D12Resource,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CreateDirect3D12ContentBufferResource(self: *const IHolographicQuadLayerInterop, pDevice: ?*ID3D12Device, pTexture2DDesc: ?*D3D12_RESOURCE_DESC, ppTexture2DResource: ?*?*ID3D12Resource) callconv(.Inline) HRESULT {
+    pub inline fn CreateDirect3D12ContentBufferResource(self: *const IHolographicQuadLayerInterop, pDevice: ?*ID3D12Device, pTexture2DDesc: ?*D3D12_RESOURCE_DESC, ppTexture2DResource: ?*?*ID3D12Resource) HRESULT {
         return self.vtable.CreateDirect3D12ContentBufferResource(self, pDevice, pTexture2DDesc, ppTexture2DResource);
     }
-    pub fn CreateDirect3D12HardwareProtectedContentBufferResource(self: *const IHolographicQuadLayerInterop, pDevice: ?*ID3D12Device, pTexture2DDesc: ?*D3D12_RESOURCE_DESC, pProtectedResourceSession: ?*ID3D12ProtectedResourceSession, ppCreatedTexture2DResource: ?*?*ID3D12Resource) callconv(.Inline) HRESULT {
+    pub inline fn CreateDirect3D12HardwareProtectedContentBufferResource(self: *const IHolographicQuadLayerInterop, pDevice: ?*ID3D12Device, pTexture2DDesc: ?*D3D12_RESOURCE_DESC, pProtectedResourceSession: ?*ID3D12ProtectedResourceSession, ppCreatedTexture2DResource: ?*?*ID3D12Resource) HRESULT {
         return self.vtable.CreateDirect3D12HardwareProtectedContentBufferResource(self, pDevice, pTexture2DDesc, pProtectedResourceSession, ppCreatedTexture2DResource);
     }
-    pub fn AcquireDirect3D12BufferResource(self: *const IHolographicQuadLayerInterop, pResourceToAcquire: ?*ID3D12Resource, pCommandQueue: ?*ID3D12CommandQueue) callconv(.Inline) HRESULT {
+    pub inline fn AcquireDirect3D12BufferResource(self: *const IHolographicQuadLayerInterop, pResourceToAcquire: ?*ID3D12Resource, pCommandQueue: ?*ID3D12CommandQueue) HRESULT {
         return self.vtable.AcquireDirect3D12BufferResource(self, pResourceToAcquire, pCommandQueue);
     }
-    pub fn AcquireDirect3D12BufferResourceWithTimeout(self: *const IHolographicQuadLayerInterop, pResourceToAcquire: ?*ID3D12Resource, pCommandQueue: ?*ID3D12CommandQueue, duration: u64) callconv(.Inline) HRESULT {
+    pub inline fn AcquireDirect3D12BufferResourceWithTimeout(self: *const IHolographicQuadLayerInterop, pResourceToAcquire: ?*ID3D12Resource, pCommandQueue: ?*ID3D12CommandQueue, duration: u64) HRESULT {
         return self.vtable.AcquireDirect3D12BufferResourceWithTimeout(self, pResourceToAcquire, pCommandQueue, duration);
     }
-    pub fn UnacquireDirect3D12BufferResource(self: *const IHolographicQuadLayerInterop, pResourceToUnacquire: ?*ID3D12Resource) callconv(.Inline) HRESULT {
+    pub inline fn UnacquireDirect3D12BufferResource(self: *const IHolographicQuadLayerInterop, pResourceToUnacquire: ?*ID3D12Resource) HRESULT {
         return self.vtable.UnacquireDirect3D12BufferResource(self, pResourceToUnacquire);
     }
 };
@@ -151,21 +151,20 @@ pub const IID_IHolographicQuadLayerUpdateParametersInterop = &IID_IHolographicQu
 pub const IHolographicQuadLayerUpdateParametersInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CommitDirect3D12Resource: *const fn(
+        CommitDirect3D12Resource: *const fn (
             self: *const IHolographicQuadLayerUpdateParametersInterop,
             pColorResourceToCommit: ?*ID3D12Resource,
             pColorResourceFence: ?*ID3D12Fence,
             colorResourceFenceSignalValue: u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CommitDirect3D12Resource(self: *const IHolographicQuadLayerUpdateParametersInterop, pColorResourceToCommit: ?*ID3D12Resource, pColorResourceFence: ?*ID3D12Fence, colorResourceFenceSignalValue: u64) callconv(.Inline) HRESULT {
+    pub inline fn CommitDirect3D12Resource(self: *const IHolographicQuadLayerUpdateParametersInterop, pColorResourceToCommit: ?*ID3D12Resource, pColorResourceFence: ?*ID3D12Fence, colorResourceFenceSignalValue: u64) HRESULT {
         return self.vtable.CommitDirect3D12Resource(self, pColorResourceToCommit, pColorResourceFence, colorResourceFenceSignalValue);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -189,9 +188,7 @@ const IInspectable = @import("../../system/win_rt.zig").IInspectable;
 const IUnknown = @import("../../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -53,7 +53,7 @@ pub const SHUTDOWN_REASON = packed struct(u32) {
     FLAG_USER_DEFINED: u1 = 0,
     FLAG_PLANNED: u1 = 0,
 };
-pub const SHTDN_REASON_NONE = SHUTDOWN_REASON{ };
+pub const SHTDN_REASON_NONE = SHUTDOWN_REASON{};
 pub const SHTDN_REASON_FLAG_COMMENT_REQUIRED = SHUTDOWN_REASON{ .FLAG_COMMENT_REQUIRED = 1 };
 pub const SHTDN_REASON_FLAG_DIRTY_PROBLEM_ID_REQUIRED = SHUTDOWN_REASON{ .FLAG_DIRTY_PROBLEM_ID_REQUIRED = 1 };
 pub const SHTDN_REASON_FLAG_CLEAN_UI = SHUTDOWN_REASON{ .FLAG_CLEAN_UI = 1 };
@@ -61,8 +61,8 @@ pub const SHTDN_REASON_FLAG_DIRTY_UI = SHUTDOWN_REASON{ .FLAG_DIRTY_UI = 1 };
 pub const SHTDN_REASON_FLAG_MOBILE_UI_RESERVED = SHUTDOWN_REASON{ .FLAG_MOBILE_UI_RESERVED = 1 };
 pub const SHTDN_REASON_FLAG_USER_DEFINED = SHUTDOWN_REASON{ .FLAG_USER_DEFINED = 1 };
 pub const SHTDN_REASON_FLAG_PLANNED = SHUTDOWN_REASON{ .FLAG_PLANNED = 1 };
-pub const SHTDN_REASON_MAJOR_OTHER = SHUTDOWN_REASON{ };
-pub const SHTDN_REASON_MAJOR_NONE = SHUTDOWN_REASON{ };
+pub const SHTDN_REASON_MAJOR_OTHER = SHUTDOWN_REASON{};
+pub const SHTDN_REASON_MAJOR_NONE = SHUTDOWN_REASON{};
 pub const SHTDN_REASON_MAJOR_HARDWARE = SHUTDOWN_REASON{ .MAJOR_HARDWARE = 1 };
 pub const SHTDN_REASON_MAJOR_OPERATINGSYSTEM = SHUTDOWN_REASON{ .MAJOR_OPERATINGSYSTEM = 1 };
 pub const SHTDN_REASON_MAJOR_SOFTWARE = SHUTDOWN_REASON{
@@ -83,7 +83,7 @@ pub const SHTDN_REASON_MAJOR_LEGACY_API = SHUTDOWN_REASON{
     .MAJOR_OPERATINGSYSTEM = 1,
     .MAJOR_APPLICATION = 1,
 };
-pub const SHTDN_REASON_MINOR_OTHER = SHUTDOWN_REASON{ };
+pub const SHTDN_REASON_MINOR_OTHER = SHUTDOWN_REASON{};
 pub const SHTDN_REASON_MINOR_NONE = SHUTDOWN_REASON{
     .MINOR_MAINTENANCE = 1,
     .MINOR_INSTALLATION = 1,
@@ -317,7 +317,6 @@ pub const EWX_REBOOT = EXIT_WINDOWS_FLAGS.REBOOT;
 pub const EWX_RESTARTAPPS = EXIT_WINDOWS_FLAGS.RESTARTAPPS;
 pub const EWX_SHUTDOWN = EXIT_WINDOWS_FLAGS.SHUTDOWN;
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (14)
 //--------------------------------------------------------------------------------
@@ -328,7 +327,7 @@ pub extern "advapi32" fn InitiateSystemShutdownA(
     dwTimeout: u32,
     bForceAppsClosed: BOOL,
     bRebootAfterShutdown: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "advapi32" fn InitiateSystemShutdownW(
@@ -337,17 +336,17 @@ pub extern "advapi32" fn InitiateSystemShutdownW(
     dwTimeout: u32,
     bForceAppsClosed: BOOL,
     bRebootAfterShutdown: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "advapi32" fn AbortSystemShutdownA(
     lpMachineName: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "advapi32" fn AbortSystemShutdownW(
     lpMachineName: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "advapi32" fn InitiateSystemShutdownExA(
@@ -357,7 +356,7 @@ pub extern "advapi32" fn InitiateSystemShutdownExA(
     bForceAppsClosed: BOOL,
     bRebootAfterShutdown: BOOL,
     dwReason: SHUTDOWN_REASON,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "advapi32" fn InitiateSystemShutdownExW(
@@ -367,7 +366,7 @@ pub extern "advapi32" fn InitiateSystemShutdownExW(
     bForceAppsClosed: BOOL,
     bRebootAfterShutdown: BOOL,
     dwReason: SHUTDOWN_REASON,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "advapi32" fn InitiateShutdownA(
@@ -376,7 +375,7 @@ pub extern "advapi32" fn InitiateShutdownA(
     dwGracePeriod: u32,
     dwShutdownFlags: SHUTDOWN_FLAGS,
     dwReason: SHUTDOWN_REASON,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "advapi32" fn InitiateShutdownW(
@@ -385,41 +384,39 @@ pub extern "advapi32" fn InitiateShutdownW(
     dwGracePeriod: u32,
     dwShutdownFlags: SHUTDOWN_FLAGS,
     dwReason: SHUTDOWN_REASON,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "advapi32" fn CheckForHiberboot(
     pHiberboot: ?*BOOLEAN,
     bClearFlag: BOOLEAN,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "user32" fn ExitWindowsEx(
     uFlags: EXIT_WINDOWS_FLAGS,
     dwReason: SHUTDOWN_REASON,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
-pub extern "user32" fn LockWorkStation(
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+pub extern "user32" fn LockWorkStation() callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "user32" fn ShutdownBlockReasonCreate(
     hWnd: ?HWND,
     pwszReason: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "user32" fn ShutdownBlockReasonQuery(
     hWnd: ?HWND,
     pwszBuff: ?[*:0]u16,
     pcchBuff: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "user32" fn ShutdownBlockReasonDestroy(
     hWnd: ?HWND,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (4)
@@ -462,9 +459,7 @@ const PSTR = @import("../foundation.zig").PSTR;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

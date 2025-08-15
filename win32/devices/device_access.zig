@@ -56,15 +56,15 @@ pub const IID_IDeviceRequestCompletionCallback = &IID_IDeviceRequestCompletionCa
 pub const IDeviceRequestCompletionCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Invoke: *const fn(
+        Invoke: *const fn (
             self: *const IDeviceRequestCompletionCallback,
             requestResult: HRESULT,
             bytesReturned: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Invoke(self: *const IDeviceRequestCompletionCallback, requestResult: HRESULT, bytesReturned: u32) callconv(.Inline) HRESULT {
+    pub inline fn Invoke(self: *const IDeviceRequestCompletionCallback, requestResult: HRESULT, bytesReturned: u32) HRESULT {
         return self.vtable.Invoke(self, requestResult, bytesReturned);
     }
 };
@@ -74,7 +74,7 @@ pub const IID_IDeviceIoControl = &IID_IDeviceIoControl_Value;
 pub const IDeviceIoControl = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        DeviceIoControlSync: *const fn(
+        DeviceIoControlSync: *const fn (
             self: *const IDeviceIoControl,
             ioControlCode: u32,
             inputBuffer: ?[*:0]u8,
@@ -82,8 +82,8 @@ pub const IDeviceIoControl = extern union {
             outputBuffer: ?[*:0]u8,
             outputBufferSize: u32,
             bytesReturned: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeviceIoControlAsync: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeviceIoControlAsync: *const fn (
             self: *const IDeviceIoControl,
             ioControlCode: u32,
             inputBuffer: ?[*:0]u8,
@@ -92,21 +92,21 @@ pub const IDeviceIoControl = extern union {
             outputBufferSize: u32,
             requestCompletionCallback: ?*IDeviceRequestCompletionCallback,
             cancelContext: ?*usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CancelOperation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CancelOperation: *const fn (
             self: *const IDeviceIoControl,
             cancelContext: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn DeviceIoControlSync(self: *const IDeviceIoControl, ioControlCode: u32, inputBuffer: ?[*:0]u8, inputBufferSize: u32, outputBuffer: ?[*:0]u8, outputBufferSize: u32, bytesReturned: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn DeviceIoControlSync(self: *const IDeviceIoControl, ioControlCode: u32, inputBuffer: ?[*:0]u8, inputBufferSize: u32, outputBuffer: ?[*:0]u8, outputBufferSize: u32, bytesReturned: ?*u32) HRESULT {
         return self.vtable.DeviceIoControlSync(self, ioControlCode, inputBuffer, inputBufferSize, outputBuffer, outputBufferSize, bytesReturned);
     }
-    pub fn DeviceIoControlAsync(self: *const IDeviceIoControl, ioControlCode: u32, inputBuffer: ?[*:0]u8, inputBufferSize: u32, outputBuffer: ?[*:0]u8, outputBufferSize: u32, requestCompletionCallback: ?*IDeviceRequestCompletionCallback, cancelContext: ?*usize) callconv(.Inline) HRESULT {
+    pub inline fn DeviceIoControlAsync(self: *const IDeviceIoControl, ioControlCode: u32, inputBuffer: ?[*:0]u8, inputBufferSize: u32, outputBuffer: ?[*:0]u8, outputBufferSize: u32, requestCompletionCallback: ?*IDeviceRequestCompletionCallback, cancelContext: ?*usize) HRESULT {
         return self.vtable.DeviceIoControlAsync(self, ioControlCode, inputBuffer, inputBufferSize, outputBuffer, outputBufferSize, requestCompletionCallback, cancelContext);
     }
-    pub fn CancelOperation(self: *const IDeviceIoControl, cancelContext: usize) callconv(.Inline) HRESULT {
+    pub inline fn CancelOperation(self: *const IDeviceIoControl, cancelContext: usize) HRESULT {
         return self.vtable.CancelOperation(self, cancelContext);
     }
 };
@@ -116,38 +116,37 @@ pub const IID_ICreateDeviceAccessAsync = &IID_ICreateDeviceAccessAsync_Value;
 pub const ICreateDeviceAccessAsync = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Cancel: *const fn(
+        Cancel: *const fn (
             self: *const ICreateDeviceAccessAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Wait: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Wait: *const fn (
             self: *const ICreateDeviceAccessAsync,
             timeout: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Close: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Close: *const fn (
             self: *const ICreateDeviceAccessAsync,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetResult: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetResult: *const fn (
             self: *const ICreateDeviceAccessAsync,
             riid: ?*const Guid,
             deviceAccess: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Cancel(self: *const ICreateDeviceAccessAsync) callconv(.Inline) HRESULT {
+    pub inline fn Cancel(self: *const ICreateDeviceAccessAsync) HRESULT {
         return self.vtable.Cancel(self);
     }
-    pub fn Wait(self: *const ICreateDeviceAccessAsync, timeout: u32) callconv(.Inline) HRESULT {
+    pub inline fn Wait(self: *const ICreateDeviceAccessAsync, timeout: u32) HRESULT {
         return self.vtable.Wait(self, timeout);
     }
-    pub fn Close(self: *const ICreateDeviceAccessAsync) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const ICreateDeviceAccessAsync) HRESULT {
         return self.vtable.Close(self);
     }
-    pub fn GetResult(self: *const ICreateDeviceAccessAsync, riid: ?*const Guid, deviceAccess: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetResult(self: *const ICreateDeviceAccessAsync, riid: ?*const Guid, deviceAccess: **anyopaque) HRESULT {
         return self.vtable.GetResult(self, riid, deviceAccess);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (1)
@@ -156,8 +155,7 @@ pub extern "deviceaccess" fn CreateDeviceAccessInstance(
     deviceInterfacePath: ?[*:0]const u16,
     desiredAccess: u32,
     createAsync: **ICreateDeviceAccessAsync,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -171,9 +169,7 @@ const IUnknown = @import("../system/com.zig").IUnknown;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

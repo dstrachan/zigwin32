@@ -1853,7 +1853,6 @@ pub const D3DTRIPATCH_INFO = extern struct {
     Degree: D3DDEGREETYPE,
 };
 
-
 pub const D3DRASTER_STATUS = extern struct {
     InVBlank: BOOL,
     ScanLine: u32,
@@ -1964,7 +1963,6 @@ pub const D3DDEVINFO_D3D9CACHEUTILIZATION = extern struct {
     PostTransformVertexCacheHitRate: f32,
 };
 
-
 pub const D3DCOMPOSERECTSOP = enum(i32) {
     COPY = 1,
     OR = 2,
@@ -1991,7 +1989,6 @@ pub const D3DCOMPOSERECTDESTINATION = extern struct {
     X: i16,
     Y: i16,
 };
-
 
 pub const D3DSCANLINEORDERING = enum(i32) {
     UNKNOWN = 0,
@@ -2142,7 +2139,6 @@ pub const D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_INPUT = extern struct {
     OutputIDIndex: u32,
 };
 
-
 pub const D3DBUSTYPE = enum(i32) {
     TYPE_OTHER = 0,
     TYPE_PCI = 1,
@@ -2247,7 +2243,6 @@ pub const D3DENCRYPTED_BLOCK_INFO = extern struct {
     NumBytesInEncryptPattern: u32,
 };
 
-
 pub const D3DVSHADERCAPS2_0 = extern struct {
     Caps: u32,
     DynamicFlowControlDepth: i32,
@@ -2340,45 +2335,45 @@ pub const IID_IDirect3D9 = &IID_IDirect3D9_Value;
 pub const IDirect3D9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RegisterSoftwareDevice: *const fn(
+        RegisterSoftwareDevice: *const fn (
             self: *const IDirect3D9,
             pInitializeFunction: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAdapterCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAdapterCount: *const fn (
             self: *const IDirect3D9,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        GetAdapterIdentifier: *const fn(
+        ) callconv(.winapi) u32,
+        GetAdapterIdentifier: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             Flags: u32,
             pIdentifier: ?*D3DADAPTER_IDENTIFIER9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAdapterModeCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAdapterModeCount: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             Format: D3DFORMAT,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        EnumAdapterModes: *const fn(
+        ) callconv(.winapi) u32,
+        EnumAdapterModes: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             Format: D3DFORMAT,
             Mode: u32,
             pMode: ?*D3DDISPLAYMODE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAdapterDisplayMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAdapterDisplayMode: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             pMode: ?*D3DDISPLAYMODE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckDeviceType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckDeviceType: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             DevType: D3DDEVTYPE,
             AdapterFormat: D3DFORMAT,
             BackBufferFormat: D3DFORMAT,
             bWindowed: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckDeviceFormat: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckDeviceFormat: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             DeviceType: D3DDEVTYPE,
@@ -2386,8 +2381,8 @@ pub const IDirect3D9 = extern union {
             Usage: u32,
             RType: D3DRESOURCETYPE,
             CheckFormat: D3DFORMAT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckDeviceMultiSampleType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckDeviceMultiSampleType: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             DeviceType: D3DDEVTYPE,
@@ -2395,33 +2390,33 @@ pub const IDirect3D9 = extern union {
             Windowed: BOOL,
             MultiSampleType: D3DMULTISAMPLE_TYPE,
             pQualityLevels: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckDepthStencilMatch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckDepthStencilMatch: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             DeviceType: D3DDEVTYPE,
             AdapterFormat: D3DFORMAT,
             RenderTargetFormat: D3DFORMAT,
             DepthStencilFormat: D3DFORMAT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckDeviceFormatConversion: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckDeviceFormatConversion: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             DeviceType: D3DDEVTYPE,
             SourceFormat: D3DFORMAT,
             TargetFormat: D3DFORMAT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDeviceCaps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDeviceCaps: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             DeviceType: D3DDEVTYPE,
             pCaps: ?*D3DCAPS9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAdapterMonitor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAdapterMonitor: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
-        ) callconv(@import("std").os.windows.WINAPI) ?HMONITOR,
-        CreateDevice: *const fn(
+        ) callconv(.winapi) ?HMONITOR,
+        CreateDevice: *const fn (
             self: *const IDirect3D9,
             Adapter: u32,
             DeviceType: D3DDEVTYPE,
@@ -2429,50 +2424,50 @@ pub const IDirect3D9 = extern union {
             BehaviorFlags: u32,
             pPresentationParameters: ?*D3DPRESENT_PARAMETERS,
             ppReturnedDeviceInterface: ?*?*IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RegisterSoftwareDevice(self: *const IDirect3D9, pInitializeFunction: ?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn RegisterSoftwareDevice(self: *const IDirect3D9, pInitializeFunction: ?*anyopaque) HRESULT {
         return self.vtable.RegisterSoftwareDevice(self, pInitializeFunction);
     }
-    pub fn GetAdapterCount(self: *const IDirect3D9) callconv(.Inline) u32 {
+    pub inline fn GetAdapterCount(self: *const IDirect3D9) u32 {
         return self.vtable.GetAdapterCount(self);
     }
-    pub fn GetAdapterIdentifier(self: *const IDirect3D9, Adapter: u32, Flags: u32, pIdentifier: ?*D3DADAPTER_IDENTIFIER9) callconv(.Inline) HRESULT {
+    pub inline fn GetAdapterIdentifier(self: *const IDirect3D9, Adapter: u32, Flags: u32, pIdentifier: ?*D3DADAPTER_IDENTIFIER9) HRESULT {
         return self.vtable.GetAdapterIdentifier(self, Adapter, Flags, pIdentifier);
     }
-    pub fn GetAdapterModeCount(self: *const IDirect3D9, Adapter: u32, Format: D3DFORMAT) callconv(.Inline) u32 {
+    pub inline fn GetAdapterModeCount(self: *const IDirect3D9, Adapter: u32, Format: D3DFORMAT) u32 {
         return self.vtable.GetAdapterModeCount(self, Adapter, Format);
     }
-    pub fn EnumAdapterModes(self: *const IDirect3D9, Adapter: u32, Format: D3DFORMAT, Mode: u32, pMode: ?*D3DDISPLAYMODE) callconv(.Inline) HRESULT {
+    pub inline fn EnumAdapterModes(self: *const IDirect3D9, Adapter: u32, Format: D3DFORMAT, Mode: u32, pMode: ?*D3DDISPLAYMODE) HRESULT {
         return self.vtable.EnumAdapterModes(self, Adapter, Format, Mode, pMode);
     }
-    pub fn GetAdapterDisplayMode(self: *const IDirect3D9, Adapter: u32, pMode: ?*D3DDISPLAYMODE) callconv(.Inline) HRESULT {
+    pub inline fn GetAdapterDisplayMode(self: *const IDirect3D9, Adapter: u32, pMode: ?*D3DDISPLAYMODE) HRESULT {
         return self.vtable.GetAdapterDisplayMode(self, Adapter, pMode);
     }
-    pub fn CheckDeviceType(self: *const IDirect3D9, Adapter: u32, DevType: D3DDEVTYPE, AdapterFormat: D3DFORMAT, BackBufferFormat: D3DFORMAT, bWindowed: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn CheckDeviceType(self: *const IDirect3D9, Adapter: u32, DevType: D3DDEVTYPE, AdapterFormat: D3DFORMAT, BackBufferFormat: D3DFORMAT, bWindowed: BOOL) HRESULT {
         return self.vtable.CheckDeviceType(self, Adapter, DevType, AdapterFormat, BackBufferFormat, bWindowed);
     }
-    pub fn CheckDeviceFormat(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, AdapterFormat: D3DFORMAT, Usage: u32, RType: D3DRESOURCETYPE, CheckFormat: D3DFORMAT) callconv(.Inline) HRESULT {
+    pub inline fn CheckDeviceFormat(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, AdapterFormat: D3DFORMAT, Usage: u32, RType: D3DRESOURCETYPE, CheckFormat: D3DFORMAT) HRESULT {
         return self.vtable.CheckDeviceFormat(self, Adapter, DeviceType, AdapterFormat, Usage, RType, CheckFormat);
     }
-    pub fn CheckDeviceMultiSampleType(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, SurfaceFormat: D3DFORMAT, Windowed: BOOL, MultiSampleType: D3DMULTISAMPLE_TYPE, pQualityLevels: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn CheckDeviceMultiSampleType(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, SurfaceFormat: D3DFORMAT, Windowed: BOOL, MultiSampleType: D3DMULTISAMPLE_TYPE, pQualityLevels: ?*u32) HRESULT {
         return self.vtable.CheckDeviceMultiSampleType(self, Adapter, DeviceType, SurfaceFormat, Windowed, MultiSampleType, pQualityLevels);
     }
-    pub fn CheckDepthStencilMatch(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, AdapterFormat: D3DFORMAT, RenderTargetFormat: D3DFORMAT, DepthStencilFormat: D3DFORMAT) callconv(.Inline) HRESULT {
+    pub inline fn CheckDepthStencilMatch(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, AdapterFormat: D3DFORMAT, RenderTargetFormat: D3DFORMAT, DepthStencilFormat: D3DFORMAT) HRESULT {
         return self.vtable.CheckDepthStencilMatch(self, Adapter, DeviceType, AdapterFormat, RenderTargetFormat, DepthStencilFormat);
     }
-    pub fn CheckDeviceFormatConversion(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, SourceFormat: D3DFORMAT, TargetFormat: D3DFORMAT) callconv(.Inline) HRESULT {
+    pub inline fn CheckDeviceFormatConversion(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, SourceFormat: D3DFORMAT, TargetFormat: D3DFORMAT) HRESULT {
         return self.vtable.CheckDeviceFormatConversion(self, Adapter, DeviceType, SourceFormat, TargetFormat);
     }
-    pub fn GetDeviceCaps(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, pCaps: ?*D3DCAPS9) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceCaps(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, pCaps: ?*D3DCAPS9) HRESULT {
         return self.vtable.GetDeviceCaps(self, Adapter, DeviceType, pCaps);
     }
-    pub fn GetAdapterMonitor(self: *const IDirect3D9, Adapter: u32) callconv(.Inline) ?HMONITOR {
+    pub inline fn GetAdapterMonitor(self: *const IDirect3D9, Adapter: u32) ?HMONITOR {
         return self.vtable.GetAdapterMonitor(self, Adapter);
     }
-    pub fn CreateDevice(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, hFocusWindow: ?HWND, BehaviorFlags: u32, pPresentationParameters: ?*D3DPRESENT_PARAMETERS, ppReturnedDeviceInterface: ?*?*IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn CreateDevice(self: *const IDirect3D9, Adapter: u32, DeviceType: D3DDEVTYPE, hFocusWindow: ?HWND, BehaviorFlags: u32, pPresentationParameters: ?*D3DPRESENT_PARAMETERS, ppReturnedDeviceInterface: ?*?*IDirect3DDevice9) HRESULT {
         return self.vtable.CreateDevice(self, Adapter, DeviceType, hFocusWindow, BehaviorFlags, pPresentationParameters, ppReturnedDeviceInterface);
     }
 };
@@ -2482,100 +2477,100 @@ pub const IID_IDirect3DDevice9 = &IID_IDirect3DDevice9_Value;
 pub const IDirect3DDevice9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        TestCooperativeLevel: *const fn(
+        TestCooperativeLevel: *const fn (
             self: *const IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAvailableTextureMem: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAvailableTextureMem: *const fn (
             self: *const IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        EvictManagedResources: *const fn(
+        ) callconv(.winapi) u32,
+        EvictManagedResources: *const fn (
             self: *const IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDirect3D: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDirect3D: *const fn (
             self: *const IDirect3DDevice9,
             ppD3D9: ?*?*IDirect3D9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDeviceCaps: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDeviceCaps: *const fn (
             self: *const IDirect3DDevice9,
             pCaps: ?*D3DCAPS9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplayMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplayMode: *const fn (
             self: *const IDirect3DDevice9,
             iSwapChain: u32,
             pMode: ?*D3DDISPLAYMODE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCreationParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCreationParameters: *const fn (
             self: *const IDirect3DDevice9,
             pParameters: ?*D3DDEVICE_CREATION_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCursorProperties: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCursorProperties: *const fn (
             self: *const IDirect3DDevice9,
             XHotSpot: u32,
             YHotSpot: u32,
             pCursorBitmap: ?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCursorPosition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCursorPosition: *const fn (
             self: *const IDirect3DDevice9,
             X: i32,
             Y: i32,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        ShowCursor: *const fn(
+        ) callconv(.winapi) void,
+        ShowCursor: *const fn (
             self: *const IDirect3DDevice9,
             bShow: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        CreateAdditionalSwapChain: *const fn(
+        ) callconv(.winapi) BOOL,
+        CreateAdditionalSwapChain: *const fn (
             self: *const IDirect3DDevice9,
             pPresentationParameters: ?*D3DPRESENT_PARAMETERS,
             pSwapChain: ?*?*IDirect3DSwapChain9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSwapChain: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSwapChain: *const fn (
             self: *const IDirect3DDevice9,
             iSwapChain: u32,
             pSwapChain: ?*?*IDirect3DSwapChain9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNumberOfSwapChains: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNumberOfSwapChains: *const fn (
             self: *const IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        Reset: *const fn(
+        ) callconv(.winapi) u32,
+        Reset: *const fn (
             self: *const IDirect3DDevice9,
             pPresentationParameters: ?*D3DPRESENT_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Present: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Present: *const fn (
             self: *const IDirect3DDevice9,
             pSourceRect: ?*const RECT,
             pDestRect: ?*const RECT,
             hDestWindowOverride: ?HWND,
             pDirtyRegion: ?*const RGNDATA,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBackBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBackBuffer: *const fn (
             self: *const IDirect3DDevice9,
             iSwapChain: u32,
             iBackBuffer: u32,
             Type: D3DBACKBUFFER_TYPE,
             ppBackBuffer: ?*?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRasterStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRasterStatus: *const fn (
             self: *const IDirect3DDevice9,
             iSwapChain: u32,
             pRasterStatus: ?*D3DRASTER_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDialogBoxMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDialogBoxMode: *const fn (
             self: *const IDirect3DDevice9,
             bEnableDialogs: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetGammaRamp: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetGammaRamp: *const fn (
             self: *const IDirect3DDevice9,
             iSwapChain: u32,
             Flags: u32,
             pRamp: ?*const D3DGAMMARAMP,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        GetGammaRamp: *const fn(
+        ) callconv(.winapi) void,
+        GetGammaRamp: *const fn (
             self: *const IDirect3DDevice9,
             iSwapChain: u32,
             pRamp: ?*D3DGAMMARAMP,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        CreateTexture: *const fn(
+        ) callconv(.winapi) void,
+        CreateTexture: *const fn (
             self: *const IDirect3DDevice9,
             Width: u32,
             Height: u32,
@@ -2585,8 +2580,8 @@ pub const IDirect3DDevice9 = extern union {
             Pool: D3DPOOL,
             ppTexture: ?*?*IDirect3DTexture9,
             pSharedHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateVolumeTexture: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateVolumeTexture: *const fn (
             self: *const IDirect3DDevice9,
             Width: u32,
             Height: u32,
@@ -2597,8 +2592,8 @@ pub const IDirect3DDevice9 = extern union {
             Pool: D3DPOOL,
             ppVolumeTexture: ?*?*IDirect3DVolumeTexture9,
             pSharedHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateCubeTexture: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateCubeTexture: *const fn (
             self: *const IDirect3DDevice9,
             EdgeLength: u32,
             Levels: u32,
@@ -2607,8 +2602,8 @@ pub const IDirect3DDevice9 = extern union {
             Pool: D3DPOOL,
             ppCubeTexture: ?*?*IDirect3DCubeTexture9,
             pSharedHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateVertexBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateVertexBuffer: *const fn (
             self: *const IDirect3DDevice9,
             Length: u32,
             Usage: u32,
@@ -2616,8 +2611,8 @@ pub const IDirect3DDevice9 = extern union {
             Pool: D3DPOOL,
             ppVertexBuffer: ?*?*IDirect3DVertexBuffer9,
             pSharedHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateIndexBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateIndexBuffer: *const fn (
             self: *const IDirect3DDevice9,
             Length: u32,
             Usage: u32,
@@ -2625,8 +2620,8 @@ pub const IDirect3DDevice9 = extern union {
             Pool: D3DPOOL,
             ppIndexBuffer: ?*?*IDirect3DIndexBuffer9,
             pSharedHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateRenderTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateRenderTarget: *const fn (
             self: *const IDirect3DDevice9,
             Width: u32,
             Height: u32,
@@ -2636,8 +2631,8 @@ pub const IDirect3DDevice9 = extern union {
             Lockable: BOOL,
             ppSurface: ?*?*IDirect3DSurface9,
             pSharedHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateDepthStencilSurface: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateDepthStencilSurface: *const fn (
             self: *const IDirect3DDevice9,
             Width: u32,
             Height: u32,
@@ -2647,44 +2642,44 @@ pub const IDirect3DDevice9 = extern union {
             Discard: BOOL,
             ppSurface: ?*?*IDirect3DSurface9,
             pSharedHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UpdateSurface: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UpdateSurface: *const fn (
             self: *const IDirect3DDevice9,
             pSourceSurface: ?*IDirect3DSurface9,
             pSourceRect: ?*const RECT,
             pDestinationSurface: ?*IDirect3DSurface9,
             pDestPoint: ?*const POINT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UpdateTexture: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UpdateTexture: *const fn (
             self: *const IDirect3DDevice9,
             pSourceTexture: ?*IDirect3DBaseTexture9,
             pDestinationTexture: ?*IDirect3DBaseTexture9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRenderTargetData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRenderTargetData: *const fn (
             self: *const IDirect3DDevice9,
             pRenderTarget: ?*IDirect3DSurface9,
             pDestSurface: ?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFrontBufferData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFrontBufferData: *const fn (
             self: *const IDirect3DDevice9,
             iSwapChain: u32,
             pDestSurface: ?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        StretchRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        StretchRect: *const fn (
             self: *const IDirect3DDevice9,
             pSourceSurface: ?*IDirect3DSurface9,
             pSourceRect: ?*const RECT,
             pDestSurface: ?*IDirect3DSurface9,
             pDestRect: ?*const RECT,
             Filter: D3DTEXTUREFILTERTYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ColorFill: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ColorFill: *const fn (
             self: *const IDirect3DDevice9,
             pSurface: ?*IDirect3DSurface9,
             pRect: ?*const RECT,
             color: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateOffscreenPlainSurface: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateOffscreenPlainSurface: *const fn (
             self: *const IDirect3DDevice9,
             Width: u32,
             Height: u32,
@@ -2692,32 +2687,32 @@ pub const IDirect3DDevice9 = extern union {
             Pool: D3DPOOL,
             ppSurface: ?*?*IDirect3DSurface9,
             pSharedHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetRenderTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetRenderTarget: *const fn (
             self: *const IDirect3DDevice9,
             RenderTargetIndex: u32,
             pRenderTarget: ?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRenderTarget: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRenderTarget: *const fn (
             self: *const IDirect3DDevice9,
             RenderTargetIndex: u32,
             ppRenderTarget: ?*?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDepthStencilSurface: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDepthStencilSurface: *const fn (
             self: *const IDirect3DDevice9,
             pNewZStencil: ?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDepthStencilSurface: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDepthStencilSurface: *const fn (
             self: *const IDirect3DDevice9,
             ppZStencilSurface: ?*?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BeginScene: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BeginScene: *const fn (
             self: *const IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndScene: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndScene: *const fn (
             self: *const IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IDirect3DDevice9,
             Count: u32,
             pRects: ?*const D3DRECT,
@@ -2725,183 +2720,183 @@ pub const IDirect3DDevice9 = extern union {
             Color: u32,
             Z: f32,
             Stencil: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTransform: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTransform: *const fn (
             self: *const IDirect3DDevice9,
             State: D3DTRANSFORMSTATETYPE,
             pMatrix: ?*const D3DMATRIX,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTransform: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTransform: *const fn (
             self: *const IDirect3DDevice9,
             State: D3DTRANSFORMSTATETYPE,
             pMatrix: ?*D3DMATRIX,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MultiplyTransform: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MultiplyTransform: *const fn (
             self: *const IDirect3DDevice9,
             param0: D3DTRANSFORMSTATETYPE,
             param1: ?*const D3DMATRIX,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetViewport: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetViewport: *const fn (
             self: *const IDirect3DDevice9,
             pViewport: ?*const D3DVIEWPORT9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetViewport: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetViewport: *const fn (
             self: *const IDirect3DDevice9,
             pViewport: ?*D3DVIEWPORT9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetMaterial: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetMaterial: *const fn (
             self: *const IDirect3DDevice9,
             pMaterial: ?*const D3DMATERIAL9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMaterial: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMaterial: *const fn (
             self: *const IDirect3DDevice9,
             pMaterial: ?*D3DMATERIAL9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLight: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLight: *const fn (
             self: *const IDirect3DDevice9,
             Index: u32,
             param1: ?*const D3DLIGHT9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLight: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLight: *const fn (
             self: *const IDirect3DDevice9,
             Index: u32,
             param1: ?*D3DLIGHT9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LightEnable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LightEnable: *const fn (
             self: *const IDirect3DDevice9,
             Index: u32,
             Enable: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLightEnable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLightEnable: *const fn (
             self: *const IDirect3DDevice9,
             Index: u32,
             pEnable: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetClipPlane: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetClipPlane: *const fn (
             self: *const IDirect3DDevice9,
             Index: u32,
             pPlane: ?*const f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetClipPlane: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetClipPlane: *const fn (
             self: *const IDirect3DDevice9,
             Index: u32,
             pPlane: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetRenderState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetRenderState: *const fn (
             self: *const IDirect3DDevice9,
             State: D3DRENDERSTATETYPE,
             Value: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRenderState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRenderState: *const fn (
             self: *const IDirect3DDevice9,
             State: D3DRENDERSTATETYPE,
             pValue: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateStateBlock: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateStateBlock: *const fn (
             self: *const IDirect3DDevice9,
             Type: D3DSTATEBLOCKTYPE,
             ppSB: ?*?*IDirect3DStateBlock9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BeginStateBlock: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BeginStateBlock: *const fn (
             self: *const IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EndStateBlock: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EndStateBlock: *const fn (
             self: *const IDirect3DDevice9,
             ppSB: ?*?*IDirect3DStateBlock9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetClipStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetClipStatus: *const fn (
             self: *const IDirect3DDevice9,
             pClipStatus: ?*const D3DCLIPSTATUS9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetClipStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetClipStatus: *const fn (
             self: *const IDirect3DDevice9,
             pClipStatus: ?*D3DCLIPSTATUS9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTexture: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTexture: *const fn (
             self: *const IDirect3DDevice9,
             Stage: u32,
             ppTexture: ?*?*IDirect3DBaseTexture9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTexture: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTexture: *const fn (
             self: *const IDirect3DDevice9,
             Stage: u32,
             pTexture: ?*IDirect3DBaseTexture9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTextureStageState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTextureStageState: *const fn (
             self: *const IDirect3DDevice9,
             Stage: u32,
             Type: D3DTEXTURESTAGESTATETYPE,
             pValue: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetTextureStageState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetTextureStageState: *const fn (
             self: *const IDirect3DDevice9,
             Stage: u32,
             Type: D3DTEXTURESTAGESTATETYPE,
             Value: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSamplerState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSamplerState: *const fn (
             self: *const IDirect3DDevice9,
             Sampler: u32,
             Type: D3DSAMPLERSTATETYPE,
             pValue: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSamplerState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSamplerState: *const fn (
             self: *const IDirect3DDevice9,
             Sampler: u32,
             Type: D3DSAMPLERSTATETYPE,
             Value: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ValidateDevice: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ValidateDevice: *const fn (
             self: *const IDirect3DDevice9,
             pNumPasses: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPaletteEntries: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPaletteEntries: *const fn (
             self: *const IDirect3DDevice9,
             PaletteNumber: u32,
             pEntries: ?*const PALETTEENTRY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPaletteEntries: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPaletteEntries: *const fn (
             self: *const IDirect3DDevice9,
             PaletteNumber: u32,
             pEntries: ?*PALETTEENTRY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCurrentTexturePalette: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCurrentTexturePalette: *const fn (
             self: *const IDirect3DDevice9,
             PaletteNumber: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurrentTexturePalette: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurrentTexturePalette: *const fn (
             self: *const IDirect3DDevice9,
             PaletteNumber: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetScissorRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetScissorRect: *const fn (
             self: *const IDirect3DDevice9,
             pRect: ?*const RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetScissorRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetScissorRect: *const fn (
             self: *const IDirect3DDevice9,
             pRect: ?*RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSoftwareVertexProcessing: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSoftwareVertexProcessing: *const fn (
             self: *const IDirect3DDevice9,
             bSoftware: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSoftwareVertexProcessing: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSoftwareVertexProcessing: *const fn (
             self: *const IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        SetNPatchMode: *const fn(
+        ) callconv(.winapi) BOOL,
+        SetNPatchMode: *const fn (
             self: *const IDirect3DDevice9,
             nSegments: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNPatchMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNPatchMode: *const fn (
             self: *const IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) f32,
-        DrawPrimitive: *const fn(
+        ) callconv(.winapi) f32,
+        DrawPrimitive: *const fn (
             self: *const IDirect3DDevice9,
             PrimitiveType: D3DPRIMITIVETYPE,
             StartVertex: u32,
             PrimitiveCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DrawIndexedPrimitive: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DrawIndexedPrimitive: *const fn (
             self: *const IDirect3DDevice9,
             param0: D3DPRIMITIVETYPE,
             BaseVertexIndex: i32,
@@ -2909,15 +2904,15 @@ pub const IDirect3DDevice9 = extern union {
             NumVertices: u32,
             startIndex: u32,
             primCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DrawPrimitiveUP: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DrawPrimitiveUP: *const fn (
             self: *const IDirect3DDevice9,
             PrimitiveType: D3DPRIMITIVETYPE,
             PrimitiveCount: u32,
             pVertexStreamZeroData: ?*const anyopaque,
             VertexStreamZeroStride: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DrawIndexedPrimitiveUP: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DrawIndexedPrimitiveUP: *const fn (
             self: *const IDirect3DDevice9,
             PrimitiveType: D3DPRIMITIVETYPE,
             MinVertexIndex: u32,
@@ -2927,8 +2922,8 @@ pub const IDirect3DDevice9 = extern union {
             IndexDataFormat: D3DFORMAT,
             pVertexStreamZeroData: ?*const anyopaque,
             VertexStreamZeroStride: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ProcessVertices: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ProcessVertices: *const fn (
             self: *const IDirect3DDevice9,
             SrcStartIndex: u32,
             DestIndex: u32,
@@ -2936,528 +2931,528 @@ pub const IDirect3DDevice9 = extern union {
             pDestBuffer: ?*IDirect3DVertexBuffer9,
             pVertexDecl: ?*IDirect3DVertexDeclaration9,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateVertexDeclaration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateVertexDeclaration: *const fn (
             self: *const IDirect3DDevice9,
             pVertexElements: ?*const D3DVERTEXELEMENT9,
             ppDecl: ?*?*IDirect3DVertexDeclaration9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetVertexDeclaration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetVertexDeclaration: *const fn (
             self: *const IDirect3DDevice9,
             pDecl: ?*IDirect3DVertexDeclaration9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVertexDeclaration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVertexDeclaration: *const fn (
             self: *const IDirect3DDevice9,
             ppDecl: ?*?*IDirect3DVertexDeclaration9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFVF: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFVF: *const fn (
             self: *const IDirect3DDevice9,
             FVF: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFVF: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFVF: *const fn (
             self: *const IDirect3DDevice9,
             pFVF: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateVertexShader: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateVertexShader: *const fn (
             self: *const IDirect3DDevice9,
             pFunction: ?*const u32,
             ppShader: ?*?*IDirect3DVertexShader9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetVertexShader: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetVertexShader: *const fn (
             self: *const IDirect3DDevice9,
             pShader: ?*IDirect3DVertexShader9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVertexShader: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVertexShader: *const fn (
             self: *const IDirect3DDevice9,
             ppShader: ?*?*IDirect3DVertexShader9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetVertexShaderConstantF: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetVertexShaderConstantF: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*const f32,
             Vector4fCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVertexShaderConstantF: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVertexShaderConstantF: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*f32,
             Vector4fCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetVertexShaderConstantI: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetVertexShaderConstantI: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*const i32,
             Vector4iCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVertexShaderConstantI: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVertexShaderConstantI: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*i32,
             Vector4iCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetVertexShaderConstantB: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetVertexShaderConstantB: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*const BOOL,
             BoolCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVertexShaderConstantB: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVertexShaderConstantB: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*BOOL,
             BoolCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStreamSource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStreamSource: *const fn (
             self: *const IDirect3DDevice9,
             StreamNumber: u32,
             pStreamData: ?*IDirect3DVertexBuffer9,
             OffsetInBytes: u32,
             Stride: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStreamSource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStreamSource: *const fn (
             self: *const IDirect3DDevice9,
             StreamNumber: u32,
             ppStreamData: ?*?*IDirect3DVertexBuffer9,
             pOffsetInBytes: ?*u32,
             pStride: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStreamSourceFreq: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStreamSourceFreq: *const fn (
             self: *const IDirect3DDevice9,
             StreamNumber: u32,
             Setting: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStreamSourceFreq: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStreamSourceFreq: *const fn (
             self: *const IDirect3DDevice9,
             StreamNumber: u32,
             pSetting: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetIndices: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetIndices: *const fn (
             self: *const IDirect3DDevice9,
             pIndexData: ?*IDirect3DIndexBuffer9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIndices: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIndices: *const fn (
             self: *const IDirect3DDevice9,
             ppIndexData: ?*?*IDirect3DIndexBuffer9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreatePixelShader: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreatePixelShader: *const fn (
             self: *const IDirect3DDevice9,
             pFunction: ?*const u32,
             ppShader: ?*?*IDirect3DPixelShader9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPixelShader: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPixelShader: *const fn (
             self: *const IDirect3DDevice9,
             pShader: ?*IDirect3DPixelShader9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPixelShader: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPixelShader: *const fn (
             self: *const IDirect3DDevice9,
             ppShader: ?*?*IDirect3DPixelShader9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPixelShaderConstantF: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPixelShaderConstantF: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*const f32,
             Vector4fCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPixelShaderConstantF: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPixelShaderConstantF: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*f32,
             Vector4fCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPixelShaderConstantI: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPixelShaderConstantI: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*const i32,
             Vector4iCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPixelShaderConstantI: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPixelShaderConstantI: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*i32,
             Vector4iCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPixelShaderConstantB: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPixelShaderConstantB: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*const BOOL,
             BoolCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPixelShaderConstantB: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPixelShaderConstantB: *const fn (
             self: *const IDirect3DDevice9,
             StartRegister: u32,
             pConstantData: ?*BOOL,
             BoolCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DrawRectPatch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DrawRectPatch: *const fn (
             self: *const IDirect3DDevice9,
             Handle: u32,
             pNumSegs: ?*const f32,
             pRectPatchInfo: ?*const D3DRECTPATCH_INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DrawTriPatch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DrawTriPatch: *const fn (
             self: *const IDirect3DDevice9,
             Handle: u32,
             pNumSegs: ?*const f32,
             pTriPatchInfo: ?*const D3DTRIPATCH_INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeletePatch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeletePatch: *const fn (
             self: *const IDirect3DDevice9,
             Handle: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateQuery: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateQuery: *const fn (
             self: *const IDirect3DDevice9,
             Type: D3DQUERYTYPE,
             ppQuery: ?*?*IDirect3DQuery9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn TestCooperativeLevel(self: *const IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn TestCooperativeLevel(self: *const IDirect3DDevice9) HRESULT {
         return self.vtable.TestCooperativeLevel(self);
     }
-    pub fn GetAvailableTextureMem(self: *const IDirect3DDevice9) callconv(.Inline) u32 {
+    pub inline fn GetAvailableTextureMem(self: *const IDirect3DDevice9) u32 {
         return self.vtable.GetAvailableTextureMem(self);
     }
-    pub fn EvictManagedResources(self: *const IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn EvictManagedResources(self: *const IDirect3DDevice9) HRESULT {
         return self.vtable.EvictManagedResources(self);
     }
-    pub fn GetDirect3D(self: *const IDirect3DDevice9, ppD3D9: ?*?*IDirect3D9) callconv(.Inline) HRESULT {
+    pub inline fn GetDirect3D(self: *const IDirect3DDevice9, ppD3D9: ?*?*IDirect3D9) HRESULT {
         return self.vtable.GetDirect3D(self, ppD3D9);
     }
-    pub fn GetDeviceCaps(self: *const IDirect3DDevice9, pCaps: ?*D3DCAPS9) callconv(.Inline) HRESULT {
+    pub inline fn GetDeviceCaps(self: *const IDirect3DDevice9, pCaps: ?*D3DCAPS9) HRESULT {
         return self.vtable.GetDeviceCaps(self, pCaps);
     }
-    pub fn GetDisplayMode(self: *const IDirect3DDevice9, iSwapChain: u32, pMode: ?*D3DDISPLAYMODE) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplayMode(self: *const IDirect3DDevice9, iSwapChain: u32, pMode: ?*D3DDISPLAYMODE) HRESULT {
         return self.vtable.GetDisplayMode(self, iSwapChain, pMode);
     }
-    pub fn GetCreationParameters(self: *const IDirect3DDevice9, pParameters: ?*D3DDEVICE_CREATION_PARAMETERS) callconv(.Inline) HRESULT {
+    pub inline fn GetCreationParameters(self: *const IDirect3DDevice9, pParameters: ?*D3DDEVICE_CREATION_PARAMETERS) HRESULT {
         return self.vtable.GetCreationParameters(self, pParameters);
     }
-    pub fn SetCursorProperties(self: *const IDirect3DDevice9, XHotSpot: u32, YHotSpot: u32, pCursorBitmap: ?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn SetCursorProperties(self: *const IDirect3DDevice9, XHotSpot: u32, YHotSpot: u32, pCursorBitmap: ?*IDirect3DSurface9) HRESULT {
         return self.vtable.SetCursorProperties(self, XHotSpot, YHotSpot, pCursorBitmap);
     }
-    pub fn SetCursorPosition(self: *const IDirect3DDevice9, X: i32, Y: i32, Flags: u32) callconv(.Inline) void {
+    pub inline fn SetCursorPosition(self: *const IDirect3DDevice9, X: i32, Y: i32, Flags: u32) void {
         return self.vtable.SetCursorPosition(self, X, Y, Flags);
     }
-    pub fn ShowCursor(self: *const IDirect3DDevice9, bShow: BOOL) callconv(.Inline) BOOL {
+    pub inline fn ShowCursor(self: *const IDirect3DDevice9, bShow: BOOL) BOOL {
         return self.vtable.ShowCursor(self, bShow);
     }
-    pub fn CreateAdditionalSwapChain(self: *const IDirect3DDevice9, pPresentationParameters: ?*D3DPRESENT_PARAMETERS, pSwapChain: ?*?*IDirect3DSwapChain9) callconv(.Inline) HRESULT {
+    pub inline fn CreateAdditionalSwapChain(self: *const IDirect3DDevice9, pPresentationParameters: ?*D3DPRESENT_PARAMETERS, pSwapChain: ?*?*IDirect3DSwapChain9) HRESULT {
         return self.vtable.CreateAdditionalSwapChain(self, pPresentationParameters, pSwapChain);
     }
-    pub fn GetSwapChain(self: *const IDirect3DDevice9, iSwapChain: u32, pSwapChain: ?*?*IDirect3DSwapChain9) callconv(.Inline) HRESULT {
+    pub inline fn GetSwapChain(self: *const IDirect3DDevice9, iSwapChain: u32, pSwapChain: ?*?*IDirect3DSwapChain9) HRESULT {
         return self.vtable.GetSwapChain(self, iSwapChain, pSwapChain);
     }
-    pub fn GetNumberOfSwapChains(self: *const IDirect3DDevice9) callconv(.Inline) u32 {
+    pub inline fn GetNumberOfSwapChains(self: *const IDirect3DDevice9) u32 {
         return self.vtable.GetNumberOfSwapChains(self);
     }
-    pub fn Reset(self: *const IDirect3DDevice9, pPresentationParameters: ?*D3DPRESENT_PARAMETERS) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IDirect3DDevice9, pPresentationParameters: ?*D3DPRESENT_PARAMETERS) HRESULT {
         return self.vtable.Reset(self, pPresentationParameters);
     }
-    pub fn Present(self: *const IDirect3DDevice9, pSourceRect: ?*const RECT, pDestRect: ?*const RECT, hDestWindowOverride: ?HWND, pDirtyRegion: ?*const RGNDATA) callconv(.Inline) HRESULT {
+    pub inline fn Present(self: *const IDirect3DDevice9, pSourceRect: ?*const RECT, pDestRect: ?*const RECT, hDestWindowOverride: ?HWND, pDirtyRegion: ?*const RGNDATA) HRESULT {
         return self.vtable.Present(self, pSourceRect, pDestRect, hDestWindowOverride, pDirtyRegion);
     }
-    pub fn GetBackBuffer(self: *const IDirect3DDevice9, iSwapChain: u32, iBackBuffer: u32, Type: D3DBACKBUFFER_TYPE, ppBackBuffer: ?*?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn GetBackBuffer(self: *const IDirect3DDevice9, iSwapChain: u32, iBackBuffer: u32, Type: D3DBACKBUFFER_TYPE, ppBackBuffer: ?*?*IDirect3DSurface9) HRESULT {
         return self.vtable.GetBackBuffer(self, iSwapChain, iBackBuffer, Type, ppBackBuffer);
     }
-    pub fn GetRasterStatus(self: *const IDirect3DDevice9, iSwapChain: u32, pRasterStatus: ?*D3DRASTER_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn GetRasterStatus(self: *const IDirect3DDevice9, iSwapChain: u32, pRasterStatus: ?*D3DRASTER_STATUS) HRESULT {
         return self.vtable.GetRasterStatus(self, iSwapChain, pRasterStatus);
     }
-    pub fn SetDialogBoxMode(self: *const IDirect3DDevice9, bEnableDialogs: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn SetDialogBoxMode(self: *const IDirect3DDevice9, bEnableDialogs: BOOL) HRESULT {
         return self.vtable.SetDialogBoxMode(self, bEnableDialogs);
     }
-    pub fn SetGammaRamp(self: *const IDirect3DDevice9, iSwapChain: u32, Flags: u32, pRamp: ?*const D3DGAMMARAMP) callconv(.Inline) void {
+    pub inline fn SetGammaRamp(self: *const IDirect3DDevice9, iSwapChain: u32, Flags: u32, pRamp: ?*const D3DGAMMARAMP) void {
         return self.vtable.SetGammaRamp(self, iSwapChain, Flags, pRamp);
     }
-    pub fn GetGammaRamp(self: *const IDirect3DDevice9, iSwapChain: u32, pRamp: ?*D3DGAMMARAMP) callconv(.Inline) void {
+    pub inline fn GetGammaRamp(self: *const IDirect3DDevice9, iSwapChain: u32, pRamp: ?*D3DGAMMARAMP) void {
         return self.vtable.GetGammaRamp(self, iSwapChain, pRamp);
     }
-    pub fn CreateTexture(self: *const IDirect3DDevice9, Width: u32, Height: u32, Levels: u32, Usage: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppTexture: ?*?*IDirect3DTexture9, pSharedHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateTexture(self: *const IDirect3DDevice9, Width: u32, Height: u32, Levels: u32, Usage: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppTexture: ?*?*IDirect3DTexture9, pSharedHandle: ?*?HANDLE) HRESULT {
         return self.vtable.CreateTexture(self, Width, Height, Levels, Usage, Format, Pool, ppTexture, pSharedHandle);
     }
-    pub fn CreateVolumeTexture(self: *const IDirect3DDevice9, Width: u32, Height: u32, Depth: u32, Levels: u32, Usage: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppVolumeTexture: ?*?*IDirect3DVolumeTexture9, pSharedHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateVolumeTexture(self: *const IDirect3DDevice9, Width: u32, Height: u32, Depth: u32, Levels: u32, Usage: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppVolumeTexture: ?*?*IDirect3DVolumeTexture9, pSharedHandle: ?*?HANDLE) HRESULT {
         return self.vtable.CreateVolumeTexture(self, Width, Height, Depth, Levels, Usage, Format, Pool, ppVolumeTexture, pSharedHandle);
     }
-    pub fn CreateCubeTexture(self: *const IDirect3DDevice9, EdgeLength: u32, Levels: u32, Usage: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppCubeTexture: ?*?*IDirect3DCubeTexture9, pSharedHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateCubeTexture(self: *const IDirect3DDevice9, EdgeLength: u32, Levels: u32, Usage: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppCubeTexture: ?*?*IDirect3DCubeTexture9, pSharedHandle: ?*?HANDLE) HRESULT {
         return self.vtable.CreateCubeTexture(self, EdgeLength, Levels, Usage, Format, Pool, ppCubeTexture, pSharedHandle);
     }
-    pub fn CreateVertexBuffer(self: *const IDirect3DDevice9, Length: u32, Usage: u32, FVF: u32, Pool: D3DPOOL, ppVertexBuffer: ?*?*IDirect3DVertexBuffer9, pSharedHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateVertexBuffer(self: *const IDirect3DDevice9, Length: u32, Usage: u32, FVF: u32, Pool: D3DPOOL, ppVertexBuffer: ?*?*IDirect3DVertexBuffer9, pSharedHandle: ?*?HANDLE) HRESULT {
         return self.vtable.CreateVertexBuffer(self, Length, Usage, FVF, Pool, ppVertexBuffer, pSharedHandle);
     }
-    pub fn CreateIndexBuffer(self: *const IDirect3DDevice9, Length: u32, Usage: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppIndexBuffer: ?*?*IDirect3DIndexBuffer9, pSharedHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateIndexBuffer(self: *const IDirect3DDevice9, Length: u32, Usage: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppIndexBuffer: ?*?*IDirect3DIndexBuffer9, pSharedHandle: ?*?HANDLE) HRESULT {
         return self.vtable.CreateIndexBuffer(self, Length, Usage, Format, Pool, ppIndexBuffer, pSharedHandle);
     }
-    pub fn CreateRenderTarget(self: *const IDirect3DDevice9, Width: u32, Height: u32, Format: D3DFORMAT, MultiSample: D3DMULTISAMPLE_TYPE, MultisampleQuality: u32, Lockable: BOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateRenderTarget(self: *const IDirect3DDevice9, Width: u32, Height: u32, Format: D3DFORMAT, MultiSample: D3DMULTISAMPLE_TYPE, MultisampleQuality: u32, Lockable: BOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE) HRESULT {
         return self.vtable.CreateRenderTarget(self, Width, Height, Format, MultiSample, MultisampleQuality, Lockable, ppSurface, pSharedHandle);
     }
-    pub fn CreateDepthStencilSurface(self: *const IDirect3DDevice9, Width: u32, Height: u32, Format: D3DFORMAT, MultiSample: D3DMULTISAMPLE_TYPE, MultisampleQuality: u32, Discard: BOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateDepthStencilSurface(self: *const IDirect3DDevice9, Width: u32, Height: u32, Format: D3DFORMAT, MultiSample: D3DMULTISAMPLE_TYPE, MultisampleQuality: u32, Discard: BOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE) HRESULT {
         return self.vtable.CreateDepthStencilSurface(self, Width, Height, Format, MultiSample, MultisampleQuality, Discard, ppSurface, pSharedHandle);
     }
-    pub fn UpdateSurface(self: *const IDirect3DDevice9, pSourceSurface: ?*IDirect3DSurface9, pSourceRect: ?*const RECT, pDestinationSurface: ?*IDirect3DSurface9, pDestPoint: ?*const POINT) callconv(.Inline) HRESULT {
+    pub inline fn UpdateSurface(self: *const IDirect3DDevice9, pSourceSurface: ?*IDirect3DSurface9, pSourceRect: ?*const RECT, pDestinationSurface: ?*IDirect3DSurface9, pDestPoint: ?*const POINT) HRESULT {
         return self.vtable.UpdateSurface(self, pSourceSurface, pSourceRect, pDestinationSurface, pDestPoint);
     }
-    pub fn UpdateTexture(self: *const IDirect3DDevice9, pSourceTexture: ?*IDirect3DBaseTexture9, pDestinationTexture: ?*IDirect3DBaseTexture9) callconv(.Inline) HRESULT {
+    pub inline fn UpdateTexture(self: *const IDirect3DDevice9, pSourceTexture: ?*IDirect3DBaseTexture9, pDestinationTexture: ?*IDirect3DBaseTexture9) HRESULT {
         return self.vtable.UpdateTexture(self, pSourceTexture, pDestinationTexture);
     }
-    pub fn GetRenderTargetData(self: *const IDirect3DDevice9, pRenderTarget: ?*IDirect3DSurface9, pDestSurface: ?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn GetRenderTargetData(self: *const IDirect3DDevice9, pRenderTarget: ?*IDirect3DSurface9, pDestSurface: ?*IDirect3DSurface9) HRESULT {
         return self.vtable.GetRenderTargetData(self, pRenderTarget, pDestSurface);
     }
-    pub fn GetFrontBufferData(self: *const IDirect3DDevice9, iSwapChain: u32, pDestSurface: ?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn GetFrontBufferData(self: *const IDirect3DDevice9, iSwapChain: u32, pDestSurface: ?*IDirect3DSurface9) HRESULT {
         return self.vtable.GetFrontBufferData(self, iSwapChain, pDestSurface);
     }
-    pub fn StretchRect(self: *const IDirect3DDevice9, pSourceSurface: ?*IDirect3DSurface9, pSourceRect: ?*const RECT, pDestSurface: ?*IDirect3DSurface9, pDestRect: ?*const RECT, Filter: D3DTEXTUREFILTERTYPE) callconv(.Inline) HRESULT {
+    pub inline fn StretchRect(self: *const IDirect3DDevice9, pSourceSurface: ?*IDirect3DSurface9, pSourceRect: ?*const RECT, pDestSurface: ?*IDirect3DSurface9, pDestRect: ?*const RECT, Filter: D3DTEXTUREFILTERTYPE) HRESULT {
         return self.vtable.StretchRect(self, pSourceSurface, pSourceRect, pDestSurface, pDestRect, Filter);
     }
-    pub fn ColorFill(self: *const IDirect3DDevice9, pSurface: ?*IDirect3DSurface9, pRect: ?*const RECT, color: u32) callconv(.Inline) HRESULT {
+    pub inline fn ColorFill(self: *const IDirect3DDevice9, pSurface: ?*IDirect3DSurface9, pRect: ?*const RECT, color: u32) HRESULT {
         return self.vtable.ColorFill(self, pSurface, pRect, color);
     }
-    pub fn CreateOffscreenPlainSurface(self: *const IDirect3DDevice9, Width: u32, Height: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CreateOffscreenPlainSurface(self: *const IDirect3DDevice9, Width: u32, Height: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE) HRESULT {
         return self.vtable.CreateOffscreenPlainSurface(self, Width, Height, Format, Pool, ppSurface, pSharedHandle);
     }
-    pub fn SetRenderTarget(self: *const IDirect3DDevice9, RenderTargetIndex: u32, pRenderTarget: ?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn SetRenderTarget(self: *const IDirect3DDevice9, RenderTargetIndex: u32, pRenderTarget: ?*IDirect3DSurface9) HRESULT {
         return self.vtable.SetRenderTarget(self, RenderTargetIndex, pRenderTarget);
     }
-    pub fn GetRenderTarget(self: *const IDirect3DDevice9, RenderTargetIndex: u32, ppRenderTarget: ?*?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn GetRenderTarget(self: *const IDirect3DDevice9, RenderTargetIndex: u32, ppRenderTarget: ?*?*IDirect3DSurface9) HRESULT {
         return self.vtable.GetRenderTarget(self, RenderTargetIndex, ppRenderTarget);
     }
-    pub fn SetDepthStencilSurface(self: *const IDirect3DDevice9, pNewZStencil: ?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn SetDepthStencilSurface(self: *const IDirect3DDevice9, pNewZStencil: ?*IDirect3DSurface9) HRESULT {
         return self.vtable.SetDepthStencilSurface(self, pNewZStencil);
     }
-    pub fn GetDepthStencilSurface(self: *const IDirect3DDevice9, ppZStencilSurface: ?*?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn GetDepthStencilSurface(self: *const IDirect3DDevice9, ppZStencilSurface: ?*?*IDirect3DSurface9) HRESULT {
         return self.vtable.GetDepthStencilSurface(self, ppZStencilSurface);
     }
-    pub fn BeginScene(self: *const IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn BeginScene(self: *const IDirect3DDevice9) HRESULT {
         return self.vtable.BeginScene(self);
     }
-    pub fn EndScene(self: *const IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn EndScene(self: *const IDirect3DDevice9) HRESULT {
         return self.vtable.EndScene(self);
     }
-    pub fn Clear(self: *const IDirect3DDevice9, Count: u32, pRects: ?*const D3DRECT, Flags: u32, Color: u32, Z: f32, Stencil: u32) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IDirect3DDevice9, Count: u32, pRects: ?*const D3DRECT, Flags: u32, Color: u32, Z: f32, Stencil: u32) HRESULT {
         return self.vtable.Clear(self, Count, pRects, Flags, Color, Z, Stencil);
     }
-    pub fn SetTransform(self: *const IDirect3DDevice9, State: D3DTRANSFORMSTATETYPE, pMatrix: ?*const D3DMATRIX) callconv(.Inline) HRESULT {
+    pub inline fn SetTransform(self: *const IDirect3DDevice9, State: D3DTRANSFORMSTATETYPE, pMatrix: ?*const D3DMATRIX) HRESULT {
         return self.vtable.SetTransform(self, State, pMatrix);
     }
-    pub fn GetTransform(self: *const IDirect3DDevice9, State: D3DTRANSFORMSTATETYPE, pMatrix: ?*D3DMATRIX) callconv(.Inline) HRESULT {
+    pub inline fn GetTransform(self: *const IDirect3DDevice9, State: D3DTRANSFORMSTATETYPE, pMatrix: ?*D3DMATRIX) HRESULT {
         return self.vtable.GetTransform(self, State, pMatrix);
     }
-    pub fn MultiplyTransform(self: *const IDirect3DDevice9, param0: D3DTRANSFORMSTATETYPE, param1: ?*const D3DMATRIX) callconv(.Inline) HRESULT {
+    pub inline fn MultiplyTransform(self: *const IDirect3DDevice9, param0: D3DTRANSFORMSTATETYPE, param1: ?*const D3DMATRIX) HRESULT {
         return self.vtable.MultiplyTransform(self, param0, param1);
     }
-    pub fn SetViewport(self: *const IDirect3DDevice9, pViewport: ?*const D3DVIEWPORT9) callconv(.Inline) HRESULT {
+    pub inline fn SetViewport(self: *const IDirect3DDevice9, pViewport: ?*const D3DVIEWPORT9) HRESULT {
         return self.vtable.SetViewport(self, pViewport);
     }
-    pub fn GetViewport(self: *const IDirect3DDevice9, pViewport: ?*D3DVIEWPORT9) callconv(.Inline) HRESULT {
+    pub inline fn GetViewport(self: *const IDirect3DDevice9, pViewport: ?*D3DVIEWPORT9) HRESULT {
         return self.vtable.GetViewport(self, pViewport);
     }
-    pub fn SetMaterial(self: *const IDirect3DDevice9, pMaterial: ?*const D3DMATERIAL9) callconv(.Inline) HRESULT {
+    pub inline fn SetMaterial(self: *const IDirect3DDevice9, pMaterial: ?*const D3DMATERIAL9) HRESULT {
         return self.vtable.SetMaterial(self, pMaterial);
     }
-    pub fn GetMaterial(self: *const IDirect3DDevice9, pMaterial: ?*D3DMATERIAL9) callconv(.Inline) HRESULT {
+    pub inline fn GetMaterial(self: *const IDirect3DDevice9, pMaterial: ?*D3DMATERIAL9) HRESULT {
         return self.vtable.GetMaterial(self, pMaterial);
     }
-    pub fn SetLight(self: *const IDirect3DDevice9, Index: u32, param1: ?*const D3DLIGHT9) callconv(.Inline) HRESULT {
+    pub inline fn SetLight(self: *const IDirect3DDevice9, Index: u32, param1: ?*const D3DLIGHT9) HRESULT {
         return self.vtable.SetLight(self, Index, param1);
     }
-    pub fn GetLight(self: *const IDirect3DDevice9, Index: u32, param1: ?*D3DLIGHT9) callconv(.Inline) HRESULT {
+    pub inline fn GetLight(self: *const IDirect3DDevice9, Index: u32, param1: ?*D3DLIGHT9) HRESULT {
         return self.vtable.GetLight(self, Index, param1);
     }
-    pub fn LightEnable(self: *const IDirect3DDevice9, Index: u32, Enable: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn LightEnable(self: *const IDirect3DDevice9, Index: u32, Enable: BOOL) HRESULT {
         return self.vtable.LightEnable(self, Index, Enable);
     }
-    pub fn GetLightEnable(self: *const IDirect3DDevice9, Index: u32, pEnable: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn GetLightEnable(self: *const IDirect3DDevice9, Index: u32, pEnable: ?*BOOL) HRESULT {
         return self.vtable.GetLightEnable(self, Index, pEnable);
     }
-    pub fn SetClipPlane(self: *const IDirect3DDevice9, Index: u32, pPlane: ?*const f32) callconv(.Inline) HRESULT {
+    pub inline fn SetClipPlane(self: *const IDirect3DDevice9, Index: u32, pPlane: ?*const f32) HRESULT {
         return self.vtable.SetClipPlane(self, Index, pPlane);
     }
-    pub fn GetClipPlane(self: *const IDirect3DDevice9, Index: u32, pPlane: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn GetClipPlane(self: *const IDirect3DDevice9, Index: u32, pPlane: ?*f32) HRESULT {
         return self.vtable.GetClipPlane(self, Index, pPlane);
     }
-    pub fn SetRenderState(self: *const IDirect3DDevice9, State: D3DRENDERSTATETYPE, Value: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetRenderState(self: *const IDirect3DDevice9, State: D3DRENDERSTATETYPE, Value: u32) HRESULT {
         return self.vtable.SetRenderState(self, State, Value);
     }
-    pub fn GetRenderState(self: *const IDirect3DDevice9, State: D3DRENDERSTATETYPE, pValue: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetRenderState(self: *const IDirect3DDevice9, State: D3DRENDERSTATETYPE, pValue: ?*u32) HRESULT {
         return self.vtable.GetRenderState(self, State, pValue);
     }
-    pub fn CreateStateBlock(self: *const IDirect3DDevice9, Type: D3DSTATEBLOCKTYPE, ppSB: ?*?*IDirect3DStateBlock9) callconv(.Inline) HRESULT {
+    pub inline fn CreateStateBlock(self: *const IDirect3DDevice9, Type: D3DSTATEBLOCKTYPE, ppSB: ?*?*IDirect3DStateBlock9) HRESULT {
         return self.vtable.CreateStateBlock(self, Type, ppSB);
     }
-    pub fn BeginStateBlock(self: *const IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn BeginStateBlock(self: *const IDirect3DDevice9) HRESULT {
         return self.vtable.BeginStateBlock(self);
     }
-    pub fn EndStateBlock(self: *const IDirect3DDevice9, ppSB: ?*?*IDirect3DStateBlock9) callconv(.Inline) HRESULT {
+    pub inline fn EndStateBlock(self: *const IDirect3DDevice9, ppSB: ?*?*IDirect3DStateBlock9) HRESULT {
         return self.vtable.EndStateBlock(self, ppSB);
     }
-    pub fn SetClipStatus(self: *const IDirect3DDevice9, pClipStatus: ?*const D3DCLIPSTATUS9) callconv(.Inline) HRESULT {
+    pub inline fn SetClipStatus(self: *const IDirect3DDevice9, pClipStatus: ?*const D3DCLIPSTATUS9) HRESULT {
         return self.vtable.SetClipStatus(self, pClipStatus);
     }
-    pub fn GetClipStatus(self: *const IDirect3DDevice9, pClipStatus: ?*D3DCLIPSTATUS9) callconv(.Inline) HRESULT {
+    pub inline fn GetClipStatus(self: *const IDirect3DDevice9, pClipStatus: ?*D3DCLIPSTATUS9) HRESULT {
         return self.vtable.GetClipStatus(self, pClipStatus);
     }
-    pub fn GetTexture(self: *const IDirect3DDevice9, Stage: u32, ppTexture: ?*?*IDirect3DBaseTexture9) callconv(.Inline) HRESULT {
+    pub inline fn GetTexture(self: *const IDirect3DDevice9, Stage: u32, ppTexture: ?*?*IDirect3DBaseTexture9) HRESULT {
         return self.vtable.GetTexture(self, Stage, ppTexture);
     }
-    pub fn SetTexture(self: *const IDirect3DDevice9, Stage: u32, pTexture: ?*IDirect3DBaseTexture9) callconv(.Inline) HRESULT {
+    pub inline fn SetTexture(self: *const IDirect3DDevice9, Stage: u32, pTexture: ?*IDirect3DBaseTexture9) HRESULT {
         return self.vtable.SetTexture(self, Stage, pTexture);
     }
-    pub fn GetTextureStageState(self: *const IDirect3DDevice9, Stage: u32, Type: D3DTEXTURESTAGESTATETYPE, pValue: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetTextureStageState(self: *const IDirect3DDevice9, Stage: u32, Type: D3DTEXTURESTAGESTATETYPE, pValue: ?*u32) HRESULT {
         return self.vtable.GetTextureStageState(self, Stage, Type, pValue);
     }
-    pub fn SetTextureStageState(self: *const IDirect3DDevice9, Stage: u32, Type: D3DTEXTURESTAGESTATETYPE, Value: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetTextureStageState(self: *const IDirect3DDevice9, Stage: u32, Type: D3DTEXTURESTAGESTATETYPE, Value: u32) HRESULT {
         return self.vtable.SetTextureStageState(self, Stage, Type, Value);
     }
-    pub fn GetSamplerState(self: *const IDirect3DDevice9, Sampler: u32, Type: D3DSAMPLERSTATETYPE, pValue: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSamplerState(self: *const IDirect3DDevice9, Sampler: u32, Type: D3DSAMPLERSTATETYPE, pValue: ?*u32) HRESULT {
         return self.vtable.GetSamplerState(self, Sampler, Type, pValue);
     }
-    pub fn SetSamplerState(self: *const IDirect3DDevice9, Sampler: u32, Type: D3DSAMPLERSTATETYPE, Value: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetSamplerState(self: *const IDirect3DDevice9, Sampler: u32, Type: D3DSAMPLERSTATETYPE, Value: u32) HRESULT {
         return self.vtable.SetSamplerState(self, Sampler, Type, Value);
     }
-    pub fn ValidateDevice(self: *const IDirect3DDevice9, pNumPasses: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ValidateDevice(self: *const IDirect3DDevice9, pNumPasses: ?*u32) HRESULT {
         return self.vtable.ValidateDevice(self, pNumPasses);
     }
-    pub fn SetPaletteEntries(self: *const IDirect3DDevice9, PaletteNumber: u32, pEntries: ?*const PALETTEENTRY) callconv(.Inline) HRESULT {
+    pub inline fn SetPaletteEntries(self: *const IDirect3DDevice9, PaletteNumber: u32, pEntries: ?*const PALETTEENTRY) HRESULT {
         return self.vtable.SetPaletteEntries(self, PaletteNumber, pEntries);
     }
-    pub fn GetPaletteEntries(self: *const IDirect3DDevice9, PaletteNumber: u32, pEntries: ?*PALETTEENTRY) callconv(.Inline) HRESULT {
+    pub inline fn GetPaletteEntries(self: *const IDirect3DDevice9, PaletteNumber: u32, pEntries: ?*PALETTEENTRY) HRESULT {
         return self.vtable.GetPaletteEntries(self, PaletteNumber, pEntries);
     }
-    pub fn SetCurrentTexturePalette(self: *const IDirect3DDevice9, PaletteNumber: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetCurrentTexturePalette(self: *const IDirect3DDevice9, PaletteNumber: u32) HRESULT {
         return self.vtable.SetCurrentTexturePalette(self, PaletteNumber);
     }
-    pub fn GetCurrentTexturePalette(self: *const IDirect3DDevice9, PaletteNumber: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCurrentTexturePalette(self: *const IDirect3DDevice9, PaletteNumber: ?*u32) HRESULT {
         return self.vtable.GetCurrentTexturePalette(self, PaletteNumber);
     }
-    pub fn SetScissorRect(self: *const IDirect3DDevice9, pRect: ?*const RECT) callconv(.Inline) HRESULT {
+    pub inline fn SetScissorRect(self: *const IDirect3DDevice9, pRect: ?*const RECT) HRESULT {
         return self.vtable.SetScissorRect(self, pRect);
     }
-    pub fn GetScissorRect(self: *const IDirect3DDevice9, pRect: ?*RECT) callconv(.Inline) HRESULT {
+    pub inline fn GetScissorRect(self: *const IDirect3DDevice9, pRect: ?*RECT) HRESULT {
         return self.vtable.GetScissorRect(self, pRect);
     }
-    pub fn SetSoftwareVertexProcessing(self: *const IDirect3DDevice9, bSoftware: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn SetSoftwareVertexProcessing(self: *const IDirect3DDevice9, bSoftware: BOOL) HRESULT {
         return self.vtable.SetSoftwareVertexProcessing(self, bSoftware);
     }
-    pub fn GetSoftwareVertexProcessing(self: *const IDirect3DDevice9) callconv(.Inline) BOOL {
+    pub inline fn GetSoftwareVertexProcessing(self: *const IDirect3DDevice9) BOOL {
         return self.vtable.GetSoftwareVertexProcessing(self);
     }
-    pub fn SetNPatchMode(self: *const IDirect3DDevice9, nSegments: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetNPatchMode(self: *const IDirect3DDevice9, nSegments: f32) HRESULT {
         return self.vtable.SetNPatchMode(self, nSegments);
     }
-    pub fn GetNPatchMode(self: *const IDirect3DDevice9) callconv(.Inline) f32 {
+    pub inline fn GetNPatchMode(self: *const IDirect3DDevice9) f32 {
         return self.vtable.GetNPatchMode(self);
     }
-    pub fn DrawPrimitive(self: *const IDirect3DDevice9, PrimitiveType: D3DPRIMITIVETYPE, StartVertex: u32, PrimitiveCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn DrawPrimitive(self: *const IDirect3DDevice9, PrimitiveType: D3DPRIMITIVETYPE, StartVertex: u32, PrimitiveCount: u32) HRESULT {
         return self.vtable.DrawPrimitive(self, PrimitiveType, StartVertex, PrimitiveCount);
     }
-    pub fn DrawIndexedPrimitive(self: *const IDirect3DDevice9, param0: D3DPRIMITIVETYPE, BaseVertexIndex: i32, MinVertexIndex: u32, NumVertices: u32, startIndex: u32, primCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn DrawIndexedPrimitive(self: *const IDirect3DDevice9, param0: D3DPRIMITIVETYPE, BaseVertexIndex: i32, MinVertexIndex: u32, NumVertices: u32, startIndex: u32, primCount: u32) HRESULT {
         return self.vtable.DrawIndexedPrimitive(self, param0, BaseVertexIndex, MinVertexIndex, NumVertices, startIndex, primCount);
     }
-    pub fn DrawPrimitiveUP(self: *const IDirect3DDevice9, PrimitiveType: D3DPRIMITIVETYPE, PrimitiveCount: u32, pVertexStreamZeroData: ?*const anyopaque, VertexStreamZeroStride: u32) callconv(.Inline) HRESULT {
+    pub inline fn DrawPrimitiveUP(self: *const IDirect3DDevice9, PrimitiveType: D3DPRIMITIVETYPE, PrimitiveCount: u32, pVertexStreamZeroData: ?*const anyopaque, VertexStreamZeroStride: u32) HRESULT {
         return self.vtable.DrawPrimitiveUP(self, PrimitiveType, PrimitiveCount, pVertexStreamZeroData, VertexStreamZeroStride);
     }
-    pub fn DrawIndexedPrimitiveUP(self: *const IDirect3DDevice9, PrimitiveType: D3DPRIMITIVETYPE, MinVertexIndex: u32, NumVertices: u32, PrimitiveCount: u32, pIndexData: ?*const anyopaque, IndexDataFormat: D3DFORMAT, pVertexStreamZeroData: ?*const anyopaque, VertexStreamZeroStride: u32) callconv(.Inline) HRESULT {
+    pub inline fn DrawIndexedPrimitiveUP(self: *const IDirect3DDevice9, PrimitiveType: D3DPRIMITIVETYPE, MinVertexIndex: u32, NumVertices: u32, PrimitiveCount: u32, pIndexData: ?*const anyopaque, IndexDataFormat: D3DFORMAT, pVertexStreamZeroData: ?*const anyopaque, VertexStreamZeroStride: u32) HRESULT {
         return self.vtable.DrawIndexedPrimitiveUP(self, PrimitiveType, MinVertexIndex, NumVertices, PrimitiveCount, pIndexData, IndexDataFormat, pVertexStreamZeroData, VertexStreamZeroStride);
     }
-    pub fn ProcessVertices(self: *const IDirect3DDevice9, SrcStartIndex: u32, DestIndex: u32, VertexCount: u32, pDestBuffer: ?*IDirect3DVertexBuffer9, pVertexDecl: ?*IDirect3DVertexDeclaration9, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn ProcessVertices(self: *const IDirect3DDevice9, SrcStartIndex: u32, DestIndex: u32, VertexCount: u32, pDestBuffer: ?*IDirect3DVertexBuffer9, pVertexDecl: ?*IDirect3DVertexDeclaration9, Flags: u32) HRESULT {
         return self.vtable.ProcessVertices(self, SrcStartIndex, DestIndex, VertexCount, pDestBuffer, pVertexDecl, Flags);
     }
-    pub fn CreateVertexDeclaration(self: *const IDirect3DDevice9, pVertexElements: ?*const D3DVERTEXELEMENT9, ppDecl: ?*?*IDirect3DVertexDeclaration9) callconv(.Inline) HRESULT {
+    pub inline fn CreateVertexDeclaration(self: *const IDirect3DDevice9, pVertexElements: ?*const D3DVERTEXELEMENT9, ppDecl: ?*?*IDirect3DVertexDeclaration9) HRESULT {
         return self.vtable.CreateVertexDeclaration(self, pVertexElements, ppDecl);
     }
-    pub fn SetVertexDeclaration(self: *const IDirect3DDevice9, pDecl: ?*IDirect3DVertexDeclaration9) callconv(.Inline) HRESULT {
+    pub inline fn SetVertexDeclaration(self: *const IDirect3DDevice9, pDecl: ?*IDirect3DVertexDeclaration9) HRESULT {
         return self.vtable.SetVertexDeclaration(self, pDecl);
     }
-    pub fn GetVertexDeclaration(self: *const IDirect3DDevice9, ppDecl: ?*?*IDirect3DVertexDeclaration9) callconv(.Inline) HRESULT {
+    pub inline fn GetVertexDeclaration(self: *const IDirect3DDevice9, ppDecl: ?*?*IDirect3DVertexDeclaration9) HRESULT {
         return self.vtable.GetVertexDeclaration(self, ppDecl);
     }
-    pub fn SetFVF(self: *const IDirect3DDevice9, FVF: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetFVF(self: *const IDirect3DDevice9, FVF: u32) HRESULT {
         return self.vtable.SetFVF(self, FVF);
     }
-    pub fn GetFVF(self: *const IDirect3DDevice9, pFVF: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFVF(self: *const IDirect3DDevice9, pFVF: ?*u32) HRESULT {
         return self.vtable.GetFVF(self, pFVF);
     }
-    pub fn CreateVertexShader(self: *const IDirect3DDevice9, pFunction: ?*const u32, ppShader: ?*?*IDirect3DVertexShader9) callconv(.Inline) HRESULT {
+    pub inline fn CreateVertexShader(self: *const IDirect3DDevice9, pFunction: ?*const u32, ppShader: ?*?*IDirect3DVertexShader9) HRESULT {
         return self.vtable.CreateVertexShader(self, pFunction, ppShader);
     }
-    pub fn SetVertexShader(self: *const IDirect3DDevice9, pShader: ?*IDirect3DVertexShader9) callconv(.Inline) HRESULT {
+    pub inline fn SetVertexShader(self: *const IDirect3DDevice9, pShader: ?*IDirect3DVertexShader9) HRESULT {
         return self.vtable.SetVertexShader(self, pShader);
     }
-    pub fn GetVertexShader(self: *const IDirect3DDevice9, ppShader: ?*?*IDirect3DVertexShader9) callconv(.Inline) HRESULT {
+    pub inline fn GetVertexShader(self: *const IDirect3DDevice9, ppShader: ?*?*IDirect3DVertexShader9) HRESULT {
         return self.vtable.GetVertexShader(self, ppShader);
     }
-    pub fn SetVertexShaderConstantF(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const f32, Vector4fCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetVertexShaderConstantF(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const f32, Vector4fCount: u32) HRESULT {
         return self.vtable.SetVertexShaderConstantF(self, StartRegister, pConstantData, Vector4fCount);
     }
-    pub fn GetVertexShaderConstantF(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*f32, Vector4fCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetVertexShaderConstantF(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*f32, Vector4fCount: u32) HRESULT {
         return self.vtable.GetVertexShaderConstantF(self, StartRegister, pConstantData, Vector4fCount);
     }
-    pub fn SetVertexShaderConstantI(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const i32, Vector4iCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetVertexShaderConstantI(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const i32, Vector4iCount: u32) HRESULT {
         return self.vtable.SetVertexShaderConstantI(self, StartRegister, pConstantData, Vector4iCount);
     }
-    pub fn GetVertexShaderConstantI(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*i32, Vector4iCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetVertexShaderConstantI(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*i32, Vector4iCount: u32) HRESULT {
         return self.vtable.GetVertexShaderConstantI(self, StartRegister, pConstantData, Vector4iCount);
     }
-    pub fn SetVertexShaderConstantB(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const BOOL, BoolCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetVertexShaderConstantB(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const BOOL, BoolCount: u32) HRESULT {
         return self.vtable.SetVertexShaderConstantB(self, StartRegister, pConstantData, BoolCount);
     }
-    pub fn GetVertexShaderConstantB(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*BOOL, BoolCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetVertexShaderConstantB(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*BOOL, BoolCount: u32) HRESULT {
         return self.vtable.GetVertexShaderConstantB(self, StartRegister, pConstantData, BoolCount);
     }
-    pub fn SetStreamSource(self: *const IDirect3DDevice9, StreamNumber: u32, pStreamData: ?*IDirect3DVertexBuffer9, OffsetInBytes: u32, Stride: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetStreamSource(self: *const IDirect3DDevice9, StreamNumber: u32, pStreamData: ?*IDirect3DVertexBuffer9, OffsetInBytes: u32, Stride: u32) HRESULT {
         return self.vtable.SetStreamSource(self, StreamNumber, pStreamData, OffsetInBytes, Stride);
     }
-    pub fn GetStreamSource(self: *const IDirect3DDevice9, StreamNumber: u32, ppStreamData: ?*?*IDirect3DVertexBuffer9, pOffsetInBytes: ?*u32, pStride: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetStreamSource(self: *const IDirect3DDevice9, StreamNumber: u32, ppStreamData: ?*?*IDirect3DVertexBuffer9, pOffsetInBytes: ?*u32, pStride: ?*u32) HRESULT {
         return self.vtable.GetStreamSource(self, StreamNumber, ppStreamData, pOffsetInBytes, pStride);
     }
-    pub fn SetStreamSourceFreq(self: *const IDirect3DDevice9, StreamNumber: u32, Setting: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetStreamSourceFreq(self: *const IDirect3DDevice9, StreamNumber: u32, Setting: u32) HRESULT {
         return self.vtable.SetStreamSourceFreq(self, StreamNumber, Setting);
     }
-    pub fn GetStreamSourceFreq(self: *const IDirect3DDevice9, StreamNumber: u32, pSetting: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetStreamSourceFreq(self: *const IDirect3DDevice9, StreamNumber: u32, pSetting: ?*u32) HRESULT {
         return self.vtable.GetStreamSourceFreq(self, StreamNumber, pSetting);
     }
-    pub fn SetIndices(self: *const IDirect3DDevice9, pIndexData: ?*IDirect3DIndexBuffer9) callconv(.Inline) HRESULT {
+    pub inline fn SetIndices(self: *const IDirect3DDevice9, pIndexData: ?*IDirect3DIndexBuffer9) HRESULT {
         return self.vtable.SetIndices(self, pIndexData);
     }
-    pub fn GetIndices(self: *const IDirect3DDevice9, ppIndexData: ?*?*IDirect3DIndexBuffer9) callconv(.Inline) HRESULT {
+    pub inline fn GetIndices(self: *const IDirect3DDevice9, ppIndexData: ?*?*IDirect3DIndexBuffer9) HRESULT {
         return self.vtable.GetIndices(self, ppIndexData);
     }
-    pub fn CreatePixelShader(self: *const IDirect3DDevice9, pFunction: ?*const u32, ppShader: ?*?*IDirect3DPixelShader9) callconv(.Inline) HRESULT {
+    pub inline fn CreatePixelShader(self: *const IDirect3DDevice9, pFunction: ?*const u32, ppShader: ?*?*IDirect3DPixelShader9) HRESULT {
         return self.vtable.CreatePixelShader(self, pFunction, ppShader);
     }
-    pub fn SetPixelShader(self: *const IDirect3DDevice9, pShader: ?*IDirect3DPixelShader9) callconv(.Inline) HRESULT {
+    pub inline fn SetPixelShader(self: *const IDirect3DDevice9, pShader: ?*IDirect3DPixelShader9) HRESULT {
         return self.vtable.SetPixelShader(self, pShader);
     }
-    pub fn GetPixelShader(self: *const IDirect3DDevice9, ppShader: ?*?*IDirect3DPixelShader9) callconv(.Inline) HRESULT {
+    pub inline fn GetPixelShader(self: *const IDirect3DDevice9, ppShader: ?*?*IDirect3DPixelShader9) HRESULT {
         return self.vtable.GetPixelShader(self, ppShader);
     }
-    pub fn SetPixelShaderConstantF(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const f32, Vector4fCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetPixelShaderConstantF(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const f32, Vector4fCount: u32) HRESULT {
         return self.vtable.SetPixelShaderConstantF(self, StartRegister, pConstantData, Vector4fCount);
     }
-    pub fn GetPixelShaderConstantF(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*f32, Vector4fCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPixelShaderConstantF(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*f32, Vector4fCount: u32) HRESULT {
         return self.vtable.GetPixelShaderConstantF(self, StartRegister, pConstantData, Vector4fCount);
     }
-    pub fn SetPixelShaderConstantI(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const i32, Vector4iCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetPixelShaderConstantI(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const i32, Vector4iCount: u32) HRESULT {
         return self.vtable.SetPixelShaderConstantI(self, StartRegister, pConstantData, Vector4iCount);
     }
-    pub fn GetPixelShaderConstantI(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*i32, Vector4iCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPixelShaderConstantI(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*i32, Vector4iCount: u32) HRESULT {
         return self.vtable.GetPixelShaderConstantI(self, StartRegister, pConstantData, Vector4iCount);
     }
-    pub fn SetPixelShaderConstantB(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const BOOL, BoolCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetPixelShaderConstantB(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*const BOOL, BoolCount: u32) HRESULT {
         return self.vtable.SetPixelShaderConstantB(self, StartRegister, pConstantData, BoolCount);
     }
-    pub fn GetPixelShaderConstantB(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*BOOL, BoolCount: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPixelShaderConstantB(self: *const IDirect3DDevice9, StartRegister: u32, pConstantData: ?*BOOL, BoolCount: u32) HRESULT {
         return self.vtable.GetPixelShaderConstantB(self, StartRegister, pConstantData, BoolCount);
     }
-    pub fn DrawRectPatch(self: *const IDirect3DDevice9, Handle: u32, pNumSegs: ?*const f32, pRectPatchInfo: ?*const D3DRECTPATCH_INFO) callconv(.Inline) HRESULT {
+    pub inline fn DrawRectPatch(self: *const IDirect3DDevice9, Handle: u32, pNumSegs: ?*const f32, pRectPatchInfo: ?*const D3DRECTPATCH_INFO) HRESULT {
         return self.vtable.DrawRectPatch(self, Handle, pNumSegs, pRectPatchInfo);
     }
-    pub fn DrawTriPatch(self: *const IDirect3DDevice9, Handle: u32, pNumSegs: ?*const f32, pTriPatchInfo: ?*const D3DTRIPATCH_INFO) callconv(.Inline) HRESULT {
+    pub inline fn DrawTriPatch(self: *const IDirect3DDevice9, Handle: u32, pNumSegs: ?*const f32, pTriPatchInfo: ?*const D3DTRIPATCH_INFO) HRESULT {
         return self.vtable.DrawTriPatch(self, Handle, pNumSegs, pTriPatchInfo);
     }
-    pub fn DeletePatch(self: *const IDirect3DDevice9, Handle: u32) callconv(.Inline) HRESULT {
+    pub inline fn DeletePatch(self: *const IDirect3DDevice9, Handle: u32) HRESULT {
         return self.vtable.DeletePatch(self, Handle);
     }
-    pub fn CreateQuery(self: *const IDirect3DDevice9, Type: D3DQUERYTYPE, ppQuery: ?*?*IDirect3DQuery9) callconv(.Inline) HRESULT {
+    pub inline fn CreateQuery(self: *const IDirect3DDevice9, Type: D3DQUERYTYPE, ppQuery: ?*?*IDirect3DQuery9) HRESULT {
         return self.vtable.CreateQuery(self, Type, ppQuery);
     }
 };
@@ -3467,26 +3462,26 @@ pub const IID_IDirect3DStateBlock9 = &IID_IDirect3DStateBlock9_Value;
 pub const IDirect3DStateBlock9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDevice: *const fn(
+        GetDevice: *const fn (
             self: *const IDirect3DStateBlock9,
             ppDevice: ?*?*IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Capture: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Capture: *const fn (
             self: *const IDirect3DStateBlock9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Apply: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Apply: *const fn (
             self: *const IDirect3DStateBlock9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDevice(self: *const IDirect3DStateBlock9, ppDevice: ?*?*IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn GetDevice(self: *const IDirect3DStateBlock9, ppDevice: ?*?*IDirect3DDevice9) HRESULT {
         return self.vtable.GetDevice(self, ppDevice);
     }
-    pub fn Capture(self: *const IDirect3DStateBlock9) callconv(.Inline) HRESULT {
+    pub inline fn Capture(self: *const IDirect3DStateBlock9) HRESULT {
         return self.vtable.Capture(self);
     }
-    pub fn Apply(self: *const IDirect3DStateBlock9) callconv(.Inline) HRESULT {
+    pub inline fn Apply(self: *const IDirect3DStateBlock9) HRESULT {
         return self.vtable.Apply(self);
     }
 };
@@ -3496,62 +3491,62 @@ pub const IID_IDirect3DSwapChain9 = &IID_IDirect3DSwapChain9_Value;
 pub const IDirect3DSwapChain9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Present: *const fn(
+        Present: *const fn (
             self: *const IDirect3DSwapChain9,
             pSourceRect: ?*const RECT,
             pDestRect: ?*const RECT,
             hDestWindowOverride: ?HWND,
             pDirtyRegion: ?*const RGNDATA,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFrontBufferData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFrontBufferData: *const fn (
             self: *const IDirect3DSwapChain9,
             pDestSurface: ?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBackBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBackBuffer: *const fn (
             self: *const IDirect3DSwapChain9,
             iBackBuffer: u32,
             Type: D3DBACKBUFFER_TYPE,
             ppBackBuffer: ?*?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRasterStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRasterStatus: *const fn (
             self: *const IDirect3DSwapChain9,
             pRasterStatus: ?*D3DRASTER_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplayMode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplayMode: *const fn (
             self: *const IDirect3DSwapChain9,
             pMode: ?*D3DDISPLAYMODE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDevice: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDevice: *const fn (
             self: *const IDirect3DSwapChain9,
             ppDevice: ?*?*IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPresentParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPresentParameters: *const fn (
             self: *const IDirect3DSwapChain9,
             pPresentationParameters: ?*D3DPRESENT_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Present(self: *const IDirect3DSwapChain9, pSourceRect: ?*const RECT, pDestRect: ?*const RECT, hDestWindowOverride: ?HWND, pDirtyRegion: ?*const RGNDATA, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Present(self: *const IDirect3DSwapChain9, pSourceRect: ?*const RECT, pDestRect: ?*const RECT, hDestWindowOverride: ?HWND, pDirtyRegion: ?*const RGNDATA, dwFlags: u32) HRESULT {
         return self.vtable.Present(self, pSourceRect, pDestRect, hDestWindowOverride, pDirtyRegion, dwFlags);
     }
-    pub fn GetFrontBufferData(self: *const IDirect3DSwapChain9, pDestSurface: ?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn GetFrontBufferData(self: *const IDirect3DSwapChain9, pDestSurface: ?*IDirect3DSurface9) HRESULT {
         return self.vtable.GetFrontBufferData(self, pDestSurface);
     }
-    pub fn GetBackBuffer(self: *const IDirect3DSwapChain9, iBackBuffer: u32, Type: D3DBACKBUFFER_TYPE, ppBackBuffer: ?*?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn GetBackBuffer(self: *const IDirect3DSwapChain9, iBackBuffer: u32, Type: D3DBACKBUFFER_TYPE, ppBackBuffer: ?*?*IDirect3DSurface9) HRESULT {
         return self.vtable.GetBackBuffer(self, iBackBuffer, Type, ppBackBuffer);
     }
-    pub fn GetRasterStatus(self: *const IDirect3DSwapChain9, pRasterStatus: ?*D3DRASTER_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn GetRasterStatus(self: *const IDirect3DSwapChain9, pRasterStatus: ?*D3DRASTER_STATUS) HRESULT {
         return self.vtable.GetRasterStatus(self, pRasterStatus);
     }
-    pub fn GetDisplayMode(self: *const IDirect3DSwapChain9, pMode: ?*D3DDISPLAYMODE) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplayMode(self: *const IDirect3DSwapChain9, pMode: ?*D3DDISPLAYMODE) HRESULT {
         return self.vtable.GetDisplayMode(self, pMode);
     }
-    pub fn GetDevice(self: *const IDirect3DSwapChain9, ppDevice: ?*?*IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn GetDevice(self: *const IDirect3DSwapChain9, ppDevice: ?*?*IDirect3DDevice9) HRESULT {
         return self.vtable.GetDevice(self, ppDevice);
     }
-    pub fn GetPresentParameters(self: *const IDirect3DSwapChain9, pPresentationParameters: ?*D3DPRESENT_PARAMETERS) callconv(.Inline) HRESULT {
+    pub inline fn GetPresentParameters(self: *const IDirect3DSwapChain9, pPresentationParameters: ?*D3DPRESENT_PARAMETERS) HRESULT {
         return self.vtable.GetPresentParameters(self, pPresentationParameters);
     }
 };
@@ -3561,65 +3556,65 @@ pub const IID_IDirect3DResource9 = &IID_IDirect3DResource9_Value;
 pub const IDirect3DResource9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDevice: *const fn(
+        GetDevice: *const fn (
             self: *const IDirect3DResource9,
             ppDevice: ?*?*IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPrivateData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPrivateData: *const fn (
             self: *const IDirect3DResource9,
             refguid: ?*const Guid,
             pData: ?*const anyopaque,
             SizeOfData: u32,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPrivateData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPrivateData: *const fn (
             self: *const IDirect3DResource9,
             refguid: ?*const Guid,
             pData: ?*anyopaque,
             pSizeOfData: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FreePrivateData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FreePrivateData: *const fn (
             self: *const IDirect3DResource9,
             refguid: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPriority: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPriority: *const fn (
             self: *const IDirect3DResource9,
             PriorityNew: u32,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        GetPriority: *const fn(
+        ) callconv(.winapi) u32,
+        GetPriority: *const fn (
             self: *const IDirect3DResource9,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        PreLoad: *const fn(
+        ) callconv(.winapi) u32,
+        PreLoad: *const fn (
             self: *const IDirect3DResource9,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        GetType: *const fn(
+        ) callconv(.winapi) void,
+        GetType: *const fn (
             self: *const IDirect3DResource9,
-        ) callconv(@import("std").os.windows.WINAPI) D3DRESOURCETYPE,
+        ) callconv(.winapi) D3DRESOURCETYPE,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDevice(self: *const IDirect3DResource9, ppDevice: ?*?*IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn GetDevice(self: *const IDirect3DResource9, ppDevice: ?*?*IDirect3DDevice9) HRESULT {
         return self.vtable.GetDevice(self, ppDevice);
     }
-    pub fn SetPrivateData(self: *const IDirect3DResource9, refguid: ?*const Guid, pData: ?*const anyopaque, SizeOfData: u32, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetPrivateData(self: *const IDirect3DResource9, refguid: ?*const Guid, pData: ?*const anyopaque, SizeOfData: u32, Flags: u32) HRESULT {
         return self.vtable.SetPrivateData(self, refguid, pData, SizeOfData, Flags);
     }
-    pub fn GetPrivateData(self: *const IDirect3DResource9, refguid: ?*const Guid, pData: ?*anyopaque, pSizeOfData: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPrivateData(self: *const IDirect3DResource9, refguid: ?*const Guid, pData: ?*anyopaque, pSizeOfData: ?*u32) HRESULT {
         return self.vtable.GetPrivateData(self, refguid, pData, pSizeOfData);
     }
-    pub fn FreePrivateData(self: *const IDirect3DResource9, refguid: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn FreePrivateData(self: *const IDirect3DResource9, refguid: ?*const Guid) HRESULT {
         return self.vtable.FreePrivateData(self, refguid);
     }
-    pub fn SetPriority(self: *const IDirect3DResource9, PriorityNew: u32) callconv(.Inline) u32 {
+    pub inline fn SetPriority(self: *const IDirect3DResource9, PriorityNew: u32) u32 {
         return self.vtable.SetPriority(self, PriorityNew);
     }
-    pub fn GetPriority(self: *const IDirect3DResource9) callconv(.Inline) u32 {
+    pub inline fn GetPriority(self: *const IDirect3DResource9) u32 {
         return self.vtable.GetPriority(self);
     }
-    pub fn PreLoad(self: *const IDirect3DResource9) callconv(.Inline) void {
+    pub inline fn PreLoad(self: *const IDirect3DResource9) void {
         return self.vtable.PreLoad(self);
     }
-    pub fn GetType(self: *const IDirect3DResource9) callconv(.Inline) D3DRESOURCETYPE {
+    pub inline fn GetType(self: *const IDirect3DResource9) D3DRESOURCETYPE {
         return self.vtable.GetType(self);
     }
 };
@@ -3629,22 +3624,22 @@ pub const IID_IDirect3DVertexDeclaration9 = &IID_IDirect3DVertexDeclaration9_Val
 pub const IDirect3DVertexDeclaration9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDevice: *const fn(
+        GetDevice: *const fn (
             self: *const IDirect3DVertexDeclaration9,
             ppDevice: ?*?*IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDeclaration: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDeclaration: *const fn (
             self: *const IDirect3DVertexDeclaration9,
             pElement: ?*D3DVERTEXELEMENT9,
             pNumElements: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDevice(self: *const IDirect3DVertexDeclaration9, ppDevice: ?*?*IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn GetDevice(self: *const IDirect3DVertexDeclaration9, ppDevice: ?*?*IDirect3DDevice9) HRESULT {
         return self.vtable.GetDevice(self, ppDevice);
     }
-    pub fn GetDeclaration(self: *const IDirect3DVertexDeclaration9, pElement: ?*D3DVERTEXELEMENT9, pNumElements: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDeclaration(self: *const IDirect3DVertexDeclaration9, pElement: ?*D3DVERTEXELEMENT9, pNumElements: ?*u32) HRESULT {
         return self.vtable.GetDeclaration(self, pElement, pNumElements);
     }
 };
@@ -3654,22 +3649,22 @@ pub const IID_IDirect3DVertexShader9 = &IID_IDirect3DVertexShader9_Value;
 pub const IDirect3DVertexShader9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDevice: *const fn(
+        GetDevice: *const fn (
             self: *const IDirect3DVertexShader9,
             ppDevice: ?*?*IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFunction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFunction: *const fn (
             self: *const IDirect3DVertexShader9,
             param0: ?*anyopaque,
             pSizeOfData: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDevice(self: *const IDirect3DVertexShader9, ppDevice: ?*?*IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn GetDevice(self: *const IDirect3DVertexShader9, ppDevice: ?*?*IDirect3DDevice9) HRESULT {
         return self.vtable.GetDevice(self, ppDevice);
     }
-    pub fn GetFunction(self: *const IDirect3DVertexShader9, param0: ?*anyopaque, pSizeOfData: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFunction(self: *const IDirect3DVertexShader9, param0: ?*anyopaque, pSizeOfData: ?*u32) HRESULT {
         return self.vtable.GetFunction(self, param0, pSizeOfData);
     }
 };
@@ -3679,22 +3674,22 @@ pub const IID_IDirect3DPixelShader9 = &IID_IDirect3DPixelShader9_Value;
 pub const IDirect3DPixelShader9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDevice: *const fn(
+        GetDevice: *const fn (
             self: *const IDirect3DPixelShader9,
             ppDevice: ?*?*IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFunction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFunction: *const fn (
             self: *const IDirect3DPixelShader9,
             param0: ?*anyopaque,
             pSizeOfData: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDevice(self: *const IDirect3DPixelShader9, ppDevice: ?*?*IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn GetDevice(self: *const IDirect3DPixelShader9, ppDevice: ?*?*IDirect3DDevice9) HRESULT {
         return self.vtable.GetDevice(self, ppDevice);
     }
-    pub fn GetFunction(self: *const IDirect3DPixelShader9, param0: ?*anyopaque, pSizeOfData: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFunction(self: *const IDirect3DPixelShader9, param0: ?*anyopaque, pSizeOfData: ?*u32) HRESULT {
         return self.vtable.GetFunction(self, param0, pSizeOfData);
     }
 };
@@ -3704,46 +3699,46 @@ pub const IID_IDirect3DBaseTexture9 = &IID_IDirect3DBaseTexture9_Value;
 pub const IDirect3DBaseTexture9 = extern union {
     pub const VTable = extern struct {
         base: IDirect3DResource9.VTable,
-        SetLOD: *const fn(
+        SetLOD: *const fn (
             self: *const IDirect3DBaseTexture9,
             LODNew: u32,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        GetLOD: *const fn(
+        ) callconv(.winapi) u32,
+        GetLOD: *const fn (
             self: *const IDirect3DBaseTexture9,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        GetLevelCount: *const fn(
+        ) callconv(.winapi) u32,
+        GetLevelCount: *const fn (
             self: *const IDirect3DBaseTexture9,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        SetAutoGenFilterType: *const fn(
+        ) callconv(.winapi) u32,
+        SetAutoGenFilterType: *const fn (
             self: *const IDirect3DBaseTexture9,
             FilterType: D3DTEXTUREFILTERTYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAutoGenFilterType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAutoGenFilterType: *const fn (
             self: *const IDirect3DBaseTexture9,
-        ) callconv(@import("std").os.windows.WINAPI) D3DTEXTUREFILTERTYPE,
-        GenerateMipSubLevels: *const fn(
+        ) callconv(.winapi) D3DTEXTUREFILTERTYPE,
+        GenerateMipSubLevels: *const fn (
             self: *const IDirect3DBaseTexture9,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IDirect3DResource9: IDirect3DResource9,
     IUnknown: IUnknown,
-    pub fn SetLOD(self: *const IDirect3DBaseTexture9, LODNew: u32) callconv(.Inline) u32 {
+    pub inline fn SetLOD(self: *const IDirect3DBaseTexture9, LODNew: u32) u32 {
         return self.vtable.SetLOD(self, LODNew);
     }
-    pub fn GetLOD(self: *const IDirect3DBaseTexture9) callconv(.Inline) u32 {
+    pub inline fn GetLOD(self: *const IDirect3DBaseTexture9) u32 {
         return self.vtable.GetLOD(self);
     }
-    pub fn GetLevelCount(self: *const IDirect3DBaseTexture9) callconv(.Inline) u32 {
+    pub inline fn GetLevelCount(self: *const IDirect3DBaseTexture9) u32 {
         return self.vtable.GetLevelCount(self);
     }
-    pub fn SetAutoGenFilterType(self: *const IDirect3DBaseTexture9, FilterType: D3DTEXTUREFILTERTYPE) callconv(.Inline) HRESULT {
+    pub inline fn SetAutoGenFilterType(self: *const IDirect3DBaseTexture9, FilterType: D3DTEXTUREFILTERTYPE) HRESULT {
         return self.vtable.SetAutoGenFilterType(self, FilterType);
     }
-    pub fn GetAutoGenFilterType(self: *const IDirect3DBaseTexture9) callconv(.Inline) D3DTEXTUREFILTERTYPE {
+    pub inline fn GetAutoGenFilterType(self: *const IDirect3DBaseTexture9) D3DTEXTUREFILTERTYPE {
         return self.vtable.GetAutoGenFilterType(self);
     }
-    pub fn GenerateMipSubLevels(self: *const IDirect3DBaseTexture9) callconv(.Inline) void {
+    pub inline fn GenerateMipSubLevels(self: *const IDirect3DBaseTexture9) void {
         return self.vtable.GenerateMipSubLevels(self);
     }
 };
@@ -3753,49 +3748,49 @@ pub const IID_IDirect3DTexture9 = &IID_IDirect3DTexture9_Value;
 pub const IDirect3DTexture9 = extern union {
     pub const VTable = extern struct {
         base: IDirect3DBaseTexture9.VTable,
-        GetLevelDesc: *const fn(
+        GetLevelDesc: *const fn (
             self: *const IDirect3DTexture9,
             Level: u32,
             pDesc: ?*D3DSURFACE_DESC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSurfaceLevel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSurfaceLevel: *const fn (
             self: *const IDirect3DTexture9,
             Level: u32,
             ppSurfaceLevel: ?*?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockRect: *const fn (
             self: *const IDirect3DTexture9,
             Level: u32,
             pLockedRect: ?*D3DLOCKED_RECT,
             pRect: ?*const RECT,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockRect: *const fn (
             self: *const IDirect3DTexture9,
             Level: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddDirtyRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddDirtyRect: *const fn (
             self: *const IDirect3DTexture9,
             pDirtyRect: ?*const RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDirect3DBaseTexture9: IDirect3DBaseTexture9,
     IDirect3DResource9: IDirect3DResource9,
     IUnknown: IUnknown,
-    pub fn GetLevelDesc(self: *const IDirect3DTexture9, Level: u32, pDesc: ?*D3DSURFACE_DESC) callconv(.Inline) HRESULT {
+    pub inline fn GetLevelDesc(self: *const IDirect3DTexture9, Level: u32, pDesc: ?*D3DSURFACE_DESC) HRESULT {
         return self.vtable.GetLevelDesc(self, Level, pDesc);
     }
-    pub fn GetSurfaceLevel(self: *const IDirect3DTexture9, Level: u32, ppSurfaceLevel: ?*?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn GetSurfaceLevel(self: *const IDirect3DTexture9, Level: u32, ppSurfaceLevel: ?*?*IDirect3DSurface9) HRESULT {
         return self.vtable.GetSurfaceLevel(self, Level, ppSurfaceLevel);
     }
-    pub fn LockRect(self: *const IDirect3DTexture9, Level: u32, pLockedRect: ?*D3DLOCKED_RECT, pRect: ?*const RECT, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn LockRect(self: *const IDirect3DTexture9, Level: u32, pLockedRect: ?*D3DLOCKED_RECT, pRect: ?*const RECT, Flags: u32) HRESULT {
         return self.vtable.LockRect(self, Level, pLockedRect, pRect, Flags);
     }
-    pub fn UnlockRect(self: *const IDirect3DTexture9, Level: u32) callconv(.Inline) HRESULT {
+    pub inline fn UnlockRect(self: *const IDirect3DTexture9, Level: u32) HRESULT {
         return self.vtable.UnlockRect(self, Level);
     }
-    pub fn AddDirtyRect(self: *const IDirect3DTexture9, pDirtyRect: ?*const RECT) callconv(.Inline) HRESULT {
+    pub inline fn AddDirtyRect(self: *const IDirect3DTexture9, pDirtyRect: ?*const RECT) HRESULT {
         return self.vtable.AddDirtyRect(self, pDirtyRect);
     }
 };
@@ -3805,49 +3800,49 @@ pub const IID_IDirect3DVolumeTexture9 = &IID_IDirect3DVolumeTexture9_Value;
 pub const IDirect3DVolumeTexture9 = extern union {
     pub const VTable = extern struct {
         base: IDirect3DBaseTexture9.VTable,
-        GetLevelDesc: *const fn(
+        GetLevelDesc: *const fn (
             self: *const IDirect3DVolumeTexture9,
             Level: u32,
             pDesc: ?*D3DVOLUME_DESC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVolumeLevel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVolumeLevel: *const fn (
             self: *const IDirect3DVolumeTexture9,
             Level: u32,
             ppVolumeLevel: ?*?*IDirect3DVolume9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockBox: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockBox: *const fn (
             self: *const IDirect3DVolumeTexture9,
             Level: u32,
             pLockedVolume: ?*D3DLOCKED_BOX,
             pBox: ?*const D3DBOX,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockBox: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockBox: *const fn (
             self: *const IDirect3DVolumeTexture9,
             Level: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddDirtyBox: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddDirtyBox: *const fn (
             self: *const IDirect3DVolumeTexture9,
             pDirtyBox: ?*const D3DBOX,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDirect3DBaseTexture9: IDirect3DBaseTexture9,
     IDirect3DResource9: IDirect3DResource9,
     IUnknown: IUnknown,
-    pub fn GetLevelDesc(self: *const IDirect3DVolumeTexture9, Level: u32, pDesc: ?*D3DVOLUME_DESC) callconv(.Inline) HRESULT {
+    pub inline fn GetLevelDesc(self: *const IDirect3DVolumeTexture9, Level: u32, pDesc: ?*D3DVOLUME_DESC) HRESULT {
         return self.vtable.GetLevelDesc(self, Level, pDesc);
     }
-    pub fn GetVolumeLevel(self: *const IDirect3DVolumeTexture9, Level: u32, ppVolumeLevel: ?*?*IDirect3DVolume9) callconv(.Inline) HRESULT {
+    pub inline fn GetVolumeLevel(self: *const IDirect3DVolumeTexture9, Level: u32, ppVolumeLevel: ?*?*IDirect3DVolume9) HRESULT {
         return self.vtable.GetVolumeLevel(self, Level, ppVolumeLevel);
     }
-    pub fn LockBox(self: *const IDirect3DVolumeTexture9, Level: u32, pLockedVolume: ?*D3DLOCKED_BOX, pBox: ?*const D3DBOX, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn LockBox(self: *const IDirect3DVolumeTexture9, Level: u32, pLockedVolume: ?*D3DLOCKED_BOX, pBox: ?*const D3DBOX, Flags: u32) HRESULT {
         return self.vtable.LockBox(self, Level, pLockedVolume, pBox, Flags);
     }
-    pub fn UnlockBox(self: *const IDirect3DVolumeTexture9, Level: u32) callconv(.Inline) HRESULT {
+    pub inline fn UnlockBox(self: *const IDirect3DVolumeTexture9, Level: u32) HRESULT {
         return self.vtable.UnlockBox(self, Level);
     }
-    pub fn AddDirtyBox(self: *const IDirect3DVolumeTexture9, pDirtyBox: ?*const D3DBOX) callconv(.Inline) HRESULT {
+    pub inline fn AddDirtyBox(self: *const IDirect3DVolumeTexture9, pDirtyBox: ?*const D3DBOX) HRESULT {
         return self.vtable.AddDirtyBox(self, pDirtyBox);
     }
 };
@@ -3857,53 +3852,53 @@ pub const IID_IDirect3DCubeTexture9 = &IID_IDirect3DCubeTexture9_Value;
 pub const IDirect3DCubeTexture9 = extern union {
     pub const VTable = extern struct {
         base: IDirect3DBaseTexture9.VTable,
-        GetLevelDesc: *const fn(
+        GetLevelDesc: *const fn (
             self: *const IDirect3DCubeTexture9,
             Level: u32,
             pDesc: ?*D3DSURFACE_DESC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCubeMapSurface: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCubeMapSurface: *const fn (
             self: *const IDirect3DCubeTexture9,
             FaceType: D3DCUBEMAP_FACES,
             Level: u32,
             ppCubeMapSurface: ?*?*IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockRect: *const fn (
             self: *const IDirect3DCubeTexture9,
             FaceType: D3DCUBEMAP_FACES,
             Level: u32,
             pLockedRect: ?*D3DLOCKED_RECT,
             pRect: ?*const RECT,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockRect: *const fn (
             self: *const IDirect3DCubeTexture9,
             FaceType: D3DCUBEMAP_FACES,
             Level: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddDirtyRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddDirtyRect: *const fn (
             self: *const IDirect3DCubeTexture9,
             FaceType: D3DCUBEMAP_FACES,
             pDirtyRect: ?*const RECT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDirect3DBaseTexture9: IDirect3DBaseTexture9,
     IDirect3DResource9: IDirect3DResource9,
     IUnknown: IUnknown,
-    pub fn GetLevelDesc(self: *const IDirect3DCubeTexture9, Level: u32, pDesc: ?*D3DSURFACE_DESC) callconv(.Inline) HRESULT {
+    pub inline fn GetLevelDesc(self: *const IDirect3DCubeTexture9, Level: u32, pDesc: ?*D3DSURFACE_DESC) HRESULT {
         return self.vtable.GetLevelDesc(self, Level, pDesc);
     }
-    pub fn GetCubeMapSurface(self: *const IDirect3DCubeTexture9, FaceType: D3DCUBEMAP_FACES, Level: u32, ppCubeMapSurface: ?*?*IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn GetCubeMapSurface(self: *const IDirect3DCubeTexture9, FaceType: D3DCUBEMAP_FACES, Level: u32, ppCubeMapSurface: ?*?*IDirect3DSurface9) HRESULT {
         return self.vtable.GetCubeMapSurface(self, FaceType, Level, ppCubeMapSurface);
     }
-    pub fn LockRect(self: *const IDirect3DCubeTexture9, FaceType: D3DCUBEMAP_FACES, Level: u32, pLockedRect: ?*D3DLOCKED_RECT, pRect: ?*const RECT, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn LockRect(self: *const IDirect3DCubeTexture9, FaceType: D3DCUBEMAP_FACES, Level: u32, pLockedRect: ?*D3DLOCKED_RECT, pRect: ?*const RECT, Flags: u32) HRESULT {
         return self.vtable.LockRect(self, FaceType, Level, pLockedRect, pRect, Flags);
     }
-    pub fn UnlockRect(self: *const IDirect3DCubeTexture9, FaceType: D3DCUBEMAP_FACES, Level: u32) callconv(.Inline) HRESULT {
+    pub inline fn UnlockRect(self: *const IDirect3DCubeTexture9, FaceType: D3DCUBEMAP_FACES, Level: u32) HRESULT {
         return self.vtable.UnlockRect(self, FaceType, Level);
     }
-    pub fn AddDirtyRect(self: *const IDirect3DCubeTexture9, FaceType: D3DCUBEMAP_FACES, pDirtyRect: ?*const RECT) callconv(.Inline) HRESULT {
+    pub inline fn AddDirtyRect(self: *const IDirect3DCubeTexture9, FaceType: D3DCUBEMAP_FACES, pDirtyRect: ?*const RECT) HRESULT {
         return self.vtable.AddDirtyRect(self, FaceType, pDirtyRect);
     }
 };
@@ -3913,31 +3908,31 @@ pub const IID_IDirect3DVertexBuffer9 = &IID_IDirect3DVertexBuffer9_Value;
 pub const IDirect3DVertexBuffer9 = extern union {
     pub const VTable = extern struct {
         base: IDirect3DResource9.VTable,
-        Lock: *const fn(
+        Lock: *const fn (
             self: *const IDirect3DVertexBuffer9,
             OffsetToLock: u32,
             SizeToLock: u32,
             ppbData: ?*?*anyopaque,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unlock: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unlock: *const fn (
             self: *const IDirect3DVertexBuffer9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDesc: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDesc: *const fn (
             self: *const IDirect3DVertexBuffer9,
             pDesc: ?*D3DVERTEXBUFFER_DESC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDirect3DResource9: IDirect3DResource9,
     IUnknown: IUnknown,
-    pub fn Lock(self: *const IDirect3DVertexBuffer9, OffsetToLock: u32, SizeToLock: u32, ppbData: ?*?*anyopaque, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Lock(self: *const IDirect3DVertexBuffer9, OffsetToLock: u32, SizeToLock: u32, ppbData: ?*?*anyopaque, Flags: u32) HRESULT {
         return self.vtable.Lock(self, OffsetToLock, SizeToLock, ppbData, Flags);
     }
-    pub fn Unlock(self: *const IDirect3DVertexBuffer9) callconv(.Inline) HRESULT {
+    pub inline fn Unlock(self: *const IDirect3DVertexBuffer9) HRESULT {
         return self.vtable.Unlock(self);
     }
-    pub fn GetDesc(self: *const IDirect3DVertexBuffer9, pDesc: ?*D3DVERTEXBUFFER_DESC) callconv(.Inline) HRESULT {
+    pub inline fn GetDesc(self: *const IDirect3DVertexBuffer9, pDesc: ?*D3DVERTEXBUFFER_DESC) HRESULT {
         return self.vtable.GetDesc(self, pDesc);
     }
 };
@@ -3947,31 +3942,31 @@ pub const IID_IDirect3DIndexBuffer9 = &IID_IDirect3DIndexBuffer9_Value;
 pub const IDirect3DIndexBuffer9 = extern union {
     pub const VTable = extern struct {
         base: IDirect3DResource9.VTable,
-        Lock: *const fn(
+        Lock: *const fn (
             self: *const IDirect3DIndexBuffer9,
             OffsetToLock: u32,
             SizeToLock: u32,
             ppbData: ?*?*anyopaque,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unlock: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unlock: *const fn (
             self: *const IDirect3DIndexBuffer9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDesc: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDesc: *const fn (
             self: *const IDirect3DIndexBuffer9,
             pDesc: ?*D3DINDEXBUFFER_DESC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDirect3DResource9: IDirect3DResource9,
     IUnknown: IUnknown,
-    pub fn Lock(self: *const IDirect3DIndexBuffer9, OffsetToLock: u32, SizeToLock: u32, ppbData: ?*?*anyopaque, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Lock(self: *const IDirect3DIndexBuffer9, OffsetToLock: u32, SizeToLock: u32, ppbData: ?*?*anyopaque, Flags: u32) HRESULT {
         return self.vtable.Lock(self, OffsetToLock, SizeToLock, ppbData, Flags);
     }
-    pub fn Unlock(self: *const IDirect3DIndexBuffer9) callconv(.Inline) HRESULT {
+    pub inline fn Unlock(self: *const IDirect3DIndexBuffer9) HRESULT {
         return self.vtable.Unlock(self);
     }
-    pub fn GetDesc(self: *const IDirect3DIndexBuffer9, pDesc: ?*D3DINDEXBUFFER_DESC) callconv(.Inline) HRESULT {
+    pub inline fn GetDesc(self: *const IDirect3DIndexBuffer9, pDesc: ?*D3DINDEXBUFFER_DESC) HRESULT {
         return self.vtable.GetDesc(self, pDesc);
     }
 };
@@ -3981,52 +3976,52 @@ pub const IID_IDirect3DSurface9 = &IID_IDirect3DSurface9_Value;
 pub const IDirect3DSurface9 = extern union {
     pub const VTable = extern struct {
         base: IDirect3DResource9.VTable,
-        GetContainer: *const fn(
+        GetContainer: *const fn (
             self: *const IDirect3DSurface9,
             riid: ?*const Guid,
             ppContainer: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDesc: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDesc: *const fn (
             self: *const IDirect3DSurface9,
             pDesc: ?*D3DSURFACE_DESC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockRect: *const fn (
             self: *const IDirect3DSurface9,
             pLockedRect: ?*D3DLOCKED_RECT,
             pRect: ?*const RECT,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockRect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockRect: *const fn (
             self: *const IDirect3DSurface9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDC: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDC: *const fn (
             self: *const IDirect3DSurface9,
             phdc: ?*?HDC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReleaseDC: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReleaseDC: *const fn (
             self: *const IDirect3DSurface9,
             hdc: ?HDC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDirect3DResource9: IDirect3DResource9,
     IUnknown: IUnknown,
-    pub fn GetContainer(self: *const IDirect3DSurface9, riid: ?*const Guid, ppContainer: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetContainer(self: *const IDirect3DSurface9, riid: ?*const Guid, ppContainer: ?*?*anyopaque) HRESULT {
         return self.vtable.GetContainer(self, riid, ppContainer);
     }
-    pub fn GetDesc(self: *const IDirect3DSurface9, pDesc: ?*D3DSURFACE_DESC) callconv(.Inline) HRESULT {
+    pub inline fn GetDesc(self: *const IDirect3DSurface9, pDesc: ?*D3DSURFACE_DESC) HRESULT {
         return self.vtable.GetDesc(self, pDesc);
     }
-    pub fn LockRect(self: *const IDirect3DSurface9, pLockedRect: ?*D3DLOCKED_RECT, pRect: ?*const RECT, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn LockRect(self: *const IDirect3DSurface9, pLockedRect: ?*D3DLOCKED_RECT, pRect: ?*const RECT, Flags: u32) HRESULT {
         return self.vtable.LockRect(self, pLockedRect, pRect, Flags);
     }
-    pub fn UnlockRect(self: *const IDirect3DSurface9) callconv(.Inline) HRESULT {
+    pub inline fn UnlockRect(self: *const IDirect3DSurface9) HRESULT {
         return self.vtable.UnlockRect(self);
     }
-    pub fn GetDC(self: *const IDirect3DSurface9, phdc: ?*?HDC) callconv(.Inline) HRESULT {
+    pub inline fn GetDC(self: *const IDirect3DSurface9, phdc: ?*?HDC) HRESULT {
         return self.vtable.GetDC(self, phdc);
     }
-    pub fn ReleaseDC(self: *const IDirect3DSurface9, hdc: ?HDC) callconv(.Inline) HRESULT {
+    pub inline fn ReleaseDC(self: *const IDirect3DSurface9, hdc: ?HDC) HRESULT {
         return self.vtable.ReleaseDC(self, hdc);
     }
 };
@@ -4036,70 +4031,70 @@ pub const IID_IDirect3DVolume9 = &IID_IDirect3DVolume9_Value;
 pub const IDirect3DVolume9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDevice: *const fn(
+        GetDevice: *const fn (
             self: *const IDirect3DVolume9,
             ppDevice: ?*?*IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPrivateData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPrivateData: *const fn (
             self: *const IDirect3DVolume9,
             refguid: ?*const Guid,
             pData: ?*const anyopaque,
             SizeOfData: u32,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPrivateData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPrivateData: *const fn (
             self: *const IDirect3DVolume9,
             refguid: ?*const Guid,
             pData: ?*anyopaque,
             pSizeOfData: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FreePrivateData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FreePrivateData: *const fn (
             self: *const IDirect3DVolume9,
             refguid: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetContainer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetContainer: *const fn (
             self: *const IDirect3DVolume9,
             riid: ?*const Guid,
             ppContainer: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDesc: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDesc: *const fn (
             self: *const IDirect3DVolume9,
             pDesc: ?*D3DVOLUME_DESC,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockBox: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockBox: *const fn (
             self: *const IDirect3DVolume9,
             pLockedVolume: ?*D3DLOCKED_BOX,
             pBox: ?*const D3DBOX,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockBox: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockBox: *const fn (
             self: *const IDirect3DVolume9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDevice(self: *const IDirect3DVolume9, ppDevice: ?*?*IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn GetDevice(self: *const IDirect3DVolume9, ppDevice: ?*?*IDirect3DDevice9) HRESULT {
         return self.vtable.GetDevice(self, ppDevice);
     }
-    pub fn SetPrivateData(self: *const IDirect3DVolume9, refguid: ?*const Guid, pData: ?*const anyopaque, SizeOfData: u32, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetPrivateData(self: *const IDirect3DVolume9, refguid: ?*const Guid, pData: ?*const anyopaque, SizeOfData: u32, Flags: u32) HRESULT {
         return self.vtable.SetPrivateData(self, refguid, pData, SizeOfData, Flags);
     }
-    pub fn GetPrivateData(self: *const IDirect3DVolume9, refguid: ?*const Guid, pData: ?*anyopaque, pSizeOfData: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPrivateData(self: *const IDirect3DVolume9, refguid: ?*const Guid, pData: ?*anyopaque, pSizeOfData: ?*u32) HRESULT {
         return self.vtable.GetPrivateData(self, refguid, pData, pSizeOfData);
     }
-    pub fn FreePrivateData(self: *const IDirect3DVolume9, refguid: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn FreePrivateData(self: *const IDirect3DVolume9, refguid: ?*const Guid) HRESULT {
         return self.vtable.FreePrivateData(self, refguid);
     }
-    pub fn GetContainer(self: *const IDirect3DVolume9, riid: ?*const Guid, ppContainer: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetContainer(self: *const IDirect3DVolume9, riid: ?*const Guid, ppContainer: ?*?*anyopaque) HRESULT {
         return self.vtable.GetContainer(self, riid, ppContainer);
     }
-    pub fn GetDesc(self: *const IDirect3DVolume9, pDesc: ?*D3DVOLUME_DESC) callconv(.Inline) HRESULT {
+    pub inline fn GetDesc(self: *const IDirect3DVolume9, pDesc: ?*D3DVOLUME_DESC) HRESULT {
         return self.vtable.GetDesc(self, pDesc);
     }
-    pub fn LockBox(self: *const IDirect3DVolume9, pLockedVolume: ?*D3DLOCKED_BOX, pBox: ?*const D3DBOX, Flags: u32) callconv(.Inline) HRESULT {
+    pub inline fn LockBox(self: *const IDirect3DVolume9, pLockedVolume: ?*D3DLOCKED_BOX, pBox: ?*const D3DBOX, Flags: u32) HRESULT {
         return self.vtable.LockBox(self, pLockedVolume, pBox, Flags);
     }
-    pub fn UnlockBox(self: *const IDirect3DVolume9) callconv(.Inline) HRESULT {
+    pub inline fn UnlockBox(self: *const IDirect3DVolume9) HRESULT {
         return self.vtable.UnlockBox(self);
     }
 };
@@ -4109,42 +4104,42 @@ pub const IID_IDirect3DQuery9 = &IID_IDirect3DQuery9_Value;
 pub const IDirect3DQuery9 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetDevice: *const fn(
+        GetDevice: *const fn (
             self: *const IDirect3DQuery9,
             ppDevice: ?*?*IDirect3DDevice9,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetType: *const fn (
             self: *const IDirect3DQuery9,
-        ) callconv(@import("std").os.windows.WINAPI) D3DQUERYTYPE,
-        GetDataSize: *const fn(
+        ) callconv(.winapi) D3DQUERYTYPE,
+        GetDataSize: *const fn (
             self: *const IDirect3DQuery9,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        Issue: *const fn(
+        ) callconv(.winapi) u32,
+        Issue: *const fn (
             self: *const IDirect3DQuery9,
             dwIssueFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetData: *const fn (
             self: *const IDirect3DQuery9,
             pData: ?*anyopaque,
             dwSize: u32,
             dwGetDataFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetDevice(self: *const IDirect3DQuery9, ppDevice: ?*?*IDirect3DDevice9) callconv(.Inline) HRESULT {
+    pub inline fn GetDevice(self: *const IDirect3DQuery9, ppDevice: ?*?*IDirect3DDevice9) HRESULT {
         return self.vtable.GetDevice(self, ppDevice);
     }
-    pub fn GetType(self: *const IDirect3DQuery9) callconv(.Inline) D3DQUERYTYPE {
+    pub inline fn GetType(self: *const IDirect3DQuery9) D3DQUERYTYPE {
         return self.vtable.GetType(self);
     }
-    pub fn GetDataSize(self: *const IDirect3DQuery9) callconv(.Inline) u32 {
+    pub inline fn GetDataSize(self: *const IDirect3DQuery9) u32 {
         return self.vtable.GetDataSize(self);
     }
-    pub fn Issue(self: *const IDirect3DQuery9, dwIssueFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Issue(self: *const IDirect3DQuery9, dwIssueFlags: u32) HRESULT {
         return self.vtable.Issue(self, dwIssueFlags);
     }
-    pub fn GetData(self: *const IDirect3DQuery9, pData: ?*anyopaque, dwSize: u32, dwGetDataFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetData(self: *const IDirect3DQuery9, pData: ?*anyopaque, dwSize: u32, dwGetDataFlags: u32) HRESULT {
         return self.vtable.GetData(self, pData, dwSize, dwGetDataFlags);
     }
 };
@@ -4154,25 +4149,25 @@ pub const IID_IDirect3D9Ex = &IID_IDirect3D9Ex_Value;
 pub const IDirect3D9Ex = extern union {
     pub const VTable = extern struct {
         base: IDirect3D9.VTable,
-        GetAdapterModeCountEx: *const fn(
+        GetAdapterModeCountEx: *const fn (
             self: *const IDirect3D9Ex,
             Adapter: u32,
             pFilter: ?*const D3DDISPLAYMODEFILTER,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        EnumAdapterModesEx: *const fn(
+        ) callconv(.winapi) u32,
+        EnumAdapterModesEx: *const fn (
             self: *const IDirect3D9Ex,
             Adapter: u32,
             pFilter: ?*const D3DDISPLAYMODEFILTER,
             Mode: u32,
             pMode: ?*D3DDISPLAYMODEEX,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAdapterDisplayModeEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAdapterDisplayModeEx: *const fn (
             self: *const IDirect3D9Ex,
             Adapter: u32,
             pMode: ?*D3DDISPLAYMODEEX,
             pRotation: ?*D3DDISPLAYROTATION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateDeviceEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateDeviceEx: *const fn (
             self: *const IDirect3D9Ex,
             Adapter: u32,
             DeviceType: D3DDEVTYPE,
@@ -4181,29 +4176,29 @@ pub const IDirect3D9Ex = extern union {
             pPresentationParameters: ?*D3DPRESENT_PARAMETERS,
             pFullscreenDisplayMode: ?*D3DDISPLAYMODEEX,
             ppReturnedDeviceInterface: ?*?*IDirect3DDevice9Ex,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAdapterLUID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAdapterLUID: *const fn (
             self: *const IDirect3D9Ex,
             Adapter: u32,
             pLUID: ?*LUID,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDirect3D9: IDirect3D9,
     IUnknown: IUnknown,
-    pub fn GetAdapterModeCountEx(self: *const IDirect3D9Ex, Adapter: u32, pFilter: ?*const D3DDISPLAYMODEFILTER) callconv(.Inline) u32 {
+    pub inline fn GetAdapterModeCountEx(self: *const IDirect3D9Ex, Adapter: u32, pFilter: ?*const D3DDISPLAYMODEFILTER) u32 {
         return self.vtable.GetAdapterModeCountEx(self, Adapter, pFilter);
     }
-    pub fn EnumAdapterModesEx(self: *const IDirect3D9Ex, Adapter: u32, pFilter: ?*const D3DDISPLAYMODEFILTER, Mode: u32, pMode: ?*D3DDISPLAYMODEEX) callconv(.Inline) HRESULT {
+    pub inline fn EnumAdapterModesEx(self: *const IDirect3D9Ex, Adapter: u32, pFilter: ?*const D3DDISPLAYMODEFILTER, Mode: u32, pMode: ?*D3DDISPLAYMODEEX) HRESULT {
         return self.vtable.EnumAdapterModesEx(self, Adapter, pFilter, Mode, pMode);
     }
-    pub fn GetAdapterDisplayModeEx(self: *const IDirect3D9Ex, Adapter: u32, pMode: ?*D3DDISPLAYMODEEX, pRotation: ?*D3DDISPLAYROTATION) callconv(.Inline) HRESULT {
+    pub inline fn GetAdapterDisplayModeEx(self: *const IDirect3D9Ex, Adapter: u32, pMode: ?*D3DDISPLAYMODEEX, pRotation: ?*D3DDISPLAYROTATION) HRESULT {
         return self.vtable.GetAdapterDisplayModeEx(self, Adapter, pMode, pRotation);
     }
-    pub fn CreateDeviceEx(self: *const IDirect3D9Ex, Adapter: u32, DeviceType: D3DDEVTYPE, hFocusWindow: ?HWND, BehaviorFlags: u32, pPresentationParameters: ?*D3DPRESENT_PARAMETERS, pFullscreenDisplayMode: ?*D3DDISPLAYMODEEX, ppReturnedDeviceInterface: ?*?*IDirect3DDevice9Ex) callconv(.Inline) HRESULT {
+    pub inline fn CreateDeviceEx(self: *const IDirect3D9Ex, Adapter: u32, DeviceType: D3DDEVTYPE, hFocusWindow: ?HWND, BehaviorFlags: u32, pPresentationParameters: ?*D3DPRESENT_PARAMETERS, pFullscreenDisplayMode: ?*D3DDISPLAYMODEEX, ppReturnedDeviceInterface: ?*?*IDirect3DDevice9Ex) HRESULT {
         return self.vtable.CreateDeviceEx(self, Adapter, DeviceType, hFocusWindow, BehaviorFlags, pPresentationParameters, pFullscreenDisplayMode, ppReturnedDeviceInterface);
     }
-    pub fn GetAdapterLUID(self: *const IDirect3D9Ex, Adapter: u32, pLUID: ?*LUID) callconv(.Inline) HRESULT {
+    pub inline fn GetAdapterLUID(self: *const IDirect3D9Ex, Adapter: u32, pLUID: ?*LUID) HRESULT {
         return self.vtable.GetAdapterLUID(self, Adapter, pLUID);
     }
 };
@@ -4213,14 +4208,14 @@ pub const IID_IDirect3DDevice9Ex = &IID_IDirect3DDevice9Ex_Value;
 pub const IDirect3DDevice9Ex = extern union {
     pub const VTable = extern struct {
         base: IDirect3DDevice9.VTable,
-        SetConvolutionMonoKernel: *const fn(
+        SetConvolutionMonoKernel: *const fn (
             self: *const IDirect3DDevice9Ex,
             width: u32,
             height: u32,
             rows: ?*f32,
             columns: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ComposeRects: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ComposeRects: *const fn (
             self: *const IDirect3DDevice9Ex,
             pSrc: ?*IDirect3DSurface9,
             pDst: ?*IDirect3DSurface9,
@@ -4230,45 +4225,45 @@ pub const IDirect3DDevice9Ex = extern union {
             Operation: D3DCOMPOSERECTSOP,
             Xoffset: i32,
             Yoffset: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PresentEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PresentEx: *const fn (
             self: *const IDirect3DDevice9Ex,
             pSourceRect: ?*const RECT,
             pDestRect: ?*const RECT,
             hDestWindowOverride: ?HWND,
             pDirtyRegion: ?*const RGNDATA,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetGPUThreadPriority: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetGPUThreadPriority: *const fn (
             self: *const IDirect3DDevice9Ex,
             pPriority: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetGPUThreadPriority: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetGPUThreadPriority: *const fn (
             self: *const IDirect3DDevice9Ex,
             Priority: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WaitForVBlank: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WaitForVBlank: *const fn (
             self: *const IDirect3DDevice9Ex,
             iSwapChain: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckResourceResidency: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckResourceResidency: *const fn (
             self: *const IDirect3DDevice9Ex,
             pResourceArray: ?*?*IDirect3DResource9,
             NumResources: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetMaximumFrameLatency: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetMaximumFrameLatency: *const fn (
             self: *const IDirect3DDevice9Ex,
             MaxLatency: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMaximumFrameLatency: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMaximumFrameLatency: *const fn (
             self: *const IDirect3DDevice9Ex,
             pMaxLatency: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CheckDeviceState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CheckDeviceState: *const fn (
             self: *const IDirect3DDevice9Ex,
             hDestinationWindow: ?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateRenderTargetEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateRenderTargetEx: *const fn (
             self: *const IDirect3DDevice9Ex,
             Width: u32,
             Height: u32,
@@ -4279,8 +4274,8 @@ pub const IDirect3DDevice9Ex = extern union {
             ppSurface: ?*?*IDirect3DSurface9,
             pSharedHandle: ?*?HANDLE,
             Usage: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateOffscreenPlainSurfaceEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateOffscreenPlainSurfaceEx: *const fn (
             self: *const IDirect3DDevice9Ex,
             Width: u32,
             Height: u32,
@@ -4289,8 +4284,8 @@ pub const IDirect3DDevice9Ex = extern union {
             ppSurface: ?*?*IDirect3DSurface9,
             pSharedHandle: ?*?HANDLE,
             Usage: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateDepthStencilSurfaceEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateDepthStencilSurfaceEx: *const fn (
             self: *const IDirect3DDevice9Ex,
             Width: u32,
             Height: u32,
@@ -4301,65 +4296,65 @@ pub const IDirect3DDevice9Ex = extern union {
             ppSurface: ?*?*IDirect3DSurface9,
             pSharedHandle: ?*?HANDLE,
             Usage: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ResetEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ResetEx: *const fn (
             self: *const IDirect3DDevice9Ex,
             pPresentationParameters: ?*D3DPRESENT_PARAMETERS,
             pFullscreenDisplayMode: ?*D3DDISPLAYMODEEX,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplayModeEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplayModeEx: *const fn (
             self: *const IDirect3DDevice9Ex,
             iSwapChain: u32,
             pMode: ?*D3DDISPLAYMODEEX,
             pRotation: ?*D3DDISPLAYROTATION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDirect3DDevice9: IDirect3DDevice9,
     IUnknown: IUnknown,
-    pub fn SetConvolutionMonoKernel(self: *const IDirect3DDevice9Ex, width: u32, height: u32, rows: ?*f32, columns: ?*f32) callconv(.Inline) HRESULT {
+    pub inline fn SetConvolutionMonoKernel(self: *const IDirect3DDevice9Ex, width: u32, height: u32, rows: ?*f32, columns: ?*f32) HRESULT {
         return self.vtable.SetConvolutionMonoKernel(self, width, height, rows, columns);
     }
-    pub fn ComposeRects(self: *const IDirect3DDevice9Ex, pSrc: ?*IDirect3DSurface9, pDst: ?*IDirect3DSurface9, pSrcRectDescs: ?*IDirect3DVertexBuffer9, NumRects: u32, pDstRectDescs: ?*IDirect3DVertexBuffer9, Operation: D3DCOMPOSERECTSOP, Xoffset: i32, Yoffset: i32) callconv(.Inline) HRESULT {
+    pub inline fn ComposeRects(self: *const IDirect3DDevice9Ex, pSrc: ?*IDirect3DSurface9, pDst: ?*IDirect3DSurface9, pSrcRectDescs: ?*IDirect3DVertexBuffer9, NumRects: u32, pDstRectDescs: ?*IDirect3DVertexBuffer9, Operation: D3DCOMPOSERECTSOP, Xoffset: i32, Yoffset: i32) HRESULT {
         return self.vtable.ComposeRects(self, pSrc, pDst, pSrcRectDescs, NumRects, pDstRectDescs, Operation, Xoffset, Yoffset);
     }
-    pub fn PresentEx(self: *const IDirect3DDevice9Ex, pSourceRect: ?*const RECT, pDestRect: ?*const RECT, hDestWindowOverride: ?HWND, pDirtyRegion: ?*const RGNDATA, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn PresentEx(self: *const IDirect3DDevice9Ex, pSourceRect: ?*const RECT, pDestRect: ?*const RECT, hDestWindowOverride: ?HWND, pDirtyRegion: ?*const RGNDATA, dwFlags: u32) HRESULT {
         return self.vtable.PresentEx(self, pSourceRect, pDestRect, hDestWindowOverride, pDirtyRegion, dwFlags);
     }
-    pub fn GetGPUThreadPriority(self: *const IDirect3DDevice9Ex, pPriority: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetGPUThreadPriority(self: *const IDirect3DDevice9Ex, pPriority: ?*i32) HRESULT {
         return self.vtable.GetGPUThreadPriority(self, pPriority);
     }
-    pub fn SetGPUThreadPriority(self: *const IDirect3DDevice9Ex, Priority: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetGPUThreadPriority(self: *const IDirect3DDevice9Ex, Priority: i32) HRESULT {
         return self.vtable.SetGPUThreadPriority(self, Priority);
     }
-    pub fn WaitForVBlank(self: *const IDirect3DDevice9Ex, iSwapChain: u32) callconv(.Inline) HRESULT {
+    pub inline fn WaitForVBlank(self: *const IDirect3DDevice9Ex, iSwapChain: u32) HRESULT {
         return self.vtable.WaitForVBlank(self, iSwapChain);
     }
-    pub fn CheckResourceResidency(self: *const IDirect3DDevice9Ex, pResourceArray: ?*?*IDirect3DResource9, NumResources: u32) callconv(.Inline) HRESULT {
+    pub inline fn CheckResourceResidency(self: *const IDirect3DDevice9Ex, pResourceArray: ?*?*IDirect3DResource9, NumResources: u32) HRESULT {
         return self.vtable.CheckResourceResidency(self, pResourceArray, NumResources);
     }
-    pub fn SetMaximumFrameLatency(self: *const IDirect3DDevice9Ex, MaxLatency: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetMaximumFrameLatency(self: *const IDirect3DDevice9Ex, MaxLatency: u32) HRESULT {
         return self.vtable.SetMaximumFrameLatency(self, MaxLatency);
     }
-    pub fn GetMaximumFrameLatency(self: *const IDirect3DDevice9Ex, pMaxLatency: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetMaximumFrameLatency(self: *const IDirect3DDevice9Ex, pMaxLatency: ?*u32) HRESULT {
         return self.vtable.GetMaximumFrameLatency(self, pMaxLatency);
     }
-    pub fn CheckDeviceState(self: *const IDirect3DDevice9Ex, hDestinationWindow: ?HWND) callconv(.Inline) HRESULT {
+    pub inline fn CheckDeviceState(self: *const IDirect3DDevice9Ex, hDestinationWindow: ?HWND) HRESULT {
         return self.vtable.CheckDeviceState(self, hDestinationWindow);
     }
-    pub fn CreateRenderTargetEx(self: *const IDirect3DDevice9Ex, Width: u32, Height: u32, Format: D3DFORMAT, MultiSample: D3DMULTISAMPLE_TYPE, MultisampleQuality: u32, Lockable: BOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE, Usage: u32) callconv(.Inline) HRESULT {
+    pub inline fn CreateRenderTargetEx(self: *const IDirect3DDevice9Ex, Width: u32, Height: u32, Format: D3DFORMAT, MultiSample: D3DMULTISAMPLE_TYPE, MultisampleQuality: u32, Lockable: BOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE, Usage: u32) HRESULT {
         return self.vtable.CreateRenderTargetEx(self, Width, Height, Format, MultiSample, MultisampleQuality, Lockable, ppSurface, pSharedHandle, Usage);
     }
-    pub fn CreateOffscreenPlainSurfaceEx(self: *const IDirect3DDevice9Ex, Width: u32, Height: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE, Usage: u32) callconv(.Inline) HRESULT {
+    pub inline fn CreateOffscreenPlainSurfaceEx(self: *const IDirect3DDevice9Ex, Width: u32, Height: u32, Format: D3DFORMAT, Pool: D3DPOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE, Usage: u32) HRESULT {
         return self.vtable.CreateOffscreenPlainSurfaceEx(self, Width, Height, Format, Pool, ppSurface, pSharedHandle, Usage);
     }
-    pub fn CreateDepthStencilSurfaceEx(self: *const IDirect3DDevice9Ex, Width: u32, Height: u32, Format: D3DFORMAT, MultiSample: D3DMULTISAMPLE_TYPE, MultisampleQuality: u32, Discard: BOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE, Usage: u32) callconv(.Inline) HRESULT {
+    pub inline fn CreateDepthStencilSurfaceEx(self: *const IDirect3DDevice9Ex, Width: u32, Height: u32, Format: D3DFORMAT, MultiSample: D3DMULTISAMPLE_TYPE, MultisampleQuality: u32, Discard: BOOL, ppSurface: ?*?*IDirect3DSurface9, pSharedHandle: ?*?HANDLE, Usage: u32) HRESULT {
         return self.vtable.CreateDepthStencilSurfaceEx(self, Width, Height, Format, MultiSample, MultisampleQuality, Discard, ppSurface, pSharedHandle, Usage);
     }
-    pub fn ResetEx(self: *const IDirect3DDevice9Ex, pPresentationParameters: ?*D3DPRESENT_PARAMETERS, pFullscreenDisplayMode: ?*D3DDISPLAYMODEEX) callconv(.Inline) HRESULT {
+    pub inline fn ResetEx(self: *const IDirect3DDevice9Ex, pPresentationParameters: ?*D3DPRESENT_PARAMETERS, pFullscreenDisplayMode: ?*D3DDISPLAYMODEEX) HRESULT {
         return self.vtable.ResetEx(self, pPresentationParameters, pFullscreenDisplayMode);
     }
-    pub fn GetDisplayModeEx(self: *const IDirect3DDevice9Ex, iSwapChain: u32, pMode: ?*D3DDISPLAYMODEEX, pRotation: ?*D3DDISPLAYROTATION) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplayModeEx(self: *const IDirect3DDevice9Ex, iSwapChain: u32, pMode: ?*D3DDISPLAYMODEEX, pRotation: ?*D3DDISPLAYROTATION) HRESULT {
         return self.vtable.GetDisplayModeEx(self, iSwapChain, pMode, pRotation);
     }
 };
@@ -4369,40 +4364,35 @@ pub const IID_IDirect3DSwapChain9Ex = &IID_IDirect3DSwapChain9Ex_Value;
 pub const IDirect3DSwapChain9Ex = extern union {
     pub const VTable = extern struct {
         base: IDirect3DSwapChain9.VTable,
-        GetLastPresentCount: *const fn(
+        GetLastPresentCount: *const fn (
             self: *const IDirect3DSwapChain9Ex,
             pLastPresentCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPresentStats: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPresentStats: *const fn (
             self: *const IDirect3DSwapChain9Ex,
             pPresentationStatistics: ?*D3DPRESENTSTATS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplayModeEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplayModeEx: *const fn (
             self: *const IDirect3DSwapChain9Ex,
             pMode: ?*D3DDISPLAYMODEEX,
             pRotation: ?*D3DDISPLAYROTATION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDirect3DSwapChain9: IDirect3DSwapChain9,
     IUnknown: IUnknown,
-    pub fn GetLastPresentCount(self: *const IDirect3DSwapChain9Ex, pLastPresentCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetLastPresentCount(self: *const IDirect3DSwapChain9Ex, pLastPresentCount: ?*u32) HRESULT {
         return self.vtable.GetLastPresentCount(self, pLastPresentCount);
     }
-    pub fn GetPresentStats(self: *const IDirect3DSwapChain9Ex, pPresentationStatistics: ?*D3DPRESENTSTATS) callconv(.Inline) HRESULT {
+    pub inline fn GetPresentStats(self: *const IDirect3DSwapChain9Ex, pPresentationStatistics: ?*D3DPRESENTSTATS) HRESULT {
         return self.vtable.GetPresentStats(self, pPresentationStatistics);
     }
-    pub fn GetDisplayModeEx(self: *const IDirect3DSwapChain9Ex, pMode: ?*D3DDISPLAYMODEEX, pRotation: ?*D3DDISPLAYROTATION) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplayModeEx(self: *const IDirect3DSwapChain9Ex, pMode: ?*D3DDISPLAYMODEEX, pRotation: ?*D3DDISPLAYROTATION) HRESULT {
         return self.vtable.GetDisplayModeEx(self, pMode, pRotation);
     }
 };
 
-
-
-
-
-
-pub const D3DADAPTER_IDENTIFIER9 = switch(@import("../zig.zig").arch) {
+pub const D3DADAPTER_IDENTIFIER9 = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         Driver: [512]CHAR,
         Description: [512]CHAR,
@@ -4428,7 +4418,7 @@ pub const D3DADAPTER_IDENTIFIER9 = switch(@import("../zig.zig").arch) {
         WHQLLevel: u32 align(4),
     },
 };
-pub const D3DMEMORYPRESSURE = switch(@import("../zig.zig").arch) {
+pub const D3DMEMORYPRESSURE = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         BytesEvictedFromProcess: u64,
         SizeOfInefficientAllocation: u64,
@@ -4440,7 +4430,7 @@ pub const D3DMEMORYPRESSURE = switch(@import("../zig.zig").arch) {
         LevelOfEfficiency: u32 align(4),
     },
 };
-pub const D3DPRESENTSTATS = switch(@import("../zig.zig").arch) {
+pub const D3DPRESENTSTATS = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         PresentCount: u32,
         PresentRefreshCount: u32,
@@ -4456,7 +4446,7 @@ pub const D3DPRESENTSTATS = switch(@import("../zig.zig").arch) {
         SyncGPUTime: LARGE_INTEGER align(4),
     },
 };
-pub const D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT = switch(@import("../zig.zig").arch) {
+pub const D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         Output: D3DAUTHENTICATEDCHANNEL_QUERY_OUTPUT,
         DeviceHandle: ?HANDLE,
@@ -4472,7 +4462,7 @@ pub const D3DAUTHENTICATEDCHANNEL_QUERYOUTPUTID_OUTPUT = switch(@import("../zig.
         OutputID: u64 align(4),
     },
 };
-pub const D3DAES_CTR_IV = switch(@import("../zig.zig").arch) {
+pub const D3DAES_CTR_IV = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         IV: u64,
         Count: u64,
@@ -4488,41 +4478,37 @@ pub const D3DAES_CTR_IV = switch(@import("../zig.zig").arch) {
 //--------------------------------------------------------------------------------
 pub extern "d3d9" fn Direct3DCreate9(
     SDKVersion: u32,
-) callconv(@import("std").os.windows.WINAPI) ?*IDirect3D9;
+) callconv(.winapi) ?*IDirect3D9;
 
 pub extern "d3d9" fn D3DPERF_BeginEvent(
     col: u32,
     wszName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub extern "d3d9" fn D3DPERF_EndEvent(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "d3d9" fn D3DPERF_EndEvent() callconv(.winapi) i32;
 
 pub extern "d3d9" fn D3DPERF_SetMarker(
     col: u32,
     wszName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "d3d9" fn D3DPERF_SetRegion(
     col: u32,
     wszName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub extern "d3d9" fn D3DPERF_QueryRepeatFrame(
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+pub extern "d3d9" fn D3DPERF_QueryRepeatFrame() callconv(.winapi) BOOL;
 
 pub extern "d3d9" fn D3DPERF_SetOptions(
     dwOptions: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub extern "d3d9" fn D3DPERF_GetStatus(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "d3d9" fn D3DPERF_GetStatus() callconv(.winapi) u32;
 
 pub extern "d3d9" fn Direct3DCreate9Ex(
     SDKVersion: u32,
     param1: ?*?*IDirect3D9Ex,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -4550,9 +4536,7 @@ const RECT = @import("../foundation.zig").RECT;
 const RGNDATA = @import("../graphics/gdi.zig").RGNDATA;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -135,47 +135,47 @@ pub const MapiMessageW = extern struct {
     lpFiles: ?*MapiFileDescW,
 };
 
-pub const LPMAPILOGON = *const fn(
+pub const LPMAPILOGON = *const fn (
     ulUIParam: usize,
     lpszProfileName: ?PSTR,
     lpszPassword: ?PSTR,
     flFlags: u32,
     ulReserved: u32,
     lplhSession: ?*usize,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPILOGOFF = *const fn(
+pub const LPMAPILOGOFF = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     flFlags: u32,
     ulReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPISENDMAIL = *const fn(
+pub const LPMAPISENDMAIL = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     lpMessage: ?*MapiMessage,
     flFlags: u32,
     ulReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPISENDMAILW = *const fn(
+pub const LPMAPISENDMAILW = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     lpMessage: ?*MapiMessageW,
     flFlags: u32,
     ulReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPISENDDOCUMENTS = *const fn(
+pub const LPMAPISENDDOCUMENTS = *const fn (
     ulUIParam: usize,
     lpszDelimChar: ?PSTR,
     lpszFilePaths: ?PSTR,
     lpszFileNames: ?PSTR,
     ulReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPIFINDNEXT = *const fn(
+pub const LPMAPIFINDNEXT = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     lpszMessageType: ?PSTR,
@@ -183,39 +183,39 @@ pub const LPMAPIFINDNEXT = *const fn(
     flFlags: u32,
     ulReserved: u32,
     lpszMessageID: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPIREADMAIL = *const fn(
+pub const LPMAPIREADMAIL = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     lpszMessageID: ?PSTR,
     flFlags: u32,
     ulReserved: u32,
     lppMessage: ?*?*MapiMessage,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPISAVEMAIL = *const fn(
+pub const LPMAPISAVEMAIL = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     lpMessage: ?*MapiMessage,
     flFlags: u32,
     ulReserved: u32,
     lpszMessageID: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPIDELETEMAIL = *const fn(
+pub const LPMAPIDELETEMAIL = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     lpszMessageID: ?PSTR,
     flFlags: u32,
     ulReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPIFREEBUFFER = *const fn(
+pub const LPMAPIFREEBUFFER = *const fn (
     pv: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPIADDRESS = *const fn(
+pub const LPMAPIADDRESS = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     lpszCaption: ?PSTR,
@@ -227,33 +227,31 @@ pub const LPMAPIADDRESS = *const fn(
     ulReserved: u32,
     lpnNewRecips: ?*u32,
     lppNewRecips: ?*?*MapiRecipDesc,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPIDETAILS = *const fn(
+pub const LPMAPIDETAILS = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     lpRecip: ?*MapiRecipDesc,
     flFlags: u32,
     ulReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const LPMAPIRESOLVENAME = *const fn(
+pub const LPMAPIRESOLVENAME = *const fn (
     lhSession: usize,
     ulUIParam: usize,
     lpszName: ?PSTR,
     flFlags: u32,
     ulReserved: u32,
     lppRecip: ?*?*MapiRecipDesc,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (1)
 //--------------------------------------------------------------------------------
 pub extern "mapi32" fn MAPIFreeBuffer(
     pv: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -266,23 +264,47 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "LPMAPILOGON")) { _ = LPMAPILOGON; }
-    if (@hasDecl(@This(), "LPMAPILOGOFF")) { _ = LPMAPILOGOFF; }
-    if (@hasDecl(@This(), "LPMAPISENDMAIL")) { _ = LPMAPISENDMAIL; }
-    if (@hasDecl(@This(), "LPMAPISENDMAILW")) { _ = LPMAPISENDMAILW; }
-    if (@hasDecl(@This(), "LPMAPISENDDOCUMENTS")) { _ = LPMAPISENDDOCUMENTS; }
-    if (@hasDecl(@This(), "LPMAPIFINDNEXT")) { _ = LPMAPIFINDNEXT; }
-    if (@hasDecl(@This(), "LPMAPIREADMAIL")) { _ = LPMAPIREADMAIL; }
-    if (@hasDecl(@This(), "LPMAPISAVEMAIL")) { _ = LPMAPISAVEMAIL; }
-    if (@hasDecl(@This(), "LPMAPIDELETEMAIL")) { _ = LPMAPIDELETEMAIL; }
-    if (@hasDecl(@This(), "LPMAPIFREEBUFFER")) { _ = LPMAPIFREEBUFFER; }
-    if (@hasDecl(@This(), "LPMAPIADDRESS")) { _ = LPMAPIADDRESS; }
-    if (@hasDecl(@This(), "LPMAPIDETAILS")) { _ = LPMAPIDETAILS; }
-    if (@hasDecl(@This(), "LPMAPIRESOLVENAME")) { _ = LPMAPIRESOLVENAME; }
+    if (@hasDecl(@This(), "LPMAPILOGON")) {
+        _ = LPMAPILOGON;
+    }
+    if (@hasDecl(@This(), "LPMAPILOGOFF")) {
+        _ = LPMAPILOGOFF;
+    }
+    if (@hasDecl(@This(), "LPMAPISENDMAIL")) {
+        _ = LPMAPISENDMAIL;
+    }
+    if (@hasDecl(@This(), "LPMAPISENDMAILW")) {
+        _ = LPMAPISENDMAILW;
+    }
+    if (@hasDecl(@This(), "LPMAPISENDDOCUMENTS")) {
+        _ = LPMAPISENDDOCUMENTS;
+    }
+    if (@hasDecl(@This(), "LPMAPIFINDNEXT")) {
+        _ = LPMAPIFINDNEXT;
+    }
+    if (@hasDecl(@This(), "LPMAPIREADMAIL")) {
+        _ = LPMAPIREADMAIL;
+    }
+    if (@hasDecl(@This(), "LPMAPISAVEMAIL")) {
+        _ = LPMAPISAVEMAIL;
+    }
+    if (@hasDecl(@This(), "LPMAPIDELETEMAIL")) {
+        _ = LPMAPIDELETEMAIL;
+    }
+    if (@hasDecl(@This(), "LPMAPIFREEBUFFER")) {
+        _ = LPMAPIFREEBUFFER;
+    }
+    if (@hasDecl(@This(), "LPMAPIADDRESS")) {
+        _ = LPMAPIADDRESS;
+    }
+    if (@hasDecl(@This(), "LPMAPIDETAILS")) {
+        _ = LPMAPIDETAILS;
+    }
+    if (@hasDecl(@This(), "LPMAPIRESOLVENAME")) {
+        _ = LPMAPIRESOLVENAME;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -331,54 +331,54 @@ pub const IID_IPersistMoniker = &IID_IPersistMoniker_Value;
 pub const IPersistMoniker = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetClassID: *const fn(
+        GetClassID: *const fn (
             self: *const IPersistMoniker,
             pClassID: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsDirty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsDirty: *const fn (
             self: *const IPersistMoniker,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Load: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Load: *const fn (
             self: *const IPersistMoniker,
             fFullyAvailable: BOOL,
             pimkName: ?*IMoniker,
             pibc: ?*IBindCtx,
             grfMode: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Save: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Save: *const fn (
             self: *const IPersistMoniker,
             pimkName: ?*IMoniker,
             pbc: ?*IBindCtx,
             fRemember: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SaveCompleted: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SaveCompleted: *const fn (
             self: *const IPersistMoniker,
             pimkName: ?*IMoniker,
             pibc: ?*IBindCtx,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCurMoniker: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCurMoniker: *const fn (
             self: *const IPersistMoniker,
             ppimkName: ?*?*IMoniker,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetClassID(self: *const IPersistMoniker, pClassID: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn GetClassID(self: *const IPersistMoniker, pClassID: ?*Guid) HRESULT {
         return self.vtable.GetClassID(self, pClassID);
     }
-    pub fn IsDirty(self: *const IPersistMoniker) callconv(.Inline) HRESULT {
+    pub inline fn IsDirty(self: *const IPersistMoniker) HRESULT {
         return self.vtable.IsDirty(self);
     }
-    pub fn Load(self: *const IPersistMoniker, fFullyAvailable: BOOL, pimkName: ?*IMoniker, pibc: ?*IBindCtx, grfMode: u32) callconv(.Inline) HRESULT {
+    pub inline fn Load(self: *const IPersistMoniker, fFullyAvailable: BOOL, pimkName: ?*IMoniker, pibc: ?*IBindCtx, grfMode: u32) HRESULT {
         return self.vtable.Load(self, fFullyAvailable, pimkName, pibc, grfMode);
     }
-    pub fn Save(self: *const IPersistMoniker, pimkName: ?*IMoniker, pbc: ?*IBindCtx, fRemember: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn Save(self: *const IPersistMoniker, pimkName: ?*IMoniker, pbc: ?*IBindCtx, fRemember: BOOL) HRESULT {
         return self.vtable.Save(self, pimkName, pbc, fRemember);
     }
-    pub fn SaveCompleted(self: *const IPersistMoniker, pimkName: ?*IMoniker, pibc: ?*IBindCtx) callconv(.Inline) HRESULT {
+    pub inline fn SaveCompleted(self: *const IPersistMoniker, pimkName: ?*IMoniker, pibc: ?*IBindCtx) HRESULT {
         return self.vtable.SaveCompleted(self, pimkName, pibc);
     }
-    pub fn GetCurMoniker(self: *const IPersistMoniker, ppimkName: ?*?*IMoniker) callconv(.Inline) HRESULT {
+    pub inline fn GetCurMoniker(self: *const IPersistMoniker, ppimkName: ?*?*IMoniker) HRESULT {
         return self.vtable.GetCurMoniker(self, ppimkName);
     }
 };
@@ -401,15 +401,15 @@ pub const IID_IMonikerProp = &IID_IMonikerProp_Value;
 pub const IMonikerProp = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        PutProperty: *const fn(
+        PutProperty: *const fn (
             self: *const IMonikerProp,
             mkp: MONIKERPROPERTY,
             val: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn PutProperty(self: *const IMonikerProp, mkp: MONIKERPROPERTY, val: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn PutProperty(self: *const IMonikerProp, mkp: MONIKERPROPERTY, val: ?[*:0]const u16) HRESULT {
         return self.vtable.PutProperty(self, mkp, val);
     }
 };
@@ -419,16 +419,16 @@ pub const IID_IBindProtocol = &IID_IBindProtocol_Value;
 pub const IBindProtocol = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateBinding: *const fn(
+        CreateBinding: *const fn (
             self: *const IBindProtocol,
             szUrl: ?[*:0]const u16,
             pbc: ?*IBindCtx,
             ppb: ?*?*IBinding,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateBinding(self: *const IBindProtocol, szUrl: ?[*:0]const u16, pbc: ?*IBindCtx, ppb: ?*?*IBinding) callconv(.Inline) HRESULT {
+    pub inline fn CreateBinding(self: *const IBindProtocol, szUrl: ?[*:0]const u16, pbc: ?*IBindCtx, ppb: ?*?*IBinding) HRESULT {
         return self.vtable.CreateBinding(self, szUrl, pbc, ppb);
     }
 };
@@ -840,27 +840,27 @@ pub const IID_IHttpNegotiate = &IID_IHttpNegotiate_Value;
 pub const IHttpNegotiate = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        BeginningTransaction: *const fn(
+        BeginningTransaction: *const fn (
             self: *const IHttpNegotiate,
             szURL: ?[*:0]const u16,
             szHeaders: ?[*:0]const u16,
             dwReserved: u32,
             pszAdditionalHeaders: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnResponse: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnResponse: *const fn (
             self: *const IHttpNegotiate,
             dwResponseCode: u32,
             szResponseHeaders: ?[*:0]const u16,
             szRequestHeaders: ?[*:0]const u16,
             pszAdditionalRequestHeaders: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn BeginningTransaction(self: *const IHttpNegotiate, szURL: ?[*:0]const u16, szHeaders: ?[*:0]const u16, dwReserved: u32, pszAdditionalHeaders: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn BeginningTransaction(self: *const IHttpNegotiate, szURL: ?[*:0]const u16, szHeaders: ?[*:0]const u16, dwReserved: u32, pszAdditionalHeaders: ?*?PWSTR) HRESULT {
         return self.vtable.BeginningTransaction(self, szURL, szHeaders, dwReserved, pszAdditionalHeaders);
     }
-    pub fn OnResponse(self: *const IHttpNegotiate, dwResponseCode: u32, szResponseHeaders: ?[*:0]const u16, szRequestHeaders: ?[*:0]const u16, pszAdditionalRequestHeaders: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn OnResponse(self: *const IHttpNegotiate, dwResponseCode: u32, szResponseHeaders: ?[*:0]const u16, szRequestHeaders: ?[*:0]const u16, pszAdditionalRequestHeaders: ?*?PWSTR) HRESULT {
         return self.vtable.OnResponse(self, dwResponseCode, szResponseHeaders, szRequestHeaders, pszAdditionalRequestHeaders);
     }
 };
@@ -870,17 +870,17 @@ pub const IID_IHttpNegotiate2 = &IID_IHttpNegotiate2_Value;
 pub const IHttpNegotiate2 = extern union {
     pub const VTable = extern struct {
         base: IHttpNegotiate.VTable,
-        GetRootSecurityId: *const fn(
+        GetRootSecurityId: *const fn (
             self: *const IHttpNegotiate2,
             pbSecurityId: [*:0]u8,
             pcbSecurityId: ?*u32,
             dwReserved: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IHttpNegotiate: IHttpNegotiate,
     IUnknown: IUnknown,
-    pub fn GetRootSecurityId(self: *const IHttpNegotiate2, pbSecurityId: [*:0]u8, pcbSecurityId: ?*u32, dwReserved: usize) callconv(.Inline) HRESULT {
+    pub inline fn GetRootSecurityId(self: *const IHttpNegotiate2, pbSecurityId: [*:0]u8, pcbSecurityId: ?*u32, dwReserved: usize) HRESULT {
         return self.vtable.GetRootSecurityId(self, pbSecurityId, pcbSecurityId, dwReserved);
     }
 };
@@ -890,17 +890,17 @@ pub const IID_IHttpNegotiate3 = &IID_IHttpNegotiate3_Value;
 pub const IHttpNegotiate3 = extern union {
     pub const VTable = extern struct {
         base: IHttpNegotiate2.VTable,
-        GetSerializedClientCertContext: *const fn(
+        GetSerializedClientCertContext: *const fn (
             self: *const IHttpNegotiate3,
             ppbCert: [*]?*u8,
             pcbCert: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IHttpNegotiate2: IHttpNegotiate2,
     IHttpNegotiate: IHttpNegotiate,
     IUnknown: IUnknown,
-    pub fn GetSerializedClientCertContext(self: *const IHttpNegotiate3, ppbCert: [*]?*u8, pcbCert: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSerializedClientCertContext(self: *const IHttpNegotiate3, ppbCert: [*]?*u8, pcbCert: ?*u32) HRESULT {
         return self.vtable.GetSerializedClientCertContext(self, ppbCert, pcbCert);
     }
 };
@@ -910,22 +910,22 @@ pub const IID_IWinInetFileStream = &IID_IWinInetFileStream_Value;
 pub const IWinInetFileStream = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetHandleForUnlock: *const fn(
+        SetHandleForUnlock: *const fn (
             self: *const IWinInetFileStream,
             hWinInetLockHandle: usize,
             dwReserved: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDeleteFile: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDeleteFile: *const fn (
             self: *const IWinInetFileStream,
             dwReserved: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetHandleForUnlock(self: *const IWinInetFileStream, hWinInetLockHandle: usize, dwReserved: usize) callconv(.Inline) HRESULT {
+    pub inline fn SetHandleForUnlock(self: *const IWinInetFileStream, hWinInetLockHandle: usize, dwReserved: usize) HRESULT {
         return self.vtable.SetHandleForUnlock(self, hWinInetLockHandle, dwReserved);
     }
-    pub fn SetDeleteFile(self: *const IWinInetFileStream, dwReserved: usize) callconv(.Inline) HRESULT {
+    pub inline fn SetDeleteFile(self: *const IWinInetFileStream, dwReserved: usize) HRESULT {
         return self.vtable.SetDeleteFile(self, dwReserved);
     }
 };
@@ -935,15 +935,15 @@ pub const IID_IWindowForBindingUI = &IID_IWindowForBindingUI_Value;
 pub const IWindowForBindingUI = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetWindow: *const fn(
+        GetWindow: *const fn (
             self: *const IWindowForBindingUI,
             rguidReason: ?*const Guid,
             phwnd: ?*?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetWindow(self: *const IWindowForBindingUI, rguidReason: ?*const Guid, phwnd: ?*?HWND) callconv(.Inline) HRESULT {
+    pub inline fn GetWindow(self: *const IWindowForBindingUI, rguidReason: ?*const Guid, phwnd: ?*?HWND) HRESULT {
         return self.vtable.GetWindow(self, rguidReason, phwnd);
     }
 };
@@ -976,18 +976,18 @@ pub const IID_ICodeInstall = &IID_ICodeInstall_Value;
 pub const ICodeInstall = extern union {
     pub const VTable = extern struct {
         base: IWindowForBindingUI.VTable,
-        OnCodeInstallProblem: *const fn(
+        OnCodeInstallProblem: *const fn (
             self: *const ICodeInstall,
             ulStatusCode: u32,
             szDestination: ?[*:0]const u16,
             szSource: ?[*:0]const u16,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWindowForBindingUI: IWindowForBindingUI,
     IUnknown: IUnknown,
-    pub fn OnCodeInstallProblem(self: *const ICodeInstall, ulStatusCode: u32, szDestination: ?[*:0]const u16, szSource: ?[*:0]const u16, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn OnCodeInstallProblem(self: *const ICodeInstall, ulStatusCode: u32, szDestination: ?[*:0]const u16, szSource: ?[*:0]const u16, dwReserved: u32) HRESULT {
         return self.vtable.OnCodeInstallProblem(self, ulStatusCode, szDestination, szSource, dwReserved);
     }
 };
@@ -1010,14 +1010,14 @@ pub const IID_IUriContainer = &IID_IUriContainer_Value;
 pub const IUriContainer = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetIUri: *const fn(
+        GetIUri: *const fn (
             self: *const IUriContainer,
             ppIUri: ?*?*IUri,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetIUri(self: *const IUriContainer, ppIUri: ?*?*IUri) callconv(.Inline) HRESULT {
+    pub inline fn GetIUri(self: *const IUriContainer, ppIUri: ?*?*IUri) HRESULT {
         return self.vtable.GetIUri(self, ppIUri);
     }
 };
@@ -1027,25 +1027,25 @@ pub const IID_IUriBuilderFactory = &IID_IUriBuilderFactory_Value;
 pub const IUriBuilderFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateIUriBuilder: *const fn(
+        CreateIUriBuilder: *const fn (
             self: *const IUriBuilderFactory,
             dwFlags: u32,
             dwReserved: usize,
             ppIUriBuilder: ?*?*IUriBuilder,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateInitializedIUriBuilder: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateInitializedIUriBuilder: *const fn (
             self: *const IUriBuilderFactory,
             dwFlags: u32,
             dwReserved: usize,
             ppIUriBuilder: ?*?*IUriBuilder,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateIUriBuilder(self: *const IUriBuilderFactory, dwFlags: u32, dwReserved: usize, ppIUriBuilder: ?*?*IUriBuilder) callconv(.Inline) HRESULT {
+    pub inline fn CreateIUriBuilder(self: *const IUriBuilderFactory, dwFlags: u32, dwReserved: usize, ppIUriBuilder: ?*?*IUriBuilder) HRESULT {
         return self.vtable.CreateIUriBuilder(self, dwFlags, dwReserved, ppIUriBuilder);
     }
-    pub fn CreateInitializedIUriBuilder(self: *const IUriBuilderFactory, dwFlags: u32, dwReserved: usize, ppIUriBuilder: ?*?*IUriBuilder) callconv(.Inline) HRESULT {
+    pub inline fn CreateInitializedIUriBuilder(self: *const IUriBuilderFactory, dwFlags: u32, dwReserved: usize, ppIUriBuilder: ?*?*IUriBuilder) HRESULT {
         return self.vtable.CreateInitializedIUriBuilder(self, dwFlags, dwReserved, ppIUriBuilder);
     }
 };
@@ -1055,16 +1055,16 @@ pub const IID_IWinInetInfo = &IID_IWinInetInfo_Value;
 pub const IWinInetInfo = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        QueryOption: *const fn(
+        QueryOption: *const fn (
             self: *const IWinInetInfo,
             dwOption: u32,
             pBuffer: [*]u8,
             pcbBuf: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn QueryOption(self: *const IWinInetInfo, dwOption: u32, pBuffer: [*]u8, pcbBuf: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn QueryOption(self: *const IWinInetInfo, dwOption: u32, pBuffer: [*]u8, pcbBuf: ?*u32) HRESULT {
         return self.vtable.QueryOption(self, dwOption, pBuffer, pcbBuf);
     }
 };
@@ -1074,15 +1074,15 @@ pub const IID_IHttpSecurity = &IID_IHttpSecurity_Value;
 pub const IHttpSecurity = extern union {
     pub const VTable = extern struct {
         base: IWindowForBindingUI.VTable,
-        OnSecurityProblem: *const fn(
+        OnSecurityProblem: *const fn (
             self: *const IHttpSecurity,
             dwProblem: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWindowForBindingUI: IWindowForBindingUI,
     IUnknown: IUnknown,
-    pub fn OnSecurityProblem(self: *const IHttpSecurity, dwProblem: u32) callconv(.Inline) HRESULT {
+    pub inline fn OnSecurityProblem(self: *const IHttpSecurity, dwProblem: u32) HRESULT {
         return self.vtable.OnSecurityProblem(self, dwProblem);
     }
 };
@@ -1092,19 +1092,19 @@ pub const IID_IWinInetHttpInfo = &IID_IWinInetHttpInfo_Value;
 pub const IWinInetHttpInfo = extern union {
     pub const VTable = extern struct {
         base: IWinInetInfo.VTable,
-        QueryInfo: *const fn(
+        QueryInfo: *const fn (
             self: *const IWinInetHttpInfo,
             dwOption: u32,
             pBuffer: [*]u8,
             pcbBuf: ?*u32,
             pdwFlags: ?*u32,
             pdwReserved: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWinInetInfo: IWinInetInfo,
     IUnknown: IUnknown,
-    pub fn QueryInfo(self: *const IWinInetHttpInfo, dwOption: u32, pBuffer: [*]u8, pcbBuf: ?*u32, pdwFlags: ?*u32, pdwReserved: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn QueryInfo(self: *const IWinInetHttpInfo, dwOption: u32, pBuffer: [*]u8, pcbBuf: ?*u32, pdwFlags: ?*u32, pdwReserved: ?*u32) HRESULT {
         return self.vtable.QueryInfo(self, dwOption, pBuffer, pcbBuf, pdwFlags, pdwReserved);
     }
 };
@@ -1114,16 +1114,16 @@ pub const IID_IWinInetHttpTimeouts = &IID_IWinInetHttpTimeouts_Value;
 pub const IWinInetHttpTimeouts = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetRequestTimeouts: *const fn(
+        GetRequestTimeouts: *const fn (
             self: *const IWinInetHttpTimeouts,
             pdwConnectTimeout: ?*u32,
             pdwSendTimeout: ?*u32,
             pdwReceiveTimeout: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetRequestTimeouts(self: *const IWinInetHttpTimeouts, pdwConnectTimeout: ?*u32, pdwSendTimeout: ?*u32, pdwReceiveTimeout: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetRequestTimeouts(self: *const IWinInetHttpTimeouts, pdwConnectTimeout: ?*u32, pdwSendTimeout: ?*u32, pdwReceiveTimeout: ?*u32) HRESULT {
         return self.vtable.GetRequestTimeouts(self, pdwConnectTimeout, pdwSendTimeout, pdwReceiveTimeout);
     }
 };
@@ -1133,18 +1133,18 @@ pub const IID_IWinInetCacheHints = &IID_IWinInetCacheHints_Value;
 pub const IWinInetCacheHints = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetCacheExtension: *const fn(
+        SetCacheExtension: *const fn (
             self: *const IWinInetCacheHints,
             pwzExt: ?[*:0]const u16,
             pszCacheFile: [*]u8,
             pcbCacheFile: ?*u32,
             pdwWinInetError: ?*u32,
             pdwReserved: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetCacheExtension(self: *const IWinInetCacheHints, pwzExt: ?[*:0]const u16, pszCacheFile: [*]u8, pcbCacheFile: ?*u32, pdwWinInetError: ?*u32, pdwReserved: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn SetCacheExtension(self: *const IWinInetCacheHints, pwzExt: ?[*:0]const u16, pszCacheFile: [*]u8, pcbCacheFile: ?*u32, pdwWinInetError: ?*u32, pdwReserved: ?*u32) HRESULT {
         return self.vtable.SetCacheExtension(self, pwzExt, pszCacheFile, pcbCacheFile, pdwWinInetError, pdwReserved);
     }
 };
@@ -1154,19 +1154,19 @@ pub const IID_IWinInetCacheHints2 = &IID_IWinInetCacheHints2_Value;
 pub const IWinInetCacheHints2 = extern union {
     pub const VTable = extern struct {
         base: IWinInetCacheHints.VTable,
-        SetCacheExtension2: *const fn(
+        SetCacheExtension2: *const fn (
             self: *const IWinInetCacheHints2,
             pwzExt: ?[*:0]const u16,
             pwzCacheFile: ?PWSTR,
             pcchCacheFile: ?*u32,
             pdwWinInetError: ?*u32,
             pdwReserved: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IWinInetCacheHints: IWinInetCacheHints,
     IUnknown: IUnknown,
-    pub fn SetCacheExtension2(self: *const IWinInetCacheHints2, pwzExt: ?[*:0]const u16, pwzCacheFile: ?PWSTR, pcchCacheFile: ?*u32, pdwWinInetError: ?*u32, pdwReserved: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn SetCacheExtension2(self: *const IWinInetCacheHints2, pwzExt: ?[*:0]const u16, pwzCacheFile: ?PWSTR, pcchCacheFile: ?*u32, pdwWinInetError: ?*u32, pdwReserved: ?*u32) HRESULT {
         return self.vtable.SetCacheExtension2(self, pwzExt, pwzCacheFile, pcchCacheFile, pdwWinInetError, pdwReserved);
     }
 };
@@ -1241,25 +1241,25 @@ pub const IID_IInternetBindInfo = &IID_IInternetBindInfo_Value;
 pub const IInternetBindInfo = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetBindInfo: *const fn(
+        GetBindInfo: *const fn (
             self: *const IInternetBindInfo,
             grfBINDF: ?*u32,
             pbindinfo: ?*BINDINFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetBindString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetBindString: *const fn (
             self: *const IInternetBindInfo,
             ulStringType: u32,
             ppwzStr: ?*?PWSTR,
             cEl: u32,
             pcElFetched: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetBindInfo(self: *const IInternetBindInfo, grfBINDF: ?*u32, pbindinfo: ?*BINDINFO) callconv(.Inline) HRESULT {
+    pub inline fn GetBindInfo(self: *const IInternetBindInfo, grfBINDF: ?*u32, pbindinfo: ?*BINDINFO) HRESULT {
         return self.vtable.GetBindInfo(self, grfBINDF, pbindinfo);
     }
-    pub fn GetBindString(self: *const IInternetBindInfo, ulStringType: u32, ppwzStr: ?*?PWSTR, cEl: u32, pcElFetched: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetBindString(self: *const IInternetBindInfo, ulStringType: u32, ppwzStr: ?*?PWSTR, cEl: u32, pcElFetched: ?*u32) HRESULT {
         return self.vtable.GetBindString(self, ulStringType, ppwzStr, cEl, pcElFetched);
     }
 };
@@ -1269,18 +1269,18 @@ pub const IID_IInternetBindInfoEx = &IID_IInternetBindInfoEx_Value;
 pub const IInternetBindInfoEx = extern union {
     pub const VTable = extern struct {
         base: IInternetBindInfo.VTable,
-        GetBindInfoEx: *const fn(
+        GetBindInfoEx: *const fn (
             self: *const IInternetBindInfoEx,
             grfBINDF: ?*u32,
             pbindinfo: ?*BINDINFO,
             grfBINDF2: ?*u32,
             pdwReserved: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInternetBindInfo: IInternetBindInfo,
     IUnknown: IUnknown,
-    pub fn GetBindInfoEx(self: *const IInternetBindInfoEx, grfBINDF: ?*u32, pbindinfo: ?*BINDINFO, grfBINDF2: ?*u32, pdwReserved: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetBindInfoEx(self: *const IInternetBindInfoEx, grfBINDF: ?*u32, pbindinfo: ?*BINDINFO, grfBINDF2: ?*u32, pdwReserved: ?*u32) HRESULT {
         return self.vtable.GetBindInfoEx(self, grfBINDF, pbindinfo, grfBINDF2, pdwReserved);
     }
 };
@@ -1336,52 +1336,52 @@ pub const IID_IInternetProtocolRoot = &IID_IInternetProtocolRoot_Value;
 pub const IInternetProtocolRoot = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Start: *const fn(
+        Start: *const fn (
             self: *const IInternetProtocolRoot,
             szUrl: ?[*:0]const u16,
             pOIProtSink: ?*IInternetProtocolSink,
             pOIBindInfo: ?*IInternetBindInfo,
             grfPI: u32,
             dwReserved: HANDLE_PTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Continue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Continue: *const fn (
             self: *const IInternetProtocolRoot,
             pProtocolData: ?*PROTOCOLDATA,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Abort: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Abort: *const fn (
             self: *const IInternetProtocolRoot,
             hrReason: HRESULT,
             dwOptions: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Terminate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Terminate: *const fn (
             self: *const IInternetProtocolRoot,
             dwOptions: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Suspend: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Suspend: *const fn (
             self: *const IInternetProtocolRoot,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Resume: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Resume: *const fn (
             self: *const IInternetProtocolRoot,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Start(self: *const IInternetProtocolRoot, szUrl: ?[*:0]const u16, pOIProtSink: ?*IInternetProtocolSink, pOIBindInfo: ?*IInternetBindInfo, grfPI: u32, dwReserved: HANDLE_PTR) callconv(.Inline) HRESULT {
+    pub inline fn Start(self: *const IInternetProtocolRoot, szUrl: ?[*:0]const u16, pOIProtSink: ?*IInternetProtocolSink, pOIBindInfo: ?*IInternetBindInfo, grfPI: u32, dwReserved: HANDLE_PTR) HRESULT {
         return self.vtable.Start(self, szUrl, pOIProtSink, pOIBindInfo, grfPI, dwReserved);
     }
-    pub fn Continue(self: *const IInternetProtocolRoot, pProtocolData: ?*PROTOCOLDATA) callconv(.Inline) HRESULT {
+    pub inline fn Continue(self: *const IInternetProtocolRoot, pProtocolData: ?*PROTOCOLDATA) HRESULT {
         return self.vtable.Continue(self, pProtocolData);
     }
-    pub fn Abort(self: *const IInternetProtocolRoot, hrReason: HRESULT, dwOptions: u32) callconv(.Inline) HRESULT {
+    pub inline fn Abort(self: *const IInternetProtocolRoot, hrReason: HRESULT, dwOptions: u32) HRESULT {
         return self.vtable.Abort(self, hrReason, dwOptions);
     }
-    pub fn Terminate(self: *const IInternetProtocolRoot, dwOptions: u32) callconv(.Inline) HRESULT {
+    pub inline fn Terminate(self: *const IInternetProtocolRoot, dwOptions: u32) HRESULT {
         return self.vtable.Terminate(self, dwOptions);
     }
-    pub fn Suspend(self: *const IInternetProtocolRoot) callconv(.Inline) HRESULT {
+    pub inline fn Suspend(self: *const IInternetProtocolRoot) HRESULT {
         return self.vtable.Suspend(self);
     }
-    pub fn Resume(self: *const IInternetProtocolRoot) callconv(.Inline) HRESULT {
+    pub inline fn Resume(self: *const IInternetProtocolRoot) HRESULT {
         return self.vtable.Resume(self);
     }
 };
@@ -1391,39 +1391,39 @@ pub const IID_IInternetProtocol = &IID_IInternetProtocol_Value;
 pub const IInternetProtocol = extern union {
     pub const VTable = extern struct {
         base: IInternetProtocolRoot.VTable,
-        Read: *const fn(
+        Read: *const fn (
             self: *const IInternetProtocol,
             pv: [*]u8,
             cb: u32,
             pcbRead: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Seek: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Seek: *const fn (
             self: *const IInternetProtocol,
             dlibMove: LARGE_INTEGER,
             dwOrigin: u32,
             plibNewPosition: ?*ULARGE_INTEGER,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockRequest: *const fn (
             self: *const IInternetProtocol,
             dwOptions: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockRequest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockRequest: *const fn (
             self: *const IInternetProtocol,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInternetProtocolRoot: IInternetProtocolRoot,
     IUnknown: IUnknown,
-    pub fn Read(self: *const IInternetProtocol, pv: [*]u8, cb: u32, pcbRead: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Read(self: *const IInternetProtocol, pv: [*]u8, cb: u32, pcbRead: ?*u32) HRESULT {
         return self.vtable.Read(self, pv, cb, pcbRead);
     }
-    pub fn Seek(self: *const IInternetProtocol, dlibMove: LARGE_INTEGER, dwOrigin: u32, plibNewPosition: ?*ULARGE_INTEGER) callconv(.Inline) HRESULT {
+    pub inline fn Seek(self: *const IInternetProtocol, dlibMove: LARGE_INTEGER, dwOrigin: u32, plibNewPosition: ?*ULARGE_INTEGER) HRESULT {
         return self.vtable.Seek(self, dlibMove, dwOrigin, plibNewPosition);
     }
-    pub fn LockRequest(self: *const IInternetProtocol, dwOptions: u32) callconv(.Inline) HRESULT {
+    pub inline fn LockRequest(self: *const IInternetProtocol, dwOptions: u32) HRESULT {
         return self.vtable.LockRequest(self, dwOptions);
     }
-    pub fn UnlockRequest(self: *const IInternetProtocol) callconv(.Inline) HRESULT {
+    pub inline fn UnlockRequest(self: *const IInternetProtocol) HRESULT {
         return self.vtable.UnlockRequest(self);
     }
 };
@@ -1433,20 +1433,20 @@ pub const IID_IInternetProtocolEx = &IID_IInternetProtocolEx_Value;
 pub const IInternetProtocolEx = extern union {
     pub const VTable = extern struct {
         base: IInternetProtocol.VTable,
-        StartEx: *const fn(
+        StartEx: *const fn (
             self: *const IInternetProtocolEx,
             pUri: ?*IUri,
             pOIProtSink: ?*IInternetProtocolSink,
             pOIBindInfo: ?*IInternetBindInfo,
             grfPI: u32,
             dwReserved: HANDLE_PTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInternetProtocol: IInternetProtocol,
     IInternetProtocolRoot: IInternetProtocolRoot,
     IUnknown: IUnknown,
-    pub fn StartEx(self: *const IInternetProtocolEx, pUri: ?*IUri, pOIProtSink: ?*IInternetProtocolSink, pOIBindInfo: ?*IInternetBindInfo, grfPI: u32, dwReserved: HANDLE_PTR) callconv(.Inline) HRESULT {
+    pub inline fn StartEx(self: *const IInternetProtocolEx, pUri: ?*IUri, pOIProtSink: ?*IInternetProtocolSink, pOIBindInfo: ?*IInternetBindInfo, grfPI: u32, dwReserved: HANDLE_PTR) HRESULT {
         return self.vtable.StartEx(self, pUri, pOIProtSink, pOIBindInfo, grfPI, dwReserved);
     }
 };
@@ -1456,40 +1456,40 @@ pub const IID_IInternetProtocolSink = &IID_IInternetProtocolSink_Value;
 pub const IInternetProtocolSink = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Switch: *const fn(
+        Switch: *const fn (
             self: *const IInternetProtocolSink,
             pProtocolData: ?*PROTOCOLDATA,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReportProgress: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReportProgress: *const fn (
             self: *const IInternetProtocolSink,
             ulStatusCode: u32,
             szStatusText: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReportData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReportData: *const fn (
             self: *const IInternetProtocolSink,
             grfBSCF: u32,
             ulProgress: u32,
             ulProgressMax: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReportResult: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReportResult: *const fn (
             self: *const IInternetProtocolSink,
             hrResult: HRESULT,
             dwError: u32,
             szResult: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Switch(self: *const IInternetProtocolSink, pProtocolData: ?*PROTOCOLDATA) callconv(.Inline) HRESULT {
+    pub inline fn Switch(self: *const IInternetProtocolSink, pProtocolData: ?*PROTOCOLDATA) HRESULT {
         return self.vtable.Switch(self, pProtocolData);
     }
-    pub fn ReportProgress(self: *const IInternetProtocolSink, ulStatusCode: u32, szStatusText: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn ReportProgress(self: *const IInternetProtocolSink, ulStatusCode: u32, szStatusText: ?[*:0]const u16) HRESULT {
         return self.vtable.ReportProgress(self, ulStatusCode, szStatusText);
     }
-    pub fn ReportData(self: *const IInternetProtocolSink, grfBSCF: u32, ulProgress: u32, ulProgressMax: u32) callconv(.Inline) HRESULT {
+    pub inline fn ReportData(self: *const IInternetProtocolSink, grfBSCF: u32, ulProgress: u32, ulProgressMax: u32) HRESULT {
         return self.vtable.ReportData(self, grfBSCF, ulProgress, ulProgressMax);
     }
-    pub fn ReportResult(self: *const IInternetProtocolSink, hrResult: HRESULT, dwError: u32, szResult: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn ReportResult(self: *const IInternetProtocolSink, hrResult: HRESULT, dwError: u32, szResult: ?[*:0]const u16) HRESULT {
         return self.vtable.ReportResult(self, hrResult, dwError, szResult);
     }
 };
@@ -1499,26 +1499,26 @@ pub const IID_IInternetProtocolSinkStackable = &IID_IInternetProtocolSinkStackab
 pub const IInternetProtocolSinkStackable = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SwitchSink: *const fn(
+        SwitchSink: *const fn (
             self: *const IInternetProtocolSinkStackable,
             pOIProtSink: ?*IInternetProtocolSink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CommitSwitch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CommitSwitch: *const fn (
             self: *const IInternetProtocolSinkStackable,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RollbackSwitch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RollbackSwitch: *const fn (
             self: *const IInternetProtocolSinkStackable,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SwitchSink(self: *const IInternetProtocolSinkStackable, pOIProtSink: ?*IInternetProtocolSink) callconv(.Inline) HRESULT {
+    pub inline fn SwitchSink(self: *const IInternetProtocolSinkStackable, pOIProtSink: ?*IInternetProtocolSink) HRESULT {
         return self.vtable.SwitchSink(self, pOIProtSink);
     }
-    pub fn CommitSwitch(self: *const IInternetProtocolSinkStackable) callconv(.Inline) HRESULT {
+    pub inline fn CommitSwitch(self: *const IInternetProtocolSinkStackable) HRESULT {
         return self.vtable.CommitSwitch(self);
     }
-    pub fn RollbackSwitch(self: *const IInternetProtocolSinkStackable) callconv(.Inline) HRESULT {
+    pub inline fn RollbackSwitch(self: *const IInternetProtocolSinkStackable) HRESULT {
         return self.vtable.RollbackSwitch(self);
     }
 };
@@ -1535,7 +1535,7 @@ pub const IID_IInternetSession = &IID_IInternetSession_Value;
 pub const IInternetSession = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RegisterNameSpace: *const fn(
+        RegisterNameSpace: *const fn (
             self: *const IInternetSession,
             pCF: ?*IClassFactory,
             rclsid: ?*const Guid,
@@ -1543,24 +1543,24 @@ pub const IInternetSession = extern union {
             cPatterns: u32,
             ppwzPatterns: ?*const ?PWSTR,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnregisterNameSpace: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnregisterNameSpace: *const fn (
             self: *const IInternetSession,
             pCF: ?*IClassFactory,
             pszProtocol: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RegisterMimeFilter: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RegisterMimeFilter: *const fn (
             self: *const IInternetSession,
             pCF: ?*IClassFactory,
             rclsid: ?*const Guid,
             pwzType: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnregisterMimeFilter: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnregisterMimeFilter: *const fn (
             self: *const IInternetSession,
             pCF: ?*IClassFactory,
             pwzType: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateBinding: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateBinding: *const fn (
             self: *const IInternetSession,
             pBC: ?*IBindCtx,
             szUrl: ?[*:0]const u16,
@@ -1568,43 +1568,43 @@ pub const IInternetSession = extern union {
             ppUnk: ?*?*IUnknown,
             ppOInetProt: ?*?*IInternetProtocol,
             dwOption: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSessionOption: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSessionOption: *const fn (
             self: *const IInternetSession,
             dwOption: u32,
             pBuffer: ?*anyopaque,
             dwBufferLength: u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSessionOption: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSessionOption: *const fn (
             self: *const IInternetSession,
             dwOption: u32,
             pBuffer: ?*anyopaque,
             pdwBufferLength: ?*u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RegisterNameSpace(self: *const IInternetSession, pCF: ?*IClassFactory, rclsid: ?*const Guid, pwzProtocol: ?[*:0]const u16, cPatterns: u32, ppwzPatterns: ?*const ?PWSTR, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn RegisterNameSpace(self: *const IInternetSession, pCF: ?*IClassFactory, rclsid: ?*const Guid, pwzProtocol: ?[*:0]const u16, cPatterns: u32, ppwzPatterns: ?*const ?PWSTR, dwReserved: u32) HRESULT {
         return self.vtable.RegisterNameSpace(self, pCF, rclsid, pwzProtocol, cPatterns, ppwzPatterns, dwReserved);
     }
-    pub fn UnregisterNameSpace(self: *const IInternetSession, pCF: ?*IClassFactory, pszProtocol: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn UnregisterNameSpace(self: *const IInternetSession, pCF: ?*IClassFactory, pszProtocol: ?[*:0]const u16) HRESULT {
         return self.vtable.UnregisterNameSpace(self, pCF, pszProtocol);
     }
-    pub fn RegisterMimeFilter(self: *const IInternetSession, pCF: ?*IClassFactory, rclsid: ?*const Guid, pwzType: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RegisterMimeFilter(self: *const IInternetSession, pCF: ?*IClassFactory, rclsid: ?*const Guid, pwzType: ?[*:0]const u16) HRESULT {
         return self.vtable.RegisterMimeFilter(self, pCF, rclsid, pwzType);
     }
-    pub fn UnregisterMimeFilter(self: *const IInternetSession, pCF: ?*IClassFactory, pwzType: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn UnregisterMimeFilter(self: *const IInternetSession, pCF: ?*IClassFactory, pwzType: ?[*:0]const u16) HRESULT {
         return self.vtable.UnregisterMimeFilter(self, pCF, pwzType);
     }
-    pub fn CreateBinding(self: *const IInternetSession, pBC: ?*IBindCtx, szUrl: ?[*:0]const u16, pUnkOuter: ?*IUnknown, ppUnk: ?*?*IUnknown, ppOInetProt: ?*?*IInternetProtocol, dwOption: u32) callconv(.Inline) HRESULT {
+    pub inline fn CreateBinding(self: *const IInternetSession, pBC: ?*IBindCtx, szUrl: ?[*:0]const u16, pUnkOuter: ?*IUnknown, ppUnk: ?*?*IUnknown, ppOInetProt: ?*?*IInternetProtocol, dwOption: u32) HRESULT {
         return self.vtable.CreateBinding(self, pBC, szUrl, pUnkOuter, ppUnk, ppOInetProt, dwOption);
     }
-    pub fn SetSessionOption(self: *const IInternetSession, dwOption: u32, pBuffer: ?*anyopaque, dwBufferLength: u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetSessionOption(self: *const IInternetSession, dwOption: u32, pBuffer: ?*anyopaque, dwBufferLength: u32, dwReserved: u32) HRESULT {
         return self.vtable.SetSessionOption(self, dwOption, pBuffer, dwBufferLength, dwReserved);
     }
-    pub fn GetSessionOption(self: *const IInternetSession, dwOption: u32, pBuffer: ?*anyopaque, pdwBufferLength: ?*u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSessionOption(self: *const IInternetSession, dwOption: u32, pBuffer: ?*anyopaque, pdwBufferLength: ?*u32, dwReserved: u32) HRESULT {
         return self.vtable.GetSessionOption(self, dwOption, pBuffer, pdwBufferLength, dwReserved);
     }
 };
@@ -1614,19 +1614,19 @@ pub const IID_IInternetThreadSwitch = &IID_IInternetThreadSwitch_Value;
 pub const IInternetThreadSwitch = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Prepare: *const fn(
+        Prepare: *const fn (
             self: *const IInternetThreadSwitch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Continue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Continue: *const fn (
             self: *const IInternetThreadSwitch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Prepare(self: *const IInternetThreadSwitch) callconv(.Inline) HRESULT {
+    pub inline fn Prepare(self: *const IInternetThreadSwitch) HRESULT {
         return self.vtable.Prepare(self);
     }
-    pub fn Continue(self: *const IInternetThreadSwitch) callconv(.Inline) HRESULT {
+    pub inline fn Continue(self: *const IInternetThreadSwitch) HRESULT {
         return self.vtable.Continue(self);
     }
 };
@@ -1636,21 +1636,21 @@ pub const IID_IInternetPriority = &IID_IInternetPriority_Value;
 pub const IInternetPriority = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetPriority: *const fn(
+        SetPriority: *const fn (
             self: *const IInternetPriority,
             nPriority: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPriority: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPriority: *const fn (
             self: *const IInternetPriority,
             pnPriority: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetPriority(self: *const IInternetPriority, nPriority: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetPriority(self: *const IInternetPriority, nPriority: i32) HRESULT {
         return self.vtable.SetPriority(self, nPriority);
     }
-    pub fn GetPriority(self: *const IInternetPriority, pnPriority: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPriority(self: *const IInternetPriority, pnPriority: ?*i32) HRESULT {
         return self.vtable.GetPriority(self, pnPriority);
     }
 };
@@ -1743,7 +1743,7 @@ pub const IID_IInternetProtocolInfo = &IID_IInternetProtocolInfo_Value;
 pub const IInternetProtocolInfo = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ParseUrl: *const fn(
+        ParseUrl: *const fn (
             self: *const IInternetProtocolInfo,
             pwzUrl: ?[*:0]const u16,
             ParseAction: PARSEACTION,
@@ -1752,8 +1752,8 @@ pub const IInternetProtocolInfo = extern union {
             cchResult: u32,
             pcchResult: ?*u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CombineUrl: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CombineUrl: *const fn (
             self: *const IInternetProtocolInfo,
             pwzBaseUrl: ?[*:0]const u16,
             pwzRelativeUrl: ?[*:0]const u16,
@@ -1762,14 +1762,14 @@ pub const IInternetProtocolInfo = extern union {
             cchResult: u32,
             pcchResult: ?*u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CompareUrl: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CompareUrl: *const fn (
             self: *const IInternetProtocolInfo,
             pwzUrl1: ?[*:0]const u16,
             pwzUrl2: ?[*:0]const u16,
             dwCompareFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryInfo: *const fn (
             self: *const IInternetProtocolInfo,
             pwzUrl: ?[*:0]const u16,
             OueryOption: QUERYOPTION,
@@ -1778,20 +1778,20 @@ pub const IInternetProtocolInfo = extern union {
             cbBuffer: u32,
             pcbBuf: ?*u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ParseUrl(self: *const IInternetProtocolInfo, pwzUrl: ?[*:0]const u16, ParseAction: PARSEACTION, dwParseFlags: u32, pwzResult: ?PWSTR, cchResult: u32, pcchResult: ?*u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn ParseUrl(self: *const IInternetProtocolInfo, pwzUrl: ?[*:0]const u16, ParseAction: PARSEACTION, dwParseFlags: u32, pwzResult: ?PWSTR, cchResult: u32, pcchResult: ?*u32, dwReserved: u32) HRESULT {
         return self.vtable.ParseUrl(self, pwzUrl, ParseAction, dwParseFlags, pwzResult, cchResult, pcchResult, dwReserved);
     }
-    pub fn CombineUrl(self: *const IInternetProtocolInfo, pwzBaseUrl: ?[*:0]const u16, pwzRelativeUrl: ?[*:0]const u16, dwCombineFlags: u32, pwzResult: ?PWSTR, cchResult: u32, pcchResult: ?*u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn CombineUrl(self: *const IInternetProtocolInfo, pwzBaseUrl: ?[*:0]const u16, pwzRelativeUrl: ?[*:0]const u16, dwCombineFlags: u32, pwzResult: ?PWSTR, cchResult: u32, pcchResult: ?*u32, dwReserved: u32) HRESULT {
         return self.vtable.CombineUrl(self, pwzBaseUrl, pwzRelativeUrl, dwCombineFlags, pwzResult, cchResult, pcchResult, dwReserved);
     }
-    pub fn CompareUrl(self: *const IInternetProtocolInfo, pwzUrl1: ?[*:0]const u16, pwzUrl2: ?[*:0]const u16, dwCompareFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn CompareUrl(self: *const IInternetProtocolInfo, pwzUrl1: ?[*:0]const u16, pwzUrl2: ?[*:0]const u16, dwCompareFlags: u32) HRESULT {
         return self.vtable.CompareUrl(self, pwzUrl1, pwzUrl2, dwCompareFlags);
     }
-    pub fn QueryInfo(self: *const IInternetProtocolInfo, pwzUrl: ?[*:0]const u16, OueryOption: QUERYOPTION, dwQueryFlags: u32, pBuffer: [*]u8, cbBuffer: u32, pcbBuf: ?*u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn QueryInfo(self: *const IInternetProtocolInfo, pwzUrl: ?[*:0]const u16, OueryOption: QUERYOPTION, dwQueryFlags: u32, pBuffer: [*]u8, cbBuffer: u32, pcbBuf: ?*u32, dwReserved: u32) HRESULT {
         return self.vtable.QueryInfo(self, pwzUrl, OueryOption, dwQueryFlags, pBuffer, cbBuffer, pcbBuf, dwReserved);
     }
 };
@@ -1862,21 +1862,21 @@ pub const IID_IInternetSecurityMgrSite = &IID_IInternetSecurityMgrSite_Value;
 pub const IInternetSecurityMgrSite = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetWindow: *const fn(
+        GetWindow: *const fn (
             self: *const IInternetSecurityMgrSite,
             phwnd: ?*?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnableModeless: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnableModeless: *const fn (
             self: *const IInternetSecurityMgrSite,
             fEnable: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetWindow(self: *const IInternetSecurityMgrSite, phwnd: ?*?HWND) callconv(.Inline) HRESULT {
+    pub inline fn GetWindow(self: *const IInternetSecurityMgrSite, phwnd: ?*?HWND) HRESULT {
         return self.vtable.GetWindow(self, phwnd);
     }
-    pub fn EnableModeless(self: *const IInternetSecurityMgrSite, fEnable: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn EnableModeless(self: *const IInternetSecurityMgrSite, fEnable: BOOL) HRESULT {
         return self.vtable.EnableModeless(self, fEnable);
     }
 };
@@ -1945,28 +1945,28 @@ pub const IID_IInternetSecurityManager = &IID_IInternetSecurityManager_Value;
 pub const IInternetSecurityManager = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetSecuritySite: *const fn(
+        SetSecuritySite: *const fn (
             self: *const IInternetSecurityManager,
             pSite: ?*IInternetSecurityMgrSite,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSecuritySite: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSecuritySite: *const fn (
             self: *const IInternetSecurityManager,
             ppSite: ?*?*IInternetSecurityMgrSite,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MapUrlToZone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MapUrlToZone: *const fn (
             self: *const IInternetSecurityManager,
             pwszUrl: ?[*:0]const u16,
             pdwZone: ?*u32,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSecurityId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSecurityId: *const fn (
             self: *const IInternetSecurityManager,
             pwszUrl: ?[*:0]const u16,
             pbSecurityId: *[512]u8,
             pcbSecurityId: ?*u32,
             dwReserved: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ProcessUrlAction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ProcessUrlAction: *const fn (
             self: *const IInternetSecurityManager,
             pwszUrl: ?[*:0]const u16,
             dwAction: u32,
@@ -1976,8 +1976,8 @@ pub const IInternetSecurityManager = extern union {
             cbContext: u32,
             dwFlags: u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryCustomPolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryCustomPolicy: *const fn (
             self: *const IInternetSecurityManager,
             pwszUrl: ?[*:0]const u16,
             guidKey: ?*const Guid,
@@ -1986,44 +1986,44 @@ pub const IInternetSecurityManager = extern union {
             pContext: ?*u8,
             cbContext: u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetZoneMapping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetZoneMapping: *const fn (
             self: *const IInternetSecurityManager,
             dwZone: u32,
             lpszPattern: ?[*:0]const u16,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetZoneMappings: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetZoneMappings: *const fn (
             self: *const IInternetSecurityManager,
             dwZone: u32,
             ppenumString: ?*?*IEnumString,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetSecuritySite(self: *const IInternetSecurityManager, pSite: ?*IInternetSecurityMgrSite) callconv(.Inline) HRESULT {
+    pub inline fn SetSecuritySite(self: *const IInternetSecurityManager, pSite: ?*IInternetSecurityMgrSite) HRESULT {
         return self.vtable.SetSecuritySite(self, pSite);
     }
-    pub fn GetSecuritySite(self: *const IInternetSecurityManager, ppSite: ?*?*IInternetSecurityMgrSite) callconv(.Inline) HRESULT {
+    pub inline fn GetSecuritySite(self: *const IInternetSecurityManager, ppSite: ?*?*IInternetSecurityMgrSite) HRESULT {
         return self.vtable.GetSecuritySite(self, ppSite);
     }
-    pub fn MapUrlToZone(self: *const IInternetSecurityManager, pwszUrl: ?[*:0]const u16, pdwZone: ?*u32, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn MapUrlToZone(self: *const IInternetSecurityManager, pwszUrl: ?[*:0]const u16, pdwZone: ?*u32, dwFlags: u32) HRESULT {
         return self.vtable.MapUrlToZone(self, pwszUrl, pdwZone, dwFlags);
     }
-    pub fn GetSecurityId(self: *const IInternetSecurityManager, pwszUrl: ?[*:0]const u16, pbSecurityId: *[512]u8, pcbSecurityId: ?*u32, dwReserved: usize) callconv(.Inline) HRESULT {
+    pub inline fn GetSecurityId(self: *const IInternetSecurityManager, pwszUrl: ?[*:0]const u16, pbSecurityId: *[512]u8, pcbSecurityId: ?*u32, dwReserved: usize) HRESULT {
         return self.vtable.GetSecurityId(self, pwszUrl, pbSecurityId, pcbSecurityId, dwReserved);
     }
-    pub fn ProcessUrlAction(self: *const IInternetSecurityManager, pwszUrl: ?[*:0]const u16, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, pContext: ?*u8, cbContext: u32, dwFlags: u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn ProcessUrlAction(self: *const IInternetSecurityManager, pwszUrl: ?[*:0]const u16, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, pContext: ?*u8, cbContext: u32, dwFlags: u32, dwReserved: u32) HRESULT {
         return self.vtable.ProcessUrlAction(self, pwszUrl, dwAction, pPolicy, cbPolicy, pContext, cbContext, dwFlags, dwReserved);
     }
-    pub fn QueryCustomPolicy(self: *const IInternetSecurityManager, pwszUrl: ?[*:0]const u16, guidKey: ?*const Guid, ppPolicy: [*]?*u8, pcbPolicy: ?*u32, pContext: ?*u8, cbContext: u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn QueryCustomPolicy(self: *const IInternetSecurityManager, pwszUrl: ?[*:0]const u16, guidKey: ?*const Guid, ppPolicy: [*]?*u8, pcbPolicy: ?*u32, pContext: ?*u8, cbContext: u32, dwReserved: u32) HRESULT {
         return self.vtable.QueryCustomPolicy(self, pwszUrl, guidKey, ppPolicy, pcbPolicy, pContext, cbContext, dwReserved);
     }
-    pub fn SetZoneMapping(self: *const IInternetSecurityManager, dwZone: u32, lpszPattern: ?[*:0]const u16, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetZoneMapping(self: *const IInternetSecurityManager, dwZone: u32, lpszPattern: ?[*:0]const u16, dwFlags: u32) HRESULT {
         return self.vtable.SetZoneMapping(self, dwZone, lpszPattern, dwFlags);
     }
-    pub fn GetZoneMappings(self: *const IInternetSecurityManager, dwZone: u32, ppenumString: ?*?*IEnumString, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetZoneMappings(self: *const IInternetSecurityManager, dwZone: u32, ppenumString: ?*?*IEnumString, dwFlags: u32) HRESULT {
         return self.vtable.GetZoneMappings(self, dwZone, ppenumString, dwFlags);
     }
 };
@@ -2033,7 +2033,7 @@ pub const IID_IInternetSecurityManagerEx = &IID_IInternetSecurityManagerEx_Value
 pub const IInternetSecurityManagerEx = extern union {
     pub const VTable = extern struct {
         base: IInternetSecurityManager.VTable,
-        ProcessUrlActionEx: *const fn(
+        ProcessUrlActionEx: *const fn (
             self: *const IInternetSecurityManagerEx,
             pwszUrl: ?[*:0]const u16,
             dwAction: u32,
@@ -2044,12 +2044,12 @@ pub const IInternetSecurityManagerEx = extern union {
             dwFlags: u32,
             dwReserved: u32,
             pdwOutFlags: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInternetSecurityManager: IInternetSecurityManager,
     IUnknown: IUnknown,
-    pub fn ProcessUrlActionEx(self: *const IInternetSecurityManagerEx, pwszUrl: ?[*:0]const u16, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, pContext: ?*u8, cbContext: u32, dwFlags: u32, dwReserved: u32, pdwOutFlags: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ProcessUrlActionEx(self: *const IInternetSecurityManagerEx, pwszUrl: ?[*:0]const u16, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, pContext: ?*u8, cbContext: u32, dwFlags: u32, dwReserved: u32, pdwOutFlags: ?*u32) HRESULT {
         return self.vtable.ProcessUrlActionEx(self, pwszUrl, dwAction, pPolicy, cbPolicy, pContext, cbContext, dwFlags, dwReserved, pdwOutFlags);
     }
 };
@@ -2059,15 +2059,15 @@ pub const IID_IInternetSecurityManagerEx2 = &IID_IInternetSecurityManagerEx2_Val
 pub const IInternetSecurityManagerEx2 = extern union {
     pub const VTable = extern struct {
         base: IInternetSecurityManagerEx.VTable,
-        MapUrlToZoneEx2: *const fn(
+        MapUrlToZoneEx2: *const fn (
             self: *const IInternetSecurityManagerEx2,
             pUri: ?*IUri,
             pdwZone: ?*u32,
             dwFlags: u32,
             ppwszMappedUrl: ?*?PWSTR,
             pdwOutFlags: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ProcessUrlActionEx2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ProcessUrlActionEx2: *const fn (
             self: *const IInternetSecurityManagerEx2,
             pUri: ?*IUri,
             dwAction: u32,
@@ -2078,15 +2078,15 @@ pub const IInternetSecurityManagerEx2 = extern union {
             dwFlags: u32,
             dwReserved: usize,
             pdwOutFlags: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSecurityIdEx2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSecurityIdEx2: *const fn (
             self: *const IInternetSecurityManagerEx2,
             pUri: ?*IUri,
             pbSecurityId: *[512]u8,
             pcbSecurityId: ?*u32,
             dwReserved: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryCustomPolicyEx2: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryCustomPolicyEx2: *const fn (
             self: *const IInternetSecurityManagerEx2,
             pUri: ?*IUri,
             guidKey: ?*const Guid,
@@ -2095,22 +2095,22 @@ pub const IInternetSecurityManagerEx2 = extern union {
             pContext: ?*u8,
             cbContext: u32,
             dwReserved: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInternetSecurityManagerEx: IInternetSecurityManagerEx,
     IInternetSecurityManager: IInternetSecurityManager,
     IUnknown: IUnknown,
-    pub fn MapUrlToZoneEx2(self: *const IInternetSecurityManagerEx2, pUri: ?*IUri, pdwZone: ?*u32, dwFlags: u32, ppwszMappedUrl: ?*?PWSTR, pdwOutFlags: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn MapUrlToZoneEx2(self: *const IInternetSecurityManagerEx2, pUri: ?*IUri, pdwZone: ?*u32, dwFlags: u32, ppwszMappedUrl: ?*?PWSTR, pdwOutFlags: ?*u32) HRESULT {
         return self.vtable.MapUrlToZoneEx2(self, pUri, pdwZone, dwFlags, ppwszMappedUrl, pdwOutFlags);
     }
-    pub fn ProcessUrlActionEx2(self: *const IInternetSecurityManagerEx2, pUri: ?*IUri, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, pContext: ?*u8, cbContext: u32, dwFlags: u32, dwReserved: usize, pdwOutFlags: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ProcessUrlActionEx2(self: *const IInternetSecurityManagerEx2, pUri: ?*IUri, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, pContext: ?*u8, cbContext: u32, dwFlags: u32, dwReserved: usize, pdwOutFlags: ?*u32) HRESULT {
         return self.vtable.ProcessUrlActionEx2(self, pUri, dwAction, pPolicy, cbPolicy, pContext, cbContext, dwFlags, dwReserved, pdwOutFlags);
     }
-    pub fn GetSecurityIdEx2(self: *const IInternetSecurityManagerEx2, pUri: ?*IUri, pbSecurityId: *[512]u8, pcbSecurityId: ?*u32, dwReserved: usize) callconv(.Inline) HRESULT {
+    pub inline fn GetSecurityIdEx2(self: *const IInternetSecurityManagerEx2, pUri: ?*IUri, pbSecurityId: *[512]u8, pcbSecurityId: ?*u32, dwReserved: usize) HRESULT {
         return self.vtable.GetSecurityIdEx2(self, pUri, pbSecurityId, pcbSecurityId, dwReserved);
     }
-    pub fn QueryCustomPolicyEx2(self: *const IInternetSecurityManagerEx2, pUri: ?*IUri, guidKey: ?*const Guid, ppPolicy: [*]?*u8, pcbPolicy: ?*u32, pContext: ?*u8, cbContext: u32, dwReserved: usize) callconv(.Inline) HRESULT {
+    pub inline fn QueryCustomPolicyEx2(self: *const IInternetSecurityManagerEx2, pUri: ?*IUri, guidKey: ?*const Guid, ppPolicy: [*]?*u8, pcbPolicy: ?*u32, pContext: ?*u8, cbContext: u32, dwReserved: usize) HRESULT {
         return self.vtable.QueryCustomPolicyEx2(self, pUri, guidKey, ppPolicy, pcbPolicy, pContext, cbContext, dwReserved);
     }
 };
@@ -2120,27 +2120,27 @@ pub const IID_IZoneIdentifier = &IID_IZoneIdentifier_Value;
 pub const IZoneIdentifier = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetId: *const fn(
+        GetId: *const fn (
             self: *const IZoneIdentifier,
             pdwZone: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetId: *const fn (
             self: *const IZoneIdentifier,
             dwZone: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IZoneIdentifier,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetId(self: *const IZoneIdentifier, pdwZone: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetId(self: *const IZoneIdentifier, pdwZone: ?*u32) HRESULT {
         return self.vtable.GetId(self, pdwZone);
     }
-    pub fn SetId(self: *const IZoneIdentifier, dwZone: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetId(self: *const IZoneIdentifier, dwZone: u32) HRESULT {
         return self.vtable.SetId(self, dwZone);
     }
-    pub fn Remove(self: *const IZoneIdentifier) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IZoneIdentifier) HRESULT {
         return self.vtable.Remove(self);
     }
 };
@@ -2150,48 +2150,48 @@ pub const IID_IZoneIdentifier2 = &IID_IZoneIdentifier2_Value;
 pub const IZoneIdentifier2 = extern union {
     pub const VTable = extern struct {
         base: IZoneIdentifier.VTable,
-        GetLastWriterPackageFamilyName: *const fn(
+        GetLastWriterPackageFamilyName: *const fn (
             self: *const IZoneIdentifier2,
             packageFamilyName: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLastWriterPackageFamilyName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLastWriterPackageFamilyName: *const fn (
             self: *const IZoneIdentifier2,
             packageFamilyName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveLastWriterPackageFamilyName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveLastWriterPackageFamilyName: *const fn (
             self: *const IZoneIdentifier2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAppZoneId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAppZoneId: *const fn (
             self: *const IZoneIdentifier2,
             zone: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetAppZoneId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetAppZoneId: *const fn (
             self: *const IZoneIdentifier2,
             zone: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAppZoneId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAppZoneId: *const fn (
             self: *const IZoneIdentifier2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IZoneIdentifier: IZoneIdentifier,
     IUnknown: IUnknown,
-    pub fn GetLastWriterPackageFamilyName(self: *const IZoneIdentifier2, packageFamilyName: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetLastWriterPackageFamilyName(self: *const IZoneIdentifier2, packageFamilyName: ?*?PWSTR) HRESULT {
         return self.vtable.GetLastWriterPackageFamilyName(self, packageFamilyName);
     }
-    pub fn SetLastWriterPackageFamilyName(self: *const IZoneIdentifier2, packageFamilyName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetLastWriterPackageFamilyName(self: *const IZoneIdentifier2, packageFamilyName: ?[*:0]const u16) HRESULT {
         return self.vtable.SetLastWriterPackageFamilyName(self, packageFamilyName);
     }
-    pub fn RemoveLastWriterPackageFamilyName(self: *const IZoneIdentifier2) callconv(.Inline) HRESULT {
+    pub inline fn RemoveLastWriterPackageFamilyName(self: *const IZoneIdentifier2) HRESULT {
         return self.vtable.RemoveLastWriterPackageFamilyName(self);
     }
-    pub fn GetAppZoneId(self: *const IZoneIdentifier2, zone: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetAppZoneId(self: *const IZoneIdentifier2, zone: ?*u32) HRESULT {
         return self.vtable.GetAppZoneId(self, zone);
     }
-    pub fn SetAppZoneId(self: *const IZoneIdentifier2, zone: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetAppZoneId(self: *const IZoneIdentifier2, zone: u32) HRESULT {
         return self.vtable.SetAppZoneId(self, zone);
     }
-    pub fn RemoveAppZoneId(self: *const IZoneIdentifier2) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAppZoneId(self: *const IZoneIdentifier2) HRESULT {
         return self.vtable.RemoveAppZoneId(self);
     }
 };
@@ -2201,13 +2201,13 @@ pub const IID_IInternetHostSecurityManager = &IID_IInternetHostSecurityManager_V
 pub const IInternetHostSecurityManager = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetSecurityId: *const fn(
+        GetSecurityId: *const fn (
             self: *const IInternetHostSecurityManager,
             pbSecurityId: [*:0]u8,
             pcbSecurityId: ?*u32,
             dwReserved: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ProcessUrlAction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ProcessUrlAction: *const fn (
             self: *const IInternetHostSecurityManager,
             dwAction: u32,
             pPolicy: [*:0]u8,
@@ -2216,8 +2216,8 @@ pub const IInternetHostSecurityManager = extern union {
             cbContext: u32,
             dwFlags: u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        QueryCustomPolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        QueryCustomPolicy: *const fn (
             self: *const IInternetHostSecurityManager,
             guidKey: ?*const Guid,
             ppPolicy: ?[*]?*u8,
@@ -2225,17 +2225,17 @@ pub const IInternetHostSecurityManager = extern union {
             pContext: [*:0]u8,
             cbContext: u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetSecurityId(self: *const IInternetHostSecurityManager, pbSecurityId: [*:0]u8, pcbSecurityId: ?*u32, dwReserved: usize) callconv(.Inline) HRESULT {
+    pub inline fn GetSecurityId(self: *const IInternetHostSecurityManager, pbSecurityId: [*:0]u8, pcbSecurityId: ?*u32, dwReserved: usize) HRESULT {
         return self.vtable.GetSecurityId(self, pbSecurityId, pcbSecurityId, dwReserved);
     }
-    pub fn ProcessUrlAction(self: *const IInternetHostSecurityManager, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, pContext: ?[*:0]u8, cbContext: u32, dwFlags: u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn ProcessUrlAction(self: *const IInternetHostSecurityManager, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, pContext: ?[*:0]u8, cbContext: u32, dwFlags: u32, dwReserved: u32) HRESULT {
         return self.vtable.ProcessUrlAction(self, dwAction, pPolicy, cbPolicy, pContext, cbContext, dwFlags, dwReserved);
     }
-    pub fn QueryCustomPolicy(self: *const IInternetHostSecurityManager, guidKey: ?*const Guid, ppPolicy: ?[*]?*u8, pcbPolicy: ?*u32, pContext: [*:0]u8, cbContext: u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn QueryCustomPolicy(self: *const IInternetHostSecurityManager, guidKey: ?*const Guid, ppPolicy: ?[*]?*u8, pcbPolicy: ?*u32, pContext: [*:0]u8, cbContext: u32, dwReserved: u32) HRESULT {
         return self.vtable.QueryCustomPolicy(self, guidKey, ppPolicy, pcbPolicy, pContext, cbContext, dwReserved);
     }
 };
@@ -2341,122 +2341,122 @@ pub const IID_IInternetZoneManager = &IID_IInternetZoneManager_Value;
 pub const IInternetZoneManager = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetZoneAttributes: *const fn(
+        GetZoneAttributes: *const fn (
             self: *const IInternetZoneManager,
             dwZone: u32,
             pZoneAttributes: ?*ZONEATTRIBUTES,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetZoneAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetZoneAttributes: *const fn (
             self: *const IInternetZoneManager,
             dwZone: u32,
             pZoneAttributes: ?*ZONEATTRIBUTES,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetZoneCustomPolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetZoneCustomPolicy: *const fn (
             self: *const IInternetZoneManager,
             dwZone: u32,
             guidKey: ?*const Guid,
             ppPolicy: ?*?*u8,
             pcbPolicy: ?*u32,
             urlZoneReg: URLZONEREG,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetZoneCustomPolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetZoneCustomPolicy: *const fn (
             self: *const IInternetZoneManager,
             dwZone: u32,
             guidKey: ?*const Guid,
             pPolicy: [*:0]u8,
             cbPolicy: u32,
             urlZoneReg: URLZONEREG,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetZoneActionPolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetZoneActionPolicy: *const fn (
             self: *const IInternetZoneManager,
             dwZone: u32,
             dwAction: u32,
             pPolicy: [*:0]u8,
             cbPolicy: u32,
             urlZoneReg: URLZONEREG,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetZoneActionPolicy: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetZoneActionPolicy: *const fn (
             self: *const IInternetZoneManager,
             dwZone: u32,
             dwAction: u32,
             pPolicy: [*:0]u8,
             cbPolicy: u32,
             urlZoneReg: URLZONEREG,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PromptAction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PromptAction: *const fn (
             self: *const IInternetZoneManager,
             dwAction: u32,
             hwndParent: ?HWND,
             pwszUrl: ?[*:0]const u16,
             pwszText: ?[*:0]const u16,
             dwPromptFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LogAction: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LogAction: *const fn (
             self: *const IInternetZoneManager,
             dwAction: u32,
             pwszUrl: ?[*:0]const u16,
             pwszText: ?[*:0]const u16,
             dwLogFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateZoneEnumerator: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateZoneEnumerator: *const fn (
             self: *const IInternetZoneManager,
             pdwEnum: ?*u32,
             pdwCount: ?*u32,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetZoneAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetZoneAt: *const fn (
             self: *const IInternetZoneManager,
             dwEnum: u32,
             dwIndex: u32,
             pdwZone: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DestroyZoneEnumerator: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DestroyZoneEnumerator: *const fn (
             self: *const IInternetZoneManager,
             dwEnum: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyTemplatePoliciesToZone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyTemplatePoliciesToZone: *const fn (
             self: *const IInternetZoneManager,
             dwTemplate: u32,
             dwZone: u32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetZoneAttributes(self: *const IInternetZoneManager, dwZone: u32, pZoneAttributes: ?*ZONEATTRIBUTES) callconv(.Inline) HRESULT {
+    pub inline fn GetZoneAttributes(self: *const IInternetZoneManager, dwZone: u32, pZoneAttributes: ?*ZONEATTRIBUTES) HRESULT {
         return self.vtable.GetZoneAttributes(self, dwZone, pZoneAttributes);
     }
-    pub fn SetZoneAttributes(self: *const IInternetZoneManager, dwZone: u32, pZoneAttributes: ?*ZONEATTRIBUTES) callconv(.Inline) HRESULT {
+    pub inline fn SetZoneAttributes(self: *const IInternetZoneManager, dwZone: u32, pZoneAttributes: ?*ZONEATTRIBUTES) HRESULT {
         return self.vtable.SetZoneAttributes(self, dwZone, pZoneAttributes);
     }
-    pub fn GetZoneCustomPolicy(self: *const IInternetZoneManager, dwZone: u32, guidKey: ?*const Guid, ppPolicy: ?*?*u8, pcbPolicy: ?*u32, urlZoneReg: URLZONEREG) callconv(.Inline) HRESULT {
+    pub inline fn GetZoneCustomPolicy(self: *const IInternetZoneManager, dwZone: u32, guidKey: ?*const Guid, ppPolicy: ?*?*u8, pcbPolicy: ?*u32, urlZoneReg: URLZONEREG) HRESULT {
         return self.vtable.GetZoneCustomPolicy(self, dwZone, guidKey, ppPolicy, pcbPolicy, urlZoneReg);
     }
-    pub fn SetZoneCustomPolicy(self: *const IInternetZoneManager, dwZone: u32, guidKey: ?*const Guid, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG) callconv(.Inline) HRESULT {
+    pub inline fn SetZoneCustomPolicy(self: *const IInternetZoneManager, dwZone: u32, guidKey: ?*const Guid, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG) HRESULT {
         return self.vtable.SetZoneCustomPolicy(self, dwZone, guidKey, pPolicy, cbPolicy, urlZoneReg);
     }
-    pub fn GetZoneActionPolicy(self: *const IInternetZoneManager, dwZone: u32, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG) callconv(.Inline) HRESULT {
+    pub inline fn GetZoneActionPolicy(self: *const IInternetZoneManager, dwZone: u32, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG) HRESULT {
         return self.vtable.GetZoneActionPolicy(self, dwZone, dwAction, pPolicy, cbPolicy, urlZoneReg);
     }
-    pub fn SetZoneActionPolicy(self: *const IInternetZoneManager, dwZone: u32, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG) callconv(.Inline) HRESULT {
+    pub inline fn SetZoneActionPolicy(self: *const IInternetZoneManager, dwZone: u32, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG) HRESULT {
         return self.vtable.SetZoneActionPolicy(self, dwZone, dwAction, pPolicy, cbPolicy, urlZoneReg);
     }
-    pub fn PromptAction(self: *const IInternetZoneManager, dwAction: u32, hwndParent: ?HWND, pwszUrl: ?[*:0]const u16, pwszText: ?[*:0]const u16, dwPromptFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn PromptAction(self: *const IInternetZoneManager, dwAction: u32, hwndParent: ?HWND, pwszUrl: ?[*:0]const u16, pwszText: ?[*:0]const u16, dwPromptFlags: u32) HRESULT {
         return self.vtable.PromptAction(self, dwAction, hwndParent, pwszUrl, pwszText, dwPromptFlags);
     }
-    pub fn LogAction(self: *const IInternetZoneManager, dwAction: u32, pwszUrl: ?[*:0]const u16, pwszText: ?[*:0]const u16, dwLogFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn LogAction(self: *const IInternetZoneManager, dwAction: u32, pwszUrl: ?[*:0]const u16, pwszText: ?[*:0]const u16, dwLogFlags: u32) HRESULT {
         return self.vtable.LogAction(self, dwAction, pwszUrl, pwszText, dwLogFlags);
     }
-    pub fn CreateZoneEnumerator(self: *const IInternetZoneManager, pdwEnum: ?*u32, pdwCount: ?*u32, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn CreateZoneEnumerator(self: *const IInternetZoneManager, pdwEnum: ?*u32, pdwCount: ?*u32, dwFlags: u32) HRESULT {
         return self.vtable.CreateZoneEnumerator(self, pdwEnum, pdwCount, dwFlags);
     }
-    pub fn GetZoneAt(self: *const IInternetZoneManager, dwEnum: u32, dwIndex: u32, pdwZone: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetZoneAt(self: *const IInternetZoneManager, dwEnum: u32, dwIndex: u32, pdwZone: ?*u32) HRESULT {
         return self.vtable.GetZoneAt(self, dwEnum, dwIndex, pdwZone);
     }
-    pub fn DestroyZoneEnumerator(self: *const IInternetZoneManager, dwEnum: u32) callconv(.Inline) HRESULT {
+    pub inline fn DestroyZoneEnumerator(self: *const IInternetZoneManager, dwEnum: u32) HRESULT {
         return self.vtable.DestroyZoneEnumerator(self, dwEnum);
     }
-    pub fn CopyTemplatePoliciesToZone(self: *const IInternetZoneManager, dwTemplate: u32, dwZone: u32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn CopyTemplatePoliciesToZone(self: *const IInternetZoneManager, dwTemplate: u32, dwZone: u32, dwReserved: u32) HRESULT {
         return self.vtable.CopyTemplatePoliciesToZone(self, dwTemplate, dwZone, dwReserved);
     }
 };
@@ -2466,7 +2466,7 @@ pub const IID_IInternetZoneManagerEx = &IID_IInternetZoneManagerEx_Value;
 pub const IInternetZoneManagerEx = extern union {
     pub const VTable = extern struct {
         base: IInternetZoneManager.VTable,
-        GetZoneActionPolicyEx: *const fn(
+        GetZoneActionPolicyEx: *const fn (
             self: *const IInternetZoneManagerEx,
             dwZone: u32,
             dwAction: u32,
@@ -2474,8 +2474,8 @@ pub const IInternetZoneManagerEx = extern union {
             cbPolicy: u32,
             urlZoneReg: URLZONEREG,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetZoneActionPolicyEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetZoneActionPolicyEx: *const fn (
             self: *const IInternetZoneManagerEx,
             dwZone: u32,
             dwAction: u32,
@@ -2483,15 +2483,15 @@ pub const IInternetZoneManagerEx = extern union {
             cbPolicy: u32,
             urlZoneReg: URLZONEREG,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInternetZoneManager: IInternetZoneManager,
     IUnknown: IUnknown,
-    pub fn GetZoneActionPolicyEx(self: *const IInternetZoneManagerEx, dwZone: u32, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetZoneActionPolicyEx(self: *const IInternetZoneManagerEx, dwZone: u32, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG, dwFlags: u32) HRESULT {
         return self.vtable.GetZoneActionPolicyEx(self, dwZone, dwAction, pPolicy, cbPolicy, urlZoneReg, dwFlags);
     }
-    pub fn SetZoneActionPolicyEx(self: *const IInternetZoneManagerEx, dwZone: u32, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetZoneActionPolicyEx(self: *const IInternetZoneManagerEx, dwZone: u32, dwAction: u32, pPolicy: [*:0]u8, cbPolicy: u32, urlZoneReg: URLZONEREG, dwFlags: u32) HRESULT {
         return self.vtable.SetZoneActionPolicyEx(self, dwZone, dwAction, pPolicy, cbPolicy, urlZoneReg, dwFlags);
     }
 };
@@ -2501,44 +2501,44 @@ pub const IID_IInternetZoneManagerEx2 = &IID_IInternetZoneManagerEx2_Value;
 pub const IInternetZoneManagerEx2 = extern union {
     pub const VTable = extern struct {
         base: IInternetZoneManagerEx.VTable,
-        GetZoneAttributesEx: *const fn(
+        GetZoneAttributesEx: *const fn (
             self: *const IInternetZoneManagerEx2,
             dwZone: u32,
             pZoneAttributes: ?*ZONEATTRIBUTES,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetZoneSecurityState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetZoneSecurityState: *const fn (
             self: *const IInternetZoneManagerEx2,
             dwZoneIndex: u32,
             fRespectPolicy: BOOL,
             pdwState: ?*u32,
             pfPolicyEncountered: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIESecurityState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIESecurityState: *const fn (
             self: *const IInternetZoneManagerEx2,
             fRespectPolicy: BOOL,
             pdwState: ?*u32,
             pfPolicyEncountered: ?*BOOL,
             fNoCache: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FixUnsecureSettings: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FixUnsecureSettings: *const fn (
             self: *const IInternetZoneManagerEx2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInternetZoneManagerEx: IInternetZoneManagerEx,
     IInternetZoneManager: IInternetZoneManager,
     IUnknown: IUnknown,
-    pub fn GetZoneAttributesEx(self: *const IInternetZoneManagerEx2, dwZone: u32, pZoneAttributes: ?*ZONEATTRIBUTES, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetZoneAttributesEx(self: *const IInternetZoneManagerEx2, dwZone: u32, pZoneAttributes: ?*ZONEATTRIBUTES, dwFlags: u32) HRESULT {
         return self.vtable.GetZoneAttributesEx(self, dwZone, pZoneAttributes, dwFlags);
     }
-    pub fn GetZoneSecurityState(self: *const IInternetZoneManagerEx2, dwZoneIndex: u32, fRespectPolicy: BOOL, pdwState: ?*u32, pfPolicyEncountered: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn GetZoneSecurityState(self: *const IInternetZoneManagerEx2, dwZoneIndex: u32, fRespectPolicy: BOOL, pdwState: ?*u32, pfPolicyEncountered: ?*BOOL) HRESULT {
         return self.vtable.GetZoneSecurityState(self, dwZoneIndex, fRespectPolicy, pdwState, pfPolicyEncountered);
     }
-    pub fn GetIESecurityState(self: *const IInternetZoneManagerEx2, fRespectPolicy: BOOL, pdwState: ?*u32, pfPolicyEncountered: ?*BOOL, fNoCache: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn GetIESecurityState(self: *const IInternetZoneManagerEx2, fRespectPolicy: BOOL, pdwState: ?*u32, pfPolicyEncountered: ?*BOOL, fNoCache: BOOL) HRESULT {
         return self.vtable.GetIESecurityState(self, fRespectPolicy, pdwState, pfPolicyEncountered, fNoCache);
     }
-    pub fn FixUnsecureSettings(self: *const IInternetZoneManagerEx2) callconv(.Inline) HRESULT {
+    pub inline fn FixUnsecureSettings(self: *const IInternetZoneManagerEx2) HRESULT {
         return self.vtable.FixUnsecureSettings(self);
     }
 };
@@ -2573,42 +2573,42 @@ pub const IID_ISoftDistExt = &IID_ISoftDistExt_Value;
 pub const ISoftDistExt = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ProcessSoftDist: *const fn(
+        ProcessSoftDist: *const fn (
             self: *const ISoftDistExt,
             szCDFURL: ?[*:0]const u16,
             pSoftDistElement: ?*IXMLElement,
             lpsdi: ?*SOFTDISTINFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFirstCodeBase: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFirstCodeBase: *const fn (
             self: *const ISoftDistExt,
             szCodeBase: ?*?PWSTR,
             dwMaxSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNextCodeBase: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNextCodeBase: *const fn (
             self: *const ISoftDistExt,
             szCodeBase: ?*?PWSTR,
             dwMaxSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AsyncInstallDistributionUnit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AsyncInstallDistributionUnit: *const fn (
             self: *const ISoftDistExt,
             pbc: ?*IBindCtx,
             pvReserved: ?*anyopaque,
             flags: u32,
             lpcbh: ?*CODEBASEHOLD,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ProcessSoftDist(self: *const ISoftDistExt, szCDFURL: ?[*:0]const u16, pSoftDistElement: ?*IXMLElement, lpsdi: ?*SOFTDISTINFO) callconv(.Inline) HRESULT {
+    pub inline fn ProcessSoftDist(self: *const ISoftDistExt, szCDFURL: ?[*:0]const u16, pSoftDistElement: ?*IXMLElement, lpsdi: ?*SOFTDISTINFO) HRESULT {
         return self.vtable.ProcessSoftDist(self, szCDFURL, pSoftDistElement, lpsdi);
     }
-    pub fn GetFirstCodeBase(self: *const ISoftDistExt, szCodeBase: ?*?PWSTR, dwMaxSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFirstCodeBase(self: *const ISoftDistExt, szCodeBase: ?*?PWSTR, dwMaxSize: ?*u32) HRESULT {
         return self.vtable.GetFirstCodeBase(self, szCodeBase, dwMaxSize);
     }
-    pub fn GetNextCodeBase(self: *const ISoftDistExt, szCodeBase: ?*?PWSTR, dwMaxSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetNextCodeBase(self: *const ISoftDistExt, szCodeBase: ?*?PWSTR, dwMaxSize: ?*u32) HRESULT {
         return self.vtable.GetNextCodeBase(self, szCodeBase, dwMaxSize);
     }
-    pub fn AsyncInstallDistributionUnit(self: *const ISoftDistExt, pbc: ?*IBindCtx, pvReserved: ?*anyopaque, flags: u32, lpcbh: ?*CODEBASEHOLD) callconv(.Inline) HRESULT {
+    pub inline fn AsyncInstallDistributionUnit(self: *const ISoftDistExt, pbc: ?*IBindCtx, pvReserved: ?*anyopaque, flags: u32, lpcbh: ?*CODEBASEHOLD) HRESULT {
         return self.vtable.AsyncInstallDistributionUnit(self, pbc, pvReserved, flags, lpcbh);
     }
 };
@@ -2618,21 +2618,21 @@ pub const IID_ICatalogFileInfo = &IID_ICatalogFileInfo_Value;
 pub const ICatalogFileInfo = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCatalogFile: *const fn(
+        GetCatalogFile: *const fn (
             self: *const ICatalogFileInfo,
             ppszCatalogFile: ?*?PSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetJavaTrust: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetJavaTrust: *const fn (
             self: *const ICatalogFileInfo,
             ppJavaTrust: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCatalogFile(self: *const ICatalogFileInfo, ppszCatalogFile: ?*?PSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCatalogFile(self: *const ICatalogFileInfo, ppszCatalogFile: ?*?PSTR) HRESULT {
         return self.vtable.GetCatalogFile(self, ppszCatalogFile);
     }
-    pub fn GetJavaTrust(self: *const ICatalogFileInfo, ppJavaTrust: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetJavaTrust(self: *const ICatalogFileInfo, ppJavaTrust: ?*?*anyopaque) HRESULT {
         return self.vtable.GetJavaTrust(self, ppJavaTrust);
     }
 };
@@ -2642,7 +2642,7 @@ pub const IID_IDataFilter = &IID_IDataFilter_Value;
 pub const IDataFilter = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        DoEncode: *const fn(
+        DoEncode: *const fn (
             self: *const IDataFilter,
             dwFlags: u32,
             lInBufferSize: i32,
@@ -2653,8 +2653,8 @@ pub const IDataFilter = extern union {
             plInBytesRead: ?*i32,
             plOutBytesWritten: ?*i32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DoDecode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DoDecode: *const fn (
             self: *const IDataFilter,
             dwFlags: u32,
             lInBufferSize: i32,
@@ -2665,21 +2665,21 @@ pub const IDataFilter = extern union {
             plInBytesRead: ?*i32,
             plOutBytesWritten: ?*i32,
             dwReserved: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEncodingLevel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEncodingLevel: *const fn (
             self: *const IDataFilter,
             dwEncLevel: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn DoEncode(self: *const IDataFilter, dwFlags: u32, lInBufferSize: i32, pbInBuffer: [*:0]u8, lOutBufferSize: i32, pbOutBuffer: [*:0]u8, lInBytesAvailable: i32, plInBytesRead: ?*i32, plOutBytesWritten: ?*i32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn DoEncode(self: *const IDataFilter, dwFlags: u32, lInBufferSize: i32, pbInBuffer: [*:0]u8, lOutBufferSize: i32, pbOutBuffer: [*:0]u8, lInBytesAvailable: i32, plInBytesRead: ?*i32, plOutBytesWritten: ?*i32, dwReserved: u32) HRESULT {
         return self.vtable.DoEncode(self, dwFlags, lInBufferSize, pbInBuffer, lOutBufferSize, pbOutBuffer, lInBytesAvailable, plInBytesRead, plOutBytesWritten, dwReserved);
     }
-    pub fn DoDecode(self: *const IDataFilter, dwFlags: u32, lInBufferSize: i32, pbInBuffer: [*:0]u8, lOutBufferSize: i32, pbOutBuffer: [*:0]u8, lInBytesAvailable: i32, plInBytesRead: ?*i32, plOutBytesWritten: ?*i32, dwReserved: u32) callconv(.Inline) HRESULT {
+    pub inline fn DoDecode(self: *const IDataFilter, dwFlags: u32, lInBufferSize: i32, pbInBuffer: [*:0]u8, lOutBufferSize: i32, pbOutBuffer: [*:0]u8, lInBytesAvailable: i32, plInBytesRead: ?*i32, plOutBytesWritten: ?*i32, dwReserved: u32) HRESULT {
         return self.vtable.DoDecode(self, dwFlags, lInBufferSize, pbInBuffer, lOutBufferSize, pbOutBuffer, lInBytesAvailable, plInBytesRead, plOutBytesWritten, dwReserved);
     }
-    pub fn SetEncodingLevel(self: *const IDataFilter, dwEncLevel: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetEncodingLevel(self: *const IDataFilter, dwEncLevel: u32) HRESULT {
         return self.vtable.SetEncodingLevel(self, dwEncLevel);
     }
 };
@@ -2704,26 +2704,26 @@ pub const IID_IEncodingFilterFactory = &IID_IEncodingFilterFactory_Value;
 pub const IEncodingFilterFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        FindBestFilter: *const fn(
+        FindBestFilter: *const fn (
             self: *const IEncodingFilterFactory,
             pwzCodeIn: ?[*:0]const u16,
             pwzCodeOut: ?[*:0]const u16,
             info: DATAINFO,
             ppDF: ?*?*IDataFilter,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDefaultFilter: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDefaultFilter: *const fn (
             self: *const IEncodingFilterFactory,
             pwzCodeIn: ?[*:0]const u16,
             pwzCodeOut: ?[*:0]const u16,
             ppDF: ?*?*IDataFilter,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn FindBestFilter(self: *const IEncodingFilterFactory, pwzCodeIn: ?[*:0]const u16, pwzCodeOut: ?[*:0]const u16, info: DATAINFO, ppDF: ?*?*IDataFilter) callconv(.Inline) HRESULT {
+    pub inline fn FindBestFilter(self: *const IEncodingFilterFactory, pwzCodeIn: ?[*:0]const u16, pwzCodeOut: ?[*:0]const u16, info: DATAINFO, ppDF: ?*?*IDataFilter) HRESULT {
         return self.vtable.FindBestFilter(self, pwzCodeIn, pwzCodeOut, info, ppDF);
     }
-    pub fn GetDefaultFilter(self: *const IEncodingFilterFactory, pwzCodeIn: ?[*:0]const u16, pwzCodeOut: ?[*:0]const u16, ppDF: ?*?*IDataFilter) callconv(.Inline) HRESULT {
+    pub inline fn GetDefaultFilter(self: *const IEncodingFilterFactory, pwzCodeIn: ?[*:0]const u16, pwzCodeOut: ?[*:0]const u16, ppDF: ?*?*IDataFilter) HRESULT {
         return self.vtable.GetDefaultFilter(self, pwzCodeIn, pwzCodeOut, ppDF);
     }
 };
@@ -2747,15 +2747,15 @@ pub const IID_IWrappedProtocol = &IID_IWrappedProtocol_Value;
 pub const IWrappedProtocol = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetWrapperCode: *const fn(
+        GetWrapperCode: *const fn (
             self: *const IWrappedProtocol,
             pnCode: ?*i32,
             dwReserved: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetWrapperCode(self: *const IWrappedProtocol, pnCode: ?*i32, dwReserved: usize) callconv(.Inline) HRESULT {
+    pub inline fn GetWrapperCode(self: *const IWrappedProtocol, pnCode: ?*i32, dwReserved: usize) HRESULT {
         return self.vtable.GetWrapperCode(self, pnCode, dwReserved);
     }
 };
@@ -2774,15 +2774,15 @@ pub const IID_IGetBindHandle = &IID_IGetBindHandle_Value;
 pub const IGetBindHandle = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetBindHandle: *const fn(
+        GetBindHandle: *const fn (
             self: *const IGetBindHandle,
             enumRequestedHandle: BINDHANDLETYPES,
             pRetHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetBindHandle(self: *const IGetBindHandle, enumRequestedHandle: BINDHANDLETYPES, pRetHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn GetBindHandle(self: *const IGetBindHandle, enumRequestedHandle: BINDHANDLETYPES, pRetHandle: ?*?HANDLE) HRESULT {
         return self.vtable.GetBindHandle(self, enumRequestedHandle, pRetHandle);
     }
 };
@@ -2797,15 +2797,15 @@ pub const IID_IBindCallbackRedirect = &IID_IBindCallbackRedirect_Value;
 pub const IBindCallbackRedirect = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Redirect: *const fn(
+        Redirect: *const fn (
             self: *const IBindCallbackRedirect,
             lpcUrl: ?[*:0]const u16,
             vbCancel: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Redirect(self: *const IBindCallbackRedirect, lpcUrl: ?[*:0]const u16, vbCancel: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn Redirect(self: *const IBindCallbackRedirect, lpcUrl: ?[*:0]const u16, vbCancel: ?*i16) HRESULT {
         return self.vtable.Redirect(self, lpcUrl, vbCancel);
     }
 };
@@ -2815,18 +2815,17 @@ pub const IID_IBindHttpSecurity = &IID_IBindHttpSecurity_Value;
 pub const IBindHttpSecurity = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetIgnoreCertMask: *const fn(
+        GetIgnoreCertMask: *const fn (
             self: *const IBindHttpSecurity,
             pdwIgnoreCertMask: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetIgnoreCertMask(self: *const IBindHttpSecurity, pdwIgnoreCertMask: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetIgnoreCertMask(self: *const IBindHttpSecurity, pdwIgnoreCertMask: ?*u32) HRESULT {
         return self.vtable.GetIgnoreCertMask(self, pdwIgnoreCertMask);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (73)
@@ -2835,19 +2834,19 @@ pub extern "urlmon" fn CreateURLMoniker(
     pMkCtx: ?*IMoniker,
     szURL: ?[*:0]const u16,
     ppmk: ?*?*IMoniker,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CreateURLMonikerEx(
     pMkCtx: ?*IMoniker,
     szURL: ?[*:0]const u16,
     ppmk: ?*?*IMoniker,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn GetClassURL(
     szURL: ?[*:0]const u16,
     pClsID: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "urlmon" fn CreateAsyncBindCtx(
@@ -2855,14 +2854,14 @@ pub extern "urlmon" fn CreateAsyncBindCtx(
     pBSCb: ?*IBindStatusCallback,
     pEFetc: ?*IEnumFORMATETC,
     ppBC: ?*?*IBindCtx,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CreateURLMonikerEx2(
     pMkCtx: ?*IMoniker,
     pUri: ?*IUri,
     ppmk: ?*?*IMoniker,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CreateAsyncBindCtxEx(
     pbc: ?*IBindCtx,
@@ -2871,26 +2870,26 @@ pub extern "urlmon" fn CreateAsyncBindCtxEx(
     pEnum: ?*IEnumFORMATETC,
     ppBC: ?*?*IBindCtx,
     reserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn MkParseDisplayNameEx(
     pbc: ?*IBindCtx,
     szDisplayName: ?[*:0]const u16,
     pchEaten: ?*u32,
     ppmk: ?*?*IMoniker,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn RegisterBindStatusCallback(
     pBC: ?*IBindCtx,
     pBSCb: ?*IBindStatusCallback,
     ppBSCBPrev: ?*?*IBindStatusCallback,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn RevokeBindStatusCallback(
     pBC: ?*IBindCtx,
     pBSCb: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn GetClassFileOrMime(
     pBC: ?*IBindCtx,
@@ -2901,13 +2900,13 @@ pub extern "urlmon" fn GetClassFileOrMime(
     szMime: ?[*:0]const u16,
     dwReserved: u32,
     pclsid: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn IsValidURL(
     pBC: ?*IBindCtx,
     szURL: ?[*:0]const u16,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoGetClassObjectFromURL(
     rCLASSID: ?*const Guid,
@@ -2920,56 +2919,56 @@ pub extern "urlmon" fn CoGetClassObjectFromURL(
     pvReserved: ?*anyopaque,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn IEInstallScope(
     pdwScope: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn FaultInIEFeature(
     hWnd: ?HWND,
     pClassSpec: ?*uCLSSPEC,
     pQuery: ?*QUERYCONTEXT,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn GetComponentIDFromCLSSPEC(
     pClassspec: ?*uCLSSPEC,
     ppszComponentID: ?*?PSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn IsAsyncMoniker(
     pmk: ?*IMoniker,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn RegisterMediaTypes(
     ctypes: u32,
     rgszTypes: [*]const ?[*:0]const u8,
     rgcfTypes: [*:0]u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn FindMediaType(
     rgszTypes: ?[*:0]const u8,
     rgcfTypes: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "urlmon" fn CreateFormatEnumerator(
     cfmtetc: u32,
     rgfmtetc: [*]FORMATETC,
     ppenumfmtetc: ?*?*IEnumFORMATETC,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn RegisterFormatEnumerator(
     pBC: ?*IBindCtx,
     pEFetc: ?*IEnumFORMATETC,
     reserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn RevokeFormatEnumerator(
     pBC: ?*IBindCtx,
     pEFetc: ?*IEnumFORMATETC,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn RegisterMediaTypeClass(
     pBC: ?*IBindCtx,
@@ -2977,14 +2976,14 @@ pub extern "urlmon" fn RegisterMediaTypeClass(
     rgszTypes: [*]const ?[*:0]const u8,
     rgclsID: [*]Guid,
     reserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn FindMediaTypeClass(
     pBC: ?*IBindCtx,
     szType: ?[*:0]const u8,
     pclsID: ?*Guid,
     reserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn UrlMkSetSessionOption(
     dwOption: u32,
@@ -2992,7 +2991,7 @@ pub extern "urlmon" fn UrlMkSetSessionOption(
     pBuffer: ?*anyopaque,
     dwBufferLength: u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn UrlMkGetSessionOption(
     dwOption: u32,
@@ -3001,7 +3000,7 @@ pub extern "urlmon" fn UrlMkGetSessionOption(
     dwBufferLength: u32,
     pdwBufferLengthOut: ?*u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn FindMimeFromData(
     pBC: ?*IBindCtx,
@@ -3013,13 +3012,13 @@ pub extern "urlmon" fn FindMimeFromData(
     dwMimeFlags: u32,
     ppwzMimeOut: ?*?PWSTR,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn ObtainUserAgentString(
     dwOption: u32,
     pszUAOut: [*:0]u8,
     cbSize: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CompareSecurityIds(
     pbSecurityId1: [*:0]u8,
@@ -3027,19 +3026,19 @@ pub extern "urlmon" fn CompareSecurityIds(
     pbSecurityId2: [*:0]u8,
     dwLen2: u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CompatFlagsFromClsid(
     pclsid: ?*Guid,
     pdwCompatFlags: ?*u32,
     pdwMiscStatusFlags: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn SetAccessForIEAppContainer(
     hObject: ?HANDLE,
     ieObjectType: IEObjectType,
     dwAccessMask: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn HlinkSimpleNavigateToString(
     szTarget: ?[*:0]const u16,
@@ -3050,7 +3049,7 @@ pub extern "urlmon" fn HlinkSimpleNavigateToString(
     param5: ?*IBindStatusCallback,
     grfHLNF: u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn HlinkSimpleNavigateToMoniker(
     pmkTarget: ?*IMoniker,
@@ -3061,35 +3060,35 @@ pub extern "urlmon" fn HlinkSimpleNavigateToMoniker(
     param5: ?*IBindStatusCallback,
     grfHLNF: u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLOpenStreamA(
     param0: ?*IUnknown,
     param1: ?[*:0]const u8,
     param2: u32,
     param3: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLOpenStreamW(
     param0: ?*IUnknown,
     param1: ?[*:0]const u16,
     param2: u32,
     param3: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLOpenPullStreamA(
     param0: ?*IUnknown,
     param1: ?[*:0]const u8,
     param2: u32,
     param3: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLOpenPullStreamW(
     param0: ?*IUnknown,
     param1: ?[*:0]const u16,
     param2: u32,
     param3: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLDownloadToFileA(
     param0: ?*IUnknown,
@@ -3097,7 +3096,7 @@ pub extern "urlmon" fn URLDownloadToFileA(
     param2: ?[*:0]const u8,
     param3: u32,
     param4: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLDownloadToFileW(
     param0: ?*IUnknown,
@@ -3105,7 +3104,7 @@ pub extern "urlmon" fn URLDownloadToFileW(
     param2: ?[*:0]const u16,
     param3: u32,
     param4: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLDownloadToCacheFileA(
     param0: ?*IUnknown,
@@ -3114,7 +3113,7 @@ pub extern "urlmon" fn URLDownloadToCacheFileA(
     cchFileName: u32,
     param4: u32,
     param5: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLDownloadToCacheFileW(
     param0: ?*IUnknown,
@@ -3123,7 +3122,7 @@ pub extern "urlmon" fn URLDownloadToCacheFileW(
     cchFileName: u32,
     param4: u32,
     param5: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLOpenBlockingStreamA(
     param0: ?*IUnknown,
@@ -3131,7 +3130,7 @@ pub extern "urlmon" fn URLOpenBlockingStreamA(
     param2: ?*?*IStream,
     param3: u32,
     param4: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn URLOpenBlockingStreamW(
     param0: ?*IUnknown,
@@ -3139,25 +3138,25 @@ pub extern "urlmon" fn URLOpenBlockingStreamW(
     param2: ?*?*IStream,
     param3: u32,
     param4: ?*IBindStatusCallback,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn HlinkGoBack(
     pUnk: ?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn HlinkGoForward(
     pUnk: ?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn HlinkNavigateString(
     pUnk: ?*IUnknown,
     szTarget: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn HlinkNavigateMoniker(
     pUnk: ?*IUnknown,
     pmkTarget: ?*IMoniker,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetParseUrl(
     pwzUrl: ?[*:0]const u16,
@@ -3167,7 +3166,7 @@ pub extern "urlmon" fn CoInternetParseUrl(
     cchResult: u32,
     pcchResult: ?*u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetParseIUri(
     pIUri: ?*IUri,
@@ -3177,7 +3176,7 @@ pub extern "urlmon" fn CoInternetParseIUri(
     cchResult: u32,
     pcchResult: ?*u32,
     dwReserved: usize,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetCombineUrl(
     pwzBaseUrl: ?[*:0]const u16,
@@ -3187,7 +3186,7 @@ pub extern "urlmon" fn CoInternetCombineUrl(
     cchResult: u32,
     pcchResult: ?*u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetCombineUrlEx(
     pBaseUri: ?*IUri,
@@ -3195,7 +3194,7 @@ pub extern "urlmon" fn CoInternetCombineUrlEx(
     dwCombineFlags: u32,
     ppCombinedUri: ?*?*IUri,
     dwReserved: usize,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetCombineIUri(
     pBaseUri: ?*IUri,
@@ -3203,19 +3202,19 @@ pub extern "urlmon" fn CoInternetCombineIUri(
     dwCombineFlags: u32,
     ppCombinedUri: ?*?*IUri,
     dwReserved: usize,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetCompareUrl(
     pwzUrl1: ?[*:0]const u16,
     pwzUrl2: ?[*:0]const u16,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetGetProtocolFlags(
     pwzUrl: ?[*:0]const u16,
     pdwFlags: ?*u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetQueryInfo(
     pwzUrl: ?[*:0]const u16,
@@ -3226,113 +3225,111 @@ pub extern "urlmon" fn CoInternetQueryInfo(
     cbBuffer: u32,
     pcbBuffer: ?*u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetGetSession(
     dwSessionMode: u32,
     ppIInternetSession: ?*?*IInternetSession,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetGetSecurityUrl(
     pwszUrl: ?[*:0]const u16,
     ppwszSecUrl: ?*?PWSTR,
     psuAction: PSUACTION,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetGetSecurityUrlEx(
     pUri: ?*IUri,
     ppSecUri: ?*?*IUri,
     psuAction: PSUACTION,
     dwReserved: usize,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetSetFeatureEnabled(
     FeatureEntry: INTERNETFEATURELIST,
     dwFlags: u32,
     fEnable: BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetIsFeatureEnabled(
     FeatureEntry: INTERNETFEATURELIST,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetIsFeatureEnabledForUrl(
     FeatureEntry: INTERNETFEATURELIST,
     dwFlags: u32,
     szURL: ?[*:0]const u16,
     pSecMgr: ?*IInternetSecurityManager,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetIsFeatureEnabledForIUri(
     FeatureEntry: INTERNETFEATURELIST,
     dwFlags: u32,
     pIUri: ?*IUri,
     pSecMgr: ?*IInternetSecurityManagerEx2,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetIsFeatureZoneElevationEnabled(
     szFromURL: ?[*:0]const u16,
     szToURL: ?[*:0]const u16,
     pSecMgr: ?*IInternetSecurityManager,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CopyStgMedium(
     pcstgmedSrc: ?*const STGMEDIUM,
     pstgmedDest: ?*STGMEDIUM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CopyBindInfo(
     pcbiSrc: ?*const BINDINFO,
     pbiDest: ?*BINDINFO,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn ReleaseBindInfo(
     pbindinfo: ?*BINDINFO,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub extern "urlmon" fn IEGetUserPrivateNamespaceName(
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+pub extern "urlmon" fn IEGetUserPrivateNamespaceName() callconv(.winapi) ?PWSTR;
 
 pub extern "urlmon" fn CoInternetCreateSecurityManager(
     pSP: ?*IServiceProvider,
     ppSM: ?*?*IInternetSecurityManager,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn CoInternetCreateZoneManager(
     pSP: ?*IServiceProvider,
     ppZM: ?*?*IInternetZoneManager,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn GetSoftwareUpdateInfo(
     szDistUnit: ?[*:0]const u16,
     psdi: ?*SOFTDISTINFO,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn SetSoftwareUpdateAdvertisementState(
     szDistUnit: ?[*:0]const u16,
     dwAdState: u32,
     dwAdvertisedVersionMS: u32,
     dwAdvertisedVersionLS: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "urlmon" fn IsLoggingEnabledA(
     pszUrl: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "urlmon" fn IsLoggingEnabledW(
     pwszUrl: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "urlmon" fn WriteHitLogging(
     lpLogginginfo: ?*HIT_LOGGING_INFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (6)
@@ -3414,9 +3411,7 @@ const uCLSSPEC = @import("../../system/com.zig").uCLSSPEC;
 const ULARGE_INTEGER = @import("../../foundation.zig").ULARGE_INTEGER;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

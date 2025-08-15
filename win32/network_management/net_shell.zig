@@ -97,41 +97,41 @@ pub const TOKEN_VALUE = extern struct {
     dwValue: u32,
 };
 
-pub const PGET_RESOURCE_STRING_FN = *const fn(
+pub const PGET_RESOURCE_STRING_FN = *const fn (
     dwMsgID: u32,
     lpBuffer: ?PWSTR,
     nBufferMax: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PNS_CONTEXT_COMMIT_FN = *const fn(
+pub const PNS_CONTEXT_COMMIT_FN = *const fn (
     dwAction: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PNS_CONTEXT_CONNECT_FN = *const fn(
+pub const PNS_CONTEXT_CONNECT_FN = *const fn (
     pwszMachine: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PNS_CONTEXT_DUMP_FN = *const fn(
+pub const PNS_CONTEXT_DUMP_FN = *const fn (
     pwszRouter: ?[*:0]const u16,
     ppwcArguments: [*]?PWSTR,
     dwArgCount: u32,
     pvData: ?*const anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PNS_DLL_STOP_FN = *const fn(
+pub const PNS_DLL_STOP_FN = *const fn (
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PNS_HELPER_START_FN = *const fn(
+pub const PNS_HELPER_START_FN = *const fn (
     pguidParent: ?*const Guid,
     dwVersion: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PNS_HELPER_STOP_FN = *const fn(
+pub const PNS_HELPER_STOP_FN = *const fn (
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PFN_HANDLE_CMD = *const fn(
+pub const PFN_HANDLE_CMD = *const fn (
     pwszMachine: ?[*:0]const u16,
     ppwcArguments: [*]?PWSTR,
     dwCurrentIndex: u32,
@@ -139,9 +139,9 @@ pub const PFN_HANDLE_CMD = *const fn(
     dwFlags: u32,
     pvData: ?*const anyopaque,
     pbDone: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const PNS_OSVERSIONCHECK = *const fn(
+pub const PNS_OSVERSIONCHECK = *const fn (
     CIMOSType: u32,
     CIMOSProductSuite: u32,
     CIMOSVersion: ?[*:0]const u16,
@@ -150,7 +150,7 @@ pub const PNS_OSVERSIONCHECK = *const fn(
     CIMServicePackMinorVersion: ?[*:0]const u16,
     uiReserved: u32,
     dwReserved: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const NS_HELPER_ATTRIBUTES = extern struct {
     Anonymous: extern union {
@@ -212,11 +212,10 @@ pub const TAG_TYPE = extern struct {
     bPresent: BOOL,
 };
 
-pub const PNS_DLL_INIT_FN = *const fn(
+pub const PNS_DLL_INIT_FN = *const fn (
     dwNetshVersion: u32,
     pReserved: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (8)
@@ -228,13 +227,13 @@ pub extern "netsh" fn MatchEnumTag(
     dwNumArg: u32,
     pEnumTable: ?*const TOKEN_VALUE,
     pdwValue: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "netsh" fn MatchToken(
     pwszUserToken: ?[*:0]const u16,
     pwszCmdToken: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "netsh" fn PreprocessCommand(
@@ -247,36 +246,35 @@ pub extern "netsh" fn PreprocessCommand(
     dwMinArgs: u32,
     dwMaxArgs: u32,
     pdwTagType: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "netsh" fn PrintError(
     hModule: ?HANDLE,
     dwErrId: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "netsh" fn PrintMessageFromModule(
     hModule: ?HANDLE,
     dwMsgId: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "netsh" fn PrintMessage(
     pwszFormat: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "netsh" fn RegisterContext(
     pChildContext: ?*const NS_CONTEXT_ATTRIBUTES,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "netsh" fn RegisterHelper(
     pguidParentContext: ?*const Guid,
     pfnRegisterSubContext: ?*const NS_HELPER_ATTRIBUTES,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -291,20 +289,38 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "PGET_RESOURCE_STRING_FN")) { _ = PGET_RESOURCE_STRING_FN; }
-    if (@hasDecl(@This(), "PNS_CONTEXT_COMMIT_FN")) { _ = PNS_CONTEXT_COMMIT_FN; }
-    if (@hasDecl(@This(), "PNS_CONTEXT_CONNECT_FN")) { _ = PNS_CONTEXT_CONNECT_FN; }
-    if (@hasDecl(@This(), "PNS_CONTEXT_DUMP_FN")) { _ = PNS_CONTEXT_DUMP_FN; }
-    if (@hasDecl(@This(), "PNS_DLL_STOP_FN")) { _ = PNS_DLL_STOP_FN; }
-    if (@hasDecl(@This(), "PNS_HELPER_START_FN")) { _ = PNS_HELPER_START_FN; }
-    if (@hasDecl(@This(), "PNS_HELPER_STOP_FN")) { _ = PNS_HELPER_STOP_FN; }
-    if (@hasDecl(@This(), "PFN_HANDLE_CMD")) { _ = PFN_HANDLE_CMD; }
-    if (@hasDecl(@This(), "PNS_OSVERSIONCHECK")) { _ = PNS_OSVERSIONCHECK; }
-    if (@hasDecl(@This(), "PNS_DLL_INIT_FN")) { _ = PNS_DLL_INIT_FN; }
+    if (@hasDecl(@This(), "PGET_RESOURCE_STRING_FN")) {
+        _ = PGET_RESOURCE_STRING_FN;
+    }
+    if (@hasDecl(@This(), "PNS_CONTEXT_COMMIT_FN")) {
+        _ = PNS_CONTEXT_COMMIT_FN;
+    }
+    if (@hasDecl(@This(), "PNS_CONTEXT_CONNECT_FN")) {
+        _ = PNS_CONTEXT_CONNECT_FN;
+    }
+    if (@hasDecl(@This(), "PNS_CONTEXT_DUMP_FN")) {
+        _ = PNS_CONTEXT_DUMP_FN;
+    }
+    if (@hasDecl(@This(), "PNS_DLL_STOP_FN")) {
+        _ = PNS_DLL_STOP_FN;
+    }
+    if (@hasDecl(@This(), "PNS_HELPER_START_FN")) {
+        _ = PNS_HELPER_START_FN;
+    }
+    if (@hasDecl(@This(), "PNS_HELPER_STOP_FN")) {
+        _ = PNS_HELPER_STOP_FN;
+    }
+    if (@hasDecl(@This(), "PFN_HANDLE_CMD")) {
+        _ = PFN_HANDLE_CMD;
+    }
+    if (@hasDecl(@This(), "PNS_OSVERSIONCHECK")) {
+        _ = PNS_OSVERSIONCHECK;
+    }
+    if (@hasDecl(@This(), "PNS_DLL_INIT_FN")) {
+        _ = PNS_DLL_INIT_FN;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

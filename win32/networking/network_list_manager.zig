@@ -133,75 +133,75 @@ pub const IID_INetworkListManager = &IID_INetworkListManager_Value;
 pub const INetworkListManager = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetNetworks: *const fn(
+        GetNetworks: *const fn (
             self: *const INetworkListManager,
             Flags: NLM_ENUM_NETWORK,
             ppEnumNetwork: ?*?*IEnumNetworks,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNetwork: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNetwork: *const fn (
             self: *const INetworkListManager,
             gdNetworkId: Guid,
             ppNetwork: ?*?*INetwork,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNetworkConnections: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNetworkConnections: *const fn (
             self: *const INetworkListManager,
             ppEnum: ?*?*IEnumNetworkConnections,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNetworkConnection: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNetworkConnection: *const fn (
             self: *const INetworkListManager,
             gdNetworkConnectionId: Guid,
             ppNetworkConnection: ?*?*INetworkConnection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsConnectedToInternet: *const fn(
+        get_IsConnectedToInternet: *const fn (
             self: *const INetworkListManager,
             pbIsConnected: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsConnected: *const fn(
+        get_IsConnected: *const fn (
             self: *const INetworkListManager,
             pbIsConnected: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConnectivity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConnectivity: *const fn (
             self: *const INetworkListManager,
             pConnectivity: ?*NLM_CONNECTIVITY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSimulatedProfileInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSimulatedProfileInfo: *const fn (
             self: *const INetworkListManager,
             pSimulatedInfo: ?*NLM_SIMULATED_PROFILE_INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ClearSimulatedProfileInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ClearSimulatedProfileInfo: *const fn (
             self: *const INetworkListManager,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetNetworks(self: *const INetworkListManager, Flags: NLM_ENUM_NETWORK, ppEnumNetwork: ?*?*IEnumNetworks) callconv(.Inline) HRESULT {
+    pub inline fn GetNetworks(self: *const INetworkListManager, Flags: NLM_ENUM_NETWORK, ppEnumNetwork: ?*?*IEnumNetworks) HRESULT {
         return self.vtable.GetNetworks(self, Flags, ppEnumNetwork);
     }
-    pub fn GetNetwork(self: *const INetworkListManager, gdNetworkId: Guid, ppNetwork: ?*?*INetwork) callconv(.Inline) HRESULT {
+    pub inline fn GetNetwork(self: *const INetworkListManager, gdNetworkId: Guid, ppNetwork: ?*?*INetwork) HRESULT {
         return self.vtable.GetNetwork(self, gdNetworkId, ppNetwork);
     }
-    pub fn GetNetworkConnections(self: *const INetworkListManager, ppEnum: ?*?*IEnumNetworkConnections) callconv(.Inline) HRESULT {
+    pub inline fn GetNetworkConnections(self: *const INetworkListManager, ppEnum: ?*?*IEnumNetworkConnections) HRESULT {
         return self.vtable.GetNetworkConnections(self, ppEnum);
     }
-    pub fn GetNetworkConnection(self: *const INetworkListManager, gdNetworkConnectionId: Guid, ppNetworkConnection: ?*?*INetworkConnection) callconv(.Inline) HRESULT {
+    pub inline fn GetNetworkConnection(self: *const INetworkListManager, gdNetworkConnectionId: Guid, ppNetworkConnection: ?*?*INetworkConnection) HRESULT {
         return self.vtable.GetNetworkConnection(self, gdNetworkConnectionId, ppNetworkConnection);
     }
-    pub fn get_IsConnectedToInternet(self: *const INetworkListManager, pbIsConnected: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsConnectedToInternet(self: *const INetworkListManager, pbIsConnected: ?*i16) HRESULT {
         return self.vtable.get_IsConnectedToInternet(self, pbIsConnected);
     }
-    pub fn get_IsConnected(self: *const INetworkListManager, pbIsConnected: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsConnected(self: *const INetworkListManager, pbIsConnected: ?*i16) HRESULT {
         return self.vtable.get_IsConnected(self, pbIsConnected);
     }
-    pub fn GetConnectivity(self: *const INetworkListManager, pConnectivity: ?*NLM_CONNECTIVITY) callconv(.Inline) HRESULT {
+    pub inline fn GetConnectivity(self: *const INetworkListManager, pConnectivity: ?*NLM_CONNECTIVITY) HRESULT {
         return self.vtable.GetConnectivity(self, pConnectivity);
     }
-    pub fn SetSimulatedProfileInfo(self: *const INetworkListManager, pSimulatedInfo: ?*NLM_SIMULATED_PROFILE_INFO) callconv(.Inline) HRESULT {
+    pub inline fn SetSimulatedProfileInfo(self: *const INetworkListManager, pSimulatedInfo: ?*NLM_SIMULATED_PROFILE_INFO) HRESULT {
         return self.vtable.SetSimulatedProfileInfo(self, pSimulatedInfo);
     }
-    pub fn ClearSimulatedProfileInfo(self: *const INetworkListManager) callconv(.Inline) HRESULT {
+    pub inline fn ClearSimulatedProfileInfo(self: *const INetworkListManager) HRESULT {
         return self.vtable.ClearSimulatedProfileInfo(self);
     }
 };
@@ -212,14 +212,14 @@ pub const IID_INetworkListManagerEvents = &IID_INetworkListManagerEvents_Value;
 pub const INetworkListManagerEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ConnectivityChanged: *const fn(
+        ConnectivityChanged: *const fn (
             self: *const INetworkListManagerEvents,
             newConnectivity: NLM_CONNECTIVITY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ConnectivityChanged(self: *const INetworkListManagerEvents, newConnectivity: NLM_CONNECTIVITY) callconv(.Inline) HRESULT {
+    pub inline fn ConnectivityChanged(self: *const INetworkListManagerEvents, newConnectivity: NLM_CONNECTIVITY) HRESULT {
         return self.vtable.ConnectivityChanged(self, newConnectivity);
     }
 };
@@ -239,104 +239,104 @@ pub const IID_INetwork = &IID_INetwork_Value;
 pub const INetwork = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetName: *const fn(
+        GetName: *const fn (
             self: *const INetwork,
             pszNetworkName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetName: *const fn (
             self: *const INetwork,
             szNetworkNewName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDescription: *const fn (
             self: *const INetwork,
             pszDescription: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDescription: *const fn (
             self: *const INetwork,
             szDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNetworkId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNetworkId: *const fn (
             self: *const INetwork,
             pgdGuidNetworkId: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDomainType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDomainType: *const fn (
             self: *const INetwork,
             pNetworkType: ?*NLM_DOMAIN_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNetworkConnections: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNetworkConnections: *const fn (
             self: *const INetwork,
             ppEnumNetworkConnection: ?*?*IEnumNetworkConnections,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTimeCreatedAndConnected: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTimeCreatedAndConnected: *const fn (
             self: *const INetwork,
             pdwLowDateTimeCreated: ?*u32,
             pdwHighDateTimeCreated: ?*u32,
             pdwLowDateTimeConnected: ?*u32,
             pdwHighDateTimeConnected: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsConnectedToInternet: *const fn(
+        get_IsConnectedToInternet: *const fn (
             self: *const INetwork,
             pbIsConnected: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsConnected: *const fn(
+        get_IsConnected: *const fn (
             self: *const INetwork,
             pbIsConnected: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConnectivity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConnectivity: *const fn (
             self: *const INetwork,
             pConnectivity: ?*NLM_CONNECTIVITY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCategory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCategory: *const fn (
             self: *const INetwork,
             pCategory: ?*NLM_NETWORK_CATEGORY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetCategory: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetCategory: *const fn (
             self: *const INetwork,
             NewCategory: NLM_NETWORK_CATEGORY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetName(self: *const INetwork, pszNetworkName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetName(self: *const INetwork, pszNetworkName: ?*?BSTR) HRESULT {
         return self.vtable.GetName(self, pszNetworkName);
     }
-    pub fn SetName(self: *const INetwork, szNetworkNewName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetName(self: *const INetwork, szNetworkNewName: ?BSTR) HRESULT {
         return self.vtable.SetName(self, szNetworkNewName);
     }
-    pub fn GetDescription(self: *const INetwork, pszDescription: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDescription(self: *const INetwork, pszDescription: ?*?BSTR) HRESULT {
         return self.vtable.GetDescription(self, pszDescription);
     }
-    pub fn SetDescription(self: *const INetwork, szDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetDescription(self: *const INetwork, szDescription: ?BSTR) HRESULT {
         return self.vtable.SetDescription(self, szDescription);
     }
-    pub fn GetNetworkId(self: *const INetwork, pgdGuidNetworkId: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn GetNetworkId(self: *const INetwork, pgdGuidNetworkId: ?*Guid) HRESULT {
         return self.vtable.GetNetworkId(self, pgdGuidNetworkId);
     }
-    pub fn GetDomainType(self: *const INetwork, pNetworkType: ?*NLM_DOMAIN_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetDomainType(self: *const INetwork, pNetworkType: ?*NLM_DOMAIN_TYPE) HRESULT {
         return self.vtable.GetDomainType(self, pNetworkType);
     }
-    pub fn GetNetworkConnections(self: *const INetwork, ppEnumNetworkConnection: ?*?*IEnumNetworkConnections) callconv(.Inline) HRESULT {
+    pub inline fn GetNetworkConnections(self: *const INetwork, ppEnumNetworkConnection: ?*?*IEnumNetworkConnections) HRESULT {
         return self.vtable.GetNetworkConnections(self, ppEnumNetworkConnection);
     }
-    pub fn GetTimeCreatedAndConnected(self: *const INetwork, pdwLowDateTimeCreated: ?*u32, pdwHighDateTimeCreated: ?*u32, pdwLowDateTimeConnected: ?*u32, pdwHighDateTimeConnected: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetTimeCreatedAndConnected(self: *const INetwork, pdwLowDateTimeCreated: ?*u32, pdwHighDateTimeCreated: ?*u32, pdwLowDateTimeConnected: ?*u32, pdwHighDateTimeConnected: ?*u32) HRESULT {
         return self.vtable.GetTimeCreatedAndConnected(self, pdwLowDateTimeCreated, pdwHighDateTimeCreated, pdwLowDateTimeConnected, pdwHighDateTimeConnected);
     }
-    pub fn get_IsConnectedToInternet(self: *const INetwork, pbIsConnected: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsConnectedToInternet(self: *const INetwork, pbIsConnected: ?*i16) HRESULT {
         return self.vtable.get_IsConnectedToInternet(self, pbIsConnected);
     }
-    pub fn get_IsConnected(self: *const INetwork, pbIsConnected: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsConnected(self: *const INetwork, pbIsConnected: ?*i16) HRESULT {
         return self.vtable.get_IsConnected(self, pbIsConnected);
     }
-    pub fn GetConnectivity(self: *const INetwork, pConnectivity: ?*NLM_CONNECTIVITY) callconv(.Inline) HRESULT {
+    pub inline fn GetConnectivity(self: *const INetwork, pConnectivity: ?*NLM_CONNECTIVITY) HRESULT {
         return self.vtable.GetConnectivity(self, pConnectivity);
     }
-    pub fn GetCategory(self: *const INetwork, pCategory: ?*NLM_NETWORK_CATEGORY) callconv(.Inline) HRESULT {
+    pub inline fn GetCategory(self: *const INetwork, pCategory: ?*NLM_NETWORK_CATEGORY) HRESULT {
         return self.vtable.GetCategory(self, pCategory);
     }
-    pub fn SetCategory(self: *const INetwork, NewCategory: NLM_NETWORK_CATEGORY) callconv(.Inline) HRESULT {
+    pub inline fn SetCategory(self: *const INetwork, NewCategory: NLM_NETWORK_CATEGORY) HRESULT {
         return self.vtable.SetCategory(self, NewCategory);
     }
 };
@@ -348,44 +348,44 @@ pub const IEnumNetworks = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IEnumNetworks,
             ppEnumVar: ?*?*IEnumVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IEnumNetworks,
             celt: u32,
             rgelt: [*]?*INetwork,
             pceltFetched: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumNetworks,
             celt: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumNetworks,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumNetworks,
             ppEnumNetwork: ?*?*IEnumNetworks,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const IEnumNetworks, ppEnumVar: ?*?*IEnumVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IEnumNetworks, ppEnumVar: ?*?*IEnumVARIANT) HRESULT {
         return self.vtable.get__NewEnum(self, ppEnumVar);
     }
-    pub fn Next(self: *const IEnumNetworks, celt: u32, rgelt: [*]?*INetwork, pceltFetched: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumNetworks, celt: u32, rgelt: [*]?*INetwork, pceltFetched: ?*u32) HRESULT {
         return self.vtable.Next(self, celt, rgelt, pceltFetched);
     }
-    pub fn Skip(self: *const IEnumNetworks, celt: u32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumNetworks, celt: u32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
-    pub fn Reset(self: *const IEnumNetworks) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumNetworks) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Clone(self: *const IEnumNetworks, ppEnumNetwork: ?*?*IEnumNetworks) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumNetworks, ppEnumNetwork: ?*?*IEnumNetworks) HRESULT {
         return self.vtable.Clone(self, ppEnumNetwork);
     }
 };
@@ -409,37 +409,37 @@ pub const IID_INetworkEvents = &IID_INetworkEvents_Value;
 pub const INetworkEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        NetworkAdded: *const fn(
+        NetworkAdded: *const fn (
             self: *const INetworkEvents,
             networkId: Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NetworkDeleted: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NetworkDeleted: *const fn (
             self: *const INetworkEvents,
             networkId: Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NetworkConnectivityChanged: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NetworkConnectivityChanged: *const fn (
             self: *const INetworkEvents,
             networkId: Guid,
             newConnectivity: NLM_CONNECTIVITY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NetworkPropertyChanged: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NetworkPropertyChanged: *const fn (
             self: *const INetworkEvents,
             networkId: Guid,
             flags: NLM_NETWORK_PROPERTY_CHANGE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn NetworkAdded(self: *const INetworkEvents, networkId: Guid) callconv(.Inline) HRESULT {
+    pub inline fn NetworkAdded(self: *const INetworkEvents, networkId: Guid) HRESULT {
         return self.vtable.NetworkAdded(self, networkId);
     }
-    pub fn NetworkDeleted(self: *const INetworkEvents, networkId: Guid) callconv(.Inline) HRESULT {
+    pub inline fn NetworkDeleted(self: *const INetworkEvents, networkId: Guid) HRESULT {
         return self.vtable.NetworkDeleted(self, networkId);
     }
-    pub fn NetworkConnectivityChanged(self: *const INetworkEvents, networkId: Guid, newConnectivity: NLM_CONNECTIVITY) callconv(.Inline) HRESULT {
+    pub inline fn NetworkConnectivityChanged(self: *const INetworkEvents, networkId: Guid, newConnectivity: NLM_CONNECTIVITY) HRESULT {
         return self.vtable.NetworkConnectivityChanged(self, networkId, newConnectivity);
     }
-    pub fn NetworkPropertyChanged(self: *const INetworkEvents, networkId: Guid, flags: NLM_NETWORK_PROPERTY_CHANGE) callconv(.Inline) HRESULT {
+    pub inline fn NetworkPropertyChanged(self: *const INetworkEvents, networkId: Guid, flags: NLM_NETWORK_PROPERTY_CHANGE) HRESULT {
         return self.vtable.NetworkPropertyChanged(self, networkId, flags);
     }
 };
@@ -450,59 +450,59 @@ pub const IID_INetworkConnection = &IID_INetworkConnection_Value;
 pub const INetworkConnection = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetNetwork: *const fn(
+        GetNetwork: *const fn (
             self: *const INetworkConnection,
             ppNetwork: ?*?*INetwork,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsConnectedToInternet: *const fn(
+        get_IsConnectedToInternet: *const fn (
             self: *const INetworkConnection,
             pbIsConnected: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsConnected: *const fn(
+        get_IsConnected: *const fn (
             self: *const INetworkConnection,
             pbIsConnected: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConnectivity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConnectivity: *const fn (
             self: *const INetworkConnection,
             pConnectivity: ?*NLM_CONNECTIVITY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConnectionId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConnectionId: *const fn (
             self: *const INetworkConnection,
             pgdConnectionId: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAdapterId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAdapterId: *const fn (
             self: *const INetworkConnection,
             pgdAdapterId: ?*Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDomainType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDomainType: *const fn (
             self: *const INetworkConnection,
             pDomainType: ?*NLM_DOMAIN_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetNetwork(self: *const INetworkConnection, ppNetwork: ?*?*INetwork) callconv(.Inline) HRESULT {
+    pub inline fn GetNetwork(self: *const INetworkConnection, ppNetwork: ?*?*INetwork) HRESULT {
         return self.vtable.GetNetwork(self, ppNetwork);
     }
-    pub fn get_IsConnectedToInternet(self: *const INetworkConnection, pbIsConnected: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsConnectedToInternet(self: *const INetworkConnection, pbIsConnected: ?*i16) HRESULT {
         return self.vtable.get_IsConnectedToInternet(self, pbIsConnected);
     }
-    pub fn get_IsConnected(self: *const INetworkConnection, pbIsConnected: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsConnected(self: *const INetworkConnection, pbIsConnected: ?*i16) HRESULT {
         return self.vtable.get_IsConnected(self, pbIsConnected);
     }
-    pub fn GetConnectivity(self: *const INetworkConnection, pConnectivity: ?*NLM_CONNECTIVITY) callconv(.Inline) HRESULT {
+    pub inline fn GetConnectivity(self: *const INetworkConnection, pConnectivity: ?*NLM_CONNECTIVITY) HRESULT {
         return self.vtable.GetConnectivity(self, pConnectivity);
     }
-    pub fn GetConnectionId(self: *const INetworkConnection, pgdConnectionId: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn GetConnectionId(self: *const INetworkConnection, pgdConnectionId: ?*Guid) HRESULT {
         return self.vtable.GetConnectionId(self, pgdConnectionId);
     }
-    pub fn GetAdapterId(self: *const INetworkConnection, pgdAdapterId: ?*Guid) callconv(.Inline) HRESULT {
+    pub inline fn GetAdapterId(self: *const INetworkConnection, pgdAdapterId: ?*Guid) HRESULT {
         return self.vtable.GetAdapterId(self, pgdAdapterId);
     }
-    pub fn GetDomainType(self: *const INetworkConnection, pDomainType: ?*NLM_DOMAIN_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetDomainType(self: *const INetworkConnection, pDomainType: ?*NLM_DOMAIN_TYPE) HRESULT {
         return self.vtable.GetDomainType(self, pDomainType);
     }
 };
@@ -514,44 +514,44 @@ pub const IEnumNetworkConnections = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IEnumNetworkConnections,
             ppEnumVar: ?*?*IEnumVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IEnumNetworkConnections,
             celt: u32,
             rgelt: [*]?*INetworkConnection,
             pceltFetched: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumNetworkConnections,
             celt: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumNetworkConnections,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clone: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clone: *const fn (
             self: *const IEnumNetworkConnections,
             ppEnumNetwork: ?*?*IEnumNetworkConnections,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const IEnumNetworkConnections, ppEnumVar: ?*?*IEnumVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IEnumNetworkConnections, ppEnumVar: ?*?*IEnumVARIANT) HRESULT {
         return self.vtable.get__NewEnum(self, ppEnumVar);
     }
-    pub fn Next(self: *const IEnumNetworkConnections, celt: u32, rgelt: [*]?*INetworkConnection, pceltFetched: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumNetworkConnections, celt: u32, rgelt: [*]?*INetworkConnection, pceltFetched: ?*u32) HRESULT {
         return self.vtable.Next(self, celt, rgelt, pceltFetched);
     }
-    pub fn Skip(self: *const IEnumNetworkConnections, celt: u32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumNetworkConnections, celt: u32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
-    pub fn Reset(self: *const IEnumNetworkConnections) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumNetworkConnections) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Clone(self: *const IEnumNetworkConnections, ppEnumNetwork: ?*?*IEnumNetworkConnections) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumNetworkConnections, ppEnumNetwork: ?*?*IEnumNetworkConnections) HRESULT {
         return self.vtable.Clone(self, ppEnumNetwork);
     }
 };
@@ -567,23 +567,23 @@ pub const IID_INetworkConnectionEvents = &IID_INetworkConnectionEvents_Value;
 pub const INetworkConnectionEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        NetworkConnectionConnectivityChanged: *const fn(
+        NetworkConnectionConnectivityChanged: *const fn (
             self: *const INetworkConnectionEvents,
             connectionId: Guid,
             newConnectivity: NLM_CONNECTIVITY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        NetworkConnectionPropertyChanged: *const fn(
+        ) callconv(.winapi) HRESULT,
+        NetworkConnectionPropertyChanged: *const fn (
             self: *const INetworkConnectionEvents,
             connectionId: Guid,
             flags: NLM_CONNECTION_PROPERTY_CHANGE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn NetworkConnectionConnectivityChanged(self: *const INetworkConnectionEvents, connectionId: Guid, newConnectivity: NLM_CONNECTIVITY) callconv(.Inline) HRESULT {
+    pub inline fn NetworkConnectionConnectivityChanged(self: *const INetworkConnectionEvents, connectionId: Guid, newConnectivity: NLM_CONNECTIVITY) HRESULT {
         return self.vtable.NetworkConnectionConnectivityChanged(self, connectionId, newConnectivity);
     }
-    pub fn NetworkConnectionPropertyChanged(self: *const INetworkConnectionEvents, connectionId: Guid, flags: NLM_CONNECTION_PROPERTY_CHANGE) callconv(.Inline) HRESULT {
+    pub inline fn NetworkConnectionPropertyChanged(self: *const INetworkConnectionEvents, connectionId: Guid, flags: NLM_CONNECTION_PROPERTY_CHANGE) HRESULT {
         return self.vtable.NetworkConnectionPropertyChanged(self, connectionId, flags);
     }
 };
@@ -594,32 +594,32 @@ pub const IID_INetworkCostManager = &IID_INetworkCostManager_Value;
 pub const INetworkCostManager = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCost: *const fn(
+        GetCost: *const fn (
             self: *const INetworkCostManager,
             pCost: ?*u32,
             pDestIPAddr: ?*NLM_SOCKADDR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDataPlanStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDataPlanStatus: *const fn (
             self: *const INetworkCostManager,
             pDataPlanStatus: ?*NLM_DATAPLAN_STATUS,
             pDestIPAddr: ?*NLM_SOCKADDR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDestinationAddresses: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDestinationAddresses: *const fn (
             self: *const INetworkCostManager,
             length: u32,
             pDestIPAddrList: [*]NLM_SOCKADDR,
             bAppend: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCost(self: *const INetworkCostManager, pCost: ?*u32, pDestIPAddr: ?*NLM_SOCKADDR) callconv(.Inline) HRESULT {
+    pub inline fn GetCost(self: *const INetworkCostManager, pCost: ?*u32, pDestIPAddr: ?*NLM_SOCKADDR) HRESULT {
         return self.vtable.GetCost(self, pCost, pDestIPAddr);
     }
-    pub fn GetDataPlanStatus(self: *const INetworkCostManager, pDataPlanStatus: ?*NLM_DATAPLAN_STATUS, pDestIPAddr: ?*NLM_SOCKADDR) callconv(.Inline) HRESULT {
+    pub inline fn GetDataPlanStatus(self: *const INetworkCostManager, pDataPlanStatus: ?*NLM_DATAPLAN_STATUS, pDestIPAddr: ?*NLM_SOCKADDR) HRESULT {
         return self.vtable.GetDataPlanStatus(self, pDataPlanStatus, pDestIPAddr);
     }
-    pub fn SetDestinationAddresses(self: *const INetworkCostManager, length: u32, pDestIPAddrList: [*]NLM_SOCKADDR, bAppend: i16) callconv(.Inline) HRESULT {
+    pub inline fn SetDestinationAddresses(self: *const INetworkCostManager, length: u32, pDestIPAddrList: [*]NLM_SOCKADDR, bAppend: i16) HRESULT {
         return self.vtable.SetDestinationAddresses(self, length, pDestIPAddrList, bAppend);
     }
 };
@@ -630,22 +630,22 @@ pub const IID_INetworkCostManagerEvents = &IID_INetworkCostManagerEvents_Value;
 pub const INetworkCostManagerEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CostChanged: *const fn(
+        CostChanged: *const fn (
             self: *const INetworkCostManagerEvents,
             newCost: u32,
             pDestAddr: ?*NLM_SOCKADDR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DataPlanStatusChanged: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DataPlanStatusChanged: *const fn (
             self: *const INetworkCostManagerEvents,
             pDestAddr: ?*NLM_SOCKADDR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CostChanged(self: *const INetworkCostManagerEvents, newCost: u32, pDestAddr: ?*NLM_SOCKADDR) callconv(.Inline) HRESULT {
+    pub inline fn CostChanged(self: *const INetworkCostManagerEvents, newCost: u32, pDestAddr: ?*NLM_SOCKADDR) HRESULT {
         return self.vtable.CostChanged(self, newCost, pDestAddr);
     }
-    pub fn DataPlanStatusChanged(self: *const INetworkCostManagerEvents, pDestAddr: ?*NLM_SOCKADDR) callconv(.Inline) HRESULT {
+    pub inline fn DataPlanStatusChanged(self: *const INetworkCostManagerEvents, pDestAddr: ?*NLM_SOCKADDR) HRESULT {
         return self.vtable.DataPlanStatusChanged(self, pDestAddr);
     }
 };
@@ -656,21 +656,21 @@ pub const IID_INetworkConnectionCost = &IID_INetworkConnectionCost_Value;
 pub const INetworkConnectionCost = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCost: *const fn(
+        GetCost: *const fn (
             self: *const INetworkConnectionCost,
             pCost: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDataPlanStatus: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDataPlanStatus: *const fn (
             self: *const INetworkConnectionCost,
             pDataPlanStatus: ?*NLM_DATAPLAN_STATUS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCost(self: *const INetworkConnectionCost, pCost: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCost(self: *const INetworkConnectionCost, pCost: ?*u32) HRESULT {
         return self.vtable.GetCost(self, pCost);
     }
-    pub fn GetDataPlanStatus(self: *const INetworkConnectionCost, pDataPlanStatus: ?*NLM_DATAPLAN_STATUS) callconv(.Inline) HRESULT {
+    pub inline fn GetDataPlanStatus(self: *const INetworkConnectionCost, pDataPlanStatus: ?*NLM_DATAPLAN_STATUS) HRESULT {
         return self.vtable.GetDataPlanStatus(self, pDataPlanStatus);
     }
 };
@@ -681,26 +681,25 @@ pub const IID_INetworkConnectionCostEvents = &IID_INetworkConnectionCostEvents_V
 pub const INetworkConnectionCostEvents = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ConnectionCostChanged: *const fn(
+        ConnectionCostChanged: *const fn (
             self: *const INetworkConnectionCostEvents,
             connectionId: Guid,
             newCost: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConnectionDataPlanStatusChanged: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConnectionDataPlanStatusChanged: *const fn (
             self: *const INetworkConnectionCostEvents,
             connectionId: Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ConnectionCostChanged(self: *const INetworkConnectionCostEvents, connectionId: Guid, newCost: u32) callconv(.Inline) HRESULT {
+    pub inline fn ConnectionCostChanged(self: *const INetworkConnectionCostEvents, connectionId: Guid, newCost: u32) HRESULT {
         return self.vtable.ConnectionCostChanged(self, connectionId, newCost);
     }
-    pub fn ConnectionDataPlanStatusChanged(self: *const INetworkConnectionCostEvents, connectionId: Guid) callconv(.Inline) HRESULT {
+    pub inline fn ConnectionDataPlanStatusChanged(self: *const INetworkConnectionCostEvents, connectionId: Guid) HRESULT {
         return self.vtable.ConnectionDataPlanStatusChanged(self, connectionId);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -721,9 +720,7 @@ const IEnumVARIANT = @import("../system/ole.zig").IEnumVARIANT;
 const IUnknown = @import("../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

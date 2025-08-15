@@ -116,24 +116,23 @@ pub const AvrfResourceHeapAllocation = eAvrfResourceTypes.HeapAllocation;
 pub const AvrfResourceHandleTrace = eAvrfResourceTypes.HandleTrace;
 pub const AvrfResourceMax = eAvrfResourceTypes.Max;
 
-pub const AVRF_RESOURCE_ENUMERATE_CALLBACK = *const fn(
+pub const AVRF_RESOURCE_ENUMERATE_CALLBACK = *const fn (
     ResourceDescription: ?*anyopaque,
     EnumerationContext: ?*anyopaque,
     EnumerationLevel: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const AVRF_HEAPALLOCATION_ENUMERATE_CALLBACK = *const fn(
+pub const AVRF_HEAPALLOCATION_ENUMERATE_CALLBACK = *const fn (
     HeapAllocation: ?*AVRF_HEAP_ALLOCATION,
     EnumerationContext: ?*anyopaque,
     EnumerationLevel: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
-pub const AVRF_HANDLEOPERATION_ENUMERATE_CALLBACK = *const fn(
+pub const AVRF_HANDLEOPERATION_ENUMERATE_CALLBACK = *const fn (
     HandleOperation: ?*AVRF_HANDLE_OPERATION,
     EnumerationContext: ?*anyopaque,
     EnumerationLevel: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (1)
@@ -144,8 +143,7 @@ pub extern "verifier" fn VerifierEnumerateResource(
     ResourceType: eAvrfResourceTypes,
     ResourceCallback: ?AVRF_RESOURCE_ENUMERATE_CALLBACK,
     EnumerationContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -157,13 +155,17 @@ const HANDLE = @import("../foundation.zig").HANDLE;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "AVRF_RESOURCE_ENUMERATE_CALLBACK")) { _ = AVRF_RESOURCE_ENUMERATE_CALLBACK; }
-    if (@hasDecl(@This(), "AVRF_HEAPALLOCATION_ENUMERATE_CALLBACK")) { _ = AVRF_HEAPALLOCATION_ENUMERATE_CALLBACK; }
-    if (@hasDecl(@This(), "AVRF_HANDLEOPERATION_ENUMERATE_CALLBACK")) { _ = AVRF_HANDLEOPERATION_ENUMERATE_CALLBACK; }
+    if (@hasDecl(@This(), "AVRF_RESOURCE_ENUMERATE_CALLBACK")) {
+        _ = AVRF_RESOURCE_ENUMERATE_CALLBACK;
+    }
+    if (@hasDecl(@This(), "AVRF_HEAPALLOCATION_ENUMERATE_CALLBACK")) {
+        _ = AVRF_HEAPALLOCATION_ENUMERATE_CALLBACK;
+    }
+    if (@hasDecl(@This(), "AVRF_HANDLEOPERATION_ENUMERATE_CALLBACK")) {
+        _ = AVRF_HANDLEOPERATION_ENUMERATE_CALLBACK;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

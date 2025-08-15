@@ -716,24 +716,24 @@ pub const CQFORM = extern struct {
     pszTitle: ?[*:0]const u16,
 };
 
-pub const LPCQADDFORMSPROC = *const fn(
+pub const LPCQADDFORMSPROC = *const fn (
     lParam: LPARAM,
     pForm: ?*CQFORM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const LPCQADDPAGESPROC = *const fn(
+pub const LPCQADDPAGESPROC = *const fn (
     lParam: LPARAM,
     clsidForm: ?*const Guid,
     pPage: ?*CQPAGE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const LPCQPAGEPROC = *const fn(
+pub const LPCQPAGEPROC = *const fn (
     pPage: ?*CQPAGE,
     hwnd: ?HWND,
     uMsg: u32,
     wParam: WPARAM,
     lParam: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub const CQPAGE = extern struct {
     cbStruct: u32,
@@ -752,30 +752,30 @@ pub const IID_IQueryForm = &IID_IQueryForm_Value;
 pub const IQueryForm = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IQueryForm,
             hkForm: ?HKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddForms: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddForms: *const fn (
             self: *const IQueryForm,
             pAddFormsProc: ?LPCQADDFORMSPROC,
             lParam: LPARAM,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPages: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPages: *const fn (
             self: *const IQueryForm,
             pAddPagesProc: ?LPCQADDPAGESPROC,
             lParam: LPARAM,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IQueryForm, hkForm: ?HKEY) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IQueryForm, hkForm: ?HKEY) HRESULT {
         return self.vtable.Initialize(self, hkForm);
     }
-    pub fn AddForms(self: *const IQueryForm, pAddFormsProc: ?LPCQADDFORMSPROC, lParam: LPARAM) callconv(.Inline) HRESULT {
+    pub inline fn AddForms(self: *const IQueryForm, pAddFormsProc: ?LPCQADDFORMSPROC, lParam: LPARAM) HRESULT {
         return self.vtable.AddForms(self, pAddFormsProc, lParam);
     }
-    pub fn AddPages(self: *const IQueryForm, pAddPagesProc: ?LPCQADDPAGESPROC, lParam: LPARAM) callconv(.Inline) HRESULT {
+    pub inline fn AddPages(self: *const IQueryForm, pAddPagesProc: ?LPCQADDPAGESPROC, lParam: LPARAM) HRESULT {
         return self.vtable.AddPages(self, pAddPagesProc, lParam);
     }
 };
@@ -786,71 +786,71 @@ pub const IID_IPersistQuery = &IID_IPersistQuery_Value;
 pub const IPersistQuery = extern union {
     pub const VTable = extern struct {
         base: IPersist.VTable,
-        WriteString: *const fn(
+        WriteString: *const fn (
             self: *const IPersistQuery,
             pSection: ?[*:0]const u16,
             pValueName: ?[*:0]const u16,
             pValue: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReadString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReadString: *const fn (
             self: *const IPersistQuery,
             pSection: ?[*:0]const u16,
             pValueName: ?[*:0]const u16,
             pBuffer: ?PWSTR,
             cchBuffer: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteInt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteInt: *const fn (
             self: *const IPersistQuery,
             pSection: ?[*:0]const u16,
             pValueName: ?[*:0]const u16,
             value: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReadInt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReadInt: *const fn (
             self: *const IPersistQuery,
             pSection: ?[*:0]const u16,
             pValueName: ?[*:0]const u16,
             pValue: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteStruct: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteStruct: *const fn (
             self: *const IPersistQuery,
             pSection: ?[*:0]const u16,
             pValueName: ?[*:0]const u16,
             pStruct: ?*anyopaque,
             cbStruct: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReadStruct: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReadStruct: *const fn (
             self: *const IPersistQuery,
             pSection: ?[*:0]const u16,
             pValueName: ?[*:0]const u16,
             pStruct: ?*anyopaque,
             cbStruct: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Clear: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Clear: *const fn (
             self: *const IPersistQuery,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPersist: IPersist,
     IUnknown: IUnknown,
-    pub fn WriteString(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pValue: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn WriteString(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pValue: ?[*:0]const u16) HRESULT {
         return self.vtable.WriteString(self, pSection, pValueName, pValue);
     }
-    pub fn ReadString(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pBuffer: ?PWSTR, cchBuffer: i32) callconv(.Inline) HRESULT {
+    pub inline fn ReadString(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pBuffer: ?PWSTR, cchBuffer: i32) HRESULT {
         return self.vtable.ReadString(self, pSection, pValueName, pBuffer, cchBuffer);
     }
-    pub fn WriteInt(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, value: i32) callconv(.Inline) HRESULT {
+    pub inline fn WriteInt(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, value: i32) HRESULT {
         return self.vtable.WriteInt(self, pSection, pValueName, value);
     }
-    pub fn ReadInt(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pValue: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn ReadInt(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pValue: ?*i32) HRESULT {
         return self.vtable.ReadInt(self, pSection, pValueName, pValue);
     }
-    pub fn WriteStruct(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pStruct: ?*anyopaque, cbStruct: u32) callconv(.Inline) HRESULT {
+    pub inline fn WriteStruct(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pStruct: ?*anyopaque, cbStruct: u32) HRESULT {
         return self.vtable.WriteStruct(self, pSection, pValueName, pStruct, cbStruct);
     }
-    pub fn ReadStruct(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pStruct: ?*anyopaque, cbStruct: u32) callconv(.Inline) HRESULT {
+    pub inline fn ReadStruct(self: *const IPersistQuery, pSection: ?[*:0]const u16, pValueName: ?[*:0]const u16, pStruct: ?*anyopaque, cbStruct: u32) HRESULT {
         return self.vtable.ReadStruct(self, pSection, pValueName, pStruct, cbStruct);
     }
-    pub fn Clear(self: *const IPersistQuery) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IPersistQuery) HRESULT {
         return self.vtable.Clear(self);
     }
 };
@@ -874,16 +874,16 @@ pub const IID_ICommonQuery = &IID_ICommonQuery_Value;
 pub const ICommonQuery = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OpenQueryWindow: *const fn(
+        OpenQueryWindow: *const fn (
             self: *const ICommonQuery,
             hwndParent: ?HWND,
             pQueryWnd: ?*OPENQUERYWINDOW,
             ppDataObject: ?*?*IDataObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OpenQueryWindow(self: *const ICommonQuery, hwndParent: ?HWND, pQueryWnd: ?*OPENQUERYWINDOW, ppDataObject: ?*?*IDataObject) callconv(.Inline) HRESULT {
+    pub inline fn OpenQueryWindow(self: *const ICommonQuery, hwndParent: ?HWND, pQueryWnd: ?*OPENQUERYWINDOW, ppDataObject: ?*?*IDataObject) HRESULT {
         return self.vtable.OpenQueryWindow(self, hwndParent, pQueryWnd, ppDataObject);
     }
 };
@@ -1743,108 +1743,108 @@ pub const IADs = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const IADs,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Class: *const fn(
+        get_Class: *const fn (
             self: *const IADs,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_GUID: *const fn(
+        get_GUID: *const fn (
             self: *const IADs,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ADsPath: *const fn(
+        get_ADsPath: *const fn (
             self: *const IADs,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Parent: *const fn(
+        get_Parent: *const fn (
             self: *const IADs,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Schema: *const fn(
+        get_Schema: *const fn (
             self: *const IADs,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInfo: *const fn (
             self: *const IADs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetInfo: *const fn (
             self: *const IADs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Get: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Get: *const fn (
             self: *const IADs,
             bstrName: ?BSTR,
             pvProp: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Put: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Put: *const fn (
             self: *const IADs,
             bstrName: ?BSTR,
             vProp: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEx: *const fn (
             self: *const IADs,
             bstrName: ?BSTR,
             pvProp: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutEx: *const fn (
             self: *const IADs,
             lnControlCode: i32,
             bstrName: ?BSTR,
             vProp: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetInfoEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetInfoEx: *const fn (
             self: *const IADs,
             vProperties: VARIANT,
             lnReserved: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Name(self: *const IADs, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const IADs, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, retval);
     }
-    pub fn get_Class(self: *const IADs, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Class(self: *const IADs, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Class(self, retval);
     }
-    pub fn get_GUID(self: *const IADs, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_GUID(self: *const IADs, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_GUID(self, retval);
     }
-    pub fn get_ADsPath(self: *const IADs, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ADsPath(self: *const IADs, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ADsPath(self, retval);
     }
-    pub fn get_Parent(self: *const IADs, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Parent(self: *const IADs, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Parent(self, retval);
     }
-    pub fn get_Schema(self: *const IADs, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Schema(self: *const IADs, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Schema(self, retval);
     }
-    pub fn GetInfo(self: *const IADs) callconv(.Inline) HRESULT {
+    pub inline fn GetInfo(self: *const IADs) HRESULT {
         return self.vtable.GetInfo(self);
     }
-    pub fn SetInfo(self: *const IADs) callconv(.Inline) HRESULT {
+    pub inline fn SetInfo(self: *const IADs) HRESULT {
         return self.vtable.SetInfo(self);
     }
-    pub fn Get(self: *const IADs, bstrName: ?BSTR, pvProp: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const IADs, bstrName: ?BSTR, pvProp: ?*VARIANT) HRESULT {
         return self.vtable.Get(self, bstrName, pvProp);
     }
-    pub fn Put(self: *const IADs, bstrName: ?BSTR, vProp: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Put(self: *const IADs, bstrName: ?BSTR, vProp: VARIANT) HRESULT {
         return self.vtable.Put(self, bstrName, vProp);
     }
-    pub fn GetEx(self: *const IADs, bstrName: ?BSTR, pvProp: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetEx(self: *const IADs, bstrName: ?BSTR, pvProp: ?*VARIANT) HRESULT {
         return self.vtable.GetEx(self, bstrName, pvProp);
     }
-    pub fn PutEx(self: *const IADs, lnControlCode: i32, bstrName: ?BSTR, vProp: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn PutEx(self: *const IADs, lnControlCode: i32, bstrName: ?BSTR, vProp: VARIANT) HRESULT {
         return self.vtable.PutEx(self, lnControlCode, bstrName, vProp);
     }
-    pub fn GetInfoEx(self: *const IADs, vProperties: VARIANT, lnReserved: i32) callconv(.Inline) HRESULT {
+    pub inline fn GetInfoEx(self: *const IADs, vProperties: VARIANT, lnReserved: i32) HRESULT {
         return self.vtable.GetInfoEx(self, vProperties, lnReserved);
     }
 };
@@ -1856,99 +1856,99 @@ pub const IADsContainer = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IADsContainer,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IADsContainer,
             retval: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Filter: *const fn(
+        get_Filter: *const fn (
             self: *const IADsContainer,
             pVar: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Filter: *const fn(
+        put_Filter: *const fn (
             self: *const IADsContainer,
             Var: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Hints: *const fn(
+        get_Hints: *const fn (
             self: *const IADsContainer,
             pvFilter: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Hints: *const fn(
+        put_Hints: *const fn (
             self: *const IADsContainer,
             vHints: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObject: *const fn (
             self: *const IADsContainer,
             ClassName: ?BSTR,
             RelativeName: ?BSTR,
             ppObject: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Create: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Create: *const fn (
             self: *const IADsContainer,
             ClassName: ?BSTR,
             RelativeName: ?BSTR,
             ppObject: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IADsContainer,
             bstrClassName: ?BSTR,
             bstrRelativeName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyHere: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyHere: *const fn (
             self: *const IADsContainer,
             SourceName: ?BSTR,
             NewName: ?BSTR,
             ppObject: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MoveHere: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MoveHere: *const fn (
             self: *const IADsContainer,
             SourceName: ?BSTR,
             NewName: ?BSTR,
             ppObject: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Count(self: *const IADsContainer, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IADsContainer, retval: ?*i32) HRESULT {
         return self.vtable.get_Count(self, retval);
     }
-    pub fn get__NewEnum(self: *const IADsContainer, retval: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IADsContainer, retval: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, retval);
     }
-    pub fn get_Filter(self: *const IADsContainer, pVar: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Filter(self: *const IADsContainer, pVar: ?*VARIANT) HRESULT {
         return self.vtable.get_Filter(self, pVar);
     }
-    pub fn put_Filter(self: *const IADsContainer, Var: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Filter(self: *const IADsContainer, Var: VARIANT) HRESULT {
         return self.vtable.put_Filter(self, Var);
     }
-    pub fn get_Hints(self: *const IADsContainer, pvFilter: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Hints(self: *const IADsContainer, pvFilter: ?*VARIANT) HRESULT {
         return self.vtable.get_Hints(self, pvFilter);
     }
-    pub fn put_Hints(self: *const IADsContainer, vHints: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Hints(self: *const IADsContainer, vHints: VARIANT) HRESULT {
         return self.vtable.put_Hints(self, vHints);
     }
-    pub fn GetObject(self: *const IADsContainer, ClassName: ?BSTR, RelativeName: ?BSTR, ppObject: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn GetObject(self: *const IADsContainer, ClassName: ?BSTR, RelativeName: ?BSTR, ppObject: ?*?*IDispatch) HRESULT {
         return self.vtable.GetObject(self, ClassName, RelativeName, ppObject);
     }
-    pub fn Create(self: *const IADsContainer, ClassName: ?BSTR, RelativeName: ?BSTR, ppObject: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn Create(self: *const IADsContainer, ClassName: ?BSTR, RelativeName: ?BSTR, ppObject: ?*?*IDispatch) HRESULT {
         return self.vtable.Create(self, ClassName, RelativeName, ppObject);
     }
-    pub fn Delete(self: *const IADsContainer, bstrClassName: ?BSTR, bstrRelativeName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IADsContainer, bstrClassName: ?BSTR, bstrRelativeName: ?BSTR) HRESULT {
         return self.vtable.Delete(self, bstrClassName, bstrRelativeName);
     }
-    pub fn CopyHere(self: *const IADsContainer, SourceName: ?BSTR, NewName: ?BSTR, ppObject: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn CopyHere(self: *const IADsContainer, SourceName: ?BSTR, NewName: ?BSTR, ppObject: ?*?*IDispatch) HRESULT {
         return self.vtable.CopyHere(self, SourceName, NewName, ppObject);
     }
-    pub fn MoveHere(self: *const IADsContainer, SourceName: ?BSTR, NewName: ?BSTR, ppObject: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn MoveHere(self: *const IADsContainer, SourceName: ?BSTR, NewName: ?BSTR, ppObject: ?*?*IDispatch) HRESULT {
         return self.vtable.MoveHere(self, SourceName, NewName, ppObject);
     }
 };
@@ -1960,38 +1960,38 @@ pub const IADsCollection = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IADsCollection,
             ppEnumerator: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IADsCollection,
             bstrName: ?BSTR,
             vItem: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IADsCollection,
             bstrItemToBeRemoved: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObject: *const fn (
             self: *const IADsCollection,
             bstrName: ?BSTR,
             pvItem: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get__NewEnum(self: *const IADsCollection, ppEnumerator: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IADsCollection, ppEnumerator: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, ppEnumerator);
     }
-    pub fn Add(self: *const IADsCollection, bstrName: ?BSTR, vItem: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IADsCollection, bstrName: ?BSTR, vItem: VARIANT) HRESULT {
         return self.vtable.Add(self, bstrName, vItem);
     }
-    pub fn Remove(self: *const IADsCollection, bstrItemToBeRemoved: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IADsCollection, bstrItemToBeRemoved: ?BSTR) HRESULT {
         return self.vtable.Remove(self, bstrItemToBeRemoved);
     }
-    pub fn GetObject(self: *const IADsCollection, bstrName: ?BSTR, pvItem: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetObject(self: *const IADsCollection, bstrName: ?BSTR, pvItem: ?*VARIANT) HRESULT {
         return self.vtable.GetObject(self, bstrName, pvItem);
     }
 };
@@ -2003,39 +2003,39 @@ pub const IADsMembers = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IADsMembers,
             plCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IADsMembers,
             ppEnumerator: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Filter: *const fn(
+        get_Filter: *const fn (
             self: *const IADsMembers,
             pvFilter: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Filter: *const fn(
+        put_Filter: *const fn (
             self: *const IADsMembers,
             pvFilter: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Count(self: *const IADsMembers, plCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IADsMembers, plCount: ?*i32) HRESULT {
         return self.vtable.get_Count(self, plCount);
     }
-    pub fn get__NewEnum(self: *const IADsMembers, ppEnumerator: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IADsMembers, ppEnumerator: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, ppEnumerator);
     }
-    pub fn get_Filter(self: *const IADsMembers, pvFilter: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Filter(self: *const IADsMembers, pvFilter: ?*VARIANT) HRESULT {
         return self.vtable.get_Filter(self, pvFilter);
     }
-    pub fn put_Filter(self: *const IADsMembers, pvFilter: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Filter(self: *const IADsMembers, pvFilter: VARIANT) HRESULT {
         return self.vtable.put_Filter(self, pvFilter);
     }
 };
@@ -2047,72 +2047,72 @@ pub const IADsPropertyList = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PropertyCount: *const fn(
+        get_PropertyCount: *const fn (
             self: *const IADsPropertyList,
             plCount: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IADsPropertyList,
             pVariant: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IADsPropertyList,
             cElements: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IADsPropertyList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Item: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Item: *const fn (
             self: *const IADsPropertyList,
             varIndex: VARIANT,
             pVariant: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyItem: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyItem: *const fn (
             self: *const IADsPropertyList,
             bstrName: ?BSTR,
             lnADsType: i32,
             pVariant: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutPropertyItem: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutPropertyItem: *const fn (
             self: *const IADsPropertyList,
             varData: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ResetPropertyItem: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ResetPropertyItem: *const fn (
             self: *const IADsPropertyList,
             varEntry: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PurgePropertyList: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PurgePropertyList: *const fn (
             self: *const IADsPropertyList,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_PropertyCount(self: *const IADsPropertyList, plCount: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_PropertyCount(self: *const IADsPropertyList, plCount: ?*i32) HRESULT {
         return self.vtable.get_PropertyCount(self, plCount);
     }
-    pub fn Next(self: *const IADsPropertyList, pVariant: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IADsPropertyList, pVariant: ?*VARIANT) HRESULT {
         return self.vtable.Next(self, pVariant);
     }
-    pub fn Skip(self: *const IADsPropertyList, cElements: i32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IADsPropertyList, cElements: i32) HRESULT {
         return self.vtable.Skip(self, cElements);
     }
-    pub fn Reset(self: *const IADsPropertyList) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IADsPropertyList) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Item(self: *const IADsPropertyList, varIndex: VARIANT, pVariant: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Item(self: *const IADsPropertyList, varIndex: VARIANT, pVariant: ?*VARIANT) HRESULT {
         return self.vtable.Item(self, varIndex, pVariant);
     }
-    pub fn GetPropertyItem(self: *const IADsPropertyList, bstrName: ?BSTR, lnADsType: i32, pVariant: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyItem(self: *const IADsPropertyList, bstrName: ?BSTR, lnADsType: i32, pVariant: ?*VARIANT) HRESULT {
         return self.vtable.GetPropertyItem(self, bstrName, lnADsType, pVariant);
     }
-    pub fn PutPropertyItem(self: *const IADsPropertyList, varData: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn PutPropertyItem(self: *const IADsPropertyList, varData: VARIANT) HRESULT {
         return self.vtable.PutPropertyItem(self, varData);
     }
-    pub fn ResetPropertyItem(self: *const IADsPropertyList, varEntry: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn ResetPropertyItem(self: *const IADsPropertyList, varEntry: VARIANT) HRESULT {
         return self.vtable.ResetPropertyItem(self, varEntry);
     }
-    pub fn PurgePropertyList(self: *const IADsPropertyList) callconv(.Inline) HRESULT {
+    pub inline fn PurgePropertyList(self: *const IADsPropertyList) HRESULT {
         return self.vtable.PurgePropertyList(self);
     }
 };
@@ -2123,78 +2123,78 @@ pub const IID_IADsPropertyEntry = &IID_IADsPropertyEntry_Value;
 pub const IADsPropertyEntry = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Clear: *const fn(
+        Clear: *const fn (
             self: *const IADsPropertyEntry,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Name: *const fn(
+        get_Name: *const fn (
             self: *const IADsPropertyEntry,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Name: *const fn(
+        put_Name: *const fn (
             self: *const IADsPropertyEntry,
             bstrName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ADsType: *const fn(
+        get_ADsType: *const fn (
             self: *const IADsPropertyEntry,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ADsType: *const fn(
+        put_ADsType: *const fn (
             self: *const IADsPropertyEntry,
             lnADsType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ControlCode: *const fn(
+        get_ControlCode: *const fn (
             self: *const IADsPropertyEntry,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ControlCode: *const fn(
+        put_ControlCode: *const fn (
             self: *const IADsPropertyEntry,
             lnControlCode: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Values: *const fn(
+        get_Values: *const fn (
             self: *const IADsPropertyEntry,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Values: *const fn(
+        put_Values: *const fn (
             self: *const IADsPropertyEntry,
             vValues: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Clear(self: *const IADsPropertyEntry) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IADsPropertyEntry) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn get_Name(self: *const IADsPropertyEntry, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Name(self: *const IADsPropertyEntry, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Name(self, retval);
     }
-    pub fn put_Name(self: *const IADsPropertyEntry, bstrName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Name(self: *const IADsPropertyEntry, bstrName: ?BSTR) HRESULT {
         return self.vtable.put_Name(self, bstrName);
     }
-    pub fn get_ADsType(self: *const IADsPropertyEntry, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ADsType(self: *const IADsPropertyEntry, retval: ?*i32) HRESULT {
         return self.vtable.get_ADsType(self, retval);
     }
-    pub fn put_ADsType(self: *const IADsPropertyEntry, lnADsType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ADsType(self: *const IADsPropertyEntry, lnADsType: i32) HRESULT {
         return self.vtable.put_ADsType(self, lnADsType);
     }
-    pub fn get_ControlCode(self: *const IADsPropertyEntry, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ControlCode(self: *const IADsPropertyEntry, retval: ?*i32) HRESULT {
         return self.vtable.get_ControlCode(self, retval);
     }
-    pub fn put_ControlCode(self: *const IADsPropertyEntry, lnControlCode: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ControlCode(self: *const IADsPropertyEntry, lnControlCode: i32) HRESULT {
         return self.vtable.put_ControlCode(self, lnControlCode);
     }
-    pub fn get_Values(self: *const IADsPropertyEntry, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Values(self: *const IADsPropertyEntry, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_Values(self, retval);
     }
-    pub fn put_Values(self: *const IADsPropertyEntry, vValues: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Values(self: *const IADsPropertyEntry, vValues: VARIANT) HRESULT {
         return self.vtable.put_Values(self, vValues);
     }
 };
@@ -2205,206 +2205,206 @@ pub const IID_IADsPropertyValue = &IID_IADsPropertyValue_Value;
 pub const IADsPropertyValue = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Clear: *const fn(
+        Clear: *const fn (
             self: *const IADsPropertyValue,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ADsType: *const fn(
+        get_ADsType: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ADsType: *const fn(
+        put_ADsType: *const fn (
             self: *const IADsPropertyValue,
             lnADsType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DNString: *const fn(
+        get_DNString: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DNString: *const fn(
+        put_DNString: *const fn (
             self: *const IADsPropertyValue,
             bstrDNString: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CaseExactString: *const fn(
+        get_CaseExactString: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CaseExactString: *const fn(
+        put_CaseExactString: *const fn (
             self: *const IADsPropertyValue,
             bstrCaseExactString: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CaseIgnoreString: *const fn(
+        get_CaseIgnoreString: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CaseIgnoreString: *const fn(
+        put_CaseIgnoreString: *const fn (
             self: *const IADsPropertyValue,
             bstrCaseIgnoreString: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrintableString: *const fn(
+        get_PrintableString: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PrintableString: *const fn(
+        put_PrintableString: *const fn (
             self: *const IADsPropertyValue,
             bstrPrintableString: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NumericString: *const fn(
+        get_NumericString: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NumericString: *const fn(
+        put_NumericString: *const fn (
             self: *const IADsPropertyValue,
             bstrNumericString: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Boolean: *const fn(
+        get_Boolean: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Boolean: *const fn(
+        put_Boolean: *const fn (
             self: *const IADsPropertyValue,
             lnBoolean: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Integer: *const fn(
+        get_Integer: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Integer: *const fn(
+        put_Integer: *const fn (
             self: *const IADsPropertyValue,
             lnInteger: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OctetString: *const fn(
+        get_OctetString: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OctetString: *const fn(
+        put_OctetString: *const fn (
             self: *const IADsPropertyValue,
             vOctetString: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SecurityDescriptor: *const fn(
+        get_SecurityDescriptor: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SecurityDescriptor: *const fn(
+        put_SecurityDescriptor: *const fn (
             self: *const IADsPropertyValue,
             pSecurityDescriptor: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LargeInteger: *const fn(
+        get_LargeInteger: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LargeInteger: *const fn(
+        put_LargeInteger: *const fn (
             self: *const IADsPropertyValue,
             pLargeInteger: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UTCTime: *const fn(
+        get_UTCTime: *const fn (
             self: *const IADsPropertyValue,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UTCTime: *const fn(
+        put_UTCTime: *const fn (
             self: *const IADsPropertyValue,
             daUTCTime: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Clear(self: *const IADsPropertyValue) callconv(.Inline) HRESULT {
+    pub inline fn Clear(self: *const IADsPropertyValue) HRESULT {
         return self.vtable.Clear(self);
     }
-    pub fn get_ADsType(self: *const IADsPropertyValue, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ADsType(self: *const IADsPropertyValue, retval: ?*i32) HRESULT {
         return self.vtable.get_ADsType(self, retval);
     }
-    pub fn put_ADsType(self: *const IADsPropertyValue, lnADsType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ADsType(self: *const IADsPropertyValue, lnADsType: i32) HRESULT {
         return self.vtable.put_ADsType(self, lnADsType);
     }
-    pub fn get_DNString(self: *const IADsPropertyValue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DNString(self: *const IADsPropertyValue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_DNString(self, retval);
     }
-    pub fn put_DNString(self: *const IADsPropertyValue, bstrDNString: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_DNString(self: *const IADsPropertyValue, bstrDNString: ?BSTR) HRESULT {
         return self.vtable.put_DNString(self, bstrDNString);
     }
-    pub fn get_CaseExactString(self: *const IADsPropertyValue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CaseExactString(self: *const IADsPropertyValue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_CaseExactString(self, retval);
     }
-    pub fn put_CaseExactString(self: *const IADsPropertyValue, bstrCaseExactString: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CaseExactString(self: *const IADsPropertyValue, bstrCaseExactString: ?BSTR) HRESULT {
         return self.vtable.put_CaseExactString(self, bstrCaseExactString);
     }
-    pub fn get_CaseIgnoreString(self: *const IADsPropertyValue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CaseIgnoreString(self: *const IADsPropertyValue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_CaseIgnoreString(self, retval);
     }
-    pub fn put_CaseIgnoreString(self: *const IADsPropertyValue, bstrCaseIgnoreString: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CaseIgnoreString(self: *const IADsPropertyValue, bstrCaseIgnoreString: ?BSTR) HRESULT {
         return self.vtable.put_CaseIgnoreString(self, bstrCaseIgnoreString);
     }
-    pub fn get_PrintableString(self: *const IADsPropertyValue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PrintableString(self: *const IADsPropertyValue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PrintableString(self, retval);
     }
-    pub fn put_PrintableString(self: *const IADsPropertyValue, bstrPrintableString: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PrintableString(self: *const IADsPropertyValue, bstrPrintableString: ?BSTR) HRESULT {
         return self.vtable.put_PrintableString(self, bstrPrintableString);
     }
-    pub fn get_NumericString(self: *const IADsPropertyValue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_NumericString(self: *const IADsPropertyValue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_NumericString(self, retval);
     }
-    pub fn put_NumericString(self: *const IADsPropertyValue, bstrNumericString: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_NumericString(self: *const IADsPropertyValue, bstrNumericString: ?BSTR) HRESULT {
         return self.vtable.put_NumericString(self, bstrNumericString);
     }
-    pub fn get_Boolean(self: *const IADsPropertyValue, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Boolean(self: *const IADsPropertyValue, retval: ?*i32) HRESULT {
         return self.vtable.get_Boolean(self, retval);
     }
-    pub fn put_Boolean(self: *const IADsPropertyValue, lnBoolean: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Boolean(self: *const IADsPropertyValue, lnBoolean: i32) HRESULT {
         return self.vtable.put_Boolean(self, lnBoolean);
     }
-    pub fn get_Integer(self: *const IADsPropertyValue, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Integer(self: *const IADsPropertyValue, retval: ?*i32) HRESULT {
         return self.vtable.get_Integer(self, retval);
     }
-    pub fn put_Integer(self: *const IADsPropertyValue, lnInteger: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Integer(self: *const IADsPropertyValue, lnInteger: i32) HRESULT {
         return self.vtable.put_Integer(self, lnInteger);
     }
-    pub fn get_OctetString(self: *const IADsPropertyValue, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_OctetString(self: *const IADsPropertyValue, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_OctetString(self, retval);
     }
-    pub fn put_OctetString(self: *const IADsPropertyValue, vOctetString: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_OctetString(self: *const IADsPropertyValue, vOctetString: VARIANT) HRESULT {
         return self.vtable.put_OctetString(self, vOctetString);
     }
-    pub fn get_SecurityDescriptor(self: *const IADsPropertyValue, retval: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn get_SecurityDescriptor(self: *const IADsPropertyValue, retval: ?*?*IDispatch) HRESULT {
         return self.vtable.get_SecurityDescriptor(self, retval);
     }
-    pub fn put_SecurityDescriptor(self: *const IADsPropertyValue, pSecurityDescriptor: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn put_SecurityDescriptor(self: *const IADsPropertyValue, pSecurityDescriptor: ?*IDispatch) HRESULT {
         return self.vtable.put_SecurityDescriptor(self, pSecurityDescriptor);
     }
-    pub fn get_LargeInteger(self: *const IADsPropertyValue, retval: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn get_LargeInteger(self: *const IADsPropertyValue, retval: ?*?*IDispatch) HRESULT {
         return self.vtable.get_LargeInteger(self, retval);
     }
-    pub fn put_LargeInteger(self: *const IADsPropertyValue, pLargeInteger: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn put_LargeInteger(self: *const IADsPropertyValue, pLargeInteger: ?*IDispatch) HRESULT {
         return self.vtable.put_LargeInteger(self, pLargeInteger);
     }
-    pub fn get_UTCTime(self: *const IADsPropertyValue, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_UTCTime(self: *const IADsPropertyValue, retval: ?*f64) HRESULT {
         return self.vtable.get_UTCTime(self, retval);
     }
-    pub fn put_UTCTime(self: *const IADsPropertyValue, daUTCTime: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_UTCTime(self: *const IADsPropertyValue, daUTCTime: f64) HRESULT {
         return self.vtable.put_UTCTime(self, daUTCTime);
     }
 };
@@ -2415,24 +2415,24 @@ pub const IID_IADsPropertyValue2 = &IID_IADsPropertyValue2_Value;
 pub const IADsPropertyValue2 = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetObjectProperty: *const fn(
+        GetObjectProperty: *const fn (
             self: *const IADsPropertyValue2,
             lnADsType: ?*i32,
             pvProp: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PutObjectProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PutObjectProperty: *const fn (
             self: *const IADsPropertyValue2,
             lnADsType: i32,
             vProp: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetObjectProperty(self: *const IADsPropertyValue2, lnADsType: ?*i32, pvProp: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectProperty(self: *const IADsPropertyValue2, lnADsType: ?*i32, pvProp: ?*VARIANT) HRESULT {
         return self.vtable.GetObjectProperty(self, lnADsType, pvProp);
     }
-    pub fn PutObjectProperty(self: *const IADsPropertyValue2, lnADsType: i32, vProp: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn PutObjectProperty(self: *const IADsPropertyValue2, lnADsType: i32, vProp: VARIANT) HRESULT {
         return self.vtable.PutObjectProperty(self, lnADsType, vProp);
     }
 };
@@ -2442,29 +2442,29 @@ pub const IID_IPrivateDispatch = &IID_IPrivateDispatch_Value;
 pub const IPrivateDispatch = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ADSIInitializeDispatchManager: *const fn(
+        ADSIInitializeDispatchManager: *const fn (
             self: *const IPrivateDispatch,
             dwExtensionId: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ADSIGetTypeInfoCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ADSIGetTypeInfoCount: *const fn (
             self: *const IPrivateDispatch,
             pctinfo: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ADSIGetTypeInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ADSIGetTypeInfo: *const fn (
             self: *const IPrivateDispatch,
             itinfo: u32,
             lcid: u32,
             pptinfo: ?*?*ITypeInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ADSIGetIDsOfNames: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ADSIGetIDsOfNames: *const fn (
             self: *const IPrivateDispatch,
             riid: ?*const Guid,
             rgszNames: ?*?*u16,
             cNames: u32,
             lcid: u32,
             rgdispid: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ADSIInvoke: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ADSIInvoke: *const fn (
             self: *const IPrivateDispatch,
             dispidMember: i32,
             riid: ?*const Guid,
@@ -2474,23 +2474,23 @@ pub const IPrivateDispatch = extern union {
             pvarResult: ?*VARIANT,
             pexcepinfo: ?*EXCEPINFO,
             puArgErr: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ADSIInitializeDispatchManager(self: *const IPrivateDispatch, dwExtensionId: i32) callconv(.Inline) HRESULT {
+    pub inline fn ADSIInitializeDispatchManager(self: *const IPrivateDispatch, dwExtensionId: i32) HRESULT {
         return self.vtable.ADSIInitializeDispatchManager(self, dwExtensionId);
     }
-    pub fn ADSIGetTypeInfoCount(self: *const IPrivateDispatch, pctinfo: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ADSIGetTypeInfoCount(self: *const IPrivateDispatch, pctinfo: ?*u32) HRESULT {
         return self.vtable.ADSIGetTypeInfoCount(self, pctinfo);
     }
-    pub fn ADSIGetTypeInfo(self: *const IPrivateDispatch, itinfo: u32, lcid: u32, pptinfo: ?*?*ITypeInfo) callconv(.Inline) HRESULT {
+    pub inline fn ADSIGetTypeInfo(self: *const IPrivateDispatch, itinfo: u32, lcid: u32, pptinfo: ?*?*ITypeInfo) HRESULT {
         return self.vtable.ADSIGetTypeInfo(self, itinfo, lcid, pptinfo);
     }
-    pub fn ADSIGetIDsOfNames(self: *const IPrivateDispatch, riid: ?*const Guid, rgszNames: ?*?*u16, cNames: u32, lcid: u32, rgdispid: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn ADSIGetIDsOfNames(self: *const IPrivateDispatch, riid: ?*const Guid, rgszNames: ?*?*u16, cNames: u32, lcid: u32, rgdispid: ?*i32) HRESULT {
         return self.vtable.ADSIGetIDsOfNames(self, riid, rgszNames, cNames, lcid, rgdispid);
     }
-    pub fn ADSIInvoke(self: *const IPrivateDispatch, dispidMember: i32, riid: ?*const Guid, lcid: u32, wFlags: u16, pdispparams: ?*DISPPARAMS, pvarResult: ?*VARIANT, pexcepinfo: ?*EXCEPINFO, puArgErr: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ADSIInvoke(self: *const IPrivateDispatch, dispidMember: i32, riid: ?*const Guid, lcid: u32, wFlags: u16, pdispparams: ?*DISPPARAMS, pvarResult: ?*VARIANT, pexcepinfo: ?*EXCEPINFO, puArgErr: ?*u32) HRESULT {
         return self.vtable.ADSIInvoke(self, dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
     }
 };
@@ -2500,22 +2500,22 @@ pub const IID_IPrivateUnknown = &IID_IPrivateUnknown_Value;
 pub const IPrivateUnknown = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ADSIInitializeObject: *const fn(
+        ADSIInitializeObject: *const fn (
             self: *const IPrivateUnknown,
             lpszUserName: ?BSTR,
             lpszPassword: ?BSTR,
             lnReserved: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ADSIReleaseObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ADSIReleaseObject: *const fn (
             self: *const IPrivateUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ADSIInitializeObject(self: *const IPrivateUnknown, lpszUserName: ?BSTR, lpszPassword: ?BSTR, lnReserved: i32) callconv(.Inline) HRESULT {
+    pub inline fn ADSIInitializeObject(self: *const IPrivateUnknown, lpszUserName: ?BSTR, lpszPassword: ?BSTR, lnReserved: i32) HRESULT {
         return self.vtable.ADSIInitializeObject(self, lpszUserName, lpszPassword, lnReserved);
     }
-    pub fn ADSIReleaseObject(self: *const IPrivateUnknown) callconv(.Inline) HRESULT {
+    pub inline fn ADSIReleaseObject(self: *const IPrivateUnknown) HRESULT {
         return self.vtable.ADSIReleaseObject(self);
     }
 };
@@ -2526,22 +2526,22 @@ pub const IID_IADsExtension = &IID_IADsExtension_Value;
 pub const IADsExtension = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Operate: *const fn(
+        Operate: *const fn (
             self: *const IADsExtension,
             dwCode: u32,
             varData1: VARIANT,
             varData2: VARIANT,
             varData3: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PrivateGetIDsOfNames: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PrivateGetIDsOfNames: *const fn (
             self: *const IADsExtension,
             riid: ?*const Guid,
             rgszNames: ?*?*u16,
             cNames: u32,
             lcid: u32,
             rgDispid: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PrivateInvoke: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PrivateInvoke: *const fn (
             self: *const IADsExtension,
             dispidMember: i32,
             riid: ?*const Guid,
@@ -2551,17 +2551,17 @@ pub const IADsExtension = extern union {
             pvarResult: ?*VARIANT,
             pexcepinfo: ?*EXCEPINFO,
             puArgErr: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Operate(self: *const IADsExtension, dwCode: u32, varData1: VARIANT, varData2: VARIANT, varData3: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn Operate(self: *const IADsExtension, dwCode: u32, varData1: VARIANT, varData2: VARIANT, varData3: VARIANT) HRESULT {
         return self.vtable.Operate(self, dwCode, varData1, varData2, varData3);
     }
-    pub fn PrivateGetIDsOfNames(self: *const IADsExtension, riid: ?*const Guid, rgszNames: ?*?*u16, cNames: u32, lcid: u32, rgDispid: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn PrivateGetIDsOfNames(self: *const IADsExtension, riid: ?*const Guid, rgszNames: ?*?*u16, cNames: u32, lcid: u32, rgDispid: ?*i32) HRESULT {
         return self.vtable.PrivateGetIDsOfNames(self, riid, rgszNames, cNames, lcid, rgDispid);
     }
-    pub fn PrivateInvoke(self: *const IADsExtension, dispidMember: i32, riid: ?*const Guid, lcid: u32, wFlags: u16, pdispparams: ?*DISPPARAMS, pvarResult: ?*VARIANT, pexcepinfo: ?*EXCEPINFO, puArgErr: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn PrivateInvoke(self: *const IADsExtension, dispidMember: i32, riid: ?*const Guid, lcid: u32, wFlags: u16, pdispparams: ?*DISPPARAMS, pvarResult: ?*VARIANT, pexcepinfo: ?*EXCEPINFO, puArgErr: ?*u32) HRESULT {
         return self.vtable.PrivateInvoke(self, dispidMember, riid, lcid, wFlags, pdispparams, pvarResult, pexcepinfo, puArgErr);
     }
 };
@@ -2572,15 +2572,15 @@ pub const IID_IADsDeleteOps = &IID_IADsDeleteOps_Value;
 pub const IADsDeleteOps = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        DeleteObject: *const fn(
+        DeleteObject: *const fn (
             self: *const IADsDeleteOps,
             lnFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn DeleteObject(self: *const IADsDeleteOps, lnFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn DeleteObject(self: *const IADsDeleteOps, lnFlags: i32) HRESULT {
         return self.vtable.DeleteObject(self, lnFlags);
     }
 };
@@ -2592,24 +2592,24 @@ pub const IADsNamespaces = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DefaultContainer: *const fn(
+        get_DefaultContainer: *const fn (
             self: *const IADsNamespaces,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DefaultContainer: *const fn(
+        put_DefaultContainer: *const fn (
             self: *const IADsNamespaces,
             bstrDefaultContainer: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_DefaultContainer(self: *const IADsNamespaces, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DefaultContainer(self: *const IADsNamespaces, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_DefaultContainer(self, retval);
     }
-    pub fn put_DefaultContainer(self: *const IADsNamespaces, bstrDefaultContainer: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_DefaultContainer(self: *const IADsNamespaces, bstrDefaultContainer: ?BSTR) HRESULT {
         return self.vtable.put_DefaultContainer(self, bstrDefaultContainer);
     }
 };
@@ -2621,247 +2621,247 @@ pub const IADsClass = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrimaryInterface: *const fn(
+        get_PrimaryInterface: *const fn (
             self: *const IADsClass,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CLSID: *const fn(
+        get_CLSID: *const fn (
             self: *const IADsClass,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CLSID: *const fn(
+        put_CLSID: *const fn (
             self: *const IADsClass,
             bstrCLSID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OID: *const fn(
+        get_OID: *const fn (
             self: *const IADsClass,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OID: *const fn(
+        put_OID: *const fn (
             self: *const IADsClass,
             bstrOID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Abstract: *const fn(
+        get_Abstract: *const fn (
             self: *const IADsClass,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Abstract: *const fn(
+        put_Abstract: *const fn (
             self: *const IADsClass,
             fAbstract: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Auxiliary: *const fn(
+        get_Auxiliary: *const fn (
             self: *const IADsClass,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Auxiliary: *const fn(
+        put_Auxiliary: *const fn (
             self: *const IADsClass,
             fAuxiliary: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MandatoryProperties: *const fn(
+        get_MandatoryProperties: *const fn (
             self: *const IADsClass,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MandatoryProperties: *const fn(
+        put_MandatoryProperties: *const fn (
             self: *const IADsClass,
             vMandatoryProperties: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OptionalProperties: *const fn(
+        get_OptionalProperties: *const fn (
             self: *const IADsClass,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OptionalProperties: *const fn(
+        put_OptionalProperties: *const fn (
             self: *const IADsClass,
             vOptionalProperties: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NamingProperties: *const fn(
+        get_NamingProperties: *const fn (
             self: *const IADsClass,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NamingProperties: *const fn(
+        put_NamingProperties: *const fn (
             self: *const IADsClass,
             vNamingProperties: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DerivedFrom: *const fn(
+        get_DerivedFrom: *const fn (
             self: *const IADsClass,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DerivedFrom: *const fn(
+        put_DerivedFrom: *const fn (
             self: *const IADsClass,
             vDerivedFrom: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AuxDerivedFrom: *const fn(
+        get_AuxDerivedFrom: *const fn (
             self: *const IADsClass,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AuxDerivedFrom: *const fn(
+        put_AuxDerivedFrom: *const fn (
             self: *const IADsClass,
             vAuxDerivedFrom: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PossibleSuperiors: *const fn(
+        get_PossibleSuperiors: *const fn (
             self: *const IADsClass,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PossibleSuperiors: *const fn(
+        put_PossibleSuperiors: *const fn (
             self: *const IADsClass,
             vPossibleSuperiors: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Containment: *const fn(
+        get_Containment: *const fn (
             self: *const IADsClass,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Containment: *const fn(
+        put_Containment: *const fn (
             self: *const IADsClass,
             vContainment: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Container: *const fn(
+        get_Container: *const fn (
             self: *const IADsClass,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Container: *const fn(
+        put_Container: *const fn (
             self: *const IADsClass,
             fContainer: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HelpFileName: *const fn(
+        get_HelpFileName: *const fn (
             self: *const IADsClass,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HelpFileName: *const fn(
+        put_HelpFileName: *const fn (
             self: *const IADsClass,
             bstrHelpFileName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HelpFileContext: *const fn(
+        get_HelpFileContext: *const fn (
             self: *const IADsClass,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HelpFileContext: *const fn(
+        put_HelpFileContext: *const fn (
             self: *const IADsClass,
             lnHelpFileContext: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Qualifiers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Qualifiers: *const fn (
             self: *const IADsClass,
             ppQualifiers: ?*?*IADsCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_PrimaryInterface(self: *const IADsClass, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PrimaryInterface(self: *const IADsClass, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PrimaryInterface(self, retval);
     }
-    pub fn get_CLSID(self: *const IADsClass, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_CLSID(self: *const IADsClass, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_CLSID(self, retval);
     }
-    pub fn put_CLSID(self: *const IADsClass, bstrCLSID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_CLSID(self: *const IADsClass, bstrCLSID: ?BSTR) HRESULT {
         return self.vtable.put_CLSID(self, bstrCLSID);
     }
-    pub fn get_OID(self: *const IADsClass, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_OID(self: *const IADsClass, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_OID(self, retval);
     }
-    pub fn put_OID(self: *const IADsClass, bstrOID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_OID(self: *const IADsClass, bstrOID: ?BSTR) HRESULT {
         return self.vtable.put_OID(self, bstrOID);
     }
-    pub fn get_Abstract(self: *const IADsClass, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Abstract(self: *const IADsClass, retval: ?*i16) HRESULT {
         return self.vtable.get_Abstract(self, retval);
     }
-    pub fn put_Abstract(self: *const IADsClass, fAbstract: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Abstract(self: *const IADsClass, fAbstract: i16) HRESULT {
         return self.vtable.put_Abstract(self, fAbstract);
     }
-    pub fn get_Auxiliary(self: *const IADsClass, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Auxiliary(self: *const IADsClass, retval: ?*i16) HRESULT {
         return self.vtable.get_Auxiliary(self, retval);
     }
-    pub fn put_Auxiliary(self: *const IADsClass, fAuxiliary: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Auxiliary(self: *const IADsClass, fAuxiliary: i16) HRESULT {
         return self.vtable.put_Auxiliary(self, fAuxiliary);
     }
-    pub fn get_MandatoryProperties(self: *const IADsClass, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_MandatoryProperties(self: *const IADsClass, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_MandatoryProperties(self, retval);
     }
-    pub fn put_MandatoryProperties(self: *const IADsClass, vMandatoryProperties: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_MandatoryProperties(self: *const IADsClass, vMandatoryProperties: VARIANT) HRESULT {
         return self.vtable.put_MandatoryProperties(self, vMandatoryProperties);
     }
-    pub fn get_OptionalProperties(self: *const IADsClass, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_OptionalProperties(self: *const IADsClass, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_OptionalProperties(self, retval);
     }
-    pub fn put_OptionalProperties(self: *const IADsClass, vOptionalProperties: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_OptionalProperties(self: *const IADsClass, vOptionalProperties: VARIANT) HRESULT {
         return self.vtable.put_OptionalProperties(self, vOptionalProperties);
     }
-    pub fn get_NamingProperties(self: *const IADsClass, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_NamingProperties(self: *const IADsClass, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_NamingProperties(self, retval);
     }
-    pub fn put_NamingProperties(self: *const IADsClass, vNamingProperties: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_NamingProperties(self: *const IADsClass, vNamingProperties: VARIANT) HRESULT {
         return self.vtable.put_NamingProperties(self, vNamingProperties);
     }
-    pub fn get_DerivedFrom(self: *const IADsClass, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_DerivedFrom(self: *const IADsClass, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_DerivedFrom(self, retval);
     }
-    pub fn put_DerivedFrom(self: *const IADsClass, vDerivedFrom: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_DerivedFrom(self: *const IADsClass, vDerivedFrom: VARIANT) HRESULT {
         return self.vtable.put_DerivedFrom(self, vDerivedFrom);
     }
-    pub fn get_AuxDerivedFrom(self: *const IADsClass, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_AuxDerivedFrom(self: *const IADsClass, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_AuxDerivedFrom(self, retval);
     }
-    pub fn put_AuxDerivedFrom(self: *const IADsClass, vAuxDerivedFrom: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_AuxDerivedFrom(self: *const IADsClass, vAuxDerivedFrom: VARIANT) HRESULT {
         return self.vtable.put_AuxDerivedFrom(self, vAuxDerivedFrom);
     }
-    pub fn get_PossibleSuperiors(self: *const IADsClass, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_PossibleSuperiors(self: *const IADsClass, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_PossibleSuperiors(self, retval);
     }
-    pub fn put_PossibleSuperiors(self: *const IADsClass, vPossibleSuperiors: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_PossibleSuperiors(self: *const IADsClass, vPossibleSuperiors: VARIANT) HRESULT {
         return self.vtable.put_PossibleSuperiors(self, vPossibleSuperiors);
     }
-    pub fn get_Containment(self: *const IADsClass, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Containment(self: *const IADsClass, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_Containment(self, retval);
     }
-    pub fn put_Containment(self: *const IADsClass, vContainment: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Containment(self: *const IADsClass, vContainment: VARIANT) HRESULT {
         return self.vtable.put_Containment(self, vContainment);
     }
-    pub fn get_Container(self: *const IADsClass, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_Container(self: *const IADsClass, retval: ?*i16) HRESULT {
         return self.vtable.get_Container(self, retval);
     }
-    pub fn put_Container(self: *const IADsClass, fContainer: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_Container(self: *const IADsClass, fContainer: i16) HRESULT {
         return self.vtable.put_Container(self, fContainer);
     }
-    pub fn get_HelpFileName(self: *const IADsClass, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_HelpFileName(self: *const IADsClass, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_HelpFileName(self, retval);
     }
-    pub fn put_HelpFileName(self: *const IADsClass, bstrHelpFileName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_HelpFileName(self: *const IADsClass, bstrHelpFileName: ?BSTR) HRESULT {
         return self.vtable.put_HelpFileName(self, bstrHelpFileName);
     }
-    pub fn get_HelpFileContext(self: *const IADsClass, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_HelpFileContext(self: *const IADsClass, retval: ?*i32) HRESULT {
         return self.vtable.get_HelpFileContext(self, retval);
     }
-    pub fn put_HelpFileContext(self: *const IADsClass, lnHelpFileContext: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_HelpFileContext(self: *const IADsClass, lnHelpFileContext: i32) HRESULT {
         return self.vtable.put_HelpFileContext(self, lnHelpFileContext);
     }
-    pub fn Qualifiers(self: *const IADsClass, ppQualifiers: ?*?*IADsCollection) callconv(.Inline) HRESULT {
+    pub inline fn Qualifiers(self: *const IADsClass, ppQualifiers: ?*?*IADsCollection) HRESULT {
         return self.vtable.Qualifiers(self, ppQualifiers);
     }
 };
@@ -2873,95 +2873,95 @@ pub const IADsProperty = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OID: *const fn(
+        get_OID: *const fn (
             self: *const IADsProperty,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OID: *const fn(
+        put_OID: *const fn (
             self: *const IADsProperty,
             bstrOID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Syntax: *const fn(
+        get_Syntax: *const fn (
             self: *const IADsProperty,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Syntax: *const fn(
+        put_Syntax: *const fn (
             self: *const IADsProperty,
             bstrSyntax: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MaxRange: *const fn(
+        get_MaxRange: *const fn (
             self: *const IADsProperty,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MaxRange: *const fn(
+        put_MaxRange: *const fn (
             self: *const IADsProperty,
             lnMaxRange: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MinRange: *const fn(
+        get_MinRange: *const fn (
             self: *const IADsProperty,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MinRange: *const fn(
+        put_MinRange: *const fn (
             self: *const IADsProperty,
             lnMinRange: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MultiValued: *const fn(
+        get_MultiValued: *const fn (
             self: *const IADsProperty,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MultiValued: *const fn(
+        put_MultiValued: *const fn (
             self: *const IADsProperty,
             fMultiValued: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Qualifiers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Qualifiers: *const fn (
             self: *const IADsProperty,
             ppQualifiers: ?*?*IADsCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_OID(self: *const IADsProperty, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_OID(self: *const IADsProperty, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_OID(self, retval);
     }
-    pub fn put_OID(self: *const IADsProperty, bstrOID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_OID(self: *const IADsProperty, bstrOID: ?BSTR) HRESULT {
         return self.vtable.put_OID(self, bstrOID);
     }
-    pub fn get_Syntax(self: *const IADsProperty, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Syntax(self: *const IADsProperty, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Syntax(self, retval);
     }
-    pub fn put_Syntax(self: *const IADsProperty, bstrSyntax: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Syntax(self: *const IADsProperty, bstrSyntax: ?BSTR) HRESULT {
         return self.vtable.put_Syntax(self, bstrSyntax);
     }
-    pub fn get_MaxRange(self: *const IADsProperty, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MaxRange(self: *const IADsProperty, retval: ?*i32) HRESULT {
         return self.vtable.get_MaxRange(self, retval);
     }
-    pub fn put_MaxRange(self: *const IADsProperty, lnMaxRange: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MaxRange(self: *const IADsProperty, lnMaxRange: i32) HRESULT {
         return self.vtable.put_MaxRange(self, lnMaxRange);
     }
-    pub fn get_MinRange(self: *const IADsProperty, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MinRange(self: *const IADsProperty, retval: ?*i32) HRESULT {
         return self.vtable.get_MinRange(self, retval);
     }
-    pub fn put_MinRange(self: *const IADsProperty, lnMinRange: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MinRange(self: *const IADsProperty, lnMinRange: i32) HRESULT {
         return self.vtable.put_MinRange(self, lnMinRange);
     }
-    pub fn get_MultiValued(self: *const IADsProperty, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_MultiValued(self: *const IADsProperty, retval: ?*i16) HRESULT {
         return self.vtable.get_MultiValued(self, retval);
     }
-    pub fn put_MultiValued(self: *const IADsProperty, fMultiValued: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_MultiValued(self: *const IADsProperty, fMultiValued: i16) HRESULT {
         return self.vtable.put_MultiValued(self, fMultiValued);
     }
-    pub fn Qualifiers(self: *const IADsProperty, ppQualifiers: ?*?*IADsCollection) callconv(.Inline) HRESULT {
+    pub inline fn Qualifiers(self: *const IADsProperty, ppQualifiers: ?*?*IADsCollection) HRESULT {
         return self.vtable.Qualifiers(self, ppQualifiers);
     }
 };
@@ -2973,24 +2973,24 @@ pub const IADsSyntax = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OleAutoDataType: *const fn(
+        get_OleAutoDataType: *const fn (
             self: *const IADsSyntax,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OleAutoDataType: *const fn(
+        put_OleAutoDataType: *const fn (
             self: *const IADsSyntax,
             lnOleAutoDataType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_OleAutoDataType(self: *const IADsSyntax, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_OleAutoDataType(self: *const IADsSyntax, retval: ?*i32) HRESULT {
         return self.vtable.get_OleAutoDataType(self, retval);
     }
-    pub fn put_OleAutoDataType(self: *const IADsSyntax, lnOleAutoDataType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_OleAutoDataType(self: *const IADsSyntax, lnOleAutoDataType: i32) HRESULT {
         return self.vtable.put_OleAutoDataType(self, lnOleAutoDataType);
     }
 };
@@ -3002,72 +3002,72 @@ pub const IADsLocality = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsLocality,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsLocality,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LocalityName: *const fn(
+        get_LocalityName: *const fn (
             self: *const IADsLocality,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LocalityName: *const fn(
+        put_LocalityName: *const fn (
             self: *const IADsLocality,
             bstrLocalityName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PostalAddress: *const fn(
+        get_PostalAddress: *const fn (
             self: *const IADsLocality,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PostalAddress: *const fn(
+        put_PostalAddress: *const fn (
             self: *const IADsLocality,
             bstrPostalAddress: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SeeAlso: *const fn(
+        get_SeeAlso: *const fn (
             self: *const IADsLocality,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SeeAlso: *const fn(
+        put_SeeAlso: *const fn (
             self: *const IADsLocality,
             vSeeAlso: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Description(self: *const IADsLocality, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsLocality, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsLocality, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsLocality, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn get_LocalityName(self: *const IADsLocality, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LocalityName(self: *const IADsLocality, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_LocalityName(self, retval);
     }
-    pub fn put_LocalityName(self: *const IADsLocality, bstrLocalityName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_LocalityName(self: *const IADsLocality, bstrLocalityName: ?BSTR) HRESULT {
         return self.vtable.put_LocalityName(self, bstrLocalityName);
     }
-    pub fn get_PostalAddress(self: *const IADsLocality, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PostalAddress(self: *const IADsLocality, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PostalAddress(self, retval);
     }
-    pub fn put_PostalAddress(self: *const IADsLocality, bstrPostalAddress: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PostalAddress(self: *const IADsLocality, bstrPostalAddress: ?BSTR) HRESULT {
         return self.vtable.put_PostalAddress(self, bstrPostalAddress);
     }
-    pub fn get_SeeAlso(self: *const IADsLocality, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_SeeAlso(self: *const IADsLocality, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_SeeAlso(self, retval);
     }
-    pub fn put_SeeAlso(self: *const IADsLocality, vSeeAlso: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_SeeAlso(self: *const IADsLocality, vSeeAlso: VARIANT) HRESULT {
         return self.vtable.put_SeeAlso(self, vSeeAlso);
     }
 };
@@ -3079,104 +3079,104 @@ pub const IADsO = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsO,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsO,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LocalityName: *const fn(
+        get_LocalityName: *const fn (
             self: *const IADsO,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LocalityName: *const fn(
+        put_LocalityName: *const fn (
             self: *const IADsO,
             bstrLocalityName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PostalAddress: *const fn(
+        get_PostalAddress: *const fn (
             self: *const IADsO,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PostalAddress: *const fn(
+        put_PostalAddress: *const fn (
             self: *const IADsO,
             bstrPostalAddress: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TelephoneNumber: *const fn(
+        get_TelephoneNumber: *const fn (
             self: *const IADsO,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TelephoneNumber: *const fn(
+        put_TelephoneNumber: *const fn (
             self: *const IADsO,
             bstrTelephoneNumber: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FaxNumber: *const fn(
+        get_FaxNumber: *const fn (
             self: *const IADsO,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_FaxNumber: *const fn(
+        put_FaxNumber: *const fn (
             self: *const IADsO,
             bstrFaxNumber: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SeeAlso: *const fn(
+        get_SeeAlso: *const fn (
             self: *const IADsO,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SeeAlso: *const fn(
+        put_SeeAlso: *const fn (
             self: *const IADsO,
             vSeeAlso: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Description(self: *const IADsO, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsO, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsO, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsO, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn get_LocalityName(self: *const IADsO, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LocalityName(self: *const IADsO, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_LocalityName(self, retval);
     }
-    pub fn put_LocalityName(self: *const IADsO, bstrLocalityName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_LocalityName(self: *const IADsO, bstrLocalityName: ?BSTR) HRESULT {
         return self.vtable.put_LocalityName(self, bstrLocalityName);
     }
-    pub fn get_PostalAddress(self: *const IADsO, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PostalAddress(self: *const IADsO, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PostalAddress(self, retval);
     }
-    pub fn put_PostalAddress(self: *const IADsO, bstrPostalAddress: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PostalAddress(self: *const IADsO, bstrPostalAddress: ?BSTR) HRESULT {
         return self.vtable.put_PostalAddress(self, bstrPostalAddress);
     }
-    pub fn get_TelephoneNumber(self: *const IADsO, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_TelephoneNumber(self: *const IADsO, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_TelephoneNumber(self, retval);
     }
-    pub fn put_TelephoneNumber(self: *const IADsO, bstrTelephoneNumber: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_TelephoneNumber(self: *const IADsO, bstrTelephoneNumber: ?BSTR) HRESULT {
         return self.vtable.put_TelephoneNumber(self, bstrTelephoneNumber);
     }
-    pub fn get_FaxNumber(self: *const IADsO, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_FaxNumber(self: *const IADsO, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_FaxNumber(self, retval);
     }
-    pub fn put_FaxNumber(self: *const IADsO, bstrFaxNumber: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_FaxNumber(self: *const IADsO, bstrFaxNumber: ?BSTR) HRESULT {
         return self.vtable.put_FaxNumber(self, bstrFaxNumber);
     }
-    pub fn get_SeeAlso(self: *const IADsO, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_SeeAlso(self: *const IADsO, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_SeeAlso(self, retval);
     }
-    pub fn put_SeeAlso(self: *const IADsO, vSeeAlso: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_SeeAlso(self: *const IADsO, vSeeAlso: VARIANT) HRESULT {
         return self.vtable.put_SeeAlso(self, vSeeAlso);
     }
 };
@@ -3188,120 +3188,120 @@ pub const IADsOU = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsOU,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsOU,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LocalityName: *const fn(
+        get_LocalityName: *const fn (
             self: *const IADsOU,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LocalityName: *const fn(
+        put_LocalityName: *const fn (
             self: *const IADsOU,
             bstrLocalityName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PostalAddress: *const fn(
+        get_PostalAddress: *const fn (
             self: *const IADsOU,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PostalAddress: *const fn(
+        put_PostalAddress: *const fn (
             self: *const IADsOU,
             bstrPostalAddress: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TelephoneNumber: *const fn(
+        get_TelephoneNumber: *const fn (
             self: *const IADsOU,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TelephoneNumber: *const fn(
+        put_TelephoneNumber: *const fn (
             self: *const IADsOU,
             bstrTelephoneNumber: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FaxNumber: *const fn(
+        get_FaxNumber: *const fn (
             self: *const IADsOU,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_FaxNumber: *const fn(
+        put_FaxNumber: *const fn (
             self: *const IADsOU,
             bstrFaxNumber: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SeeAlso: *const fn(
+        get_SeeAlso: *const fn (
             self: *const IADsOU,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SeeAlso: *const fn(
+        put_SeeAlso: *const fn (
             self: *const IADsOU,
             vSeeAlso: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BusinessCategory: *const fn(
+        get_BusinessCategory: *const fn (
             self: *const IADsOU,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_BusinessCategory: *const fn(
+        put_BusinessCategory: *const fn (
             self: *const IADsOU,
             bstrBusinessCategory: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Description(self: *const IADsOU, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsOU, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsOU, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsOU, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn get_LocalityName(self: *const IADsOU, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LocalityName(self: *const IADsOU, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_LocalityName(self, retval);
     }
-    pub fn put_LocalityName(self: *const IADsOU, bstrLocalityName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_LocalityName(self: *const IADsOU, bstrLocalityName: ?BSTR) HRESULT {
         return self.vtable.put_LocalityName(self, bstrLocalityName);
     }
-    pub fn get_PostalAddress(self: *const IADsOU, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PostalAddress(self: *const IADsOU, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PostalAddress(self, retval);
     }
-    pub fn put_PostalAddress(self: *const IADsOU, bstrPostalAddress: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PostalAddress(self: *const IADsOU, bstrPostalAddress: ?BSTR) HRESULT {
         return self.vtable.put_PostalAddress(self, bstrPostalAddress);
     }
-    pub fn get_TelephoneNumber(self: *const IADsOU, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_TelephoneNumber(self: *const IADsOU, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_TelephoneNumber(self, retval);
     }
-    pub fn put_TelephoneNumber(self: *const IADsOU, bstrTelephoneNumber: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_TelephoneNumber(self: *const IADsOU, bstrTelephoneNumber: ?BSTR) HRESULT {
         return self.vtable.put_TelephoneNumber(self, bstrTelephoneNumber);
     }
-    pub fn get_FaxNumber(self: *const IADsOU, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_FaxNumber(self: *const IADsOU, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_FaxNumber(self, retval);
     }
-    pub fn put_FaxNumber(self: *const IADsOU, bstrFaxNumber: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_FaxNumber(self: *const IADsOU, bstrFaxNumber: ?BSTR) HRESULT {
         return self.vtable.put_FaxNumber(self, bstrFaxNumber);
     }
-    pub fn get_SeeAlso(self: *const IADsOU, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_SeeAlso(self: *const IADsOU, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_SeeAlso(self, retval);
     }
-    pub fn put_SeeAlso(self: *const IADsOU, vSeeAlso: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_SeeAlso(self: *const IADsOU, vSeeAlso: VARIANT) HRESULT {
         return self.vtable.put_SeeAlso(self, vSeeAlso);
     }
-    pub fn get_BusinessCategory(self: *const IADsOU, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_BusinessCategory(self: *const IADsOU, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_BusinessCategory(self, retval);
     }
-    pub fn put_BusinessCategory(self: *const IADsOU, bstrBusinessCategory: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_BusinessCategory(self: *const IADsOU, bstrBusinessCategory: ?BSTR) HRESULT {
         return self.vtable.put_BusinessCategory(self, bstrBusinessCategory);
     }
 };
@@ -3313,144 +3313,144 @@ pub const IADsDomain = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsWorkgroup: *const fn(
+        get_IsWorkgroup: *const fn (
             self: *const IADsDomain,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MinPasswordLength: *const fn(
+        get_MinPasswordLength: *const fn (
             self: *const IADsDomain,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MinPasswordLength: *const fn(
+        put_MinPasswordLength: *const fn (
             self: *const IADsDomain,
             lnMinPasswordLength: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MinPasswordAge: *const fn(
+        get_MinPasswordAge: *const fn (
             self: *const IADsDomain,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MinPasswordAge: *const fn(
+        put_MinPasswordAge: *const fn (
             self: *const IADsDomain,
             lnMinPasswordAge: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MaxPasswordAge: *const fn(
+        get_MaxPasswordAge: *const fn (
             self: *const IADsDomain,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MaxPasswordAge: *const fn(
+        put_MaxPasswordAge: *const fn (
             self: *const IADsDomain,
             lnMaxPasswordAge: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MaxBadPasswordsAllowed: *const fn(
+        get_MaxBadPasswordsAllowed: *const fn (
             self: *const IADsDomain,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MaxBadPasswordsAllowed: *const fn(
+        put_MaxBadPasswordsAllowed: *const fn (
             self: *const IADsDomain,
             lnMaxBadPasswordsAllowed: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PasswordHistoryLength: *const fn(
+        get_PasswordHistoryLength: *const fn (
             self: *const IADsDomain,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PasswordHistoryLength: *const fn(
+        put_PasswordHistoryLength: *const fn (
             self: *const IADsDomain,
             lnPasswordHistoryLength: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PasswordAttributes: *const fn(
+        get_PasswordAttributes: *const fn (
             self: *const IADsDomain,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PasswordAttributes: *const fn(
+        put_PasswordAttributes: *const fn (
             self: *const IADsDomain,
             lnPasswordAttributes: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AutoUnlockInterval: *const fn(
+        get_AutoUnlockInterval: *const fn (
             self: *const IADsDomain,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AutoUnlockInterval: *const fn(
+        put_AutoUnlockInterval: *const fn (
             self: *const IADsDomain,
             lnAutoUnlockInterval: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LockoutObservationInterval: *const fn(
+        get_LockoutObservationInterval: *const fn (
             self: *const IADsDomain,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LockoutObservationInterval: *const fn(
+        put_LockoutObservationInterval: *const fn (
             self: *const IADsDomain,
             lnLockoutObservationInterval: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_IsWorkgroup(self: *const IADsDomain, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsWorkgroup(self: *const IADsDomain, retval: ?*i16) HRESULT {
         return self.vtable.get_IsWorkgroup(self, retval);
     }
-    pub fn get_MinPasswordLength(self: *const IADsDomain, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MinPasswordLength(self: *const IADsDomain, retval: ?*i32) HRESULT {
         return self.vtable.get_MinPasswordLength(self, retval);
     }
-    pub fn put_MinPasswordLength(self: *const IADsDomain, lnMinPasswordLength: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MinPasswordLength(self: *const IADsDomain, lnMinPasswordLength: i32) HRESULT {
         return self.vtable.put_MinPasswordLength(self, lnMinPasswordLength);
     }
-    pub fn get_MinPasswordAge(self: *const IADsDomain, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MinPasswordAge(self: *const IADsDomain, retval: ?*i32) HRESULT {
         return self.vtable.get_MinPasswordAge(self, retval);
     }
-    pub fn put_MinPasswordAge(self: *const IADsDomain, lnMinPasswordAge: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MinPasswordAge(self: *const IADsDomain, lnMinPasswordAge: i32) HRESULT {
         return self.vtable.put_MinPasswordAge(self, lnMinPasswordAge);
     }
-    pub fn get_MaxPasswordAge(self: *const IADsDomain, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MaxPasswordAge(self: *const IADsDomain, retval: ?*i32) HRESULT {
         return self.vtable.get_MaxPasswordAge(self, retval);
     }
-    pub fn put_MaxPasswordAge(self: *const IADsDomain, lnMaxPasswordAge: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MaxPasswordAge(self: *const IADsDomain, lnMaxPasswordAge: i32) HRESULT {
         return self.vtable.put_MaxPasswordAge(self, lnMaxPasswordAge);
     }
-    pub fn get_MaxBadPasswordsAllowed(self: *const IADsDomain, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MaxBadPasswordsAllowed(self: *const IADsDomain, retval: ?*i32) HRESULT {
         return self.vtable.get_MaxBadPasswordsAllowed(self, retval);
     }
-    pub fn put_MaxBadPasswordsAllowed(self: *const IADsDomain, lnMaxBadPasswordsAllowed: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MaxBadPasswordsAllowed(self: *const IADsDomain, lnMaxBadPasswordsAllowed: i32) HRESULT {
         return self.vtable.put_MaxBadPasswordsAllowed(self, lnMaxBadPasswordsAllowed);
     }
-    pub fn get_PasswordHistoryLength(self: *const IADsDomain, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_PasswordHistoryLength(self: *const IADsDomain, retval: ?*i32) HRESULT {
         return self.vtable.get_PasswordHistoryLength(self, retval);
     }
-    pub fn put_PasswordHistoryLength(self: *const IADsDomain, lnPasswordHistoryLength: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_PasswordHistoryLength(self: *const IADsDomain, lnPasswordHistoryLength: i32) HRESULT {
         return self.vtable.put_PasswordHistoryLength(self, lnPasswordHistoryLength);
     }
-    pub fn get_PasswordAttributes(self: *const IADsDomain, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_PasswordAttributes(self: *const IADsDomain, retval: ?*i32) HRESULT {
         return self.vtable.get_PasswordAttributes(self, retval);
     }
-    pub fn put_PasswordAttributes(self: *const IADsDomain, lnPasswordAttributes: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_PasswordAttributes(self: *const IADsDomain, lnPasswordAttributes: i32) HRESULT {
         return self.vtable.put_PasswordAttributes(self, lnPasswordAttributes);
     }
-    pub fn get_AutoUnlockInterval(self: *const IADsDomain, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_AutoUnlockInterval(self: *const IADsDomain, retval: ?*i32) HRESULT {
         return self.vtable.get_AutoUnlockInterval(self, retval);
     }
-    pub fn put_AutoUnlockInterval(self: *const IADsDomain, lnAutoUnlockInterval: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_AutoUnlockInterval(self: *const IADsDomain, lnAutoUnlockInterval: i32) HRESULT {
         return self.vtable.put_AutoUnlockInterval(self, lnAutoUnlockInterval);
     }
-    pub fn get_LockoutObservationInterval(self: *const IADsDomain, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_LockoutObservationInterval(self: *const IADsDomain, retval: ?*i32) HRESULT {
         return self.vtable.get_LockoutObservationInterval(self, retval);
     }
-    pub fn put_LockoutObservationInterval(self: *const IADsDomain, lnLockoutObservationInterval: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_LockoutObservationInterval(self: *const IADsDomain, lnLockoutObservationInterval: i32) HRESULT {
         return self.vtable.put_LockoutObservationInterval(self, lnLockoutObservationInterval);
     }
 };
@@ -3462,264 +3462,264 @@ pub const IADsComputer = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ComputerID: *const fn(
+        get_ComputerID: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Site: *const fn(
+        get_Site: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsComputer,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Location: *const fn(
+        get_Location: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Location: *const fn(
+        put_Location: *const fn (
             self: *const IADsComputer,
             bstrLocation: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrimaryUser: *const fn(
+        get_PrimaryUser: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PrimaryUser: *const fn(
+        put_PrimaryUser: *const fn (
             self: *const IADsComputer,
             bstrPrimaryUser: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Owner: *const fn(
+        get_Owner: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Owner: *const fn(
+        put_Owner: *const fn (
             self: *const IADsComputer,
             bstrOwner: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Division: *const fn(
+        get_Division: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Division: *const fn(
+        put_Division: *const fn (
             self: *const IADsComputer,
             bstrDivision: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Department: *const fn(
+        get_Department: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Department: *const fn(
+        put_Department: *const fn (
             self: *const IADsComputer,
             bstrDepartment: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Role: *const fn(
+        get_Role: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Role: *const fn(
+        put_Role: *const fn (
             self: *const IADsComputer,
             bstrRole: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OperatingSystem: *const fn(
+        get_OperatingSystem: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OperatingSystem: *const fn(
+        put_OperatingSystem: *const fn (
             self: *const IADsComputer,
             bstrOperatingSystem: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OperatingSystemVersion: *const fn(
+        get_OperatingSystemVersion: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OperatingSystemVersion: *const fn(
+        put_OperatingSystemVersion: *const fn (
             self: *const IADsComputer,
             bstrOperatingSystemVersion: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Model: *const fn(
+        get_Model: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Model: *const fn(
+        put_Model: *const fn (
             self: *const IADsComputer,
             bstrModel: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Processor: *const fn(
+        get_Processor: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Processor: *const fn(
+        put_Processor: *const fn (
             self: *const IADsComputer,
             bstrProcessor: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProcessorCount: *const fn(
+        get_ProcessorCount: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProcessorCount: *const fn(
+        put_ProcessorCount: *const fn (
             self: *const IADsComputer,
             bstrProcessorCount: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MemorySize: *const fn(
+        get_MemorySize: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MemorySize: *const fn(
+        put_MemorySize: *const fn (
             self: *const IADsComputer,
             bstrMemorySize: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StorageCapacity: *const fn(
+        get_StorageCapacity: *const fn (
             self: *const IADsComputer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_StorageCapacity: *const fn(
+        put_StorageCapacity: *const fn (
             self: *const IADsComputer,
             bstrStorageCapacity: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NetAddresses: *const fn(
+        get_NetAddresses: *const fn (
             self: *const IADsComputer,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NetAddresses: *const fn(
+        put_NetAddresses: *const fn (
             self: *const IADsComputer,
             vNetAddresses: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ComputerID(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ComputerID(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ComputerID(self, retval);
     }
-    pub fn get_Site(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Site(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Site(self, retval);
     }
-    pub fn get_Description(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsComputer, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsComputer, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn get_Location(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Location(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Location(self, retval);
     }
-    pub fn put_Location(self: *const IADsComputer, bstrLocation: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Location(self: *const IADsComputer, bstrLocation: ?BSTR) HRESULT {
         return self.vtable.put_Location(self, bstrLocation);
     }
-    pub fn get_PrimaryUser(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PrimaryUser(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PrimaryUser(self, retval);
     }
-    pub fn put_PrimaryUser(self: *const IADsComputer, bstrPrimaryUser: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PrimaryUser(self: *const IADsComputer, bstrPrimaryUser: ?BSTR) HRESULT {
         return self.vtable.put_PrimaryUser(self, bstrPrimaryUser);
     }
-    pub fn get_Owner(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Owner(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Owner(self, retval);
     }
-    pub fn put_Owner(self: *const IADsComputer, bstrOwner: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Owner(self: *const IADsComputer, bstrOwner: ?BSTR) HRESULT {
         return self.vtable.put_Owner(self, bstrOwner);
     }
-    pub fn get_Division(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Division(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Division(self, retval);
     }
-    pub fn put_Division(self: *const IADsComputer, bstrDivision: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Division(self: *const IADsComputer, bstrDivision: ?BSTR) HRESULT {
         return self.vtable.put_Division(self, bstrDivision);
     }
-    pub fn get_Department(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Department(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Department(self, retval);
     }
-    pub fn put_Department(self: *const IADsComputer, bstrDepartment: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Department(self: *const IADsComputer, bstrDepartment: ?BSTR) HRESULT {
         return self.vtable.put_Department(self, bstrDepartment);
     }
-    pub fn get_Role(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Role(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Role(self, retval);
     }
-    pub fn put_Role(self: *const IADsComputer, bstrRole: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Role(self: *const IADsComputer, bstrRole: ?BSTR) HRESULT {
         return self.vtable.put_Role(self, bstrRole);
     }
-    pub fn get_OperatingSystem(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_OperatingSystem(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_OperatingSystem(self, retval);
     }
-    pub fn put_OperatingSystem(self: *const IADsComputer, bstrOperatingSystem: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_OperatingSystem(self: *const IADsComputer, bstrOperatingSystem: ?BSTR) HRESULT {
         return self.vtable.put_OperatingSystem(self, bstrOperatingSystem);
     }
-    pub fn get_OperatingSystemVersion(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_OperatingSystemVersion(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_OperatingSystemVersion(self, retval);
     }
-    pub fn put_OperatingSystemVersion(self: *const IADsComputer, bstrOperatingSystemVersion: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_OperatingSystemVersion(self: *const IADsComputer, bstrOperatingSystemVersion: ?BSTR) HRESULT {
         return self.vtable.put_OperatingSystemVersion(self, bstrOperatingSystemVersion);
     }
-    pub fn get_Model(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Model(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Model(self, retval);
     }
-    pub fn put_Model(self: *const IADsComputer, bstrModel: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Model(self: *const IADsComputer, bstrModel: ?BSTR) HRESULT {
         return self.vtable.put_Model(self, bstrModel);
     }
-    pub fn get_Processor(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Processor(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Processor(self, retval);
     }
-    pub fn put_Processor(self: *const IADsComputer, bstrProcessor: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Processor(self: *const IADsComputer, bstrProcessor: ?BSTR) HRESULT {
         return self.vtable.put_Processor(self, bstrProcessor);
     }
-    pub fn get_ProcessorCount(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProcessorCount(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ProcessorCount(self, retval);
     }
-    pub fn put_ProcessorCount(self: *const IADsComputer, bstrProcessorCount: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ProcessorCount(self: *const IADsComputer, bstrProcessorCount: ?BSTR) HRESULT {
         return self.vtable.put_ProcessorCount(self, bstrProcessorCount);
     }
-    pub fn get_MemorySize(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_MemorySize(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_MemorySize(self, retval);
     }
-    pub fn put_MemorySize(self: *const IADsComputer, bstrMemorySize: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_MemorySize(self: *const IADsComputer, bstrMemorySize: ?BSTR) HRESULT {
         return self.vtable.put_MemorySize(self, bstrMemorySize);
     }
-    pub fn get_StorageCapacity(self: *const IADsComputer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_StorageCapacity(self: *const IADsComputer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_StorageCapacity(self, retval);
     }
-    pub fn put_StorageCapacity(self: *const IADsComputer, bstrStorageCapacity: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_StorageCapacity(self: *const IADsComputer, bstrStorageCapacity: ?BSTR) HRESULT {
         return self.vtable.put_StorageCapacity(self, bstrStorageCapacity);
     }
-    pub fn get_NetAddresses(self: *const IADsComputer, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_NetAddresses(self: *const IADsComputer, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_NetAddresses(self, retval);
     }
-    pub fn put_NetAddresses(self: *const IADsComputer, vNetAddresses: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_NetAddresses(self: *const IADsComputer, vNetAddresses: VARIANT) HRESULT {
         return self.vtable.put_NetAddresses(self, vNetAddresses);
     }
 };
@@ -3730,23 +3730,23 @@ pub const IID_IADsComputerOperations = &IID_IADsComputerOperations_Value;
 pub const IADsComputerOperations = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
-        Status: *const fn(
+        Status: *const fn (
             self: *const IADsComputerOperations,
             ppObject: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Shutdown: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Shutdown: *const fn (
             self: *const IADsComputerOperations,
             bReboot: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Status(self: *const IADsComputerOperations, ppObject: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn Status(self: *const IADsComputerOperations, ppObject: ?*?*IDispatch) HRESULT {
         return self.vtable.Status(self, ppObject);
     }
-    pub fn Shutdown(self: *const IADsComputerOperations, bReboot: i16) callconv(.Inline) HRESULT {
+    pub inline fn Shutdown(self: *const IADsComputerOperations, bReboot: i16) HRESULT {
         return self.vtable.Shutdown(self, bReboot);
     }
 };
@@ -3758,53 +3758,53 @@ pub const IADsGroup = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsGroup,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsGroup,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Members: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Members: *const fn (
             self: *const IADsGroup,
             ppMembers: ?*?*IADsMembers,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsMember: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsMember: *const fn (
             self: *const IADsGroup,
             bstrMember: ?BSTR,
             bMember: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const IADsGroup,
             bstrNewItem: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Remove: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Remove: *const fn (
             self: *const IADsGroup,
             bstrItemToBeRemoved: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Description(self: *const IADsGroup, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsGroup, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsGroup, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsGroup, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn Members(self: *const IADsGroup, ppMembers: ?*?*IADsMembers) callconv(.Inline) HRESULT {
+    pub inline fn Members(self: *const IADsGroup, ppMembers: ?*?*IADsMembers) HRESULT {
         return self.vtable.Members(self, ppMembers);
     }
-    pub fn IsMember(self: *const IADsGroup, bstrMember: ?BSTR, bMember: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn IsMember(self: *const IADsGroup, bstrMember: ?BSTR, bMember: ?*i16) HRESULT {
         return self.vtable.IsMember(self, bstrMember, bMember);
     }
-    pub fn Add(self: *const IADsGroup, bstrNewItem: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const IADsGroup, bstrNewItem: ?BSTR) HRESULT {
         return self.vtable.Add(self, bstrNewItem);
     }
-    pub fn Remove(self: *const IADsGroup, bstrItemToBeRemoved: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const IADsGroup, bstrItemToBeRemoved: ?BSTR) HRESULT {
         return self.vtable.Remove(self, bstrItemToBeRemoved);
     }
 };
@@ -3816,734 +3816,734 @@ pub const IADsUser = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BadLoginAddress: *const fn(
+        get_BadLoginAddress: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BadLoginCount: *const fn(
+        get_BadLoginCount: *const fn (
             self: *const IADsUser,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LastLogin: *const fn(
+        get_LastLogin: *const fn (
             self: *const IADsUser,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LastLogoff: *const fn(
+        get_LastLogoff: *const fn (
             self: *const IADsUser,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LastFailedLogin: *const fn(
+        get_LastFailedLogin: *const fn (
             self: *const IADsUser,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PasswordLastChanged: *const fn(
+        get_PasswordLastChanged: *const fn (
             self: *const IADsUser,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsUser,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Division: *const fn(
+        get_Division: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Division: *const fn(
+        put_Division: *const fn (
             self: *const IADsUser,
             bstrDivision: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Department: *const fn(
+        get_Department: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Department: *const fn(
+        put_Department: *const fn (
             self: *const IADsUser,
             bstrDepartment: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EmployeeID: *const fn(
+        get_EmployeeID: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EmployeeID: *const fn(
+        put_EmployeeID: *const fn (
             self: *const IADsUser,
             bstrEmployeeID: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FullName: *const fn(
+        get_FullName: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_FullName: *const fn(
+        put_FullName: *const fn (
             self: *const IADsUser,
             bstrFullName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FirstName: *const fn(
+        get_FirstName: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_FirstName: *const fn(
+        put_FirstName: *const fn (
             self: *const IADsUser,
             bstrFirstName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LastName: *const fn(
+        get_LastName: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LastName: *const fn(
+        put_LastName: *const fn (
             self: *const IADsUser,
             bstrLastName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OtherName: *const fn(
+        get_OtherName: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OtherName: *const fn(
+        put_OtherName: *const fn (
             self: *const IADsUser,
             bstrOtherName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NamePrefix: *const fn(
+        get_NamePrefix: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NamePrefix: *const fn(
+        put_NamePrefix: *const fn (
             self: *const IADsUser,
             bstrNamePrefix: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NameSuffix: *const fn(
+        get_NameSuffix: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NameSuffix: *const fn(
+        put_NameSuffix: *const fn (
             self: *const IADsUser,
             bstrNameSuffix: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Title: *const fn(
+        get_Title: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Title: *const fn(
+        put_Title: *const fn (
             self: *const IADsUser,
             bstrTitle: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Manager: *const fn(
+        get_Manager: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Manager: *const fn(
+        put_Manager: *const fn (
             self: *const IADsUser,
             bstrManager: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TelephoneHome: *const fn(
+        get_TelephoneHome: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TelephoneHome: *const fn(
+        put_TelephoneHome: *const fn (
             self: *const IADsUser,
             vTelephoneHome: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TelephoneMobile: *const fn(
+        get_TelephoneMobile: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TelephoneMobile: *const fn(
+        put_TelephoneMobile: *const fn (
             self: *const IADsUser,
             vTelephoneMobile: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TelephoneNumber: *const fn(
+        get_TelephoneNumber: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TelephoneNumber: *const fn(
+        put_TelephoneNumber: *const fn (
             self: *const IADsUser,
             vTelephoneNumber: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TelephonePager: *const fn(
+        get_TelephonePager: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TelephonePager: *const fn(
+        put_TelephonePager: *const fn (
             self: *const IADsUser,
             vTelephonePager: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_FaxNumber: *const fn(
+        get_FaxNumber: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_FaxNumber: *const fn(
+        put_FaxNumber: *const fn (
             self: *const IADsUser,
             vFaxNumber: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OfficeLocations: *const fn(
+        get_OfficeLocations: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OfficeLocations: *const fn(
+        put_OfficeLocations: *const fn (
             self: *const IADsUser,
             vOfficeLocations: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PostalAddresses: *const fn(
+        get_PostalAddresses: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PostalAddresses: *const fn(
+        put_PostalAddresses: *const fn (
             self: *const IADsUser,
             vPostalAddresses: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PostalCodes: *const fn(
+        get_PostalCodes: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PostalCodes: *const fn(
+        put_PostalCodes: *const fn (
             self: *const IADsUser,
             vPostalCodes: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SeeAlso: *const fn(
+        get_SeeAlso: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SeeAlso: *const fn(
+        put_SeeAlso: *const fn (
             self: *const IADsUser,
             vSeeAlso: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AccountDisabled: *const fn(
+        get_AccountDisabled: *const fn (
             self: *const IADsUser,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AccountDisabled: *const fn(
+        put_AccountDisabled: *const fn (
             self: *const IADsUser,
             fAccountDisabled: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AccountExpirationDate: *const fn(
+        get_AccountExpirationDate: *const fn (
             self: *const IADsUser,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AccountExpirationDate: *const fn(
+        put_AccountExpirationDate: *const fn (
             self: *const IADsUser,
             daAccountExpirationDate: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_GraceLoginsAllowed: *const fn(
+        get_GraceLoginsAllowed: *const fn (
             self: *const IADsUser,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_GraceLoginsAllowed: *const fn(
+        put_GraceLoginsAllowed: *const fn (
             self: *const IADsUser,
             lnGraceLoginsAllowed: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_GraceLoginsRemaining: *const fn(
+        get_GraceLoginsRemaining: *const fn (
             self: *const IADsUser,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_GraceLoginsRemaining: *const fn(
+        put_GraceLoginsRemaining: *const fn (
             self: *const IADsUser,
             lnGraceLoginsRemaining: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsAccountLocked: *const fn(
+        get_IsAccountLocked: *const fn (
             self: *const IADsUser,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_IsAccountLocked: *const fn(
+        put_IsAccountLocked: *const fn (
             self: *const IADsUser,
             fIsAccountLocked: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LoginHours: *const fn(
+        get_LoginHours: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LoginHours: *const fn(
+        put_LoginHours: *const fn (
             self: *const IADsUser,
             vLoginHours: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LoginWorkstations: *const fn(
+        get_LoginWorkstations: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LoginWorkstations: *const fn(
+        put_LoginWorkstations: *const fn (
             self: *const IADsUser,
             vLoginWorkstations: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MaxLogins: *const fn(
+        get_MaxLogins: *const fn (
             self: *const IADsUser,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MaxLogins: *const fn(
+        put_MaxLogins: *const fn (
             self: *const IADsUser,
             lnMaxLogins: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MaxStorage: *const fn(
+        get_MaxStorage: *const fn (
             self: *const IADsUser,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MaxStorage: *const fn(
+        put_MaxStorage: *const fn (
             self: *const IADsUser,
             lnMaxStorage: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PasswordExpirationDate: *const fn(
+        get_PasswordExpirationDate: *const fn (
             self: *const IADsUser,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PasswordExpirationDate: *const fn(
+        put_PasswordExpirationDate: *const fn (
             self: *const IADsUser,
             daPasswordExpirationDate: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PasswordMinimumLength: *const fn(
+        get_PasswordMinimumLength: *const fn (
             self: *const IADsUser,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PasswordMinimumLength: *const fn(
+        put_PasswordMinimumLength: *const fn (
             self: *const IADsUser,
             lnPasswordMinimumLength: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PasswordRequired: *const fn(
+        get_PasswordRequired: *const fn (
             self: *const IADsUser,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PasswordRequired: *const fn(
+        put_PasswordRequired: *const fn (
             self: *const IADsUser,
             fPasswordRequired: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RequireUniquePassword: *const fn(
+        get_RequireUniquePassword: *const fn (
             self: *const IADsUser,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RequireUniquePassword: *const fn(
+        put_RequireUniquePassword: *const fn (
             self: *const IADsUser,
             fRequireUniquePassword: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EmailAddress: *const fn(
+        get_EmailAddress: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EmailAddress: *const fn(
+        put_EmailAddress: *const fn (
             self: *const IADsUser,
             bstrEmailAddress: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HomeDirectory: *const fn(
+        get_HomeDirectory: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HomeDirectory: *const fn(
+        put_HomeDirectory: *const fn (
             self: *const IADsUser,
             bstrHomeDirectory: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Languages: *const fn(
+        get_Languages: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Languages: *const fn(
+        put_Languages: *const fn (
             self: *const IADsUser,
             vLanguages: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Profile: *const fn(
+        get_Profile: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Profile: *const fn(
+        put_Profile: *const fn (
             self: *const IADsUser,
             bstrProfile: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LoginScript: *const fn(
+        get_LoginScript: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LoginScript: *const fn(
+        put_LoginScript: *const fn (
             self: *const IADsUser,
             bstrLoginScript: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Picture: *const fn(
+        get_Picture: *const fn (
             self: *const IADsUser,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Picture: *const fn(
+        put_Picture: *const fn (
             self: *const IADsUser,
             vPicture: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HomePage: *const fn(
+        get_HomePage: *const fn (
             self: *const IADsUser,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HomePage: *const fn(
+        put_HomePage: *const fn (
             self: *const IADsUser,
             bstrHomePage: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Groups: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Groups: *const fn (
             self: *const IADsUser,
             ppGroups: ?*?*IADsMembers,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPassword: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPassword: *const fn (
             self: *const IADsUser,
             NewPassword: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ChangePassword: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ChangePassword: *const fn (
             self: *const IADsUser,
             bstrOldPassword: ?BSTR,
             bstrNewPassword: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_BadLoginAddress(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_BadLoginAddress(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_BadLoginAddress(self, retval);
     }
-    pub fn get_BadLoginCount(self: *const IADsUser, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_BadLoginCount(self: *const IADsUser, retval: ?*i32) HRESULT {
         return self.vtable.get_BadLoginCount(self, retval);
     }
-    pub fn get_LastLogin(self: *const IADsUser, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_LastLogin(self: *const IADsUser, retval: ?*f64) HRESULT {
         return self.vtable.get_LastLogin(self, retval);
     }
-    pub fn get_LastLogoff(self: *const IADsUser, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_LastLogoff(self: *const IADsUser, retval: ?*f64) HRESULT {
         return self.vtable.get_LastLogoff(self, retval);
     }
-    pub fn get_LastFailedLogin(self: *const IADsUser, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_LastFailedLogin(self: *const IADsUser, retval: ?*f64) HRESULT {
         return self.vtable.get_LastFailedLogin(self, retval);
     }
-    pub fn get_PasswordLastChanged(self: *const IADsUser, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_PasswordLastChanged(self: *const IADsUser, retval: ?*f64) HRESULT {
         return self.vtable.get_PasswordLastChanged(self, retval);
     }
-    pub fn get_Description(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsUser, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsUser, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn get_Division(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Division(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Division(self, retval);
     }
-    pub fn put_Division(self: *const IADsUser, bstrDivision: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Division(self: *const IADsUser, bstrDivision: ?BSTR) HRESULT {
         return self.vtable.put_Division(self, bstrDivision);
     }
-    pub fn get_Department(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Department(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Department(self, retval);
     }
-    pub fn put_Department(self: *const IADsUser, bstrDepartment: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Department(self: *const IADsUser, bstrDepartment: ?BSTR) HRESULT {
         return self.vtable.put_Department(self, bstrDepartment);
     }
-    pub fn get_EmployeeID(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_EmployeeID(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_EmployeeID(self, retval);
     }
-    pub fn put_EmployeeID(self: *const IADsUser, bstrEmployeeID: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_EmployeeID(self: *const IADsUser, bstrEmployeeID: ?BSTR) HRESULT {
         return self.vtable.put_EmployeeID(self, bstrEmployeeID);
     }
-    pub fn get_FullName(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_FullName(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_FullName(self, retval);
     }
-    pub fn put_FullName(self: *const IADsUser, bstrFullName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_FullName(self: *const IADsUser, bstrFullName: ?BSTR) HRESULT {
         return self.vtable.put_FullName(self, bstrFullName);
     }
-    pub fn get_FirstName(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_FirstName(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_FirstName(self, retval);
     }
-    pub fn put_FirstName(self: *const IADsUser, bstrFirstName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_FirstName(self: *const IADsUser, bstrFirstName: ?BSTR) HRESULT {
         return self.vtable.put_FirstName(self, bstrFirstName);
     }
-    pub fn get_LastName(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LastName(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_LastName(self, retval);
     }
-    pub fn put_LastName(self: *const IADsUser, bstrLastName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_LastName(self: *const IADsUser, bstrLastName: ?BSTR) HRESULT {
         return self.vtable.put_LastName(self, bstrLastName);
     }
-    pub fn get_OtherName(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_OtherName(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_OtherName(self, retval);
     }
-    pub fn put_OtherName(self: *const IADsUser, bstrOtherName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_OtherName(self: *const IADsUser, bstrOtherName: ?BSTR) HRESULT {
         return self.vtable.put_OtherName(self, bstrOtherName);
     }
-    pub fn get_NamePrefix(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_NamePrefix(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_NamePrefix(self, retval);
     }
-    pub fn put_NamePrefix(self: *const IADsUser, bstrNamePrefix: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_NamePrefix(self: *const IADsUser, bstrNamePrefix: ?BSTR) HRESULT {
         return self.vtable.put_NamePrefix(self, bstrNamePrefix);
     }
-    pub fn get_NameSuffix(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_NameSuffix(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_NameSuffix(self, retval);
     }
-    pub fn put_NameSuffix(self: *const IADsUser, bstrNameSuffix: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_NameSuffix(self: *const IADsUser, bstrNameSuffix: ?BSTR) HRESULT {
         return self.vtable.put_NameSuffix(self, bstrNameSuffix);
     }
-    pub fn get_Title(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Title(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Title(self, retval);
     }
-    pub fn put_Title(self: *const IADsUser, bstrTitle: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Title(self: *const IADsUser, bstrTitle: ?BSTR) HRESULT {
         return self.vtable.put_Title(self, bstrTitle);
     }
-    pub fn get_Manager(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Manager(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Manager(self, retval);
     }
-    pub fn put_Manager(self: *const IADsUser, bstrManager: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Manager(self: *const IADsUser, bstrManager: ?BSTR) HRESULT {
         return self.vtable.put_Manager(self, bstrManager);
     }
-    pub fn get_TelephoneHome(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_TelephoneHome(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_TelephoneHome(self, retval);
     }
-    pub fn put_TelephoneHome(self: *const IADsUser, vTelephoneHome: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_TelephoneHome(self: *const IADsUser, vTelephoneHome: VARIANT) HRESULT {
         return self.vtable.put_TelephoneHome(self, vTelephoneHome);
     }
-    pub fn get_TelephoneMobile(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_TelephoneMobile(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_TelephoneMobile(self, retval);
     }
-    pub fn put_TelephoneMobile(self: *const IADsUser, vTelephoneMobile: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_TelephoneMobile(self: *const IADsUser, vTelephoneMobile: VARIANT) HRESULT {
         return self.vtable.put_TelephoneMobile(self, vTelephoneMobile);
     }
-    pub fn get_TelephoneNumber(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_TelephoneNumber(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_TelephoneNumber(self, retval);
     }
-    pub fn put_TelephoneNumber(self: *const IADsUser, vTelephoneNumber: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_TelephoneNumber(self: *const IADsUser, vTelephoneNumber: VARIANT) HRESULT {
         return self.vtable.put_TelephoneNumber(self, vTelephoneNumber);
     }
-    pub fn get_TelephonePager(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_TelephonePager(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_TelephonePager(self, retval);
     }
-    pub fn put_TelephonePager(self: *const IADsUser, vTelephonePager: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_TelephonePager(self: *const IADsUser, vTelephonePager: VARIANT) HRESULT {
         return self.vtable.put_TelephonePager(self, vTelephonePager);
     }
-    pub fn get_FaxNumber(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_FaxNumber(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_FaxNumber(self, retval);
     }
-    pub fn put_FaxNumber(self: *const IADsUser, vFaxNumber: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_FaxNumber(self: *const IADsUser, vFaxNumber: VARIANT) HRESULT {
         return self.vtable.put_FaxNumber(self, vFaxNumber);
     }
-    pub fn get_OfficeLocations(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_OfficeLocations(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_OfficeLocations(self, retval);
     }
-    pub fn put_OfficeLocations(self: *const IADsUser, vOfficeLocations: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_OfficeLocations(self: *const IADsUser, vOfficeLocations: VARIANT) HRESULT {
         return self.vtable.put_OfficeLocations(self, vOfficeLocations);
     }
-    pub fn get_PostalAddresses(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_PostalAddresses(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_PostalAddresses(self, retval);
     }
-    pub fn put_PostalAddresses(self: *const IADsUser, vPostalAddresses: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_PostalAddresses(self: *const IADsUser, vPostalAddresses: VARIANT) HRESULT {
         return self.vtable.put_PostalAddresses(self, vPostalAddresses);
     }
-    pub fn get_PostalCodes(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_PostalCodes(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_PostalCodes(self, retval);
     }
-    pub fn put_PostalCodes(self: *const IADsUser, vPostalCodes: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_PostalCodes(self: *const IADsUser, vPostalCodes: VARIANT) HRESULT {
         return self.vtable.put_PostalCodes(self, vPostalCodes);
     }
-    pub fn get_SeeAlso(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_SeeAlso(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_SeeAlso(self, retval);
     }
-    pub fn put_SeeAlso(self: *const IADsUser, vSeeAlso: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_SeeAlso(self: *const IADsUser, vSeeAlso: VARIANT) HRESULT {
         return self.vtable.put_SeeAlso(self, vSeeAlso);
     }
-    pub fn get_AccountDisabled(self: *const IADsUser, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_AccountDisabled(self: *const IADsUser, retval: ?*i16) HRESULT {
         return self.vtable.get_AccountDisabled(self, retval);
     }
-    pub fn put_AccountDisabled(self: *const IADsUser, fAccountDisabled: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_AccountDisabled(self: *const IADsUser, fAccountDisabled: i16) HRESULT {
         return self.vtable.put_AccountDisabled(self, fAccountDisabled);
     }
-    pub fn get_AccountExpirationDate(self: *const IADsUser, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_AccountExpirationDate(self: *const IADsUser, retval: ?*f64) HRESULT {
         return self.vtable.get_AccountExpirationDate(self, retval);
     }
-    pub fn put_AccountExpirationDate(self: *const IADsUser, daAccountExpirationDate: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_AccountExpirationDate(self: *const IADsUser, daAccountExpirationDate: f64) HRESULT {
         return self.vtable.put_AccountExpirationDate(self, daAccountExpirationDate);
     }
-    pub fn get_GraceLoginsAllowed(self: *const IADsUser, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_GraceLoginsAllowed(self: *const IADsUser, retval: ?*i32) HRESULT {
         return self.vtable.get_GraceLoginsAllowed(self, retval);
     }
-    pub fn put_GraceLoginsAllowed(self: *const IADsUser, lnGraceLoginsAllowed: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_GraceLoginsAllowed(self: *const IADsUser, lnGraceLoginsAllowed: i32) HRESULT {
         return self.vtable.put_GraceLoginsAllowed(self, lnGraceLoginsAllowed);
     }
-    pub fn get_GraceLoginsRemaining(self: *const IADsUser, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_GraceLoginsRemaining(self: *const IADsUser, retval: ?*i32) HRESULT {
         return self.vtable.get_GraceLoginsRemaining(self, retval);
     }
-    pub fn put_GraceLoginsRemaining(self: *const IADsUser, lnGraceLoginsRemaining: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_GraceLoginsRemaining(self: *const IADsUser, lnGraceLoginsRemaining: i32) HRESULT {
         return self.vtable.put_GraceLoginsRemaining(self, lnGraceLoginsRemaining);
     }
-    pub fn get_IsAccountLocked(self: *const IADsUser, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsAccountLocked(self: *const IADsUser, retval: ?*i16) HRESULT {
         return self.vtable.get_IsAccountLocked(self, retval);
     }
-    pub fn put_IsAccountLocked(self: *const IADsUser, fIsAccountLocked: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_IsAccountLocked(self: *const IADsUser, fIsAccountLocked: i16) HRESULT {
         return self.vtable.put_IsAccountLocked(self, fIsAccountLocked);
     }
-    pub fn get_LoginHours(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_LoginHours(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_LoginHours(self, retval);
     }
-    pub fn put_LoginHours(self: *const IADsUser, vLoginHours: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_LoginHours(self: *const IADsUser, vLoginHours: VARIANT) HRESULT {
         return self.vtable.put_LoginHours(self, vLoginHours);
     }
-    pub fn get_LoginWorkstations(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_LoginWorkstations(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_LoginWorkstations(self, retval);
     }
-    pub fn put_LoginWorkstations(self: *const IADsUser, vLoginWorkstations: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_LoginWorkstations(self: *const IADsUser, vLoginWorkstations: VARIANT) HRESULT {
         return self.vtable.put_LoginWorkstations(self, vLoginWorkstations);
     }
-    pub fn get_MaxLogins(self: *const IADsUser, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MaxLogins(self: *const IADsUser, retval: ?*i32) HRESULT {
         return self.vtable.get_MaxLogins(self, retval);
     }
-    pub fn put_MaxLogins(self: *const IADsUser, lnMaxLogins: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MaxLogins(self: *const IADsUser, lnMaxLogins: i32) HRESULT {
         return self.vtable.put_MaxLogins(self, lnMaxLogins);
     }
-    pub fn get_MaxStorage(self: *const IADsUser, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MaxStorage(self: *const IADsUser, retval: ?*i32) HRESULT {
         return self.vtable.get_MaxStorage(self, retval);
     }
-    pub fn put_MaxStorage(self: *const IADsUser, lnMaxStorage: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MaxStorage(self: *const IADsUser, lnMaxStorage: i32) HRESULT {
         return self.vtable.put_MaxStorage(self, lnMaxStorage);
     }
-    pub fn get_PasswordExpirationDate(self: *const IADsUser, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_PasswordExpirationDate(self: *const IADsUser, retval: ?*f64) HRESULT {
         return self.vtable.get_PasswordExpirationDate(self, retval);
     }
-    pub fn put_PasswordExpirationDate(self: *const IADsUser, daPasswordExpirationDate: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_PasswordExpirationDate(self: *const IADsUser, daPasswordExpirationDate: f64) HRESULT {
         return self.vtable.put_PasswordExpirationDate(self, daPasswordExpirationDate);
     }
-    pub fn get_PasswordMinimumLength(self: *const IADsUser, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_PasswordMinimumLength(self: *const IADsUser, retval: ?*i32) HRESULT {
         return self.vtable.get_PasswordMinimumLength(self, retval);
     }
-    pub fn put_PasswordMinimumLength(self: *const IADsUser, lnPasswordMinimumLength: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_PasswordMinimumLength(self: *const IADsUser, lnPasswordMinimumLength: i32) HRESULT {
         return self.vtable.put_PasswordMinimumLength(self, lnPasswordMinimumLength);
     }
-    pub fn get_PasswordRequired(self: *const IADsUser, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_PasswordRequired(self: *const IADsUser, retval: ?*i16) HRESULT {
         return self.vtable.get_PasswordRequired(self, retval);
     }
-    pub fn put_PasswordRequired(self: *const IADsUser, fPasswordRequired: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_PasswordRequired(self: *const IADsUser, fPasswordRequired: i16) HRESULT {
         return self.vtable.put_PasswordRequired(self, fPasswordRequired);
     }
-    pub fn get_RequireUniquePassword(self: *const IADsUser, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_RequireUniquePassword(self: *const IADsUser, retval: ?*i16) HRESULT {
         return self.vtable.get_RequireUniquePassword(self, retval);
     }
-    pub fn put_RequireUniquePassword(self: *const IADsUser, fRequireUniquePassword: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_RequireUniquePassword(self: *const IADsUser, fRequireUniquePassword: i16) HRESULT {
         return self.vtable.put_RequireUniquePassword(self, fRequireUniquePassword);
     }
-    pub fn get_EmailAddress(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_EmailAddress(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_EmailAddress(self, retval);
     }
-    pub fn put_EmailAddress(self: *const IADsUser, bstrEmailAddress: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_EmailAddress(self: *const IADsUser, bstrEmailAddress: ?BSTR) HRESULT {
         return self.vtable.put_EmailAddress(self, bstrEmailAddress);
     }
-    pub fn get_HomeDirectory(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_HomeDirectory(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_HomeDirectory(self, retval);
     }
-    pub fn put_HomeDirectory(self: *const IADsUser, bstrHomeDirectory: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_HomeDirectory(self: *const IADsUser, bstrHomeDirectory: ?BSTR) HRESULT {
         return self.vtable.put_HomeDirectory(self, bstrHomeDirectory);
     }
-    pub fn get_Languages(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Languages(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_Languages(self, retval);
     }
-    pub fn put_Languages(self: *const IADsUser, vLanguages: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Languages(self: *const IADsUser, vLanguages: VARIANT) HRESULT {
         return self.vtable.put_Languages(self, vLanguages);
     }
-    pub fn get_Profile(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Profile(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Profile(self, retval);
     }
-    pub fn put_Profile(self: *const IADsUser, bstrProfile: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Profile(self: *const IADsUser, bstrProfile: ?BSTR) HRESULT {
         return self.vtable.put_Profile(self, bstrProfile);
     }
-    pub fn get_LoginScript(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LoginScript(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_LoginScript(self, retval);
     }
-    pub fn put_LoginScript(self: *const IADsUser, bstrLoginScript: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_LoginScript(self: *const IADsUser, bstrLoginScript: ?BSTR) HRESULT {
         return self.vtable.put_LoginScript(self, bstrLoginScript);
     }
-    pub fn get_Picture(self: *const IADsUser, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Picture(self: *const IADsUser, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_Picture(self, retval);
     }
-    pub fn put_Picture(self: *const IADsUser, vPicture: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Picture(self: *const IADsUser, vPicture: VARIANT) HRESULT {
         return self.vtable.put_Picture(self, vPicture);
     }
-    pub fn get_HomePage(self: *const IADsUser, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_HomePage(self: *const IADsUser, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_HomePage(self, retval);
     }
-    pub fn put_HomePage(self: *const IADsUser, bstrHomePage: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_HomePage(self: *const IADsUser, bstrHomePage: ?BSTR) HRESULT {
         return self.vtable.put_HomePage(self, bstrHomePage);
     }
-    pub fn Groups(self: *const IADsUser, ppGroups: ?*?*IADsMembers) callconv(.Inline) HRESULT {
+    pub inline fn Groups(self: *const IADsUser, ppGroups: ?*?*IADsMembers) HRESULT {
         return self.vtable.Groups(self, ppGroups);
     }
-    pub fn SetPassword(self: *const IADsUser, NewPassword: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetPassword(self: *const IADsUser, NewPassword: ?BSTR) HRESULT {
         return self.vtable.SetPassword(self, NewPassword);
     }
-    pub fn ChangePassword(self: *const IADsUser, bstrOldPassword: ?BSTR, bstrNewPassword: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn ChangePassword(self: *const IADsUser, bstrOldPassword: ?BSTR, bstrNewPassword: ?BSTR) HRESULT {
         return self.vtable.ChangePassword(self, bstrOldPassword, bstrNewPassword);
     }
 };
@@ -4555,216 +4555,216 @@ pub const IADsPrintQueue = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrinterPath: *const fn(
+        get_PrinterPath: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PrinterPath: *const fn(
+        put_PrinterPath: *const fn (
             self: *const IADsPrintQueue,
             bstrPrinterPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Model: *const fn(
+        get_Model: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Model: *const fn(
+        put_Model: *const fn (
             self: *const IADsPrintQueue,
             bstrModel: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Datatype: *const fn(
+        get_Datatype: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Datatype: *const fn(
+        put_Datatype: *const fn (
             self: *const IADsPrintQueue,
             bstrDatatype: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrintProcessor: *const fn(
+        get_PrintProcessor: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PrintProcessor: *const fn(
+        put_PrintProcessor: *const fn (
             self: *const IADsPrintQueue,
             bstrPrintProcessor: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsPrintQueue,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Location: *const fn(
+        get_Location: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Location: *const fn(
+        put_Location: *const fn (
             self: *const IADsPrintQueue,
             bstrLocation: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StartTime: *const fn(
+        get_StartTime: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_StartTime: *const fn(
+        put_StartTime: *const fn (
             self: *const IADsPrintQueue,
             daStartTime: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UntilTime: *const fn(
+        get_UntilTime: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UntilTime: *const fn(
+        put_UntilTime: *const fn (
             self: *const IADsPrintQueue,
             daUntilTime: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DefaultJobPriority: *const fn(
+        get_DefaultJobPriority: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DefaultJobPriority: *const fn(
+        put_DefaultJobPriority: *const fn (
             self: *const IADsPrintQueue,
             lnDefaultJobPriority: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Priority: *const fn(
+        get_Priority: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Priority: *const fn(
+        put_Priority: *const fn (
             self: *const IADsPrintQueue,
             lnPriority: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BannerPage: *const fn(
+        get_BannerPage: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_BannerPage: *const fn(
+        put_BannerPage: *const fn (
             self: *const IADsPrintQueue,
             bstrBannerPage: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PrintDevices: *const fn(
+        get_PrintDevices: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PrintDevices: *const fn(
+        put_PrintDevices: *const fn (
             self: *const IADsPrintQueue,
             vPrintDevices: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NetAddresses: *const fn(
+        get_NetAddresses: *const fn (
             self: *const IADsPrintQueue,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NetAddresses: *const fn(
+        put_NetAddresses: *const fn (
             self: *const IADsPrintQueue,
             vNetAddresses: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_PrinterPath(self: *const IADsPrintQueue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PrinterPath(self: *const IADsPrintQueue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PrinterPath(self, retval);
     }
-    pub fn put_PrinterPath(self: *const IADsPrintQueue, bstrPrinterPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PrinterPath(self: *const IADsPrintQueue, bstrPrinterPath: ?BSTR) HRESULT {
         return self.vtable.put_PrinterPath(self, bstrPrinterPath);
     }
-    pub fn get_Model(self: *const IADsPrintQueue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Model(self: *const IADsPrintQueue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Model(self, retval);
     }
-    pub fn put_Model(self: *const IADsPrintQueue, bstrModel: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Model(self: *const IADsPrintQueue, bstrModel: ?BSTR) HRESULT {
         return self.vtable.put_Model(self, bstrModel);
     }
-    pub fn get_Datatype(self: *const IADsPrintQueue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Datatype(self: *const IADsPrintQueue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Datatype(self, retval);
     }
-    pub fn put_Datatype(self: *const IADsPrintQueue, bstrDatatype: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Datatype(self: *const IADsPrintQueue, bstrDatatype: ?BSTR) HRESULT {
         return self.vtable.put_Datatype(self, bstrDatatype);
     }
-    pub fn get_PrintProcessor(self: *const IADsPrintQueue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PrintProcessor(self: *const IADsPrintQueue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PrintProcessor(self, retval);
     }
-    pub fn put_PrintProcessor(self: *const IADsPrintQueue, bstrPrintProcessor: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_PrintProcessor(self: *const IADsPrintQueue, bstrPrintProcessor: ?BSTR) HRESULT {
         return self.vtable.put_PrintProcessor(self, bstrPrintProcessor);
     }
-    pub fn get_Description(self: *const IADsPrintQueue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsPrintQueue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsPrintQueue, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsPrintQueue, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn get_Location(self: *const IADsPrintQueue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Location(self: *const IADsPrintQueue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Location(self, retval);
     }
-    pub fn put_Location(self: *const IADsPrintQueue, bstrLocation: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Location(self: *const IADsPrintQueue, bstrLocation: ?BSTR) HRESULT {
         return self.vtable.put_Location(self, bstrLocation);
     }
-    pub fn get_StartTime(self: *const IADsPrintQueue, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_StartTime(self: *const IADsPrintQueue, retval: ?*f64) HRESULT {
         return self.vtable.get_StartTime(self, retval);
     }
-    pub fn put_StartTime(self: *const IADsPrintQueue, daStartTime: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_StartTime(self: *const IADsPrintQueue, daStartTime: f64) HRESULT {
         return self.vtable.put_StartTime(self, daStartTime);
     }
-    pub fn get_UntilTime(self: *const IADsPrintQueue, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_UntilTime(self: *const IADsPrintQueue, retval: ?*f64) HRESULT {
         return self.vtable.get_UntilTime(self, retval);
     }
-    pub fn put_UntilTime(self: *const IADsPrintQueue, daUntilTime: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_UntilTime(self: *const IADsPrintQueue, daUntilTime: f64) HRESULT {
         return self.vtable.put_UntilTime(self, daUntilTime);
     }
-    pub fn get_DefaultJobPriority(self: *const IADsPrintQueue, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_DefaultJobPriority(self: *const IADsPrintQueue, retval: ?*i32) HRESULT {
         return self.vtable.get_DefaultJobPriority(self, retval);
     }
-    pub fn put_DefaultJobPriority(self: *const IADsPrintQueue, lnDefaultJobPriority: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_DefaultJobPriority(self: *const IADsPrintQueue, lnDefaultJobPriority: i32) HRESULT {
         return self.vtable.put_DefaultJobPriority(self, lnDefaultJobPriority);
     }
-    pub fn get_Priority(self: *const IADsPrintQueue, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Priority(self: *const IADsPrintQueue, retval: ?*i32) HRESULT {
         return self.vtable.get_Priority(self, retval);
     }
-    pub fn put_Priority(self: *const IADsPrintQueue, lnPriority: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Priority(self: *const IADsPrintQueue, lnPriority: i32) HRESULT {
         return self.vtable.put_Priority(self, lnPriority);
     }
-    pub fn get_BannerPage(self: *const IADsPrintQueue, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_BannerPage(self: *const IADsPrintQueue, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_BannerPage(self, retval);
     }
-    pub fn put_BannerPage(self: *const IADsPrintQueue, bstrBannerPage: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_BannerPage(self: *const IADsPrintQueue, bstrBannerPage: ?BSTR) HRESULT {
         return self.vtable.put_BannerPage(self, bstrBannerPage);
     }
-    pub fn get_PrintDevices(self: *const IADsPrintQueue, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_PrintDevices(self: *const IADsPrintQueue, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_PrintDevices(self, retval);
     }
-    pub fn put_PrintDevices(self: *const IADsPrintQueue, vPrintDevices: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_PrintDevices(self: *const IADsPrintQueue, vPrintDevices: VARIANT) HRESULT {
         return self.vtable.put_PrintDevices(self, vPrintDevices);
     }
-    pub fn get_NetAddresses(self: *const IADsPrintQueue, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_NetAddresses(self: *const IADsPrintQueue, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_NetAddresses(self, retval);
     }
-    pub fn put_NetAddresses(self: *const IADsPrintQueue, vNetAddresses: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_NetAddresses(self: *const IADsPrintQueue, vNetAddresses: VARIANT) HRESULT {
         return self.vtable.put_NetAddresses(self, vNetAddresses);
     }
 };
@@ -4776,41 +4776,41 @@ pub const IADsPrintQueueOperations = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Status: *const fn(
+        get_Status: *const fn (
             self: *const IADsPrintQueueOperations,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        PrintJobs: *const fn(
+        ) callconv(.winapi) HRESULT,
+        PrintJobs: *const fn (
             self: *const IADsPrintQueueOperations,
             pObject: ?*?*IADsCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Pause: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Pause: *const fn (
             self: *const IADsPrintQueueOperations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Resume: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Resume: *const fn (
             self: *const IADsPrintQueueOperations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Purge: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Purge: *const fn (
             self: *const IADsPrintQueueOperations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Status(self: *const IADsPrintQueueOperations, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Status(self: *const IADsPrintQueueOperations, retval: ?*i32) HRESULT {
         return self.vtable.get_Status(self, retval);
     }
-    pub fn PrintJobs(self: *const IADsPrintQueueOperations, pObject: ?*?*IADsCollection) callconv(.Inline) HRESULT {
+    pub inline fn PrintJobs(self: *const IADsPrintQueueOperations, pObject: ?*?*IADsCollection) HRESULT {
         return self.vtable.PrintJobs(self, pObject);
     }
-    pub fn Pause(self: *const IADsPrintQueueOperations) callconv(.Inline) HRESULT {
+    pub inline fn Pause(self: *const IADsPrintQueueOperations) HRESULT {
         return self.vtable.Pause(self);
     }
-    pub fn Resume(self: *const IADsPrintQueueOperations) callconv(.Inline) HRESULT {
+    pub inline fn Resume(self: *const IADsPrintQueueOperations) HRESULT {
         return self.vtable.Resume(self);
     }
-    pub fn Purge(self: *const IADsPrintQueueOperations) callconv(.Inline) HRESULT {
+    pub inline fn Purge(self: *const IADsPrintQueueOperations) HRESULT {
         return self.vtable.Purge(self);
     }
 };
@@ -4822,152 +4822,152 @@ pub const IADsPrintJob = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HostPrintQueue: *const fn(
+        get_HostPrintQueue: *const fn (
             self: *const IADsPrintJob,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_User: *const fn(
+        get_User: *const fn (
             self: *const IADsPrintJob,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UserPath: *const fn(
+        get_UserPath: *const fn (
             self: *const IADsPrintJob,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TimeSubmitted: *const fn(
+        get_TimeSubmitted: *const fn (
             self: *const IADsPrintJob,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TotalPages: *const fn(
+        get_TotalPages: *const fn (
             self: *const IADsPrintJob,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Size: *const fn(
+        get_Size: *const fn (
             self: *const IADsPrintJob,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsPrintJob,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsPrintJob,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Priority: *const fn(
+        get_Priority: *const fn (
             self: *const IADsPrintJob,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Priority: *const fn(
+        put_Priority: *const fn (
             self: *const IADsPrintJob,
             lnPriority: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StartTime: *const fn(
+        get_StartTime: *const fn (
             self: *const IADsPrintJob,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_StartTime: *const fn(
+        put_StartTime: *const fn (
             self: *const IADsPrintJob,
             daStartTime: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UntilTime: *const fn(
+        get_UntilTime: *const fn (
             self: *const IADsPrintJob,
             retval: ?*f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_UntilTime: *const fn(
+        put_UntilTime: *const fn (
             self: *const IADsPrintJob,
             daUntilTime: f64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Notify: *const fn(
+        get_Notify: *const fn (
             self: *const IADsPrintJob,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Notify: *const fn(
+        put_Notify: *const fn (
             self: *const IADsPrintJob,
             bstrNotify: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_NotifyPath: *const fn(
+        get_NotifyPath: *const fn (
             self: *const IADsPrintJob,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_NotifyPath: *const fn(
+        put_NotifyPath: *const fn (
             self: *const IADsPrintJob,
             bstrNotifyPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_HostPrintQueue(self: *const IADsPrintJob, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_HostPrintQueue(self: *const IADsPrintJob, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_HostPrintQueue(self, retval);
     }
-    pub fn get_User(self: *const IADsPrintJob, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_User(self: *const IADsPrintJob, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_User(self, retval);
     }
-    pub fn get_UserPath(self: *const IADsPrintJob, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UserPath(self: *const IADsPrintJob, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_UserPath(self, retval);
     }
-    pub fn get_TimeSubmitted(self: *const IADsPrintJob, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_TimeSubmitted(self: *const IADsPrintJob, retval: ?*f64) HRESULT {
         return self.vtable.get_TimeSubmitted(self, retval);
     }
-    pub fn get_TotalPages(self: *const IADsPrintJob, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_TotalPages(self: *const IADsPrintJob, retval: ?*i32) HRESULT {
         return self.vtable.get_TotalPages(self, retval);
     }
-    pub fn get_Size(self: *const IADsPrintJob, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Size(self: *const IADsPrintJob, retval: ?*i32) HRESULT {
         return self.vtable.get_Size(self, retval);
     }
-    pub fn get_Description(self: *const IADsPrintJob, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsPrintJob, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsPrintJob, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsPrintJob, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn get_Priority(self: *const IADsPrintJob, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Priority(self: *const IADsPrintJob, retval: ?*i32) HRESULT {
         return self.vtable.get_Priority(self, retval);
     }
-    pub fn put_Priority(self: *const IADsPrintJob, lnPriority: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Priority(self: *const IADsPrintJob, lnPriority: i32) HRESULT {
         return self.vtable.put_Priority(self, lnPriority);
     }
-    pub fn get_StartTime(self: *const IADsPrintJob, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_StartTime(self: *const IADsPrintJob, retval: ?*f64) HRESULT {
         return self.vtable.get_StartTime(self, retval);
     }
-    pub fn put_StartTime(self: *const IADsPrintJob, daStartTime: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_StartTime(self: *const IADsPrintJob, daStartTime: f64) HRESULT {
         return self.vtable.put_StartTime(self, daStartTime);
     }
-    pub fn get_UntilTime(self: *const IADsPrintJob, retval: ?*f64) callconv(.Inline) HRESULT {
+    pub inline fn get_UntilTime(self: *const IADsPrintJob, retval: ?*f64) HRESULT {
         return self.vtable.get_UntilTime(self, retval);
     }
-    pub fn put_UntilTime(self: *const IADsPrintJob, daUntilTime: f64) callconv(.Inline) HRESULT {
+    pub inline fn put_UntilTime(self: *const IADsPrintJob, daUntilTime: f64) HRESULT {
         return self.vtable.put_UntilTime(self, daUntilTime);
     }
-    pub fn get_Notify(self: *const IADsPrintJob, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Notify(self: *const IADsPrintJob, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Notify(self, retval);
     }
-    pub fn put_Notify(self: *const IADsPrintJob, bstrNotify: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Notify(self: *const IADsPrintJob, bstrNotify: ?BSTR) HRESULT {
         return self.vtable.put_Notify(self, bstrNotify);
     }
-    pub fn get_NotifyPath(self: *const IADsPrintJob, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_NotifyPath(self: *const IADsPrintJob, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_NotifyPath(self, retval);
     }
-    pub fn put_NotifyPath(self: *const IADsPrintJob, bstrNotifyPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_NotifyPath(self: *const IADsPrintJob, bstrNotifyPath: ?BSTR) HRESULT {
         return self.vtable.put_NotifyPath(self, bstrNotifyPath);
     }
 };
@@ -4979,60 +4979,60 @@ pub const IADsPrintJobOperations = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Status: *const fn(
+        get_Status: *const fn (
             self: *const IADsPrintJobOperations,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TimeElapsed: *const fn(
+        get_TimeElapsed: *const fn (
             self: *const IADsPrintJobOperations,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PagesPrinted: *const fn(
+        get_PagesPrinted: *const fn (
             self: *const IADsPrintJobOperations,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Position: *const fn(
+        get_Position: *const fn (
             self: *const IADsPrintJobOperations,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Position: *const fn(
+        put_Position: *const fn (
             self: *const IADsPrintJobOperations,
             lnPosition: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Pause: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Pause: *const fn (
             self: *const IADsPrintJobOperations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Resume: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Resume: *const fn (
             self: *const IADsPrintJobOperations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Status(self: *const IADsPrintJobOperations, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Status(self: *const IADsPrintJobOperations, retval: ?*i32) HRESULT {
         return self.vtable.get_Status(self, retval);
     }
-    pub fn get_TimeElapsed(self: *const IADsPrintJobOperations, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_TimeElapsed(self: *const IADsPrintJobOperations, retval: ?*i32) HRESULT {
         return self.vtable.get_TimeElapsed(self, retval);
     }
-    pub fn get_PagesPrinted(self: *const IADsPrintJobOperations, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_PagesPrinted(self: *const IADsPrintJobOperations, retval: ?*i32) HRESULT {
         return self.vtable.get_PagesPrinted(self, retval);
     }
-    pub fn get_Position(self: *const IADsPrintJobOperations, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Position(self: *const IADsPrintJobOperations, retval: ?*i32) HRESULT {
         return self.vtable.get_Position(self, retval);
     }
-    pub fn put_Position(self: *const IADsPrintJobOperations, lnPosition: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Position(self: *const IADsPrintJobOperations, lnPosition: i32) HRESULT {
         return self.vtable.put_Position(self, lnPosition);
     }
-    pub fn Pause(self: *const IADsPrintJobOperations) callconv(.Inline) HRESULT {
+    pub inline fn Pause(self: *const IADsPrintJobOperations) HRESULT {
         return self.vtable.Pause(self);
     }
-    pub fn Resume(self: *const IADsPrintJobOperations) callconv(.Inline) HRESULT {
+    pub inline fn Resume(self: *const IADsPrintJobOperations) HRESULT {
         return self.vtable.Resume(self);
     }
 };
@@ -5044,200 +5044,200 @@ pub const IADsService = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HostComputer: *const fn(
+        get_HostComputer: *const fn (
             self: *const IADsService,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HostComputer: *const fn(
+        put_HostComputer: *const fn (
             self: *const IADsService,
             bstrHostComputer: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DisplayName: *const fn(
+        get_DisplayName: *const fn (
             self: *const IADsService,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DisplayName: *const fn(
+        put_DisplayName: *const fn (
             self: *const IADsService,
             bstrDisplayName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Version: *const fn(
+        get_Version: *const fn (
             self: *const IADsService,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Version: *const fn(
+        put_Version: *const fn (
             self: *const IADsService,
             bstrVersion: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ServiceType: *const fn(
+        get_ServiceType: *const fn (
             self: *const IADsService,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ServiceType: *const fn(
+        put_ServiceType: *const fn (
             self: *const IADsService,
             lnServiceType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StartType: *const fn(
+        get_StartType: *const fn (
             self: *const IADsService,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_StartType: *const fn(
+        put_StartType: *const fn (
             self: *const IADsService,
             lnStartType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Path: *const fn(
+        get_Path: *const fn (
             self: *const IADsService,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Path: *const fn(
+        put_Path: *const fn (
             self: *const IADsService,
             bstrPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StartupParameters: *const fn(
+        get_StartupParameters: *const fn (
             self: *const IADsService,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_StartupParameters: *const fn(
+        put_StartupParameters: *const fn (
             self: *const IADsService,
             bstrStartupParameters: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ErrorControl: *const fn(
+        get_ErrorControl: *const fn (
             self: *const IADsService,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ErrorControl: *const fn(
+        put_ErrorControl: *const fn (
             self: *const IADsService,
             lnErrorControl: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LoadOrderGroup: *const fn(
+        get_LoadOrderGroup: *const fn (
             self: *const IADsService,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LoadOrderGroup: *const fn(
+        put_LoadOrderGroup: *const fn (
             self: *const IADsService,
             bstrLoadOrderGroup: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ServiceAccountName: *const fn(
+        get_ServiceAccountName: *const fn (
             self: *const IADsService,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ServiceAccountName: *const fn(
+        put_ServiceAccountName: *const fn (
             self: *const IADsService,
             bstrServiceAccountName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ServiceAccountPath: *const fn(
+        get_ServiceAccountPath: *const fn (
             self: *const IADsService,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ServiceAccountPath: *const fn(
+        put_ServiceAccountPath: *const fn (
             self: *const IADsService,
             bstrServiceAccountPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Dependencies: *const fn(
+        get_Dependencies: *const fn (
             self: *const IADsService,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Dependencies: *const fn(
+        put_Dependencies: *const fn (
             self: *const IADsService,
             vDependencies: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_HostComputer(self: *const IADsService, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_HostComputer(self: *const IADsService, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_HostComputer(self, retval);
     }
-    pub fn put_HostComputer(self: *const IADsService, bstrHostComputer: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_HostComputer(self: *const IADsService, bstrHostComputer: ?BSTR) HRESULT {
         return self.vtable.put_HostComputer(self, bstrHostComputer);
     }
-    pub fn get_DisplayName(self: *const IADsService, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DisplayName(self: *const IADsService, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_DisplayName(self, retval);
     }
-    pub fn put_DisplayName(self: *const IADsService, bstrDisplayName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_DisplayName(self: *const IADsService, bstrDisplayName: ?BSTR) HRESULT {
         return self.vtable.put_DisplayName(self, bstrDisplayName);
     }
-    pub fn get_Version(self: *const IADsService, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Version(self: *const IADsService, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Version(self, retval);
     }
-    pub fn put_Version(self: *const IADsService, bstrVersion: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Version(self: *const IADsService, bstrVersion: ?BSTR) HRESULT {
         return self.vtable.put_Version(self, bstrVersion);
     }
-    pub fn get_ServiceType(self: *const IADsService, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ServiceType(self: *const IADsService, retval: ?*i32) HRESULT {
         return self.vtable.get_ServiceType(self, retval);
     }
-    pub fn put_ServiceType(self: *const IADsService, lnServiceType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ServiceType(self: *const IADsService, lnServiceType: i32) HRESULT {
         return self.vtable.put_ServiceType(self, lnServiceType);
     }
-    pub fn get_StartType(self: *const IADsService, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_StartType(self: *const IADsService, retval: ?*i32) HRESULT {
         return self.vtable.get_StartType(self, retval);
     }
-    pub fn put_StartType(self: *const IADsService, lnStartType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_StartType(self: *const IADsService, lnStartType: i32) HRESULT {
         return self.vtable.put_StartType(self, lnStartType);
     }
-    pub fn get_Path(self: *const IADsService, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Path(self: *const IADsService, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Path(self, retval);
     }
-    pub fn put_Path(self: *const IADsService, bstrPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Path(self: *const IADsService, bstrPath: ?BSTR) HRESULT {
         return self.vtable.put_Path(self, bstrPath);
     }
-    pub fn get_StartupParameters(self: *const IADsService, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_StartupParameters(self: *const IADsService, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_StartupParameters(self, retval);
     }
-    pub fn put_StartupParameters(self: *const IADsService, bstrStartupParameters: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_StartupParameters(self: *const IADsService, bstrStartupParameters: ?BSTR) HRESULT {
         return self.vtable.put_StartupParameters(self, bstrStartupParameters);
     }
-    pub fn get_ErrorControl(self: *const IADsService, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ErrorControl(self: *const IADsService, retval: ?*i32) HRESULT {
         return self.vtable.get_ErrorControl(self, retval);
     }
-    pub fn put_ErrorControl(self: *const IADsService, lnErrorControl: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ErrorControl(self: *const IADsService, lnErrorControl: i32) HRESULT {
         return self.vtable.put_ErrorControl(self, lnErrorControl);
     }
-    pub fn get_LoadOrderGroup(self: *const IADsService, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LoadOrderGroup(self: *const IADsService, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_LoadOrderGroup(self, retval);
     }
-    pub fn put_LoadOrderGroup(self: *const IADsService, bstrLoadOrderGroup: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_LoadOrderGroup(self: *const IADsService, bstrLoadOrderGroup: ?BSTR) HRESULT {
         return self.vtable.put_LoadOrderGroup(self, bstrLoadOrderGroup);
     }
-    pub fn get_ServiceAccountName(self: *const IADsService, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ServiceAccountName(self: *const IADsService, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ServiceAccountName(self, retval);
     }
-    pub fn put_ServiceAccountName(self: *const IADsService, bstrServiceAccountName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ServiceAccountName(self: *const IADsService, bstrServiceAccountName: ?BSTR) HRESULT {
         return self.vtable.put_ServiceAccountName(self, bstrServiceAccountName);
     }
-    pub fn get_ServiceAccountPath(self: *const IADsService, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ServiceAccountPath(self: *const IADsService, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ServiceAccountPath(self, retval);
     }
-    pub fn put_ServiceAccountPath(self: *const IADsService, bstrServiceAccountPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ServiceAccountPath(self: *const IADsService, bstrServiceAccountPath: ?BSTR) HRESULT {
         return self.vtable.put_ServiceAccountPath(self, bstrServiceAccountPath);
     }
-    pub fn get_Dependencies(self: *const IADsService, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Dependencies(self: *const IADsService, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_Dependencies(self, retval);
     }
-    pub fn put_Dependencies(self: *const IADsService, vDependencies: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Dependencies(self: *const IADsService, vDependencies: VARIANT) HRESULT {
         return self.vtable.put_Dependencies(self, vDependencies);
     }
 };
@@ -5249,47 +5249,47 @@ pub const IADsServiceOperations = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Status: *const fn(
+        get_Status: *const fn (
             self: *const IADsServiceOperations,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Start: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Start: *const fn (
             self: *const IADsServiceOperations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Stop: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Stop: *const fn (
             self: *const IADsServiceOperations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Pause: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Pause: *const fn (
             self: *const IADsServiceOperations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Continue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Continue: *const fn (
             self: *const IADsServiceOperations,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPassword: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPassword: *const fn (
             self: *const IADsServiceOperations,
             bstrNewPassword: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Status(self: *const IADsServiceOperations, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Status(self: *const IADsServiceOperations, retval: ?*i32) HRESULT {
         return self.vtable.get_Status(self, retval);
     }
-    pub fn Start(self: *const IADsServiceOperations) callconv(.Inline) HRESULT {
+    pub inline fn Start(self: *const IADsServiceOperations) HRESULT {
         return self.vtable.Start(self);
     }
-    pub fn Stop(self: *const IADsServiceOperations) callconv(.Inline) HRESULT {
+    pub inline fn Stop(self: *const IADsServiceOperations) HRESULT {
         return self.vtable.Stop(self);
     }
-    pub fn Pause(self: *const IADsServiceOperations) callconv(.Inline) HRESULT {
+    pub inline fn Pause(self: *const IADsServiceOperations) HRESULT {
         return self.vtable.Pause(self);
     }
-    pub fn Continue(self: *const IADsServiceOperations) callconv(.Inline) HRESULT {
+    pub inline fn Continue(self: *const IADsServiceOperations) HRESULT {
         return self.vtable.Continue(self);
     }
-    pub fn SetPassword(self: *const IADsServiceOperations, bstrNewPassword: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SetPassword(self: *const IADsServiceOperations, bstrNewPassword: ?BSTR) HRESULT {
         return self.vtable.SetPassword(self, bstrNewPassword);
     }
 };
@@ -5301,41 +5301,41 @@ pub const IADsFileService = extern union {
     pub const VTable = extern struct {
         base: IADsService.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsFileService,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsFileService,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MaxUserCount: *const fn(
+        get_MaxUserCount: *const fn (
             self: *const IADsFileService,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MaxUserCount: *const fn(
+        put_MaxUserCount: *const fn (
             self: *const IADsFileService,
             lnMaxUserCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADsService: IADsService,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Description(self: *const IADsFileService, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsFileService, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsFileService, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsFileService, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn get_MaxUserCount(self: *const IADsFileService, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MaxUserCount(self: *const IADsFileService, retval: ?*i32) HRESULT {
         return self.vtable.get_MaxUserCount(self, retval);
     }
-    pub fn put_MaxUserCount(self: *const IADsFileService, lnMaxUserCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MaxUserCount(self: *const IADsFileService, lnMaxUserCount: i32) HRESULT {
         return self.vtable.put_MaxUserCount(self, lnMaxUserCount);
     }
 };
@@ -5346,24 +5346,24 @@ pub const IID_IADsFileServiceOperations = &IID_IADsFileServiceOperations_Value;
 pub const IADsFileServiceOperations = extern union {
     pub const VTable = extern struct {
         base: IADsServiceOperations.VTable,
-        Sessions: *const fn(
+        Sessions: *const fn (
             self: *const IADsFileServiceOperations,
             ppSessions: ?*?*IADsCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Resources: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Resources: *const fn (
             self: *const IADsFileServiceOperations,
             ppResources: ?*?*IADsCollection,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADsServiceOperations: IADsServiceOperations,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Sessions(self: *const IADsFileServiceOperations, ppSessions: ?*?*IADsCollection) callconv(.Inline) HRESULT {
+    pub inline fn Sessions(self: *const IADsFileServiceOperations, ppSessions: ?*?*IADsCollection) HRESULT {
         return self.vtable.Sessions(self, ppSessions);
     }
-    pub fn Resources(self: *const IADsFileServiceOperations, ppResources: ?*?*IADsCollection) callconv(.Inline) HRESULT {
+    pub inline fn Resources(self: *const IADsFileServiceOperations, ppResources: ?*?*IADsCollection) HRESULT {
         return self.vtable.Resources(self, ppResources);
     }
 };
@@ -5375,80 +5375,80 @@ pub const IADsFileShare = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CurrentUserCount: *const fn(
+        get_CurrentUserCount: *const fn (
             self: *const IADsFileShare,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IADsFileShare,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Description: *const fn(
+        put_Description: *const fn (
             self: *const IADsFileShare,
             bstrDescription: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HostComputer: *const fn(
+        get_HostComputer: *const fn (
             self: *const IADsFileShare,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HostComputer: *const fn(
+        put_HostComputer: *const fn (
             self: *const IADsFileShare,
             bstrHostComputer: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Path: *const fn(
+        get_Path: *const fn (
             self: *const IADsFileShare,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Path: *const fn(
+        put_Path: *const fn (
             self: *const IADsFileShare,
             bstrPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_MaxUserCount: *const fn(
+        get_MaxUserCount: *const fn (
             self: *const IADsFileShare,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_MaxUserCount: *const fn(
+        put_MaxUserCount: *const fn (
             self: *const IADsFileShare,
             lnMaxUserCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_CurrentUserCount(self: *const IADsFileShare, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_CurrentUserCount(self: *const IADsFileShare, retval: ?*i32) HRESULT {
         return self.vtable.get_CurrentUserCount(self, retval);
     }
-    pub fn get_Description(self: *const IADsFileShare, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IADsFileShare, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Description(self, retval);
     }
-    pub fn put_Description(self: *const IADsFileShare, bstrDescription: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Description(self: *const IADsFileShare, bstrDescription: ?BSTR) HRESULT {
         return self.vtable.put_Description(self, bstrDescription);
     }
-    pub fn get_HostComputer(self: *const IADsFileShare, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_HostComputer(self: *const IADsFileShare, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_HostComputer(self, retval);
     }
-    pub fn put_HostComputer(self: *const IADsFileShare, bstrHostComputer: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_HostComputer(self: *const IADsFileShare, bstrHostComputer: ?BSTR) HRESULT {
         return self.vtable.put_HostComputer(self, bstrHostComputer);
     }
-    pub fn get_Path(self: *const IADsFileShare, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Path(self: *const IADsFileShare, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Path(self, retval);
     }
-    pub fn put_Path(self: *const IADsFileShare, bstrPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Path(self: *const IADsFileShare, bstrPath: ?BSTR) HRESULT {
         return self.vtable.put_Path(self, bstrPath);
     }
-    pub fn get_MaxUserCount(self: *const IADsFileShare, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_MaxUserCount(self: *const IADsFileShare, retval: ?*i32) HRESULT {
         return self.vtable.get_MaxUserCount(self, retval);
     }
-    pub fn put_MaxUserCount(self: *const IADsFileShare, lnMaxUserCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_MaxUserCount(self: *const IADsFileShare, lnMaxUserCount: i32) HRESULT {
         return self.vtable.put_MaxUserCount(self, lnMaxUserCount);
     }
 };
@@ -5460,56 +5460,56 @@ pub const IADsSession = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_User: *const fn(
+        get_User: *const fn (
             self: *const IADsSession,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UserPath: *const fn(
+        get_UserPath: *const fn (
             self: *const IADsSession,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Computer: *const fn(
+        get_Computer: *const fn (
             self: *const IADsSession,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ComputerPath: *const fn(
+        get_ComputerPath: *const fn (
             self: *const IADsSession,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ConnectTime: *const fn(
+        get_ConnectTime: *const fn (
             self: *const IADsSession,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IdleTime: *const fn(
+        get_IdleTime: *const fn (
             self: *const IADsSession,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_User(self: *const IADsSession, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_User(self: *const IADsSession, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_User(self, retval);
     }
-    pub fn get_UserPath(self: *const IADsSession, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UserPath(self: *const IADsSession, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_UserPath(self, retval);
     }
-    pub fn get_Computer(self: *const IADsSession, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Computer(self: *const IADsSession, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Computer(self, retval);
     }
-    pub fn get_ComputerPath(self: *const IADsSession, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ComputerPath(self: *const IADsSession, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ComputerPath(self, retval);
     }
-    pub fn get_ConnectTime(self: *const IADsSession, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ConnectTime(self: *const IADsSession, retval: ?*i32) HRESULT {
         return self.vtable.get_ConnectTime(self, retval);
     }
-    pub fn get_IdleTime(self: *const IADsSession, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_IdleTime(self: *const IADsSession, retval: ?*i32) HRESULT {
         return self.vtable.get_IdleTime(self, retval);
     }
 };
@@ -5521,40 +5521,40 @@ pub const IADsResource = extern union {
     pub const VTable = extern struct {
         base: IADs.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_User: *const fn(
+        get_User: *const fn (
             self: *const IADsResource,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UserPath: *const fn(
+        get_UserPath: *const fn (
             self: *const IADsResource,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Path: *const fn(
+        get_Path: *const fn (
             self: *const IADsResource,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LockCount: *const fn(
+        get_LockCount: *const fn (
             self: *const IADsResource,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IADs: IADs,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_User(self: *const IADsResource, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_User(self: *const IADsResource, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_User(self, retval);
     }
-    pub fn get_UserPath(self: *const IADsResource, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UserPath(self: *const IADsResource, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_UserPath(self, retval);
     }
-    pub fn get_Path(self: *const IADsResource, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Path(self: *const IADsResource, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Path(self, retval);
     }
-    pub fn get_LockCount(self: *const IADsResource, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_LockCount(self: *const IADsResource, retval: ?*i32) HRESULT {
         return self.vtable.get_LockCount(self, retval);
     }
 };
@@ -5565,19 +5565,19 @@ pub const IID_IADsOpenDSObject = &IID_IADsOpenDSObject_Value;
 pub const IADsOpenDSObject = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        OpenDSObject: *const fn(
+        OpenDSObject: *const fn (
             self: *const IADsOpenDSObject,
             lpszDNName: ?BSTR,
             lpszUserName: ?BSTR,
             lpszPassword: ?BSTR,
             lnReserved: i32,
             ppOleDsObj: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn OpenDSObject(self: *const IADsOpenDSObject, lpszDNName: ?BSTR, lpszUserName: ?BSTR, lpszPassword: ?BSTR, lnReserved: i32, ppOleDsObj: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn OpenDSObject(self: *const IADsOpenDSObject, lpszDNName: ?BSTR, lpszUserName: ?BSTR, lpszPassword: ?BSTR, lnReserved: i32, ppOleDsObj: ?*?*IDispatch) HRESULT {
         return self.vtable.OpenDSObject(self, lpszDNName, lpszUserName, lpszPassword, lnReserved, ppOleDsObj);
     }
 };
@@ -5588,50 +5588,50 @@ pub const IID_IDirectoryObject = &IID_IDirectoryObject_Value;
 pub const IDirectoryObject = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetObjectInformation: *const fn(
+        GetObjectInformation: *const fn (
             self: *const IDirectoryObject,
             ppObjInfo: ?*?*ADS_OBJECT_INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetObjectAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetObjectAttributes: *const fn (
             self: *const IDirectoryObject,
             pAttributeNames: ?*?PWSTR,
             dwNumberAttributes: u32,
             ppAttributeEntries: ?*?*ADS_ATTR_INFO,
             pdwNumAttributesReturned: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetObjectAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetObjectAttributes: *const fn (
             self: *const IDirectoryObject,
             pAttributeEntries: ?*ADS_ATTR_INFO,
             dwNumAttributes: u32,
             pdwNumAttributesModified: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateDSObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateDSObject: *const fn (
             self: *const IDirectoryObject,
             pszRDNName: ?PWSTR,
             pAttributeEntries: ?*ADS_ATTR_INFO,
             dwNumAttributes: u32,
             ppObject: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteDSObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteDSObject: *const fn (
             self: *const IDirectoryObject,
             pszRDNName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetObjectInformation(self: *const IDirectoryObject, ppObjInfo: ?*?*ADS_OBJECT_INFO) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectInformation(self: *const IDirectoryObject, ppObjInfo: ?*?*ADS_OBJECT_INFO) HRESULT {
         return self.vtable.GetObjectInformation(self, ppObjInfo);
     }
-    pub fn GetObjectAttributes(self: *const IDirectoryObject, pAttributeNames: ?*?PWSTR, dwNumberAttributes: u32, ppAttributeEntries: ?*?*ADS_ATTR_INFO, pdwNumAttributesReturned: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetObjectAttributes(self: *const IDirectoryObject, pAttributeNames: ?*?PWSTR, dwNumberAttributes: u32, ppAttributeEntries: ?*?*ADS_ATTR_INFO, pdwNumAttributesReturned: ?*u32) HRESULT {
         return self.vtable.GetObjectAttributes(self, pAttributeNames, dwNumberAttributes, ppAttributeEntries, pdwNumAttributesReturned);
     }
-    pub fn SetObjectAttributes(self: *const IDirectoryObject, pAttributeEntries: ?*ADS_ATTR_INFO, dwNumAttributes: u32, pdwNumAttributesModified: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn SetObjectAttributes(self: *const IDirectoryObject, pAttributeEntries: ?*ADS_ATTR_INFO, dwNumAttributes: u32, pdwNumAttributesModified: ?*u32) HRESULT {
         return self.vtable.SetObjectAttributes(self, pAttributeEntries, dwNumAttributes, pdwNumAttributesModified);
     }
-    pub fn CreateDSObject(self: *const IDirectoryObject, pszRDNName: ?PWSTR, pAttributeEntries: ?*ADS_ATTR_INFO, dwNumAttributes: u32, ppObject: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn CreateDSObject(self: *const IDirectoryObject, pszRDNName: ?PWSTR, pAttributeEntries: ?*ADS_ATTR_INFO, dwNumAttributes: u32, ppObject: ?*?*IDispatch) HRESULT {
         return self.vtable.CreateDSObject(self, pszRDNName, pAttributeEntries, dwNumAttributes, ppObject);
     }
-    pub fn DeleteDSObject(self: *const IDirectoryObject, pszRDNName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn DeleteDSObject(self: *const IDirectoryObject, pszRDNName: ?PWSTR) HRESULT {
         return self.vtable.DeleteDSObject(self, pszRDNName);
     }
 };
@@ -5642,84 +5642,84 @@ pub const IID_IDirectorySearch = &IID_IDirectorySearch_Value;
 pub const IDirectorySearch = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetSearchPreference: *const fn(
+        SetSearchPreference: *const fn (
             self: *const IDirectorySearch,
             pSearchPrefs: ?*ads_searchpref_info,
             dwNumPrefs: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExecuteSearch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExecuteSearch: *const fn (
             self: *const IDirectorySearch,
             pszSearchFilter: ?PWSTR,
             pAttributeNames: ?*?PWSTR,
             dwNumberAttributes: u32,
             phSearchResult: ?*ADS_SEARCH_HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AbandonSearch: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AbandonSearch: *const fn (
             self: *const IDirectorySearch,
             phSearchResult: ADS_SEARCH_HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFirstRow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFirstRow: *const fn (
             self: *const IDirectorySearch,
             hSearchResult: ADS_SEARCH_HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNextRow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNextRow: *const fn (
             self: *const IDirectorySearch,
             hSearchResult: ADS_SEARCH_HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPreviousRow: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPreviousRow: *const fn (
             self: *const IDirectorySearch,
             hSearchResult: ADS_SEARCH_HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNextColumnName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNextColumnName: *const fn (
             self: *const IDirectorySearch,
             hSearchHandle: ADS_SEARCH_HANDLE,
             ppszColumnName: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetColumn: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetColumn: *const fn (
             self: *const IDirectorySearch,
             hSearchResult: ADS_SEARCH_HANDLE,
             szColumnName: ?PWSTR,
             pSearchColumn: ?*ads_search_column,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FreeColumn: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FreeColumn: *const fn (
             self: *const IDirectorySearch,
             pSearchColumn: ?*ads_search_column,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CloseSearchHandle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CloseSearchHandle: *const fn (
             self: *const IDirectorySearch,
             hSearchResult: ADS_SEARCH_HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetSearchPreference(self: *const IDirectorySearch, pSearchPrefs: ?*ads_searchpref_info, dwNumPrefs: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetSearchPreference(self: *const IDirectorySearch, pSearchPrefs: ?*ads_searchpref_info, dwNumPrefs: u32) HRESULT {
         return self.vtable.SetSearchPreference(self, pSearchPrefs, dwNumPrefs);
     }
-    pub fn ExecuteSearch(self: *const IDirectorySearch, pszSearchFilter: ?PWSTR, pAttributeNames: ?*?PWSTR, dwNumberAttributes: u32, phSearchResult: ?*ADS_SEARCH_HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn ExecuteSearch(self: *const IDirectorySearch, pszSearchFilter: ?PWSTR, pAttributeNames: ?*?PWSTR, dwNumberAttributes: u32, phSearchResult: ?*ADS_SEARCH_HANDLE) HRESULT {
         return self.vtable.ExecuteSearch(self, pszSearchFilter, pAttributeNames, dwNumberAttributes, phSearchResult);
     }
-    pub fn AbandonSearch(self: *const IDirectorySearch, phSearchResult: ADS_SEARCH_HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn AbandonSearch(self: *const IDirectorySearch, phSearchResult: ADS_SEARCH_HANDLE) HRESULT {
         return self.vtable.AbandonSearch(self, phSearchResult);
     }
-    pub fn GetFirstRow(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn GetFirstRow(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE) HRESULT {
         return self.vtable.GetFirstRow(self, hSearchResult);
     }
-    pub fn GetNextRow(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn GetNextRow(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE) HRESULT {
         return self.vtable.GetNextRow(self, hSearchResult);
     }
-    pub fn GetPreviousRow(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn GetPreviousRow(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE) HRESULT {
         return self.vtable.GetPreviousRow(self, hSearchResult);
     }
-    pub fn GetNextColumnName(self: *const IDirectorySearch, hSearchHandle: ADS_SEARCH_HANDLE, ppszColumnName: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetNextColumnName(self: *const IDirectorySearch, hSearchHandle: ADS_SEARCH_HANDLE, ppszColumnName: ?*?PWSTR) HRESULT {
         return self.vtable.GetNextColumnName(self, hSearchHandle, ppszColumnName);
     }
-    pub fn GetColumn(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE, szColumnName: ?PWSTR, pSearchColumn: ?*ads_search_column) callconv(.Inline) HRESULT {
+    pub inline fn GetColumn(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE, szColumnName: ?PWSTR, pSearchColumn: ?*ads_search_column) HRESULT {
         return self.vtable.GetColumn(self, hSearchResult, szColumnName, pSearchColumn);
     }
-    pub fn FreeColumn(self: *const IDirectorySearch, pSearchColumn: ?*ads_search_column) callconv(.Inline) HRESULT {
+    pub inline fn FreeColumn(self: *const IDirectorySearch, pSearchColumn: ?*ads_search_column) HRESULT {
         return self.vtable.FreeColumn(self, pSearchColumn);
     }
-    pub fn CloseSearchHandle(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn CloseSearchHandle(self: *const IDirectorySearch, hSearchResult: ADS_SEARCH_HANDLE) HRESULT {
         return self.vtable.CloseSearchHandle(self, hSearchResult);
     }
 };
@@ -5730,73 +5730,73 @@ pub const IID_IDirectorySchemaMgmt = &IID_IDirectorySchemaMgmt_Value;
 pub const IDirectorySchemaMgmt = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        EnumAttributes: *const fn(
+        EnumAttributes: *const fn (
             self: *const IDirectorySchemaMgmt,
             ppszAttrNames: ?*?PWSTR,
             dwNumAttributes: u32,
             ppAttrDefinition: ?*?*ADS_ATTR_DEF,
             pdwNumAttributes: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateAttributeDefinition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateAttributeDefinition: *const fn (
             self: *const IDirectorySchemaMgmt,
             pszAttributeName: ?PWSTR,
             pAttributeDefinition: ?*ADS_ATTR_DEF,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteAttributeDefinition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteAttributeDefinition: *const fn (
             self: *const IDirectorySchemaMgmt,
             pszAttributeName: ?PWSTR,
             pAttributeDefinition: ?*ADS_ATTR_DEF,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteAttributeDefinition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteAttributeDefinition: *const fn (
             self: *const IDirectorySchemaMgmt,
             pszAttributeName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumClasses: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumClasses: *const fn (
             self: *const IDirectorySchemaMgmt,
             ppszClassNames: ?*?PWSTR,
             dwNumClasses: u32,
             ppClassDefinition: ?*?*ADS_CLASS_DEF,
             pdwNumClasses: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteClassDefinition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteClassDefinition: *const fn (
             self: *const IDirectorySchemaMgmt,
             pszClassName: ?PWSTR,
             pClassDefinition: ?*ADS_CLASS_DEF,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateClassDefinition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateClassDefinition: *const fn (
             self: *const IDirectorySchemaMgmt,
             pszClassName: ?PWSTR,
             pClassDefinition: ?*ADS_CLASS_DEF,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteClassDefinition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteClassDefinition: *const fn (
             self: *const IDirectorySchemaMgmt,
             pszClassName: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn EnumAttributes(self: *const IDirectorySchemaMgmt, ppszAttrNames: ?*?PWSTR, dwNumAttributes: u32, ppAttrDefinition: ?*?*ADS_ATTR_DEF, pdwNumAttributes: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn EnumAttributes(self: *const IDirectorySchemaMgmt, ppszAttrNames: ?*?PWSTR, dwNumAttributes: u32, ppAttrDefinition: ?*?*ADS_ATTR_DEF, pdwNumAttributes: ?*u32) HRESULT {
         return self.vtable.EnumAttributes(self, ppszAttrNames, dwNumAttributes, ppAttrDefinition, pdwNumAttributes);
     }
-    pub fn CreateAttributeDefinition(self: *const IDirectorySchemaMgmt, pszAttributeName: ?PWSTR, pAttributeDefinition: ?*ADS_ATTR_DEF) callconv(.Inline) HRESULT {
+    pub inline fn CreateAttributeDefinition(self: *const IDirectorySchemaMgmt, pszAttributeName: ?PWSTR, pAttributeDefinition: ?*ADS_ATTR_DEF) HRESULT {
         return self.vtable.CreateAttributeDefinition(self, pszAttributeName, pAttributeDefinition);
     }
-    pub fn WriteAttributeDefinition(self: *const IDirectorySchemaMgmt, pszAttributeName: ?PWSTR, pAttributeDefinition: ?*ADS_ATTR_DEF) callconv(.Inline) HRESULT {
+    pub inline fn WriteAttributeDefinition(self: *const IDirectorySchemaMgmt, pszAttributeName: ?PWSTR, pAttributeDefinition: ?*ADS_ATTR_DEF) HRESULT {
         return self.vtable.WriteAttributeDefinition(self, pszAttributeName, pAttributeDefinition);
     }
-    pub fn DeleteAttributeDefinition(self: *const IDirectorySchemaMgmt, pszAttributeName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn DeleteAttributeDefinition(self: *const IDirectorySchemaMgmt, pszAttributeName: ?PWSTR) HRESULT {
         return self.vtable.DeleteAttributeDefinition(self, pszAttributeName);
     }
-    pub fn EnumClasses(self: *const IDirectorySchemaMgmt, ppszClassNames: ?*?PWSTR, dwNumClasses: u32, ppClassDefinition: ?*?*ADS_CLASS_DEF, pdwNumClasses: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn EnumClasses(self: *const IDirectorySchemaMgmt, ppszClassNames: ?*?PWSTR, dwNumClasses: u32, ppClassDefinition: ?*?*ADS_CLASS_DEF, pdwNumClasses: ?*u32) HRESULT {
         return self.vtable.EnumClasses(self, ppszClassNames, dwNumClasses, ppClassDefinition, pdwNumClasses);
     }
-    pub fn WriteClassDefinition(self: *const IDirectorySchemaMgmt, pszClassName: ?PWSTR, pClassDefinition: ?*ADS_CLASS_DEF) callconv(.Inline) HRESULT {
+    pub inline fn WriteClassDefinition(self: *const IDirectorySchemaMgmt, pszClassName: ?PWSTR, pClassDefinition: ?*ADS_CLASS_DEF) HRESULT {
         return self.vtable.WriteClassDefinition(self, pszClassName, pClassDefinition);
     }
-    pub fn CreateClassDefinition(self: *const IDirectorySchemaMgmt, pszClassName: ?PWSTR, pClassDefinition: ?*ADS_CLASS_DEF) callconv(.Inline) HRESULT {
+    pub inline fn CreateClassDefinition(self: *const IDirectorySchemaMgmt, pszClassName: ?PWSTR, pClassDefinition: ?*ADS_CLASS_DEF) HRESULT {
         return self.vtable.CreateClassDefinition(self, pszClassName, pClassDefinition);
     }
-    pub fn DeleteClassDefinition(self: *const IDirectorySchemaMgmt, pszClassName: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn DeleteClassDefinition(self: *const IDirectorySchemaMgmt, pszClassName: ?PWSTR) HRESULT {
         return self.vtable.DeleteClassDefinition(self, pszClassName);
     }
 };
@@ -5806,34 +5806,34 @@ pub const IID_IADsAggregatee = &IID_IADsAggregatee_Value;
 pub const IADsAggregatee = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ConnectAsAggregatee: *const fn(
+        ConnectAsAggregatee: *const fn (
             self: *const IADsAggregatee,
             pOuterUnknown: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DisconnectAsAggregatee: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DisconnectAsAggregatee: *const fn (
             self: *const IADsAggregatee,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RelinquishInterface: *const fn(
-            self: *const IADsAggregatee,
-            riid: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RestoreInterface: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RelinquishInterface: *const fn (
             self: *const IADsAggregatee,
             riid: ?*const Guid,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
+        RestoreInterface: *const fn (
+            self: *const IADsAggregatee,
+            riid: ?*const Guid,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ConnectAsAggregatee(self: *const IADsAggregatee, pOuterUnknown: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn ConnectAsAggregatee(self: *const IADsAggregatee, pOuterUnknown: ?*IUnknown) HRESULT {
         return self.vtable.ConnectAsAggregatee(self, pOuterUnknown);
     }
-    pub fn DisconnectAsAggregatee(self: *const IADsAggregatee) callconv(.Inline) HRESULT {
+    pub inline fn DisconnectAsAggregatee(self: *const IADsAggregatee) HRESULT {
         return self.vtable.DisconnectAsAggregatee(self);
     }
-    pub fn RelinquishInterface(self: *const IADsAggregatee, riid: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn RelinquishInterface(self: *const IADsAggregatee, riid: ?*const Guid) HRESULT {
         return self.vtable.RelinquishInterface(self, riid);
     }
-    pub fn RestoreInterface(self: *const IADsAggregatee, riid: ?*const Guid) callconv(.Inline) HRESULT {
+    pub inline fn RestoreInterface(self: *const IADsAggregatee, riid: ?*const Guid) HRESULT {
         return self.vtable.RestoreInterface(self, riid);
     }
 };
@@ -5843,20 +5843,20 @@ pub const IID_IADsAggregator = &IID_IADsAggregator_Value;
 pub const IADsAggregator = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ConnectAsAggregator: *const fn(
+        ConnectAsAggregator: *const fn (
             self: *const IADsAggregator,
             pAggregatee: ?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DisconnectAsAggregator: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DisconnectAsAggregator: *const fn (
             self: *const IADsAggregator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ConnectAsAggregator(self: *const IADsAggregator, pAggregatee: ?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn ConnectAsAggregator(self: *const IADsAggregator, pAggregatee: ?*IUnknown) HRESULT {
         return self.vtable.ConnectAsAggregator(self, pAggregatee);
     }
-    pub fn DisconnectAsAggregator(self: *const IADsAggregator) callconv(.Inline) HRESULT {
+    pub inline fn DisconnectAsAggregator(self: *const IADsAggregator) HRESULT {
         return self.vtable.DisconnectAsAggregator(self);
     }
 };
@@ -5868,119 +5868,119 @@ pub const IADsAccessControlEntry = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AccessMask: *const fn(
+        get_AccessMask: *const fn (
             self: *const IADsAccessControlEntry,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AccessMask: *const fn(
+        put_AccessMask: *const fn (
             self: *const IADsAccessControlEntry,
             lnAccessMask: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AceType: *const fn(
+        get_AceType: *const fn (
             self: *const IADsAccessControlEntry,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AceType: *const fn(
+        put_AceType: *const fn (
             self: *const IADsAccessControlEntry,
             lnAceType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AceFlags: *const fn(
+        get_AceFlags: *const fn (
             self: *const IADsAccessControlEntry,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AceFlags: *const fn(
+        put_AceFlags: *const fn (
             self: *const IADsAccessControlEntry,
             lnAceFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Flags: *const fn(
+        get_Flags: *const fn (
             self: *const IADsAccessControlEntry,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Flags: *const fn(
+        put_Flags: *const fn (
             self: *const IADsAccessControlEntry,
             lnFlags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectType: *const fn(
+        get_ObjectType: *const fn (
             self: *const IADsAccessControlEntry,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ObjectType: *const fn(
+        put_ObjectType: *const fn (
             self: *const IADsAccessControlEntry,
             bstrObjectType: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_InheritedObjectType: *const fn(
+        get_InheritedObjectType: *const fn (
             self: *const IADsAccessControlEntry,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_InheritedObjectType: *const fn(
+        put_InheritedObjectType: *const fn (
             self: *const IADsAccessControlEntry,
             bstrInheritedObjectType: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Trustee: *const fn(
+        get_Trustee: *const fn (
             self: *const IADsAccessControlEntry,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Trustee: *const fn(
+        put_Trustee: *const fn (
             self: *const IADsAccessControlEntry,
             bstrTrustee: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_AccessMask(self: *const IADsAccessControlEntry, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_AccessMask(self: *const IADsAccessControlEntry, retval: ?*i32) HRESULT {
         return self.vtable.get_AccessMask(self, retval);
     }
-    pub fn put_AccessMask(self: *const IADsAccessControlEntry, lnAccessMask: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_AccessMask(self: *const IADsAccessControlEntry, lnAccessMask: i32) HRESULT {
         return self.vtable.put_AccessMask(self, lnAccessMask);
     }
-    pub fn get_AceType(self: *const IADsAccessControlEntry, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_AceType(self: *const IADsAccessControlEntry, retval: ?*i32) HRESULT {
         return self.vtable.get_AceType(self, retval);
     }
-    pub fn put_AceType(self: *const IADsAccessControlEntry, lnAceType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_AceType(self: *const IADsAccessControlEntry, lnAceType: i32) HRESULT {
         return self.vtable.put_AceType(self, lnAceType);
     }
-    pub fn get_AceFlags(self: *const IADsAccessControlEntry, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_AceFlags(self: *const IADsAccessControlEntry, retval: ?*i32) HRESULT {
         return self.vtable.get_AceFlags(self, retval);
     }
-    pub fn put_AceFlags(self: *const IADsAccessControlEntry, lnAceFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_AceFlags(self: *const IADsAccessControlEntry, lnAceFlags: i32) HRESULT {
         return self.vtable.put_AceFlags(self, lnAceFlags);
     }
-    pub fn get_Flags(self: *const IADsAccessControlEntry, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Flags(self: *const IADsAccessControlEntry, retval: ?*i32) HRESULT {
         return self.vtable.get_Flags(self, retval);
     }
-    pub fn put_Flags(self: *const IADsAccessControlEntry, lnFlags: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Flags(self: *const IADsAccessControlEntry, lnFlags: i32) HRESULT {
         return self.vtable.put_Flags(self, lnFlags);
     }
-    pub fn get_ObjectType(self: *const IADsAccessControlEntry, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectType(self: *const IADsAccessControlEntry, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ObjectType(self, retval);
     }
-    pub fn put_ObjectType(self: *const IADsAccessControlEntry, bstrObjectType: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ObjectType(self: *const IADsAccessControlEntry, bstrObjectType: ?BSTR) HRESULT {
         return self.vtable.put_ObjectType(self, bstrObjectType);
     }
-    pub fn get_InheritedObjectType(self: *const IADsAccessControlEntry, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_InheritedObjectType(self: *const IADsAccessControlEntry, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_InheritedObjectType(self, retval);
     }
-    pub fn put_InheritedObjectType(self: *const IADsAccessControlEntry, bstrInheritedObjectType: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_InheritedObjectType(self: *const IADsAccessControlEntry, bstrInheritedObjectType: ?BSTR) HRESULT {
         return self.vtable.put_InheritedObjectType(self, bstrInheritedObjectType);
     }
-    pub fn get_Trustee(self: *const IADsAccessControlEntry, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Trustee(self: *const IADsAccessControlEntry, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Trustee(self, retval);
     }
-    pub fn put_Trustee(self: *const IADsAccessControlEntry, bstrTrustee: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Trustee(self: *const IADsAccessControlEntry, bstrTrustee: ?BSTR) HRESULT {
         return self.vtable.put_Trustee(self, bstrTrustee);
     }
 };
@@ -5992,68 +5992,68 @@ pub const IADsAccessControlList = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AclRevision: *const fn(
+        get_AclRevision: *const fn (
             self: *const IADsAccessControlList,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AclRevision: *const fn(
+        put_AclRevision: *const fn (
             self: *const IADsAccessControlList,
             lnAclRevision: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AceCount: *const fn(
+        get_AceCount: *const fn (
             self: *const IADsAccessControlList,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AceCount: *const fn(
+        put_AceCount: *const fn (
             self: *const IADsAccessControlList,
             lnAceCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddAce: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddAce: *const fn (
             self: *const IADsAccessControlList,
             pAccessControlEntry: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAce: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAce: *const fn (
             self: *const IADsAccessControlList,
             pAccessControlEntry: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyAccessList: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyAccessList: *const fn (
             self: *const IADsAccessControlList,
             ppAccessControlList: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get__NewEnum: *const fn(
+        get__NewEnum: *const fn (
             self: *const IADsAccessControlList,
             retval: ?*?*IUnknown,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_AclRevision(self: *const IADsAccessControlList, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_AclRevision(self: *const IADsAccessControlList, retval: ?*i32) HRESULT {
         return self.vtable.get_AclRevision(self, retval);
     }
-    pub fn put_AclRevision(self: *const IADsAccessControlList, lnAclRevision: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_AclRevision(self: *const IADsAccessControlList, lnAclRevision: i32) HRESULT {
         return self.vtable.put_AclRevision(self, lnAclRevision);
     }
-    pub fn get_AceCount(self: *const IADsAccessControlList, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_AceCount(self: *const IADsAccessControlList, retval: ?*i32) HRESULT {
         return self.vtable.get_AceCount(self, retval);
     }
-    pub fn put_AceCount(self: *const IADsAccessControlList, lnAceCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_AceCount(self: *const IADsAccessControlList, lnAceCount: i32) HRESULT {
         return self.vtable.put_AceCount(self, lnAceCount);
     }
-    pub fn AddAce(self: *const IADsAccessControlList, pAccessControlEntry: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn AddAce(self: *const IADsAccessControlList, pAccessControlEntry: ?*IDispatch) HRESULT {
         return self.vtable.AddAce(self, pAccessControlEntry);
     }
-    pub fn RemoveAce(self: *const IADsAccessControlList, pAccessControlEntry: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAce(self: *const IADsAccessControlList, pAccessControlEntry: ?*IDispatch) HRESULT {
         return self.vtable.RemoveAce(self, pAccessControlEntry);
     }
-    pub fn CopyAccessList(self: *const IADsAccessControlList, ppAccessControlList: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn CopyAccessList(self: *const IADsAccessControlList, ppAccessControlList: ?*?*IDispatch) HRESULT {
         return self.vtable.CopyAccessList(self, ppAccessControlList);
     }
-    pub fn get__NewEnum(self: *const IADsAccessControlList, retval: ?*?*IUnknown) callconv(.Inline) HRESULT {
+    pub inline fn get__NewEnum(self: *const IADsAccessControlList, retval: ?*?*IUnknown) HRESULT {
         return self.vtable.get__NewEnum(self, retval);
     }
 };
@@ -6065,174 +6065,174 @@ pub const IADsSecurityDescriptor = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Revision: *const fn(
+        get_Revision: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Revision: *const fn(
+        put_Revision: *const fn (
             self: *const IADsSecurityDescriptor,
             lnRevision: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Control: *const fn(
+        get_Control: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Control: *const fn(
+        put_Control: *const fn (
             self: *const IADsSecurityDescriptor,
             lnControl: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Owner: *const fn(
+        get_Owner: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Owner: *const fn(
+        put_Owner: *const fn (
             self: *const IADsSecurityDescriptor,
             bstrOwner: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OwnerDefaulted: *const fn(
+        get_OwnerDefaulted: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OwnerDefaulted: *const fn(
+        put_OwnerDefaulted: *const fn (
             self: *const IADsSecurityDescriptor,
             fOwnerDefaulted: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Group: *const fn(
+        get_Group: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Group: *const fn(
+        put_Group: *const fn (
             self: *const IADsSecurityDescriptor,
             bstrGroup: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_GroupDefaulted: *const fn(
+        get_GroupDefaulted: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_GroupDefaulted: *const fn(
+        put_GroupDefaulted: *const fn (
             self: *const IADsSecurityDescriptor,
             fGroupDefaulted: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DiscretionaryAcl: *const fn(
+        get_DiscretionaryAcl: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DiscretionaryAcl: *const fn(
+        put_DiscretionaryAcl: *const fn (
             self: *const IADsSecurityDescriptor,
             pDiscretionaryAcl: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DaclDefaulted: *const fn(
+        get_DaclDefaulted: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DaclDefaulted: *const fn(
+        put_DaclDefaulted: *const fn (
             self: *const IADsSecurityDescriptor,
             fDaclDefaulted: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SystemAcl: *const fn(
+        get_SystemAcl: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SystemAcl: *const fn(
+        put_SystemAcl: *const fn (
             self: *const IADsSecurityDescriptor,
             pSystemAcl: ?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SaclDefaulted: *const fn(
+        get_SaclDefaulted: *const fn (
             self: *const IADsSecurityDescriptor,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SaclDefaulted: *const fn(
+        put_SaclDefaulted: *const fn (
             self: *const IADsSecurityDescriptor,
             fSaclDefaulted: i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopySecurityDescriptor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopySecurityDescriptor: *const fn (
             self: *const IADsSecurityDescriptor,
             ppSecurityDescriptor: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Revision(self: *const IADsSecurityDescriptor, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Revision(self: *const IADsSecurityDescriptor, retval: ?*i32) HRESULT {
         return self.vtable.get_Revision(self, retval);
     }
-    pub fn put_Revision(self: *const IADsSecurityDescriptor, lnRevision: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Revision(self: *const IADsSecurityDescriptor, lnRevision: i32) HRESULT {
         return self.vtable.put_Revision(self, lnRevision);
     }
-    pub fn get_Control(self: *const IADsSecurityDescriptor, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Control(self: *const IADsSecurityDescriptor, retval: ?*i32) HRESULT {
         return self.vtable.get_Control(self, retval);
     }
-    pub fn put_Control(self: *const IADsSecurityDescriptor, lnControl: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Control(self: *const IADsSecurityDescriptor, lnControl: i32) HRESULT {
         return self.vtable.put_Control(self, lnControl);
     }
-    pub fn get_Owner(self: *const IADsSecurityDescriptor, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Owner(self: *const IADsSecurityDescriptor, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Owner(self, retval);
     }
-    pub fn put_Owner(self: *const IADsSecurityDescriptor, bstrOwner: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Owner(self: *const IADsSecurityDescriptor, bstrOwner: ?BSTR) HRESULT {
         return self.vtable.put_Owner(self, bstrOwner);
     }
-    pub fn get_OwnerDefaulted(self: *const IADsSecurityDescriptor, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_OwnerDefaulted(self: *const IADsSecurityDescriptor, retval: ?*i16) HRESULT {
         return self.vtable.get_OwnerDefaulted(self, retval);
     }
-    pub fn put_OwnerDefaulted(self: *const IADsSecurityDescriptor, fOwnerDefaulted: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_OwnerDefaulted(self: *const IADsSecurityDescriptor, fOwnerDefaulted: i16) HRESULT {
         return self.vtable.put_OwnerDefaulted(self, fOwnerDefaulted);
     }
-    pub fn get_Group(self: *const IADsSecurityDescriptor, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Group(self: *const IADsSecurityDescriptor, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Group(self, retval);
     }
-    pub fn put_Group(self: *const IADsSecurityDescriptor, bstrGroup: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Group(self: *const IADsSecurityDescriptor, bstrGroup: ?BSTR) HRESULT {
         return self.vtable.put_Group(self, bstrGroup);
     }
-    pub fn get_GroupDefaulted(self: *const IADsSecurityDescriptor, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_GroupDefaulted(self: *const IADsSecurityDescriptor, retval: ?*i16) HRESULT {
         return self.vtable.get_GroupDefaulted(self, retval);
     }
-    pub fn put_GroupDefaulted(self: *const IADsSecurityDescriptor, fGroupDefaulted: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_GroupDefaulted(self: *const IADsSecurityDescriptor, fGroupDefaulted: i16) HRESULT {
         return self.vtable.put_GroupDefaulted(self, fGroupDefaulted);
     }
-    pub fn get_DiscretionaryAcl(self: *const IADsSecurityDescriptor, retval: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn get_DiscretionaryAcl(self: *const IADsSecurityDescriptor, retval: ?*?*IDispatch) HRESULT {
         return self.vtable.get_DiscretionaryAcl(self, retval);
     }
-    pub fn put_DiscretionaryAcl(self: *const IADsSecurityDescriptor, pDiscretionaryAcl: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn put_DiscretionaryAcl(self: *const IADsSecurityDescriptor, pDiscretionaryAcl: ?*IDispatch) HRESULT {
         return self.vtable.put_DiscretionaryAcl(self, pDiscretionaryAcl);
     }
-    pub fn get_DaclDefaulted(self: *const IADsSecurityDescriptor, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_DaclDefaulted(self: *const IADsSecurityDescriptor, retval: ?*i16) HRESULT {
         return self.vtable.get_DaclDefaulted(self, retval);
     }
-    pub fn put_DaclDefaulted(self: *const IADsSecurityDescriptor, fDaclDefaulted: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_DaclDefaulted(self: *const IADsSecurityDescriptor, fDaclDefaulted: i16) HRESULT {
         return self.vtable.put_DaclDefaulted(self, fDaclDefaulted);
     }
-    pub fn get_SystemAcl(self: *const IADsSecurityDescriptor, retval: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn get_SystemAcl(self: *const IADsSecurityDescriptor, retval: ?*?*IDispatch) HRESULT {
         return self.vtable.get_SystemAcl(self, retval);
     }
-    pub fn put_SystemAcl(self: *const IADsSecurityDescriptor, pSystemAcl: ?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn put_SystemAcl(self: *const IADsSecurityDescriptor, pSystemAcl: ?*IDispatch) HRESULT {
         return self.vtable.put_SystemAcl(self, pSystemAcl);
     }
-    pub fn get_SaclDefaulted(self: *const IADsSecurityDescriptor, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_SaclDefaulted(self: *const IADsSecurityDescriptor, retval: ?*i16) HRESULT {
         return self.vtable.get_SaclDefaulted(self, retval);
     }
-    pub fn put_SaclDefaulted(self: *const IADsSecurityDescriptor, fSaclDefaulted: i16) callconv(.Inline) HRESULT {
+    pub inline fn put_SaclDefaulted(self: *const IADsSecurityDescriptor, fSaclDefaulted: i16) HRESULT {
         return self.vtable.put_SaclDefaulted(self, fSaclDefaulted);
     }
-    pub fn CopySecurityDescriptor(self: *const IADsSecurityDescriptor, ppSecurityDescriptor: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn CopySecurityDescriptor(self: *const IADsSecurityDescriptor, ppSecurityDescriptor: ?*?*IDispatch) HRESULT {
         return self.vtable.CopySecurityDescriptor(self, ppSecurityDescriptor);
     }
 };
@@ -6244,39 +6244,39 @@ pub const IADsLargeInteger = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_HighPart: *const fn(
+        get_HighPart: *const fn (
             self: *const IADsLargeInteger,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_HighPart: *const fn(
+        put_HighPart: *const fn (
             self: *const IADsLargeInteger,
             lnHighPart: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LowPart: *const fn(
+        get_LowPart: *const fn (
             self: *const IADsLargeInteger,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_LowPart: *const fn(
+        put_LowPart: *const fn (
             self: *const IADsLargeInteger,
             lnLowPart: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_HighPart(self: *const IADsLargeInteger, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_HighPart(self: *const IADsLargeInteger, retval: ?*i32) HRESULT {
         return self.vtable.get_HighPart(self, retval);
     }
-    pub fn put_HighPart(self: *const IADsLargeInteger, lnHighPart: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_HighPart(self: *const IADsLargeInteger, lnHighPart: i32) HRESULT {
         return self.vtable.put_HighPart(self, lnHighPart);
     }
-    pub fn get_LowPart(self: *const IADsLargeInteger, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_LowPart(self: *const IADsLargeInteger, retval: ?*i32) HRESULT {
         return self.vtable.get_LowPart(self, retval);
     }
-    pub fn put_LowPart(self: *const IADsLargeInteger, lnLowPart: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_LowPart(self: *const IADsLargeInteger, lnLowPart: i32) HRESULT {
         return self.vtable.put_LowPart(self, lnLowPart);
     }
 };
@@ -6288,66 +6288,66 @@ pub const IADsNameTranslate = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ChaseReferral: *const fn(
+        put_ChaseReferral: *const fn (
             self: *const IADsNameTranslate,
             lnChaseReferral: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Init: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Init: *const fn (
             self: *const IADsNameTranslate,
             lnSetType: i32,
             bstrADsPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitEx: *const fn (
             self: *const IADsNameTranslate,
             lnSetType: i32,
             bstrADsPath: ?BSTR,
             bstrUserID: ?BSTR,
             bstrDomain: ?BSTR,
             bstrPassword: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Set: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Set: *const fn (
             self: *const IADsNameTranslate,
             lnSetType: i32,
             bstrADsPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Get: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Get: *const fn (
             self: *const IADsNameTranslate,
             lnFormatType: i32,
             pbstrADsPath: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEx: *const fn (
             self: *const IADsNameTranslate,
             lnFormatType: i32,
             pvar: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEx: *const fn (
             self: *const IADsNameTranslate,
             lnFormatType: i32,
             pvar: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn put_ChaseReferral(self: *const IADsNameTranslate, lnChaseReferral: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ChaseReferral(self: *const IADsNameTranslate, lnChaseReferral: i32) HRESULT {
         return self.vtable.put_ChaseReferral(self, lnChaseReferral);
     }
-    pub fn Init(self: *const IADsNameTranslate, lnSetType: i32, bstrADsPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Init(self: *const IADsNameTranslate, lnSetType: i32, bstrADsPath: ?BSTR) HRESULT {
         return self.vtable.Init(self, lnSetType, bstrADsPath);
     }
-    pub fn InitEx(self: *const IADsNameTranslate, lnSetType: i32, bstrADsPath: ?BSTR, bstrUserID: ?BSTR, bstrDomain: ?BSTR, bstrPassword: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn InitEx(self: *const IADsNameTranslate, lnSetType: i32, bstrADsPath: ?BSTR, bstrUserID: ?BSTR, bstrDomain: ?BSTR, bstrPassword: ?BSTR) HRESULT {
         return self.vtable.InitEx(self, lnSetType, bstrADsPath, bstrUserID, bstrDomain, bstrPassword);
     }
-    pub fn Set(self: *const IADsNameTranslate, lnSetType: i32, bstrADsPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Set(self: *const IADsNameTranslate, lnSetType: i32, bstrADsPath: ?BSTR) HRESULT {
         return self.vtable.Set(self, lnSetType, bstrADsPath);
     }
-    pub fn Get(self: *const IADsNameTranslate, lnFormatType: i32, pbstrADsPath: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const IADsNameTranslate, lnFormatType: i32, pbstrADsPath: ?*?BSTR) HRESULT {
         return self.vtable.Get(self, lnFormatType, pbstrADsPath);
     }
-    pub fn SetEx(self: *const IADsNameTranslate, lnFormatType: i32, pvar: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetEx(self: *const IADsNameTranslate, lnFormatType: i32, pvar: VARIANT) HRESULT {
         return self.vtable.SetEx(self, lnFormatType, pvar);
     }
-    pub fn GetEx(self: *const IADsNameTranslate, lnFormatType: i32, pvar: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetEx(self: *const IADsNameTranslate, lnFormatType: i32, pvar: ?*VARIANT) HRESULT {
         return self.vtable.GetEx(self, lnFormatType, pvar);
     }
 };
@@ -6359,23 +6359,23 @@ pub const IADsCaseIgnoreList = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CaseIgnoreList: *const fn(
+        get_CaseIgnoreList: *const fn (
             self: *const IADsCaseIgnoreList,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_CaseIgnoreList: *const fn(
+        put_CaseIgnoreList: *const fn (
             self: *const IADsCaseIgnoreList,
             vCaseIgnoreList: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_CaseIgnoreList(self: *const IADsCaseIgnoreList, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_CaseIgnoreList(self: *const IADsCaseIgnoreList, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_CaseIgnoreList(self, retval);
     }
-    pub fn put_CaseIgnoreList(self: *const IADsCaseIgnoreList, vCaseIgnoreList: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_CaseIgnoreList(self: *const IADsCaseIgnoreList, vCaseIgnoreList: VARIANT) HRESULT {
         return self.vtable.put_CaseIgnoreList(self, vCaseIgnoreList);
     }
 };
@@ -6387,39 +6387,39 @@ pub const IADsFaxNumber = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_TelephoneNumber: *const fn(
+        get_TelephoneNumber: *const fn (
             self: *const IADsFaxNumber,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_TelephoneNumber: *const fn(
+        put_TelephoneNumber: *const fn (
             self: *const IADsFaxNumber,
             bstrTelephoneNumber: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Parameters: *const fn(
+        get_Parameters: *const fn (
             self: *const IADsFaxNumber,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Parameters: *const fn(
+        put_Parameters: *const fn (
             self: *const IADsFaxNumber,
             vParameters: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_TelephoneNumber(self: *const IADsFaxNumber, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_TelephoneNumber(self: *const IADsFaxNumber, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_TelephoneNumber(self, retval);
     }
-    pub fn put_TelephoneNumber(self: *const IADsFaxNumber, bstrTelephoneNumber: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_TelephoneNumber(self: *const IADsFaxNumber, bstrTelephoneNumber: ?BSTR) HRESULT {
         return self.vtable.put_TelephoneNumber(self, bstrTelephoneNumber);
     }
-    pub fn get_Parameters(self: *const IADsFaxNumber, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Parameters(self: *const IADsFaxNumber, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_Parameters(self, retval);
     }
-    pub fn put_Parameters(self: *const IADsFaxNumber, vParameters: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Parameters(self: *const IADsFaxNumber, vParameters: VARIANT) HRESULT {
         return self.vtable.put_Parameters(self, vParameters);
     }
 };
@@ -6431,39 +6431,39 @@ pub const IADsNetAddress = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_AddressType: *const fn(
+        get_AddressType: *const fn (
             self: *const IADsNetAddress,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_AddressType: *const fn(
+        put_AddressType: *const fn (
             self: *const IADsNetAddress,
             lnAddressType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Address: *const fn(
+        get_Address: *const fn (
             self: *const IADsNetAddress,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Address: *const fn(
+        put_Address: *const fn (
             self: *const IADsNetAddress,
             vAddress: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_AddressType(self: *const IADsNetAddress, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_AddressType(self: *const IADsNetAddress, retval: ?*i32) HRESULT {
         return self.vtable.get_AddressType(self, retval);
     }
-    pub fn put_AddressType(self: *const IADsNetAddress, lnAddressType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_AddressType(self: *const IADsNetAddress, lnAddressType: i32) HRESULT {
         return self.vtable.put_AddressType(self, lnAddressType);
     }
-    pub fn get_Address(self: *const IADsNetAddress, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_Address(self: *const IADsNetAddress, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_Address(self, retval);
     }
-    pub fn put_Address(self: *const IADsNetAddress, vAddress: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_Address(self: *const IADsNetAddress, vAddress: VARIANT) HRESULT {
         return self.vtable.put_Address(self, vAddress);
     }
 };
@@ -6475,23 +6475,23 @@ pub const IADsOctetList = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OctetList: *const fn(
+        get_OctetList: *const fn (
             self: *const IADsOctetList,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_OctetList: *const fn(
+        put_OctetList: *const fn (
             self: *const IADsOctetList,
             vOctetList: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_OctetList(self: *const IADsOctetList, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_OctetList(self: *const IADsOctetList, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_OctetList(self, retval);
     }
-    pub fn put_OctetList(self: *const IADsOctetList, vOctetList: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_OctetList(self: *const IADsOctetList, vOctetList: VARIANT) HRESULT {
         return self.vtable.put_OctetList(self, vOctetList);
     }
 };
@@ -6503,39 +6503,39 @@ pub const IADsEmail = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Type: *const fn(
+        get_Type: *const fn (
             self: *const IADsEmail,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Type: *const fn(
+        put_Type: *const fn (
             self: *const IADsEmail,
             lnType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Address: *const fn(
+        get_Address: *const fn (
             self: *const IADsEmail,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Address: *const fn(
+        put_Address: *const fn (
             self: *const IADsEmail,
             bstrAddress: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Type(self: *const IADsEmail, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Type(self: *const IADsEmail, retval: ?*i32) HRESULT {
         return self.vtable.get_Type(self, retval);
     }
-    pub fn put_Type(self: *const IADsEmail, lnType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Type(self: *const IADsEmail, lnType: i32) HRESULT {
         return self.vtable.put_Type(self, lnType);
     }
-    pub fn get_Address(self: *const IADsEmail, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Address(self: *const IADsEmail, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Address(self, retval);
     }
-    pub fn put_Address(self: *const IADsEmail, bstrAddress: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Address(self: *const IADsEmail, bstrAddress: ?BSTR) HRESULT {
         return self.vtable.put_Address(self, bstrAddress);
     }
 };
@@ -6547,55 +6547,55 @@ pub const IADsPath = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Type: *const fn(
+        get_Type: *const fn (
             self: *const IADsPath,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Type: *const fn(
+        put_Type: *const fn (
             self: *const IADsPath,
             lnType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_VolumeName: *const fn(
+        get_VolumeName: *const fn (
             self: *const IADsPath,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_VolumeName: *const fn(
+        put_VolumeName: *const fn (
             self: *const IADsPath,
             bstrVolumeName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Path: *const fn(
+        get_Path: *const fn (
             self: *const IADsPath,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Path: *const fn(
+        put_Path: *const fn (
             self: *const IADsPath,
             bstrPath: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_Type(self: *const IADsPath, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Type(self: *const IADsPath, retval: ?*i32) HRESULT {
         return self.vtable.get_Type(self, retval);
     }
-    pub fn put_Type(self: *const IADsPath, lnType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Type(self: *const IADsPath, lnType: i32) HRESULT {
         return self.vtable.put_Type(self, lnType);
     }
-    pub fn get_VolumeName(self: *const IADsPath, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_VolumeName(self: *const IADsPath, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_VolumeName(self, retval);
     }
-    pub fn put_VolumeName(self: *const IADsPath, bstrVolumeName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_VolumeName(self: *const IADsPath, bstrVolumeName: ?BSTR) HRESULT {
         return self.vtable.put_VolumeName(self, bstrVolumeName);
     }
-    pub fn get_Path(self: *const IADsPath, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Path(self: *const IADsPath, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_Path(self, retval);
     }
-    pub fn put_Path(self: *const IADsPath, bstrPath: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_Path(self: *const IADsPath, bstrPath: ?BSTR) HRESULT {
         return self.vtable.put_Path(self, bstrPath);
     }
 };
@@ -6607,87 +6607,87 @@ pub const IADsReplicaPointer = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ServerName: *const fn(
+        get_ServerName: *const fn (
             self: *const IADsReplicaPointer,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ServerName: *const fn(
+        put_ServerName: *const fn (
             self: *const IADsReplicaPointer,
             bstrServerName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReplicaType: *const fn(
+        get_ReplicaType: *const fn (
             self: *const IADsReplicaPointer,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ReplicaType: *const fn(
+        put_ReplicaType: *const fn (
             self: *const IADsReplicaPointer,
             lnReplicaType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReplicaNumber: *const fn(
+        get_ReplicaNumber: *const fn (
             self: *const IADsReplicaPointer,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ReplicaNumber: *const fn(
+        put_ReplicaNumber: *const fn (
             self: *const IADsReplicaPointer,
             lnReplicaNumber: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Count: *const fn(
+        get_Count: *const fn (
             self: *const IADsReplicaPointer,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Count: *const fn(
+        put_Count: *const fn (
             self: *const IADsReplicaPointer,
             lnCount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ReplicaAddressHints: *const fn(
+        get_ReplicaAddressHints: *const fn (
             self: *const IADsReplicaPointer,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ReplicaAddressHints: *const fn(
+        put_ReplicaAddressHints: *const fn (
             self: *const IADsReplicaPointer,
             vReplicaAddressHints: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ServerName(self: *const IADsReplicaPointer, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ServerName(self: *const IADsReplicaPointer, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ServerName(self, retval);
     }
-    pub fn put_ServerName(self: *const IADsReplicaPointer, bstrServerName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ServerName(self: *const IADsReplicaPointer, bstrServerName: ?BSTR) HRESULT {
         return self.vtable.put_ServerName(self, bstrServerName);
     }
-    pub fn get_ReplicaType(self: *const IADsReplicaPointer, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ReplicaType(self: *const IADsReplicaPointer, retval: ?*i32) HRESULT {
         return self.vtable.get_ReplicaType(self, retval);
     }
-    pub fn put_ReplicaType(self: *const IADsReplicaPointer, lnReplicaType: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ReplicaType(self: *const IADsReplicaPointer, lnReplicaType: i32) HRESULT {
         return self.vtable.put_ReplicaType(self, lnReplicaType);
     }
-    pub fn get_ReplicaNumber(self: *const IADsReplicaPointer, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_ReplicaNumber(self: *const IADsReplicaPointer, retval: ?*i32) HRESULT {
         return self.vtable.get_ReplicaNumber(self, retval);
     }
-    pub fn put_ReplicaNumber(self: *const IADsReplicaPointer, lnReplicaNumber: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_ReplicaNumber(self: *const IADsReplicaPointer, lnReplicaNumber: i32) HRESULT {
         return self.vtable.put_ReplicaNumber(self, lnReplicaNumber);
     }
-    pub fn get_Count(self: *const IADsReplicaPointer, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Count(self: *const IADsReplicaPointer, retval: ?*i32) HRESULT {
         return self.vtable.get_Count(self, retval);
     }
-    pub fn put_Count(self: *const IADsReplicaPointer, lnCount: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Count(self: *const IADsReplicaPointer, lnCount: i32) HRESULT {
         return self.vtable.put_Count(self, lnCount);
     }
-    pub fn get_ReplicaAddressHints(self: *const IADsReplicaPointer, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_ReplicaAddressHints(self: *const IADsReplicaPointer, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_ReplicaAddressHints(self, retval);
     }
-    pub fn put_ReplicaAddressHints(self: *const IADsReplicaPointer, vReplicaAddressHints: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_ReplicaAddressHints(self: *const IADsReplicaPointer, vReplicaAddressHints: VARIANT) HRESULT {
         return self.vtable.put_ReplicaAddressHints(self, vReplicaAddressHints);
     }
 };
@@ -6699,62 +6699,62 @@ pub const IADsAcl = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ProtectedAttrName: *const fn(
+        get_ProtectedAttrName: *const fn (
             self: *const IADsAcl,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ProtectedAttrName: *const fn(
+        put_ProtectedAttrName: *const fn (
             self: *const IADsAcl,
             bstrProtectedAttrName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SubjectName: *const fn(
+        get_SubjectName: *const fn (
             self: *const IADsAcl,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SubjectName: *const fn(
+        put_SubjectName: *const fn (
             self: *const IADsAcl,
             bstrSubjectName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Privileges: *const fn(
+        get_Privileges: *const fn (
             self: *const IADsAcl,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Privileges: *const fn(
+        put_Privileges: *const fn (
             self: *const IADsAcl,
             lnPrivileges: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyAcl: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyAcl: *const fn (
             self: *const IADsAcl,
             ppAcl: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ProtectedAttrName(self: *const IADsAcl, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ProtectedAttrName(self: *const IADsAcl, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ProtectedAttrName(self, retval);
     }
-    pub fn put_ProtectedAttrName(self: *const IADsAcl, bstrProtectedAttrName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ProtectedAttrName(self: *const IADsAcl, bstrProtectedAttrName: ?BSTR) HRESULT {
         return self.vtable.put_ProtectedAttrName(self, bstrProtectedAttrName);
     }
-    pub fn get_SubjectName(self: *const IADsAcl, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SubjectName(self: *const IADsAcl, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_SubjectName(self, retval);
     }
-    pub fn put_SubjectName(self: *const IADsAcl, bstrSubjectName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_SubjectName(self: *const IADsAcl, bstrSubjectName: ?BSTR) HRESULT {
         return self.vtable.put_SubjectName(self, bstrSubjectName);
     }
-    pub fn get_Privileges(self: *const IADsAcl, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Privileges(self: *const IADsAcl, retval: ?*i32) HRESULT {
         return self.vtable.get_Privileges(self, retval);
     }
-    pub fn put_Privileges(self: *const IADsAcl, lnPrivileges: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Privileges(self: *const IADsAcl, lnPrivileges: i32) HRESULT {
         return self.vtable.put_Privileges(self, lnPrivileges);
     }
-    pub fn CopyAcl(self: *const IADsAcl, ppAcl: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn CopyAcl(self: *const IADsAcl, ppAcl: ?*?*IDispatch) HRESULT {
         return self.vtable.CopyAcl(self, ppAcl);
     }
 };
@@ -6766,39 +6766,39 @@ pub const IADsTimestamp = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_WholeSeconds: *const fn(
+        get_WholeSeconds: *const fn (
             self: *const IADsTimestamp,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_WholeSeconds: *const fn(
+        put_WholeSeconds: *const fn (
             self: *const IADsTimestamp,
             lnWholeSeconds: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EventID: *const fn(
+        get_EventID: *const fn (
             self: *const IADsTimestamp,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EventID: *const fn(
+        put_EventID: *const fn (
             self: *const IADsTimestamp,
             lnEventID: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_WholeSeconds(self: *const IADsTimestamp, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_WholeSeconds(self: *const IADsTimestamp, retval: ?*i32) HRESULT {
         return self.vtable.get_WholeSeconds(self, retval);
     }
-    pub fn put_WholeSeconds(self: *const IADsTimestamp, lnWholeSeconds: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_WholeSeconds(self: *const IADsTimestamp, lnWholeSeconds: i32) HRESULT {
         return self.vtable.put_WholeSeconds(self, lnWholeSeconds);
     }
-    pub fn get_EventID(self: *const IADsTimestamp, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_EventID(self: *const IADsTimestamp, retval: ?*i32) HRESULT {
         return self.vtable.get_EventID(self, retval);
     }
-    pub fn put_EventID(self: *const IADsTimestamp, lnEventID: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_EventID(self: *const IADsTimestamp, lnEventID: i32) HRESULT {
         return self.vtable.put_EventID(self, lnEventID);
     }
 };
@@ -6810,23 +6810,23 @@ pub const IADsPostalAddress = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PostalAddress: *const fn(
+        get_PostalAddress: *const fn (
             self: *const IADsPostalAddress,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_PostalAddress: *const fn(
+        put_PostalAddress: *const fn (
             self: *const IADsPostalAddress,
             vPostalAddress: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_PostalAddress(self: *const IADsPostalAddress, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_PostalAddress(self: *const IADsPostalAddress, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_PostalAddress(self, retval);
     }
-    pub fn put_PostalAddress(self: *const IADsPostalAddress, vPostalAddress: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_PostalAddress(self: *const IADsPostalAddress, vPostalAddress: VARIANT) HRESULT {
         return self.vtable.put_PostalAddress(self, vPostalAddress);
     }
 };
@@ -6838,39 +6838,39 @@ pub const IADsBackLink = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_RemoteID: *const fn(
+        get_RemoteID: *const fn (
             self: *const IADsBackLink,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_RemoteID: *const fn(
+        put_RemoteID: *const fn (
             self: *const IADsBackLink,
             lnRemoteID: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectName: *const fn(
+        get_ObjectName: *const fn (
             self: *const IADsBackLink,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ObjectName: *const fn(
+        put_ObjectName: *const fn (
             self: *const IADsBackLink,
             bstrObjectName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_RemoteID(self: *const IADsBackLink, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_RemoteID(self: *const IADsBackLink, retval: ?*i32) HRESULT {
         return self.vtable.get_RemoteID(self, retval);
     }
-    pub fn put_RemoteID(self: *const IADsBackLink, lnRemoteID: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_RemoteID(self: *const IADsBackLink, lnRemoteID: i32) HRESULT {
         return self.vtable.put_RemoteID(self, lnRemoteID);
     }
-    pub fn get_ObjectName(self: *const IADsBackLink, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectName(self: *const IADsBackLink, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ObjectName(self, retval);
     }
-    pub fn put_ObjectName(self: *const IADsBackLink, bstrObjectName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ObjectName(self: *const IADsBackLink, bstrObjectName: ?BSTR) HRESULT {
         return self.vtable.put_ObjectName(self, bstrObjectName);
     }
 };
@@ -6882,55 +6882,55 @@ pub const IADsTypedName = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectName: *const fn(
+        get_ObjectName: *const fn (
             self: *const IADsTypedName,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ObjectName: *const fn(
+        put_ObjectName: *const fn (
             self: *const IADsTypedName,
             bstrObjectName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Level: *const fn(
+        get_Level: *const fn (
             self: *const IADsTypedName,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Level: *const fn(
+        put_Level: *const fn (
             self: *const IADsTypedName,
             lnLevel: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Interval: *const fn(
+        get_Interval: *const fn (
             self: *const IADsTypedName,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Interval: *const fn(
+        put_Interval: *const fn (
             self: *const IADsTypedName,
             lnInterval: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ObjectName(self: *const IADsTypedName, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectName(self: *const IADsTypedName, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ObjectName(self, retval);
     }
-    pub fn put_ObjectName(self: *const IADsTypedName, bstrObjectName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ObjectName(self: *const IADsTypedName, bstrObjectName: ?BSTR) HRESULT {
         return self.vtable.put_ObjectName(self, bstrObjectName);
     }
-    pub fn get_Level(self: *const IADsTypedName, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Level(self: *const IADsTypedName, retval: ?*i32) HRESULT {
         return self.vtable.get_Level(self, retval);
     }
-    pub fn put_Level(self: *const IADsTypedName, lnLevel: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Level(self: *const IADsTypedName, lnLevel: i32) HRESULT {
         return self.vtable.put_Level(self, lnLevel);
     }
-    pub fn get_Interval(self: *const IADsTypedName, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Interval(self: *const IADsTypedName, retval: ?*i32) HRESULT {
         return self.vtable.get_Interval(self, retval);
     }
-    pub fn put_Interval(self: *const IADsTypedName, lnInterval: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Interval(self: *const IADsTypedName, lnInterval: i32) HRESULT {
         return self.vtable.put_Interval(self, lnInterval);
     }
 };
@@ -6942,39 +6942,39 @@ pub const IADsHold = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ObjectName: *const fn(
+        get_ObjectName: *const fn (
             self: *const IADsHold,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_ObjectName: *const fn(
+        put_ObjectName: *const fn (
             self: *const IADsHold,
             bstrObjectName: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Amount: *const fn(
+        get_Amount: *const fn (
             self: *const IADsHold,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_Amount: *const fn(
+        put_Amount: *const fn (
             self: *const IADsHold,
             lnAmount: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_ObjectName(self: *const IADsHold, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ObjectName(self: *const IADsHold, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ObjectName(self, retval);
     }
-    pub fn put_ObjectName(self: *const IADsHold, bstrObjectName: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_ObjectName(self: *const IADsHold, bstrObjectName: ?BSTR) HRESULT {
         return self.vtable.put_ObjectName(self, bstrObjectName);
     }
-    pub fn get_Amount(self: *const IADsHold, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_Amount(self: *const IADsHold, retval: ?*i32) HRESULT {
         return self.vtable.get_Amount(self, retval);
     }
-    pub fn put_Amount(self: *const IADsHold, lnAmount: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_Amount(self: *const IADsHold, lnAmount: i32) HRESULT {
         return self.vtable.put_Amount(self, lnAmount);
     }
 };
@@ -6985,24 +6985,24 @@ pub const IID_IADsObjectOptions = &IID_IADsObjectOptions_Value;
 pub const IADsObjectOptions = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetOption: *const fn(
+        GetOption: *const fn (
             self: *const IADsObjectOptions,
             lnOption: i32,
             pvValue: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetOption: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetOption: *const fn (
             self: *const IADsObjectOptions,
             lnOption: i32,
             vValue: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetOption(self: *const IADsObjectOptions, lnOption: i32, pvValue: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetOption(self: *const IADsObjectOptions, lnOption: i32, pvValue: ?*VARIANT) HRESULT {
         return self.vtable.GetOption(self, lnOption, pvValue);
     }
-    pub fn SetOption(self: *const IADsObjectOptions, lnOption: i32, vValue: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetOption(self: *const IADsObjectOptions, lnOption: i32, vValue: VARIANT) HRESULT {
         return self.vtable.SetOption(self, lnOption, vValue);
     }
 };
@@ -7013,91 +7013,91 @@ pub const IID_IADsPathname = &IID_IADsPathname_Value;
 pub const IADsPathname = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        Set: *const fn(
+        Set: *const fn (
             self: *const IADsPathname,
             bstrADsPath: ?BSTR,
             lnSetType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetDisplayType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetDisplayType: *const fn (
             self: *const IADsPathname,
             lnDisplayType: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Retrieve: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Retrieve: *const fn (
             self: *const IADsPathname,
             lnFormatType: i32,
             pbstrADsPath: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNumElements: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNumElements: *const fn (
             self: *const IADsPathname,
             plnNumPathElements: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetElement: *const fn (
             self: *const IADsPathname,
             lnElementIndex: i32,
             pbstrElement: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddLeafElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddLeafElement: *const fn (
             self: *const IADsPathname,
             bstrLeafElement: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveLeafElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveLeafElement: *const fn (
             self: *const IADsPathname,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyPath: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyPath: *const fn (
             self: *const IADsPathname,
             ppAdsPath: ?*?*IDispatch,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEscapedElement: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEscapedElement: *const fn (
             self: *const IADsPathname,
             lnReserved: i32,
             bstrInStr: ?BSTR,
             pbstrOutStr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_EscapedMode: *const fn(
+        get_EscapedMode: *const fn (
             self: *const IADsPathname,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_EscapedMode: *const fn(
+        put_EscapedMode: *const fn (
             self: *const IADsPathname,
             lnEscapedMode: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn Set(self: *const IADsPathname, bstrADsPath: ?BSTR, lnSetType: i32) callconv(.Inline) HRESULT {
+    pub inline fn Set(self: *const IADsPathname, bstrADsPath: ?BSTR, lnSetType: i32) HRESULT {
         return self.vtable.Set(self, bstrADsPath, lnSetType);
     }
-    pub fn SetDisplayType(self: *const IADsPathname, lnDisplayType: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetDisplayType(self: *const IADsPathname, lnDisplayType: i32) HRESULT {
         return self.vtable.SetDisplayType(self, lnDisplayType);
     }
-    pub fn Retrieve(self: *const IADsPathname, lnFormatType: i32, pbstrADsPath: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Retrieve(self: *const IADsPathname, lnFormatType: i32, pbstrADsPath: ?*?BSTR) HRESULT {
         return self.vtable.Retrieve(self, lnFormatType, pbstrADsPath);
     }
-    pub fn GetNumElements(self: *const IADsPathname, plnNumPathElements: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetNumElements(self: *const IADsPathname, plnNumPathElements: ?*i32) HRESULT {
         return self.vtable.GetNumElements(self, plnNumPathElements);
     }
-    pub fn GetElement(self: *const IADsPathname, lnElementIndex: i32, pbstrElement: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetElement(self: *const IADsPathname, lnElementIndex: i32, pbstrElement: ?*?BSTR) HRESULT {
         return self.vtable.GetElement(self, lnElementIndex, pbstrElement);
     }
-    pub fn AddLeafElement(self: *const IADsPathname, bstrLeafElement: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn AddLeafElement(self: *const IADsPathname, bstrLeafElement: ?BSTR) HRESULT {
         return self.vtable.AddLeafElement(self, bstrLeafElement);
     }
-    pub fn RemoveLeafElement(self: *const IADsPathname) callconv(.Inline) HRESULT {
+    pub inline fn RemoveLeafElement(self: *const IADsPathname) HRESULT {
         return self.vtable.RemoveLeafElement(self);
     }
-    pub fn CopyPath(self: *const IADsPathname, ppAdsPath: ?*?*IDispatch) callconv(.Inline) HRESULT {
+    pub inline fn CopyPath(self: *const IADsPathname, ppAdsPath: ?*?*IDispatch) HRESULT {
         return self.vtable.CopyPath(self, ppAdsPath);
     }
-    pub fn GetEscapedElement(self: *const IADsPathname, lnReserved: i32, bstrInStr: ?BSTR, pbstrOutStr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetEscapedElement(self: *const IADsPathname, lnReserved: i32, bstrInStr: ?BSTR, pbstrOutStr: ?*?BSTR) HRESULT {
         return self.vtable.GetEscapedElement(self, lnReserved, bstrInStr, pbstrOutStr);
     }
-    pub fn get_EscapedMode(self: *const IADsPathname, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_EscapedMode(self: *const IADsPathname, retval: ?*i32) HRESULT {
         return self.vtable.get_EscapedMode(self, retval);
     }
-    pub fn put_EscapedMode(self: *const IADsPathname, lnEscapedMode: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_EscapedMode(self: *const IADsPathname, lnEscapedMode: i32) HRESULT {
         return self.vtable.put_EscapedMode(self, lnEscapedMode);
     }
 };
@@ -7109,107 +7109,107 @@ pub const IADsADSystemInfo = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UserName: *const fn(
+        get_UserName: *const fn (
             self: *const IADsADSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ComputerName: *const fn(
+        get_ComputerName: *const fn (
             self: *const IADsADSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SiteName: *const fn(
+        get_SiteName: *const fn (
             self: *const IADsADSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DomainShortName: *const fn(
+        get_DomainShortName: *const fn (
             self: *const IADsADSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DomainDNSName: *const fn(
+        get_DomainDNSName: *const fn (
             self: *const IADsADSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ForestDNSName: *const fn(
+        get_ForestDNSName: *const fn (
             self: *const IADsADSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PDCRoleOwner: *const fn(
+        get_PDCRoleOwner: *const fn (
             self: *const IADsADSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SchemaRoleOwner: *const fn(
+        get_SchemaRoleOwner: *const fn (
             self: *const IADsADSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_IsNativeMode: *const fn(
+        get_IsNativeMode: *const fn (
             self: *const IADsADSystemInfo,
             retval: ?*i16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAnyDCName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAnyDCName: *const fn (
             self: *const IADsADSystemInfo,
             pszDCName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDCSiteName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDCSiteName: *const fn (
             self: *const IADsADSystemInfo,
             szServer: ?BSTR,
             pszSiteName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RefreshSchemaCache: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RefreshSchemaCache: *const fn (
             self: *const IADsADSystemInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTrees: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTrees: *const fn (
             self: *const IADsADSystemInfo,
             pvTrees: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_UserName(self: *const IADsADSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UserName(self: *const IADsADSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_UserName(self, retval);
     }
-    pub fn get_ComputerName(self: *const IADsADSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ComputerName(self: *const IADsADSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ComputerName(self, retval);
     }
-    pub fn get_SiteName(self: *const IADsADSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SiteName(self: *const IADsADSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_SiteName(self, retval);
     }
-    pub fn get_DomainShortName(self: *const IADsADSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DomainShortName(self: *const IADsADSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_DomainShortName(self, retval);
     }
-    pub fn get_DomainDNSName(self: *const IADsADSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DomainDNSName(self: *const IADsADSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_DomainDNSName(self, retval);
     }
-    pub fn get_ForestDNSName(self: *const IADsADSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ForestDNSName(self: *const IADsADSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ForestDNSName(self, retval);
     }
-    pub fn get_PDCRoleOwner(self: *const IADsADSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PDCRoleOwner(self: *const IADsADSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PDCRoleOwner(self, retval);
     }
-    pub fn get_SchemaRoleOwner(self: *const IADsADSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_SchemaRoleOwner(self: *const IADsADSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_SchemaRoleOwner(self, retval);
     }
-    pub fn get_IsNativeMode(self: *const IADsADSystemInfo, retval: ?*i16) callconv(.Inline) HRESULT {
+    pub inline fn get_IsNativeMode(self: *const IADsADSystemInfo, retval: ?*i16) HRESULT {
         return self.vtable.get_IsNativeMode(self, retval);
     }
-    pub fn GetAnyDCName(self: *const IADsADSystemInfo, pszDCName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetAnyDCName(self: *const IADsADSystemInfo, pszDCName: ?*?BSTR) HRESULT {
         return self.vtable.GetAnyDCName(self, pszDCName);
     }
-    pub fn GetDCSiteName(self: *const IADsADSystemInfo, szServer: ?BSTR, pszSiteName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDCSiteName(self: *const IADsADSystemInfo, szServer: ?BSTR, pszSiteName: ?*?BSTR) HRESULT {
         return self.vtable.GetDCSiteName(self, szServer, pszSiteName);
     }
-    pub fn RefreshSchemaCache(self: *const IADsADSystemInfo) callconv(.Inline) HRESULT {
+    pub inline fn RefreshSchemaCache(self: *const IADsADSystemInfo) HRESULT {
         return self.vtable.RefreshSchemaCache(self);
     }
-    pub fn GetTrees(self: *const IADsADSystemInfo, pvTrees: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetTrees(self: *const IADsADSystemInfo, pvTrees: ?*VARIANT) HRESULT {
         return self.vtable.GetTrees(self, pvTrees);
     }
 };
@@ -7221,39 +7221,39 @@ pub const IADsWinNTSystemInfo = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_UserName: *const fn(
+        get_UserName: *const fn (
             self: *const IADsWinNTSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_ComputerName: *const fn(
+        get_ComputerName: *const fn (
             self: *const IADsWinNTSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DomainName: *const fn(
+        get_DomainName: *const fn (
             self: *const IADsWinNTSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_PDC: *const fn(
+        get_PDC: *const fn (
             self: *const IADsWinNTSystemInfo,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_UserName(self: *const IADsWinNTSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_UserName(self: *const IADsWinNTSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_UserName(self, retval);
     }
-    pub fn get_ComputerName(self: *const IADsWinNTSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_ComputerName(self: *const IADsWinNTSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_ComputerName(self, retval);
     }
-    pub fn get_DomainName(self: *const IADsWinNTSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DomainName(self: *const IADsWinNTSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_DomainName(self, retval);
     }
-    pub fn get_PDC(self: *const IADsWinNTSystemInfo, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_PDC(self: *const IADsWinNTSystemInfo, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_PDC(self, retval);
     }
 };
@@ -7265,39 +7265,39 @@ pub const IADsDNWithBinary = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_BinaryValue: *const fn(
+        get_BinaryValue: *const fn (
             self: *const IADsDNWithBinary,
             retval: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_BinaryValue: *const fn(
+        put_BinaryValue: *const fn (
             self: *const IADsDNWithBinary,
             vBinaryValue: VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DNString: *const fn(
+        get_DNString: *const fn (
             self: *const IADsDNWithBinary,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DNString: *const fn(
+        put_DNString: *const fn (
             self: *const IADsDNWithBinary,
             bstrDNString: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_BinaryValue(self: *const IADsDNWithBinary, retval: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn get_BinaryValue(self: *const IADsDNWithBinary, retval: ?*VARIANT) HRESULT {
         return self.vtable.get_BinaryValue(self, retval);
     }
-    pub fn put_BinaryValue(self: *const IADsDNWithBinary, vBinaryValue: VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn put_BinaryValue(self: *const IADsDNWithBinary, vBinaryValue: VARIANT) HRESULT {
         return self.vtable.put_BinaryValue(self, vBinaryValue);
     }
-    pub fn get_DNString(self: *const IADsDNWithBinary, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DNString(self: *const IADsDNWithBinary, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_DNString(self, retval);
     }
-    pub fn put_DNString(self: *const IADsDNWithBinary, bstrDNString: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_DNString(self: *const IADsDNWithBinary, bstrDNString: ?BSTR) HRESULT {
         return self.vtable.put_DNString(self, bstrDNString);
     }
 };
@@ -7309,39 +7309,39 @@ pub const IADsDNWithString = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StringValue: *const fn(
+        get_StringValue: *const fn (
             self: *const IADsDNWithString,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_StringValue: *const fn(
+        put_StringValue: *const fn (
             self: *const IADsDNWithString,
             bstrStringValue: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_DNString: *const fn(
+        get_DNString: *const fn (
             self: *const IADsDNWithString,
             retval: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_DNString: *const fn(
+        put_DNString: *const fn (
             self: *const IADsDNWithString,
             bstrDNString: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn get_StringValue(self: *const IADsDNWithString, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_StringValue(self: *const IADsDNWithString, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_StringValue(self, retval);
     }
-    pub fn put_StringValue(self: *const IADsDNWithString, bstrStringValue: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_StringValue(self: *const IADsDNWithString, bstrStringValue: ?BSTR) HRESULT {
         return self.vtable.put_StringValue(self, bstrStringValue);
     }
-    pub fn get_DNString(self: *const IADsDNWithString, retval: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_DNString(self: *const IADsDNWithString, retval: ?*?BSTR) HRESULT {
         return self.vtable.get_DNString(self, retval);
     }
-    pub fn put_DNString(self: *const IADsDNWithString, bstrDNString: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn put_DNString(self: *const IADsDNWithString, bstrDNString: ?BSTR) HRESULT {
         return self.vtable.put_DNString(self, bstrDNString);
     }
 };
@@ -7352,54 +7352,54 @@ pub const IID_IADsSecurityUtility = &IID_IADsSecurityUtility_Value;
 pub const IADsSecurityUtility = extern union {
     pub const VTable = extern struct {
         base: IDispatch.VTable,
-        GetSecurityDescriptor: *const fn(
+        GetSecurityDescriptor: *const fn (
             self: *const IADsSecurityUtility,
             varPath: VARIANT,
             lPathFormat: i32,
             lFormat: i32,
             pVariant: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSecurityDescriptor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSecurityDescriptor: *const fn (
             self: *const IADsSecurityUtility,
             varPath: VARIANT,
             lPathFormat: i32,
             varData: VARIANT,
             lDataFormat: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertSecurityDescriptor: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertSecurityDescriptor: *const fn (
             self: *const IADsSecurityUtility,
             varSD: VARIANT,
             lDataFormat: i32,
             lOutFormat: i32,
             pResult: ?*VARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SecurityMask: *const fn(
+        get_SecurityMask: *const fn (
             self: *const IADsSecurityUtility,
             retval: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        put_SecurityMask: *const fn(
+        put_SecurityMask: *const fn (
             self: *const IADsSecurityUtility,
             lnSecurityMask: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDispatch: IDispatch,
     IUnknown: IUnknown,
-    pub fn GetSecurityDescriptor(self: *const IADsSecurityUtility, varPath: VARIANT, lPathFormat: i32, lFormat: i32, pVariant: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetSecurityDescriptor(self: *const IADsSecurityUtility, varPath: VARIANT, lPathFormat: i32, lFormat: i32, pVariant: ?*VARIANT) HRESULT {
         return self.vtable.GetSecurityDescriptor(self, varPath, lPathFormat, lFormat, pVariant);
     }
-    pub fn SetSecurityDescriptor(self: *const IADsSecurityUtility, varPath: VARIANT, lPathFormat: i32, varData: VARIANT, lDataFormat: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetSecurityDescriptor(self: *const IADsSecurityUtility, varPath: VARIANT, lPathFormat: i32, varData: VARIANT, lDataFormat: i32) HRESULT {
         return self.vtable.SetSecurityDescriptor(self, varPath, lPathFormat, varData, lDataFormat);
     }
-    pub fn ConvertSecurityDescriptor(self: *const IADsSecurityUtility, varSD: VARIANT, lDataFormat: i32, lOutFormat: i32, pResult: ?*VARIANT) callconv(.Inline) HRESULT {
+    pub inline fn ConvertSecurityDescriptor(self: *const IADsSecurityUtility, varSD: VARIANT, lDataFormat: i32, lOutFormat: i32, pResult: ?*VARIANT) HRESULT {
         return self.vtable.ConvertSecurityDescriptor(self, varSD, lDataFormat, lOutFormat, pResult);
     }
-    pub fn get_SecurityMask(self: *const IADsSecurityUtility, retval: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn get_SecurityMask(self: *const IADsSecurityUtility, retval: ?*i32) HRESULT {
         return self.vtable.get_SecurityMask(self, retval);
     }
-    pub fn put_SecurityMask(self: *const IADsSecurityUtility, lnSecurityMask: i32) callconv(.Inline) HRESULT {
+    pub inline fn put_SecurityMask(self: *const IADsSecurityUtility, lnSecurityMask: i32) HRESULT {
         return self.vtable.put_SecurityMask(self, lnSecurityMask);
     }
 };
@@ -7455,56 +7455,56 @@ pub const IID_IDsBrowseDomainTree = &IID_IDsBrowseDomainTree_Value;
 pub const IDsBrowseDomainTree = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        BrowseTo: *const fn(
+        BrowseTo: *const fn (
             self: *const IDsBrowseDomainTree,
             hwndParent: ?HWND,
             ppszTargetPath: ?*?PWSTR,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDomains: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDomains: *const fn (
             self: *const IDsBrowseDomainTree,
             ppDomainTree: ?*?*DOMAIN_TREE,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FreeDomains: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FreeDomains: *const fn (
             self: *const IDsBrowseDomainTree,
             ppDomainTree: ?*?*DOMAIN_TREE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FlushCachedDomains: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FlushCachedDomains: *const fn (
             self: *const IDsBrowseDomainTree,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetComputer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetComputer: *const fn (
             self: *const IDsBrowseDomainTree,
             pszComputerName: ?[*:0]const u16,
             pszUserName: ?[*:0]const u16,
             pszPassword: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn BrowseTo(self: *const IDsBrowseDomainTree, hwndParent: ?HWND, ppszTargetPath: ?*?PWSTR, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn BrowseTo(self: *const IDsBrowseDomainTree, hwndParent: ?HWND, ppszTargetPath: ?*?PWSTR, dwFlags: u32) HRESULT {
         return self.vtable.BrowseTo(self, hwndParent, ppszTargetPath, dwFlags);
     }
-    pub fn GetDomains(self: *const IDsBrowseDomainTree, ppDomainTree: ?*?*DOMAIN_TREE, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDomains(self: *const IDsBrowseDomainTree, ppDomainTree: ?*?*DOMAIN_TREE, dwFlags: u32) HRESULT {
         return self.vtable.GetDomains(self, ppDomainTree, dwFlags);
     }
-    pub fn FreeDomains(self: *const IDsBrowseDomainTree, ppDomainTree: ?*?*DOMAIN_TREE) callconv(.Inline) HRESULT {
+    pub inline fn FreeDomains(self: *const IDsBrowseDomainTree, ppDomainTree: ?*?*DOMAIN_TREE) HRESULT {
         return self.vtable.FreeDomains(self, ppDomainTree);
     }
-    pub fn FlushCachedDomains(self: *const IDsBrowseDomainTree) callconv(.Inline) HRESULT {
+    pub inline fn FlushCachedDomains(self: *const IDsBrowseDomainTree) HRESULT {
         return self.vtable.FlushCachedDomains(self);
     }
-    pub fn SetComputer(self: *const IDsBrowseDomainTree, pszComputerName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszPassword: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetComputer(self: *const IDsBrowseDomainTree, pszComputerName: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszPassword: ?[*:0]const u16) HRESULT {
         return self.vtable.SetComputer(self, pszComputerName, pszUserName, pszPassword);
     }
 };
 
-pub const LPDSENUMATTRIBUTES = *const fn(
+pub const LPDSENUMATTRIBUTES = *const fn (
     lParam: LPARAM,
     pszAttributeName: ?[*:0]const u16,
     pszDisplayName: ?[*:0]const u16,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub const DSCLASSCREATIONINFO = extern struct {
     dwFlags: u32,
@@ -7520,106 +7520,106 @@ pub const IID_IDsDisplaySpecifier = &IID_IDsDisplaySpecifier_Value;
 pub const IDsDisplaySpecifier = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetServer: *const fn(
+        SetServer: *const fn (
             self: *const IDsDisplaySpecifier,
             pszServer: ?[*:0]const u16,
             pszUserName: ?[*:0]const u16,
             pszPassword: ?[*:0]const u16,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLanguageID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLanguageID: *const fn (
             self: *const IDsDisplaySpecifier,
             langid: u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplaySpecifier: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplaySpecifier: *const fn (
             self: *const IDsDisplaySpecifier,
             pszObjectClass: ?[*:0]const u16,
             riid: ?*const Guid,
             ppv: ?*?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIconLocation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIconLocation: *const fn (
             self: *const IDsDisplaySpecifier,
             pszObjectClass: ?[*:0]const u16,
             dwFlags: u32,
             pszBuffer: [*:0]u16,
             cchBuffer: i32,
             presid: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetIcon: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetIcon: *const fn (
             self: *const IDsDisplaySpecifier,
             pszObjectClass: ?[*:0]const u16,
             dwFlags: u32,
             cxIcon: i32,
             cyIcon: i32,
-        ) callconv(@import("std").os.windows.WINAPI) ?HICON,
-        GetFriendlyClassName: *const fn(
+        ) callconv(.winapi) ?HICON,
+        GetFriendlyClassName: *const fn (
             self: *const IDsDisplaySpecifier,
             pszObjectClass: ?[*:0]const u16,
             pszBuffer: [*:0]u16,
             cchBuffer: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFriendlyAttributeName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFriendlyAttributeName: *const fn (
             self: *const IDsDisplaySpecifier,
             pszObjectClass: ?[*:0]const u16,
             pszAttributeName: ?[*:0]const u16,
             pszBuffer: [*:0]u16,
             cchBuffer: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsClassContainer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsClassContainer: *const fn (
             self: *const IDsDisplaySpecifier,
             pszObjectClass: ?[*:0]const u16,
             pszADsPath: ?[*:0]const u16,
             dwFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) BOOL,
-        GetClassCreationInfo: *const fn(
+        ) callconv(.winapi) BOOL,
+        GetClassCreationInfo: *const fn (
             self: *const IDsDisplaySpecifier,
             pszObjectClass: ?[*:0]const u16,
             ppdscci: ?*?*DSCLASSCREATIONINFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumClassAttributes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumClassAttributes: *const fn (
             self: *const IDsDisplaySpecifier,
             pszObjectClass: ?[*:0]const u16,
             pcbEnum: ?LPDSENUMATTRIBUTES,
             lParam: LPARAM,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAttributeADsType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAttributeADsType: *const fn (
             self: *const IDsDisplaySpecifier,
             pszAttributeName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) ADSTYPEENUM,
+        ) callconv(.winapi) ADSTYPEENUM,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetServer(self: *const IDsDisplaySpecifier, pszServer: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszPassword: ?[*:0]const u16, dwFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetServer(self: *const IDsDisplaySpecifier, pszServer: ?[*:0]const u16, pszUserName: ?[*:0]const u16, pszPassword: ?[*:0]const u16, dwFlags: u32) HRESULT {
         return self.vtable.SetServer(self, pszServer, pszUserName, pszPassword, dwFlags);
     }
-    pub fn SetLanguageID(self: *const IDsDisplaySpecifier, langid: u16) callconv(.Inline) HRESULT {
+    pub inline fn SetLanguageID(self: *const IDsDisplaySpecifier, langid: u16) HRESULT {
         return self.vtable.SetLanguageID(self, langid);
     }
-    pub fn GetDisplaySpecifier(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, riid: ?*const Guid, ppv: ?*?*anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplaySpecifier(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, riid: ?*const Guid, ppv: ?*?*anyopaque) HRESULT {
         return self.vtable.GetDisplaySpecifier(self, pszObjectClass, riid, ppv);
     }
-    pub fn GetIconLocation(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, dwFlags: u32, pszBuffer: [*:0]u16, cchBuffer: i32, presid: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetIconLocation(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, dwFlags: u32, pszBuffer: [*:0]u16, cchBuffer: i32, presid: ?*i32) HRESULT {
         return self.vtable.GetIconLocation(self, pszObjectClass, dwFlags, pszBuffer, cchBuffer, presid);
     }
-    pub fn GetIcon(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, dwFlags: u32, cxIcon: i32, cyIcon: i32) callconv(.Inline) ?HICON {
+    pub inline fn GetIcon(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, dwFlags: u32, cxIcon: i32, cyIcon: i32) ?HICON {
         return self.vtable.GetIcon(self, pszObjectClass, dwFlags, cxIcon, cyIcon);
     }
-    pub fn GetFriendlyClassName(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, pszBuffer: [*:0]u16, cchBuffer: i32) callconv(.Inline) HRESULT {
+    pub inline fn GetFriendlyClassName(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, pszBuffer: [*:0]u16, cchBuffer: i32) HRESULT {
         return self.vtable.GetFriendlyClassName(self, pszObjectClass, pszBuffer, cchBuffer);
     }
-    pub fn GetFriendlyAttributeName(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, pszAttributeName: ?[*:0]const u16, pszBuffer: [*:0]u16, cchBuffer: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFriendlyAttributeName(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, pszAttributeName: ?[*:0]const u16, pszBuffer: [*:0]u16, cchBuffer: u32) HRESULT {
         return self.vtable.GetFriendlyAttributeName(self, pszObjectClass, pszAttributeName, pszBuffer, cchBuffer);
     }
-    pub fn IsClassContainer(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, pszADsPath: ?[*:0]const u16, dwFlags: u32) callconv(.Inline) BOOL {
+    pub inline fn IsClassContainer(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, pszADsPath: ?[*:0]const u16, dwFlags: u32) BOOL {
         return self.vtable.IsClassContainer(self, pszObjectClass, pszADsPath, dwFlags);
     }
-    pub fn GetClassCreationInfo(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, ppdscci: ?*?*DSCLASSCREATIONINFO) callconv(.Inline) HRESULT {
+    pub inline fn GetClassCreationInfo(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, ppdscci: ?*?*DSCLASSCREATIONINFO) HRESULT {
         return self.vtable.GetClassCreationInfo(self, pszObjectClass, ppdscci);
     }
-    pub fn EnumClassAttributes(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, pcbEnum: ?LPDSENUMATTRIBUTES, lParam: LPARAM) callconv(.Inline) HRESULT {
+    pub inline fn EnumClassAttributes(self: *const IDsDisplaySpecifier, pszObjectClass: ?[*:0]const u16, pcbEnum: ?LPDSENUMATTRIBUTES, lParam: LPARAM) HRESULT {
         return self.vtable.EnumClassAttributes(self, pszObjectClass, pcbEnum, lParam);
     }
-    pub fn GetAttributeADsType(self: *const IDsDisplaySpecifier, pszAttributeName: ?[*:0]const u16) callconv(.Inline) ADSTYPEENUM {
+    pub inline fn GetAttributeADsType(self: *const IDsDisplaySpecifier, pszAttributeName: ?[*:0]const u16) ADSTYPEENUM {
         return self.vtable.GetAttributeADsType(self, pszAttributeName);
     }
 };
@@ -7736,22 +7736,22 @@ pub const IID_IDsObjectPicker = &IID_IDsObjectPicker_Value;
 pub const IDsObjectPicker = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IDsObjectPicker,
             pInitInfo: ?*DSOP_INIT_INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InvokeDialog: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InvokeDialog: *const fn (
             self: *const IDsObjectPicker,
             hwndParent: ?HWND,
             ppdoSelections: ?*?*IDataObject,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IDsObjectPicker, pInitInfo: ?*DSOP_INIT_INFO) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IDsObjectPicker, pInitInfo: ?*DSOP_INIT_INFO) HRESULT {
         return self.vtable.Initialize(self, pInitInfo);
     }
-    pub fn InvokeDialog(self: *const IDsObjectPicker, hwndParent: ?HWND, ppdoSelections: ?*?*IDataObject) callconv(.Inline) HRESULT {
+    pub inline fn InvokeDialog(self: *const IDsObjectPicker, hwndParent: ?HWND, ppdoSelections: ?*?*IDataObject) HRESULT {
         return self.vtable.InvokeDialog(self, hwndParent, ppdoSelections);
     }
 };
@@ -7762,16 +7762,16 @@ pub const IID_IDsObjectPickerCredentials = &IID_IDsObjectPickerCredentials_Value
 pub const IDsObjectPickerCredentials = extern union {
     pub const VTable = extern struct {
         base: IDsObjectPicker.VTable,
-        SetCredentials: *const fn(
+        SetCredentials: *const fn (
             self: *const IDsObjectPickerCredentials,
             szUserName: ?[*:0]const u16,
             szPassword: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IDsObjectPicker: IDsObjectPicker,
     IUnknown: IUnknown,
-    pub fn SetCredentials(self: *const IDsObjectPickerCredentials, szUserName: ?[*:0]const u16, szPassword: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn SetCredentials(self: *const IDsObjectPickerCredentials, szUserName: ?[*:0]const u16, szPassword: ?[*:0]const u16) HRESULT {
         return self.vtable.SetCredentials(self, szUserName, szPassword);
     }
 };
@@ -7817,24 +7817,24 @@ pub const IID_IDsAdminCreateObj = &IID_IDsAdminCreateObj_Value;
 pub const IDsAdminCreateObj = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IDsAdminCreateObj,
             pADsContainerObj: ?*IADsContainer,
             pADsCopySource: ?*IADs,
             lpszClassName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateModal: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateModal: *const fn (
             self: *const IDsAdminCreateObj,
             hwndParent: ?HWND,
             ppADsObj: ?*?*IADs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IDsAdminCreateObj, pADsContainerObj: ?*IADsContainer, pADsCopySource: ?*IADs, lpszClassName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IDsAdminCreateObj, pADsContainerObj: ?*IADsContainer, pADsCopySource: ?*IADs, lpszClassName: ?[*:0]const u16) HRESULT {
         return self.vtable.Initialize(self, pADsContainerObj, pADsCopySource, lpszClassName);
     }
-    pub fn CreateModal(self: *const IDsAdminCreateObj, hwndParent: ?HWND, ppADsObj: ?*?*IADs) callconv(.Inline) HRESULT {
+    pub inline fn CreateModal(self: *const IDsAdminCreateObj, hwndParent: ?HWND, ppADsObj: ?*?*IADs) HRESULT {
         return self.vtable.CreateModal(self, hwndParent, ppADsObj);
     }
 };
@@ -7845,23 +7845,23 @@ pub const IID_IDsAdminNewObj = &IID_IDsAdminNewObj_Value;
 pub const IDsAdminNewObj = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetButtons: *const fn(
+        SetButtons: *const fn (
             self: *const IDsAdminNewObj,
             nCurrIndex: u32,
             bValid: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPageCounts: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPageCounts: *const fn (
             self: *const IDsAdminNewObj,
             pnTotal: ?*i32,
             pnStartIndex: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetButtons(self: *const IDsAdminNewObj, nCurrIndex: u32, bValid: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn SetButtons(self: *const IDsAdminNewObj, nCurrIndex: u32, bValid: BOOL) HRESULT {
         return self.vtable.SetButtons(self, nCurrIndex, bValid);
     }
-    pub fn GetPageCounts(self: *const IDsAdminNewObj, pnTotal: ?*i32, pnStartIndex: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetPageCounts(self: *const IDsAdminNewObj, pnTotal: ?*i32, pnStartIndex: ?*i32) HRESULT {
         return self.vtable.GetPageCounts(self, pnTotal, pnStartIndex);
     }
 };
@@ -7872,20 +7872,20 @@ pub const IID_IDsAdminNewObjPrimarySite = &IID_IDsAdminNewObjPrimarySite_Value;
 pub const IDsAdminNewObjPrimarySite = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateNew: *const fn(
+        CreateNew: *const fn (
             self: *const IDsAdminNewObjPrimarySite,
             pszName: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Commit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Commit: *const fn (
             self: *const IDsAdminNewObjPrimarySite,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateNew(self: *const IDsAdminNewObjPrimarySite, pszName: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn CreateNew(self: *const IDsAdminNewObjPrimarySite, pszName: ?[*:0]const u16) HRESULT {
         return self.vtable.CreateNew(self, pszName);
     }
-    pub fn Commit(self: *const IDsAdminNewObjPrimarySite) callconv(.Inline) HRESULT {
+    pub inline fn Commit(self: *const IDsAdminNewObjPrimarySite) HRESULT {
         return self.vtable.Commit(self);
     }
 };
@@ -7903,57 +7903,57 @@ pub const IID_IDsAdminNewObjExt = &IID_IDsAdminNewObjExt_Value;
 pub const IDsAdminNewObjExt = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IDsAdminNewObjExt,
             pADsContainerObj: ?*IADsContainer,
             pADsCopySource: ?*IADs,
             lpszClassName: ?[*:0]const u16,
             pDsAdminNewObj: ?*IDsAdminNewObj,
             pDispInfo: ?*DSA_NEWOBJ_DISPINFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPages: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPages: *const fn (
             self: *const IDsAdminNewObjExt,
             lpfnAddPage: ?LPFNSVADDPROPSHEETPAGE,
             lParam: LPARAM,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetObject: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetObject: *const fn (
             self: *const IDsAdminNewObjExt,
             pADsObj: ?*IADs,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        WriteData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        WriteData: *const fn (
             self: *const IDsAdminNewObjExt,
             hWnd: ?HWND,
             uContext: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OnError: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OnError: *const fn (
             self: *const IDsAdminNewObjExt,
             hWnd: ?HWND,
             hr: HRESULT,
             uContext: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSummaryInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSummaryInfo: *const fn (
             self: *const IDsAdminNewObjExt,
             pBstrText: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IDsAdminNewObjExt, pADsContainerObj: ?*IADsContainer, pADsCopySource: ?*IADs, lpszClassName: ?[*:0]const u16, pDsAdminNewObj: ?*IDsAdminNewObj, pDispInfo: ?*DSA_NEWOBJ_DISPINFO) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IDsAdminNewObjExt, pADsContainerObj: ?*IADsContainer, pADsCopySource: ?*IADs, lpszClassName: ?[*:0]const u16, pDsAdminNewObj: ?*IDsAdminNewObj, pDispInfo: ?*DSA_NEWOBJ_DISPINFO) HRESULT {
         return self.vtable.Initialize(self, pADsContainerObj, pADsCopySource, lpszClassName, pDsAdminNewObj, pDispInfo);
     }
-    pub fn AddPages(self: *const IDsAdminNewObjExt, lpfnAddPage: ?LPFNSVADDPROPSHEETPAGE, lParam: LPARAM) callconv(.Inline) HRESULT {
+    pub inline fn AddPages(self: *const IDsAdminNewObjExt, lpfnAddPage: ?LPFNSVADDPROPSHEETPAGE, lParam: LPARAM) HRESULT {
         return self.vtable.AddPages(self, lpfnAddPage, lParam);
     }
-    pub fn SetObject(self: *const IDsAdminNewObjExt, pADsObj: ?*IADs) callconv(.Inline) HRESULT {
+    pub inline fn SetObject(self: *const IDsAdminNewObjExt, pADsObj: ?*IADs) HRESULT {
         return self.vtable.SetObject(self, pADsObj);
     }
-    pub fn WriteData(self: *const IDsAdminNewObjExt, hWnd: ?HWND, uContext: u32) callconv(.Inline) HRESULT {
+    pub inline fn WriteData(self: *const IDsAdminNewObjExt, hWnd: ?HWND, uContext: u32) HRESULT {
         return self.vtable.WriteData(self, hWnd, uContext);
     }
-    pub fn OnError(self: *const IDsAdminNewObjExt, hWnd: ?HWND, hr: HRESULT, uContext: u32) callconv(.Inline) HRESULT {
+    pub inline fn OnError(self: *const IDsAdminNewObjExt, hWnd: ?HWND, hr: HRESULT, uContext: u32) HRESULT {
         return self.vtable.OnError(self, hWnd, hr, uContext);
     }
-    pub fn GetSummaryInfo(self: *const IDsAdminNewObjExt, pBstrText: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetSummaryInfo(self: *const IDsAdminNewObjExt, pBstrText: ?*?BSTR) HRESULT {
         return self.vtable.GetSummaryInfo(self, pBstrText);
     }
 };
@@ -7964,40 +7964,40 @@ pub const IID_IDsAdminNotifyHandler = &IID_IDsAdminNotifyHandler_Value;
 pub const IDsAdminNotifyHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IDsAdminNotifyHandler,
             pExtraInfo: ?*IDataObject,
             puEventFlags: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Begin: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Begin: *const fn (
             self: *const IDsAdminNotifyHandler,
             uEvent: u32,
             pArg1: ?*IDataObject,
             pArg2: ?*IDataObject,
             puFlags: ?*u32,
             pBstr: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Notify: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Notify: *const fn (
             self: *const IDsAdminNotifyHandler,
             nItem: u32,
             uFlags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        End: *const fn(
+        ) callconv(.winapi) HRESULT,
+        End: *const fn (
             self: *const IDsAdminNotifyHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IDsAdminNotifyHandler, pExtraInfo: ?*IDataObject, puEventFlags: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IDsAdminNotifyHandler, pExtraInfo: ?*IDataObject, puEventFlags: ?*u32) HRESULT {
         return self.vtable.Initialize(self, pExtraInfo, puEventFlags);
     }
-    pub fn Begin(self: *const IDsAdminNotifyHandler, uEvent: u32, pArg1: ?*IDataObject, pArg2: ?*IDataObject, puFlags: ?*u32, pBstr: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn Begin(self: *const IDsAdminNotifyHandler, uEvent: u32, pArg1: ?*IDataObject, pArg2: ?*IDataObject, puFlags: ?*u32, pBstr: ?*?BSTR) HRESULT {
         return self.vtable.Begin(self, uEvent, pArg1, pArg2, puFlags, pBstr);
     }
-    pub fn Notify(self: *const IDsAdminNotifyHandler, nItem: u32, uFlags: u32) callconv(.Inline) HRESULT {
+    pub inline fn Notify(self: *const IDsAdminNotifyHandler, nItem: u32, uFlags: u32) HRESULT {
         return self.vtable.Notify(self, nItem, uFlags);
     }
-    pub fn End(self: *const IDsAdminNotifyHandler) callconv(.Inline) HRESULT {
+    pub inline fn End(self: *const IDsAdminNotifyHandler) HRESULT {
         return self.vtable.End(self);
     }
 };
@@ -8763,7 +8763,6 @@ pub const GetDcContextHandle = isize;
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
 pub const ADS_SEARCH_HANDLE = isize;
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (158)
 //--------------------------------------------------------------------------------
@@ -8772,18 +8771,18 @@ pub extern "activeds" fn ADsGetObject(
     lpszPathName: ?[*:0]const u16,
     riid: ?*const Guid,
     ppObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ADsBuildEnumerator(
     pADsContainer: ?*IADsContainer,
     ppEnumVariant: ?*?*IEnumVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ADsFreeEnumerator(
     pEnumVariant: ?*IEnumVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ADsEnumerateNext(
@@ -8791,21 +8790,21 @@ pub extern "activeds" fn ADsEnumerateNext(
     cElements: u32,
     pvar: ?*VARIANT,
     pcElementsFetched: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ADsBuildVarArrayStr(
     lppPathNames: [*]?PWSTR,
     dwPathNames: u32,
     pVar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ADsBuildVarArrayInt(
     lpdwObjectTypes: ?*u32,
     dwObjectTypes: u32,
     pVar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ADsOpenObject(
@@ -8815,7 +8814,7 @@ pub extern "activeds" fn ADsOpenObject(
     dwReserved: ADS_AUTHENTICATION_ENUM,
     riid: ?*const Guid,
     ppObject: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ADsGetLastError(
@@ -8824,78 +8823,78 @@ pub extern "activeds" fn ADsGetLastError(
     dwErrorBufLen: u32,
     lpNameBuf: [*:0]u16,
     dwNameBufLen: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ADsSetLastError(
     dwErr: u32,
     pszError: ?[*:0]const u16,
     pszProvider: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn AllocADsMem(
     cb: u32,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn FreeADsMem(
     pMem: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ReallocADsMem(
     pOldMem: ?*anyopaque,
     cbOld: u32,
     cbNew: u32,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn AllocADsStr(
     pStr: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn FreeADsStr(
     pStr: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ReallocADsStr(
     ppStr: ?*?PWSTR,
     pStr: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn ADsEncodeBinaryData(
     pbSrcData: ?*u8,
     dwSrcLen: u32,
     ppszDestData: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "activeds" fn ADsDecodeBinaryData(
     szSrcData: ?[*:0]const u16,
     ppbDestData: ?*?*u8,
     pdwDestLen: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "activeds" fn PropVariantToAdsType(
     pVariant: ?*VARIANT,
     dwNumVariant: u32,
     ppAdsValues: ?*?*ADSVALUE,
     pdwNumValues: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "activeds" fn AdsTypeToPropVariant(
     pAdsValues: ?*ADSVALUE,
     dwNumValues: u32,
     pVariant: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "activeds" fn AdsFreeAdsValues(
     pAdsValues: ?*ADSVALUE,
     dwNumValues: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn BinarySDToSecurityDescriptor(
@@ -8905,7 +8904,7 @@ pub extern "activeds" fn BinarySDToSecurityDescriptor(
     userName: ?[*:0]const u16,
     passWord: ?[*:0]const u16,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "activeds" fn SecurityDescriptorToBinarySD(
@@ -8916,17 +8915,17 @@ pub extern "activeds" fn SecurityDescriptorToBinarySD(
     userName: ?[*:0]const u16,
     passWord: ?[*:0]const u16,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsuiext" fn DsBrowseForContainerW(
     pInfo: ?*DSBROWSEINFOW,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsuiext" fn DsBrowseForContainerA(
     pInfo: ?*DSBROWSEINFOA,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsuiext" fn DsGetIcon(
@@ -8934,58 +8933,58 @@ pub extern "dsuiext" fn DsGetIcon(
     pszObjectClass: ?[*:0]const u16,
     cxImage: i32,
     cyImage: i32,
-) callconv(@import("std").os.windows.WINAPI) ?HICON;
+) callconv(.winapi) ?HICON;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsuiext" fn DsGetFriendlyClassName(
     pszObjectClass: ?[*:0]const u16,
     pszBuffer: [*:0]u16,
     cchBuffer: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsprop" fn ADsPropCreateNotifyObj(
     pAppThdDataObj: ?*IDataObject,
     pwzADsObjName: ?PWSTR,
     phNotifyObj: ?*?HWND,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsprop" fn ADsPropGetInitInfo(
     hNotifyObj: ?HWND,
     pInitParams: ?*ADSPROPINITPARAMS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsprop" fn ADsPropSetHwndWithTitle(
     hNotifyObj: ?HWND,
     hPage: ?HWND,
     ptzTitle: ?*i8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsprop" fn ADsPropSetHwnd(
     hNotifyObj: ?HWND,
     hPage: ?HWND,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsprop" fn ADsPropCheckIfWritable(
     pwzAttr: ?[*:0]const u16,
     pWritableAttrs: ?*const ADS_ATTR_INFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsprop" fn ADsPropSendErrorMessage(
     hNotifyObj: ?HWND,
     pError: ?*ADSPROPERROR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsprop" fn ADsPropShowErrorDialog(
     hNotifyObj: ?HWND,
     hPage: ?HWND,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsMakeSpnW(
@@ -8996,7 +8995,7 @@ pub extern "dsparse" fn DsMakeSpnW(
     Referrer: ?[*:0]const u16,
     pcSpnLength: ?*u32,
     pszSpn: ?[*:0]u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsMakeSpnA(
@@ -9007,7 +9006,7 @@ pub extern "dsparse" fn DsMakeSpnA(
     Referrer: ?[*:0]const u8,
     pcSpnLength: ?*u32,
     pszSpn: ?[*:0]u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsCrackSpnA(
@@ -9019,7 +9018,7 @@ pub extern "dsparse" fn DsCrackSpnA(
     pcInstanceName: ?*u32,
     InstanceName: ?[*:0]u8,
     pInstancePort: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsCrackSpnW(
@@ -9031,7 +9030,7 @@ pub extern "dsparse" fn DsCrackSpnW(
     pcInstanceName: ?*u32,
     InstanceName: ?[*:0]u16,
     pInstancePort: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsQuoteRdnValueW(
@@ -9039,7 +9038,7 @@ pub extern "dsparse" fn DsQuoteRdnValueW(
     psUnquotedRdnValue: [*:0]const u16,
     pcQuotedRdnValueLength: ?*u32,
     psQuotedRdnValue: [*]u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsQuoteRdnValueA(
@@ -9047,7 +9046,7 @@ pub extern "dsparse" fn DsQuoteRdnValueA(
     psUnquotedRdnValue: [*]const u8,
     pcQuotedRdnValueLength: ?*u32,
     psQuotedRdnValue: [*]u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsUnquoteRdnValueW(
@@ -9055,7 +9054,7 @@ pub extern "dsparse" fn DsUnquoteRdnValueW(
     psQuotedRdnValue: [*:0]const u16,
     pcUnquotedRdnValueLength: ?*u32,
     psUnquotedRdnValue: [*]u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsUnquoteRdnValueA(
@@ -9063,7 +9062,7 @@ pub extern "dsparse" fn DsUnquoteRdnValueA(
     psQuotedRdnValue: [*]const u8,
     pcUnquotedRdnValueLength: ?*u32,
     psUnquotedRdnValue: [*]u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsGetRdnW(
@@ -9073,7 +9072,7 @@ pub extern "dsparse" fn DsGetRdnW(
     pcKey: ?*u32,
     ppVal: ?*?PWSTR,
     pcVal: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsCrackUnquotedMangledRdnW(
@@ -9081,7 +9080,7 @@ pub extern "dsparse" fn DsCrackUnquotedMangledRdnW(
     cchRDN: u32,
     pGuid: ?*Guid,
     peDsMangleFor: ?*DS_MANGLE_FOR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsCrackUnquotedMangledRdnA(
@@ -9089,33 +9088,33 @@ pub extern "dsparse" fn DsCrackUnquotedMangledRdnA(
     cchRDN: u32,
     pGuid: ?*Guid,
     peDsMangleFor: ?*DS_MANGLE_FOR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsIsMangledRdnValueW(
     pszRdn: [*:0]const u16,
     cRdn: u32,
     eDsMangleForDesired: DS_MANGLE_FOR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsIsMangledRdnValueA(
     pszRdn: [*:0]const u8,
     cRdn: u32,
     eDsMangleForDesired: DS_MANGLE_FOR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsIsMangledDnA(
     pszDn: ?[*:0]const u8,
     eDsMangleFor: DS_MANGLE_FOR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "dsparse" fn DsIsMangledDnW(
     pszDn: ?[*:0]const u16,
     eDsMangleFor: DS_MANGLE_FOR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "dsparse" fn DsCrackSpn2A(
     pszSpn: [*:0]const u8,
@@ -9127,7 +9126,7 @@ pub extern "dsparse" fn DsCrackSpn2A(
     pcInstanceName: ?*u32,
     InstanceName: ?[*:0]u8,
     pInstancePort: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "dsparse" fn DsCrackSpn2W(
     pszSpn: [*:0]const u16,
@@ -9139,7 +9138,7 @@ pub extern "dsparse" fn DsCrackSpn2W(
     pcInstanceName: ?*u32,
     InstanceName: ?[*:0]u16,
     pInstancePort: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "dsparse" fn DsCrackSpn3W(
     pszSpn: ?[*:0]const u16,
@@ -9153,7 +9152,7 @@ pub extern "dsparse" fn DsCrackSpn3W(
     DomainName: [*:0]u16,
     pcRealmName: ?*u32,
     RealmName: [*:0]u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "dsparse" fn DsCrackSpn4W(
     pszSpn: ?[*:0]const u16,
@@ -9168,21 +9167,21 @@ pub extern "dsparse" fn DsCrackSpn4W(
     DomainName: [*:0]u16,
     pcRealmName: ?*u32,
     RealmName: [*:0]u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindW(
     DomainControllerName: ?[*:0]const u16,
     DnsDomainName: ?[*:0]const u16,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindA(
     DomainControllerName: ?[*:0]const u8,
     DnsDomainName: ?[*:0]const u8,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindWithCredW(
@@ -9190,7 +9189,7 @@ pub extern "ntdsapi" fn DsBindWithCredW(
     DnsDomainName: ?[*:0]const u16,
     AuthIdentity: ?*anyopaque,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindWithCredA(
@@ -9198,7 +9197,7 @@ pub extern "ntdsapi" fn DsBindWithCredA(
     DnsDomainName: ?[*:0]const u8,
     AuthIdentity: ?*anyopaque,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindWithSpnW(
@@ -9207,7 +9206,7 @@ pub extern "ntdsapi" fn DsBindWithSpnW(
     AuthIdentity: ?*anyopaque,
     ServicePrincipalName: ?[*:0]const u16,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindWithSpnA(
@@ -9216,7 +9215,7 @@ pub extern "ntdsapi" fn DsBindWithSpnA(
     AuthIdentity: ?*anyopaque,
     ServicePrincipalName: ?[*:0]const u8,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindWithSpnExW(
@@ -9226,7 +9225,7 @@ pub extern "ntdsapi" fn DsBindWithSpnExW(
     ServicePrincipalName: ?[*:0]const u16,
     BindFlags: u32,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindWithSpnExA(
@@ -9236,7 +9235,7 @@ pub extern "ntdsapi" fn DsBindWithSpnExA(
     ServicePrincipalName: ?[*:0]const u8,
     BindFlags: u32,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindByInstanceW(
@@ -9248,7 +9247,7 @@ pub extern "ntdsapi" fn DsBindByInstanceW(
     ServicePrincipalName: ?[*:0]const u16,
     BindFlags: u32,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindByInstanceA(
@@ -9260,35 +9259,35 @@ pub extern "ntdsapi" fn DsBindByInstanceA(
     ServicePrincipalName: ?[*:0]const u8,
     BindFlags: u32,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindToISTGW(
     SiteName: ?[*:0]const u16,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindToISTGA(
     SiteName: ?[*:0]const u8,
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsBindingSetTimeout(
     hDS: ?HANDLE,
     cTimeoutSecs: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsUnBindW(
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsUnBindA(
     phDS: ?*?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsMakePasswordCredentialsW(
@@ -9296,7 +9295,7 @@ pub extern "ntdsapi" fn DsMakePasswordCredentialsW(
     Domain: ?[*:0]const u16,
     Password: ?[*:0]const u16,
     pAuthIdentity: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsMakePasswordCredentialsA(
@@ -9304,12 +9303,12 @@ pub extern "ntdsapi" fn DsMakePasswordCredentialsA(
     Domain: ?[*:0]const u8,
     Password: ?[*:0]const u8,
     pAuthIdentity: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsFreePasswordCredentials(
     AuthIdentity: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsCrackNamesW(
@@ -9320,7 +9319,7 @@ pub extern "ntdsapi" fn DsCrackNamesW(
     cNames: u32,
     rpNames: [*]const ?[*:0]const u16,
     ppResult: ?*?*DS_NAME_RESULTW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsCrackNamesA(
@@ -9331,17 +9330,17 @@ pub extern "ntdsapi" fn DsCrackNamesA(
     cNames: u32,
     rpNames: [*]const ?[*:0]const u8,
     ppResult: ?*?*DS_NAME_RESULTA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsFreeNameResultW(
     pResult: ?*DS_NAME_RESULTW,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsFreeNameResultA(
     pResult: ?*DS_NAME_RESULTA,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsGetSpnA(
@@ -9354,7 +9353,7 @@ pub extern "ntdsapi" fn DsGetSpnA(
     pInstancePorts: ?[*:0]const u16,
     pcSpn: ?*u32,
     prpszSpn: ?*?*?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsGetSpnW(
@@ -9367,19 +9366,19 @@ pub extern "ntdsapi" fn DsGetSpnW(
     pInstancePorts: ?[*:0]const u16,
     pcSpn: ?*u32,
     prpszSpn: ?*?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsFreeSpnArrayA(
     cSpn: u32,
     rpszSpn: [*]?PSTR,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsFreeSpnArrayW(
     cSpn: u32,
     rpszSpn: [*]?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsWriteAccountSpnA(
@@ -9388,7 +9387,7 @@ pub extern "ntdsapi" fn DsWriteAccountSpnA(
     pszAccount: ?[*:0]const u8,
     cSpn: u32,
     rpszSpn: [*]?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsWriteAccountSpnW(
@@ -9397,7 +9396,7 @@ pub extern "ntdsapi" fn DsWriteAccountSpnW(
     pszAccount: ?[*:0]const u16,
     cSpn: u32,
     rpszSpn: [*]?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsClientMakeSpnForTargetServerW(
@@ -9405,7 +9404,7 @@ pub extern "ntdsapi" fn DsClientMakeSpnForTargetServerW(
     ServiceName: ?[*:0]const u16,
     pcSpnLength: ?*u32,
     pszSpn: [*:0]u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsClientMakeSpnForTargetServerA(
@@ -9413,21 +9412,21 @@ pub extern "ntdsapi" fn DsClientMakeSpnForTargetServerA(
     ServiceName: ?[*:0]const u8,
     pcSpnLength: ?*u32,
     pszSpn: [*:0]u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsServerRegisterSpnA(
     Operation: DS_SPN_WRITE_OP,
     ServiceClass: ?[*:0]const u8,
     UserObjectDN: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsServerRegisterSpnW(
     Operation: DS_SPN_WRITE_OP,
     ServiceClass: ?[*:0]const u16,
     UserObjectDN: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaSyncA(
@@ -9435,7 +9434,7 @@ pub extern "ntdsapi" fn DsReplicaSyncA(
     NameContext: ?[*:0]const u8,
     pUuidDsaSrc: ?*const Guid,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaSyncW(
@@ -9443,7 +9442,7 @@ pub extern "ntdsapi" fn DsReplicaSyncW(
     NameContext: ?[*:0]const u16,
     pUuidDsaSrc: ?*const Guid,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaAddA(
@@ -9454,7 +9453,7 @@ pub extern "ntdsapi" fn DsReplicaAddA(
     SourceDsaAddress: ?[*:0]const u8,
     pSchedule: ?*const SCHEDULE,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaAddW(
@@ -9465,7 +9464,7 @@ pub extern "ntdsapi" fn DsReplicaAddW(
     SourceDsaAddress: ?[*:0]const u16,
     pSchedule: ?*const SCHEDULE,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaDelA(
@@ -9473,7 +9472,7 @@ pub extern "ntdsapi" fn DsReplicaDelA(
     NameContext: ?[*:0]const u8,
     DsaSrc: ?[*:0]const u8,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaDelW(
@@ -9481,7 +9480,7 @@ pub extern "ntdsapi" fn DsReplicaDelW(
     NameContext: ?[*:0]const u16,
     DsaSrc: ?[*:0]const u16,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaModifyA(
@@ -9494,7 +9493,7 @@ pub extern "ntdsapi" fn DsReplicaModifyA(
     ReplicaFlags: u32,
     ModifyFields: u32,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaModifyW(
@@ -9507,7 +9506,7 @@ pub extern "ntdsapi" fn DsReplicaModifyW(
     ReplicaFlags: u32,
     ModifyFields: u32,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaUpdateRefsA(
@@ -9516,7 +9515,7 @@ pub extern "ntdsapi" fn DsReplicaUpdateRefsA(
     DsaDest: ?[*:0]const u8,
     pUuidDsaDest: ?*const Guid,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaUpdateRefsW(
@@ -9525,7 +9524,7 @@ pub extern "ntdsapi" fn DsReplicaUpdateRefsW(
     DsaDest: ?[*:0]const u16,
     pUuidDsaDest: ?*const Guid,
     Options: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaSyncAllA(
@@ -9535,7 +9534,7 @@ pub extern "ntdsapi" fn DsReplicaSyncAllA(
     pFnCallBack: isize,
     pCallbackData: ?*anyopaque,
     pErrors: ?*?*?*DS_REPSYNCALL_ERRINFOA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaSyncAllW(
@@ -9545,7 +9544,7 @@ pub extern "ntdsapi" fn DsReplicaSyncAllW(
     pFnCallBack: isize,
     pCallbackData: ?*anyopaque,
     pErrors: ?*?*?*DS_REPSYNCALL_ERRINFOW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsRemoveDsServerW(
@@ -9554,7 +9553,7 @@ pub extern "ntdsapi" fn DsRemoveDsServerW(
     DomainDN: ?PWSTR,
     fLastDcInDomain: ?*BOOL,
     fCommit: BOOL,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsRemoveDsServerA(
@@ -9563,59 +9562,59 @@ pub extern "ntdsapi" fn DsRemoveDsServerA(
     DomainDN: ?PSTR,
     fLastDcInDomain: ?*BOOL,
     fCommit: BOOL,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsRemoveDsDomainW(
     hDs: ?HANDLE,
     DomainDN: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsRemoveDsDomainA(
     hDs: ?HANDLE,
     DomainDN: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListSitesA(
     hDs: ?HANDLE,
     ppSites: ?*?*DS_NAME_RESULTA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListSitesW(
     hDs: ?HANDLE,
     ppSites: ?*?*DS_NAME_RESULTW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListServersInSiteA(
     hDs: ?HANDLE,
     site: ?[*:0]const u8,
     ppServers: ?*?*DS_NAME_RESULTA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListServersInSiteW(
     hDs: ?HANDLE,
     site: ?[*:0]const u16,
     ppServers: ?*?*DS_NAME_RESULTW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListDomainsInSiteA(
     hDs: ?HANDLE,
     site: ?[*:0]const u8,
     ppDomains: ?*?*DS_NAME_RESULTA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListDomainsInSiteW(
     hDs: ?HANDLE,
     site: ?[*:0]const u16,
     ppDomains: ?*?*DS_NAME_RESULTW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListServersForDomainInSiteA(
@@ -9623,7 +9622,7 @@ pub extern "ntdsapi" fn DsListServersForDomainInSiteA(
     domain: ?[*:0]const u8,
     site: ?[*:0]const u8,
     ppServers: ?*?*DS_NAME_RESULTA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListServersForDomainInSiteW(
@@ -9631,33 +9630,33 @@ pub extern "ntdsapi" fn DsListServersForDomainInSiteW(
     domain: ?[*:0]const u16,
     site: ?[*:0]const u16,
     ppServers: ?*?*DS_NAME_RESULTW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListInfoForServerA(
     hDs: ?HANDLE,
     server: ?[*:0]const u8,
     ppInfo: ?*?*DS_NAME_RESULTA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListInfoForServerW(
     hDs: ?HANDLE,
     server: ?[*:0]const u16,
     ppInfo: ?*?*DS_NAME_RESULTW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListRolesA(
     hDs: ?HANDLE,
     ppRoles: ?*?*DS_NAME_RESULTA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsListRolesW(
     hDs: ?HANDLE,
     ppRoles: ?*?*DS_NAME_RESULTW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsQuerySitesByCostW(
@@ -9667,7 +9666,7 @@ pub extern "ntdsapi" fn DsQuerySitesByCostW(
     cToSites: u32,
     dwFlags: u32,
     prgSiteInfo: ?*?*DS_SITE_COST_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsQuerySitesByCostA(
@@ -9677,12 +9676,12 @@ pub extern "ntdsapi" fn DsQuerySitesByCostA(
     cToSites: u32,
     dwFlags: u32,
     prgSiteInfo: ?*?*DS_SITE_COST_INFO,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsQuerySitesFree(
     rgSiteInfo: ?*DS_SITE_COST_INFO,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsMapSchemaGuidsA(
@@ -9690,12 +9689,12 @@ pub extern "ntdsapi" fn DsMapSchemaGuidsA(
     cGuids: u32,
     rGuids: [*]Guid,
     ppGuidMap: ?*?*DS_SCHEMA_GUID_MAPA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsFreeSchemaGuidMapA(
     pGuidMap: ?*DS_SCHEMA_GUID_MAPA,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsMapSchemaGuidsW(
@@ -9703,12 +9702,12 @@ pub extern "ntdsapi" fn DsMapSchemaGuidsW(
     cGuids: u32,
     rGuids: [*]Guid,
     ppGuidMap: ?*?*DS_SCHEMA_GUID_MAPW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsFreeSchemaGuidMapW(
     pGuidMap: ?*DS_SCHEMA_GUID_MAPW,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsGetDomainControllerInfoA(
@@ -9717,7 +9716,7 @@ pub extern "ntdsapi" fn DsGetDomainControllerInfoA(
     InfoLevel: u32,
     pcOut: ?*u32,
     ppInfo: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsGetDomainControllerInfoW(
@@ -9726,28 +9725,28 @@ pub extern "ntdsapi" fn DsGetDomainControllerInfoW(
     InfoLevel: u32,
     pcOut: ?*u32,
     ppInfo: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsFreeDomainControllerInfoA(
     InfoLevel: u32,
     cInfo: u32,
     pInfo: [*]u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsFreeDomainControllerInfoW(
     InfoLevel: u32,
     cInfo: u32,
     pInfo: [*]u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaConsistencyCheck(
     hDS: ?HANDLE,
     TaskID: DS_KCC_TASKID,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaVerifyObjectsW(
@@ -9755,7 +9754,7 @@ pub extern "ntdsapi" fn DsReplicaVerifyObjectsW(
     NameContext: ?[*:0]const u16,
     pUuidDsaSrc: ?*const Guid,
     ulOptions: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaVerifyObjectsA(
@@ -9763,7 +9762,7 @@ pub extern "ntdsapi" fn DsReplicaVerifyObjectsA(
     NameContext: ?[*:0]const u8,
     pUuidDsaSrc: ?*const Guid,
     ulOptions: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaGetInfoW(
@@ -9772,7 +9771,7 @@ pub extern "ntdsapi" fn DsReplicaGetInfoW(
     pszObject: ?[*:0]const u16,
     puuidForSourceDsaObjGuid: ?*Guid,
     ppInfo: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaGetInfo2W(
@@ -9785,13 +9784,13 @@ pub extern "ntdsapi" fn DsReplicaGetInfo2W(
     dwFlags: u32,
     dwEnumerationContext: u32,
     ppInfo: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsReplicaFreeInfo(
     InfoType: DS_REPL_INFO_TYPE,
     pInfo: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsAddSidHistoryW(
@@ -9803,7 +9802,7 @@ pub extern "ntdsapi" fn DsAddSidHistoryW(
     SrcDomainCreds: ?*anyopaque,
     DstDomain: ?[*:0]const u16,
     DstPrincipal: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsAddSidHistoryA(
@@ -9815,7 +9814,7 @@ pub extern "ntdsapi" fn DsAddSidHistoryA(
     SrcDomainCreds: ?*anyopaque,
     DstDomain: ?[*:0]const u8,
     DstPrincipal: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsInheritSecurityIdentityW(
@@ -9823,7 +9822,7 @@ pub extern "ntdsapi" fn DsInheritSecurityIdentityW(
     Flags: u32,
     SrcPrincipal: ?[*:0]const u16,
     DstPrincipal: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "ntdsapi" fn DsInheritSecurityIdentityA(
@@ -9831,19 +9830,19 @@ pub extern "ntdsapi" fn DsInheritSecurityIdentityA(
     Flags: u32,
     SrcPrincipal: ?[*:0]const u8,
     DstPrincipal: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsRoleGetPrimaryDomainInformation(
     lpServer: ?[*:0]const u16,
     InfoLevel: DSROLE_PRIMARY_DOMAIN_INFO_LEVEL,
     Buffer: ?*?*u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsRoleFreeMemory(
     Buffer: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetDcNameA(
@@ -9853,7 +9852,7 @@ pub extern "netapi32" fn DsGetDcNameA(
     SiteName: ?[*:0]const u8,
     Flags: u32,
     DomainControllerInfo: ?*?*DOMAIN_CONTROLLER_INFOA,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetDcNameW(
@@ -9863,29 +9862,29 @@ pub extern "netapi32" fn DsGetDcNameW(
     SiteName: ?[*:0]const u16,
     Flags: u32,
     DomainControllerInfo: ?*?*DOMAIN_CONTROLLER_INFOW,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetSiteNameA(
     ComputerName: ?[*:0]const u8,
     SiteName: ?*?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetSiteNameW(
     ComputerName: ?[*:0]const u16,
     SiteName: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsValidateSubnetNameW(
     SubnetName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsValidateSubnetNameA(
     SubnetName: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsAddressToSiteNamesW(
@@ -9893,7 +9892,7 @@ pub extern "netapi32" fn DsAddressToSiteNamesW(
     EntryCount: u32,
     SocketAddresses: [*]SOCKET_ADDRESS,
     SiteNames: ?*?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsAddressToSiteNamesA(
@@ -9901,7 +9900,7 @@ pub extern "netapi32" fn DsAddressToSiteNamesA(
     EntryCount: u32,
     SocketAddresses: [*]SOCKET_ADDRESS,
     SiteNames: ?*?*?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsAddressToSiteNamesExW(
@@ -9910,7 +9909,7 @@ pub extern "netapi32" fn DsAddressToSiteNamesExW(
     SocketAddresses: [*]SOCKET_ADDRESS,
     SiteNames: ?*?*?PWSTR,
     SubnetNames: ?*?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsAddressToSiteNamesExA(
@@ -9919,7 +9918,7 @@ pub extern "netapi32" fn DsAddressToSiteNamesExA(
     SocketAddresses: [*]SOCKET_ADDRESS,
     SiteNames: ?*?*?PSTR,
     SubnetNames: ?*?*?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsEnumerateDomainTrustsW(
@@ -9927,7 +9926,7 @@ pub extern "netapi32" fn DsEnumerateDomainTrustsW(
     Flags: u32,
     Domains: ?*?*DS_DOMAIN_TRUSTSW,
     DomainCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsEnumerateDomainTrustsA(
@@ -9935,7 +9934,7 @@ pub extern "netapi32" fn DsEnumerateDomainTrustsA(
     Flags: u32,
     Domains: ?*?*DS_DOMAIN_TRUSTSA,
     DomainCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetForestTrustInformationW(
@@ -9943,7 +9942,7 @@ pub extern "netapi32" fn DsGetForestTrustInformationW(
     TrustedDomainName: ?[*:0]const u16,
     Flags: u32,
     ForestTrustInfo: ?*?*LSA_FOREST_TRUST_INFORMATION,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsMergeForestTrustInformationW(
@@ -9951,21 +9950,21 @@ pub extern "netapi32" fn DsMergeForestTrustInformationW(
     NewForestTrustInfo: ?*LSA_FOREST_TRUST_INFORMATION,
     OldForestTrustInfo: ?*LSA_FOREST_TRUST_INFORMATION,
     MergedForestTrustInfo: ?*?*LSA_FOREST_TRUST_INFORMATION,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetDcSiteCoverageW(
     ServerName: ?[*:0]const u16,
     EntryCount: ?*u32,
     SiteNames: ?*?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetDcSiteCoverageA(
     ServerName: ?[*:0]const u8,
     EntryCount: ?*u32,
     SiteNames: ?*?*?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsDeregisterDnsHostRecordsW(
@@ -9974,7 +9973,7 @@ pub extern "netapi32" fn DsDeregisterDnsHostRecordsW(
     DomainGuid: ?*Guid,
     DsaGuid: ?*Guid,
     DnsHostName: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsDeregisterDnsHostRecordsA(
@@ -9983,7 +9982,7 @@ pub extern "netapi32" fn DsDeregisterDnsHostRecordsA(
     DomainGuid: ?*Guid,
     DsaGuid: ?*Guid,
     DnsHostName: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetDcOpenW(
@@ -9994,7 +9993,7 @@ pub extern "netapi32" fn DsGetDcOpenW(
     DnsForestName: ?[*:0]const u16,
     DcFlags: u32,
     RetGetDcContext: ?*GetDcContextHandle,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetDcOpenA(
@@ -10005,7 +10004,7 @@ pub extern "netapi32" fn DsGetDcOpenA(
     DnsForestName: ?[*:0]const u8,
     DcFlags: u32,
     RetGetDcContext: ?*GetDcContextHandle,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetDcNextW(
@@ -10013,7 +10012,7 @@ pub extern "netapi32" fn DsGetDcNextW(
     SockAddressCount: ?*u32,
     SockAddresses: ?*?*SOCKET_ADDRESS,
     DnsHostName: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetDcNextA(
@@ -10021,13 +10020,12 @@ pub extern "netapi32" fn DsGetDcNextA(
     SockAddressCount: ?*u32,
     SockAddresses: ?*?*SOCKET_ADDRESS,
     DnsHostName: ?*?PSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "netapi32" fn DsGetDcCloseW(
     GetDcContextHandle: GetDcContextHandle,
-) callconv(@import("std").os.windows.WINAPI) void;
-
+) callconv(.winapi) void;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (69)
@@ -10556,14 +10554,20 @@ const WPARAM = @import("../foundation.zig").WPARAM;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "LPCQADDFORMSPROC")) { _ = LPCQADDFORMSPROC; }
-    if (@hasDecl(@This(), "LPCQADDPAGESPROC")) { _ = LPCQADDPAGESPROC; }
-    if (@hasDecl(@This(), "LPCQPAGEPROC")) { _ = LPCQPAGEPROC; }
-    if (@hasDecl(@This(), "LPDSENUMATTRIBUTES")) { _ = LPDSENUMATTRIBUTES; }
+    if (@hasDecl(@This(), "LPCQADDFORMSPROC")) {
+        _ = LPCQADDFORMSPROC;
+    }
+    if (@hasDecl(@This(), "LPCQADDPAGESPROC")) {
+        _ = LPCQADDPAGESPROC;
+    }
+    if (@hasDecl(@This(), "LPCQPAGEPROC")) {
+        _ = LPCQPAGEPROC;
+    }
+    if (@hasDecl(@This(), "LPDSENUMATTRIBUTES")) {
+        _ = LPDSENUMATTRIBUTES;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

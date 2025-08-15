@@ -197,38 +197,38 @@ pub const IID_IRdcGeneratorParameters = &IID_IRdcGeneratorParameters_Value;
 pub const IRdcGeneratorParameters = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetGeneratorParametersType: *const fn(
+        GetGeneratorParametersType: *const fn (
             self: *const IRdcGeneratorParameters,
             parametersType: ?*GeneratorParametersType,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetParametersVersion: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetParametersVersion: *const fn (
             self: *const IRdcGeneratorParameters,
             currentVersion: ?*u32,
             minimumCompatibleAppVersion: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSerializeSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSerializeSize: *const fn (
             self: *const IRdcGeneratorParameters,
             size: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Serialize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Serialize: *const fn (
             self: *const IRdcGeneratorParameters,
             size: u32,
             parametersBlob: ?*u8,
             bytesWritten: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetGeneratorParametersType(self: *const IRdcGeneratorParameters, parametersType: ?*GeneratorParametersType) callconv(.Inline) HRESULT {
+    pub inline fn GetGeneratorParametersType(self: *const IRdcGeneratorParameters, parametersType: ?*GeneratorParametersType) HRESULT {
         return self.vtable.GetGeneratorParametersType(self, parametersType);
     }
-    pub fn GetParametersVersion(self: *const IRdcGeneratorParameters, currentVersion: ?*u32, minimumCompatibleAppVersion: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetParametersVersion(self: *const IRdcGeneratorParameters, currentVersion: ?*u32, minimumCompatibleAppVersion: ?*u32) HRESULT {
         return self.vtable.GetParametersVersion(self, currentVersion, minimumCompatibleAppVersion);
     }
-    pub fn GetSerializeSize(self: *const IRdcGeneratorParameters, size: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSerializeSize(self: *const IRdcGeneratorParameters, size: ?*u32) HRESULT {
         return self.vtable.GetSerializeSize(self, size);
     }
-    pub fn Serialize(self: *const IRdcGeneratorParameters, size: u32, parametersBlob: ?*u8, bytesWritten: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Serialize(self: *const IRdcGeneratorParameters, size: u32, parametersBlob: ?*u8, bytesWritten: ?*u32) HRESULT {
         return self.vtable.Serialize(self, size, parametersBlob, bytesWritten);
     }
 };
@@ -239,35 +239,35 @@ pub const IID_IRdcGeneratorFilterMaxParameters = &IID_IRdcGeneratorFilterMaxPara
 pub const IRdcGeneratorFilterMaxParameters = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetHorizonSize: *const fn(
+        GetHorizonSize: *const fn (
             self: *const IRdcGeneratorFilterMaxParameters,
             horizonSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHorizonSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHorizonSize: *const fn (
             self: *const IRdcGeneratorFilterMaxParameters,
             horizonSize: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetHashWindowSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetHashWindowSize: *const fn (
             self: *const IRdcGeneratorFilterMaxParameters,
             hashWindowSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetHashWindowSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetHashWindowSize: *const fn (
             self: *const IRdcGeneratorFilterMaxParameters,
             hashWindowSize: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetHorizonSize(self: *const IRdcGeneratorFilterMaxParameters, horizonSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetHorizonSize(self: *const IRdcGeneratorFilterMaxParameters, horizonSize: ?*u32) HRESULT {
         return self.vtable.GetHorizonSize(self, horizonSize);
     }
-    pub fn SetHorizonSize(self: *const IRdcGeneratorFilterMaxParameters, horizonSize: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetHorizonSize(self: *const IRdcGeneratorFilterMaxParameters, horizonSize: u32) HRESULT {
         return self.vtable.SetHorizonSize(self, horizonSize);
     }
-    pub fn GetHashWindowSize(self: *const IRdcGeneratorFilterMaxParameters, hashWindowSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetHashWindowSize(self: *const IRdcGeneratorFilterMaxParameters, hashWindowSize: ?*u32) HRESULT {
         return self.vtable.GetHashWindowSize(self, hashWindowSize);
     }
-    pub fn SetHashWindowSize(self: *const IRdcGeneratorFilterMaxParameters, hashWindowSize: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetHashWindowSize(self: *const IRdcGeneratorFilterMaxParameters, hashWindowSize: u32) HRESULT {
         return self.vtable.SetHashWindowSize(self, hashWindowSize);
     }
 };
@@ -278,12 +278,12 @@ pub const IID_IRdcGenerator = &IID_IRdcGenerator_Value;
 pub const IRdcGenerator = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetGeneratorParameters: *const fn(
+        GetGeneratorParameters: *const fn (
             self: *const IRdcGenerator,
             level: u32,
             iGeneratorParameters: ?*?*IRdcGeneratorParameters,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Process: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Process: *const fn (
             self: *const IRdcGenerator,
             endOfInput: BOOL,
             endOfOutput: ?*BOOL,
@@ -291,14 +291,14 @@ pub const IRdcGenerator = extern union {
             depth: u32,
             outputBuffers: [*]?*RdcBufferPointer,
             rdc_ErrorCode: ?*RDC_ErrorCode,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetGeneratorParameters(self: *const IRdcGenerator, level: u32, iGeneratorParameters: ?*?*IRdcGeneratorParameters) callconv(.Inline) HRESULT {
+    pub inline fn GetGeneratorParameters(self: *const IRdcGenerator, level: u32, iGeneratorParameters: ?*?*IRdcGeneratorParameters) HRESULT {
         return self.vtable.GetGeneratorParameters(self, level, iGeneratorParameters);
     }
-    pub fn Process(self: *const IRdcGenerator, endOfInput: BOOL, endOfOutput: ?*BOOL, inputBuffer: ?*RdcBufferPointer, depth: u32, outputBuffers: [*]?*RdcBufferPointer, rdc_ErrorCode: ?*RDC_ErrorCode) callconv(.Inline) HRESULT {
+    pub inline fn Process(self: *const IRdcGenerator, endOfInput: BOOL, endOfOutput: ?*BOOL, inputBuffer: ?*RdcBufferPointer, depth: u32, outputBuffers: [*]?*RdcBufferPointer, rdc_ErrorCode: ?*RDC_ErrorCode) HRESULT {
         return self.vtable.Process(self, endOfInput, endOfOutput, inputBuffer, depth, outputBuffers, rdc_ErrorCode);
     }
 };
@@ -309,32 +309,32 @@ pub const IID_IRdcFileReader = &IID_IRdcFileReader_Value;
 pub const IRdcFileReader = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetFileSize: *const fn(
+        GetFileSize: *const fn (
             self: *const IRdcFileReader,
             fileSize: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Read: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Read: *const fn (
             self: *const IRdcFileReader,
             offsetFileStart: u64,
             bytesToRead: u32,
             bytesActuallyRead: ?*u32,
             buffer: ?*u8,
             eof: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFilePosition: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFilePosition: *const fn (
             self: *const IRdcFileReader,
             offsetFromStart: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetFileSize(self: *const IRdcFileReader, fileSize: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn GetFileSize(self: *const IRdcFileReader, fileSize: ?*u64) HRESULT {
         return self.vtable.GetFileSize(self, fileSize);
     }
-    pub fn Read(self: *const IRdcFileReader, offsetFileStart: u64, bytesToRead: u32, bytesActuallyRead: ?*u32, buffer: ?*u8, eof: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn Read(self: *const IRdcFileReader, offsetFileStart: u64, bytesToRead: u32, bytesActuallyRead: ?*u32, buffer: ?*u8, eof: ?*BOOL) HRESULT {
         return self.vtable.Read(self, offsetFileStart, bytesToRead, bytesActuallyRead, buffer, eof);
     }
-    pub fn GetFilePosition(self: *const IRdcFileReader, offsetFromStart: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn GetFilePosition(self: *const IRdcFileReader, offsetFromStart: ?*u64) HRESULT {
         return self.vtable.GetFilePosition(self, offsetFromStart);
     }
 };
@@ -345,29 +345,29 @@ pub const IID_IRdcFileWriter = &IID_IRdcFileWriter_Value;
 pub const IRdcFileWriter = extern union {
     pub const VTable = extern struct {
         base: IRdcFileReader.VTable,
-        Write: *const fn(
+        Write: *const fn (
             self: *const IRdcFileWriter,
             offsetFileStart: u64,
             bytesToWrite: u32,
             buffer: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Truncate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Truncate: *const fn (
             self: *const IRdcFileWriter,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DeleteOnClose: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DeleteOnClose: *const fn (
             self: *const IRdcFileWriter,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IRdcFileReader: IRdcFileReader,
     IUnknown: IUnknown,
-    pub fn Write(self: *const IRdcFileWriter, offsetFileStart: u64, bytesToWrite: u32, buffer: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn Write(self: *const IRdcFileWriter, offsetFileStart: u64, bytesToWrite: u32, buffer: ?*u8) HRESULT {
         return self.vtable.Write(self, offsetFileStart, bytesToWrite, buffer);
     }
-    pub fn Truncate(self: *const IRdcFileWriter) callconv(.Inline) HRESULT {
+    pub inline fn Truncate(self: *const IRdcFileWriter) HRESULT {
         return self.vtable.Truncate(self);
     }
-    pub fn DeleteOnClose(self: *const IRdcFileWriter) callconv(.Inline) HRESULT {
+    pub inline fn DeleteOnClose(self: *const IRdcFileWriter) HRESULT {
         return self.vtable.DeleteOnClose(self);
     }
 };
@@ -378,22 +378,22 @@ pub const IID_IRdcSignatureReader = &IID_IRdcSignatureReader_Value;
 pub const IRdcSignatureReader = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ReadHeader: *const fn(
+        ReadHeader: *const fn (
             self: *const IRdcSignatureReader,
             rdc_ErrorCode: ?*RDC_ErrorCode,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReadSignatures: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReadSignatures: *const fn (
             self: *const IRdcSignatureReader,
             rdcSignaturePointer: ?*RdcSignaturePointer,
             endOfOutput: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ReadHeader(self: *const IRdcSignatureReader, rdc_ErrorCode: ?*RDC_ErrorCode) callconv(.Inline) HRESULT {
+    pub inline fn ReadHeader(self: *const IRdcSignatureReader, rdc_ErrorCode: ?*RDC_ErrorCode) HRESULT {
         return self.vtable.ReadHeader(self, rdc_ErrorCode);
     }
-    pub fn ReadSignatures(self: *const IRdcSignatureReader, rdcSignaturePointer: ?*RdcSignaturePointer, endOfOutput: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn ReadSignatures(self: *const IRdcSignatureReader, rdcSignaturePointer: ?*RdcSignaturePointer, endOfOutput: ?*BOOL) HRESULT {
         return self.vtable.ReadSignatures(self, rdcSignaturePointer, endOfOutput);
     }
 };
@@ -404,18 +404,18 @@ pub const IID_IRdcComparator = &IID_IRdcComparator_Value;
 pub const IRdcComparator = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Process: *const fn(
+        Process: *const fn (
             self: *const IRdcComparator,
             endOfInput: BOOL,
             endOfOutput: ?*BOOL,
             inputBuffer: ?*RdcBufferPointer,
             outputBuffer: ?*RdcNeedPointer,
             rdc_ErrorCode: ?*RDC_ErrorCode,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Process(self: *const IRdcComparator, endOfInput: BOOL, endOfOutput: ?*BOOL, inputBuffer: ?*RdcBufferPointer, outputBuffer: ?*RdcNeedPointer, rdc_ErrorCode: ?*RDC_ErrorCode) callconv(.Inline) HRESULT {
+    pub inline fn Process(self: *const IRdcComparator, endOfInput: BOOL, endOfOutput: ?*BOOL, inputBuffer: ?*RdcBufferPointer, outputBuffer: ?*RdcNeedPointer, rdc_ErrorCode: ?*RDC_ErrorCode) HRESULT {
         return self.vtable.Process(self, endOfInput, endOfOutput, inputBuffer, outputBuffer, rdc_ErrorCode);
     }
 };
@@ -426,67 +426,67 @@ pub const IID_IRdcLibrary = &IID_IRdcLibrary_Value;
 pub const IRdcLibrary = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ComputeDefaultRecursionDepth: *const fn(
+        ComputeDefaultRecursionDepth: *const fn (
             self: *const IRdcLibrary,
             fileSize: u64,
             depth: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateGeneratorParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateGeneratorParameters: *const fn (
             self: *const IRdcLibrary,
             parametersType: GeneratorParametersType,
             level: u32,
             iGeneratorParameters: ?*?*IRdcGeneratorParameters,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OpenGeneratorParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OpenGeneratorParameters: *const fn (
             self: *const IRdcLibrary,
             size: u32,
             parametersBlob: ?*const u8,
             iGeneratorParameters: ?*?*IRdcGeneratorParameters,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateGenerator: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateGenerator: *const fn (
             self: *const IRdcLibrary,
             depth: u32,
             iGeneratorParametersArray: [*]?*IRdcGeneratorParameters,
             iGenerator: ?*?*IRdcGenerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateComparator: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateComparator: *const fn (
             self: *const IRdcLibrary,
             iSeedSignaturesFile: ?*IRdcFileReader,
             comparatorBufferSize: u32,
             iComparator: ?*?*IRdcComparator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateSignatureReader: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateSignatureReader: *const fn (
             self: *const IRdcLibrary,
             iFileReader: ?*IRdcFileReader,
             iSignatureReader: ?*?*IRdcSignatureReader,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRDCVersion: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRDCVersion: *const fn (
             self: *const IRdcLibrary,
             currentVersion: ?*u32,
             minimumCompatibleAppVersion: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ComputeDefaultRecursionDepth(self: *const IRdcLibrary, fileSize: u64, depth: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ComputeDefaultRecursionDepth(self: *const IRdcLibrary, fileSize: u64, depth: ?*u32) HRESULT {
         return self.vtable.ComputeDefaultRecursionDepth(self, fileSize, depth);
     }
-    pub fn CreateGeneratorParameters(self: *const IRdcLibrary, parametersType: GeneratorParametersType, level: u32, iGeneratorParameters: ?*?*IRdcGeneratorParameters) callconv(.Inline) HRESULT {
+    pub inline fn CreateGeneratorParameters(self: *const IRdcLibrary, parametersType: GeneratorParametersType, level: u32, iGeneratorParameters: ?*?*IRdcGeneratorParameters) HRESULT {
         return self.vtable.CreateGeneratorParameters(self, parametersType, level, iGeneratorParameters);
     }
-    pub fn OpenGeneratorParameters(self: *const IRdcLibrary, size: u32, parametersBlob: ?*const u8, iGeneratorParameters: ?*?*IRdcGeneratorParameters) callconv(.Inline) HRESULT {
+    pub inline fn OpenGeneratorParameters(self: *const IRdcLibrary, size: u32, parametersBlob: ?*const u8, iGeneratorParameters: ?*?*IRdcGeneratorParameters) HRESULT {
         return self.vtable.OpenGeneratorParameters(self, size, parametersBlob, iGeneratorParameters);
     }
-    pub fn CreateGenerator(self: *const IRdcLibrary, depth: u32, iGeneratorParametersArray: [*]?*IRdcGeneratorParameters, iGenerator: ?*?*IRdcGenerator) callconv(.Inline) HRESULT {
+    pub inline fn CreateGenerator(self: *const IRdcLibrary, depth: u32, iGeneratorParametersArray: [*]?*IRdcGeneratorParameters, iGenerator: ?*?*IRdcGenerator) HRESULT {
         return self.vtable.CreateGenerator(self, depth, iGeneratorParametersArray, iGenerator);
     }
-    pub fn CreateComparator(self: *const IRdcLibrary, iSeedSignaturesFile: ?*IRdcFileReader, comparatorBufferSize: u32, iComparator: ?*?*IRdcComparator) callconv(.Inline) HRESULT {
+    pub inline fn CreateComparator(self: *const IRdcLibrary, iSeedSignaturesFile: ?*IRdcFileReader, comparatorBufferSize: u32, iComparator: ?*?*IRdcComparator) HRESULT {
         return self.vtable.CreateComparator(self, iSeedSignaturesFile, comparatorBufferSize, iComparator);
     }
-    pub fn CreateSignatureReader(self: *const IRdcLibrary, iFileReader: ?*IRdcFileReader, iSignatureReader: ?*?*IRdcSignatureReader) callconv(.Inline) HRESULT {
+    pub inline fn CreateSignatureReader(self: *const IRdcLibrary, iFileReader: ?*IRdcFileReader, iSignatureReader: ?*?*IRdcSignatureReader) HRESULT {
         return self.vtable.CreateSignatureReader(self, iFileReader, iSignatureReader);
     }
-    pub fn GetRDCVersion(self: *const IRdcLibrary, currentVersion: ?*u32, minimumCompatibleAppVersion: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetRDCVersion(self: *const IRdcLibrary, currentVersion: ?*u32, minimumCompatibleAppVersion: ?*u32) HRESULT {
         return self.vtable.GetRDCVersion(self, currentVersion, minimumCompatibleAppVersion);
     }
 };
@@ -497,14 +497,14 @@ pub const IID_ISimilarityReportProgress = &IID_ISimilarityReportProgress_Value;
 pub const ISimilarityReportProgress = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ReportProgress: *const fn(
+        ReportProgress: *const fn (
             self: *const ISimilarityReportProgress,
             percentCompleted: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ReportProgress(self: *const ISimilarityReportProgress, percentCompleted: u32) callconv(.Inline) HRESULT {
+    pub inline fn ReportProgress(self: *const ISimilarityReportProgress, percentCompleted: u32) HRESULT {
         return self.vtable.ReportProgress(self, percentCompleted);
     }
 };
@@ -515,17 +515,17 @@ pub const IID_ISimilarityTableDumpState = &IID_ISimilarityTableDumpState_Value;
 pub const ISimilarityTableDumpState = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetNextData: *const fn(
+        GetNextData: *const fn (
             self: *const ISimilarityTableDumpState,
             resultsSize: u32,
             resultsUsed: ?*u32,
             eof: ?*BOOL,
             results: ?*SimilarityDumpData,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetNextData(self: *const ISimilarityTableDumpState, resultsSize: u32, resultsUsed: ?*u32, eof: ?*BOOL, results: ?*SimilarityDumpData) callconv(.Inline) HRESULT {
+    pub inline fn GetNextData(self: *const ISimilarityTableDumpState, resultsSize: u32, resultsUsed: ?*u32, eof: ?*BOOL, results: ?*SimilarityDumpData) HRESULT {
         return self.vtable.GetNextData(self, resultsSize, resultsUsed, eof, results);
     }
 };
@@ -536,37 +536,37 @@ pub const IID_ISimilarityTraitsMappedView = &IID_ISimilarityTraitsMappedView_Val
 pub const ISimilarityTraitsMappedView = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Flush: *const fn(
+        Flush: *const fn (
             self: *const ISimilarityTraitsMappedView,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unmap: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unmap: *const fn (
             self: *const ISimilarityTraitsMappedView,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Get: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Get: *const fn (
             self: *const ISimilarityTraitsMappedView,
             index: u64,
             dirty: BOOL,
             numElements: u32,
             viewInfo: ?*SimilarityMappedViewInfo,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetView: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetView: *const fn (
             self: *const ISimilarityTraitsMappedView,
             mappedPageBegin: ?*const ?*u8,
             mappedPageEnd: ?*const ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Flush(self: *const ISimilarityTraitsMappedView) callconv(.Inline) HRESULT {
+    pub inline fn Flush(self: *const ISimilarityTraitsMappedView) HRESULT {
         return self.vtable.Flush(self);
     }
-    pub fn Unmap(self: *const ISimilarityTraitsMappedView) callconv(.Inline) HRESULT {
+    pub inline fn Unmap(self: *const ISimilarityTraitsMappedView) HRESULT {
         return self.vtable.Unmap(self);
     }
-    pub fn Get(self: *const ISimilarityTraitsMappedView, index: u64, dirty: BOOL, numElements: u32, viewInfo: ?*SimilarityMappedViewInfo) callconv(.Inline) HRESULT {
+    pub inline fn Get(self: *const ISimilarityTraitsMappedView, index: u64, dirty: BOOL, numElements: u32, viewInfo: ?*SimilarityMappedViewInfo) HRESULT {
         return self.vtable.Get(self, index, dirty, numElements, viewInfo);
     }
-    pub fn GetView(self: *const ISimilarityTraitsMappedView, mappedPageBegin: ?*const ?*u8, mappedPageEnd: ?*const ?*u8) callconv(.Inline) void {
+    pub inline fn GetView(self: *const ISimilarityTraitsMappedView, mappedPageBegin: ?*const ?*u8, mappedPageEnd: ?*const ?*u8) void {
         return self.vtable.GetView(self, mappedPageBegin, mappedPageEnd);
     }
 };
@@ -577,63 +577,63 @@ pub const IID_ISimilarityTraitsMapping = &IID_ISimilarityTraitsMapping_Value;
 pub const ISimilarityTraitsMapping = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CloseMapping: *const fn(
+        CloseMapping: *const fn (
             self: *const ISimilarityTraitsMapping,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetFileSize: *const fn(
+        ) callconv(.winapi) void,
+        SetFileSize: *const fn (
             self: *const ISimilarityTraitsMapping,
             fileSize: u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFileSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFileSize: *const fn (
             self: *const ISimilarityTraitsMapping,
             fileSize: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        OpenMapping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        OpenMapping: *const fn (
             self: *const ISimilarityTraitsMapping,
             accessMode: RdcMappingAccessMode,
             begin: u64,
             end: u64,
             actualEnd: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ResizeMapping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ResizeMapping: *const fn (
             self: *const ISimilarityTraitsMapping,
             accessMode: RdcMappingAccessMode,
             begin: u64,
             end: u64,
             actualEnd: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPageSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPageSize: *const fn (
             self: *const ISimilarityTraitsMapping,
             pageSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        CreateView: *const fn(
+        ) callconv(.winapi) void,
+        CreateView: *const fn (
             self: *const ISimilarityTraitsMapping,
             minimumMappedPages: u32,
             accessMode: RdcMappingAccessMode,
             mappedView: ?*?*ISimilarityTraitsMappedView,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CloseMapping(self: *const ISimilarityTraitsMapping) callconv(.Inline) void {
+    pub inline fn CloseMapping(self: *const ISimilarityTraitsMapping) void {
         return self.vtable.CloseMapping(self);
     }
-    pub fn SetFileSize(self: *const ISimilarityTraitsMapping, fileSize: u64) callconv(.Inline) HRESULT {
+    pub inline fn SetFileSize(self: *const ISimilarityTraitsMapping, fileSize: u64) HRESULT {
         return self.vtable.SetFileSize(self, fileSize);
     }
-    pub fn GetFileSize(self: *const ISimilarityTraitsMapping, fileSize: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn GetFileSize(self: *const ISimilarityTraitsMapping, fileSize: ?*u64) HRESULT {
         return self.vtable.GetFileSize(self, fileSize);
     }
-    pub fn OpenMapping(self: *const ISimilarityTraitsMapping, accessMode: RdcMappingAccessMode, begin: u64, end: u64, actualEnd: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn OpenMapping(self: *const ISimilarityTraitsMapping, accessMode: RdcMappingAccessMode, begin: u64, end: u64, actualEnd: ?*u64) HRESULT {
         return self.vtable.OpenMapping(self, accessMode, begin, end, actualEnd);
     }
-    pub fn ResizeMapping(self: *const ISimilarityTraitsMapping, accessMode: RdcMappingAccessMode, begin: u64, end: u64, actualEnd: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn ResizeMapping(self: *const ISimilarityTraitsMapping, accessMode: RdcMappingAccessMode, begin: u64, end: u64, actualEnd: ?*u64) HRESULT {
         return self.vtable.ResizeMapping(self, accessMode, begin, end, actualEnd);
     }
-    pub fn GetPageSize(self: *const ISimilarityTraitsMapping, pageSize: ?*u32) callconv(.Inline) void {
+    pub inline fn GetPageSize(self: *const ISimilarityTraitsMapping, pageSize: ?*u32) void {
         return self.vtable.GetPageSize(self, pageSize);
     }
-    pub fn CreateView(self: *const ISimilarityTraitsMapping, minimumMappedPages: u32, accessMode: RdcMappingAccessMode, mappedView: ?*?*ISimilarityTraitsMappedView) callconv(.Inline) HRESULT {
+    pub inline fn CreateView(self: *const ISimilarityTraitsMapping, minimumMappedPages: u32, accessMode: RdcMappingAccessMode, mappedView: ?*?*ISimilarityTraitsMappedView) HRESULT {
         return self.vtable.CreateView(self, minimumMappedPages, accessMode, mappedView);
     }
 };
@@ -644,66 +644,66 @@ pub const IID_ISimilarityTraitsTable = &IID_ISimilarityTraitsTable_Value;
 pub const ISimilarityTraitsTable = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateTable: *const fn(
+        CreateTable: *const fn (
             self: *const ISimilarityTraitsTable,
             path: ?PWSTR,
             truncate: BOOL,
             securityDescriptor: ?*u8,
             isNew: ?*RdcCreatedTables,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateTableIndirect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateTableIndirect: *const fn (
             self: *const ISimilarityTraitsTable,
             mapping: ?*ISimilarityTraitsMapping,
             truncate: BOOL,
             isNew: ?*RdcCreatedTables,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CloseTable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CloseTable: *const fn (
             self: *const ISimilarityTraitsTable,
             isValid: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Append: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Append: *const fn (
             self: *const ISimilarityTraitsTable,
             data: ?*SimilarityData,
             fileIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindSimilarFileIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindSimilarFileIndex: *const fn (
             self: *const ISimilarityTraitsTable,
             similarityData: ?*SimilarityData,
             numberOfMatchesRequired: u16,
             findSimilarFileIndexResults: ?*FindSimilarFileIndexResults,
             resultsSize: u32,
             resultsUsed: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BeginDump: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BeginDump: *const fn (
             self: *const ISimilarityTraitsTable,
             similarityTableDumpState: ?*?*ISimilarityTableDumpState,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLastIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLastIndex: *const fn (
             self: *const ISimilarityTraitsTable,
             fileIndex: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateTable(self: *const ISimilarityTraitsTable, path: ?PWSTR, truncate: BOOL, securityDescriptor: ?*u8, isNew: ?*RdcCreatedTables) callconv(.Inline) HRESULT {
+    pub inline fn CreateTable(self: *const ISimilarityTraitsTable, path: ?PWSTR, truncate: BOOL, securityDescriptor: ?*u8, isNew: ?*RdcCreatedTables) HRESULT {
         return self.vtable.CreateTable(self, path, truncate, securityDescriptor, isNew);
     }
-    pub fn CreateTableIndirect(self: *const ISimilarityTraitsTable, mapping: ?*ISimilarityTraitsMapping, truncate: BOOL, isNew: ?*RdcCreatedTables) callconv(.Inline) HRESULT {
+    pub inline fn CreateTableIndirect(self: *const ISimilarityTraitsTable, mapping: ?*ISimilarityTraitsMapping, truncate: BOOL, isNew: ?*RdcCreatedTables) HRESULT {
         return self.vtable.CreateTableIndirect(self, mapping, truncate, isNew);
     }
-    pub fn CloseTable(self: *const ISimilarityTraitsTable, isValid: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn CloseTable(self: *const ISimilarityTraitsTable, isValid: BOOL) HRESULT {
         return self.vtable.CloseTable(self, isValid);
     }
-    pub fn Append(self: *const ISimilarityTraitsTable, data: ?*SimilarityData, fileIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn Append(self: *const ISimilarityTraitsTable, data: ?*SimilarityData, fileIndex: u32) HRESULT {
         return self.vtable.Append(self, data, fileIndex);
     }
-    pub fn FindSimilarFileIndex(self: *const ISimilarityTraitsTable, similarityData: ?*SimilarityData, numberOfMatchesRequired: u16, findSimilarFileIndexResults: ?*FindSimilarFileIndexResults, resultsSize: u32, resultsUsed: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn FindSimilarFileIndex(self: *const ISimilarityTraitsTable, similarityData: ?*SimilarityData, numberOfMatchesRequired: u16, findSimilarFileIndexResults: ?*FindSimilarFileIndexResults, resultsSize: u32, resultsUsed: ?*u32) HRESULT {
         return self.vtable.FindSimilarFileIndex(self, similarityData, numberOfMatchesRequired, findSimilarFileIndexResults, resultsSize, resultsUsed);
     }
-    pub fn BeginDump(self: *const ISimilarityTraitsTable, similarityTableDumpState: ?*?*ISimilarityTableDumpState) callconv(.Inline) HRESULT {
+    pub inline fn BeginDump(self: *const ISimilarityTraitsTable, similarityTableDumpState: ?*?*ISimilarityTableDumpState) HRESULT {
         return self.vtable.BeginDump(self, similarityTableDumpState);
     }
-    pub fn GetLastIndex(self: *const ISimilarityTraitsTable, fileIndex: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetLastIndex(self: *const ISimilarityTraitsTable, fileIndex: ?*u32) HRESULT {
         return self.vtable.GetLastIndex(self, fileIndex);
     }
 };
@@ -714,65 +714,65 @@ pub const IID_ISimilarityFileIdTable = &IID_ISimilarityFileIdTable_Value;
 pub const ISimilarityFileIdTable = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateTable: *const fn(
+        CreateTable: *const fn (
             self: *const ISimilarityFileIdTable,
             path: ?PWSTR,
             truncate: BOOL,
             securityDescriptor: ?*u8,
             recordSize: u32,
             isNew: ?*RdcCreatedTables,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateTableIndirect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateTableIndirect: *const fn (
             self: *const ISimilarityFileIdTable,
             fileIdFile: ?*IRdcFileWriter,
             truncate: BOOL,
             recordSize: u32,
             isNew: ?*RdcCreatedTables,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CloseTable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CloseTable: *const fn (
             self: *const ISimilarityFileIdTable,
             isValid: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Append: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Append: *const fn (
             self: *const ISimilarityFileIdTable,
             similarityFileId: ?*SimilarityFileId,
             similarityFileIndex: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Lookup: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Lookup: *const fn (
             self: *const ISimilarityFileIdTable,
             similarityFileIndex: u32,
             similarityFileId: ?*SimilarityFileId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Invalidate: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Invalidate: *const fn (
             self: *const ISimilarityFileIdTable,
             similarityFileIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRecordCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRecordCount: *const fn (
             self: *const ISimilarityFileIdTable,
             recordCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateTable(self: *const ISimilarityFileIdTable, path: ?PWSTR, truncate: BOOL, securityDescriptor: ?*u8, recordSize: u32, isNew: ?*RdcCreatedTables) callconv(.Inline) HRESULT {
+    pub inline fn CreateTable(self: *const ISimilarityFileIdTable, path: ?PWSTR, truncate: BOOL, securityDescriptor: ?*u8, recordSize: u32, isNew: ?*RdcCreatedTables) HRESULT {
         return self.vtable.CreateTable(self, path, truncate, securityDescriptor, recordSize, isNew);
     }
-    pub fn CreateTableIndirect(self: *const ISimilarityFileIdTable, fileIdFile: ?*IRdcFileWriter, truncate: BOOL, recordSize: u32, isNew: ?*RdcCreatedTables) callconv(.Inline) HRESULT {
+    pub inline fn CreateTableIndirect(self: *const ISimilarityFileIdTable, fileIdFile: ?*IRdcFileWriter, truncate: BOOL, recordSize: u32, isNew: ?*RdcCreatedTables) HRESULT {
         return self.vtable.CreateTableIndirect(self, fileIdFile, truncate, recordSize, isNew);
     }
-    pub fn CloseTable(self: *const ISimilarityFileIdTable, isValid: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn CloseTable(self: *const ISimilarityFileIdTable, isValid: BOOL) HRESULT {
         return self.vtable.CloseTable(self, isValid);
     }
-    pub fn Append(self: *const ISimilarityFileIdTable, similarityFileId: ?*SimilarityFileId, similarityFileIndex: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Append(self: *const ISimilarityFileIdTable, similarityFileId: ?*SimilarityFileId, similarityFileIndex: ?*u32) HRESULT {
         return self.vtable.Append(self, similarityFileId, similarityFileIndex);
     }
-    pub fn Lookup(self: *const ISimilarityFileIdTable, similarityFileIndex: u32, similarityFileId: ?*SimilarityFileId) callconv(.Inline) HRESULT {
+    pub inline fn Lookup(self: *const ISimilarityFileIdTable, similarityFileIndex: u32, similarityFileId: ?*SimilarityFileId) HRESULT {
         return self.vtable.Lookup(self, similarityFileIndex, similarityFileId);
     }
-    pub fn Invalidate(self: *const ISimilarityFileIdTable, similarityFileIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn Invalidate(self: *const ISimilarityFileIdTable, similarityFileIndex: u32) HRESULT {
         return self.vtable.Invalidate(self, similarityFileIndex);
     }
-    pub fn GetRecordCount(self: *const ISimilarityFileIdTable, recordCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetRecordCount(self: *const ISimilarityFileIdTable, recordCount: ?*u32) HRESULT {
         return self.vtable.GetRecordCount(self, recordCount);
     }
 };
@@ -783,20 +783,20 @@ pub const IID_IRdcSimilarityGenerator = &IID_IRdcSimilarityGenerator_Value;
 pub const IRdcSimilarityGenerator = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        EnableSimilarity: *const fn(
+        EnableSimilarity: *const fn (
             self: *const IRdcSimilarityGenerator,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Results: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Results: *const fn (
             self: *const IRdcSimilarityGenerator,
             similarityData: ?*SimilarityData,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn EnableSimilarity(self: *const IRdcSimilarityGenerator) callconv(.Inline) HRESULT {
+    pub inline fn EnableSimilarity(self: *const IRdcSimilarityGenerator) HRESULT {
         return self.vtable.EnableSimilarity(self);
     }
-    pub fn Results(self: *const IRdcSimilarityGenerator, similarityData: ?*SimilarityData) callconv(.Inline) HRESULT {
+    pub inline fn Results(self: *const IRdcSimilarityGenerator, similarityData: ?*SimilarityData) HRESULT {
         return self.vtable.Results(self, similarityData);
     }
 };
@@ -807,22 +807,22 @@ pub const IID_IFindSimilarResults = &IID_IFindSimilarResults_Value;
 pub const IFindSimilarResults = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetSize: *const fn(
+        GetSize: *const fn (
             self: *const IFindSimilarResults,
             size: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNextFileId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNextFileId: *const fn (
             self: *const IFindSimilarResults,
             numTraitsMatched: ?*u32,
             similarityFileId: ?*SimilarityFileId,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetSize(self: *const IFindSimilarResults, size: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSize(self: *const IFindSimilarResults, size: ?*u32) HRESULT {
         return self.vtable.GetSize(self, size);
     }
-    pub fn GetNextFileId(self: *const IFindSimilarResults, numTraitsMatched: ?*u32, similarityFileId: ?*SimilarityFileId) callconv(.Inline) HRESULT {
+    pub inline fn GetNextFileId(self: *const IFindSimilarResults, numTraitsMatched: ?*u32, similarityFileId: ?*SimilarityFileId) HRESULT {
         return self.vtable.GetNextFileId(self, numTraitsMatched, similarityFileId);
     }
 };
@@ -833,73 +833,72 @@ pub const IID_ISimilarity = &IID_ISimilarity_Value;
 pub const ISimilarity = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateTable: *const fn(
+        CreateTable: *const fn (
             self: *const ISimilarity,
             path: ?PWSTR,
             truncate: BOOL,
             securityDescriptor: ?*u8,
             recordSize: u32,
             isNew: ?*RdcCreatedTables,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateTableIndirect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateTableIndirect: *const fn (
             self: *const ISimilarity,
             mapping: ?*ISimilarityTraitsMapping,
             fileIdFile: ?*IRdcFileWriter,
             truncate: BOOL,
             recordSize: u32,
             isNew: ?*RdcCreatedTables,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CloseTable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CloseTable: *const fn (
             self: *const ISimilarity,
             isValid: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Append: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Append: *const fn (
             self: *const ISimilarity,
             similarityFileId: ?*SimilarityFileId,
             similarityData: ?*SimilarityData,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindSimilarFileId: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindSimilarFileId: *const fn (
             self: *const ISimilarity,
             similarityData: ?*SimilarityData,
             numberOfMatchesRequired: u16,
             resultsSize: u32,
             findSimilarResults: ?*?*IFindSimilarResults,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CopyAndSwap: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CopyAndSwap: *const fn (
             self: *const ISimilarity,
             newSimilarityTables: ?*ISimilarity,
             reportProgress: ?*ISimilarityReportProgress,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRecordCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRecordCount: *const fn (
             self: *const ISimilarity,
             recordCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateTable(self: *const ISimilarity, path: ?PWSTR, truncate: BOOL, securityDescriptor: ?*u8, recordSize: u32, isNew: ?*RdcCreatedTables) callconv(.Inline) HRESULT {
+    pub inline fn CreateTable(self: *const ISimilarity, path: ?PWSTR, truncate: BOOL, securityDescriptor: ?*u8, recordSize: u32, isNew: ?*RdcCreatedTables) HRESULT {
         return self.vtable.CreateTable(self, path, truncate, securityDescriptor, recordSize, isNew);
     }
-    pub fn CreateTableIndirect(self: *const ISimilarity, mapping: ?*ISimilarityTraitsMapping, fileIdFile: ?*IRdcFileWriter, truncate: BOOL, recordSize: u32, isNew: ?*RdcCreatedTables) callconv(.Inline) HRESULT {
+    pub inline fn CreateTableIndirect(self: *const ISimilarity, mapping: ?*ISimilarityTraitsMapping, fileIdFile: ?*IRdcFileWriter, truncate: BOOL, recordSize: u32, isNew: ?*RdcCreatedTables) HRESULT {
         return self.vtable.CreateTableIndirect(self, mapping, fileIdFile, truncate, recordSize, isNew);
     }
-    pub fn CloseTable(self: *const ISimilarity, isValid: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn CloseTable(self: *const ISimilarity, isValid: BOOL) HRESULT {
         return self.vtable.CloseTable(self, isValid);
     }
-    pub fn Append(self: *const ISimilarity, similarityFileId: ?*SimilarityFileId, similarityData: ?*SimilarityData) callconv(.Inline) HRESULT {
+    pub inline fn Append(self: *const ISimilarity, similarityFileId: ?*SimilarityFileId, similarityData: ?*SimilarityData) HRESULT {
         return self.vtable.Append(self, similarityFileId, similarityData);
     }
-    pub fn FindSimilarFileId(self: *const ISimilarity, similarityData: ?*SimilarityData, numberOfMatchesRequired: u16, resultsSize: u32, findSimilarResults: ?*?*IFindSimilarResults) callconv(.Inline) HRESULT {
+    pub inline fn FindSimilarFileId(self: *const ISimilarity, similarityData: ?*SimilarityData, numberOfMatchesRequired: u16, resultsSize: u32, findSimilarResults: ?*?*IFindSimilarResults) HRESULT {
         return self.vtable.FindSimilarFileId(self, similarityData, numberOfMatchesRequired, resultsSize, findSimilarResults);
     }
-    pub fn CopyAndSwap(self: *const ISimilarity, newSimilarityTables: ?*ISimilarity, reportProgress: ?*ISimilarityReportProgress) callconv(.Inline) HRESULT {
+    pub inline fn CopyAndSwap(self: *const ISimilarity, newSimilarityTables: ?*ISimilarity, reportProgress: ?*ISimilarityReportProgress) HRESULT {
         return self.vtable.CopyAndSwap(self, newSimilarityTables, reportProgress);
     }
-    pub fn GetRecordCount(self: *const ISimilarity, recordCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetRecordCount(self: *const ISimilarity, recordCount: ?*u32) HRESULT {
         return self.vtable.GetRecordCount(self, recordCount);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -918,9 +917,7 @@ const IUnknown = @import("../system/com.zig").IUnknown;
 const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -170,7 +170,7 @@ pub const ED_DEVCAP_RTC_READ = TIMECODE_SAMPLE_FLAGS{
 };
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HTASK = *opaque{};
+pub const HTASK = *opaque {};
 
 pub const MMTIME = extern struct {
     wType: u32 align(1),
@@ -194,26 +194,26 @@ pub const MMTIME = extern struct {
     } align(1),
 };
 
-pub const LPDRVCALLBACK = *const fn(
+pub const LPDRVCALLBACK = *const fn (
     hdrvr: ?HDRVR,
     uMsg: u32,
     dwUser: usize,
     dw1: usize,
     dw2: usize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const TIMECAPS = extern struct {
     wPeriodMin: u32,
     wPeriodMax: u32,
 };
 
-pub const LPTIMECALLBACK = *const fn(
+pub const LPTIMECALLBACK = *const fn (
     uTimerID: u32,
     uMsg: u32,
     dwUser: usize,
     dw1: usize,
     dw2: usize,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.0'
 const IID_IReferenceClock_Value = Guid.initString("56a86897-0ad4-11ce-b03a-0020af0ba770");
@@ -221,41 +221,41 @@ pub const IID_IReferenceClock = &IID_IReferenceClock_Value;
 pub const IReferenceClock = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetTime: *const fn(
+        GetTime: *const fn (
             self: *const IReferenceClock,
             pTime: ?*i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AdviseTime: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AdviseTime: *const fn (
             self: *const IReferenceClock,
             baseTime: i64,
             streamTime: i64,
             hEvent: ?HANDLE,
             pdwAdviseCookie: ?*usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AdvisePeriodic: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AdvisePeriodic: *const fn (
             self: *const IReferenceClock,
             startTime: i64,
             periodTime: i64,
             hSemaphore: ?HANDLE,
             pdwAdviseCookie: ?*usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Unadvise: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Unadvise: *const fn (
             self: *const IReferenceClock,
             dwAdviseCookie: usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetTime(self: *const IReferenceClock, pTime: ?*i64) callconv(.Inline) HRESULT {
+    pub inline fn GetTime(self: *const IReferenceClock, pTime: ?*i64) HRESULT {
         return self.vtable.GetTime(self, pTime);
     }
-    pub fn AdviseTime(self: *const IReferenceClock, baseTime: i64, streamTime: i64, hEvent: ?HANDLE, pdwAdviseCookie: ?*usize) callconv(.Inline) HRESULT {
+    pub inline fn AdviseTime(self: *const IReferenceClock, baseTime: i64, streamTime: i64, hEvent: ?HANDLE, pdwAdviseCookie: ?*usize) HRESULT {
         return self.vtable.AdviseTime(self, baseTime, streamTime, hEvent, pdwAdviseCookie);
     }
-    pub fn AdvisePeriodic(self: *const IReferenceClock, startTime: i64, periodTime: i64, hSemaphore: ?HANDLE, pdwAdviseCookie: ?*usize) callconv(.Inline) HRESULT {
+    pub inline fn AdvisePeriodic(self: *const IReferenceClock, startTime: i64, periodTime: i64, hSemaphore: ?HANDLE, pdwAdviseCookie: ?*usize) HRESULT {
         return self.vtable.AdvisePeriodic(self, startTime, periodTime, hSemaphore, pdwAdviseCookie);
     }
-    pub fn Unadvise(self: *const IReferenceClock, dwAdviseCookie: usize) callconv(.Inline) HRESULT {
+    pub inline fn Unadvise(self: *const IReferenceClock, dwAdviseCookie: usize) HRESULT {
         return self.vtable.Unadvise(self, dwAdviseCookie);
     }
 };
@@ -266,21 +266,21 @@ pub const IID_IReferenceClockTimerControl = &IID_IReferenceClockTimerControl_Val
 pub const IReferenceClockTimerControl = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetDefaultTimerResolution: *const fn(
+        SetDefaultTimerResolution: *const fn (
             self: *const IReferenceClockTimerControl,
             timerResolution: i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDefaultTimerResolution: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDefaultTimerResolution: *const fn (
             self: *const IReferenceClockTimerControl,
             pTimerResolution: ?*i64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetDefaultTimerResolution(self: *const IReferenceClockTimerControl, timerResolution: i64) callconv(.Inline) HRESULT {
+    pub inline fn SetDefaultTimerResolution(self: *const IReferenceClockTimerControl, timerResolution: i64) HRESULT {
         return self.vtable.SetDefaultTimerResolution(self, timerResolution);
     }
-    pub fn GetDefaultTimerResolution(self: *const IReferenceClockTimerControl, pTimerResolution: ?*i64) callconv(.Inline) HRESULT {
+    pub inline fn GetDefaultTimerResolution(self: *const IReferenceClockTimerControl, pTimerResolution: ?*i64) HRESULT {
         return self.vtable.GetDefaultTimerResolution(self, pTimerResolution);
     }
 };
@@ -312,7 +312,6 @@ pub const TIMECODE_SAMPLE = extern struct {
     dwFlags: TIMECODE_SAMPLE_FLAGS,
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (7)
 //--------------------------------------------------------------------------------
@@ -321,28 +320,27 @@ pub extern "winmm" fn timeGetSystemTime(
     // TODO: what to do with BytesParamIndex 1?
     pmmt: ?*MMTIME,
     cbmmt: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "winmm" fn timeGetTime(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "winmm" fn timeGetTime() callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn timeGetDevCaps(
     // TODO: what to do with BytesParamIndex 1?
     ptc: ?*TIMECAPS,
     cbtc: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn timeBeginPeriod(
     uPeriod: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "winmm" fn timeEndPeriod(
     uPeriod: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn timeSetEvent(
     uDelay: u32,
@@ -350,12 +348,11 @@ pub extern "winmm" fn timeSetEvent(
     fptc: ?LPTIMECALLBACK,
     dwUser: usize,
     fuEvent: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "winmm" fn timeKillEvent(
     uTimerID: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -371,12 +368,14 @@ const IUnknown = @import("system/com.zig").IUnknown;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "LPDRVCALLBACK")) { _ = LPDRVCALLBACK; }
-    if (@hasDecl(@This(), "LPTIMECALLBACK")) { _ = LPTIMECALLBACK; }
+    if (@hasDecl(@This(), "LPDRVCALLBACK")) {
+        _ = LPDRVCALLBACK;
+    }
+    if (@hasDecl(@This(), "LPTIMECALLBACK")) {
+        _ = LPTIMECALLBACK;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

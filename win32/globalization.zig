@@ -1191,13 +1191,13 @@ pub const IS_TEXT_UNICODE_NOT_ASCII_MASK = IS_TEXT_UNICODE_RESULT{
 };
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HIMC = *opaque{};
+pub const HIMC = *opaque {};
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HIMCC = *opaque{};
+pub const HIMCC = *opaque {};
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HSAVEDUILANGUAGES = *opaque{};
+pub const HSAVEDUILANGUAGES = *opaque {};
 
 pub const FONTSIGNATURE = extern struct {
     fsUsb: [4]u32,
@@ -1369,13 +1369,13 @@ pub const GEOCLASS_NATION = SYSGEOCLASS.NATION;
 pub const GEOCLASS_REGION = SYSGEOCLASS.REGION;
 pub const GEOCLASS_ALL = SYSGEOCLASS.ALL;
 
-pub const LOCALE_ENUMPROCA = *const fn(
+pub const LOCALE_ENUMPROCA = *const fn (
     param0: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LOCALE_ENUMPROCW = *const fn(
+pub const LOCALE_ENUMPROCW = *const fn (
     param0: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const NORM_FORM = enum(i32) {
     Other = 0,
@@ -1390,106 +1390,106 @@ pub const NormalizationD = NORM_FORM.D;
 pub const NormalizationKC = NORM_FORM.KC;
 pub const NormalizationKD = NORM_FORM.KD;
 
-pub const LANGUAGEGROUP_ENUMPROCA = *const fn(
+pub const LANGUAGEGROUP_ENUMPROCA = *const fn (
     param0: u32,
     param1: ?PSTR,
     param2: ?PSTR,
     param3: u32,
     param4: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LANGGROUPLOCALE_ENUMPROCA = *const fn(
+pub const LANGGROUPLOCALE_ENUMPROCA = *const fn (
     param0: u32,
     param1: u32,
     param2: ?PSTR,
     param3: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const UILANGUAGE_ENUMPROCA = *const fn(
+pub const UILANGUAGE_ENUMPROCA = *const fn (
     param0: ?PSTR,
     param1: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const CODEPAGE_ENUMPROCA = *const fn(
+pub const CODEPAGE_ENUMPROCA = *const fn (
     param0: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const DATEFMT_ENUMPROCA = *const fn(
+pub const DATEFMT_ENUMPROCA = *const fn (
     param0: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const DATEFMT_ENUMPROCEXA = *const fn(
-    param0: ?PSTR,
-    param1: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
-pub const TIMEFMT_ENUMPROCA = *const fn(
-    param0: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
-pub const CALINFO_ENUMPROCA = *const fn(
-    param0: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
-pub const CALINFO_ENUMPROCEXA = *const fn(
+pub const DATEFMT_ENUMPROCEXA = *const fn (
     param0: ?PSTR,
     param1: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LANGUAGEGROUP_ENUMPROCW = *const fn(
+pub const TIMEFMT_ENUMPROCA = *const fn (
+    param0: ?PSTR,
+) callconv(.winapi) BOOL;
+
+pub const CALINFO_ENUMPROCA = *const fn (
+    param0: ?PSTR,
+) callconv(.winapi) BOOL;
+
+pub const CALINFO_ENUMPROCEXA = *const fn (
+    param0: ?PSTR,
+    param1: u32,
+) callconv(.winapi) BOOL;
+
+pub const LANGUAGEGROUP_ENUMPROCW = *const fn (
     param0: u32,
     param1: ?PWSTR,
     param2: ?PWSTR,
     param3: u32,
     param4: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LANGGROUPLOCALE_ENUMPROCW = *const fn(
+pub const LANGGROUPLOCALE_ENUMPROCW = *const fn (
     param0: u32,
     param1: u32,
     param2: ?PWSTR,
     param3: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const UILANGUAGE_ENUMPROCW = *const fn(
+pub const UILANGUAGE_ENUMPROCW = *const fn (
     param0: ?PWSTR,
     param1: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const CODEPAGE_ENUMPROCW = *const fn(
+pub const CODEPAGE_ENUMPROCW = *const fn (
     param0: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const DATEFMT_ENUMPROCW = *const fn(
+pub const DATEFMT_ENUMPROCW = *const fn (
     param0: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const DATEFMT_ENUMPROCEXW = *const fn(
-    param0: ?PWSTR,
-    param1: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
-pub const TIMEFMT_ENUMPROCW = *const fn(
-    param0: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
-pub const CALINFO_ENUMPROCW = *const fn(
-    param0: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
-pub const CALINFO_ENUMPROCEXW = *const fn(
+pub const DATEFMT_ENUMPROCEXW = *const fn (
     param0: ?PWSTR,
     param1: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const GEO_ENUMPROC = *const fn(
+pub const TIMEFMT_ENUMPROCW = *const fn (
+    param0: ?PWSTR,
+) callconv(.winapi) BOOL;
+
+pub const CALINFO_ENUMPROCW = *const fn (
+    param0: ?PWSTR,
+) callconv(.winapi) BOOL;
+
+pub const CALINFO_ENUMPROCEXW = *const fn (
+    param0: ?PWSTR,
+    param1: u32,
+) callconv(.winapi) BOOL;
+
+pub const GEO_ENUMPROC = *const fn (
     param0: i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const GEO_ENUMNAMEPROC = *const fn(
+pub const GEO_ENUMNAMEPROC = *const fn (
     param0: ?PWSTR,
     param1: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub const FILEMUIINFO = extern struct {
     dwSize: u32,
@@ -1507,36 +1507,36 @@ pub const FILEMUIINFO = extern struct {
     abBuffer: [8]u8,
 };
 
-pub const CALINFO_ENUMPROCEXEX = *const fn(
+pub const CALINFO_ENUMPROCEXEX = *const fn (
     param0: ?PWSTR,
     param1: u32,
     param2: ?PWSTR,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const DATEFMT_ENUMPROCEXEX = *const fn(
+pub const DATEFMT_ENUMPROCEXEX = *const fn (
     param0: ?PWSTR,
     param1: u32,
     param2: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const TIMEFMT_ENUMPROCEX = *const fn(
+pub const TIMEFMT_ENUMPROCEX = *const fn (
     param0: ?PWSTR,
     param1: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const LOCALE_ENUMPROCEX = *const fn(
+pub const LOCALE_ENUMPROCEX = *const fn (
     param0: ?PWSTR,
     param1: u32,
     param2: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
-pub const PFN_MAPPINGCALLBACKPROC = *const fn(
+pub const PFN_MAPPINGCALLBACKPROC = *const fn (
     pBag: ?*MAPPING_PROPERTY_BAG,
     data: ?*anyopaque,
     dwDataSize: u32,
     Result: HRESULT,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const MAPPING_SERVICE_INFO = extern struct {
     Size: usize,
@@ -1654,38 +1654,38 @@ pub const ISpellingError = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_StartIndex: *const fn(
+        get_StartIndex: *const fn (
             self: *const ISpellingError,
             value: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Length: *const fn(
+        get_Length: *const fn (
             self: *const ISpellingError,
             value: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_CorrectiveAction: *const fn(
+        get_CorrectiveAction: *const fn (
             self: *const ISpellingError,
             value: ?*CORRECTIVE_ACTION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Replacement: *const fn(
+        get_Replacement: *const fn (
             self: *const ISpellingError,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_StartIndex(self: *const ISpellingError, value: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_StartIndex(self: *const ISpellingError, value: ?*u32) HRESULT {
         return self.vtable.get_StartIndex(self, value);
     }
-    pub fn get_Length(self: *const ISpellingError, value: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn get_Length(self: *const ISpellingError, value: ?*u32) HRESULT {
         return self.vtable.get_Length(self, value);
     }
-    pub fn get_CorrectiveAction(self: *const ISpellingError, value: ?*CORRECTIVE_ACTION) callconv(.Inline) HRESULT {
+    pub inline fn get_CorrectiveAction(self: *const ISpellingError, value: ?*CORRECTIVE_ACTION) HRESULT {
         return self.vtable.get_CorrectiveAction(self, value);
     }
-    pub fn get_Replacement(self: *const ISpellingError, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Replacement(self: *const ISpellingError, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_Replacement(self, value);
     }
 };
@@ -1696,14 +1696,14 @@ pub const IID_IEnumSpellingError = &IID_IEnumSpellingError_Value;
 pub const IEnumSpellingError = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Next: *const fn(
+        Next: *const fn (
             self: *const IEnumSpellingError,
             value: ?*?*ISpellingError,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Next(self: *const IEnumSpellingError, value: ?*?*ISpellingError) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumSpellingError, value: ?*?*ISpellingError) HRESULT {
         return self.vtable.Next(self, value);
     }
 };
@@ -1715,38 +1715,38 @@ pub const IOptionDescription = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Id: *const fn(
+        get_Id: *const fn (
             self: *const IOptionDescription,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Heading: *const fn(
+        get_Heading: *const fn (
             self: *const IOptionDescription,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Description: *const fn(
+        get_Description: *const fn (
             self: *const IOptionDescription,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Labels: *const fn(
+        get_Labels: *const fn (
             self: *const IOptionDescription,
             value: ?*?*IEnumString,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_Id(self: *const IOptionDescription, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Id(self: *const IOptionDescription, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_Id(self, value);
     }
-    pub fn get_Heading(self: *const IOptionDescription, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Heading(self: *const IOptionDescription, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_Heading(self, value);
     }
-    pub fn get_Description(self: *const IOptionDescription, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Description(self: *const IOptionDescription, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_Description(self, value);
     }
-    pub fn get_Labels(self: *const IOptionDescription, value: ?*?*IEnumString) callconv(.Inline) HRESULT {
+    pub inline fn get_Labels(self: *const IOptionDescription, value: ?*?*IEnumString) HRESULT {
         return self.vtable.get_Labels(self, value);
     }
 };
@@ -1757,14 +1757,14 @@ pub const IID_ISpellCheckerChangedEventHandler = &IID_ISpellCheckerChangedEventH
 pub const ISpellCheckerChangedEventHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Invoke: *const fn(
+        Invoke: *const fn (
             self: *const ISpellCheckerChangedEventHandler,
             sender: ?*ISpellChecker,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Invoke(self: *const ISpellCheckerChangedEventHandler, sender: ?*ISpellChecker) callconv(.Inline) HRESULT {
+    pub inline fn Invoke(self: *const ISpellCheckerChangedEventHandler, sender: ?*ISpellChecker) HRESULT {
         return self.vtable.Invoke(self, sender);
     }
 };
@@ -1776,115 +1776,115 @@ pub const ISpellChecker = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LanguageTag: *const fn(
+        get_LanguageTag: *const fn (
             self: *const ISpellChecker,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Check: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Check: *const fn (
             self: *const ISpellChecker,
             text: ?[*:0]const u16,
             value: ?*?*IEnumSpellingError,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Suggest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Suggest: *const fn (
             self: *const ISpellChecker,
             word: ?[*:0]const u16,
             value: ?*?*IEnumString,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Add: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Add: *const fn (
             self: *const ISpellChecker,
             word: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Ignore: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Ignore: *const fn (
             self: *const ISpellChecker,
             word: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AutoCorrect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AutoCorrect: *const fn (
             self: *const ISpellChecker,
             from: ?[*:0]const u16,
             to: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetOptionValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetOptionValue: *const fn (
             self: *const ISpellChecker,
             optionId: ?[*:0]const u16,
             value: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OptionIds: *const fn(
+        get_OptionIds: *const fn (
             self: *const ISpellChecker,
             value: ?*?*IEnumString,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Id: *const fn(
+        get_Id: *const fn (
             self: *const ISpellChecker,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LocalizedName: *const fn(
+        get_LocalizedName: *const fn (
             self: *const ISpellChecker,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        add_SpellCheckerChanged: *const fn(
+        ) callconv(.winapi) HRESULT,
+        add_SpellCheckerChanged: *const fn (
             self: *const ISpellChecker,
             handler: ?*ISpellCheckerChangedEventHandler,
             eventCookie: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        remove_SpellCheckerChanged: *const fn(
+        ) callconv(.winapi) HRESULT,
+        remove_SpellCheckerChanged: *const fn (
             self: *const ISpellChecker,
             eventCookie: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetOptionDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetOptionDescription: *const fn (
             self: *const ISpellChecker,
             optionId: ?[*:0]const u16,
             value: ?*?*IOptionDescription,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ComprehensiveCheck: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ComprehensiveCheck: *const fn (
             self: *const ISpellChecker,
             text: ?[*:0]const u16,
             value: ?*?*IEnumSpellingError,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_LanguageTag(self: *const ISpellChecker, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LanguageTag(self: *const ISpellChecker, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_LanguageTag(self, value);
     }
-    pub fn Check(self: *const ISpellChecker, text: ?[*:0]const u16, value: ?*?*IEnumSpellingError) callconv(.Inline) HRESULT {
+    pub inline fn Check(self: *const ISpellChecker, text: ?[*:0]const u16, value: ?*?*IEnumSpellingError) HRESULT {
         return self.vtable.Check(self, text, value);
     }
-    pub fn Suggest(self: *const ISpellChecker, word: ?[*:0]const u16, value: ?*?*IEnumString) callconv(.Inline) HRESULT {
+    pub inline fn Suggest(self: *const ISpellChecker, word: ?[*:0]const u16, value: ?*?*IEnumString) HRESULT {
         return self.vtable.Suggest(self, word, value);
     }
-    pub fn Add(self: *const ISpellChecker, word: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Add(self: *const ISpellChecker, word: ?[*:0]const u16) HRESULT {
         return self.vtable.Add(self, word);
     }
-    pub fn Ignore(self: *const ISpellChecker, word: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Ignore(self: *const ISpellChecker, word: ?[*:0]const u16) HRESULT {
         return self.vtable.Ignore(self, word);
     }
-    pub fn AutoCorrect(self: *const ISpellChecker, from: ?[*:0]const u16, to: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn AutoCorrect(self: *const ISpellChecker, from: ?[*:0]const u16, to: ?[*:0]const u16) HRESULT {
         return self.vtable.AutoCorrect(self, from, to);
     }
-    pub fn GetOptionValue(self: *const ISpellChecker, optionId: ?[*:0]const u16, value: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn GetOptionValue(self: *const ISpellChecker, optionId: ?[*:0]const u16, value: ?*u8) HRESULT {
         return self.vtable.GetOptionValue(self, optionId, value);
     }
-    pub fn get_OptionIds(self: *const ISpellChecker, value: ?*?*IEnumString) callconv(.Inline) HRESULT {
+    pub inline fn get_OptionIds(self: *const ISpellChecker, value: ?*?*IEnumString) HRESULT {
         return self.vtable.get_OptionIds(self, value);
     }
-    pub fn get_Id(self: *const ISpellChecker, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Id(self: *const ISpellChecker, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_Id(self, value);
     }
-    pub fn get_LocalizedName(self: *const ISpellChecker, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LocalizedName(self: *const ISpellChecker, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_LocalizedName(self, value);
     }
-    pub fn add_SpellCheckerChanged(self: *const ISpellChecker, handler: ?*ISpellCheckerChangedEventHandler, eventCookie: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn add_SpellCheckerChanged(self: *const ISpellChecker, handler: ?*ISpellCheckerChangedEventHandler, eventCookie: ?*u32) HRESULT {
         return self.vtable.add_SpellCheckerChanged(self, handler, eventCookie);
     }
-    pub fn remove_SpellCheckerChanged(self: *const ISpellChecker, eventCookie: u32) callconv(.Inline) HRESULT {
+    pub inline fn remove_SpellCheckerChanged(self: *const ISpellChecker, eventCookie: u32) HRESULT {
         return self.vtable.remove_SpellCheckerChanged(self, eventCookie);
     }
-    pub fn GetOptionDescription(self: *const ISpellChecker, optionId: ?[*:0]const u16, value: ?*?*IOptionDescription) callconv(.Inline) HRESULT {
+    pub inline fn GetOptionDescription(self: *const ISpellChecker, optionId: ?[*:0]const u16, value: ?*?*IOptionDescription) HRESULT {
         return self.vtable.GetOptionDescription(self, optionId, value);
     }
-    pub fn ComprehensiveCheck(self: *const ISpellChecker, text: ?[*:0]const u16, value: ?*?*IEnumSpellingError) callconv(.Inline) HRESULT {
+    pub inline fn ComprehensiveCheck(self: *const ISpellChecker, text: ?[*:0]const u16, value: ?*?*IEnumSpellingError) HRESULT {
         return self.vtable.ComprehensiveCheck(self, text, value);
     }
 };
@@ -1895,15 +1895,15 @@ pub const IID_ISpellChecker2 = &IID_ISpellChecker2_Value;
 pub const ISpellChecker2 = extern union {
     pub const VTable = extern struct {
         base: ISpellChecker.VTable,
-        Remove: *const fn(
+        Remove: *const fn (
             self: *const ISpellChecker2,
             word: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     ISpellChecker: ISpellChecker,
     IUnknown: IUnknown,
-    pub fn Remove(self: *const ISpellChecker2, word: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn Remove(self: *const ISpellChecker2, word: ?[*:0]const u16) HRESULT {
         return self.vtable.Remove(self, word);
     }
 };
@@ -1915,30 +1915,30 @@ pub const ISpellCheckerFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SupportedLanguages: *const fn(
+        get_SupportedLanguages: *const fn (
             self: *const ISpellCheckerFactory,
             value: ?*?*IEnumString,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsSupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsSupported: *const fn (
             self: *const ISpellCheckerFactory,
             languageTag: ?[*:0]const u16,
             value: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateSpellChecker: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateSpellChecker: *const fn (
             self: *const ISpellCheckerFactory,
             languageTag: ?[*:0]const u16,
             value: ?*?*ISpellChecker,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_SupportedLanguages(self: *const ISpellCheckerFactory, value: ?*?*IEnumString) callconv(.Inline) HRESULT {
+    pub inline fn get_SupportedLanguages(self: *const ISpellCheckerFactory, value: ?*?*IEnumString) HRESULT {
         return self.vtable.get_SupportedLanguages(self, value);
     }
-    pub fn IsSupported(self: *const ISpellCheckerFactory, languageTag: ?[*:0]const u16, value: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn IsSupported(self: *const ISpellCheckerFactory, languageTag: ?[*:0]const u16, value: ?*BOOL) HRESULT {
         return self.vtable.IsSupported(self, languageTag, value);
     }
-    pub fn CreateSpellChecker(self: *const ISpellCheckerFactory, languageTag: ?[*:0]const u16, value: ?*?*ISpellChecker) callconv(.Inline) HRESULT {
+    pub inline fn CreateSpellChecker(self: *const ISpellCheckerFactory, languageTag: ?[*:0]const u16, value: ?*?*ISpellChecker) HRESULT {
         return self.vtable.CreateSpellChecker(self, languageTag, value);
     }
 };
@@ -1949,23 +1949,23 @@ pub const IID_IUserDictionariesRegistrar = &IID_IUserDictionariesRegistrar_Value
 pub const IUserDictionariesRegistrar = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RegisterUserDictionary: *const fn(
+        RegisterUserDictionary: *const fn (
             self: *const IUserDictionariesRegistrar,
             dictionaryPath: ?[*:0]const u16,
             languageTag: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnregisterUserDictionary: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnregisterUserDictionary: *const fn (
             self: *const IUserDictionariesRegistrar,
             dictionaryPath: ?[*:0]const u16,
             languageTag: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RegisterUserDictionary(self: *const IUserDictionariesRegistrar, dictionaryPath: ?[*:0]const u16, languageTag: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RegisterUserDictionary(self: *const IUserDictionariesRegistrar, dictionaryPath: ?[*:0]const u16, languageTag: ?[*:0]const u16) HRESULT {
         return self.vtable.RegisterUserDictionary(self, dictionaryPath, languageTag);
     }
-    pub fn UnregisterUserDictionary(self: *const IUserDictionariesRegistrar, dictionaryPath: ?[*:0]const u16, languageTag: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn UnregisterUserDictionary(self: *const IUserDictionariesRegistrar, dictionaryPath: ?[*:0]const u16, languageTag: ?[*:0]const u16) HRESULT {
         return self.vtable.UnregisterUserDictionary(self, dictionaryPath, languageTag);
     }
 };
@@ -1977,86 +1977,86 @@ pub const ISpellCheckProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LanguageTag: *const fn(
+        get_LanguageTag: *const fn (
             self: *const ISpellCheckProvider,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Check: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Check: *const fn (
             self: *const ISpellCheckProvider,
             text: ?[*:0]const u16,
             value: ?*?*IEnumSpellingError,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Suggest: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Suggest: *const fn (
             self: *const ISpellCheckProvider,
             word: ?[*:0]const u16,
             value: ?*?*IEnumString,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetOptionValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetOptionValue: *const fn (
             self: *const ISpellCheckProvider,
             optionId: ?[*:0]const u16,
             value: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetOptionValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetOptionValue: *const fn (
             self: *const ISpellCheckProvider,
             optionId: ?[*:0]const u16,
             value: u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_OptionIds: *const fn(
+        get_OptionIds: *const fn (
             self: *const ISpellCheckProvider,
             value: ?*?*IEnumString,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Id: *const fn(
+        get_Id: *const fn (
             self: *const ISpellCheckProvider,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_LocalizedName: *const fn(
+        get_LocalizedName: *const fn (
             self: *const ISpellCheckProvider,
             value: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetOptionDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetOptionDescription: *const fn (
             self: *const ISpellCheckProvider,
             optionId: ?[*:0]const u16,
             value: ?*?*IOptionDescription,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InitializeWordlist: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InitializeWordlist: *const fn (
             self: *const ISpellCheckProvider,
             wordlistType: WORDLIST_TYPE,
             words: ?*IEnumString,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_LanguageTag(self: *const ISpellCheckProvider, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LanguageTag(self: *const ISpellCheckProvider, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_LanguageTag(self, value);
     }
-    pub fn Check(self: *const ISpellCheckProvider, text: ?[*:0]const u16, value: ?*?*IEnumSpellingError) callconv(.Inline) HRESULT {
+    pub inline fn Check(self: *const ISpellCheckProvider, text: ?[*:0]const u16, value: ?*?*IEnumSpellingError) HRESULT {
         return self.vtable.Check(self, text, value);
     }
-    pub fn Suggest(self: *const ISpellCheckProvider, word: ?[*:0]const u16, value: ?*?*IEnumString) callconv(.Inline) HRESULT {
+    pub inline fn Suggest(self: *const ISpellCheckProvider, word: ?[*:0]const u16, value: ?*?*IEnumString) HRESULT {
         return self.vtable.Suggest(self, word, value);
     }
-    pub fn GetOptionValue(self: *const ISpellCheckProvider, optionId: ?[*:0]const u16, value: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn GetOptionValue(self: *const ISpellCheckProvider, optionId: ?[*:0]const u16, value: ?*u8) HRESULT {
         return self.vtable.GetOptionValue(self, optionId, value);
     }
-    pub fn SetOptionValue(self: *const ISpellCheckProvider, optionId: ?[*:0]const u16, value: u8) callconv(.Inline) HRESULT {
+    pub inline fn SetOptionValue(self: *const ISpellCheckProvider, optionId: ?[*:0]const u16, value: u8) HRESULT {
         return self.vtable.SetOptionValue(self, optionId, value);
     }
-    pub fn get_OptionIds(self: *const ISpellCheckProvider, value: ?*?*IEnumString) callconv(.Inline) HRESULT {
+    pub inline fn get_OptionIds(self: *const ISpellCheckProvider, value: ?*?*IEnumString) HRESULT {
         return self.vtable.get_OptionIds(self, value);
     }
-    pub fn get_Id(self: *const ISpellCheckProvider, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_Id(self: *const ISpellCheckProvider, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_Id(self, value);
     }
-    pub fn get_LocalizedName(self: *const ISpellCheckProvider, value: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn get_LocalizedName(self: *const ISpellCheckProvider, value: ?*?PWSTR) HRESULT {
         return self.vtable.get_LocalizedName(self, value);
     }
-    pub fn GetOptionDescription(self: *const ISpellCheckProvider, optionId: ?[*:0]const u16, value: ?*?*IOptionDescription) callconv(.Inline) HRESULT {
+    pub inline fn GetOptionDescription(self: *const ISpellCheckProvider, optionId: ?[*:0]const u16, value: ?*?*IOptionDescription) HRESULT {
         return self.vtable.GetOptionDescription(self, optionId, value);
     }
-    pub fn InitializeWordlist(self: *const ISpellCheckProvider, wordlistType: WORDLIST_TYPE, words: ?*IEnumString) callconv(.Inline) HRESULT {
+    pub inline fn InitializeWordlist(self: *const ISpellCheckProvider, wordlistType: WORDLIST_TYPE, words: ?*IEnumString) HRESULT {
         return self.vtable.InitializeWordlist(self, wordlistType, words);
     }
 };
@@ -2066,15 +2066,15 @@ pub const IID_IComprehensiveSpellCheckProvider = &IID_IComprehensiveSpellCheckPr
 pub const IComprehensiveSpellCheckProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ComprehensiveCheck: *const fn(
+        ComprehensiveCheck: *const fn (
             self: *const IComprehensiveSpellCheckProvider,
             text: ?[*:0]const u16,
             value: ?*?*IEnumSpellingError,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ComprehensiveCheck(self: *const IComprehensiveSpellCheckProvider, text: ?[*:0]const u16, value: ?*?*IEnumSpellingError) callconv(.Inline) HRESULT {
+    pub inline fn ComprehensiveCheck(self: *const IComprehensiveSpellCheckProvider, text: ?[*:0]const u16, value: ?*?*IEnumSpellingError) HRESULT {
         return self.vtable.ComprehensiveCheck(self, text, value);
     }
 };
@@ -2086,30 +2086,30 @@ pub const ISpellCheckProviderFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_SupportedLanguages: *const fn(
+        get_SupportedLanguages: *const fn (
             self: *const ISpellCheckProviderFactory,
             value: ?*?*IEnumString,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsSupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsSupported: *const fn (
             self: *const ISpellCheckProviderFactory,
             languageTag: ?[*:0]const u16,
             value: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateSpellCheckProvider: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateSpellCheckProvider: *const fn (
             self: *const ISpellCheckProviderFactory,
             languageTag: ?[*:0]const u16,
             value: ?*?*ISpellCheckProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn get_SupportedLanguages(self: *const ISpellCheckProviderFactory, value: ?*?*IEnumString) callconv(.Inline) HRESULT {
+    pub inline fn get_SupportedLanguages(self: *const ISpellCheckProviderFactory, value: ?*?*IEnumString) HRESULT {
         return self.vtable.get_SupportedLanguages(self, value);
     }
-    pub fn IsSupported(self: *const ISpellCheckProviderFactory, languageTag: ?[*:0]const u16, value: ?*BOOL) callconv(.Inline) HRESULT {
+    pub inline fn IsSupported(self: *const ISpellCheckProviderFactory, languageTag: ?[*:0]const u16, value: ?*BOOL) HRESULT {
         return self.vtable.IsSupported(self, languageTag, value);
     }
-    pub fn CreateSpellCheckProvider(self: *const ISpellCheckProviderFactory, languageTag: ?[*:0]const u16, value: ?*?*ISpellCheckProvider) callconv(.Inline) HRESULT {
+    pub inline fn CreateSpellCheckProvider(self: *const ISpellCheckProviderFactory, languageTag: ?[*:0]const u16, value: ?*?*ISpellCheckProvider) HRESULT {
         return self.vtable.CreateSpellCheckProvider(self, languageTag, value);
     }
 };
@@ -2605,25 +2605,25 @@ pub const UTRACE_UDATA_BUNDLE = UTraceFunctionNumber.UDATA_BUNDLE;
 pub const UTRACE_UDATA_DATA_FILE = UTraceFunctionNumber.UDATA_DATA_FILE;
 pub const UTRACE_UDATA_RES_FILE = UTraceFunctionNumber.UDATA_RES_FILE;
 
-pub const UTraceEntry = *const fn(
+pub const UTraceEntry = *const fn (
     context: ?*const anyopaque,
     fnNumber: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const UTraceExit = *const fn(
+pub const UTraceExit = *const fn (
     context: ?*const anyopaque,
     fnNumber: i32,
     fmt: ?[*:0]const u8,
     args: ?*i8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const UTraceData = *const fn(
+pub const UTraceData = *const fn (
     context: ?*const anyopaque,
     fnNumber: i32,
     level: i32,
     fmt: ?[*:0]const u8,
     args: ?*i8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const UStringTrieResult = enum(i32) {
     NO_MATCH = 0,
@@ -3081,34 +3081,34 @@ pub const UITER_ZERO = UCharIteratorOrigin.ZERO;
 pub const UITER_LENGTH = UCharIteratorOrigin.LENGTH;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorGetIndex = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorGetIndex = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorMove = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorMove = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorHasNext = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorHasNext = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorHasPrevious = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorHasPrevious = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorCurrent = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorCurrent = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorNext = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorNext = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorPrevious = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorPrevious = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorReserved = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorReserved = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorGetState = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorGetState = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UCharIteratorSetState = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UCharIteratorSetState = *const fn () callconv(.winapi) void;
 
 pub const UCharIterator = extern struct {
     context: ?*const anyopaque,
@@ -3283,10 +3283,10 @@ pub const UCPMAP_RANGE_NORMAL = UCPMapRangeOption.NORMAL;
 pub const UCPMAP_RANGE_FIXED_LEAD_SURROGATES = UCPMapRangeOption.FIXED_LEAD_SURROGATES;
 pub const UCPMAP_RANGE_FIXED_ALL_SURROGATES = UCPMapRangeOption.FIXED_ALL_SURROGATES;
 
-pub const UCPMapValueFilter = *const fn(
+pub const UCPMapValueFilter = *const fn (
     context: ?*const anyopaque,
     value: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub const UCPTrieData = extern union {
     ptr0: ?*const anyopaque,
@@ -3464,16 +3464,16 @@ pub const UConverterPlatform = enum(i32) {
 pub const UCNV_UNKNOWN = UConverterPlatform.UNKNOWN;
 pub const UCNV_IBM = UConverterPlatform.IBM;
 
-pub const UConverterToUCallback = *const fn(
+pub const UConverterToUCallback = *const fn (
     context: ?*const anyopaque,
     args: ?*UConverterToUnicodeArgs,
     codeUnits: ?[*:0]const u8,
     length: i32,
     reason: UConverterCallbackReason,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub const UConverterFromUCallback = *const fn(
+pub const UConverterFromUCallback = *const fn (
     context: ?*const anyopaque,
     args: ?*UConverterFromUnicodeArgs,
     codeUnits: ?*const u16,
@@ -3481,7 +3481,7 @@ pub const UConverterFromUCallback = *const fn(
     codePoint: i32,
     reason: UConverterCallbackReason,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const UConverterUnicodeSet = enum(i32) {
     SET = 0,
@@ -3490,21 +3490,21 @@ pub const UConverterUnicodeSet = enum(i32) {
 pub const UCNV_ROUNDTRIP_SET = UConverterUnicodeSet.SET;
 pub const UCNV_ROUNDTRIP_AND_FALLBACK_SET = UConverterUnicodeSet.AND_FALLBACK_SET;
 
-pub const UMemAllocFn = *const fn(
+pub const UMemAllocFn = *const fn (
     context: ?*const anyopaque,
     size: usize,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
-pub const UMemReallocFn = *const fn(
+pub const UMemReallocFn = *const fn (
     context: ?*const anyopaque,
     mem: ?*anyopaque,
     size: usize,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
-pub const UMemFreeFn = *const fn(
+pub const UMemFreeFn = *const fn (
     context: ?*const anyopaque,
     mem: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub const UProperty = enum(i32) {
     ALPHABETIC = 0,
@@ -5138,20 +5138,20 @@ pub const U_VO_TRANSFORMED_ROTATED = UVerticalOrientation.TRANSFORMED_ROTATED;
 pub const U_VO_TRANSFORMED_UPRIGHT = UVerticalOrientation.TRANSFORMED_UPRIGHT;
 pub const U_VO_UPRIGHT = UVerticalOrientation.UPRIGHT;
 
-pub const UCharEnumTypeRange = *const fn(
+pub const UCharEnumTypeRange = *const fn (
     context: ?*const anyopaque,
     start: i32,
     limit: i32,
     type: UCharCategory,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
-pub const UEnumCharNamesFn = *const fn(
+pub const UEnumCharNamesFn = *const fn (
     context: ?*anyopaque,
     code: i32,
     nameChoice: UCharNameChoice,
     name: ?[*:0]const u8,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub const UBiDiDirection = enum(i32) {
     LTR = 0,
@@ -5196,10 +5196,10 @@ pub const UBIDI_OPTION_INSERT_MARKS = UBiDiReorderingOption.INSERT_MARKS;
 pub const UBIDI_OPTION_REMOVE_CONTROLS = UBiDiReorderingOption.REMOVE_CONTROLS;
 pub const UBIDI_OPTION_STREAMING = UBiDiReorderingOption.STREAMING;
 
-pub const UBiDiClassCallback = *const fn(
+pub const UBiDiClassCallback = *const fn (
     context: ?*const anyopaque,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) UCharDirection;
+) callconv(.winapi) UCharDirection;
 
 pub const UBiDiOrder = enum(i32) {
     LOGICAL = 0,
@@ -5220,31 +5220,31 @@ pub const UBiDiTransform = extern struct {
 };
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UTextClone = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UTextClone = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UTextNativeLength = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UTextNativeLength = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UTextAccess = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UTextAccess = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UTextExtract = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UTextExtract = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UTextReplace = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UTextReplace = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UTextCopy = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UTextCopy = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UTextMapOffsetToNative = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UTextMapOffsetToNative = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UTextMapNativeIndexToUTF16 = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UTextMapNativeIndexToUTF16 = *const fn () callconv(.winapi) void;
 
 // TODO: this function pointer causes dependency loop problems, so it's stubbed out
-pub const UTextClose = *const fn() callconv(@import("std").os.windows.WINAPI) void;
+pub const UTextClose = *const fn () callconv(.winapi) void;
 
 pub const UTextFuncs = extern struct {
     tableSize: i32,
@@ -5359,10 +5359,10 @@ pub const UBreakIterator = extern struct {
     placeholder: usize, // TODO: why is this type empty?
 };
 
-pub const UNESCAPE_CHAR_AT = *const fn(
+pub const UNESCAPE_CHAR_AT = *const fn (
     offset: i32,
     context: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) u16;
+) callconv(.winapi) u16;
 
 pub const UCaseMap = extern struct {
     placeholder: usize, // TODO: why is this type empty?
@@ -6567,15 +6567,15 @@ pub const UREGEX_UNIX_LINES = URegexpFlag.UNIX_LINES;
 pub const UREGEX_UWORD = URegexpFlag.UWORD;
 pub const UREGEX_ERROR_ON_UNKNOWN_ESCAPES = URegexpFlag.ERROR_ON_UNKNOWN_ESCAPES;
 
-pub const URegexMatchCallback = *const fn(
+pub const URegexMatchCallback = *const fn (
     context: ?*const anyopaque,
     steps: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
-pub const URegexFindProgressCallback = *const fn(
+pub const URegexFindProgressCallback = *const fn (
     context: ?*const anyopaque,
     matchIndex: i64,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub const URegionType = enum(i32) {
     UNKNOWN = 0,
@@ -6794,14 +6794,14 @@ pub const UStringTrieBuildOption = enum(i32) {
 pub const USTRINGTRIE_BUILD_FAST = UStringTrieBuildOption.FAST;
 pub const USTRINGTRIE_BUILD_SMALL = UStringTrieBuildOption.SMALL;
 
-pub const UStringCaseMapper = *const fn(
+pub const UStringCaseMapper = *const fn (
     csm: ?*const UCaseMap,
     dest: ?*u16,
     destCapacity: i32,
     src: ?*const u16,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub const UMessagePatternApostropheMode = enum(i32) {
     OPTIONAL = 0,
@@ -7060,51 +7060,51 @@ pub const IID_IMLangStringBufW = &IID_IMLangStringBufW_Value;
 pub const IMLangStringBufW = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetStatus: *const fn(
+        GetStatus: *const fn (
             self: *const IMLangStringBufW,
             plFlags: ?*i32,
             pcchBuf: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockBuf: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockBuf: *const fn (
             self: *const IMLangStringBufW,
             cchOffset: i32,
             cchMaxLock: i32,
             ppszBuf: ?*?*u16,
             pcchBuf: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockBuf: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockBuf: *const fn (
             self: *const IMLangStringBufW,
             pszBuf: ?[*:0]const u16,
             cchOffset: i32,
             cchWrite: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Insert: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Insert: *const fn (
             self: *const IMLangStringBufW,
             cchOffset: i32,
             cchMaxInsert: i32,
             pcchActual: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IMLangStringBufW,
             cchOffset: i32,
             cchDelete: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetStatus(self: *const IMLangStringBufW, plFlags: ?*i32, pcchBuf: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStatus(self: *const IMLangStringBufW, plFlags: ?*i32, pcchBuf: ?*i32) HRESULT {
         return self.vtable.GetStatus(self, plFlags, pcchBuf);
     }
-    pub fn LockBuf(self: *const IMLangStringBufW, cchOffset: i32, cchMaxLock: i32, ppszBuf: ?*?*u16, pcchBuf: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn LockBuf(self: *const IMLangStringBufW, cchOffset: i32, cchMaxLock: i32, ppszBuf: ?*?*u16, pcchBuf: ?*i32) HRESULT {
         return self.vtable.LockBuf(self, cchOffset, cchMaxLock, ppszBuf, pcchBuf);
     }
-    pub fn UnlockBuf(self: *const IMLangStringBufW, pszBuf: ?[*:0]const u16, cchOffset: i32, cchWrite: i32) callconv(.Inline) HRESULT {
+    pub inline fn UnlockBuf(self: *const IMLangStringBufW, pszBuf: ?[*:0]const u16, cchOffset: i32, cchWrite: i32) HRESULT {
         return self.vtable.UnlockBuf(self, pszBuf, cchOffset, cchWrite);
     }
-    pub fn Insert(self: *const IMLangStringBufW, cchOffset: i32, cchMaxInsert: i32, pcchActual: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Insert(self: *const IMLangStringBufW, cchOffset: i32, cchMaxInsert: i32, pcchActual: ?*i32) HRESULT {
         return self.vtable.Insert(self, cchOffset, cchMaxInsert, pcchActual);
     }
-    pub fn Delete(self: *const IMLangStringBufW, cchOffset: i32, cchDelete: i32) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IMLangStringBufW, cchOffset: i32, cchDelete: i32) HRESULT {
         return self.vtable.Delete(self, cchOffset, cchDelete);
     }
 };
@@ -7114,51 +7114,51 @@ pub const IID_IMLangStringBufA = &IID_IMLangStringBufA_Value;
 pub const IMLangStringBufA = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetStatus: *const fn(
+        GetStatus: *const fn (
             self: *const IMLangStringBufA,
             plFlags: ?*i32,
             pcchBuf: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockBuf: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockBuf: *const fn (
             self: *const IMLangStringBufA,
             cchOffset: i32,
             cchMaxLock: i32,
             ppszBuf: ?*?*CHAR,
             pcchBuf: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockBuf: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockBuf: *const fn (
             self: *const IMLangStringBufA,
             pszBuf: ?[*:0]const u8,
             cchOffset: i32,
             cchWrite: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Insert: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Insert: *const fn (
             self: *const IMLangStringBufA,
             cchOffset: i32,
             cchMaxInsert: i32,
             pcchActual: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Delete: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Delete: *const fn (
             self: *const IMLangStringBufA,
             cchOffset: i32,
             cchDelete: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetStatus(self: *const IMLangStringBufA, plFlags: ?*i32, pcchBuf: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStatus(self: *const IMLangStringBufA, plFlags: ?*i32, pcchBuf: ?*i32) HRESULT {
         return self.vtable.GetStatus(self, plFlags, pcchBuf);
     }
-    pub fn LockBuf(self: *const IMLangStringBufA, cchOffset: i32, cchMaxLock: i32, ppszBuf: ?*?*CHAR, pcchBuf: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn LockBuf(self: *const IMLangStringBufA, cchOffset: i32, cchMaxLock: i32, ppszBuf: ?*?*CHAR, pcchBuf: ?*i32) HRESULT {
         return self.vtable.LockBuf(self, cchOffset, cchMaxLock, ppszBuf, pcchBuf);
     }
-    pub fn UnlockBuf(self: *const IMLangStringBufA, pszBuf: ?[*:0]const u8, cchOffset: i32, cchWrite: i32) callconv(.Inline) HRESULT {
+    pub inline fn UnlockBuf(self: *const IMLangStringBufA, pszBuf: ?[*:0]const u8, cchOffset: i32, cchWrite: i32) HRESULT {
         return self.vtable.UnlockBuf(self, pszBuf, cchOffset, cchWrite);
     }
-    pub fn Insert(self: *const IMLangStringBufA, cchOffset: i32, cchMaxInsert: i32, pcchActual: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn Insert(self: *const IMLangStringBufA, cchOffset: i32, cchMaxInsert: i32, pcchActual: ?*i32) HRESULT {
         return self.vtable.Insert(self, cchOffset, cchMaxInsert, pcchActual);
     }
-    pub fn Delete(self: *const IMLangStringBufA, cchOffset: i32, cchDelete: i32) callconv(.Inline) HRESULT {
+    pub inline fn Delete(self: *const IMLangStringBufA, cchOffset: i32, cchDelete: i32) HRESULT {
         return self.vtable.Delete(self, cchOffset, cchDelete);
     }
 };
@@ -7168,23 +7168,23 @@ pub const IID_IMLangString = &IID_IMLangString_Value;
 pub const IMLangString = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Sync: *const fn(
+        Sync: *const fn (
             self: *const IMLangString,
             fNoAccess: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLength: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLength: *const fn (
             self: *const IMLangString,
             plLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetMLStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetMLStr: *const fn (
             self: *const IMLangString,
             lDestPos: i32,
             lDestLen: i32,
             pSrcMLStr: ?*IUnknown,
             lSrcPos: i32,
             lSrcLen: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMLStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMLStr: *const fn (
             self: *const IMLangString,
             lSrcPos: i32,
             lSrcLen: i32,
@@ -7194,20 +7194,20 @@ pub const IMLangString = extern union {
             ppDestMLStr: ?*?*IUnknown,
             plDestPos: ?*i32,
             plDestLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Sync(self: *const IMLangString, fNoAccess: BOOL) callconv(.Inline) HRESULT {
+    pub inline fn Sync(self: *const IMLangString, fNoAccess: BOOL) HRESULT {
         return self.vtable.Sync(self, fNoAccess);
     }
-    pub fn GetLength(self: *const IMLangString, plLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetLength(self: *const IMLangString, plLen: ?*i32) HRESULT {
         return self.vtable.GetLength(self, plLen);
     }
-    pub fn SetMLStr(self: *const IMLangString, lDestPos: i32, lDestLen: i32, pSrcMLStr: ?*IUnknown, lSrcPos: i32, lSrcLen: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetMLStr(self: *const IMLangString, lDestPos: i32, lDestLen: i32, pSrcMLStr: ?*IUnknown, lSrcPos: i32, lSrcLen: i32) HRESULT {
         return self.vtable.SetMLStr(self, lDestPos, lDestLen, pSrcMLStr, lSrcPos, lSrcLen);
     }
-    pub fn GetMLStr(self: *const IMLangString, lSrcPos: i32, lSrcLen: i32, pUnkOuter: ?*IUnknown, dwClsContext: u32, piid: ?*const Guid, ppDestMLStr: ?*?*IUnknown, plDestPos: ?*i32, plDestLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetMLStr(self: *const IMLangString, lSrcPos: i32, lSrcLen: i32, pUnkOuter: ?*IUnknown, dwClsContext: u32, piid: ?*const Guid, ppDestMLStr: ?*?*IUnknown, plDestPos: ?*i32, plDestLen: ?*i32) HRESULT {
         return self.vtable.GetMLStr(self, lSrcPos, lSrcLen, pUnkOuter, dwClsContext, piid, ppDestMLStr, plDestPos, plDestLen);
     }
 };
@@ -7217,7 +7217,7 @@ pub const IID_IMLangStringWStr = &IID_IMLangStringWStr_Value;
 pub const IMLangStringWStr = extern union {
     pub const VTable = extern struct {
         base: IMLangString.VTable,
-        SetWStr: *const fn(
+        SetWStr: *const fn (
             self: *const IMLangStringWStr,
             lDestPos: i32,
             lDestLen: i32,
@@ -7225,16 +7225,16 @@ pub const IMLangStringWStr = extern union {
             cchSrc: i32,
             pcchActual: ?*i32,
             plActualLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStrBufW: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStrBufW: *const fn (
             self: *const IMLangStringWStr,
             lDestPos: i32,
             lDestLen: i32,
             pSrcBuf: ?*IMLangStringBufW,
             pcchActual: ?*i32,
             plActualLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetWStr: *const fn (
             self: *const IMLangStringWStr,
             lSrcPos: i32,
             lSrcLen: i32,
@@ -7242,15 +7242,15 @@ pub const IMLangStringWStr = extern union {
             cchDest: i32,
             pcchActual: ?*i32,
             plActualLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStrBufW: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStrBufW: *const fn (
             self: *const IMLangStringWStr,
             lSrcPos: i32,
             lSrcMaxLen: i32,
             ppDestBuf: ?*?*IMLangStringBufW,
             plDestLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockWStr: *const fn (
             self: *const IMLangStringWStr,
             lSrcPos: i32,
             lSrcLen: i32,
@@ -7259,54 +7259,54 @@ pub const IMLangStringWStr = extern union {
             ppszDest: ?*?PWSTR,
             pcchDest: ?*i32,
             plDestLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockWStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockWStr: *const fn (
             self: *const IMLangStringWStr,
             pszSrc: [*:0]const u16,
             cchSrc: i32,
             pcchActual: ?*i32,
             plActualLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLocale: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLocale: *const fn (
             self: *const IMLangStringWStr,
             lDestPos: i32,
             lDestLen: i32,
             locale: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLocale: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLocale: *const fn (
             self: *const IMLangStringWStr,
             lSrcPos: i32,
             lSrcMaxLen: i32,
             plocale: ?*u32,
             plLocalePos: ?*i32,
             plLocaleLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IMLangString: IMLangString,
     IUnknown: IUnknown,
-    pub fn SetWStr(self: *const IMLangStringWStr, lDestPos: i32, lDestLen: i32, pszSrc: [*:0]const u16, cchSrc: i32, pcchActual: ?*i32, plActualLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn SetWStr(self: *const IMLangStringWStr, lDestPos: i32, lDestLen: i32, pszSrc: [*:0]const u16, cchSrc: i32, pcchActual: ?*i32, plActualLen: ?*i32) HRESULT {
         return self.vtable.SetWStr(self, lDestPos, lDestLen, pszSrc, cchSrc, pcchActual, plActualLen);
     }
-    pub fn SetStrBufW(self: *const IMLangStringWStr, lDestPos: i32, lDestLen: i32, pSrcBuf: ?*IMLangStringBufW, pcchActual: ?*i32, plActualLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn SetStrBufW(self: *const IMLangStringWStr, lDestPos: i32, lDestLen: i32, pSrcBuf: ?*IMLangStringBufW, pcchActual: ?*i32, plActualLen: ?*i32) HRESULT {
         return self.vtable.SetStrBufW(self, lDestPos, lDestLen, pSrcBuf, pcchActual, plActualLen);
     }
-    pub fn GetWStr(self: *const IMLangStringWStr, lSrcPos: i32, lSrcLen: i32, pszDest: ?[*:0]u16, cchDest: i32, pcchActual: ?*i32, plActualLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetWStr(self: *const IMLangStringWStr, lSrcPos: i32, lSrcLen: i32, pszDest: ?[*:0]u16, cchDest: i32, pcchActual: ?*i32, plActualLen: ?*i32) HRESULT {
         return self.vtable.GetWStr(self, lSrcPos, lSrcLen, pszDest, cchDest, pcchActual, plActualLen);
     }
-    pub fn GetStrBufW(self: *const IMLangStringWStr, lSrcPos: i32, lSrcMaxLen: i32, ppDestBuf: ?*?*IMLangStringBufW, plDestLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStrBufW(self: *const IMLangStringWStr, lSrcPos: i32, lSrcMaxLen: i32, ppDestBuf: ?*?*IMLangStringBufW, plDestLen: ?*i32) HRESULT {
         return self.vtable.GetStrBufW(self, lSrcPos, lSrcMaxLen, ppDestBuf, plDestLen);
     }
-    pub fn LockWStr(self: *const IMLangStringWStr, lSrcPos: i32, lSrcLen: i32, lFlags: i32, cchRequest: i32, ppszDest: ?*?PWSTR, pcchDest: ?*i32, plDestLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn LockWStr(self: *const IMLangStringWStr, lSrcPos: i32, lSrcLen: i32, lFlags: i32, cchRequest: i32, ppszDest: ?*?PWSTR, pcchDest: ?*i32, plDestLen: ?*i32) HRESULT {
         return self.vtable.LockWStr(self, lSrcPos, lSrcLen, lFlags, cchRequest, ppszDest, pcchDest, plDestLen);
     }
-    pub fn UnlockWStr(self: *const IMLangStringWStr, pszSrc: [*:0]const u16, cchSrc: i32, pcchActual: ?*i32, plActualLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn UnlockWStr(self: *const IMLangStringWStr, pszSrc: [*:0]const u16, cchSrc: i32, pcchActual: ?*i32, plActualLen: ?*i32) HRESULT {
         return self.vtable.UnlockWStr(self, pszSrc, cchSrc, pcchActual, plActualLen);
     }
-    pub fn SetLocale(self: *const IMLangStringWStr, lDestPos: i32, lDestLen: i32, locale: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetLocale(self: *const IMLangStringWStr, lDestPos: i32, lDestLen: i32, locale: u32) HRESULT {
         return self.vtable.SetLocale(self, lDestPos, lDestLen, locale);
     }
-    pub fn GetLocale(self: *const IMLangStringWStr, lSrcPos: i32, lSrcMaxLen: i32, plocale: ?*u32, plLocalePos: ?*i32, plLocaleLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetLocale(self: *const IMLangStringWStr, lSrcPos: i32, lSrcMaxLen: i32, plocale: ?*u32, plLocalePos: ?*i32, plLocaleLen: ?*i32) HRESULT {
         return self.vtable.GetLocale(self, lSrcPos, lSrcMaxLen, plocale, plLocalePos, plLocaleLen);
     }
 };
@@ -7316,7 +7316,7 @@ pub const IID_IMLangStringAStr = &IID_IMLangStringAStr_Value;
 pub const IMLangStringAStr = extern union {
     pub const VTable = extern struct {
         base: IMLangString.VTable,
-        SetAStr: *const fn(
+        SetAStr: *const fn (
             self: *const IMLangStringAStr,
             lDestPos: i32,
             lDestLen: i32,
@@ -7325,8 +7325,8 @@ pub const IMLangStringAStr = extern union {
             cchSrc: i32,
             pcchActual: ?*i32,
             plActualLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetStrBufA: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetStrBufA: *const fn (
             self: *const IMLangStringAStr,
             lDestPos: i32,
             lDestLen: i32,
@@ -7334,8 +7334,8 @@ pub const IMLangStringAStr = extern union {
             pSrcBuf: ?*IMLangStringBufA,
             pcchActual: ?*i32,
             plActualLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAStr: *const fn (
             self: *const IMLangStringAStr,
             lSrcPos: i32,
             lSrcLen: i32,
@@ -7345,16 +7345,16 @@ pub const IMLangStringAStr = extern union {
             cchDest: i32,
             pcchActual: ?*i32,
             plActualLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStrBufA: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStrBufA: *const fn (
             self: *const IMLangStringAStr,
             lSrcPos: i32,
             lSrcMaxLen: i32,
             puDestCodePage: ?*u32,
             ppDestBuf: ?*?*IMLangStringBufA,
             plDestLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        LockAStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        LockAStr: *const fn (
             self: *const IMLangStringAStr,
             lSrcPos: i32,
             lSrcLen: i32,
@@ -7365,54 +7365,54 @@ pub const IMLangStringAStr = extern union {
             ppszDest: ?*?PSTR,
             pcchDest: ?*i32,
             plDestLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockAStr: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockAStr: *const fn (
             self: *const IMLangStringAStr,
             pszSrc: [*:0]const u8,
             cchSrc: i32,
             pcchActual: ?*i32,
             plActualLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetLocale: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetLocale: *const fn (
             self: *const IMLangStringAStr,
             lDestPos: i32,
             lDestLen: i32,
             locale: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLocale: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLocale: *const fn (
             self: *const IMLangStringAStr,
             lSrcPos: i32,
             lSrcMaxLen: i32,
             plocale: ?*u32,
             plLocalePos: ?*i32,
             plLocaleLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IMLangString: IMLangString,
     IUnknown: IUnknown,
-    pub fn SetAStr(self: *const IMLangStringAStr, lDestPos: i32, lDestLen: i32, uCodePage: u32, pszSrc: [*:0]const u8, cchSrc: i32, pcchActual: ?*i32, plActualLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn SetAStr(self: *const IMLangStringAStr, lDestPos: i32, lDestLen: i32, uCodePage: u32, pszSrc: [*:0]const u8, cchSrc: i32, pcchActual: ?*i32, plActualLen: ?*i32) HRESULT {
         return self.vtable.SetAStr(self, lDestPos, lDestLen, uCodePage, pszSrc, cchSrc, pcchActual, plActualLen);
     }
-    pub fn SetStrBufA(self: *const IMLangStringAStr, lDestPos: i32, lDestLen: i32, uCodePage: u32, pSrcBuf: ?*IMLangStringBufA, pcchActual: ?*i32, plActualLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn SetStrBufA(self: *const IMLangStringAStr, lDestPos: i32, lDestLen: i32, uCodePage: u32, pSrcBuf: ?*IMLangStringBufA, pcchActual: ?*i32, plActualLen: ?*i32) HRESULT {
         return self.vtable.SetStrBufA(self, lDestPos, lDestLen, uCodePage, pSrcBuf, pcchActual, plActualLen);
     }
-    pub fn GetAStr(self: *const IMLangStringAStr, lSrcPos: i32, lSrcLen: i32, uCodePageIn: u32, puCodePageOut: ?*u32, pszDest: ?[*:0]u8, cchDest: i32, pcchActual: ?*i32, plActualLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetAStr(self: *const IMLangStringAStr, lSrcPos: i32, lSrcLen: i32, uCodePageIn: u32, puCodePageOut: ?*u32, pszDest: ?[*:0]u8, cchDest: i32, pcchActual: ?*i32, plActualLen: ?*i32) HRESULT {
         return self.vtable.GetAStr(self, lSrcPos, lSrcLen, uCodePageIn, puCodePageOut, pszDest, cchDest, pcchActual, plActualLen);
     }
-    pub fn GetStrBufA(self: *const IMLangStringAStr, lSrcPos: i32, lSrcMaxLen: i32, puDestCodePage: ?*u32, ppDestBuf: ?*?*IMLangStringBufA, plDestLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStrBufA(self: *const IMLangStringAStr, lSrcPos: i32, lSrcMaxLen: i32, puDestCodePage: ?*u32, ppDestBuf: ?*?*IMLangStringBufA, plDestLen: ?*i32) HRESULT {
         return self.vtable.GetStrBufA(self, lSrcPos, lSrcMaxLen, puDestCodePage, ppDestBuf, plDestLen);
     }
-    pub fn LockAStr(self: *const IMLangStringAStr, lSrcPos: i32, lSrcLen: i32, lFlags: i32, uCodePageIn: u32, cchRequest: i32, puCodePageOut: ?*u32, ppszDest: ?*?PSTR, pcchDest: ?*i32, plDestLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn LockAStr(self: *const IMLangStringAStr, lSrcPos: i32, lSrcLen: i32, lFlags: i32, uCodePageIn: u32, cchRequest: i32, puCodePageOut: ?*u32, ppszDest: ?*?PSTR, pcchDest: ?*i32, plDestLen: ?*i32) HRESULT {
         return self.vtable.LockAStr(self, lSrcPos, lSrcLen, lFlags, uCodePageIn, cchRequest, puCodePageOut, ppszDest, pcchDest, plDestLen);
     }
-    pub fn UnlockAStr(self: *const IMLangStringAStr, pszSrc: [*:0]const u8, cchSrc: i32, pcchActual: ?*i32, plActualLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn UnlockAStr(self: *const IMLangStringAStr, pszSrc: [*:0]const u8, cchSrc: i32, pcchActual: ?*i32, plActualLen: ?*i32) HRESULT {
         return self.vtable.UnlockAStr(self, pszSrc, cchSrc, pcchActual, plActualLen);
     }
-    pub fn SetLocale(self: *const IMLangStringAStr, lDestPos: i32, lDestLen: i32, locale: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetLocale(self: *const IMLangStringAStr, lDestPos: i32, lDestLen: i32, locale: u32) HRESULT {
         return self.vtable.SetLocale(self, lDestPos, lDestLen, locale);
     }
-    pub fn GetLocale(self: *const IMLangStringAStr, lSrcPos: i32, lSrcMaxLen: i32, plocale: ?*u32, plLocalePos: ?*i32, plLocaleLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetLocale(self: *const IMLangStringAStr, lSrcPos: i32, lSrcMaxLen: i32, plocale: ?*u32, plLocalePos: ?*i32, plLocaleLen: ?*i32) HRESULT {
         return self.vtable.GetLocale(self, lSrcPos, lSrcMaxLen, plocale, plLocalePos, plLocaleLen);
     }
 };
@@ -7422,7 +7422,7 @@ pub const IID_IMLangLineBreakConsole = &IID_IMLangLineBreakConsole_Value;
 pub const IMLangLineBreakConsole = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        BreakLineML: *const fn(
+        BreakLineML: *const fn (
             self: *const IMLangLineBreakConsole,
             pSrcMLStr: ?*IMLangString,
             lSrcPos: i32,
@@ -7431,8 +7431,8 @@ pub const IMLangLineBreakConsole = extern union {
             cMaxColumns: i32,
             plLineLen: ?*i32,
             plSkipLen: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BreakLineW: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BreakLineW: *const fn (
             self: *const IMLangLineBreakConsole,
             locale: u32,
             pszSrc: [*:0]const u16,
@@ -7440,8 +7440,8 @@ pub const IMLangLineBreakConsole = extern union {
             cMaxColumns: i32,
             pcchLine: ?*i32,
             pcchSkip: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BreakLineA: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BreakLineA: *const fn (
             self: *const IMLangLineBreakConsole,
             locale: u32,
             uCodePage: u32,
@@ -7450,17 +7450,17 @@ pub const IMLangLineBreakConsole = extern union {
             cMaxColumns: i32,
             pcchLine: ?*i32,
             pcchSkip: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn BreakLineML(self: *const IMLangLineBreakConsole, pSrcMLStr: ?*IMLangString, lSrcPos: i32, lSrcLen: i32, cMinColumns: i32, cMaxColumns: i32, plLineLen: ?*i32, plSkipLen: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn BreakLineML(self: *const IMLangLineBreakConsole, pSrcMLStr: ?*IMLangString, lSrcPos: i32, lSrcLen: i32, cMinColumns: i32, cMaxColumns: i32, plLineLen: ?*i32, plSkipLen: ?*i32) HRESULT {
         return self.vtable.BreakLineML(self, pSrcMLStr, lSrcPos, lSrcLen, cMinColumns, cMaxColumns, plLineLen, plSkipLen);
     }
-    pub fn BreakLineW(self: *const IMLangLineBreakConsole, locale: u32, pszSrc: [*:0]const u16, cchSrc: i32, cMaxColumns: i32, pcchLine: ?*i32, pcchSkip: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn BreakLineW(self: *const IMLangLineBreakConsole, locale: u32, pszSrc: [*:0]const u16, cchSrc: i32, cMaxColumns: i32, pcchLine: ?*i32, pcchSkip: ?*i32) HRESULT {
         return self.vtable.BreakLineW(self, locale, pszSrc, cchSrc, cMaxColumns, pcchLine, pcchSkip);
     }
-    pub fn BreakLineA(self: *const IMLangLineBreakConsole, locale: u32, uCodePage: u32, pszSrc: [*:0]const u8, cchSrc: i32, cMaxColumns: i32, pcchLine: ?*i32, pcchSkip: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn BreakLineA(self: *const IMLangLineBreakConsole, locale: u32, uCodePage: u32, pszSrc: [*:0]const u8, cchSrc: i32, cMaxColumns: i32, pcchLine: ?*i32, pcchSkip: ?*i32) HRESULT {
         return self.vtable.BreakLineA(self, locale, uCodePage, pszSrc, cchSrc, cMaxColumns, pcchLine, pcchSkip);
     }
 };
@@ -7518,36 +7518,36 @@ pub const IID_IEnumCodePage = &IID_IEnumCodePage_Value;
 pub const IEnumCodePage = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Clone: *const fn(
+        Clone: *const fn (
             self: *const IEnumCodePage,
             ppEnum: ?*?*IEnumCodePage,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IEnumCodePage,
             celt: u32,
             rgelt: ?*MIMECPINFO,
             pceltFetched: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumCodePage,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumCodePage,
             celt: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Clone(self: *const IEnumCodePage, ppEnum: ?*?*IEnumCodePage) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumCodePage, ppEnum: ?*?*IEnumCodePage) HRESULT {
         return self.vtable.Clone(self, ppEnum);
     }
-    pub fn Next(self: *const IEnumCodePage, celt: u32, rgelt: ?*MIMECPINFO, pceltFetched: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumCodePage, celt: u32, rgelt: ?*MIMECPINFO, pceltFetched: ?*u32) HRESULT {
         return self.vtable.Next(self, celt, rgelt, pceltFetched);
     }
-    pub fn Reset(self: *const IEnumCodePage) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumCodePage) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Skip(self: *const IEnumCodePage, celt: u32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumCodePage, celt: u32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
 };
@@ -7563,36 +7563,36 @@ pub const IID_IEnumRfc1766 = &IID_IEnumRfc1766_Value;
 pub const IEnumRfc1766 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Clone: *const fn(
+        Clone: *const fn (
             self: *const IEnumRfc1766,
             ppEnum: ?*?*IEnumRfc1766,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IEnumRfc1766,
             celt: u32,
             rgelt: ?*RFC1766INFO,
             pceltFetched: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumRfc1766,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumRfc1766,
             celt: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Clone(self: *const IEnumRfc1766, ppEnum: ?*?*IEnumRfc1766) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumRfc1766, ppEnum: ?*?*IEnumRfc1766) HRESULT {
         return self.vtable.Clone(self, ppEnum);
     }
-    pub fn Next(self: *const IEnumRfc1766, celt: u32, rgelt: ?*RFC1766INFO, pceltFetched: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumRfc1766, celt: u32, rgelt: ?*RFC1766INFO, pceltFetched: ?*u32) HRESULT {
         return self.vtable.Next(self, celt, rgelt, pceltFetched);
     }
-    pub fn Reset(self: *const IEnumRfc1766) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumRfc1766) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Skip(self: *const IEnumRfc1766, celt: u32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumRfc1766, celt: u32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
 };
@@ -7701,36 +7701,36 @@ pub const IID_IEnumScript = &IID_IEnumScript_Value;
 pub const IEnumScript = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Clone: *const fn(
+        Clone: *const fn (
             self: *const IEnumScript,
             ppEnum: ?*?*IEnumScript,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Next: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Next: *const fn (
             self: *const IEnumScript,
             celt: u32,
             rgelt: ?*SCRIPTINFO,
             pceltFetched: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IEnumScript,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Skip: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Skip: *const fn (
             self: *const IEnumScript,
             celt: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Clone(self: *const IEnumScript, ppEnum: ?*?*IEnumScript) callconv(.Inline) HRESULT {
+    pub inline fn Clone(self: *const IEnumScript, ppEnum: ?*?*IEnumScript) HRESULT {
         return self.vtable.Clone(self, ppEnum);
     }
-    pub fn Next(self: *const IEnumScript, celt: u32, rgelt: ?*SCRIPTINFO, pceltFetched: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Next(self: *const IEnumScript, celt: u32, rgelt: ?*SCRIPTINFO, pceltFetched: ?*u32) HRESULT {
         return self.vtable.Next(self, celt, rgelt, pceltFetched);
     }
-    pub fn Reset(self: *const IEnumScript) callconv(.Inline) HRESULT {
+    pub inline fn Reset(self: *const IEnumScript) HRESULT {
         return self.vtable.Reset(self);
     }
-    pub fn Skip(self: *const IEnumScript, celt: u32) callconv(.Inline) HRESULT {
+    pub inline fn Skip(self: *const IEnumScript, celt: u32) HRESULT {
         return self.vtable.Skip(self, celt);
     }
 };
@@ -7776,25 +7776,25 @@ pub const IID_IMLangConvertCharset = &IID_IMLangConvertCharset_Value;
 pub const IMLangConvertCharset = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IMLangConvertCharset,
             uiSrcCodePage: u32,
             uiDstCodePage: u32,
             dwProperty: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSourceCodePage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSourceCodePage: *const fn (
             self: *const IMLangConvertCharset,
             puiSrcCodePage: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDestinationCodePage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDestinationCodePage: *const fn (
             self: *const IMLangConvertCharset,
             puiDstCodePage: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProperty: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProperty: *const fn (
             self: *const IMLangConvertCharset,
             pdwProperty: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DoConversion: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DoConversion: *const fn (
             self: *const IMLangConvertCharset,
             // TODO: what to do with BytesParamIndex 1?
             pSrcStr: ?*u8,
@@ -7802,45 +7802,45 @@ pub const IMLangConvertCharset = extern union {
             // TODO: what to do with BytesParamIndex 3?
             pDstStr: ?*u8,
             pcDstSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DoConversionToUnicode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DoConversionToUnicode: *const fn (
             self: *const IMLangConvertCharset,
             // TODO: what to do with BytesParamIndex 1?
             pSrcStr: ?PSTR,
             pcSrcSize: ?*u32,
             pDstStr: [*:0]u16,
             pcDstSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DoConversionFromUnicode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DoConversionFromUnicode: *const fn (
             self: *const IMLangConvertCharset,
             pSrcStr: [*:0]u16,
             pcSrcSize: ?*u32,
             // TODO: what to do with BytesParamIndex 3?
             pDstStr: ?PSTR,
             pcDstSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IMLangConvertCharset, uiSrcCodePage: u32, uiDstCodePage: u32, dwProperty: u32) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IMLangConvertCharset, uiSrcCodePage: u32, uiDstCodePage: u32, dwProperty: u32) HRESULT {
         return self.vtable.Initialize(self, uiSrcCodePage, uiDstCodePage, dwProperty);
     }
-    pub fn GetSourceCodePage(self: *const IMLangConvertCharset, puiSrcCodePage: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetSourceCodePage(self: *const IMLangConvertCharset, puiSrcCodePage: ?*u32) HRESULT {
         return self.vtable.GetSourceCodePage(self, puiSrcCodePage);
     }
-    pub fn GetDestinationCodePage(self: *const IMLangConvertCharset, puiDstCodePage: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDestinationCodePage(self: *const IMLangConvertCharset, puiDstCodePage: ?*u32) HRESULT {
         return self.vtable.GetDestinationCodePage(self, puiDstCodePage);
     }
-    pub fn GetProperty(self: *const IMLangConvertCharset, pdwProperty: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetProperty(self: *const IMLangConvertCharset, pdwProperty: ?*u32) HRESULT {
         return self.vtable.GetProperty(self, pdwProperty);
     }
-    pub fn DoConversion(self: *const IMLangConvertCharset, pSrcStr: ?*u8, pcSrcSize: ?*u32, pDstStr: ?*u8, pcDstSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn DoConversion(self: *const IMLangConvertCharset, pSrcStr: ?*u8, pcSrcSize: ?*u32, pDstStr: ?*u8, pcDstSize: ?*u32) HRESULT {
         return self.vtable.DoConversion(self, pSrcStr, pcSrcSize, pDstStr, pcDstSize);
     }
-    pub fn DoConversionToUnicode(self: *const IMLangConvertCharset, pSrcStr: ?PSTR, pcSrcSize: ?*u32, pDstStr: [*:0]u16, pcDstSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn DoConversionToUnicode(self: *const IMLangConvertCharset, pSrcStr: ?PSTR, pcSrcSize: ?*u32, pDstStr: [*:0]u16, pcDstSize: ?*u32) HRESULT {
         return self.vtable.DoConversionToUnicode(self, pSrcStr, pcSrcSize, pDstStr, pcDstSize);
     }
-    pub fn DoConversionFromUnicode(self: *const IMLangConvertCharset, pSrcStr: [*:0]u16, pcSrcSize: ?*u32, pDstStr: ?PSTR, pcDstSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn DoConversionFromUnicode(self: *const IMLangConvertCharset, pSrcStr: [*:0]u16, pcSrcSize: ?*u32, pDstStr: ?PSTR, pcDstSize: ?*u32) HRESULT {
         return self.vtable.DoConversionFromUnicode(self, pSrcStr, pcSrcSize, pDstStr, pcDstSize);
     }
 };
@@ -7850,36 +7850,36 @@ pub const IID_IMultiLanguage = &IID_IMultiLanguage_Value;
 pub const IMultiLanguage = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetNumberOfCodePageInfo: *const fn(
+        GetNumberOfCodePageInfo: *const fn (
             self: *const IMultiLanguage,
             pcCodePage: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCodePageInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCodePageInfo: *const fn (
             self: *const IMultiLanguage,
             uiCodePage: u32,
             pCodePageInfo: ?*MIMECPINFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFamilyCodePage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFamilyCodePage: *const fn (
             self: *const IMultiLanguage,
             uiCodePage: u32,
             puiFamilyCodePage: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumCodePages: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumCodePages: *const fn (
             self: *const IMultiLanguage,
             grfFlags: u32,
             ppEnumCodePage: ?*?*IEnumCodePage,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCharsetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCharsetInfo: *const fn (
             self: *const IMultiLanguage,
             Charset: ?BSTR,
             pCharsetInfo: ?*MIMECSETINFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsConvertible: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsConvertible: *const fn (
             self: *const IMultiLanguage,
             dwSrcEncoding: u32,
             dwDstEncoding: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertString: *const fn (
             self: *const IMultiLanguage,
             pdwMode: ?*u32,
             dwSrcEncoding: u32,
@@ -7890,8 +7890,8 @@ pub const IMultiLanguage = extern union {
             // TODO: what to do with BytesParamIndex 6?
             pDstStr: ?*u8,
             pcDstSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertStringToUnicode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertStringToUnicode: *const fn (
             self: *const IMultiLanguage,
             pdwMode: ?*u32,
             dwEncoding: u32,
@@ -7900,8 +7900,8 @@ pub const IMultiLanguage = extern union {
             pcSrcSize: ?*u32,
             pDstStr: ?[*:0]u16,
             pcDstSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertStringFromUnicode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertStringFromUnicode: *const fn (
             self: *const IMultiLanguage,
             pdwMode: ?*u32,
             dwEncoding: u32,
@@ -7910,82 +7910,82 @@ pub const IMultiLanguage = extern union {
             // TODO: what to do with BytesParamIndex 5?
             pDstStr: ?PSTR,
             pcDstSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertStringReset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertStringReset: *const fn (
             self: *const IMultiLanguage,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRfc1766FromLcid: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRfc1766FromLcid: *const fn (
             self: *const IMultiLanguage,
             Locale: u32,
             pbstrRfc1766: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLcidFromRfc1766: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLcidFromRfc1766: *const fn (
             self: *const IMultiLanguage,
             pLocale: ?*u32,
             bstrRfc1766: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumRfc1766: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumRfc1766: *const fn (
             self: *const IMultiLanguage,
             ppEnumRfc1766: ?*?*IEnumRfc1766,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRfc1766Info: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRfc1766Info: *const fn (
             self: *const IMultiLanguage,
             Locale: u32,
             pRfc1766Info: ?*RFC1766INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateConvertCharset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateConvertCharset: *const fn (
             self: *const IMultiLanguage,
             uiSrcCodePage: u32,
             uiDstCodePage: u32,
             dwProperty: u32,
             ppMLangConvertCharset: ?*?*IMLangConvertCharset,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetNumberOfCodePageInfo(self: *const IMultiLanguage, pcCodePage: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetNumberOfCodePageInfo(self: *const IMultiLanguage, pcCodePage: ?*u32) HRESULT {
         return self.vtable.GetNumberOfCodePageInfo(self, pcCodePage);
     }
-    pub fn GetCodePageInfo(self: *const IMultiLanguage, uiCodePage: u32, pCodePageInfo: ?*MIMECPINFO) callconv(.Inline) HRESULT {
+    pub inline fn GetCodePageInfo(self: *const IMultiLanguage, uiCodePage: u32, pCodePageInfo: ?*MIMECPINFO) HRESULT {
         return self.vtable.GetCodePageInfo(self, uiCodePage, pCodePageInfo);
     }
-    pub fn GetFamilyCodePage(self: *const IMultiLanguage, uiCodePage: u32, puiFamilyCodePage: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFamilyCodePage(self: *const IMultiLanguage, uiCodePage: u32, puiFamilyCodePage: ?*u32) HRESULT {
         return self.vtable.GetFamilyCodePage(self, uiCodePage, puiFamilyCodePage);
     }
-    pub fn EnumCodePages(self: *const IMultiLanguage, grfFlags: u32, ppEnumCodePage: ?*?*IEnumCodePage) callconv(.Inline) HRESULT {
+    pub inline fn EnumCodePages(self: *const IMultiLanguage, grfFlags: u32, ppEnumCodePage: ?*?*IEnumCodePage) HRESULT {
         return self.vtable.EnumCodePages(self, grfFlags, ppEnumCodePage);
     }
-    pub fn GetCharsetInfo(self: *const IMultiLanguage, Charset: ?BSTR, pCharsetInfo: ?*MIMECSETINFO) callconv(.Inline) HRESULT {
+    pub inline fn GetCharsetInfo(self: *const IMultiLanguage, Charset: ?BSTR, pCharsetInfo: ?*MIMECSETINFO) HRESULT {
         return self.vtable.GetCharsetInfo(self, Charset, pCharsetInfo);
     }
-    pub fn IsConvertible(self: *const IMultiLanguage, dwSrcEncoding: u32, dwDstEncoding: u32) callconv(.Inline) HRESULT {
+    pub inline fn IsConvertible(self: *const IMultiLanguage, dwSrcEncoding: u32, dwDstEncoding: u32) HRESULT {
         return self.vtable.IsConvertible(self, dwSrcEncoding, dwDstEncoding);
     }
-    pub fn ConvertString(self: *const IMultiLanguage, pdwMode: ?*u32, dwSrcEncoding: u32, dwDstEncoding: u32, pSrcStr: ?*u8, pcSrcSize: ?*u32, pDstStr: ?*u8, pcDstSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ConvertString(self: *const IMultiLanguage, pdwMode: ?*u32, dwSrcEncoding: u32, dwDstEncoding: u32, pSrcStr: ?*u8, pcSrcSize: ?*u32, pDstStr: ?*u8, pcDstSize: ?*u32) HRESULT {
         return self.vtable.ConvertString(self, pdwMode, dwSrcEncoding, dwDstEncoding, pSrcStr, pcSrcSize, pDstStr, pcDstSize);
     }
-    pub fn ConvertStringToUnicode(self: *const IMultiLanguage, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?PSTR, pcSrcSize: ?*u32, pDstStr: ?[*:0]u16, pcDstSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ConvertStringToUnicode(self: *const IMultiLanguage, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?PSTR, pcSrcSize: ?*u32, pDstStr: ?[*:0]u16, pcDstSize: ?*u32) HRESULT {
         return self.vtable.ConvertStringToUnicode(self, pdwMode, dwEncoding, pSrcStr, pcSrcSize, pDstStr, pcDstSize);
     }
-    pub fn ConvertStringFromUnicode(self: *const IMultiLanguage, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?[*:0]u16, pcSrcSize: ?*u32, pDstStr: ?PSTR, pcDstSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ConvertStringFromUnicode(self: *const IMultiLanguage, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?[*:0]u16, pcSrcSize: ?*u32, pDstStr: ?PSTR, pcDstSize: ?*u32) HRESULT {
         return self.vtable.ConvertStringFromUnicode(self, pdwMode, dwEncoding, pSrcStr, pcSrcSize, pDstStr, pcDstSize);
     }
-    pub fn ConvertStringReset(self: *const IMultiLanguage) callconv(.Inline) HRESULT {
+    pub inline fn ConvertStringReset(self: *const IMultiLanguage) HRESULT {
         return self.vtable.ConvertStringReset(self);
     }
-    pub fn GetRfc1766FromLcid(self: *const IMultiLanguage, Locale: u32, pbstrRfc1766: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetRfc1766FromLcid(self: *const IMultiLanguage, Locale: u32, pbstrRfc1766: ?*?BSTR) HRESULT {
         return self.vtable.GetRfc1766FromLcid(self, Locale, pbstrRfc1766);
     }
-    pub fn GetLcidFromRfc1766(self: *const IMultiLanguage, pLocale: ?*u32, bstrRfc1766: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetLcidFromRfc1766(self: *const IMultiLanguage, pLocale: ?*u32, bstrRfc1766: ?BSTR) HRESULT {
         return self.vtable.GetLcidFromRfc1766(self, pLocale, bstrRfc1766);
     }
-    pub fn EnumRfc1766(self: *const IMultiLanguage, ppEnumRfc1766: ?*?*IEnumRfc1766) callconv(.Inline) HRESULT {
+    pub inline fn EnumRfc1766(self: *const IMultiLanguage, ppEnumRfc1766: ?*?*IEnumRfc1766) HRESULT {
         return self.vtable.EnumRfc1766(self, ppEnumRfc1766);
     }
-    pub fn GetRfc1766Info(self: *const IMultiLanguage, Locale: u32, pRfc1766Info: ?*RFC1766INFO) callconv(.Inline) HRESULT {
+    pub inline fn GetRfc1766Info(self: *const IMultiLanguage, Locale: u32, pRfc1766Info: ?*RFC1766INFO) HRESULT {
         return self.vtable.GetRfc1766Info(self, Locale, pRfc1766Info);
     }
-    pub fn CreateConvertCharset(self: *const IMultiLanguage, uiSrcCodePage: u32, uiDstCodePage: u32, dwProperty: u32, ppMLangConvertCharset: ?*?*IMLangConvertCharset) callconv(.Inline) HRESULT {
+    pub inline fn CreateConvertCharset(self: *const IMultiLanguage, uiSrcCodePage: u32, uiDstCodePage: u32, dwProperty: u32, ppMLangConvertCharset: ?*?*IMLangConvertCharset) HRESULT {
         return self.vtable.CreateConvertCharset(self, uiSrcCodePage, uiDstCodePage, dwProperty, ppMLangConvertCharset);
     }
 };
@@ -8035,38 +8035,38 @@ pub const IID_IMultiLanguage2 = &IID_IMultiLanguage2_Value;
 pub const IMultiLanguage2 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetNumberOfCodePageInfo: *const fn(
+        GetNumberOfCodePageInfo: *const fn (
             self: *const IMultiLanguage2,
             pcCodePage: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCodePageInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCodePageInfo: *const fn (
             self: *const IMultiLanguage2,
             uiCodePage: u32,
             LangId: u16,
             pCodePageInfo: ?*MIMECPINFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFamilyCodePage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFamilyCodePage: *const fn (
             self: *const IMultiLanguage2,
             uiCodePage: u32,
             puiFamilyCodePage: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumCodePages: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumCodePages: *const fn (
             self: *const IMultiLanguage2,
             grfFlags: u32,
             LangId: u16,
             ppEnumCodePage: ?*?*IEnumCodePage,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCharsetInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCharsetInfo: *const fn (
             self: *const IMultiLanguage2,
             Charset: ?BSTR,
             pCharsetInfo: ?*MIMECSETINFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsConvertible: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsConvertible: *const fn (
             self: *const IMultiLanguage2,
             dwSrcEncoding: u32,
             dwDstEncoding: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertString: *const fn (
             self: *const IMultiLanguage2,
             pdwMode: ?*u32,
             dwSrcEncoding: u32,
@@ -8077,8 +8077,8 @@ pub const IMultiLanguage2 = extern union {
             // TODO: what to do with BytesParamIndex 6?
             pDstStr: ?*u8,
             pcDstSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertStringToUnicode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertStringToUnicode: *const fn (
             self: *const IMultiLanguage2,
             pdwMode: ?*u32,
             dwEncoding: u32,
@@ -8087,8 +8087,8 @@ pub const IMultiLanguage2 = extern union {
             pcSrcSize: ?*u32,
             pDstStr: ?[*:0]u16,
             pcDstSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertStringFromUnicode: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertStringFromUnicode: *const fn (
             self: *const IMultiLanguage2,
             pdwMode: ?*u32,
             dwEncoding: u32,
@@ -8097,39 +8097,39 @@ pub const IMultiLanguage2 = extern union {
             // TODO: what to do with BytesParamIndex 5?
             pDstStr: ?PSTR,
             pcDstSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertStringReset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertStringReset: *const fn (
             self: *const IMultiLanguage2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRfc1766FromLcid: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRfc1766FromLcid: *const fn (
             self: *const IMultiLanguage2,
             Locale: u32,
             pbstrRfc1766: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetLcidFromRfc1766: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetLcidFromRfc1766: *const fn (
             self: *const IMultiLanguage2,
             pLocale: ?*u32,
             bstrRfc1766: ?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumRfc1766: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumRfc1766: *const fn (
             self: *const IMultiLanguage2,
             LangId: u16,
             ppEnumRfc1766: ?*?*IEnumRfc1766,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRfc1766Info: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRfc1766Info: *const fn (
             self: *const IMultiLanguage2,
             Locale: u32,
             LangId: u16,
             pRfc1766Info: ?*RFC1766INFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateConvertCharset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateConvertCharset: *const fn (
             self: *const IMultiLanguage2,
             uiSrcCodePage: u32,
             uiDstCodePage: u32,
             dwProperty: u32,
             ppMLangConvertCharset: ?*?*IMLangConvertCharset,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertStringInIStream: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertStringInIStream: *const fn (
             self: *const IMultiLanguage2,
             pdwMode: ?*u32,
             dwFlag: u32,
@@ -8138,8 +8138,8 @@ pub const IMultiLanguage2 = extern union {
             dwDstEncoding: u32,
             pstmIn: ?*IStream,
             pstmOut: ?*IStream,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertStringToUnicodeEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertStringToUnicodeEx: *const fn (
             self: *const IMultiLanguage2,
             pdwMode: ?*u32,
             dwEncoding: u32,
@@ -8150,8 +8150,8 @@ pub const IMultiLanguage2 = extern union {
             pcDstSize: ?*u32,
             dwFlag: u32,
             lpFallBack: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ConvertStringFromUnicodeEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ConvertStringFromUnicodeEx: *const fn (
             self: *const IMultiLanguage2,
             pdwMode: ?*u32,
             dwEncoding: u32,
@@ -8162,16 +8162,16 @@ pub const IMultiLanguage2 = extern union {
             pcDstSize: ?*u32,
             dwFlag: u32,
             lpFallBack: ?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DetectCodepageInIStream: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DetectCodepageInIStream: *const fn (
             self: *const IMultiLanguage2,
             dwFlag: u32,
             dwPrefWinCodePage: u32,
             pstmIn: ?*IStream,
             lpEncoding: ?*DetectEncodingInfo,
             pnScores: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DetectInputCodepage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DetectInputCodepage: *const fn (
             self: *const IMultiLanguage2,
             dwFlag: u32,
             dwPrefWinCodePage: u32,
@@ -8180,125 +8180,125 @@ pub const IMultiLanguage2 = extern union {
             pcSrcSize: ?*i32,
             lpEncoding: ?*DetectEncodingInfo,
             pnScores: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ValidateCodePage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ValidateCodePage: *const fn (
             self: *const IMultiLanguage2,
             uiCodePage: u32,
             hwnd: ?HWND,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCodePageDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCodePageDescription: *const fn (
             self: *const IMultiLanguage2,
             uiCodePage: u32,
             lcid: u32,
             lpWideCharStr: [*:0]u16,
             cchWideChar: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsCodePageInstallable: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsCodePageInstallable: *const fn (
             self: *const IMultiLanguage2,
             uiCodePage: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetMimeDBSource: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetMimeDBSource: *const fn (
             self: *const IMultiLanguage2,
             dwSource: MIMECONTF,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNumberOfScripts: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNumberOfScripts: *const fn (
             self: *const IMultiLanguage2,
             pnScripts: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumScripts: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumScripts: *const fn (
             self: *const IMultiLanguage2,
             dwFlags: u32,
             LangId: u16,
             ppEnumScript: ?*?*IEnumScript,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ValidateCodePageEx: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ValidateCodePageEx: *const fn (
             self: *const IMultiLanguage2,
             uiCodePage: u32,
             hwnd: ?HWND,
             dwfIODControl: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetNumberOfCodePageInfo(self: *const IMultiLanguage2, pcCodePage: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetNumberOfCodePageInfo(self: *const IMultiLanguage2, pcCodePage: ?*u32) HRESULT {
         return self.vtable.GetNumberOfCodePageInfo(self, pcCodePage);
     }
-    pub fn GetCodePageInfo(self: *const IMultiLanguage2, uiCodePage: u32, LangId: u16, pCodePageInfo: ?*MIMECPINFO) callconv(.Inline) HRESULT {
+    pub inline fn GetCodePageInfo(self: *const IMultiLanguage2, uiCodePage: u32, LangId: u16, pCodePageInfo: ?*MIMECPINFO) HRESULT {
         return self.vtable.GetCodePageInfo(self, uiCodePage, LangId, pCodePageInfo);
     }
-    pub fn GetFamilyCodePage(self: *const IMultiLanguage2, uiCodePage: u32, puiFamilyCodePage: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFamilyCodePage(self: *const IMultiLanguage2, uiCodePage: u32, puiFamilyCodePage: ?*u32) HRESULT {
         return self.vtable.GetFamilyCodePage(self, uiCodePage, puiFamilyCodePage);
     }
-    pub fn EnumCodePages(self: *const IMultiLanguage2, grfFlags: u32, LangId: u16, ppEnumCodePage: ?*?*IEnumCodePage) callconv(.Inline) HRESULT {
+    pub inline fn EnumCodePages(self: *const IMultiLanguage2, grfFlags: u32, LangId: u16, ppEnumCodePage: ?*?*IEnumCodePage) HRESULT {
         return self.vtable.EnumCodePages(self, grfFlags, LangId, ppEnumCodePage);
     }
-    pub fn GetCharsetInfo(self: *const IMultiLanguage2, Charset: ?BSTR, pCharsetInfo: ?*MIMECSETINFO) callconv(.Inline) HRESULT {
+    pub inline fn GetCharsetInfo(self: *const IMultiLanguage2, Charset: ?BSTR, pCharsetInfo: ?*MIMECSETINFO) HRESULT {
         return self.vtable.GetCharsetInfo(self, Charset, pCharsetInfo);
     }
-    pub fn IsConvertible(self: *const IMultiLanguage2, dwSrcEncoding: u32, dwDstEncoding: u32) callconv(.Inline) HRESULT {
+    pub inline fn IsConvertible(self: *const IMultiLanguage2, dwSrcEncoding: u32, dwDstEncoding: u32) HRESULT {
         return self.vtable.IsConvertible(self, dwSrcEncoding, dwDstEncoding);
     }
-    pub fn ConvertString(self: *const IMultiLanguage2, pdwMode: ?*u32, dwSrcEncoding: u32, dwDstEncoding: u32, pSrcStr: ?*u8, pcSrcSize: ?*u32, pDstStr: ?*u8, pcDstSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ConvertString(self: *const IMultiLanguage2, pdwMode: ?*u32, dwSrcEncoding: u32, dwDstEncoding: u32, pSrcStr: ?*u8, pcSrcSize: ?*u32, pDstStr: ?*u8, pcDstSize: ?*u32) HRESULT {
         return self.vtable.ConvertString(self, pdwMode, dwSrcEncoding, dwDstEncoding, pSrcStr, pcSrcSize, pDstStr, pcDstSize);
     }
-    pub fn ConvertStringToUnicode(self: *const IMultiLanguage2, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?PSTR, pcSrcSize: ?*u32, pDstStr: ?[*:0]u16, pcDstSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ConvertStringToUnicode(self: *const IMultiLanguage2, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?PSTR, pcSrcSize: ?*u32, pDstStr: ?[*:0]u16, pcDstSize: ?*u32) HRESULT {
         return self.vtable.ConvertStringToUnicode(self, pdwMode, dwEncoding, pSrcStr, pcSrcSize, pDstStr, pcDstSize);
     }
-    pub fn ConvertStringFromUnicode(self: *const IMultiLanguage2, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?[*:0]u16, pcSrcSize: ?*u32, pDstStr: ?PSTR, pcDstSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ConvertStringFromUnicode(self: *const IMultiLanguage2, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?[*:0]u16, pcSrcSize: ?*u32, pDstStr: ?PSTR, pcDstSize: ?*u32) HRESULT {
         return self.vtable.ConvertStringFromUnicode(self, pdwMode, dwEncoding, pSrcStr, pcSrcSize, pDstStr, pcDstSize);
     }
-    pub fn ConvertStringReset(self: *const IMultiLanguage2) callconv(.Inline) HRESULT {
+    pub inline fn ConvertStringReset(self: *const IMultiLanguage2) HRESULT {
         return self.vtable.ConvertStringReset(self);
     }
-    pub fn GetRfc1766FromLcid(self: *const IMultiLanguage2, Locale: u32, pbstrRfc1766: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetRfc1766FromLcid(self: *const IMultiLanguage2, Locale: u32, pbstrRfc1766: ?*?BSTR) HRESULT {
         return self.vtable.GetRfc1766FromLcid(self, Locale, pbstrRfc1766);
     }
-    pub fn GetLcidFromRfc1766(self: *const IMultiLanguage2, pLocale: ?*u32, bstrRfc1766: ?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetLcidFromRfc1766(self: *const IMultiLanguage2, pLocale: ?*u32, bstrRfc1766: ?BSTR) HRESULT {
         return self.vtable.GetLcidFromRfc1766(self, pLocale, bstrRfc1766);
     }
-    pub fn EnumRfc1766(self: *const IMultiLanguage2, LangId: u16, ppEnumRfc1766: ?*?*IEnumRfc1766) callconv(.Inline) HRESULT {
+    pub inline fn EnumRfc1766(self: *const IMultiLanguage2, LangId: u16, ppEnumRfc1766: ?*?*IEnumRfc1766) HRESULT {
         return self.vtable.EnumRfc1766(self, LangId, ppEnumRfc1766);
     }
-    pub fn GetRfc1766Info(self: *const IMultiLanguage2, Locale: u32, LangId: u16, pRfc1766Info: ?*RFC1766INFO) callconv(.Inline) HRESULT {
+    pub inline fn GetRfc1766Info(self: *const IMultiLanguage2, Locale: u32, LangId: u16, pRfc1766Info: ?*RFC1766INFO) HRESULT {
         return self.vtable.GetRfc1766Info(self, Locale, LangId, pRfc1766Info);
     }
-    pub fn CreateConvertCharset(self: *const IMultiLanguage2, uiSrcCodePage: u32, uiDstCodePage: u32, dwProperty: u32, ppMLangConvertCharset: ?*?*IMLangConvertCharset) callconv(.Inline) HRESULT {
+    pub inline fn CreateConvertCharset(self: *const IMultiLanguage2, uiSrcCodePage: u32, uiDstCodePage: u32, dwProperty: u32, ppMLangConvertCharset: ?*?*IMLangConvertCharset) HRESULT {
         return self.vtable.CreateConvertCharset(self, uiSrcCodePage, uiDstCodePage, dwProperty, ppMLangConvertCharset);
     }
-    pub fn ConvertStringInIStream(self: *const IMultiLanguage2, pdwMode: ?*u32, dwFlag: u32, lpFallBack: ?PWSTR, dwSrcEncoding: u32, dwDstEncoding: u32, pstmIn: ?*IStream, pstmOut: ?*IStream) callconv(.Inline) HRESULT {
+    pub inline fn ConvertStringInIStream(self: *const IMultiLanguage2, pdwMode: ?*u32, dwFlag: u32, lpFallBack: ?PWSTR, dwSrcEncoding: u32, dwDstEncoding: u32, pstmIn: ?*IStream, pstmOut: ?*IStream) HRESULT {
         return self.vtable.ConvertStringInIStream(self, pdwMode, dwFlag, lpFallBack, dwSrcEncoding, dwDstEncoding, pstmIn, pstmOut);
     }
-    pub fn ConvertStringToUnicodeEx(self: *const IMultiLanguage2, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?PSTR, pcSrcSize: ?*u32, pDstStr: [*:0]u16, pcDstSize: ?*u32, dwFlag: u32, lpFallBack: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn ConvertStringToUnicodeEx(self: *const IMultiLanguage2, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: ?PSTR, pcSrcSize: ?*u32, pDstStr: [*:0]u16, pcDstSize: ?*u32, dwFlag: u32, lpFallBack: ?PWSTR) HRESULT {
         return self.vtable.ConvertStringToUnicodeEx(self, pdwMode, dwEncoding, pSrcStr, pcSrcSize, pDstStr, pcDstSize, dwFlag, lpFallBack);
     }
-    pub fn ConvertStringFromUnicodeEx(self: *const IMultiLanguage2, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: [*:0]u16, pcSrcSize: ?*u32, pDstStr: ?PSTR, pcDstSize: ?*u32, dwFlag: u32, lpFallBack: ?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn ConvertStringFromUnicodeEx(self: *const IMultiLanguage2, pdwMode: ?*u32, dwEncoding: u32, pSrcStr: [*:0]u16, pcSrcSize: ?*u32, pDstStr: ?PSTR, pcDstSize: ?*u32, dwFlag: u32, lpFallBack: ?PWSTR) HRESULT {
         return self.vtable.ConvertStringFromUnicodeEx(self, pdwMode, dwEncoding, pSrcStr, pcSrcSize, pDstStr, pcDstSize, dwFlag, lpFallBack);
     }
-    pub fn DetectCodepageInIStream(self: *const IMultiLanguage2, dwFlag: u32, dwPrefWinCodePage: u32, pstmIn: ?*IStream, lpEncoding: ?*DetectEncodingInfo, pnScores: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn DetectCodepageInIStream(self: *const IMultiLanguage2, dwFlag: u32, dwPrefWinCodePage: u32, pstmIn: ?*IStream, lpEncoding: ?*DetectEncodingInfo, pnScores: ?*i32) HRESULT {
         return self.vtable.DetectCodepageInIStream(self, dwFlag, dwPrefWinCodePage, pstmIn, lpEncoding, pnScores);
     }
-    pub fn DetectInputCodepage(self: *const IMultiLanguage2, dwFlag: u32, dwPrefWinCodePage: u32, pSrcStr: ?PSTR, pcSrcSize: ?*i32, lpEncoding: ?*DetectEncodingInfo, pnScores: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn DetectInputCodepage(self: *const IMultiLanguage2, dwFlag: u32, dwPrefWinCodePage: u32, pSrcStr: ?PSTR, pcSrcSize: ?*i32, lpEncoding: ?*DetectEncodingInfo, pnScores: ?*i32) HRESULT {
         return self.vtable.DetectInputCodepage(self, dwFlag, dwPrefWinCodePage, pSrcStr, pcSrcSize, lpEncoding, pnScores);
     }
-    pub fn ValidateCodePage(self: *const IMultiLanguage2, uiCodePage: u32, hwnd: ?HWND) callconv(.Inline) HRESULT {
+    pub inline fn ValidateCodePage(self: *const IMultiLanguage2, uiCodePage: u32, hwnd: ?HWND) HRESULT {
         return self.vtable.ValidateCodePage(self, uiCodePage, hwnd);
     }
-    pub fn GetCodePageDescription(self: *const IMultiLanguage2, uiCodePage: u32, lcid: u32, lpWideCharStr: [*:0]u16, cchWideChar: i32) callconv(.Inline) HRESULT {
+    pub inline fn GetCodePageDescription(self: *const IMultiLanguage2, uiCodePage: u32, lcid: u32, lpWideCharStr: [*:0]u16, cchWideChar: i32) HRESULT {
         return self.vtable.GetCodePageDescription(self, uiCodePage, lcid, lpWideCharStr, cchWideChar);
     }
-    pub fn IsCodePageInstallable(self: *const IMultiLanguage2, uiCodePage: u32) callconv(.Inline) HRESULT {
+    pub inline fn IsCodePageInstallable(self: *const IMultiLanguage2, uiCodePage: u32) HRESULT {
         return self.vtable.IsCodePageInstallable(self, uiCodePage);
     }
-    pub fn SetMimeDBSource(self: *const IMultiLanguage2, dwSource: MIMECONTF) callconv(.Inline) HRESULT {
+    pub inline fn SetMimeDBSource(self: *const IMultiLanguage2, dwSource: MIMECONTF) HRESULT {
         return self.vtable.SetMimeDBSource(self, dwSource);
     }
-    pub fn GetNumberOfScripts(self: *const IMultiLanguage2, pnScripts: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetNumberOfScripts(self: *const IMultiLanguage2, pnScripts: ?*u32) HRESULT {
         return self.vtable.GetNumberOfScripts(self, pnScripts);
     }
-    pub fn EnumScripts(self: *const IMultiLanguage2, dwFlags: u32, LangId: u16, ppEnumScript: ?*?*IEnumScript) callconv(.Inline) HRESULT {
+    pub inline fn EnumScripts(self: *const IMultiLanguage2, dwFlags: u32, LangId: u16, ppEnumScript: ?*?*IEnumScript) HRESULT {
         return self.vtable.EnumScripts(self, dwFlags, LangId, ppEnumScript);
     }
-    pub fn ValidateCodePageEx(self: *const IMultiLanguage2, uiCodePage: u32, hwnd: ?HWND, dwfIODControl: u32) callconv(.Inline) HRESULT {
+    pub inline fn ValidateCodePageEx(self: *const IMultiLanguage2, uiCodePage: u32, hwnd: ?HWND, dwfIODControl: u32) HRESULT {
         return self.vtable.ValidateCodePageEx(self, uiCodePage, hwnd, dwfIODControl);
     }
 };
@@ -8308,43 +8308,43 @@ pub const IID_IMLangCodePages = &IID_IMLangCodePages_Value;
 pub const IMLangCodePages = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCharCodePages: *const fn(
+        GetCharCodePages: *const fn (
             self: *const IMLangCodePages,
             chSrc: u16,
             pdwCodePages: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetStrCodePages: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetStrCodePages: *const fn (
             self: *const IMLangCodePages,
             pszSrc: [*:0]const u16,
             cchSrc: i32,
             dwPriorityCodePages: u32,
             pdwCodePages: ?*u32,
             pcchCodePages: ?*i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CodePageToCodePages: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CodePageToCodePages: *const fn (
             self: *const IMLangCodePages,
             uCodePage: u32,
             pdwCodePages: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CodePagesToCodePage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CodePagesToCodePage: *const fn (
             self: *const IMLangCodePages,
             dwCodePages: u32,
             uDefaultCodePage: u32,
             puCodePage: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCharCodePages(self: *const IMLangCodePages, chSrc: u16, pdwCodePages: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCharCodePages(self: *const IMLangCodePages, chSrc: u16, pdwCodePages: ?*u32) HRESULT {
         return self.vtable.GetCharCodePages(self, chSrc, pdwCodePages);
     }
-    pub fn GetStrCodePages(self: *const IMLangCodePages, pszSrc: [*:0]const u16, cchSrc: i32, dwPriorityCodePages: u32, pdwCodePages: ?*u32, pcchCodePages: ?*i32) callconv(.Inline) HRESULT {
+    pub inline fn GetStrCodePages(self: *const IMLangCodePages, pszSrc: [*:0]const u16, cchSrc: i32, dwPriorityCodePages: u32, pdwCodePages: ?*u32, pcchCodePages: ?*i32) HRESULT {
         return self.vtable.GetStrCodePages(self, pszSrc, cchSrc, dwPriorityCodePages, pdwCodePages, pcchCodePages);
     }
-    pub fn CodePageToCodePages(self: *const IMLangCodePages, uCodePage: u32, pdwCodePages: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn CodePageToCodePages(self: *const IMLangCodePages, uCodePage: u32, pdwCodePages: ?*u32) HRESULT {
         return self.vtable.CodePageToCodePages(self, uCodePage, pdwCodePages);
     }
-    pub fn CodePagesToCodePage(self: *const IMLangCodePages, dwCodePages: u32, uDefaultCodePage: u32, puCodePage: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn CodePagesToCodePage(self: *const IMLangCodePages, dwCodePages: u32, uDefaultCodePage: u32, puCodePage: ?*u32) HRESULT {
         return self.vtable.CodePagesToCodePage(self, dwCodePages, uDefaultCodePage, puCodePage);
     }
 };
@@ -8354,40 +8354,40 @@ pub const IID_IMLangFontLink = &IID_IMLangFontLink_Value;
 pub const IMLangFontLink = extern union {
     pub const VTable = extern struct {
         base: IMLangCodePages.VTable,
-        GetFontCodePages: *const fn(
+        GetFontCodePages: *const fn (
             self: *const IMLangFontLink,
             hDC: ?HDC,
             hFont: ?HFONT,
             pdwCodePages: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MapFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MapFont: *const fn (
             self: *const IMLangFontLink,
             hDC: ?HDC,
             dwCodePages: u32,
             hSrcFont: ?HFONT,
             phDestFont: ?*?HFONT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReleaseFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReleaseFont: *const fn (
             self: *const IMLangFontLink,
             hFont: ?HFONT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ResetFontMapping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ResetFontMapping: *const fn (
             self: *const IMLangFontLink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IMLangCodePages: IMLangCodePages,
     IUnknown: IUnknown,
-    pub fn GetFontCodePages(self: *const IMLangFontLink, hDC: ?HDC, hFont: ?HFONT, pdwCodePages: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFontCodePages(self: *const IMLangFontLink, hDC: ?HDC, hFont: ?HFONT, pdwCodePages: ?*u32) HRESULT {
         return self.vtable.GetFontCodePages(self, hDC, hFont, pdwCodePages);
     }
-    pub fn MapFont(self: *const IMLangFontLink, hDC: ?HDC, dwCodePages: u32, hSrcFont: ?HFONT, phDestFont: ?*?HFONT) callconv(.Inline) HRESULT {
+    pub inline fn MapFont(self: *const IMLangFontLink, hDC: ?HDC, dwCodePages: u32, hSrcFont: ?HFONT, phDestFont: ?*?HFONT) HRESULT {
         return self.vtable.MapFont(self, hDC, dwCodePages, hSrcFont, phDestFont);
     }
-    pub fn ReleaseFont(self: *const IMLangFontLink, hFont: ?HFONT) callconv(.Inline) HRESULT {
+    pub inline fn ReleaseFont(self: *const IMLangFontLink, hFont: ?HFONT) HRESULT {
         return self.vtable.ReleaseFont(self, hFont);
     }
-    pub fn ResetFontMapping(self: *const IMLangFontLink) callconv(.Inline) HRESULT {
+    pub inline fn ResetFontMapping(self: *const IMLangFontLink) HRESULT {
         return self.vtable.ResetFontMapping(self);
     }
 };
@@ -8402,67 +8402,67 @@ pub const IID_IMLangFontLink2 = &IID_IMLangFontLink2_Value;
 pub const IMLangFontLink2 = extern union {
     pub const VTable = extern struct {
         base: IMLangCodePages.VTable,
-        GetFontCodePages: *const fn(
+        GetFontCodePages: *const fn (
             self: *const IMLangFontLink2,
             hDC: ?HDC,
             hFont: ?HFONT,
             pdwCodePages: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ReleaseFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ReleaseFont: *const fn (
             self: *const IMLangFontLink2,
             hFont: ?HFONT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ResetFontMapping: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ResetFontMapping: *const fn (
             self: *const IMLangFontLink2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        MapFont: *const fn(
+        ) callconv(.winapi) HRESULT,
+        MapFont: *const fn (
             self: *const IMLangFontLink2,
             hDC: ?HDC,
             dwCodePages: u32,
             chSrc: u16,
             pFont: ?*?HFONT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFontUnicodeRanges: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFontUnicodeRanges: *const fn (
             self: *const IMLangFontLink2,
             hDC: ?HDC,
             puiRanges: ?*u32,
             pUranges: ?*UNICODERANGE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetScriptFontInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetScriptFontInfo: *const fn (
             self: *const IMLangFontLink2,
             sid: u8,
             dwFlags: u32,
             puiFonts: ?*u32,
             pScriptFont: ?*tagSCRIPFONTINFO,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CodePageToScriptID: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CodePageToScriptID: *const fn (
             self: *const IMLangFontLink2,
             uiCodePage: u32,
             pSid: ?*u8,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IMLangCodePages: IMLangCodePages,
     IUnknown: IUnknown,
-    pub fn GetFontCodePages(self: *const IMLangFontLink2, hDC: ?HDC, hFont: ?HFONT, pdwCodePages: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetFontCodePages(self: *const IMLangFontLink2, hDC: ?HDC, hFont: ?HFONT, pdwCodePages: ?*u32) HRESULT {
         return self.vtable.GetFontCodePages(self, hDC, hFont, pdwCodePages);
     }
-    pub fn ReleaseFont(self: *const IMLangFontLink2, hFont: ?HFONT) callconv(.Inline) HRESULT {
+    pub inline fn ReleaseFont(self: *const IMLangFontLink2, hFont: ?HFONT) HRESULT {
         return self.vtable.ReleaseFont(self, hFont);
     }
-    pub fn ResetFontMapping(self: *const IMLangFontLink2) callconv(.Inline) HRESULT {
+    pub inline fn ResetFontMapping(self: *const IMLangFontLink2) HRESULT {
         return self.vtable.ResetFontMapping(self);
     }
-    pub fn MapFont(self: *const IMLangFontLink2, hDC: ?HDC, dwCodePages: u32, chSrc: u16, pFont: ?*?HFONT) callconv(.Inline) HRESULT {
+    pub inline fn MapFont(self: *const IMLangFontLink2, hDC: ?HDC, dwCodePages: u32, chSrc: u16, pFont: ?*?HFONT) HRESULT {
         return self.vtable.MapFont(self, hDC, dwCodePages, chSrc, pFont);
     }
-    pub fn GetFontUnicodeRanges(self: *const IMLangFontLink2, hDC: ?HDC, puiRanges: ?*u32, pUranges: ?*UNICODERANGE) callconv(.Inline) HRESULT {
+    pub inline fn GetFontUnicodeRanges(self: *const IMLangFontLink2, hDC: ?HDC, puiRanges: ?*u32, pUranges: ?*UNICODERANGE) HRESULT {
         return self.vtable.GetFontUnicodeRanges(self, hDC, puiRanges, pUranges);
     }
-    pub fn GetScriptFontInfo(self: *const IMLangFontLink2, sid: u8, dwFlags: u32, puiFonts: ?*u32, pScriptFont: ?*tagSCRIPFONTINFO) callconv(.Inline) HRESULT {
+    pub inline fn GetScriptFontInfo(self: *const IMLangFontLink2, sid: u8, dwFlags: u32, puiFonts: ?*u32, pScriptFont: ?*tagSCRIPFONTINFO) HRESULT {
         return self.vtable.GetScriptFontInfo(self, sid, dwFlags, puiFonts, pScriptFont);
     }
-    pub fn CodePageToScriptID(self: *const IMLangFontLink2, uiCodePage: u32, pSid: ?*u8) callconv(.Inline) HRESULT {
+    pub inline fn CodePageToScriptID(self: *const IMLangFontLink2, uiCodePage: u32, pSid: ?*u8) HRESULT {
         return self.vtable.CodePageToScriptID(self, uiCodePage, pSid);
     }
 };
@@ -8472,7 +8472,7 @@ pub const IID_IMultiLanguage3 = &IID_IMultiLanguage3_Value;
 pub const IMultiLanguage3 = extern union {
     pub const VTable = extern struct {
         base: IMultiLanguage2.VTable,
-        DetectOutboundCodePage: *const fn(
+        DetectOutboundCodePage: *const fn (
             self: *const IMultiLanguage3,
             dwFlags: u32,
             lpWideCharStr: [*:0]const u16,
@@ -8482,8 +8482,8 @@ pub const IMultiLanguage3 = extern union {
             puiDetectedCodePages: [*]u32,
             pnDetectedCodePages: ?*u32,
             lpSpecialChar: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DetectOutboundCodePageInIStream: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DetectOutboundCodePageInIStream: *const fn (
             self: *const IMultiLanguage3,
             dwFlags: u32,
             pStrIn: ?*IStream,
@@ -8492,15 +8492,15 @@ pub const IMultiLanguage3 = extern union {
             puiDetectedCodePages: [*]u32,
             pnDetectedCodePages: ?*u32,
             lpSpecialChar: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IMultiLanguage2: IMultiLanguage2,
     IUnknown: IUnknown,
-    pub fn DetectOutboundCodePage(self: *const IMultiLanguage3, dwFlags: u32, lpWideCharStr: [*:0]const u16, cchWideChar: u32, puiPreferredCodePages: ?[*]const u32, nPreferredCodePages: u32, puiDetectedCodePages: [*]u32, pnDetectedCodePages: ?*u32, lpSpecialChar: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn DetectOutboundCodePage(self: *const IMultiLanguage3, dwFlags: u32, lpWideCharStr: [*:0]const u16, cchWideChar: u32, puiPreferredCodePages: ?[*]const u32, nPreferredCodePages: u32, puiDetectedCodePages: [*]u32, pnDetectedCodePages: ?*u32, lpSpecialChar: ?[*:0]const u16) HRESULT {
         return self.vtable.DetectOutboundCodePage(self, dwFlags, lpWideCharStr, cchWideChar, puiPreferredCodePages, nPreferredCodePages, puiDetectedCodePages, pnDetectedCodePages, lpSpecialChar);
     }
-    pub fn DetectOutboundCodePageInIStream(self: *const IMultiLanguage3, dwFlags: u32, pStrIn: ?*IStream, puiPreferredCodePages: ?[*]const u32, nPreferredCodePages: u32, puiDetectedCodePages: [*]u32, pnDetectedCodePages: ?*u32, lpSpecialChar: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn DetectOutboundCodePageInIStream(self: *const IMultiLanguage3, dwFlags: u32, pStrIn: ?*IStream, puiPreferredCodePages: ?[*]const u32, nPreferredCodePages: u32, puiDetectedCodePages: [*]u32, pnDetectedCodePages: ?*u32, lpSpecialChar: ?[*:0]const u16) HRESULT {
         return self.vtable.DetectOutboundCodePageInIStream(self, dwFlags, pStrIn, puiPreferredCodePages, nPreferredCodePages, puiDetectedCodePages, pnDetectedCodePages, lpSpecialChar);
     }
 };
@@ -8512,28 +8512,27 @@ pub const MLSTR_FLAGS = enum(i32) {
 pub const MLSTR_READ = MLSTR_FLAGS.READ;
 pub const MLSTR_WRITE = MLSTR_FLAGS.WRITE;
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (1213)
 //--------------------------------------------------------------------------------
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "gdi32" fn GetTextCharset(
     hdc: ?HDC,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "gdi32" fn GetTextCharsetInfo(
     hdc: ?HDC,
     lpSig: ?*FONTSIGNATURE,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "gdi32" fn TranslateCharsetInfo(
     lpSrc: ?*u32,
     lpCs: ?*CHARSETINFO,
     dwFlags: TRANSLATE_CHARSET_INFO_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetDateFormatA(
@@ -8543,7 +8542,7 @@ pub extern "kernel32" fn GetDateFormatA(
     lpFormat: ?[*:0]const u8,
     lpDateStr: ?[*:0]u8,
     cchDate: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetDateFormatW(
@@ -8553,7 +8552,7 @@ pub extern "kernel32" fn GetDateFormatW(
     lpFormat: ?[*:0]const u16,
     lpDateStr: ?[*:0]u16,
     cchDate: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetTimeFormatA(
@@ -8563,7 +8562,7 @@ pub extern "kernel32" fn GetTimeFormatA(
     lpFormat: ?[*:0]const u8,
     lpTimeStr: ?[*:0]u8,
     cchTime: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetTimeFormatW(
@@ -8573,7 +8572,7 @@ pub extern "kernel32" fn GetTimeFormatW(
     lpFormat: ?[*:0]const u16,
     lpTimeStr: ?[*:0]u16,
     cchTime: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetTimeFormatEx(
@@ -8583,7 +8582,7 @@ pub extern "kernel32" fn GetTimeFormatEx(
     lpFormat: ?[*:0]const u16,
     lpTimeStr: ?[*:0]u16,
     cchTime: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetDateFormatEx(
@@ -8594,7 +8593,7 @@ pub extern "kernel32" fn GetDateFormatEx(
     lpDateStr: ?[*:0]u16,
     cchDate: i32,
     lpCalendar: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetDurationFormatEx(
@@ -8605,7 +8604,7 @@ pub extern "kernel32" fn GetDurationFormatEx(
     lpFormat: ?[*:0]const u16,
     lpDurationStr: ?[*:0]u16,
     cchDuration: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn CompareStringEx(
@@ -8618,7 +8617,7 @@ pub extern "kernel32" fn CompareStringEx(
     lpVersionInformation: ?*NLSVERSIONINFO,
     lpReserved: ?*anyopaque,
     lParam: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn CompareStringOrdinal(
@@ -8627,7 +8626,7 @@ pub extern "kernel32" fn CompareStringOrdinal(
     lpString2: [*:0]const u16,
     cchCount2: i32,
     bIgnoreCase: BOOL,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn CompareStringW(
@@ -8637,7 +8636,7 @@ pub extern "kernel32" fn CompareStringW(
     cchCount1: i32,
     lpString2: [*:0]const u16,
     cchCount2: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn FoldStringW(
@@ -8646,7 +8645,7 @@ pub extern "kernel32" fn FoldStringW(
     cchSrc: i32,
     lpDestStr: ?[*:0]u16,
     cchDest: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetStringTypeExW(
@@ -8655,7 +8654,7 @@ pub extern "kernel32" fn GetStringTypeExW(
     lpSrcStr: [*:0]const u16,
     cchSrc: i32,
     lpCharType: [*:0]u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetStringTypeW(
@@ -8663,7 +8662,7 @@ pub extern "kernel32" fn GetStringTypeW(
     lpSrcStr: [*:0]const u16,
     cchSrc: i32,
     lpCharType: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn MultiByteToWideChar(
@@ -8673,7 +8672,7 @@ pub extern "kernel32" fn MultiByteToWideChar(
     cbMultiByte: i32,
     lpWideCharStr: ?[*:0]u16,
     cchWideChar: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn WideCharToMultiByte(
@@ -8686,40 +8685,38 @@ pub extern "kernel32" fn WideCharToMultiByte(
     cbMultiByte: i32,
     lpDefaultChar: ?[*]const u8,
     lpUsedDefaultChar: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn IsValidCodePage(
     CodePage: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "kernel32" fn GetACP(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "kernel32" fn GetACP() callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "kernel32" fn GetOEMCP(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "kernel32" fn GetOEMCP() callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetCPInfo(
     CodePage: u32,
     lpCPInfo: ?*CPINFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetCPInfoExA(
     CodePage: u32,
     dwFlags: u32,
     lpCPInfoEx: ?*CPINFOEXA,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetCPInfoExW(
     CodePage: u32,
     dwFlags: u32,
     lpCPInfoEx: ?*CPINFOEXW,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn CompareStringA(
@@ -8729,7 +8726,7 @@ pub extern "kernel32" fn CompareStringA(
     cchCount1: i32,
     lpString2: [*]i8,
     cchCount2: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn FindNLSString(
@@ -8740,7 +8737,7 @@ pub extern "kernel32" fn FindNLSString(
     lpStringValue: [*:0]const u16,
     cchValue: i32,
     pcchFound: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn LCMapStringW(
@@ -8750,7 +8747,7 @@ pub extern "kernel32" fn LCMapStringW(
     cchSrc: i32,
     lpDestStr: ?PWSTR,
     cchDest: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn LCMapStringA(
@@ -8760,7 +8757,7 @@ pub extern "kernel32" fn LCMapStringA(
     cchSrc: i32,
     lpDestStr: ?PSTR,
     cchDest: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetLocaleInfoW(
@@ -8768,7 +8765,7 @@ pub extern "kernel32" fn GetLocaleInfoW(
     LCType: u32,
     lpLCData: ?[*:0]u16,
     cchData: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetLocaleInfoA(
@@ -8776,21 +8773,21 @@ pub extern "kernel32" fn GetLocaleInfoA(
     LCType: u32,
     lpLCData: ?[*:0]u8,
     cchData: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn SetLocaleInfoA(
     Locale: u32,
     LCType: u32,
     lpLCData: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn SetLocaleInfoW(
     Locale: u32,
     LCType: u32,
     lpLCData: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetCalendarInfoA(
@@ -8800,7 +8797,7 @@ pub extern "kernel32" fn GetCalendarInfoA(
     lpCalData: ?[*:0]u8,
     cchData: i32,
     lpValue: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetCalendarInfoW(
@@ -8810,7 +8807,7 @@ pub extern "kernel32" fn GetCalendarInfoW(
     lpCalData: ?[*:0]u16,
     cchData: i32,
     lpValue: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn SetCalendarInfoA(
@@ -8818,7 +8815,7 @@ pub extern "kernel32" fn SetCalendarInfoA(
     Calendar: u32,
     CalType: u32,
     lpCalData: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn SetCalendarInfoW(
@@ -8826,24 +8823,24 @@ pub extern "kernel32" fn SetCalendarInfoW(
     Calendar: u32,
     CalType: u32,
     lpCalData: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn IsDBCSLeadByte(
     TestChar: u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn IsDBCSLeadByteEx(
     CodePage: u32,
     TestChar: u8,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn LocaleNameToLCID(
     lpName: ?[*:0]const u16,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn LCIDToLocaleName(
@@ -8851,7 +8848,7 @@ pub extern "kernel32" fn LCIDToLocaleName(
     lpName: ?[*:0]u16,
     cchName: i32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetDurationFormat(
@@ -8862,7 +8859,7 @@ pub extern "kernel32" fn GetDurationFormat(
     lpFormat: ?[*:0]const u16,
     lpDurationStr: ?[*:0]u16,
     cchDuration: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetNumberFormatA(
@@ -8872,7 +8869,7 @@ pub extern "kernel32" fn GetNumberFormatA(
     lpFormat: ?*const NUMBERFMTA,
     lpNumberStr: ?[*:0]u8,
     cchNumber: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetNumberFormatW(
@@ -8882,7 +8879,7 @@ pub extern "kernel32" fn GetNumberFormatW(
     lpFormat: ?*const NUMBERFMTW,
     lpNumberStr: ?[*:0]u16,
     cchNumber: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetCurrencyFormatA(
@@ -8892,7 +8889,7 @@ pub extern "kernel32" fn GetCurrencyFormatA(
     lpFormat: ?*const CURRENCYFMTA,
     lpCurrencyStr: ?[*:0]u8,
     cchCurrency: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetCurrencyFormatW(
@@ -8902,7 +8899,7 @@ pub extern "kernel32" fn GetCurrencyFormatW(
     lpFormat: ?*const CURRENCYFMTW,
     lpCurrencyStr: ?[*:0]u16,
     cchCurrency: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumCalendarInfoA(
@@ -8910,7 +8907,7 @@ pub extern "kernel32" fn EnumCalendarInfoA(
     Locale: u32,
     Calendar: u32,
     CalType: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumCalendarInfoW(
@@ -8918,7 +8915,7 @@ pub extern "kernel32" fn EnumCalendarInfoW(
     Locale: u32,
     Calendar: u32,
     CalType: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumCalendarInfoExA(
@@ -8926,7 +8923,7 @@ pub extern "kernel32" fn EnumCalendarInfoExA(
     Locale: u32,
     Calendar: u32,
     CalType: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumCalendarInfoExW(
@@ -8934,68 +8931,68 @@ pub extern "kernel32" fn EnumCalendarInfoExW(
     Locale: u32,
     Calendar: u32,
     CalType: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumTimeFormatsA(
     lpTimeFmtEnumProc: ?TIMEFMT_ENUMPROCA,
     Locale: u32,
     dwFlags: TIME_FORMAT_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumTimeFormatsW(
     lpTimeFmtEnumProc: ?TIMEFMT_ENUMPROCW,
     Locale: u32,
     dwFlags: TIME_FORMAT_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumDateFormatsA(
     lpDateFmtEnumProc: ?DATEFMT_ENUMPROCA,
     Locale: u32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumDateFormatsW(
     lpDateFmtEnumProc: ?DATEFMT_ENUMPROCW,
     Locale: u32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumDateFormatsExA(
     lpDateFmtEnumProcEx: ?DATEFMT_ENUMPROCEXA,
     Locale: u32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumDateFormatsExW(
     lpDateFmtEnumProcEx: ?DATEFMT_ENUMPROCEXW,
     Locale: u32,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn IsValidLanguageGroup(
     LanguageGroup: u32,
     dwFlags: ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetNLSVersion(
     Function: u32,
     Locale: u32,
     lpVersionInformation: ?*NLSVERSIONINFO,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn IsValidLocale(
     Locale: u32,
     dwFlags: IS_VALID_LOCALE_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn GetGeoInfoA(
@@ -9004,7 +9001,7 @@ pub extern "kernel32" fn GetGeoInfoA(
     lpGeoData: ?[*:0]u8,
     cchData: i32,
     LangId: u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn GetGeoInfoW(
@@ -9013,7 +9010,7 @@ pub extern "kernel32" fn GetGeoInfoW(
     lpGeoData: ?[*:0]u16,
     cchData: i32,
     LangId: u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "kernel32" fn GetGeoInfoEx(
@@ -9021,89 +9018,81 @@ pub extern "kernel32" fn GetGeoInfoEx(
     geoType: u32,
     geoData: ?[*:0]u16,
     geoDataCount: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn EnumSystemGeoID(
     GeoClass: u32,
     ParentGeoId: i32,
     lpGeoEnumProc: ?GEO_ENUMPROC,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "kernel32" fn EnumSystemGeoNames(
     geoClass: u32,
     geoEnumProc: ?GEO_ENUMNAMEPROC,
     data: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn GetUserGeoID(
     GeoClass: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "kernel32" fn GetUserDefaultGeoName(
     geoName: [*:0]u16,
     geoNameCount: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn SetUserGeoID(
     GeoId: i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows10.0.16299'
 pub extern "kernel32" fn SetUserGeoName(
     geoName: ?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn ConvertDefaultLocale(
     Locale: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "kernel32" fn GetSystemDefaultUILanguage(
-) callconv(@import("std").os.windows.WINAPI) u16;
+pub extern "kernel32" fn GetSystemDefaultUILanguage() callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "kernel32" fn GetThreadLocale(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "kernel32" fn GetThreadLocale() callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn SetThreadLocale(
     Locale: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "kernel32" fn GetUserDefaultUILanguage(
-) callconv(@import("std").os.windows.WINAPI) u16;
+pub extern "kernel32" fn GetUserDefaultUILanguage() callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "kernel32" fn GetUserDefaultLangID(
-) callconv(@import("std").os.windows.WINAPI) u16;
+pub extern "kernel32" fn GetUserDefaultLangID() callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "kernel32" fn GetSystemDefaultLangID(
-) callconv(@import("std").os.windows.WINAPI) u16;
+pub extern "kernel32" fn GetSystemDefaultLangID() callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "kernel32" fn GetSystemDefaultLCID(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "kernel32" fn GetSystemDefaultLCID() callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.0'
-pub extern "kernel32" fn GetUserDefaultLCID(
-) callconv(@import("std").os.windows.WINAPI) u32;
+pub extern "kernel32" fn GetUserDefaultLCID() callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn SetThreadUILanguage(
     LangId: u16,
-) callconv(@import("std").os.windows.WINAPI) u16;
+) callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
-pub extern "kernel32" fn GetThreadUILanguage(
-) callconv(@import("std").os.windows.WINAPI) u16;
+pub extern "kernel32" fn GetThreadUILanguage() callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "kernel32" fn GetProcessPreferredUILanguages(
@@ -9111,14 +9100,14 @@ pub extern "kernel32" fn GetProcessPreferredUILanguages(
     pulNumLanguages: ?*u32,
     pwszLanguagesBuffer: ?[*]u16,
     pcchLanguagesBuffer: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "kernel32" fn SetProcessPreferredUILanguages(
     dwFlags: u32,
     pwszLanguagesBuffer: ?[*]const u16,
     pulNumLanguages: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetUserPreferredUILanguages(
@@ -9126,7 +9115,7 @@ pub extern "kernel32" fn GetUserPreferredUILanguages(
     pulNumLanguages: ?*u32,
     pwszLanguagesBuffer: ?[*]u16,
     pcchLanguagesBuffer: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetSystemPreferredUILanguages(
@@ -9134,7 +9123,7 @@ pub extern "kernel32" fn GetSystemPreferredUILanguages(
     pulNumLanguages: ?*u32,
     pwszLanguagesBuffer: ?[*]u16,
     pcchLanguagesBuffer: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetThreadPreferredUILanguages(
@@ -9142,14 +9131,14 @@ pub extern "kernel32" fn GetThreadPreferredUILanguages(
     pulNumLanguages: ?*u32,
     pwszLanguagesBuffer: ?[*]u16,
     pcchLanguagesBuffer: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn SetThreadPreferredUILanguages(
     dwFlags: u32,
     pwszLanguagesBuffer: ?[*]const u16,
     pulNumLanguages: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetFileMUIInfo(
@@ -9158,7 +9147,7 @@ pub extern "kernel32" fn GetFileMUIInfo(
     // TODO: what to do with BytesParamIndex 3?
     pFileMUIInfo: ?*FILEMUIINFO,
     pcbFileMUIInfo: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetFileMUIPath(
@@ -9169,7 +9158,7 @@ pub extern "kernel32" fn GetFileMUIPath(
     pwszFileMUIPath: ?[*:0]u16,
     pcchFileMUIPath: ?*u32,
     pululEnumerator: ?*u64,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetUILanguageInfo(
@@ -9178,18 +9167,18 @@ pub extern "kernel32" fn GetUILanguageInfo(
     pwszFallbackLanguages: ?[*]u16,
     pcchFallbackLanguages: ?*u32,
     pAttributes: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "kernel32" fn SetThreadPreferredUILanguages2(
     flags: u32,
     languages: ?[*]const u16,
     numLanguagesSet: ?*u32,
     snapshot: ?*?HSAVEDUILANGUAGES,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "kernel32" fn RestoreThreadPreferredUILanguages(
     snapshot: ?HSAVEDUILANGUAGES,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "kernel32" fn NotifyUILanguageChange(
@@ -9198,7 +9187,7 @@ pub extern "kernel32" fn NotifyUILanguageChange(
     pcwstrPreviousLanguage: ?[*:0]const u16,
     dwReserved: u32,
     pdwStatusRtrn: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 pub extern "kernel32" fn GetStringTypeExA(
     Locale: u32,
@@ -9206,7 +9195,7 @@ pub extern "kernel32" fn GetStringTypeExA(
     lpSrcStr: [*:0]const u8,
     cchSrc: i32,
     lpCharType: [*:0]u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetStringTypeA(
@@ -9215,7 +9204,7 @@ pub extern "kernel32" fn GetStringTypeA(
     lpSrcStr: [*:0]const u8,
     cchSrc: i32,
     lpCharType: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn FoldStringA(
@@ -9224,33 +9213,33 @@ pub extern "kernel32" fn FoldStringA(
     cchSrc: i32,
     lpDestStr: ?[*:0]u8,
     cchDest: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumSystemLocalesA(
     lpLocaleEnumProc: ?LOCALE_ENUMPROCA,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumSystemLocalesW(
     lpLocaleEnumProc: ?LOCALE_ENUMPROCW,
     dwFlags: u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumSystemLanguageGroupsA(
     lpLanguageGroupEnumProc: ?LANGUAGEGROUP_ENUMPROCA,
     dwFlags: ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS,
     lParam: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumSystemLanguageGroupsW(
     lpLanguageGroupEnumProc: ?LANGUAGEGROUP_ENUMPROCW,
     dwFlags: ENUM_SYSTEM_LANGUAGE_GROUPS_FLAGS,
     lParam: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumLanguageGroupLocalesA(
@@ -9258,7 +9247,7 @@ pub extern "kernel32" fn EnumLanguageGroupLocalesA(
     LanguageGroup: u32,
     dwFlags: u32,
     lParam: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumLanguageGroupLocalesW(
@@ -9266,33 +9255,33 @@ pub extern "kernel32" fn EnumLanguageGroupLocalesW(
     LanguageGroup: u32,
     dwFlags: u32,
     lParam: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumUILanguagesA(
     lpUILanguageEnumProc: ?UILANGUAGE_ENUMPROCA,
     dwFlags: u32,
     lParam: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumUILanguagesW(
     lpUILanguageEnumProc: ?UILANGUAGE_ENUMPROCW,
     dwFlags: u32,
     lParam: isize,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumSystemCodePagesA(
     lpCodePageEnumProc: ?CODEPAGE_ENUMPROCA,
     dwFlags: ENUM_SYSTEM_CODE_PAGES_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn EnumSystemCodePagesW(
     lpCodePageEnumProc: ?CODEPAGE_ENUMPROCW,
     dwFlags: ENUM_SYSTEM_CODE_PAGES_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "normaliz" fn IdnToAscii(
@@ -9301,7 +9290,7 @@ pub extern "normaliz" fn IdnToAscii(
     cchUnicodeChar: i32,
     lpASCIICharStr: ?[*:0]u16,
     cchASCIIChar: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "normaliz" fn IdnToUnicode(
@@ -9310,7 +9299,7 @@ pub extern "normaliz" fn IdnToUnicode(
     cchASCIIChar: i32,
     lpUnicodeCharStr: ?[*:0]u16,
     cchUnicodeChar: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn IdnToNameprepUnicode(
@@ -9319,7 +9308,7 @@ pub extern "kernel32" fn IdnToNameprepUnicode(
     cchUnicodeChar: i32,
     lpNameprepCharStr: ?[*:0]u16,
     cchNameprepChar: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn NormalizeString(
@@ -9328,14 +9317,14 @@ pub extern "kernel32" fn NormalizeString(
     cwSrcLength: i32,
     lpDstString: ?[*:0]u16,
     cwDstLength: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn IsNormalizedString(
     NormForm: NORM_FORM,
     lpString: [*:0]const u16,
     cwLength: i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn VerifyScripts(
@@ -9344,7 +9333,7 @@ pub extern "kernel32" fn VerifyScripts(
     cchLocaleScripts: i32,
     lpTestScripts: ?[*:0]const u16,
     cchTestScripts: i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetStringScripts(
@@ -9353,7 +9342,7 @@ pub extern "kernel32" fn GetStringScripts(
     cchString: i32,
     lpScripts: ?[*:0]u16,
     cchScripts: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetLocaleInfoEx(
@@ -9361,7 +9350,7 @@ pub extern "kernel32" fn GetLocaleInfoEx(
     LCType: u32,
     lpLCData: ?[*:0]u16,
     cchData: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetCalendarInfoEx(
@@ -9372,7 +9361,7 @@ pub extern "kernel32" fn GetCalendarInfoEx(
     lpCalData: ?[*:0]u16,
     cchData: i32,
     lpValue: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetNumberFormatEx(
@@ -9382,7 +9371,7 @@ pub extern "kernel32" fn GetNumberFormatEx(
     lpFormat: ?*const NUMBERFMTW,
     lpNumberStr: ?[*:0]u16,
     cchNumber: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetCurrencyFormatEx(
@@ -9392,19 +9381,19 @@ pub extern "kernel32" fn GetCurrencyFormatEx(
     lpFormat: ?*const CURRENCYFMTW,
     lpCurrencyStr: ?[*:0]u16,
     cchCurrency: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetUserDefaultLocaleName(
     lpLocaleName: [*:0]u16,
     cchLocaleName: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetSystemDefaultLocaleName(
     lpLocaleName: [*:0]u16,
     cchLocaleName: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn IsNLSDefinedString(
@@ -9413,21 +9402,21 @@ pub extern "kernel32" fn IsNLSDefinedString(
     lpVersionInformation: ?*NLSVERSIONINFO,
     lpString: [*:0]const u16,
     cchStr: i32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn GetNLSVersionEx(
     function: u32,
     lpLocaleName: ?[*:0]const u16,
     lpVersionInformation: ?*NLSVERSIONINFOEX,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "kernel32" fn IsValidNLSVersion(
     function: u32,
     lpLocaleName: ?[*:0]const u16,
     lpVersionInformation: ?*NLSVERSIONINFOEX,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn FindNLSStringEx(
@@ -9441,7 +9430,7 @@ pub extern "kernel32" fn FindNLSStringEx(
     lpVersionInformation: ?*NLSVERSIONINFO,
     lpReserved: ?*anyopaque,
     sortHandle: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn LCMapStringEx(
@@ -9454,12 +9443,12 @@ pub extern "kernel32" fn LCMapStringEx(
     lpVersionInformation: ?*NLSVERSIONINFO,
     lpReserved: ?*anyopaque,
     sortHandle: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn IsValidLocaleName(
     lpLocaleName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn EnumCalendarInfoExEx(
@@ -9469,7 +9458,7 @@ pub extern "kernel32" fn EnumCalendarInfoExEx(
     lpReserved: ?[*:0]const u16,
     CalType: u32,
     lParam: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn EnumDateFormatsExEx(
@@ -9477,7 +9466,7 @@ pub extern "kernel32" fn EnumDateFormatsExEx(
     lpLocaleName: ?[*:0]const u16,
     dwFlags: ENUM_DATE_FORMATS_FLAGS,
     lParam: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn EnumTimeFormatsEx(
@@ -9485,7 +9474,7 @@ pub extern "kernel32" fn EnumTimeFormatsEx(
     lpLocaleName: ?[*:0]const u16,
     dwFlags: u32,
     lParam: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "kernel32" fn EnumSystemLocalesEx(
@@ -9493,26 +9482,26 @@ pub extern "kernel32" fn EnumSystemLocalesEx(
     dwFlags: u32,
     lParam: LPARAM,
     lpReserved: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "kernel32" fn ResolveLocaleName(
     lpNameToResolve: ?[*:0]const u16,
     lpLocaleName: ?[*:0]u16,
     cchLocaleName: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "elscore" fn MappingGetServices(
     pOptions: ?*MAPPING_ENUM_OPTIONS,
     prgServices: ?*?*MAPPING_SERVICE_INFO,
     pdwServicesCount: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "elscore" fn MappingFreeServices(
     pServiceInfo: ?*MAPPING_SERVICE_INFO,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "elscore" fn MappingRecognizeText(
@@ -9522,24 +9511,24 @@ pub extern "elscore" fn MappingRecognizeText(
     dwIndex: u32,
     pOptions: ?*MAPPING_OPTIONS,
     pbag: ?*MAPPING_PROPERTY_BAG,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "elscore" fn MappingDoAction(
     pBag: ?*MAPPING_PROPERTY_BAG,
     dwRangeIndex: u32,
     pszActionId: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "elscore" fn MappingFreePropertyBag(
     pBag: ?*MAPPING_PROPERTY_BAG,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptFreeCache(
     psc: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptItemize(
@@ -9550,7 +9539,7 @@ pub extern "usp10" fn ScriptItemize(
     psState: ?*const SCRIPT_STATE,
     pItems: [*]SCRIPT_ITEM,
     pcItems: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptLayout(
@@ -9558,7 +9547,7 @@ pub extern "usp10" fn ScriptLayout(
     pbLevel: [*:0]const u8,
     piVisualToLogical: ?[*]i32,
     piLogicalToVisual: ?[*]i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptShape(
@@ -9572,7 +9561,7 @@ pub extern "usp10" fn ScriptShape(
     pwLogClust: [*:0]u16,
     psva: [*]SCRIPT_VISATTR,
     pcGlyphs: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptPlace(
@@ -9585,7 +9574,7 @@ pub extern "usp10" fn ScriptPlace(
     piAdvance: [*]i32,
     pGoffset: ?[*]GOFFSET,
     pABC: ?*ABC,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptTextOut(
@@ -9603,7 +9592,7 @@ pub extern "usp10" fn ScriptTextOut(
     piAdvance: [*]const i32,
     piJustify: ?[*]const i32,
     pGoffset: [*]const GOFFSET,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptJustify(
@@ -9613,7 +9602,7 @@ pub extern "usp10" fn ScriptJustify(
     iDx: i32,
     iMinKashida: i32,
     piJustify: [*]i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptBreak(
@@ -9621,7 +9610,7 @@ pub extern "usp10" fn ScriptBreak(
     cChars: i32,
     psa: ?*const SCRIPT_ANALYSIS,
     psla: [*]SCRIPT_LOGATTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptCPtoX(
@@ -9634,7 +9623,7 @@ pub extern "usp10" fn ScriptCPtoX(
     piAdvance: [*]const i32,
     psa: ?*const SCRIPT_ANALYSIS,
     piX: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptXtoCP(
@@ -9647,7 +9636,7 @@ pub extern "usp10" fn ScriptXtoCP(
     psa: ?*const SCRIPT_ANALYSIS,
     piCP: ?*i32,
     piTrailing: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptGetLogicalWidths(
@@ -9658,7 +9647,7 @@ pub extern "usp10" fn ScriptGetLogicalWidths(
     pwLogClust: [*:0]const u16,
     psva: [*]const SCRIPT_VISATTR,
     piDx: [*]i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptApplyLogicalWidth(
@@ -9671,7 +9660,7 @@ pub extern "usp10" fn ScriptApplyLogicalWidth(
     psa: ?*const SCRIPT_ANALYSIS,
     pABC: ?*ABC,
     piJustify: [*]i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptGetCMap(
@@ -9681,7 +9670,7 @@ pub extern "usp10" fn ScriptGetCMap(
     cChars: i32,
     dwFlags: u32,
     pwOutGlyphs: [*:0]u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptGetGlyphABCWidth(
@@ -9689,27 +9678,27 @@ pub extern "usp10" fn ScriptGetGlyphABCWidth(
     psc: ?*?*anyopaque,
     wGlyph: u16,
     pABC: ?*ABC,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptGetProperties(
     ppSp: ?*const ?*?*SCRIPT_PROPERTIES,
     piNumScripts: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptGetFontProperties(
     hdc: ?HDC,
     psc: ?*?*anyopaque,
     sfp: ?*SCRIPT_FONTPROPERTIES,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptCacheGetHeight(
     hdc: ?HDC,
     psc: ?*?*anyopaque,
     tmHeight: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptStringAnalyse(
@@ -9726,33 +9715,33 @@ pub extern "usp10" fn ScriptStringAnalyse(
     pTabdef: ?*SCRIPT_TABDEF,
     pbInClass: ?*const u8,
     pssa: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptStringFree(
     pssa: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptString_pSize(
     ssa: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) ?*SIZE;
+) callconv(.winapi) ?*SIZE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptString_pcOutChars(
     ssa: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) ?*i32;
+) callconv(.winapi) ?*i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptString_pLogAttr(
     ssa: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) ?*SCRIPT_LOGATTR;
+) callconv(.winapi) ?*SCRIPT_LOGATTR;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptStringGetOrder(
     ssa: ?*anyopaque,
     puOrder: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptStringCPtoX(
@@ -9760,7 +9749,7 @@ pub extern "usp10" fn ScriptStringCPtoX(
     icp: i32,
     fTrailing: BOOL,
     pX: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptStringXtoCP(
@@ -9768,18 +9757,18 @@ pub extern "usp10" fn ScriptStringXtoCP(
     iX: i32,
     piCh: ?*i32,
     piTrailing: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptStringGetLogicalWidths(
     ssa: ?*anyopaque,
     piDx: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptStringValidate(
     ssa: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptStringOut(
@@ -9791,27 +9780,27 @@ pub extern "usp10" fn ScriptStringOut(
     iMinSel: i32,
     iMaxSel: i32,
     fDisabled: BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptIsComplex(
     pwcInChars: [*:0]const u16,
     cInChars: i32,
     dwFlags: SCRIPT_IS_COMPLEX_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptRecordDigitSubstitution(
     Locale: u32,
     psds: ?*SCRIPT_DIGITSUBSTITUTE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "usp10" fn ScriptApplyDigitSubstitution(
     psds: ?*const SCRIPT_DIGITSUBSTITUTE,
     psc: ?*SCRIPT_CONTROL,
     pss: ?*SCRIPT_STATE,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "usp10" fn ScriptShapeOpenType(
@@ -9831,7 +9820,7 @@ pub extern "usp10" fn ScriptShapeOpenType(
     pwOutGlyphs: [*:0]u16,
     pOutGlyphProps: [*]script_glyphprop,
     pcGlyphs: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "usp10" fn ScriptPlaceOpenType(
@@ -9853,7 +9842,7 @@ pub extern "usp10" fn ScriptPlaceOpenType(
     piAdvance: [*]i32,
     pGoffset: [*]GOFFSET,
     pABC: ?*ABC,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "usp10" fn ScriptItemizeOpenType(
@@ -9865,7 +9854,7 @@ pub extern "usp10" fn ScriptItemizeOpenType(
     pItems: [*]SCRIPT_ITEM,
     pScriptTags: [*]u32,
     pcItems: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "usp10" fn ScriptGetFontScriptTags(
@@ -9875,7 +9864,7 @@ pub extern "usp10" fn ScriptGetFontScriptTags(
     cMaxTags: i32,
     pScriptTags: [*]u32,
     pcTags: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "usp10" fn ScriptGetFontLanguageTags(
@@ -9886,7 +9875,7 @@ pub extern "usp10" fn ScriptGetFontLanguageTags(
     cMaxTags: i32,
     pLangsysTags: [*]u32,
     pcTags: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "usp10" fn ScriptGetFontFeatureTags(
@@ -9898,7 +9887,7 @@ pub extern "usp10" fn ScriptGetFontFeatureTags(
     cMaxTags: i32,
     pFeatureTags: [*]u32,
     pcTags: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "usp10" fn ScriptGetFontAlternateGlyphs(
@@ -9912,7 +9901,7 @@ pub extern "usp10" fn ScriptGetFontAlternateGlyphs(
     cMaxAlternates: i32,
     pAlternateGlyphs: [*:0]u16,
     pcAlternates: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "usp10" fn ScriptSubstituteSingleGlyph(
@@ -9925,7 +9914,7 @@ pub extern "usp10" fn ScriptSubstituteSingleGlyph(
     lParameter: i32,
     wGlyphId: u16,
     pwOutGlyphId: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "usp10" fn ScriptPositionSingleGlyph(
@@ -9941,7 +9930,7 @@ pub extern "usp10" fn ScriptPositionSingleGlyph(
     GOffset: GOFFSET,
     piOutAdvance: ?*i32,
     pOutGoffset: ?*GOFFSET,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "icu" fn utf8_nextCharSafeBody(
     s: ?*const u8,
@@ -9949,7 +9938,7 @@ pub extern "icu" fn utf8_nextCharSafeBody(
     length: i32,
     c: i32,
     strict: i8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utf8_appendCharSafeBody(
     s: ?*u8,
@@ -9957,7 +9946,7 @@ pub extern "icu" fn utf8_appendCharSafeBody(
     length: i32,
     c: i32,
     pIsError: ?*i8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utf8_prevCharSafeBody(
     s: ?*const u8,
@@ -9965,57 +9954,56 @@ pub extern "icu" fn utf8_prevCharSafeBody(
     pi: ?*i32,
     c: i32,
     strict: i8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utf8_back1SafeBody(
     s: ?*const u8,
     start: i32,
     i: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_versionFromString(
     versionArray: ?*u8,
     versionString: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_versionFromUString(
     versionArray: ?*u8,
     versionString: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_versionToString(
     versionArray: ?*const u8,
     versionString: ?PSTR,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_getVersion(
     versionArray: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_errorName(
     code: UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn utrace_setLevel(
     traceLevel: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub extern "icu" fn utrace_getLevel(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn utrace_getLevel() callconv(.winapi) i32;
 
 pub extern "icu" fn utrace_setFunctions(
     context: ?*const anyopaque,
     e: ?UTraceEntry,
     x: ?UTraceExit,
     d: ?UTraceData,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utrace_getFunctions(
     context: ?*const ?*anyopaque,
     e: ?*?UTraceEntry,
     x: ?*?UTraceExit,
     d: ?*?UTraceData,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utrace_vformat(
     outBuf: ?PSTR,
@@ -10023,18 +10011,18 @@ pub extern "icu" fn utrace_vformat(
     indent: i32,
     fmt: ?[*:0]const u8,
     args: ?*i8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utrace_format(
     outBuf: ?PSTR,
     capacity: i32,
     indent: i32,
     fmt: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utrace_functionName(
     fnNumber: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn u_shapeArabic(
     source: ?*const u16,
@@ -10043,202 +10031,201 @@ pub extern "icu" fn u_shapeArabic(
     destSize: i32,
     options: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uscript_getCode(
     nameOrAbbrOrLocale: ?[*:0]const u8,
     fillIn: ?*UScriptCode,
     capacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uscript_getName(
     scriptCode: UScriptCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uscript_getShortName(
     scriptCode: UScriptCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uscript_getScript(
     codepoint: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UScriptCode;
+) callconv(.winapi) UScriptCode;
 
 pub extern "icu" fn uscript_hasScript(
     c: i32,
     sc: UScriptCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uscript_getScriptExtensions(
     c: i32,
     scripts: ?*UScriptCode,
     capacity: i32,
     errorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uscript_getSampleString(
     script: UScriptCode,
     dest: ?*u16,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uscript_getUsage(
     script: UScriptCode,
-) callconv(@import("std").os.windows.WINAPI) UScriptUsage;
+) callconv(.winapi) UScriptUsage;
 
 pub extern "icu" fn uscript_isRightToLeft(
     script: UScriptCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uscript_breaksBetweenLetters(
     script: UScriptCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uscript_isCased(
     script: UScriptCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uiter_current32(
     iter: ?*UCharIterator,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uiter_next32(
     iter: ?*UCharIterator,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uiter_previous32(
     iter: ?*UCharIterator,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uiter_getState(
     iter: ?*const UCharIterator,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn uiter_setState(
     iter: ?*UCharIterator,
     state: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uiter_setString(
     iter: ?*UCharIterator,
     s: ?*const u16,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uiter_setUTF16BE(
     iter: ?*UCharIterator,
     s: ?[*:0]const u8,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uiter_setUTF8(
     iter: ?*UCharIterator,
     s: ?[*:0]const u8,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uenum_close(
     en: ?*UEnumeration,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uenum_count(
     en: ?*UEnumeration,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uenum_unext(
     en: ?*UEnumeration,
     resultLength: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn uenum_next(
     en: ?*UEnumeration,
     resultLength: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uenum_reset(
     en: ?*UEnumeration,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uenum_openUCharStringsEnumeration(
     strings: ?*const ?*u16,
     count: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn uenum_openCharStringsEnumeration(
     strings: ?*const ?*i8,
     count: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
-pub extern "icu" fn uloc_getDefault(
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+pub extern "icu" fn uloc_getDefault() callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uloc_setDefault(
     localeID: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uloc_getLanguage(
     localeID: ?[*:0]const u8,
     language: ?PSTR,
     languageCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getScript(
     localeID: ?[*:0]const u8,
     script: ?PSTR,
     scriptCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getCountry(
     localeID: ?[*:0]const u8,
     country: ?PSTR,
     countryCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getVariant(
     localeID: ?[*:0]const u8,
     variant: ?PSTR,
     variantCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getName(
     localeID: ?[*:0]const u8,
     name: ?PSTR,
     nameCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_canonicalize(
     localeID: ?[*:0]const u8,
     name: ?PSTR,
     nameCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getISO3Language(
     localeID: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uloc_getISO3Country(
     localeID: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uloc_getLCID(
     localeID: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn uloc_getDisplayLanguage(
     locale: ?[*:0]const u8,
@@ -10246,7 +10233,7 @@ pub extern "icu" fn uloc_getDisplayLanguage(
     language: ?*u16,
     languageCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getDisplayScript(
     locale: ?[*:0]const u8,
@@ -10254,7 +10241,7 @@ pub extern "icu" fn uloc_getDisplayScript(
     script: ?*u16,
     scriptCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getDisplayCountry(
     locale: ?[*:0]const u8,
@@ -10262,7 +10249,7 @@ pub extern "icu" fn uloc_getDisplayCountry(
     country: ?*u16,
     countryCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getDisplayVariant(
     locale: ?[*:0]const u8,
@@ -10270,7 +10257,7 @@ pub extern "icu" fn uloc_getDisplayVariant(
     variant: ?*u16,
     variantCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getDisplayKeyword(
     keyword: ?[*:0]const u8,
@@ -10278,7 +10265,7 @@ pub extern "icu" fn uloc_getDisplayKeyword(
     dest: ?*u16,
     destCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getDisplayKeywordValue(
     locale: ?[*:0]const u8,
@@ -10287,7 +10274,7 @@ pub extern "icu" fn uloc_getDisplayKeywordValue(
     dest: ?*u16,
     destCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getDisplayName(
     localeID: ?[*:0]const u8,
@@ -10295,44 +10282,41 @@ pub extern "icu" fn uloc_getDisplayName(
     result: ?*u16,
     maxResultSize: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getAvailable(
     n: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
-pub extern "icu" fn uloc_countAvailable(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn uloc_countAvailable() callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_openAvailableByType(
     type: ULocAvailableType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
-pub extern "icu" fn uloc_getISOLanguages(
-) callconv(@import("std").os.windows.WINAPI) ?*?*i8;
+pub extern "icu" fn uloc_getISOLanguages() callconv(.winapi) ?*?*i8;
 
-pub extern "icu" fn uloc_getISOCountries(
-) callconv(@import("std").os.windows.WINAPI) ?*?*i8;
+pub extern "icu" fn uloc_getISOCountries() callconv(.winapi) ?*?*i8;
 
 pub extern "icu" fn uloc_getParent(
     localeID: ?[*:0]const u8,
     parent: ?PSTR,
     parentCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getBaseName(
     localeID: ?[*:0]const u8,
     name: ?PSTR,
     nameCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_openKeywords(
     localeID: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn uloc_getKeywordValue(
     localeID: ?[*:0]const u8,
@@ -10340,7 +10324,7 @@ pub extern "icu" fn uloc_getKeywordValue(
     buffer: ?PSTR,
     bufferCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_setKeywordValue(
     keywordName: ?[*:0]const u8,
@@ -10348,21 +10332,21 @@ pub extern "icu" fn uloc_setKeywordValue(
     buffer: ?PSTR,
     bufferCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_isRightToLeft(
     locale: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uloc_getCharacterOrientation(
     localeId: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ULayoutType;
+) callconv(.winapi) ULayoutType;
 
 pub extern "icu" fn uloc_getLineOrientation(
     localeId: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ULayoutType;
+) callconv(.winapi) ULayoutType;
 
 pub extern "icu" fn uloc_acceptLanguageFromHTTP(
     result: ?PSTR,
@@ -10371,7 +10355,7 @@ pub extern "icu" fn uloc_acceptLanguageFromHTTP(
     httpAcceptLanguage: ?[*:0]const u8,
     availableLocales: ?*UEnumeration,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_acceptLanguage(
     result: ?PSTR,
@@ -10381,28 +10365,28 @@ pub extern "icu" fn uloc_acceptLanguage(
     acceptListCount: i32,
     availableLocales: ?*UEnumeration,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_getLocaleForLCID(
     hostID: u32,
     locale: ?PSTR,
     localeCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_addLikelySubtags(
     localeID: ?[*:0]const u8,
     maximizedLocaleID: ?PSTR,
     maximizedLocaleIDCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_minimizeSubtags(
     localeID: ?[*:0]const u8,
     minimizedLocaleID: ?PSTR,
     minimizedLocaleIDCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_forLanguageTag(
     langtag: ?[*:0]const u8,
@@ -10410,7 +10394,7 @@ pub extern "icu" fn uloc_forLanguageTag(
     localeIDCapacity: i32,
     parsedLength: ?*i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_toLanguageTag(
     localeID: ?[*:0]const u8,
@@ -10418,64 +10402,64 @@ pub extern "icu" fn uloc_toLanguageTag(
     langtagCapacity: i32,
     strict: i8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uloc_toUnicodeLocaleKey(
     keyword: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uloc_toUnicodeLocaleType(
     keyword: ?[*:0]const u8,
     value: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uloc_toLegacyKey(
     keyword: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uloc_toLegacyType(
     keyword: ?[*:0]const u8,
     value: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ures_open(
     packageName: ?[*:0]const u8,
     locale: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UResourceBundle;
+) callconv(.winapi) ?*UResourceBundle;
 
 pub extern "icu" fn ures_openDirect(
     packageName: ?[*:0]const u8,
     locale: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UResourceBundle;
+) callconv(.winapi) ?*UResourceBundle;
 
 pub extern "icu" fn ures_openU(
     packageName: ?*const u16,
     locale: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UResourceBundle;
+) callconv(.winapi) ?*UResourceBundle;
 
 pub extern "icu" fn ures_close(
     resourceBundle: ?*UResourceBundle,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ures_getVersion(
     resB: ?*const UResourceBundle,
     versionInfo: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ures_getLocaleByType(
     resourceBundle: ?*const UResourceBundle,
     type: ULocDataLocaleType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ures_getString(
     resourceBundle: ?*const UResourceBundle,
     len: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ures_getUTF8String(
     resB: ?*const UResourceBundle,
@@ -10483,76 +10467,76 @@ pub extern "icu" fn ures_getUTF8String(
     length: ?*i32,
     forceCopy: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ures_getBinary(
     resourceBundle: ?*const UResourceBundle,
     len: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u8;
+) callconv(.winapi) ?*u8;
 
 pub extern "icu" fn ures_getIntVector(
     resourceBundle: ?*const UResourceBundle,
     len: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*i32;
+) callconv(.winapi) ?*i32;
 
 pub extern "icu" fn ures_getUInt(
     resourceBundle: ?*const UResourceBundle,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn ures_getInt(
     resourceBundle: ?*const UResourceBundle,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ures_getSize(
     resourceBundle: ?*const UResourceBundle,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ures_getType(
     resourceBundle: ?*const UResourceBundle,
-) callconv(@import("std").os.windows.WINAPI) UResType;
+) callconv(.winapi) UResType;
 
 pub extern "icu" fn ures_getKey(
     resourceBundle: ?*const UResourceBundle,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ures_resetIterator(
     resourceBundle: ?*UResourceBundle,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ures_hasNext(
     resourceBundle: ?*const UResourceBundle,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ures_getNextResource(
     resourceBundle: ?*UResourceBundle,
     fillIn: ?*UResourceBundle,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UResourceBundle;
+) callconv(.winapi) ?*UResourceBundle;
 
 pub extern "icu" fn ures_getNextString(
     resourceBundle: ?*UResourceBundle,
     len: ?*i32,
     key: ?*const ?*i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ures_getByIndex(
     resourceBundle: ?*const UResourceBundle,
     indexR: i32,
     fillIn: ?*UResourceBundle,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UResourceBundle;
+) callconv(.winapi) ?*UResourceBundle;
 
 pub extern "icu" fn ures_getStringByIndex(
     resourceBundle: ?*const UResourceBundle,
     indexS: i32,
     len: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ures_getUTF8StringByIndex(
     resB: ?*const UResourceBundle,
@@ -10561,21 +10545,21 @@ pub extern "icu" fn ures_getUTF8StringByIndex(
     pLength: ?*i32,
     forceCopy: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ures_getByKey(
     resourceBundle: ?*const UResourceBundle,
     key: ?[*:0]const u8,
     fillIn: ?*UResourceBundle,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UResourceBundle;
+) callconv(.winapi) ?*UResourceBundle;
 
 pub extern "icu" fn ures_getStringByKey(
     resB: ?*const UResourceBundle,
     key: ?[*:0]const u8,
     len: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ures_getUTF8StringByKey(
     resB: ?*const UResourceBundle,
@@ -10584,30 +10568,30 @@ pub extern "icu" fn ures_getUTF8StringByKey(
     pLength: ?*i32,
     forceCopy: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ures_openAvailableLocales(
     packageName: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn uldn_open(
     locale: ?[*:0]const u8,
     dialectHandling: UDialectHandling,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*ULocaleDisplayNames;
+) callconv(.winapi) ?*ULocaleDisplayNames;
 
 pub extern "icu" fn uldn_close(
     ldn: ?*ULocaleDisplayNames,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uldn_getLocale(
     ldn: ?*const ULocaleDisplayNames,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uldn_getDialectHandling(
     ldn: ?*const ULocaleDisplayNames,
-) callconv(@import("std").os.windows.WINAPI) UDialectHandling;
+) callconv(.winapi) UDialectHandling;
 
 pub extern "icu" fn uldn_localeDisplayName(
     ldn: ?*const ULocaleDisplayNames,
@@ -10615,7 +10599,7 @@ pub extern "icu" fn uldn_localeDisplayName(
     result: ?*u16,
     maxResultSize: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uldn_languageDisplayName(
     ldn: ?*const ULocaleDisplayNames,
@@ -10623,7 +10607,7 @@ pub extern "icu" fn uldn_languageDisplayName(
     result: ?*u16,
     maxResultSize: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uldn_scriptDisplayName(
     ldn: ?*const ULocaleDisplayNames,
@@ -10631,7 +10615,7 @@ pub extern "icu" fn uldn_scriptDisplayName(
     result: ?*u16,
     maxResultSize: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uldn_scriptCodeDisplayName(
     ldn: ?*const ULocaleDisplayNames,
@@ -10639,7 +10623,7 @@ pub extern "icu" fn uldn_scriptCodeDisplayName(
     result: ?*u16,
     maxResultSize: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uldn_regionDisplayName(
     ldn: ?*const ULocaleDisplayNames,
@@ -10647,7 +10631,7 @@ pub extern "icu" fn uldn_regionDisplayName(
     result: ?*u16,
     maxResultSize: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uldn_variantDisplayName(
     ldn: ?*const ULocaleDisplayNames,
@@ -10655,7 +10639,7 @@ pub extern "icu" fn uldn_variantDisplayName(
     result: ?*u16,
     maxResultSize: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uldn_keyDisplayName(
     ldn: ?*const ULocaleDisplayNames,
@@ -10663,7 +10647,7 @@ pub extern "icu" fn uldn_keyDisplayName(
     result: ?*u16,
     maxResultSize: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uldn_keyValueDisplayName(
     ldn: ?*const ULocaleDisplayNames,
@@ -10672,38 +10656,38 @@ pub extern "icu" fn uldn_keyValueDisplayName(
     result: ?*u16,
     maxResultSize: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uldn_openForContext(
     locale: ?[*:0]const u8,
     contexts: ?*UDisplayContext,
     length: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*ULocaleDisplayNames;
+) callconv(.winapi) ?*ULocaleDisplayNames;
 
 pub extern "icu" fn uldn_getContext(
     ldn: ?*const ULocaleDisplayNames,
     type: UDisplayContextType,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UDisplayContext;
+) callconv(.winapi) UDisplayContext;
 
 pub extern "icu" fn ucurr_forLocale(
     locale: ?[*:0]const u8,
     buff: ?*u16,
     buffCapacity: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucurr_register(
     isoCode: ?*const u16,
     locale: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
 pub extern "icu" fn ucurr_unregister(
     key: ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucurr_getName(
     currency: ?*const u16,
@@ -10712,7 +10696,7 @@ pub extern "icu" fn ucurr_getName(
     isChoiceFormat: ?*i8,
     len: ?*i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ucurr_getPluralName(
     currency: ?*const u16,
@@ -10721,47 +10705,47 @@ pub extern "icu" fn ucurr_getPluralName(
     pluralCount: ?[*:0]const u8,
     len: ?*i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ucurr_getDefaultFractionDigits(
     currency: ?*const u16,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucurr_getDefaultFractionDigitsForUsage(
     currency: ?*const u16,
     usage: UCurrencyUsage,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucurr_getRoundingIncrement(
     currency: ?*const u16,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn ucurr_getRoundingIncrementForUsage(
     currency: ?*const u16,
     usage: UCurrencyUsage,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn ucurr_openISOCurrencies(
     currType: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucurr_isAvailable(
     isoCode: ?*const u16,
     from: f64,
     to: f64,
     errorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucurr_countCurrencies(
     locale: ?[*:0]const u8,
     date: f64,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucurr_forLocaleAndDate(
     locale: ?[*:0]const u8,
@@ -10770,23 +10754,23 @@ pub extern "icu" fn ucurr_forLocaleAndDate(
     buff: ?*u16,
     buffCapacity: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucurr_getKeywordValuesForLocale(
     key: ?[*:0]const u8,
     locale: ?[*:0]const u8,
     commonlyUsed: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucurr_getNumericCode(
     currency: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucpmap_get(
     map: ?*const UCPMap,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn ucpmap_getRange(
     map: ?*const UCPMap,
@@ -10796,7 +10780,7 @@ pub extern "icu" fn ucpmap_getRange(
     filter: ?*?UCPMapValueFilter,
     context: ?*const anyopaque,
     pValue: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucptrie_openFromBinary(
     type: UCPTrieType,
@@ -10805,24 +10789,24 @@ pub extern "icu" fn ucptrie_openFromBinary(
     length: i32,
     pActualLength: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCPTrie;
+) callconv(.winapi) ?*UCPTrie;
 
 pub extern "icu" fn ucptrie_close(
     trie: ?*UCPTrie,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucptrie_getType(
     trie: ?*const UCPTrie,
-) callconv(@import("std").os.windows.WINAPI) UCPTrieType;
+) callconv(.winapi) UCPTrieType;
 
 pub extern "icu" fn ucptrie_getValueWidth(
     trie: ?*const UCPTrie,
-) callconv(@import("std").os.windows.WINAPI) UCPTrieValueWidth;
+) callconv(.winapi) UCPTrieValueWidth;
 
 pub extern "icu" fn ucptrie_get(
     trie: ?*const UCPTrie,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn ucptrie_getRange(
     trie: ?*const UCPTrie,
@@ -10832,63 +10816,63 @@ pub extern "icu" fn ucptrie_getRange(
     filter: ?*?UCPMapValueFilter,
     context: ?*const anyopaque,
     pValue: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucptrie_toBinary(
     trie: ?*const UCPTrie,
     data: ?*anyopaque,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucptrie_internalSmallIndex(
     trie: ?*const UCPTrie,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucptrie_internalSmallU8Index(
     trie: ?*const UCPTrie,
     lt1: i32,
     t2: u8,
     t3: u8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucptrie_internalU8PrevIndex(
     trie: ?*const UCPTrie,
     c: i32,
     start: ?*const u8,
     src: ?*const u8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn umutablecptrie_open(
     initialValue: u32,
     errorValue: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UMutableCPTrie;
+) callconv(.winapi) ?*UMutableCPTrie;
 
 pub extern "icu" fn umutablecptrie_clone(
     other: ?*const UMutableCPTrie,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UMutableCPTrie;
+) callconv(.winapi) ?*UMutableCPTrie;
 
 pub extern "icu" fn umutablecptrie_close(
     trie: ?*UMutableCPTrie,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn umutablecptrie_fromUCPMap(
     map: ?*const UCPMap,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UMutableCPTrie;
+) callconv(.winapi) ?*UMutableCPTrie;
 
 pub extern "icu" fn umutablecptrie_fromUCPTrie(
     trie: ?*const UCPTrie,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UMutableCPTrie;
+) callconv(.winapi) ?*UMutableCPTrie;
 
 pub extern "icu" fn umutablecptrie_get(
     trie: ?*const UMutableCPTrie,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn umutablecptrie_getRange(
     trie: ?*const UMutableCPTrie,
@@ -10898,14 +10882,14 @@ pub extern "icu" fn umutablecptrie_getRange(
     filter: ?*?UCPMapValueFilter,
     context: ?*const anyopaque,
     pValue: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn umutablecptrie_set(
     trie: ?*UMutableCPTrie,
     c: i32,
     value: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn umutablecptrie_setRange(
     trie: ?*UMutableCPTrie,
@@ -10913,14 +10897,14 @@ pub extern "icu" fn umutablecptrie_setRange(
     end: i32,
     value: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn umutablecptrie_buildImmutable(
     trie: ?*UMutableCPTrie,
     type: UCPTrieType,
     valueWidth: UCPTrieValueWidth,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCPTrie;
+) callconv(.winapi) ?*UCPTrie;
 
 pub extern "icu" fn UCNV_FROM_U_CALLBACK_STOP(
     context: ?*const anyopaque,
@@ -10930,7 +10914,7 @@ pub extern "icu" fn UCNV_FROM_U_CALLBACK_STOP(
     codePoint: i32,
     reason: UConverterCallbackReason,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn UCNV_TO_U_CALLBACK_STOP(
     context: ?*const anyopaque,
@@ -10939,7 +10923,7 @@ pub extern "icu" fn UCNV_TO_U_CALLBACK_STOP(
     length: i32,
     reason: UConverterCallbackReason,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn UCNV_FROM_U_CALLBACK_SKIP(
     context: ?*const anyopaque,
@@ -10949,7 +10933,7 @@ pub extern "icu" fn UCNV_FROM_U_CALLBACK_SKIP(
     codePoint: i32,
     reason: UConverterCallbackReason,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn UCNV_FROM_U_CALLBACK_SUBSTITUTE(
     context: ?*const anyopaque,
@@ -10959,7 +10943,7 @@ pub extern "icu" fn UCNV_FROM_U_CALLBACK_SUBSTITUTE(
     codePoint: i32,
     reason: UConverterCallbackReason,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn UCNV_FROM_U_CALLBACK_ESCAPE(
     context: ?*const anyopaque,
@@ -10969,7 +10953,7 @@ pub extern "icu" fn UCNV_FROM_U_CALLBACK_ESCAPE(
     codePoint: i32,
     reason: UConverterCallbackReason,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn UCNV_TO_U_CALLBACK_SKIP(
     context: ?*const anyopaque,
@@ -10978,7 +10962,7 @@ pub extern "icu" fn UCNV_TO_U_CALLBACK_SKIP(
     length: i32,
     reason: UConverterCallbackReason,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn UCNV_TO_U_CALLBACK_SUBSTITUTE(
     context: ?*const anyopaque,
@@ -10987,7 +10971,7 @@ pub extern "icu" fn UCNV_TO_U_CALLBACK_SUBSTITUTE(
     length: i32,
     reason: UConverterCallbackReason,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn UCNV_TO_U_CALLBACK_ESCAPE(
     context: ?*const anyopaque,
@@ -10996,100 +10980,100 @@ pub extern "icu" fn UCNV_TO_U_CALLBACK_ESCAPE(
     length: i32,
     reason: UConverterCallbackReason,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_compareNames(
     name1: ?[*:0]const u8,
     name2: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_open(
     converterName: ?[*:0]const u8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UConverter;
+) callconv(.winapi) ?*UConverter;
 
 pub extern "icu" fn ucnv_openU(
     name: ?*const u16,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UConverter;
+) callconv(.winapi) ?*UConverter;
 
 pub extern "icu" fn ucnv_openCCSID(
     codepage: i32,
     platform: UConverterPlatform,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UConverter;
+) callconv(.winapi) ?*UConverter;
 
 pub extern "icu" fn ucnv_openPackage(
     packageName: ?[*:0]const u8,
     converterName: ?[*:0]const u8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UConverter;
+) callconv(.winapi) ?*UConverter;
 
 pub extern "icu" fn ucnv_safeClone(
     cnv: ?*const UConverter,
     stackBuffer: ?*anyopaque,
     pBufferSize: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UConverter;
+) callconv(.winapi) ?*UConverter;
 
 pub extern "icu" fn ucnv_close(
     converter: ?*UConverter,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_getSubstChars(
     converter: ?*const UConverter,
     subChars: ?PSTR,
     len: ?*i8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_setSubstChars(
     converter: ?*UConverter,
     subChars: ?[*:0]const u8,
     len: i8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_setSubstString(
     cnv: ?*UConverter,
     s: ?*const u16,
     length: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_getInvalidChars(
     converter: ?*const UConverter,
     errBytes: ?PSTR,
     len: ?*i8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_getInvalidUChars(
     converter: ?*const UConverter,
     errUChars: ?*u16,
     len: ?*i8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_reset(
     converter: ?*UConverter,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_resetToUnicode(
     converter: ?*UConverter,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_resetFromUnicode(
     converter: ?*UConverter,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_getMaxCharSize(
     converter: ?*const UConverter,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucnv_getMinCharSize(
     converter: ?*const UConverter,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucnv_getDisplayName(
     converter: ?*const UConverter,
@@ -11097,51 +11081,51 @@ pub extern "icu" fn ucnv_getDisplayName(
     displayName: ?*u16,
     displayNameCapacity: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_getName(
     converter: ?*const UConverter,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucnv_getCCSID(
     converter: ?*const UConverter,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_getPlatform(
     converter: ?*const UConverter,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UConverterPlatform;
+) callconv(.winapi) UConverterPlatform;
 
 pub extern "icu" fn ucnv_getType(
     converter: ?*const UConverter,
-) callconv(@import("std").os.windows.WINAPI) UConverterType;
+) callconv(.winapi) UConverterType;
 
 pub extern "icu" fn ucnv_getStarters(
     converter: ?*const UConverter,
     starters: ?*i8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_getUnicodeSet(
     cnv: ?*const UConverter,
     setFillIn: ?*USet,
     whichSet: UConverterUnicodeSet,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_getToUCallBack(
     converter: ?*const UConverter,
     action: ?*?UConverterToUCallback,
     context: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_getFromUCallBack(
     converter: ?*const UConverter,
     action: ?*?UConverterFromUCallback,
     context: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_setToUCallBack(
     converter: ?*UConverter,
@@ -11150,7 +11134,7 @@ pub extern "icu" fn ucnv_setToUCallBack(
     oldAction: ?*?UConverterToUCallback,
     oldContext: ?*const ?*anyopaque,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_setFromUCallBack(
     converter: ?*UConverter,
@@ -11159,7 +11143,7 @@ pub extern "icu" fn ucnv_setFromUCallBack(
     oldAction: ?*?UConverterFromUCallback,
     oldContext: ?*const ?*anyopaque,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_fromUnicode(
     converter: ?*UConverter,
@@ -11170,7 +11154,7 @@ pub extern "icu" fn ucnv_fromUnicode(
     offsets: ?*i32,
     flush: i8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_toUnicode(
     converter: ?*UConverter,
@@ -11181,7 +11165,7 @@ pub extern "icu" fn ucnv_toUnicode(
     offsets: ?*i32,
     flush: i8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_fromUChars(
     cnv: ?*UConverter,
@@ -11190,7 +11174,7 @@ pub extern "icu" fn ucnv_fromUChars(
     src: ?*const u16,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_toUChars(
     cnv: ?*UConverter,
@@ -11199,14 +11183,14 @@ pub extern "icu" fn ucnv_toUChars(
     src: ?[*:0]const u8,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_getNextUChar(
     converter: ?*UConverter,
     source: ?*const ?*i8,
     sourceLimit: ?[*:0]const u8,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_convertEx(
     targetCnv: ?*UConverter,
@@ -11222,7 +11206,7 @@ pub extern "icu" fn ucnv_convertEx(
     reset: i8,
     flush: i8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_convert(
     toConverterName: ?[*:0]const u8,
@@ -11232,7 +11216,7 @@ pub extern "icu" fn ucnv_convert(
     source: ?[*:0]const u8,
     sourceLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_toAlgorithmic(
     algorithmicType: UConverterType,
@@ -11242,7 +11226,7 @@ pub extern "icu" fn ucnv_toAlgorithmic(
     source: ?[*:0]const u8,
     sourceLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_fromAlgorithmic(
     cnv: ?*UConverter,
@@ -11252,112 +11236,108 @@ pub extern "icu" fn ucnv_fromAlgorithmic(
     source: ?[*:0]const u8,
     sourceLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub extern "icu" fn ucnv_flushCache(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn ucnv_flushCache() callconv(.winapi) i32;
 
-pub extern "icu" fn ucnv_countAvailable(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn ucnv_countAvailable() callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_getAvailableName(
     n: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucnv_openAllNames(
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucnv_countAliases(
     alias: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) u16;
+) callconv(.winapi) u16;
 
 pub extern "icu" fn ucnv_getAlias(
     alias: ?[*:0]const u8,
     n: u16,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucnv_getAliases(
     alias: ?[*:0]const u8,
     aliases: ?*const ?*i8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_openStandardNames(
     convName: ?[*:0]const u8,
     standard: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
-pub extern "icu" fn ucnv_countStandards(
-) callconv(@import("std").os.windows.WINAPI) u16;
+pub extern "icu" fn ucnv_countStandards() callconv(.winapi) u16;
 
 pub extern "icu" fn ucnv_getStandard(
     n: u16,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucnv_getStandardName(
     name: ?[*:0]const u8,
     standard: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucnv_getCanonicalName(
     alias: ?[*:0]const u8,
     standard: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
-pub extern "icu" fn ucnv_getDefaultName(
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+pub extern "icu" fn ucnv_getDefaultName() callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucnv_setDefaultName(
     name: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_fixFileSeparator(
     cnv: ?*const UConverter,
     source: ?*u16,
     sourceLen: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_isAmbiguous(
     cnv: ?*const UConverter,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucnv_setFallback(
     cnv: ?*UConverter,
     usesFallback: i8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_usesFallback(
     cnv: ?*const UConverter,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucnv_detectUnicodeSignature(
     source: ?[*:0]const u8,
     sourceLength: i32,
     signatureLength: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucnv_fromUCountPending(
     cnv: ?*const UConverter,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_toUCountPending(
     cnv: ?*const UConverter,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnv_isFixedWidth(
     cnv: ?*UConverter,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucnv_cbFromUWriteBytes(
     args: ?*UConverterFromUnicodeArgs,
@@ -11365,13 +11345,13 @@ pub extern "icu" fn ucnv_cbFromUWriteBytes(
     length: i32,
     offsetIndex: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_cbFromUWriteSub(
     args: ?*UConverterFromUnicodeArgs,
     offsetIndex: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_cbFromUWriteUChars(
     args: ?*UConverterFromUnicodeArgs,
@@ -11379,7 +11359,7 @@ pub extern "icu" fn ucnv_cbFromUWriteUChars(
     sourceLimit: ?*const u16,
     offsetIndex: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_cbToUWriteUChars(
     args: ?*UConverterToUnicodeArgs,
@@ -11387,20 +11367,19 @@ pub extern "icu" fn ucnv_cbToUWriteUChars(
     length: i32,
     offsetIndex: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnv_cbToUWriteSub(
     args: ?*UConverterToUnicodeArgs,
     offsetIndex: i32,
     err: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_init(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub extern "icu" fn u_cleanup(
-) callconv(@import("std").os.windows.WINAPI) void;
+pub extern "icu" fn u_cleanup() callconv(.winapi) void;
 
 pub extern "icu" fn u_setMemoryFunctions(
     context: ?*const anyopaque,
@@ -11408,17 +11387,17 @@ pub extern "icu" fn u_setMemoryFunctions(
     r: ?*?UMemReallocFn,
     f: ?*?UMemFreeFn,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_catopen(
     name: ?[*:0]const u8,
     locale: ?[*:0]const u8,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UResourceBundle;
+) callconv(.winapi) ?*UResourceBundle;
 
 pub extern "icu" fn u_catclose(
     catd: ?*UResourceBundle,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_catgets(
     catd: ?*UResourceBundle,
@@ -11427,164 +11406,164 @@ pub extern "icu" fn u_catgets(
     s: ?*const u16,
     len: ?*i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_hasBinaryProperty(
     c: i32,
     which: UProperty,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_getBinaryPropertySet(
     property: UProperty,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn u_isUAlphabetic(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isULowercase(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isUUppercase(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isUWhiteSpace(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_getIntPropertyValue(
     c: i32,
     which: UProperty,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_getIntPropertyMinValue(
     which: UProperty,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_getIntPropertyMaxValue(
     which: UProperty,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_getIntPropertyMap(
     property: UProperty,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCPMap;
+) callconv(.winapi) ?*UCPMap;
 
 pub extern "icu" fn u_getNumericValue(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn u_islower(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isupper(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_istitle(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isdigit(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isalpha(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isalnum(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isxdigit(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_ispunct(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isgraph(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isblank(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isdefined(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isspace(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isJavaSpaceChar(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isWhitespace(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_iscntrl(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isISOControl(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isprint(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isbase(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_charDirection(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) UCharDirection;
+) callconv(.winapi) UCharDirection;
 
 pub extern "icu" fn u_isMirrored(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_charMirror(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_getBidiPairedBracket(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_charType(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_enumCharTypes(
     enumRange: ?*?UCharEnumTypeRange,
     context: ?*const anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_getCombiningClass(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) u8;
+) callconv(.winapi) u8;
 
 pub extern "icu" fn u_charDigitValue(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ublock_getCode(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) UBlockCode;
+) callconv(.winapi) UBlockCode;
 
 pub extern "icu" fn u_charName(
     code: i32,
@@ -11592,13 +11571,13 @@ pub extern "icu" fn u_charName(
     buffer: ?PSTR,
     bufferLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_charFromName(
     nameChoice: UCharNameChoice,
     name: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_enumCharNames(
     start: i32,
@@ -11607,139 +11586,138 @@ pub extern "icu" fn u_enumCharNames(
     context: ?*anyopaque,
     nameChoice: UCharNameChoice,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_getPropertyName(
     property: UProperty,
     nameChoice: UPropertyNameChoice,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn u_getPropertyEnum(
     alias: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) UProperty;
+) callconv(.winapi) UProperty;
 
 pub extern "icu" fn u_getPropertyValueName(
     property: UProperty,
     value: i32,
     nameChoice: UPropertyNameChoice,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn u_getPropertyValueEnum(
     property: UProperty,
     alias: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_isIDStart(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isIDPart(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isIDIgnorable(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isJavaIDStart(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_isJavaIDPart(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_tolower(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_toupper(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_totitle(
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_foldCase(
     c: i32,
     options: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_digit(
     ch: i32,
     radix: i8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_forDigit(
     digit: i32,
     radix: i8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_charAge(
     c: i32,
     versionArray: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_getUnicodeVersion(
     versionArray: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_getFC_NFKC_Closure(
     c: i32,
     dest: ?*u16,
     destCapacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub extern "icu" fn ubidi_open(
-) callconv(@import("std").os.windows.WINAPI) ?*UBiDi;
+pub extern "icu" fn ubidi_open() callconv(.winapi) ?*UBiDi;
 
 pub extern "icu" fn ubidi_openSized(
     maxLength: i32,
     maxRunCount: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UBiDi;
+) callconv(.winapi) ?*UBiDi;
 
 pub extern "icu" fn ubidi_close(
     pBiDi: ?*UBiDi,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_setInverse(
     pBiDi: ?*UBiDi,
     isInverse: i8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_isInverse(
     pBiDi: ?*UBiDi,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ubidi_orderParagraphsLTR(
     pBiDi: ?*UBiDi,
     orderParagraphsLTR: i8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_isOrderParagraphsLTR(
     pBiDi: ?*UBiDi,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ubidi_setReorderingMode(
     pBiDi: ?*UBiDi,
     reorderingMode: UBiDiReorderingMode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_getReorderingMode(
     pBiDi: ?*UBiDi,
-) callconv(@import("std").os.windows.WINAPI) UBiDiReorderingMode;
+) callconv(.winapi) UBiDiReorderingMode;
 
 pub extern "icu" fn ubidi_setReorderingOptions(
     pBiDi: ?*UBiDi,
     reorderingOptions: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_getReorderingOptions(
     pBiDi: ?*UBiDi,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn ubidi_setContext(
     pBiDi: ?*UBiDi,
@@ -11748,7 +11726,7 @@ pub extern "icu" fn ubidi_setContext(
     epilogue: ?*const u16,
     epiLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_setPara(
     pBiDi: ?*UBiDi,
@@ -11757,7 +11735,7 @@ pub extern "icu" fn ubidi_setPara(
     paraLevel: u8,
     embeddingLevels: ?*u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_setLine(
     pParaBiDi: ?*const UBiDi,
@@ -11765,32 +11743,32 @@ pub extern "icu" fn ubidi_setLine(
     limit: i32,
     pLineBiDi: ?*UBiDi,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_getDirection(
     pBiDi: ?*const UBiDi,
-) callconv(@import("std").os.windows.WINAPI) UBiDiDirection;
+) callconv(.winapi) UBiDiDirection;
 
 pub extern "icu" fn ubidi_getBaseDirection(
     text: ?*const u16,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) UBiDiDirection;
+) callconv(.winapi) UBiDiDirection;
 
 pub extern "icu" fn ubidi_getText(
     pBiDi: ?*const UBiDi,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ubidi_getLength(
     pBiDi: ?*const UBiDi,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubidi_getParaLevel(
     pBiDi: ?*const UBiDi,
-) callconv(@import("std").os.windows.WINAPI) u8;
+) callconv(.winapi) u8;
 
 pub extern "icu" fn ubidi_countParagraphs(
     pBiDi: ?*UBiDi,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubidi_getParagraph(
     pBiDi: ?*const UBiDi,
@@ -11799,7 +11777,7 @@ pub extern "icu" fn ubidi_getParagraph(
     pParaLimit: ?*i32,
     pParaLevel: ?*u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubidi_getParagraphByIndex(
     pBiDi: ?*const UBiDi,
@@ -11808,91 +11786,91 @@ pub extern "icu" fn ubidi_getParagraphByIndex(
     pParaLimit: ?*i32,
     pParaLevel: ?*u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_getLevelAt(
     pBiDi: ?*const UBiDi,
     charIndex: i32,
-) callconv(@import("std").os.windows.WINAPI) u8;
+) callconv(.winapi) u8;
 
 pub extern "icu" fn ubidi_getLevels(
     pBiDi: ?*UBiDi,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u8;
+) callconv(.winapi) ?*u8;
 
 pub extern "icu" fn ubidi_getLogicalRun(
     pBiDi: ?*const UBiDi,
     logicalPosition: i32,
     pLogicalLimit: ?*i32,
     pLevel: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_countRuns(
     pBiDi: ?*UBiDi,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubidi_getVisualRun(
     pBiDi: ?*UBiDi,
     runIndex: i32,
     pLogicalStart: ?*i32,
     pLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) UBiDiDirection;
+) callconv(.winapi) UBiDiDirection;
 
 pub extern "icu" fn ubidi_getVisualIndex(
     pBiDi: ?*UBiDi,
     logicalIndex: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubidi_getLogicalIndex(
     pBiDi: ?*UBiDi,
     visualIndex: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubidi_getLogicalMap(
     pBiDi: ?*UBiDi,
     indexMap: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_getVisualMap(
     pBiDi: ?*UBiDi,
     indexMap: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_reorderLogical(
     levels: ?*const u8,
     length: i32,
     indexMap: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_reorderVisual(
     levels: ?*const u8,
     length: i32,
     indexMap: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_invertMap(
     srcMap: ?*const i32,
     destMap: ?*i32,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_getProcessedLength(
     pBiDi: ?*const UBiDi,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubidi_getResultLength(
     pBiDi: ?*const UBiDi,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubidi_getCustomizedClass(
     pBiDi: ?*UBiDi,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) UCharDirection;
+) callconv(.winapi) UCharDirection;
 
 pub extern "icu" fn ubidi_setClassCallback(
     pBiDi: ?*UBiDi,
@@ -11901,13 +11879,13 @@ pub extern "icu" fn ubidi_setClassCallback(
     oldFn: ?*?UBiDiClassCallback,
     oldContext: ?*const ?*anyopaque,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_getClassCallback(
     pBiDi: ?*UBiDi,
     @"fn": ?*?UBiDiClassCallback,
     context: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubidi_writeReordered(
     pBiDi: ?*UBiDi,
@@ -11915,7 +11893,7 @@ pub extern "icu" fn ubidi_writeReordered(
     destSize: i32,
     options: u16,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubidi_writeReverse(
     src: ?*const u16,
@@ -11924,7 +11902,7 @@ pub extern "icu" fn ubidi_writeReverse(
     destSize: i32,
     options: u16,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubiditransform_transform(
     pBiDiTransform: ?*UBiDiTransform,
@@ -11939,33 +11917,33 @@ pub extern "icu" fn ubiditransform_transform(
     doMirroring: UBiDiMirroring,
     shapingOptions: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn ubiditransform_open(
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UBiDiTransform;
+) callconv(.winapi) ?*UBiDiTransform;
 
 pub extern "icu" fn ubiditransform_close(
     pBidiTransform: ?*UBiDiTransform,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utext_close(
     ut: ?*UText,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn utext_openUTF8(
     ut: ?*UText,
     s: ?[*:0]const u8,
     length: i64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn utext_openUChars(
     ut: ?*UText,
     s: ?*const u16,
     length: i64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn utext_clone(
     dest: ?*UText,
@@ -11973,65 +11951,65 @@ pub extern "icu" fn utext_clone(
     deep: i8,
     readOnly: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn utext_equals(
     a: ?*const UText,
     b: ?*const UText,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn utext_nativeLength(
     ut: ?*UText,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn utext_isLengthExpensive(
     ut: ?*const UText,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn utext_char32At(
     ut: ?*UText,
     nativeIndex: i64,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utext_current32(
     ut: ?*UText,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utext_next32(
     ut: ?*UText,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utext_previous32(
     ut: ?*UText,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utext_next32From(
     ut: ?*UText,
     nativeIndex: i64,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utext_previous32From(
     ut: ?*UText,
     nativeIndex: i64,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utext_getNativeIndex(
     ut: ?*const UText,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn utext_setNativeIndex(
     ut: ?*UText,
     nativeIndex: i64,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utext_moveIndex32(
     ut: ?*UText,
     delta: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn utext_getPreviousNativeIndex(
     ut: ?*UText,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn utext_extract(
     ut: ?*UText,
@@ -12040,15 +12018,15 @@ pub extern "icu" fn utext_extract(
     dest: ?*u16,
     destCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utext_isWritable(
     ut: ?*const UText,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn utext_hasMetaData(
     ut: ?*const UText,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn utext_replace(
     ut: ?*UText,
@@ -12057,7 +12035,7 @@ pub extern "icu" fn utext_replace(
     replacementText: ?*const u16,
     replacementLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utext_copy(
     ut: ?*UText,
@@ -12066,64 +12044,63 @@ pub extern "icu" fn utext_copy(
     destIndex: i64,
     move: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utext_freeze(
     ut: ?*UText,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utext_setup(
     ut: ?*UText,
     extraSpace: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
-pub extern "icu" fn uset_openEmpty(
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+pub extern "icu" fn uset_openEmpty() callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uset_open(
     start: i32,
     end: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uset_openPattern(
     pattern: ?*const u16,
     patternLength: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uset_openPatternOptions(
     pattern: ?*const u16,
     patternLength: i32,
     options: u32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uset_close(
     set: ?*USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_clone(
     set: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uset_isFrozen(
     set: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_freeze(
     set: ?*USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_cloneAsThawed(
     set: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uset_set(
     set: ?*USet,
     start: i32,
     end: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_applyPattern(
     set: ?*USet,
@@ -12131,14 +12108,14 @@ pub extern "icu" fn uset_applyPattern(
     patternLength: i32,
     options: u32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_applyIntPropertyValue(
     set: ?*USet,
     prop: UProperty,
     value: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_applyPropertyAlias(
     set: ?*USet,
@@ -12147,13 +12124,13 @@ pub extern "icu" fn uset_applyPropertyAlias(
     value: ?*const u16,
     valueLength: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_resemblesPattern(
     pattern: ?*const u16,
     patternLength: i32,
     pos: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_toPattern(
     set: ?*const USet,
@@ -12161,133 +12138,133 @@ pub extern "icu" fn uset_toPattern(
     resultCapacity: i32,
     escapeUnprintable: i8,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_add(
     set: ?*USet,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_addAll(
     set: ?*USet,
     additionalSet: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_addRange(
     set: ?*USet,
     start: i32,
     end: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_addString(
     set: ?*USet,
     str: ?*const u16,
     strLen: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_addAllCodePoints(
     set: ?*USet,
     str: ?*const u16,
     strLen: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_remove(
     set: ?*USet,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_removeRange(
     set: ?*USet,
     start: i32,
     end: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_removeString(
     set: ?*USet,
     str: ?*const u16,
     strLen: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_removeAll(
     set: ?*USet,
     removeSet: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_retain(
     set: ?*USet,
     start: i32,
     end: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_retainAll(
     set: ?*USet,
     retain: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_compact(
     set: ?*USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_complement(
     set: ?*USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_complementAll(
     set: ?*USet,
     complement: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_clear(
     set: ?*USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_closeOver(
     set: ?*USet,
     attributes: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_removeAllStrings(
     set: ?*USet,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_isEmpty(
     set: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_contains(
     set: ?*const USet,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_containsRange(
     set: ?*const USet,
     start: i32,
     end: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_containsString(
     set: ?*const USet,
     str: ?*const u16,
     strLen: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_indexOf(
     set: ?*const USet,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_charAt(
     set: ?*const USet,
     charIndex: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_size(
     set: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_getItemCount(
     set: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_getItem(
     set: ?*const USet,
@@ -12297,132 +12274,132 @@ pub extern "icu" fn uset_getItem(
     str: ?*u16,
     strCapacity: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_containsAll(
     set1: ?*const USet,
     set2: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_containsAllCodePoints(
     set: ?*const USet,
     str: ?*const u16,
     strLen: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_containsNone(
     set1: ?*const USet,
     set2: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_containsSome(
     set1: ?*const USet,
     set2: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_span(
     set: ?*const USet,
     s: ?*const u16,
     length: i32,
     spanCondition: USetSpanCondition,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_spanBack(
     set: ?*const USet,
     s: ?*const u16,
     length: i32,
     spanCondition: USetSpanCondition,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_spanUTF8(
     set: ?*const USet,
     s: ?[*:0]const u8,
     length: i32,
     spanCondition: USetSpanCondition,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_spanBackUTF8(
     set: ?*const USet,
     s: ?[*:0]const u8,
     length: i32,
     spanCondition: USetSpanCondition,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_equals(
     set1: ?*const USet,
     set2: ?*const USet,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_serialize(
     set: ?*const USet,
     dest: ?*u16,
     destCapacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_getSerializedSet(
     fillSet: ?*USerializedSet,
     src: ?*const u16,
     srcLength: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_setSerializedToOne(
     fillSet: ?*USerializedSet,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uset_serializedContains(
     set: ?*const USerializedSet,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uset_getSerializedRangeCount(
     set: ?*const USerializedSet,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uset_getSerializedRange(
     set: ?*const USerializedSet,
     rangeIndex: i32,
     pStart: ?*i32,
     pEnd: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn unorm2_getNFCInstance(
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNormalizer2;
+) callconv(.winapi) ?*UNormalizer2;
 
 pub extern "icu" fn unorm2_getNFDInstance(
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNormalizer2;
+) callconv(.winapi) ?*UNormalizer2;
 
 pub extern "icu" fn unorm2_getNFKCInstance(
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNormalizer2;
+) callconv(.winapi) ?*UNormalizer2;
 
 pub extern "icu" fn unorm2_getNFKDInstance(
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNormalizer2;
+) callconv(.winapi) ?*UNormalizer2;
 
 pub extern "icu" fn unorm2_getNFKCCasefoldInstance(
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNormalizer2;
+) callconv(.winapi) ?*UNormalizer2;
 
 pub extern "icu" fn unorm2_getInstance(
     packageName: ?[*:0]const u8,
     name: ?[*:0]const u8,
     mode: UNormalization2Mode,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNormalizer2;
+) callconv(.winapi) ?*UNormalizer2;
 
 pub extern "icu" fn unorm2_openFiltered(
     norm2: ?*const UNormalizer2,
     filterSet: ?*const USet,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNormalizer2;
+) callconv(.winapi) ?*UNormalizer2;
 
 pub extern "icu" fn unorm2_close(
     norm2: ?*UNormalizer2,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unorm2_normalize(
     norm2: ?*const UNormalizer2,
@@ -12431,7 +12408,7 @@ pub extern "icu" fn unorm2_normalize(
     dest: ?*u16,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unorm2_normalizeSecondAndAppend(
     norm2: ?*const UNormalizer2,
@@ -12441,7 +12418,7 @@ pub extern "icu" fn unorm2_normalizeSecondAndAppend(
     second: ?*const u16,
     secondLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unorm2_append(
     norm2: ?*const UNormalizer2,
@@ -12451,7 +12428,7 @@ pub extern "icu" fn unorm2_append(
     second: ?*const u16,
     secondLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unorm2_getDecomposition(
     norm2: ?*const UNormalizer2,
@@ -12459,7 +12436,7 @@ pub extern "icu" fn unorm2_getDecomposition(
     decomposition: ?*u16,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unorm2_getRawDecomposition(
     norm2: ?*const UNormalizer2,
@@ -12467,54 +12444,54 @@ pub extern "icu" fn unorm2_getRawDecomposition(
     decomposition: ?*u16,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unorm2_composePair(
     norm2: ?*const UNormalizer2,
     a: i32,
     b: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unorm2_getCombiningClass(
     norm2: ?*const UNormalizer2,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) u8;
+) callconv(.winapi) u8;
 
 pub extern "icu" fn unorm2_isNormalized(
     norm2: ?*const UNormalizer2,
     s: ?*const u16,
     length: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn unorm2_quickCheck(
     norm2: ?*const UNormalizer2,
     s: ?*const u16,
     length: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UNormalizationCheckResult;
+) callconv(.winapi) UNormalizationCheckResult;
 
 pub extern "icu" fn unorm2_spanQuickCheckYes(
     norm2: ?*const UNormalizer2,
     s: ?*const u16,
     length: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unorm2_hasBoundaryBefore(
     norm2: ?*const UNormalizer2,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn unorm2_hasBoundaryAfter(
     norm2: ?*const UNormalizer2,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn unorm2_isInert(
     norm2: ?*const UNormalizer2,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn unorm_compare(
     s1: ?*const u16,
@@ -12523,7 +12500,7 @@ pub extern "icu" fn unorm_compare(
     length2: i32,
     options: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnvsel_open(
     converterList: ?*const ?*i8,
@@ -12531,151 +12508,151 @@ pub extern "icu" fn ucnvsel_open(
     excludedCodePoints: ?*const USet,
     whichSet: UConverterUnicodeSet,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UConverterSelector;
+) callconv(.winapi) ?*UConverterSelector;
 
 pub extern "icu" fn ucnvsel_close(
     sel: ?*UConverterSelector,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucnvsel_openFromSerialized(
     buffer: ?*const anyopaque,
     length: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UConverterSelector;
+) callconv(.winapi) ?*UConverterSelector;
 
 pub extern "icu" fn ucnvsel_serialize(
     sel: ?*const UConverterSelector,
     buffer: ?*anyopaque,
     bufferCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucnvsel_selectForString(
     sel: ?*const UConverterSelector,
     s: ?*const u16,
     length: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucnvsel_selectForUTF8(
     sel: ?*const UConverterSelector,
     s: ?[*:0]const u8,
     length: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn u_charsToUChars(
     cs: ?[*:0]const u8,
     us: ?*u16,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_UCharsToChars(
     us: ?*const u16,
     cs: ?PSTR,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_strlen(
     s: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_countChar32(
     s: ?*const u16,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strHasMoreChar32Than(
     s: ?*const u16,
     length: i32,
     number: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn u_strcat(
     dst: ?*u16,
     src: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strncat(
     dst: ?*u16,
     src: ?*const u16,
     n: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strstr(
     s: ?*const u16,
     substring: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strFindFirst(
     s: ?*const u16,
     length: i32,
     substring: ?*const u16,
     subLength: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strchr(
     s: ?*const u16,
     c: u16,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strchr32(
     s: ?*const u16,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strrstr(
     s: ?*const u16,
     substring: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strFindLast(
     s: ?*const u16,
     length: i32,
     substring: ?*const u16,
     subLength: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strrchr(
     s: ?*const u16,
     c: u16,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strrchr32(
     s: ?*const u16,
     c: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strpbrk(
     string: ?*const u16,
     matchSet: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strcspn(
     string: ?*const u16,
     matchSet: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strspn(
     string: ?*const u16,
     matchSet: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strtok_r(
     src: ?*u16,
     delim: ?*const u16,
     saveState: ?*?*u16,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strcmp(
     s1: ?*const u16,
     s2: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strcmpCodePointOrder(
     s1: ?*const u16,
     s2: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strCompare(
     s1: ?*const u16,
@@ -12683,13 +12660,13 @@ pub extern "icu" fn u_strCompare(
     s2: ?*const u16,
     length2: i32,
     codePointOrder: i8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strCompareIter(
     iter1: ?*UCharIterator,
     iter2: ?*UCharIterator,
     codePointOrder: i8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strCaseCompare(
     s1: ?*const u16,
@@ -12698,139 +12675,139 @@ pub extern "icu" fn u_strCaseCompare(
     length2: i32,
     options: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strncmp(
     ucs1: ?*const u16,
     ucs2: ?*const u16,
     n: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strncmpCodePointOrder(
     s1: ?*const u16,
     s2: ?*const u16,
     n: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strcasecmp(
     s1: ?*const u16,
     s2: ?*const u16,
     options: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strncasecmp(
     s1: ?*const u16,
     s2: ?*const u16,
     n: i32,
     options: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_memcasecmp(
     s1: ?*const u16,
     s2: ?*const u16,
     length: i32,
     options: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strcpy(
     dst: ?*u16,
     src: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strncpy(
     dst: ?*u16,
     src: ?*const u16,
     n: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_uastrcpy(
     dst: ?*u16,
     src: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_uastrncpy(
     dst: ?*u16,
     src: ?[*:0]const u8,
     n: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_austrcpy(
     dst: ?PSTR,
     src: ?*const u16,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn u_austrncpy(
     dst: ?PSTR,
     src: ?*const u16,
     n: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn u_memcpy(
     dest: ?*u16,
     src: ?*const u16,
     count: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_memmove(
     dest: ?*u16,
     src: ?*const u16,
     count: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_memset(
     dest: ?*u16,
     c: u16,
     count: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_memcmp(
     buf1: ?*const u16,
     buf2: ?*const u16,
     count: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_memcmpCodePointOrder(
     s1: ?*const u16,
     s2: ?*const u16,
     count: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_memchr(
     s: ?*const u16,
     c: u16,
     count: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_memchr32(
     s: ?*const u16,
     c: i32,
     count: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_memrchr(
     s: ?*const u16,
     c: u16,
     count: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_memrchr32(
     s: ?*const u16,
     c: i32,
     count: i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_unescape(
     src: ?[*:0]const u8,
     dest: ?*u16,
     destCapacity: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_unescapeAt(
     charAt: ?UNESCAPE_CHAR_AT,
     offset: ?*i32,
     length: i32,
     context: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strToUpper(
     dest: ?*u16,
@@ -12839,7 +12816,7 @@ pub extern "icu" fn u_strToUpper(
     srcLength: i32,
     locale: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strToLower(
     dest: ?*u16,
@@ -12848,7 +12825,7 @@ pub extern "icu" fn u_strToLower(
     srcLength: i32,
     locale: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strToTitle(
     dest: ?*u16,
@@ -12858,7 +12835,7 @@ pub extern "icu" fn u_strToTitle(
     titleIter: ?*UBreakIterator,
     locale: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strFoldCase(
     dest: ?*u16,
@@ -12867,7 +12844,7 @@ pub extern "icu" fn u_strFoldCase(
     srcLength: i32,
     options: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_strToWCS(
     dest: ?PWSTR,
@@ -12876,7 +12853,7 @@ pub extern "icu" fn u_strToWCS(
     src: ?*const u16,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 pub extern "icu" fn u_strFromWCS(
     dest: ?*u16,
@@ -12885,7 +12862,7 @@ pub extern "icu" fn u_strFromWCS(
     src: ?[*:0]const u16,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strToUTF8(
     dest: ?PSTR,
@@ -12894,7 +12871,7 @@ pub extern "icu" fn u_strToUTF8(
     src: ?*const u16,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn u_strFromUTF8(
     dest: ?*u16,
@@ -12903,7 +12880,7 @@ pub extern "icu" fn u_strFromUTF8(
     src: ?[*:0]const u8,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strToUTF8WithSub(
     dest: ?PSTR,
@@ -12914,7 +12891,7 @@ pub extern "icu" fn u_strToUTF8WithSub(
     subchar: i32,
     pNumSubstitutions: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn u_strFromUTF8WithSub(
     dest: ?*u16,
@@ -12925,7 +12902,7 @@ pub extern "icu" fn u_strFromUTF8WithSub(
     subchar: i32,
     pNumSubstitutions: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strFromUTF8Lenient(
     dest: ?*u16,
@@ -12934,7 +12911,7 @@ pub extern "icu" fn u_strFromUTF8Lenient(
     src: ?[*:0]const u8,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strToUTF32(
     dest: ?*i32,
@@ -12943,7 +12920,7 @@ pub extern "icu" fn u_strToUTF32(
     src: ?*const u16,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*i32;
+) callconv(.winapi) ?*i32;
 
 pub extern "icu" fn u_strFromUTF32(
     dest: ?*u16,
@@ -12952,7 +12929,7 @@ pub extern "icu" fn u_strFromUTF32(
     src: ?*const i32,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strToUTF32WithSub(
     dest: ?*i32,
@@ -12963,7 +12940,7 @@ pub extern "icu" fn u_strToUTF32WithSub(
     subchar: i32,
     pNumSubstitutions: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*i32;
+) callconv(.winapi) ?*i32;
 
 pub extern "icu" fn u_strFromUTF32WithSub(
     dest: ?*u16,
@@ -12974,7 +12951,7 @@ pub extern "icu" fn u_strFromUTF32WithSub(
     subchar: i32,
     pNumSubstitutions: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn u_strToJavaModifiedUTF8(
     dest: ?PSTR,
@@ -12983,7 +12960,7 @@ pub extern "icu" fn u_strToJavaModifiedUTF8(
     src: ?*const u16,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn u_strFromJavaModifiedUTF8WithSub(
     dest: ?*u16,
@@ -12994,47 +12971,47 @@ pub extern "icu" fn u_strFromJavaModifiedUTF8WithSub(
     subchar: i32,
     pNumSubstitutions: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ucasemap_open(
     locale: ?[*:0]const u8,
     options: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCaseMap;
+) callconv(.winapi) ?*UCaseMap;
 
 pub extern "icu" fn ucasemap_close(
     csm: ?*UCaseMap,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucasemap_getLocale(
     csm: ?*const UCaseMap,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucasemap_getOptions(
     csm: ?*const UCaseMap,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn ucasemap_setLocale(
     csm: ?*UCaseMap,
     locale: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucasemap_setOptions(
     csm: ?*UCaseMap,
     options: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucasemap_getBreakIterator(
     csm: ?*const UCaseMap,
-) callconv(@import("std").os.windows.WINAPI) ?*UBreakIterator;
+) callconv(.winapi) ?*UBreakIterator;
 
 pub extern "icu" fn ucasemap_setBreakIterator(
     csm: ?*UCaseMap,
     iterToAdopt: ?*UBreakIterator,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucasemap_toTitle(
     csm: ?*UCaseMap,
@@ -13043,7 +13020,7 @@ pub extern "icu" fn ucasemap_toTitle(
     src: ?*const u16,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucasemap_utf8ToLower(
     csm: ?*const UCaseMap,
@@ -13052,7 +13029,7 @@ pub extern "icu" fn ucasemap_utf8ToLower(
     src: ?[*:0]const u8,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucasemap_utf8ToUpper(
     csm: ?*const UCaseMap,
@@ -13061,7 +13038,7 @@ pub extern "icu" fn ucasemap_utf8ToUpper(
     src: ?[*:0]const u8,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucasemap_utf8ToTitle(
     csm: ?*UCaseMap,
@@ -13070,7 +13047,7 @@ pub extern "icu" fn ucasemap_utf8ToTitle(
     src: ?[*:0]const u8,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucasemap_utf8FoldCase(
     csm: ?*const UCaseMap,
@@ -13079,22 +13056,22 @@ pub extern "icu" fn ucasemap_utf8FoldCase(
     src: ?[*:0]const u8,
     srcLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usprep_open(
     path: ?[*:0]const u8,
     fileName: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UStringPrepProfile;
+) callconv(.winapi) ?*UStringPrepProfile;
 
 pub extern "icu" fn usprep_openByType(
     type: UStringPrepProfileType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UStringPrepProfile;
+) callconv(.winapi) ?*UStringPrepProfile;
 
 pub extern "icu" fn usprep_close(
     profile: ?*UStringPrepProfile,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn usprep_prepare(
     prep: ?*const UStringPrepProfile,
@@ -13105,16 +13082,16 @@ pub extern "icu" fn usprep_prepare(
     options: i32,
     parseError: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uidna_openUTS46(
     options: u32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UIDNA;
+) callconv(.winapi) ?*UIDNA;
 
 pub extern "icu" fn uidna_close(
     idna: ?*UIDNA,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uidna_labelToASCII(
     idna: ?*const UIDNA,
@@ -13124,7 +13101,7 @@ pub extern "icu" fn uidna_labelToASCII(
     capacity: i32,
     pInfo: ?*UIDNAInfo,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uidna_labelToUnicode(
     idna: ?*const UIDNA,
@@ -13134,7 +13111,7 @@ pub extern "icu" fn uidna_labelToUnicode(
     capacity: i32,
     pInfo: ?*UIDNAInfo,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uidna_nameToASCII(
     idna: ?*const UIDNA,
@@ -13144,7 +13121,7 @@ pub extern "icu" fn uidna_nameToASCII(
     capacity: i32,
     pInfo: ?*UIDNAInfo,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uidna_nameToUnicode(
     idna: ?*const UIDNA,
@@ -13154,7 +13131,7 @@ pub extern "icu" fn uidna_nameToUnicode(
     capacity: i32,
     pInfo: ?*UIDNAInfo,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uidna_labelToASCII_UTF8(
     idna: ?*const UIDNA,
@@ -13164,7 +13141,7 @@ pub extern "icu" fn uidna_labelToASCII_UTF8(
     capacity: i32,
     pInfo: ?*UIDNAInfo,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uidna_labelToUnicodeUTF8(
     idna: ?*const UIDNA,
@@ -13174,7 +13151,7 @@ pub extern "icu" fn uidna_labelToUnicodeUTF8(
     capacity: i32,
     pInfo: ?*UIDNAInfo,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uidna_nameToASCII_UTF8(
     idna: ?*const UIDNA,
@@ -13184,7 +13161,7 @@ pub extern "icu" fn uidna_nameToASCII_UTF8(
     capacity: i32,
     pInfo: ?*UIDNAInfo,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uidna_nameToUnicodeUTF8(
     idna: ?*const UIDNA,
@@ -13194,7 +13171,7 @@ pub extern "icu" fn uidna_nameToUnicodeUTF8(
     capacity: i32,
     pInfo: ?*UIDNAInfo,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_open(
     type: UBreakIteratorType,
@@ -13202,7 +13179,7 @@ pub extern "icu" fn ubrk_open(
     text: ?*const u16,
     textLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UBreakIterator;
+) callconv(.winapi) ?*UBreakIterator;
 
 pub extern "icu" fn ubrk_openRules(
     rules: ?*const u16,
@@ -13211,7 +13188,7 @@ pub extern "icu" fn ubrk_openRules(
     textLength: i32,
     parseErr: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UBreakIterator;
+) callconv(.winapi) ?*UBreakIterator;
 
 pub extern "icu" fn ubrk_openBinaryRules(
     binaryRules: ?*const u8,
@@ -13219,149 +13196,147 @@ pub extern "icu" fn ubrk_openBinaryRules(
     text: ?*const u16,
     textLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UBreakIterator;
+) callconv(.winapi) ?*UBreakIterator;
 
 pub extern "icu" fn ubrk_safeClone(
     bi: ?*const UBreakIterator,
     stackBuffer: ?*anyopaque,
     pBufferSize: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UBreakIterator;
+) callconv(.winapi) ?*UBreakIterator;
 
 pub extern "icu" fn ubrk_close(
     bi: ?*UBreakIterator,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubrk_setText(
     bi: ?*UBreakIterator,
     text: ?*const u16,
     textLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubrk_setUText(
     bi: ?*UBreakIterator,
     text: ?*UText,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubrk_current(
     bi: ?*const UBreakIterator,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_next(
     bi: ?*UBreakIterator,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_previous(
     bi: ?*UBreakIterator,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_first(
     bi: ?*UBreakIterator,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_last(
     bi: ?*UBreakIterator,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_preceding(
     bi: ?*UBreakIterator,
     offset: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_following(
     bi: ?*UBreakIterator,
     offset: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_getAvailable(
     index: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
-pub extern "icu" fn ubrk_countAvailable(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn ubrk_countAvailable() callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_isBoundary(
     bi: ?*UBreakIterator,
     offset: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ubrk_getRuleStatus(
     bi: ?*UBreakIterator,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_getRuleStatusVec(
     bi: ?*UBreakIterator,
     fillInVec: ?*i32,
     capacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ubrk_getLocaleByType(
     bi: ?*const UBreakIterator,
     type: ULocDataLocaleType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ubrk_refreshUText(
     bi: ?*UBreakIterator,
     text: ?*UText,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ubrk_getBinaryRules(
     bi: ?*UBreakIterator,
     binaryRules: ?*u8,
     rulesCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_getDataVersion(
     dataVersionFillin: ?*u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_openTimeZoneIDEnumeration(
     zoneType: USystemTimeZoneType,
     region: ?[*:0]const u8,
     rawOffset: ?*const i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucal_openTimeZones(
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucal_openCountryTimeZones(
     country: ?[*:0]const u8,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucal_getDefaultTimeZone(
     result: ?*u16,
     resultCapacity: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_setDefaultTimeZone(
     zoneID: ?*const u16,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_getHostTimeZone(
     result: ?*u16,
     resultCapacity: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_getDSTSavings(
     zoneID: ?*const u16,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
-pub extern "icu" fn ucal_getNow(
-) callconv(@import("std").os.windows.WINAPI) f64;
+pub extern "icu" fn ucal_getNow() callconv(.winapi) f64;
 
 pub extern "icu" fn ucal_open(
     zoneID: ?*const u16,
@@ -13369,30 +13344,30 @@ pub extern "icu" fn ucal_open(
     locale: ?[*:0]const u8,
     type: UCalendarType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn ucal_close(
     cal: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_clone(
     cal: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn ucal_setTimeZone(
     cal: ?*?*anyopaque,
     zoneID: ?*const u16,
     len: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_getTimeZoneID(
     cal: ?*const ?*anyopaque,
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_getTimeZoneDisplayName(
     cal: ?*const ?*anyopaque,
@@ -13401,52 +13376,51 @@ pub extern "icu" fn ucal_getTimeZoneDisplayName(
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_inDaylightTime(
     cal: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucal_setGregorianChange(
     cal: ?*?*anyopaque,
     date: f64,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_getGregorianChange(
     cal: ?*const ?*anyopaque,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn ucal_getAttribute(
     cal: ?*const ?*anyopaque,
     attr: UCalendarAttribute,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_setAttribute(
     cal: ?*?*anyopaque,
     attr: UCalendarAttribute,
     newValue: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_getAvailable(
     localeIndex: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
-pub extern "icu" fn ucal_countAvailable(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn ucal_countAvailable() callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_getMillis(
     cal: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn ucal_setMillis(
     cal: ?*?*anyopaque,
     dateTime: f64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_setDate(
     cal: ?*?*anyopaque,
@@ -13454,7 +13428,7 @@ pub extern "icu" fn ucal_setDate(
     month: i32,
     date: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_setDateTime(
     cal: ?*?*anyopaque,
@@ -13465,69 +13439,69 @@ pub extern "icu" fn ucal_setDateTime(
     minute: i32,
     second: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_equivalentTo(
     cal1: ?*const ?*anyopaque,
     cal2: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucal_add(
     cal: ?*?*anyopaque,
     field: UCalendarDateFields,
     amount: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_roll(
     cal: ?*?*anyopaque,
     field: UCalendarDateFields,
     amount: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_get(
     cal: ?*const ?*anyopaque,
     field: UCalendarDateFields,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_set(
     cal: ?*?*anyopaque,
     field: UCalendarDateFields,
     value: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_isSet(
     cal: ?*const ?*anyopaque,
     field: UCalendarDateFields,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucal_clearField(
     cal: ?*?*anyopaque,
     field: UCalendarDateFields,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_clear(
     calendar: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucal_getLimit(
     cal: ?*const ?*anyopaque,
     field: UCalendarDateFields,
     type: UCalendarLimitType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_getLocaleByType(
     cal: ?*const ?*anyopaque,
     type: ULocDataLocaleType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucal_getTZDataVersion(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucal_getCanonicalTimeZoneID(
     id: ?*const u16,
@@ -13536,51 +13510,51 @@ pub extern "icu" fn ucal_getCanonicalTimeZoneID(
     resultCapacity: i32,
     isSystemID: ?*i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_getType(
     cal: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucal_getKeywordValuesForLocale(
     key: ?[*:0]const u8,
     locale: ?[*:0]const u8,
     commonlyUsed: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucal_getDayOfWeekType(
     cal: ?*const ?*anyopaque,
     dayOfWeek: UCalendarDaysOfWeek,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UCalendarWeekdayType;
+) callconv(.winapi) UCalendarWeekdayType;
 
 pub extern "icu" fn ucal_getWeekendTransition(
     cal: ?*const ?*anyopaque,
     dayOfWeek: UCalendarDaysOfWeek,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_isWeekend(
     cal: ?*const ?*anyopaque,
     date: f64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucal_getFieldDifference(
     cal: ?*?*anyopaque,
     target: f64,
     field: UCalendarDateFields,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_getTimeZoneTransitionDate(
     cal: ?*const ?*anyopaque,
     type: UTimeZoneTransitionType,
     transition: ?*f64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucal_getWindowsTimeZoneID(
     id: ?*const u16,
@@ -13588,7 +13562,7 @@ pub extern "icu" fn ucal_getWindowsTimeZoneID(
     winid: ?*u16,
     winidCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucal_getTimeZoneIDForWindowsID(
     winid: ?*const u16,
@@ -13597,12 +13571,12 @@ pub extern "icu" fn ucal_getTimeZoneIDForWindowsID(
     id: ?*u16,
     idCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_open(
     loc: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCollator;
+) callconv(.winapi) ?*UCollator;
 
 pub extern "icu" fn ucol_openRules(
     rules: ?*const u16,
@@ -13611,7 +13585,7 @@ pub extern "icu" fn ucol_openRules(
     strength: UColAttributeValue,
     parseError: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCollator;
+) callconv(.winapi) ?*UCollator;
 
 pub extern "icu" fn ucol_getContractionsAndExpansions(
     coll: ?*const UCollator,
@@ -13619,11 +13593,11 @@ pub extern "icu" fn ucol_getContractionsAndExpansions(
     expansions: ?*USet,
     addPrefixes: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_close(
     coll: ?*UCollator,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_strcoll(
     coll: ?*const UCollator,
@@ -13631,7 +13605,7 @@ pub extern "icu" fn ucol_strcoll(
     sourceLength: i32,
     target: ?*const u16,
     targetLength: i32,
-) callconv(@import("std").os.windows.WINAPI) UCollationResult;
+) callconv(.winapi) UCollationResult;
 
 pub extern "icu" fn ucol_strcollUTF8(
     coll: ?*const UCollator,
@@ -13640,7 +13614,7 @@ pub extern "icu" fn ucol_strcollUTF8(
     target: ?[*:0]const u8,
     targetLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UCollationResult;
+) callconv(.winapi) UCollationResult;
 
 pub extern "icu" fn ucol_greater(
     coll: ?*const UCollator,
@@ -13648,7 +13622,7 @@ pub extern "icu" fn ucol_greater(
     sourceLength: i32,
     target: ?*const u16,
     targetLength: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucol_greaterOrEqual(
     coll: ?*const UCollator,
@@ -13656,7 +13630,7 @@ pub extern "icu" fn ucol_greaterOrEqual(
     sourceLength: i32,
     target: ?*const u16,
     targetLength: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucol_equal(
     coll: ?*const UCollator,
@@ -13664,44 +13638,44 @@ pub extern "icu" fn ucol_equal(
     sourceLength: i32,
     target: ?*const u16,
     targetLength: i32,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucol_strcollIter(
     coll: ?*const UCollator,
     sIter: ?*UCharIterator,
     tIter: ?*UCharIterator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UCollationResult;
+) callconv(.winapi) UCollationResult;
 
 pub extern "icu" fn ucol_getStrength(
     coll: ?*const UCollator,
-) callconv(@import("std").os.windows.WINAPI) UColAttributeValue;
+) callconv(.winapi) UColAttributeValue;
 
 pub extern "icu" fn ucol_setStrength(
     coll: ?*UCollator,
     strength: UColAttributeValue,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_getReorderCodes(
     coll: ?*const UCollator,
     dest: ?*i32,
     destCapacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_setReorderCodes(
     coll: ?*UCollator,
     reorderCodes: ?*const i32,
     reorderCodesLength: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_getEquivalentReorderCodes(
     reorderCode: i32,
     dest: ?*i32,
     destCapacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_getDisplayName(
     objLoc: ?[*:0]const u8,
@@ -13709,34 +13683,33 @@ pub extern "icu" fn ucol_getDisplayName(
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_getAvailable(
     localeIndex: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
-pub extern "icu" fn ucol_countAvailable(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn ucol_countAvailable() callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_openAvailableLocales(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucol_getKeywords(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucol_getKeywordValues(
     keyword: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucol_getKeywordValuesForLocale(
     key: ?[*:0]const u8,
     locale: ?[*:0]const u8,
     commonlyUsed: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucol_getFunctionalEquivalent(
     result: ?PSTR,
@@ -13745,12 +13718,12 @@ pub extern "icu" fn ucol_getFunctionalEquivalent(
     locale: ?[*:0]const u8,
     isAvailable: ?*i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_getRules(
     coll: ?*const UCollator,
     length: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ucol_getSortKey(
     coll: ?*const UCollator,
@@ -13758,7 +13731,7 @@ pub extern "icu" fn ucol_getSortKey(
     sourceLength: i32,
     result: ?*u8,
     resultLength: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_nextSortKeyPart(
     coll: ?*const UCollator,
@@ -13767,7 +13740,7 @@ pub extern "icu" fn ucol_nextSortKeyPart(
     dest: ?*u8,
     count: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_getBound(
     source: ?*const u8,
@@ -13777,17 +13750,17 @@ pub extern "icu" fn ucol_getBound(
     result: ?*u8,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_getVersion(
     coll: ?*const UCollator,
     info: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_getUCAVersion(
     coll: ?*const UCollator,
     info: ?*u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_mergeSortkeys(
     src1: ?*const u8,
@@ -13796,347 +13769,347 @@ pub extern "icu" fn ucol_mergeSortkeys(
     src2Length: i32,
     dest: ?*u8,
     destCapacity: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_setAttribute(
     coll: ?*UCollator,
     attr: UColAttribute,
     value: UColAttributeValue,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_getAttribute(
     coll: ?*const UCollator,
     attr: UColAttribute,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UColAttributeValue;
+) callconv(.winapi) UColAttributeValue;
 
 pub extern "icu" fn ucol_setMaxVariable(
     coll: ?*UCollator,
     group: UColReorderCode,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_getMaxVariable(
     coll: ?*const UCollator,
-) callconv(@import("std").os.windows.WINAPI) UColReorderCode;
+) callconv(.winapi) UColReorderCode;
 
 pub extern "icu" fn ucol_getVariableTop(
     coll: ?*const UCollator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "icu" fn ucol_safeClone(
     coll: ?*const UCollator,
     stackBuffer: ?*anyopaque,
     pBufferSize: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCollator;
+) callconv(.winapi) ?*UCollator;
 
 pub extern "icu" fn ucol_getRulesEx(
     coll: ?*const UCollator,
     delta: UColRuleOption,
     buffer: ?*u16,
     bufferLen: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_getLocaleByType(
     coll: ?*const UCollator,
     type: ULocDataLocaleType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucol_getTailoredSet(
     coll: ?*const UCollator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn ucol_cloneBinary(
     coll: ?*const UCollator,
     buffer: ?*u8,
     capacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_openBinary(
     bin: ?*const u8,
     length: i32,
     base: ?*const UCollator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCollator;
+) callconv(.winapi) ?*UCollator;
 
 pub extern "icu" fn ucol_openElements(
     coll: ?*const UCollator,
     text: ?*const u16,
     textLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCollationElements;
+) callconv(.winapi) ?*UCollationElements;
 
 pub extern "icu" fn ucol_keyHashCode(
     key: ?*const u8,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_closeElements(
     elems: ?*UCollationElements,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_reset(
     elems: ?*UCollationElements,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_next(
     elems: ?*UCollationElements,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_previous(
     elems: ?*UCollationElements,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_getMaxExpansion(
     elems: ?*const UCollationElements,
     order: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_setText(
     elems: ?*UCollationElements,
     text: ?*const u16,
     textLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_getOffset(
     elems: ?*const UCollationElements,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_setOffset(
     elems: ?*UCollationElements,
     offset: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucol_primaryOrder(
     order: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_secondaryOrder(
     order: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucol_tertiaryOrder(
     order: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucsdet_open(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCharsetDetector;
+) callconv(.winapi) ?*UCharsetDetector;
 
 pub extern "icu" fn ucsdet_close(
     ucsd: ?*UCharsetDetector,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucsdet_setText(
     ucsd: ?*UCharsetDetector,
     textIn: ?[*:0]const u8,
     len: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucsdet_setDeclaredEncoding(
     ucsd: ?*UCharsetDetector,
     encoding: ?[*:0]const u8,
     length: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucsdet_detect(
     ucsd: ?*UCharsetDetector,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UCharsetMatch;
+) callconv(.winapi) ?*UCharsetMatch;
 
 pub extern "icu" fn ucsdet_detectAll(
     ucsd: ?*UCharsetDetector,
     matchesFound: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*UCharsetMatch;
+) callconv(.winapi) ?*?*UCharsetMatch;
 
 pub extern "icu" fn ucsdet_getName(
     ucsm: ?*const UCharsetMatch,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucsdet_getConfidence(
     ucsm: ?*const UCharsetMatch,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucsdet_getLanguage(
     ucsm: ?*const UCharsetMatch,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucsdet_getUChars(
     ucsm: ?*const UCharsetMatch,
     buf: ?*u16,
     cap: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucsdet_getAllDetectableCharsets(
     ucsd: ?*const UCharsetDetector,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn ucsdet_isInputFilterEnabled(
     ucsd: ?*const UCharsetDetector,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucsdet_enableInputFilter(
     ucsd: ?*UCharsetDetector,
     filter: i8,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ufieldpositer_open(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UFieldPositionIterator;
+) callconv(.winapi) ?*UFieldPositionIterator;
 
 pub extern "icu" fn ufieldpositer_close(
     fpositer: ?*UFieldPositionIterator,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ufieldpositer_next(
     fpositer: ?*UFieldPositionIterator,
     beginIndex: ?*i32,
     endIndex: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ufmt_open(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn ufmt_close(
     fmt: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ufmt_getType(
     fmt: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UFormattableType;
+) callconv(.winapi) UFormattableType;
 
 pub extern "icu" fn ufmt_isNumeric(
     fmt: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ufmt_getDate(
     fmt: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn ufmt_getDouble(
     fmt: ?*?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn ufmt_getLong(
     fmt: ?*?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ufmt_getInt64(
     fmt: ?*?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn ufmt_getObject(
     fmt: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
 pub extern "icu" fn ufmt_getUChars(
     fmt: ?*?*anyopaque,
     len: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ufmt_getArrayLength(
     fmt: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ufmt_getArrayItemByIndex(
     fmt: ?*?*anyopaque,
     n: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn ufmt_getDecNumChars(
     fmt: ?*?*anyopaque,
     len: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn ucfpos_open(
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UConstrainedFieldPosition;
+) callconv(.winapi) ?*UConstrainedFieldPosition;
 
 pub extern "icu" fn ucfpos_reset(
     ucfpos: ?*UConstrainedFieldPosition,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucfpos_close(
     ucfpos: ?*UConstrainedFieldPosition,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucfpos_constrainCategory(
     ucfpos: ?*UConstrainedFieldPosition,
     category: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucfpos_constrainField(
     ucfpos: ?*UConstrainedFieldPosition,
     category: i32,
     field: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucfpos_getCategory(
     ucfpos: ?*const UConstrainedFieldPosition,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucfpos_getField(
     ucfpos: ?*const UConstrainedFieldPosition,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ucfpos_getIndexes(
     ucfpos: ?*const UConstrainedFieldPosition,
     pStart: ?*i32,
     pLimit: ?*i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucfpos_getInt64IterationContext(
     ucfpos: ?*const UConstrainedFieldPosition,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn ucfpos_setInt64IterationContext(
     ucfpos: ?*UConstrainedFieldPosition,
     context: i64,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ucfpos_matchesField(
     ucfpos: ?*const UConstrainedFieldPosition,
     category: i32,
     field: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ucfpos_setState(
     ucfpos: ?*UConstrainedFieldPosition,
@@ -14145,19 +14118,19 @@ pub extern "icu" fn ucfpos_setState(
     start: i32,
     limit: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ufmtval_getString(
     ufmtval: ?*const UFormattedValue,
     pLength: ?*i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn ufmtval_nextPosition(
     ufmtval: ?*const UFormattedValue,
     ucfpos: ?*UConstrainedFieldPosition,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn udtitvfmt_open(
     locale: ?[*:0]const u8,
@@ -14166,24 +14139,24 @@ pub extern "icu" fn udtitvfmt_open(
     tzID: ?*const u16,
     tzIDLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UDateIntervalFormat;
+) callconv(.winapi) ?*UDateIntervalFormat;
 
 pub extern "icu" fn udtitvfmt_close(
     formatter: ?*UDateIntervalFormat,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udtitvfmt_openResult(
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UFormattedDateInterval;
+) callconv(.winapi) ?*UFormattedDateInterval;
 
 pub extern "icu" fn udtitvfmt_resultAsValue(
     uresult: ?*const UFormattedDateInterval,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UFormattedValue;
+) callconv(.winapi) ?*UFormattedValue;
 
 pub extern "icu" fn udtitvfmt_closeResult(
     uresult: ?*UFormattedDateInterval,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udtitvfmt_format(
     formatter: ?*const UDateIntervalFormat,
@@ -14193,48 +14166,48 @@ pub extern "icu" fn udtitvfmt_format(
     resultCapacity: i32,
     position: ?*UFieldPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ugender_getInstance(
     locale: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UGenderInfo;
+) callconv(.winapi) ?*UGenderInfo;
 
 pub extern "icu" fn ugender_getListGender(
     genderInfo: ?*const UGenderInfo,
     genders: ?*const UGender,
     size: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UGender;
+) callconv(.winapi) UGender;
 
 pub extern "icu" fn ulistfmt_open(
     locale: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UListFormatter;
+) callconv(.winapi) ?*UListFormatter;
 
 pub extern "icu" fn ulistfmt_openForType(
     locale: ?[*:0]const u8,
     type: UListFormatterType,
     width: UListFormatterWidth,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UListFormatter;
+) callconv(.winapi) ?*UListFormatter;
 
 pub extern "icu" fn ulistfmt_close(
     listfmt: ?*UListFormatter,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ulistfmt_openResult(
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UFormattedList;
+) callconv(.winapi) ?*UFormattedList;
 
 pub extern "icu" fn ulistfmt_resultAsValue(
     uresult: ?*const UFormattedList,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UFormattedValue;
+) callconv(.winapi) ?*UFormattedValue;
 
 pub extern "icu" fn ulistfmt_closeResult(
     uresult: ?*UFormattedList,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ulistfmt_format(
     listfmt: ?*const UListFormatter,
@@ -14244,7 +14217,7 @@ pub extern "icu" fn ulistfmt_format(
     result: ?*u16,
     resultCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ulistfmt_formatStringsToResult(
     listfmt: ?*const UListFormatter,
@@ -14253,25 +14226,25 @@ pub extern "icu" fn ulistfmt_formatStringsToResult(
     stringCount: i32,
     uresult: ?*UFormattedList,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ulocdata_open(
     localeID: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*ULocaleData;
+) callconv(.winapi) ?*ULocaleData;
 
 pub extern "icu" fn ulocdata_close(
     uld: ?*ULocaleData,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ulocdata_setNoSubstitute(
     uld: ?*ULocaleData,
     setting: i8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ulocdata_getNoSubstitute(
     uld: ?*ULocaleData,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn ulocdata_getExemplarSet(
     uld: ?*ULocaleData,
@@ -14279,7 +14252,7 @@ pub extern "icu" fn ulocdata_getExemplarSet(
     options: u32,
     extype: ULocaleDataExemplarSetType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn ulocdata_getDelimiter(
     uld: ?*ULocaleData,
@@ -14287,38 +14260,38 @@ pub extern "icu" fn ulocdata_getDelimiter(
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ulocdata_getMeasurementSystem(
     localeID: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UMeasurementSystem;
+) callconv(.winapi) UMeasurementSystem;
 
 pub extern "icu" fn ulocdata_getPaperSize(
     localeID: ?[*:0]const u8,
     height: ?*i32,
     width: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ulocdata_getCLDRVersion(
     versionArray: ?*u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ulocdata_getLocaleDisplayPattern(
     uld: ?*ULocaleData,
     pattern: ?*u16,
     patternCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ulocdata_getLocaleSeparator(
     uld: ?*ULocaleData,
     separator: ?*u16,
     separatorCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_formatMessage(
     locale: ?[*:0]const u8,
@@ -14327,7 +14300,7 @@ pub extern "icu" fn u_formatMessage(
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_vformatMessage(
     locale: ?[*:0]const u8,
@@ -14337,7 +14310,7 @@ pub extern "icu" fn u_vformatMessage(
     resultLength: i32,
     ap: ?*i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_parseMessage(
     locale: ?[*:0]const u8,
@@ -14346,7 +14319,7 @@ pub extern "icu" fn u_parseMessage(
     source: ?*const u16,
     sourceLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_vparseMessage(
     locale: ?[*:0]const u8,
@@ -14356,7 +14329,7 @@ pub extern "icu" fn u_vparseMessage(
     sourceLength: i32,
     ap: ?*i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_formatMessageWithError(
     locale: ?[*:0]const u8,
@@ -14366,7 +14339,7 @@ pub extern "icu" fn u_formatMessageWithError(
     resultLength: i32,
     parseError: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_vformatMessageWithError(
     locale: ?[*:0]const u8,
@@ -14377,7 +14350,7 @@ pub extern "icu" fn u_vformatMessageWithError(
     parseError: ?*UParseError,
     ap: ?*i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn u_parseMessageWithError(
     locale: ?[*:0]const u8,
@@ -14387,7 +14360,7 @@ pub extern "icu" fn u_parseMessageWithError(
     sourceLength: i32,
     parseError: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn u_vparseMessageWithError(
     locale: ?[*:0]const u8,
@@ -14398,7 +14371,7 @@ pub extern "icu" fn u_vparseMessageWithError(
     ap: ?*i8,
     parseError: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn umsg_open(
     pattern: ?*const u16,
@@ -14406,25 +14379,25 @@ pub extern "icu" fn umsg_open(
     locale: ?[*:0]const u8,
     parseError: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn umsg_close(
     format: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn umsg_clone(
     fmt: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*anyopaque;
+) callconv(.winapi) ?*anyopaque;
 
 pub extern "icu" fn umsg_setLocale(
     fmt: ?*?*anyopaque,
     locale: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn umsg_getLocale(
     fmt: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn umsg_applyPattern(
     fmt: ?*?*anyopaque,
@@ -14432,21 +14405,21 @@ pub extern "icu" fn umsg_applyPattern(
     patternLength: i32,
     parseError: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn umsg_toPattern(
     fmt: ?*const ?*anyopaque,
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn umsg_format(
     fmt: ?*const ?*anyopaque,
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn umsg_vformat(
     fmt: ?*const ?*anyopaque,
@@ -14454,7 +14427,7 @@ pub extern "icu" fn umsg_vformat(
     resultLength: i32,
     ap: ?*i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn umsg_parse(
     fmt: ?*const ?*anyopaque,
@@ -14462,7 +14435,7 @@ pub extern "icu" fn umsg_parse(
     sourceLength: i32,
     count: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn umsg_vparse(
     fmt: ?*const ?*anyopaque,
@@ -14471,7 +14444,7 @@ pub extern "icu" fn umsg_vparse(
     count: ?*i32,
     ap: ?*i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn umsg_autoQuoteApostrophe(
     pattern: ?*const u16,
@@ -14479,7 +14452,7 @@ pub extern "icu" fn umsg_autoQuoteApostrophe(
     dest: ?*u16,
     destCapacity: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_open(
     style: UNumberFormatStyle,
@@ -14488,16 +14461,16 @@ pub extern "icu" fn unum_open(
     locale: ?[*:0]const u8,
     parseErr: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn unum_close(
     fmt: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unum_clone(
     fmt: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn unum_format(
     fmt: ?*const ?*anyopaque,
@@ -14506,7 +14479,7 @@ pub extern "icu" fn unum_format(
     resultLength: i32,
     pos: ?*UFieldPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_formatInt64(
     fmt: ?*const ?*anyopaque,
@@ -14515,7 +14488,7 @@ pub extern "icu" fn unum_formatInt64(
     resultLength: i32,
     pos: ?*UFieldPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_formatDouble(
     fmt: ?*const ?*anyopaque,
@@ -14524,7 +14497,7 @@ pub extern "icu" fn unum_formatDouble(
     resultLength: i32,
     pos: ?*UFieldPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_formatDoubleForFields(
     format: ?*const ?*anyopaque,
@@ -14533,7 +14506,7 @@ pub extern "icu" fn unum_formatDoubleForFields(
     resultLength: i32,
     fpositer: ?*UFieldPositionIterator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_formatDecimal(
     fmt: ?*const ?*anyopaque,
@@ -14543,7 +14516,7 @@ pub extern "icu" fn unum_formatDecimal(
     resultLength: i32,
     pos: ?*UFieldPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_formatDoubleCurrency(
     fmt: ?*const ?*anyopaque,
@@ -14553,7 +14526,7 @@ pub extern "icu" fn unum_formatDoubleCurrency(
     resultLength: i32,
     pos: ?*UFieldPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_formatUFormattable(
     fmt: ?*const ?*anyopaque,
@@ -14562,7 +14535,7 @@ pub extern "icu" fn unum_formatUFormattable(
     resultLength: i32,
     pos: ?*UFieldPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_parse(
     fmt: ?*const ?*anyopaque,
@@ -14570,7 +14543,7 @@ pub extern "icu" fn unum_parse(
     textLength: i32,
     parsePos: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_parseInt64(
     fmt: ?*const ?*anyopaque,
@@ -14578,7 +14551,7 @@ pub extern "icu" fn unum_parseInt64(
     textLength: i32,
     parsePos: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn unum_parseDouble(
     fmt: ?*const ?*anyopaque,
@@ -14586,7 +14559,7 @@ pub extern "icu" fn unum_parseDouble(
     textLength: i32,
     parsePos: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn unum_parseDecimal(
     fmt: ?*const ?*anyopaque,
@@ -14596,7 +14569,7 @@ pub extern "icu" fn unum_parseDecimal(
     outBuf: ?PSTR,
     outBufLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_parseDoubleCurrency(
     fmt: ?*const ?*anyopaque,
@@ -14605,7 +14578,7 @@ pub extern "icu" fn unum_parseDoubleCurrency(
     parsePos: ?*i32,
     currency: ?*u16,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn unum_parseToUFormattable(
     fmt: ?*const ?*anyopaque,
@@ -14614,7 +14587,7 @@ pub extern "icu" fn unum_parseToUFormattable(
     textLength: i32,
     parsePos: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn unum_applyPattern(
     format: ?*?*anyopaque,
@@ -14623,36 +14596,35 @@ pub extern "icu" fn unum_applyPattern(
     patternLength: i32,
     parseError: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unum_getAvailable(
     localeIndex: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
-pub extern "icu" fn unum_countAvailable(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn unum_countAvailable() callconv(.winapi) i32;
 
 pub extern "icu" fn unum_getAttribute(
     fmt: ?*const ?*anyopaque,
     attr: UNumberFormatAttribute,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_setAttribute(
     fmt: ?*?*anyopaque,
     attr: UNumberFormatAttribute,
     newValue: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unum_getDoubleAttribute(
     fmt: ?*const ?*anyopaque,
     attr: UNumberFormatAttribute,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn unum_setDoubleAttribute(
     fmt: ?*?*anyopaque,
     attr: UNumberFormatAttribute,
     newValue: f64,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unum_getTextAttribute(
     fmt: ?*const ?*anyopaque,
@@ -14660,7 +14632,7 @@ pub extern "icu" fn unum_getTextAttribute(
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_setTextAttribute(
     fmt: ?*?*anyopaque,
@@ -14668,7 +14640,7 @@ pub extern "icu" fn unum_setTextAttribute(
     newValue: ?*const u16,
     newValueLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unum_toPattern(
     fmt: ?*const ?*anyopaque,
@@ -14676,7 +14648,7 @@ pub extern "icu" fn unum_toPattern(
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_getSymbol(
     fmt: ?*const ?*anyopaque,
@@ -14684,7 +14656,7 @@ pub extern "icu" fn unum_getSymbol(
     buffer: ?*u16,
     size: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unum_setSymbol(
     fmt: ?*?*anyopaque,
@@ -14692,29 +14664,29 @@ pub extern "icu" fn unum_setSymbol(
     value: ?*const u16,
     length: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unum_getLocaleByType(
     fmt: ?*const ?*anyopaque,
     type: ULocDataLocaleType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn unum_setContext(
     fmt: ?*?*anyopaque,
     value: UDisplayContext,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unum_getContext(
     fmt: ?*const ?*anyopaque,
     type: UDisplayContextType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UDisplayContext;
+) callconv(.winapi) UDisplayContext;
 
 pub extern "icu" fn udat_toCalendarDateField(
     field: UDateFormatField,
-) callconv(@import("std").os.windows.WINAPI) UCalendarDateFields;
+) callconv(.winapi) UCalendarDateFields;
 
 pub extern "icu" fn udat_open(
     timeStyle: UDateFormatStyle,
@@ -14725,29 +14697,29 @@ pub extern "icu" fn udat_open(
     pattern: ?*const u16,
     patternLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn udat_close(
     format: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_getBooleanAttribute(
     fmt: ?*const ?*anyopaque,
     attr: UDateFormatBooleanAttribute,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn udat_setBooleanAttribute(
     fmt: ?*?*anyopaque,
     attr: UDateFormatBooleanAttribute,
     newValue: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_clone(
     fmt: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn udat_format(
     format: ?*const ?*anyopaque,
@@ -14756,7 +14728,7 @@ pub extern "icu" fn udat_format(
     resultLength: i32,
     position: ?*UFieldPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udat_formatCalendar(
     format: ?*const ?*anyopaque,
@@ -14765,7 +14737,7 @@ pub extern "icu" fn udat_formatCalendar(
     capacity: i32,
     position: ?*UFieldPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udat_formatForFields(
     format: ?*const ?*anyopaque,
@@ -14774,7 +14746,7 @@ pub extern "icu" fn udat_formatForFields(
     resultLength: i32,
     fpositer: ?*UFieldPositionIterator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udat_formatCalendarForFields(
     format: ?*const ?*anyopaque,
@@ -14783,7 +14755,7 @@ pub extern "icu" fn udat_formatCalendarForFields(
     capacity: i32,
     fpositer: ?*UFieldPositionIterator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udat_parse(
     format: ?*const ?*anyopaque,
@@ -14791,7 +14763,7 @@ pub extern "icu" fn udat_parse(
     textLength: i32,
     parsePos: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn udat_parseCalendar(
     format: ?*const ?*anyopaque,
@@ -14800,69 +14772,68 @@ pub extern "icu" fn udat_parseCalendar(
     textLength: i32,
     parsePos: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_isLenient(
     fmt: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn udat_setLenient(
     fmt: ?*?*anyopaque,
     isLenient: i8,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_getCalendar(
     fmt: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn udat_setCalendar(
     fmt: ?*?*anyopaque,
     calendarToSet: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_getNumberFormat(
     fmt: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn udat_getNumberFormatForField(
     fmt: ?*const ?*anyopaque,
     field: u16,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn udat_adoptNumberFormatForFields(
     fmt: ?*?*anyopaque,
     fields: ?*const u16,
     numberFormatToSet: ?*?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_setNumberFormat(
     fmt: ?*?*anyopaque,
     numberFormatToSet: ?*const ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_adoptNumberFormat(
     fmt: ?*?*anyopaque,
     numberFormatToAdopt: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_getAvailable(
     localeIndex: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
-pub extern "icu" fn udat_countAvailable(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn udat_countAvailable() callconv(.winapi) i32;
 
 pub extern "icu" fn udat_get2DigitYearStart(
     fmt: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 pub extern "icu" fn udat_set2DigitYearStart(
     fmt: ?*?*anyopaque,
     d: f64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_toPattern(
     fmt: ?*const ?*anyopaque,
@@ -14870,14 +14841,14 @@ pub extern "icu" fn udat_toPattern(
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udat_applyPattern(
     format: ?*?*anyopaque,
     localized: i8,
     pattern: ?*const u16,
     patternLength: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_getSymbols(
     fmt: ?*const ?*anyopaque,
@@ -14886,12 +14857,12 @@ pub extern "icu" fn udat_getSymbols(
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udat_countSymbols(
     fmt: ?*const ?*anyopaque,
     type: UDateFormatSymbolType,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udat_setSymbols(
     format: ?*?*anyopaque,
@@ -14900,43 +14871,43 @@ pub extern "icu" fn udat_setSymbols(
     value: ?*u16,
     valueLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_getLocaleByType(
     fmt: ?*const ?*anyopaque,
     type: ULocDataLocaleType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn udat_setContext(
     fmt: ?*?*anyopaque,
     value: UDisplayContext,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udat_getContext(
     fmt: ?*const ?*anyopaque,
     type: UDisplayContextType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UDisplayContext;
+) callconv(.winapi) UDisplayContext;
 
 pub extern "icu" fn udatpg_open(
     locale: ?[*:0]const u8,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn udatpg_openEmpty(
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn udatpg_close(
     dtpg: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udatpg_clone(
     dtpg: ?*const ?*anyopaque,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn udatpg_getBestPattern(
     dtpg: ?*?*anyopaque,
@@ -14945,7 +14916,7 @@ pub extern "icu" fn udatpg_getBestPattern(
     bestPattern: ?*u16,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udatpg_getBestPatternWithOptions(
     dtpg: ?*?*anyopaque,
@@ -14955,7 +14926,7 @@ pub extern "icu" fn udatpg_getBestPatternWithOptions(
     bestPattern: ?*u16,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udatpg_getSkeleton(
     unusedDtpg: ?*?*anyopaque,
@@ -14964,7 +14935,7 @@ pub extern "icu" fn udatpg_getSkeleton(
     skeleton: ?*u16,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udatpg_getBaseSkeleton(
     unusedDtpg: ?*?*anyopaque,
@@ -14973,7 +14944,7 @@ pub extern "icu" fn udatpg_getBaseSkeleton(
     baseSkeleton: ?*u16,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udatpg_addPattern(
     dtpg: ?*?*anyopaque,
@@ -14984,33 +14955,33 @@ pub extern "icu" fn udatpg_addPattern(
     capacity: i32,
     pLength: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) UDateTimePatternConflict;
+) callconv(.winapi) UDateTimePatternConflict;
 
 pub extern "icu" fn udatpg_setAppendItemFormat(
     dtpg: ?*?*anyopaque,
     field: UDateTimePatternField,
     value: ?*const u16,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udatpg_getAppendItemFormat(
     dtpg: ?*const ?*anyopaque,
     field: UDateTimePatternField,
     pLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn udatpg_setAppendItemName(
     dtpg: ?*?*anyopaque,
     field: UDateTimePatternField,
     value: ?*const u16,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udatpg_getAppendItemName(
     dtpg: ?*const ?*anyopaque,
     field: UDateTimePatternField,
     pLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn udatpg_getFieldDisplayName(
     dtpg: ?*const ?*anyopaque,
@@ -15019,29 +14990,29 @@ pub extern "icu" fn udatpg_getFieldDisplayName(
     fieldName: ?*u16,
     capacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udatpg_setDateTimeFormat(
     dtpg: ?*const ?*anyopaque,
     dtFormat: ?*const u16,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udatpg_getDateTimeFormat(
     dtpg: ?*const ?*anyopaque,
     pLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn udatpg_setDecimal(
     dtpg: ?*?*anyopaque,
     decimal: ?*const u16,
     length: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn udatpg_getDecimal(
     dtpg: ?*const ?*anyopaque,
     pLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn udatpg_replaceFieldTypes(
     dtpg: ?*?*anyopaque,
@@ -15052,7 +15023,7 @@ pub extern "icu" fn udatpg_replaceFieldTypes(
     dest: ?*u16,
     destCapacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udatpg_replaceFieldTypesWithOptions(
     dtpg: ?*?*anyopaque,
@@ -15064,31 +15035,31 @@ pub extern "icu" fn udatpg_replaceFieldTypesWithOptions(
     dest: ?*u16,
     destCapacity: i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn udatpg_openSkeletons(
     dtpg: ?*const ?*anyopaque,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn udatpg_openBaseSkeletons(
     dtpg: ?*const ?*anyopaque,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn udatpg_getPatternForSkeleton(
     dtpg: ?*const ?*anyopaque,
     skeleton: ?*const u16,
     skeletonLength: i32,
     pLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn unumf_openForSkeletonAndLocale(
     skeleton: ?*const u16,
     skeletonLen: i32,
     locale: ?[*:0]const u8,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNumberFormatter;
+) callconv(.winapi) ?*UNumberFormatter;
 
 pub extern "icu" fn unumf_openForSkeletonAndLocaleWithError(
     skeleton: ?*const u16,
@@ -15096,25 +15067,25 @@ pub extern "icu" fn unumf_openForSkeletonAndLocaleWithError(
     locale: ?[*:0]const u8,
     perror: ?*UParseError,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNumberFormatter;
+) callconv(.winapi) ?*UNumberFormatter;
 
 pub extern "icu" fn unumf_openResult(
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UFormattedNumber;
+) callconv(.winapi) ?*UFormattedNumber;
 
 pub extern "icu" fn unumf_formatInt(
     uformatter: ?*const UNumberFormatter,
     value: i64,
     uresult: ?*UFormattedNumber,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unumf_formatDouble(
     uformatter: ?*const UNumberFormatter,
     value: f64,
     uresult: ?*UFormattedNumber,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unumf_formatDecimal(
     uformatter: ?*const UNumberFormatter,
@@ -15122,91 +15093,91 @@ pub extern "icu" fn unumf_formatDecimal(
     valueLen: i32,
     uresult: ?*UFormattedNumber,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unumf_resultAsValue(
     uresult: ?*const UFormattedNumber,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UFormattedValue;
+) callconv(.winapi) ?*UFormattedValue;
 
 pub extern "icu" fn unumf_resultToString(
     uresult: ?*const UFormattedNumber,
     buffer: ?*u16,
     bufferCapacity: i32,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unumf_resultNextFieldPosition(
     uresult: ?*const UFormattedNumber,
     ufpos: ?*UFieldPosition,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn unumf_resultGetAllFieldPositions(
     uresult: ?*const UFormattedNumber,
     ufpositer: ?*UFieldPositionIterator,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unumf_close(
     uformatter: ?*UNumberFormatter,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unumf_closeResult(
     uresult: ?*UFormattedNumber,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unumsys_open(
     locale: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNumberingSystem;
+) callconv(.winapi) ?*UNumberingSystem;
 
 pub extern "icu" fn unumsys_openByName(
     name: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UNumberingSystem;
+) callconv(.winapi) ?*UNumberingSystem;
 
 pub extern "icu" fn unumsys_close(
     unumsys: ?*UNumberingSystem,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn unumsys_openAvailableNames(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn unumsys_getName(
     unumsys: ?*const UNumberingSystem,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn unumsys_isAlgorithmic(
     unumsys: ?*const UNumberingSystem,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn unumsys_getRadix(
     unumsys: ?*const UNumberingSystem,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn unumsys_getDescription(
     unumsys: ?*const UNumberingSystem,
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uplrules_open(
     locale: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UPluralRules;
+) callconv(.winapi) ?*UPluralRules;
 
 pub extern "icu" fn uplrules_openForType(
     locale: ?[*:0]const u8,
     type: UPluralType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UPluralRules;
+) callconv(.winapi) ?*UPluralRules;
 
 pub extern "icu" fn uplrules_close(
     uplrules: ?*UPluralRules,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uplrules_select(
     uplrules: ?*const UPluralRules,
@@ -15214,7 +15185,7 @@ pub extern "icu" fn uplrules_select(
     keyword: ?*u16,
     capacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uplrules_selectFormatted(
     uplrules: ?*const UPluralRules,
@@ -15222,12 +15193,12 @@ pub extern "icu" fn uplrules_selectFormatted(
     keyword: ?*u16,
     capacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uplrules_getKeywords(
     uplrules: ?*const UPluralRules,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn uregex_open(
     pattern: ?*const u16,
@@ -15235,137 +15206,137 @@ pub extern "icu" fn uregex_open(
     flags: u32,
     pe: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*URegularExpression;
+) callconv(.winapi) ?*URegularExpression;
 
 pub extern "icu" fn uregex_openUText(
     pattern: ?*UText,
     flags: u32,
     pe: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*URegularExpression;
+) callconv(.winapi) ?*URegularExpression;
 
 pub extern "icu" fn uregex_openC(
     pattern: ?[*:0]const u8,
     flags: u32,
     pe: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*URegularExpression;
+) callconv(.winapi) ?*URegularExpression;
 
 pub extern "icu" fn uregex_close(
     regexp: ?*URegularExpression,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_clone(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*URegularExpression;
+) callconv(.winapi) ?*URegularExpression;
 
 pub extern "icu" fn uregex_pattern(
     regexp: ?*const URegularExpression,
     patLength: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn uregex_patternUText(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn uregex_flags(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_setText(
     regexp: ?*URegularExpression,
     text: ?*const u16,
     textLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_setUText(
     regexp: ?*URegularExpression,
     text: ?*UText,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_getText(
     regexp: ?*URegularExpression,
     textLength: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn uregex_getUText(
     regexp: ?*URegularExpression,
     dest: ?*UText,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn uregex_refreshUText(
     regexp: ?*URegularExpression,
     text: ?*UText,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_matches(
     regexp: ?*URegularExpression,
     startIndex: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_matches64(
     regexp: ?*URegularExpression,
     startIndex: i64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_lookingAt(
     regexp: ?*URegularExpression,
     startIndex: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_lookingAt64(
     regexp: ?*URegularExpression,
     startIndex: i64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_find(
     regexp: ?*URegularExpression,
     startIndex: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_find64(
     regexp: ?*URegularExpression,
     startIndex: i64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_findNext(
     regexp: ?*URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_groupCount(
     regexp: ?*URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_groupNumberFromName(
     regexp: ?*URegularExpression,
     groupName: ?*const u16,
     nameLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_groupNumberFromCName(
     regexp: ?*URegularExpression,
     groupName: ?[*:0]const u8,
     nameLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_group(
     regexp: ?*URegularExpression,
@@ -15373,7 +15344,7 @@ pub extern "icu" fn uregex_group(
     dest: ?*u16,
     destCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_groupUText(
     regexp: ?*URegularExpression,
@@ -15381,57 +15352,57 @@ pub extern "icu" fn uregex_groupUText(
     dest: ?*UText,
     groupLength: ?*i64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn uregex_start(
     regexp: ?*URegularExpression,
     groupNum: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_start64(
     regexp: ?*URegularExpression,
     groupNum: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn uregex_end(
     regexp: ?*URegularExpression,
     groupNum: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_end64(
     regexp: ?*URegularExpression,
     groupNum: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn uregex_reset(
     regexp: ?*URegularExpression,
     index: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_reset64(
     regexp: ?*URegularExpression,
     index: i64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_setRegion(
     regexp: ?*URegularExpression,
     regionStart: i32,
     regionLimit: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_setRegion64(
     regexp: ?*URegularExpression,
     regionStart: i64,
     regionLimit: i64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_setRegionAndStart(
     regexp: ?*URegularExpression,
@@ -15439,59 +15410,59 @@ pub extern "icu" fn uregex_setRegionAndStart(
     regionLimit: i64,
     startIndex: i64,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_regionStart(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_regionStart64(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn uregex_regionEnd(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_regionEnd64(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn uregex_hasTransparentBounds(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_useTransparentBounds(
     regexp: ?*URegularExpression,
     b: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_hasAnchoringBounds(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_useAnchoringBounds(
     regexp: ?*URegularExpression,
     b: i8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_hitEnd(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_requireEnd(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregex_replaceAll(
     regexp: ?*URegularExpression,
@@ -15500,14 +15471,14 @@ pub extern "icu" fn uregex_replaceAll(
     destBuf: ?*u16,
     destCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_replaceAllUText(
     regexp: ?*URegularExpression,
     replacement: ?*UText,
     dest: ?*UText,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn uregex_replaceFirst(
     regexp: ?*URegularExpression,
@@ -15516,14 +15487,14 @@ pub extern "icu" fn uregex_replaceFirst(
     destBuf: ?*u16,
     destCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_replaceFirstUText(
     regexp: ?*URegularExpression,
     replacement: ?*UText,
     dest: ?*UText,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn uregex_appendReplacement(
     regexp: ?*URegularExpression,
@@ -15532,27 +15503,27 @@ pub extern "icu" fn uregex_appendReplacement(
     destBuf: ?*?*u16,
     destCapacity: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_appendReplacementUText(
     regexp: ?*URegularExpression,
     replacementText: ?*UText,
     dest: ?*UText,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_appendTail(
     regexp: ?*URegularExpression,
     destBuf: ?*?*u16,
     destCapacity: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_appendTailUText(
     regexp: ?*URegularExpression,
     dest: ?*UText,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UText;
+) callconv(.winapi) ?*UText;
 
 pub extern "icu" fn uregex_split(
     regexp: ?*URegularExpression,
@@ -15562,126 +15533,126 @@ pub extern "icu" fn uregex_split(
     destFields: ?*?*u16,
     destFieldsCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_splitUText(
     regexp: ?*URegularExpression,
     destFields: ?*?*UText,
     destFieldsCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_setTimeLimit(
     regexp: ?*URegularExpression,
     limit: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_getTimeLimit(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_setStackLimit(
     regexp: ?*URegularExpression,
     limit: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_getStackLimit(
     regexp: ?*const URegularExpression,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregex_setMatchCallback(
     regexp: ?*URegularExpression,
     callback: ?URegexMatchCallback,
     context: ?*const anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_getMatchCallback(
     regexp: ?*const URegularExpression,
     callback: ?*?URegexMatchCallback,
     context: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_setFindProgressCallback(
     regexp: ?*URegularExpression,
     callback: ?URegexFindProgressCallback,
     context: ?*const anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregex_getFindProgressCallback(
     regexp: ?*const URegularExpression,
     callback: ?*?URegexFindProgressCallback,
     context: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uregion_getRegionFromCode(
     regionCode: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*URegion;
+) callconv(.winapi) ?*URegion;
 
 pub extern "icu" fn uregion_getRegionFromNumericCode(
     code: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*URegion;
+) callconv(.winapi) ?*URegion;
 
 pub extern "icu" fn uregion_getAvailable(
     type: URegionType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn uregion_areEqual(
     uregion: ?*const URegion,
     otherRegion: ?*const URegion,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregion_getContainingRegion(
     uregion: ?*const URegion,
-) callconv(@import("std").os.windows.WINAPI) ?*URegion;
+) callconv(.winapi) ?*URegion;
 
 pub extern "icu" fn uregion_getContainingRegionOfType(
     uregion: ?*const URegion,
     type: URegionType,
-) callconv(@import("std").os.windows.WINAPI) ?*URegion;
+) callconv(.winapi) ?*URegion;
 
 pub extern "icu" fn uregion_getContainedRegions(
     uregion: ?*const URegion,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn uregion_getContainedRegionsOfType(
     uregion: ?*const URegion,
     type: URegionType,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn uregion_contains(
     uregion: ?*const URegion,
     otherRegion: ?*const URegion,
-) callconv(@import("std").os.windows.WINAPI) i8;
+) callconv(.winapi) i8;
 
 pub extern "icu" fn uregion_getPreferredValues(
     uregion: ?*const URegion,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn uregion_getRegionCode(
     uregion: ?*const URegion,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uregion_getNumericCode(
     uregion: ?*const URegion,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uregion_getType(
     uregion: ?*const URegion,
-) callconv(@import("std").os.windows.WINAPI) URegionType;
+) callconv(.winapi) URegionType;
 
 pub extern "icu" fn ureldatefmt_open(
     locale: ?[*:0]const u8,
@@ -15689,24 +15660,24 @@ pub extern "icu" fn ureldatefmt_open(
     width: UDateRelativeDateTimeFormatterStyle,
     capitalizationContext: UDisplayContext,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*URelativeDateTimeFormatter;
+) callconv(.winapi) ?*URelativeDateTimeFormatter;
 
 pub extern "icu" fn ureldatefmt_close(
     reldatefmt: ?*URelativeDateTimeFormatter,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ureldatefmt_openResult(
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UFormattedRelativeDateTime;
+) callconv(.winapi) ?*UFormattedRelativeDateTime;
 
 pub extern "icu" fn ureldatefmt_resultAsValue(
     ufrdt: ?*const UFormattedRelativeDateTime,
     ec: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UFormattedValue;
+) callconv(.winapi) ?*UFormattedValue;
 
 pub extern "icu" fn ureldatefmt_closeResult(
     ufrdt: ?*UFormattedRelativeDateTime,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ureldatefmt_formatNumeric(
     reldatefmt: ?*const URelativeDateTimeFormatter,
@@ -15715,7 +15686,7 @@ pub extern "icu" fn ureldatefmt_formatNumeric(
     result: ?*u16,
     resultCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ureldatefmt_formatNumericToResult(
     reldatefmt: ?*const URelativeDateTimeFormatter,
@@ -15723,7 +15694,7 @@ pub extern "icu" fn ureldatefmt_formatNumericToResult(
     unit: URelativeDateTimeUnit,
     result: ?*UFormattedRelativeDateTime,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ureldatefmt_format(
     reldatefmt: ?*const URelativeDateTimeFormatter,
@@ -15732,7 +15703,7 @@ pub extern "icu" fn ureldatefmt_format(
     result: ?*u16,
     resultCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn ureldatefmt_formatToResult(
     reldatefmt: ?*const URelativeDateTimeFormatter,
@@ -15740,7 +15711,7 @@ pub extern "icu" fn ureldatefmt_formatToResult(
     unit: URelativeDateTimeUnit,
     result: ?*UFormattedRelativeDateTime,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn ureldatefmt_combineDateAndTime(
     reldatefmt: ?*const URelativeDateTimeFormatter,
@@ -15751,7 +15722,7 @@ pub extern "icu" fn ureldatefmt_combineDateAndTime(
     result: ?*u16,
     resultCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_open(
     pattern: ?*const u16,
@@ -15761,7 +15732,7 @@ pub extern "icu" fn usearch_open(
     locale: ?[*:0]const u8,
     breakiter: ?*UBreakIterator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UStringSearch;
+) callconv(.winapi) ?*UStringSearch;
 
 pub extern "icu" fn usearch_openFromCollator(
     pattern: ?*const u16,
@@ -15771,139 +15742,139 @@ pub extern "icu" fn usearch_openFromCollator(
     collator: ?*const UCollator,
     breakiter: ?*UBreakIterator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UStringSearch;
+) callconv(.winapi) ?*UStringSearch;
 
 pub extern "icu" fn usearch_close(
     searchiter: ?*UStringSearch,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn usearch_setOffset(
     strsrch: ?*UStringSearch,
     position: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn usearch_getOffset(
     strsrch: ?*const UStringSearch,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_setAttribute(
     strsrch: ?*UStringSearch,
     attribute: USearchAttribute,
     value: USearchAttributeValue,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn usearch_getAttribute(
     strsrch: ?*const UStringSearch,
     attribute: USearchAttribute,
-) callconv(@import("std").os.windows.WINAPI) USearchAttributeValue;
+) callconv(.winapi) USearchAttributeValue;
 
 pub extern "icu" fn usearch_getMatchedStart(
     strsrch: ?*const UStringSearch,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_getMatchedLength(
     strsrch: ?*const UStringSearch,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_getMatchedText(
     strsrch: ?*const UStringSearch,
     result: ?*u16,
     resultCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_setBreakIterator(
     strsrch: ?*UStringSearch,
     breakiter: ?*UBreakIterator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn usearch_getBreakIterator(
     strsrch: ?*const UStringSearch,
-) callconv(@import("std").os.windows.WINAPI) ?*UBreakIterator;
+) callconv(.winapi) ?*UBreakIterator;
 
 pub extern "icu" fn usearch_setText(
     strsrch: ?*UStringSearch,
     text: ?*const u16,
     textlength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn usearch_getText(
     strsrch: ?*const UStringSearch,
     length: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn usearch_getCollator(
     strsrch: ?*const UStringSearch,
-) callconv(@import("std").os.windows.WINAPI) ?*UCollator;
+) callconv(.winapi) ?*UCollator;
 
 pub extern "icu" fn usearch_setCollator(
     strsrch: ?*UStringSearch,
     collator: ?*const UCollator,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn usearch_setPattern(
     strsrch: ?*UStringSearch,
     pattern: ?*const u16,
     patternlength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn usearch_getPattern(
     strsrch: ?*const UStringSearch,
     length: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn usearch_first(
     strsrch: ?*UStringSearch,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_following(
     strsrch: ?*UStringSearch,
     position: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_last(
     strsrch: ?*UStringSearch,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_preceding(
     strsrch: ?*UStringSearch,
     position: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_next(
     strsrch: ?*UStringSearch,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_previous(
     strsrch: ?*UStringSearch,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn usearch_reset(
     strsrch: ?*UStringSearch,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uspoof_open(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USpoofChecker;
+) callconv(.winapi) ?*USpoofChecker;
 
 pub extern "icu" fn uspoof_openFromSerialized(
     data: ?*const anyopaque,
     length: i32,
     pActualLength: ?*i32,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USpoofChecker;
+) callconv(.winapi) ?*USpoofChecker;
 
 pub extern "icu" fn uspoof_openFromSource(
     confusables: ?[*:0]const u8,
@@ -15913,58 +15884,58 @@ pub extern "icu" fn uspoof_openFromSource(
     errType: ?*i32,
     pe: ?*UParseError,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USpoofChecker;
+) callconv(.winapi) ?*USpoofChecker;
 
 pub extern "icu" fn uspoof_close(
     sc: ?*USpoofChecker,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uspoof_clone(
     sc: ?*const USpoofChecker,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USpoofChecker;
+) callconv(.winapi) ?*USpoofChecker;
 
 pub extern "icu" fn uspoof_setChecks(
     sc: ?*USpoofChecker,
     checks: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uspoof_getChecks(
     sc: ?*const USpoofChecker,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_setRestrictionLevel(
     sc: ?*USpoofChecker,
     restrictionLevel: URestrictionLevel,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uspoof_getRestrictionLevel(
     sc: ?*const USpoofChecker,
-) callconv(@import("std").os.windows.WINAPI) URestrictionLevel;
+) callconv(.winapi) URestrictionLevel;
 
 pub extern "icu" fn uspoof_setAllowedLocales(
     sc: ?*USpoofChecker,
     localesList: ?[*:0]const u8,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uspoof_getAllowedLocales(
     sc: ?*USpoofChecker,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 pub extern "icu" fn uspoof_setAllowedChars(
     sc: ?*USpoofChecker,
     chars: ?*const USet,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uspoof_getAllowedChars(
     sc: ?*const USpoofChecker,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uspoof_check(
     sc: ?*const USpoofChecker,
@@ -15972,7 +15943,7 @@ pub extern "icu" fn uspoof_check(
     length: i32,
     position: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_checkUTF8(
     sc: ?*const USpoofChecker,
@@ -15980,7 +15951,7 @@ pub extern "icu" fn uspoof_checkUTF8(
     length: i32,
     position: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_check2(
     sc: ?*const USpoofChecker,
@@ -15988,7 +15959,7 @@ pub extern "icu" fn uspoof_check2(
     length: i32,
     checkResult: ?*USpoofCheckResult,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_check2UTF8(
     sc: ?*const USpoofChecker,
@@ -15996,30 +15967,30 @@ pub extern "icu" fn uspoof_check2UTF8(
     length: i32,
     checkResult: ?*USpoofCheckResult,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_openCheckResult(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USpoofCheckResult;
+) callconv(.winapi) ?*USpoofCheckResult;
 
 pub extern "icu" fn uspoof_closeCheckResult(
     checkResult: ?*USpoofCheckResult,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn uspoof_getCheckResultChecks(
     checkResult: ?*const USpoofCheckResult,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_getCheckResultRestrictionLevel(
     checkResult: ?*const USpoofCheckResult,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) URestrictionLevel;
+) callconv(.winapi) URestrictionLevel;
 
 pub extern "icu" fn uspoof_getCheckResultNumerics(
     checkResult: ?*const USpoofCheckResult,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uspoof_areConfusable(
     sc: ?*const USpoofChecker,
@@ -16028,7 +15999,7 @@ pub extern "icu" fn uspoof_areConfusable(
     id2: ?*const u16,
     length2: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_areConfusableUTF8(
     sc: ?*const USpoofChecker,
@@ -16037,7 +16008,7 @@ pub extern "icu" fn uspoof_areConfusableUTF8(
     id2: ?[*:0]const u8,
     length2: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_getSkeleton(
     sc: ?*const USpoofChecker,
@@ -16047,7 +16018,7 @@ pub extern "icu" fn uspoof_getSkeleton(
     dest: ?*u16,
     destCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_getSkeletonUTF8(
     sc: ?*const USpoofChecker,
@@ -16057,40 +16028,40 @@ pub extern "icu" fn uspoof_getSkeletonUTF8(
     dest: ?PSTR,
     destCapacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn uspoof_getInclusionSet(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uspoof_getRecommendedSet(
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "icu" fn uspoof_serialize(
     sc: ?*USpoofChecker,
     data: ?*anyopaque,
     capacity: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utmscale_getTimeScaleValue(
     timeScale: UDateTimeScale,
     value: UTimeScaleValue,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn utmscale_fromInt64(
     otherTime: i64,
     timeScale: UDateTimeScale,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn utmscale_toInt64(
     universalTime: i64,
     timeScale: UDateTimeScale,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 pub extern "icu" fn utrans_openU(
     id: ?*const u16,
@@ -16100,50 +16071,49 @@ pub extern "icu" fn utrans_openU(
     rulesLength: i32,
     parseError: ?*UParseError,
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn utrans_openInverse(
     trans: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn utrans_clone(
     trans: ?*const ?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*?*anyopaque;
+) callconv(.winapi) ?*?*anyopaque;
 
 pub extern "icu" fn utrans_close(
     trans: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utrans_getUnicodeID(
     trans: ?*const ?*anyopaque,
     resultLength: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) ?*u16;
+) callconv(.winapi) ?*u16;
 
 pub extern "icu" fn utrans_register(
     adoptedTrans: ?*?*anyopaque,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utrans_unregisterID(
     id: ?*const u16,
     idLength: i32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utrans_setFilter(
     trans: ?*?*anyopaque,
     filterPattern: ?*const u16,
     filterPatternLen: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
-pub extern "icu" fn utrans_countAvailableIDs(
-) callconv(@import("std").os.windows.WINAPI) i32;
+pub extern "icu" fn utrans_countAvailableIDs() callconv(.winapi) i32;
 
 pub extern "icu" fn utrans_openIDs(
     pErrorCode: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*UEnumeration;
+) callconv(.winapi) ?*UEnumeration;
 
 pub extern "icu" fn utrans_trans(
     trans: ?*const ?*anyopaque,
@@ -16152,7 +16122,7 @@ pub extern "icu" fn utrans_trans(
     start: i32,
     limit: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utrans_transIncremental(
     trans: ?*const ?*anyopaque,
@@ -16160,7 +16130,7 @@ pub extern "icu" fn utrans_transIncremental(
     repFunc: ?*const UReplaceableCallbacks,
     pos: ?*UTransPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utrans_transUChars(
     trans: ?*const ?*anyopaque,
@@ -16170,7 +16140,7 @@ pub extern "icu" fn utrans_transUChars(
     start: i32,
     limit: ?*i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utrans_transIncrementalUChars(
     trans: ?*const ?*anyopaque,
@@ -16179,7 +16149,7 @@ pub extern "icu" fn utrans_transIncrementalUChars(
     textCapacity: i32,
     pos: ?*UTransPosition,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "icu" fn utrans_toRules(
     trans: ?*const ?*anyopaque,
@@ -16187,25 +16157,25 @@ pub extern "icu" fn utrans_toRules(
     result: ?*u16,
     resultLength: i32,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "icu" fn utrans_getSourceSet(
     trans: ?*const ?*anyopaque,
     ignoreFilter: i8,
     fillIn: ?*USet,
     status: ?*UErrorCode,
-) callconv(@import("std").os.windows.WINAPI) ?*USet;
+) callconv(.winapi) ?*USet;
 
 pub extern "bcp47mrm" fn GetDistanceOfClosestLanguageInList(
     pszLanguage: ?[*:0]const u16,
     pszLanguagesList: ?[*:0]const u16,
     wchListDelimiter: u16,
     pClosestDistance: ?*f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "bcp47mrm" fn IsWellFormedTag(
     pszTag: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) u8;
+) callconv(.winapi) u8;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "kernel32" fn FindStringOrdinal(
@@ -16215,79 +16185,79 @@ pub extern "kernel32" fn FindStringOrdinal(
     lpStringValue: [*:0]const u16,
     cchValue: i32,
     bIgnoreCase: BOOL,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcmpA(
     lpString1: ?[*:0]const u8,
     lpString2: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcmpW(
     lpString1: ?[*:0]const u16,
     lpString2: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcmpiA(
     lpString1: ?[*:0]const u8,
     lpString2: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcmpiW(
     lpString1: ?[*:0]const u16,
     lpString2: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcpynA(
     lpString1: [*:0]u8,
     lpString2: ?[*:0]const u8,
     iMaxLength: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcpynW(
     lpString1: [*:0]u16,
     lpString2: ?[*:0]const u16,
     iMaxLength: i32,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcpyA(
     lpString1: ?PSTR,
     lpString2: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcpyW(
     lpString1: ?PWSTR,
     lpString2: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcatA(
     lpString1: ?PSTR,
     lpString2: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) ?PSTR;
+) callconv(.winapi) ?PSTR;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrcatW(
     lpString1: ?PWSTR,
     lpString2: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrlenA(
     lpString: ?[*:0]const u8,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn lstrlenW(
     lpString: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "advapi32" fn IsTextUnicode(
@@ -16295,8 +16265,7 @@ pub extern "advapi32" fn IsTextUnicode(
     lpv: ?*const anyopaque,
     iSize: i32,
     lpiResult: ?*IS_TEXT_UNICODE_RESULT,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
-
+) callconv(.winapi) BOOL;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (47)
@@ -16659,53 +16628,137 @@ const SYSTEMTIME = @import("foundation.zig").SYSTEMTIME;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "LOCALE_ENUMPROCA")) { _ = LOCALE_ENUMPROCA; }
-    if (@hasDecl(@This(), "LOCALE_ENUMPROCW")) { _ = LOCALE_ENUMPROCW; }
-    if (@hasDecl(@This(), "LANGUAGEGROUP_ENUMPROCA")) { _ = LANGUAGEGROUP_ENUMPROCA; }
-    if (@hasDecl(@This(), "LANGGROUPLOCALE_ENUMPROCA")) { _ = LANGGROUPLOCALE_ENUMPROCA; }
-    if (@hasDecl(@This(), "UILANGUAGE_ENUMPROCA")) { _ = UILANGUAGE_ENUMPROCA; }
-    if (@hasDecl(@This(), "CODEPAGE_ENUMPROCA")) { _ = CODEPAGE_ENUMPROCA; }
-    if (@hasDecl(@This(), "DATEFMT_ENUMPROCA")) { _ = DATEFMT_ENUMPROCA; }
-    if (@hasDecl(@This(), "DATEFMT_ENUMPROCEXA")) { _ = DATEFMT_ENUMPROCEXA; }
-    if (@hasDecl(@This(), "TIMEFMT_ENUMPROCA")) { _ = TIMEFMT_ENUMPROCA; }
-    if (@hasDecl(@This(), "CALINFO_ENUMPROCA")) { _ = CALINFO_ENUMPROCA; }
-    if (@hasDecl(@This(), "CALINFO_ENUMPROCEXA")) { _ = CALINFO_ENUMPROCEXA; }
-    if (@hasDecl(@This(), "LANGUAGEGROUP_ENUMPROCW")) { _ = LANGUAGEGROUP_ENUMPROCW; }
-    if (@hasDecl(@This(), "LANGGROUPLOCALE_ENUMPROCW")) { _ = LANGGROUPLOCALE_ENUMPROCW; }
-    if (@hasDecl(@This(), "UILANGUAGE_ENUMPROCW")) { _ = UILANGUAGE_ENUMPROCW; }
-    if (@hasDecl(@This(), "CODEPAGE_ENUMPROCW")) { _ = CODEPAGE_ENUMPROCW; }
-    if (@hasDecl(@This(), "DATEFMT_ENUMPROCW")) { _ = DATEFMT_ENUMPROCW; }
-    if (@hasDecl(@This(), "DATEFMT_ENUMPROCEXW")) { _ = DATEFMT_ENUMPROCEXW; }
-    if (@hasDecl(@This(), "TIMEFMT_ENUMPROCW")) { _ = TIMEFMT_ENUMPROCW; }
-    if (@hasDecl(@This(), "CALINFO_ENUMPROCW")) { _ = CALINFO_ENUMPROCW; }
-    if (@hasDecl(@This(), "CALINFO_ENUMPROCEXW")) { _ = CALINFO_ENUMPROCEXW; }
-    if (@hasDecl(@This(), "GEO_ENUMPROC")) { _ = GEO_ENUMPROC; }
-    if (@hasDecl(@This(), "GEO_ENUMNAMEPROC")) { _ = GEO_ENUMNAMEPROC; }
-    if (@hasDecl(@This(), "CALINFO_ENUMPROCEXEX")) { _ = CALINFO_ENUMPROCEXEX; }
-    if (@hasDecl(@This(), "DATEFMT_ENUMPROCEXEX")) { _ = DATEFMT_ENUMPROCEXEX; }
-    if (@hasDecl(@This(), "TIMEFMT_ENUMPROCEX")) { _ = TIMEFMT_ENUMPROCEX; }
-    if (@hasDecl(@This(), "LOCALE_ENUMPROCEX")) { _ = LOCALE_ENUMPROCEX; }
-    if (@hasDecl(@This(), "PFN_MAPPINGCALLBACKPROC")) { _ = PFN_MAPPINGCALLBACKPROC; }
-    if (@hasDecl(@This(), "UTraceEntry")) { _ = UTraceEntry; }
-    if (@hasDecl(@This(), "UTraceExit")) { _ = UTraceExit; }
-    if (@hasDecl(@This(), "UTraceData")) { _ = UTraceData; }
-    if (@hasDecl(@This(), "UCPMapValueFilter")) { _ = UCPMapValueFilter; }
-    if (@hasDecl(@This(), "UConverterToUCallback")) { _ = UConverterToUCallback; }
-    if (@hasDecl(@This(), "UConverterFromUCallback")) { _ = UConverterFromUCallback; }
-    if (@hasDecl(@This(), "UMemAllocFn")) { _ = UMemAllocFn; }
-    if (@hasDecl(@This(), "UMemReallocFn")) { _ = UMemReallocFn; }
-    if (@hasDecl(@This(), "UMemFreeFn")) { _ = UMemFreeFn; }
-    if (@hasDecl(@This(), "UCharEnumTypeRange")) { _ = UCharEnumTypeRange; }
-    if (@hasDecl(@This(), "UEnumCharNamesFn")) { _ = UEnumCharNamesFn; }
-    if (@hasDecl(@This(), "UBiDiClassCallback")) { _ = UBiDiClassCallback; }
-    if (@hasDecl(@This(), "UNESCAPE_CHAR_AT")) { _ = UNESCAPE_CHAR_AT; }
-    if (@hasDecl(@This(), "URegexMatchCallback")) { _ = URegexMatchCallback; }
-    if (@hasDecl(@This(), "URegexFindProgressCallback")) { _ = URegexFindProgressCallback; }
-    if (@hasDecl(@This(), "UStringCaseMapper")) { _ = UStringCaseMapper; }
+    if (@hasDecl(@This(), "LOCALE_ENUMPROCA")) {
+        _ = LOCALE_ENUMPROCA;
+    }
+    if (@hasDecl(@This(), "LOCALE_ENUMPROCW")) {
+        _ = LOCALE_ENUMPROCW;
+    }
+    if (@hasDecl(@This(), "LANGUAGEGROUP_ENUMPROCA")) {
+        _ = LANGUAGEGROUP_ENUMPROCA;
+    }
+    if (@hasDecl(@This(), "LANGGROUPLOCALE_ENUMPROCA")) {
+        _ = LANGGROUPLOCALE_ENUMPROCA;
+    }
+    if (@hasDecl(@This(), "UILANGUAGE_ENUMPROCA")) {
+        _ = UILANGUAGE_ENUMPROCA;
+    }
+    if (@hasDecl(@This(), "CODEPAGE_ENUMPROCA")) {
+        _ = CODEPAGE_ENUMPROCA;
+    }
+    if (@hasDecl(@This(), "DATEFMT_ENUMPROCA")) {
+        _ = DATEFMT_ENUMPROCA;
+    }
+    if (@hasDecl(@This(), "DATEFMT_ENUMPROCEXA")) {
+        _ = DATEFMT_ENUMPROCEXA;
+    }
+    if (@hasDecl(@This(), "TIMEFMT_ENUMPROCA")) {
+        _ = TIMEFMT_ENUMPROCA;
+    }
+    if (@hasDecl(@This(), "CALINFO_ENUMPROCA")) {
+        _ = CALINFO_ENUMPROCA;
+    }
+    if (@hasDecl(@This(), "CALINFO_ENUMPROCEXA")) {
+        _ = CALINFO_ENUMPROCEXA;
+    }
+    if (@hasDecl(@This(), "LANGUAGEGROUP_ENUMPROCW")) {
+        _ = LANGUAGEGROUP_ENUMPROCW;
+    }
+    if (@hasDecl(@This(), "LANGGROUPLOCALE_ENUMPROCW")) {
+        _ = LANGGROUPLOCALE_ENUMPROCW;
+    }
+    if (@hasDecl(@This(), "UILANGUAGE_ENUMPROCW")) {
+        _ = UILANGUAGE_ENUMPROCW;
+    }
+    if (@hasDecl(@This(), "CODEPAGE_ENUMPROCW")) {
+        _ = CODEPAGE_ENUMPROCW;
+    }
+    if (@hasDecl(@This(), "DATEFMT_ENUMPROCW")) {
+        _ = DATEFMT_ENUMPROCW;
+    }
+    if (@hasDecl(@This(), "DATEFMT_ENUMPROCEXW")) {
+        _ = DATEFMT_ENUMPROCEXW;
+    }
+    if (@hasDecl(@This(), "TIMEFMT_ENUMPROCW")) {
+        _ = TIMEFMT_ENUMPROCW;
+    }
+    if (@hasDecl(@This(), "CALINFO_ENUMPROCW")) {
+        _ = CALINFO_ENUMPROCW;
+    }
+    if (@hasDecl(@This(), "CALINFO_ENUMPROCEXW")) {
+        _ = CALINFO_ENUMPROCEXW;
+    }
+    if (@hasDecl(@This(), "GEO_ENUMPROC")) {
+        _ = GEO_ENUMPROC;
+    }
+    if (@hasDecl(@This(), "GEO_ENUMNAMEPROC")) {
+        _ = GEO_ENUMNAMEPROC;
+    }
+    if (@hasDecl(@This(), "CALINFO_ENUMPROCEXEX")) {
+        _ = CALINFO_ENUMPROCEXEX;
+    }
+    if (@hasDecl(@This(), "DATEFMT_ENUMPROCEXEX")) {
+        _ = DATEFMT_ENUMPROCEXEX;
+    }
+    if (@hasDecl(@This(), "TIMEFMT_ENUMPROCEX")) {
+        _ = TIMEFMT_ENUMPROCEX;
+    }
+    if (@hasDecl(@This(), "LOCALE_ENUMPROCEX")) {
+        _ = LOCALE_ENUMPROCEX;
+    }
+    if (@hasDecl(@This(), "PFN_MAPPINGCALLBACKPROC")) {
+        _ = PFN_MAPPINGCALLBACKPROC;
+    }
+    if (@hasDecl(@This(), "UTraceEntry")) {
+        _ = UTraceEntry;
+    }
+    if (@hasDecl(@This(), "UTraceExit")) {
+        _ = UTraceExit;
+    }
+    if (@hasDecl(@This(), "UTraceData")) {
+        _ = UTraceData;
+    }
+    if (@hasDecl(@This(), "UCPMapValueFilter")) {
+        _ = UCPMapValueFilter;
+    }
+    if (@hasDecl(@This(), "UConverterToUCallback")) {
+        _ = UConverterToUCallback;
+    }
+    if (@hasDecl(@This(), "UConverterFromUCallback")) {
+        _ = UConverterFromUCallback;
+    }
+    if (@hasDecl(@This(), "UMemAllocFn")) {
+        _ = UMemAllocFn;
+    }
+    if (@hasDecl(@This(), "UMemReallocFn")) {
+        _ = UMemReallocFn;
+    }
+    if (@hasDecl(@This(), "UMemFreeFn")) {
+        _ = UMemFreeFn;
+    }
+    if (@hasDecl(@This(), "UCharEnumTypeRange")) {
+        _ = UCharEnumTypeRange;
+    }
+    if (@hasDecl(@This(), "UEnumCharNamesFn")) {
+        _ = UEnumCharNamesFn;
+    }
+    if (@hasDecl(@This(), "UBiDiClassCallback")) {
+        _ = UBiDiClassCallback;
+    }
+    if (@hasDecl(@This(), "UNESCAPE_CHAR_AT")) {
+        _ = UNESCAPE_CHAR_AT;
+    }
+    if (@hasDecl(@This(), "URegexMatchCallback")) {
+        _ = URegexMatchCallback;
+    }
+    if (@hasDecl(@This(), "URegexFindProgressCallback")) {
+        _ = URegexFindProgressCallback;
+    }
+    if (@hasDecl(@This(), "UStringCaseMapper")) {
+        _ = UStringCaseMapper;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

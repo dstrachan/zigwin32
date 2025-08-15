@@ -6,10 +6,10 @@
 //--------------------------------------------------------------------------------
 // Section: Types (3)
 //--------------------------------------------------------------------------------
-pub const PFN_PDF_CREATE_RENDERER = *const fn(
+pub const PFN_PDF_CREATE_RENDERER = *const fn (
     param0: ?*IDXGIDevice,
     param1: ?*?*IPdfRendererNative,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub const PDF_RENDER_PARAMS = extern struct {
     SourceRect: D2D_RECT_F,
@@ -24,30 +24,29 @@ pub const IID_IPdfRendererNative = &IID_IPdfRendererNative_Value;
 pub const IPdfRendererNative = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RenderPageToSurface: *const fn(
+        RenderPageToSurface: *const fn (
             self: *const IPdfRendererNative,
             pdfPage: ?*IUnknown,
             pSurface: ?*IDXGISurface,
             offset: POINT,
             pRenderParams: ?*PDF_RENDER_PARAMS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RenderPageToDeviceContext: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RenderPageToDeviceContext: *const fn (
             self: *const IPdfRendererNative,
             pdfPage: ?*IUnknown,
             pD2DDeviceContext: ?*ID2D1DeviceContext,
             pRenderParams: ?*PDF_RENDER_PARAMS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RenderPageToSurface(self: *const IPdfRendererNative, pdfPage: ?*IUnknown, pSurface: ?*IDXGISurface, offset: POINT, pRenderParams: ?*PDF_RENDER_PARAMS) callconv(.Inline) HRESULT {
+    pub inline fn RenderPageToSurface(self: *const IPdfRendererNative, pdfPage: ?*IUnknown, pSurface: ?*IDXGISurface, offset: POINT, pRenderParams: ?*PDF_RENDER_PARAMS) HRESULT {
         return self.vtable.RenderPageToSurface(self, pdfPage, pSurface, offset, pRenderParams);
     }
-    pub fn RenderPageToDeviceContext(self: *const IPdfRendererNative, pdfPage: ?*IUnknown, pD2DDeviceContext: ?*ID2D1DeviceContext, pRenderParams: ?*PDF_RENDER_PARAMS) callconv(.Inline) HRESULT {
+    pub inline fn RenderPageToDeviceContext(self: *const IPdfRendererNative, pdfPage: ?*IUnknown, pD2DDeviceContext: ?*ID2D1DeviceContext, pRenderParams: ?*PDF_RENDER_PARAMS) HRESULT {
         return self.vtable.RenderPageToDeviceContext(self, pdfPage, pD2DDeviceContext, pRenderParams);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (1)
@@ -55,8 +54,7 @@ pub const IPdfRendererNative = extern union {
 pub extern "windows.data.pdf" fn PdfCreateRenderer(
     pDevice: ?*IDXGIDevice,
     ppRenderer: ?*?*IPdfRendererNative,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -77,11 +75,11 @@ const POINT = @import("../../foundation.zig").POINT;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "PFN_PDF_CREATE_RENDERER")) { _ = PFN_PDF_CREATE_RENDERER; }
+    if (@hasDecl(@This(), "PFN_PDF_CREATE_RENDERER")) {
+        _ = PFN_PDF_CREATE_RENDERER;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

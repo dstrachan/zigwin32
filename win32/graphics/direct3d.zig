@@ -562,26 +562,26 @@ pub const IID_ID3DBlob = &IID_ID3DBlob_Value;
 pub const ID3DBlob = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetBufferPointer: *const fn(
+        GetBufferPointer: *const fn (
             self: *const ID3DBlob,
-        ) callconv(@import("std").os.windows.WINAPI) ?*anyopaque,
-        GetBufferSize: *const fn(
+        ) callconv(.winapi) ?*anyopaque,
+        GetBufferSize: *const fn (
             self: *const ID3DBlob,
-        ) callconv(@import("std").os.windows.WINAPI) usize,
+        ) callconv(.winapi) usize,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetBufferPointer(self: *const ID3DBlob) callconv(.Inline) ?*anyopaque {
+    pub inline fn GetBufferPointer(self: *const ID3DBlob) ?*anyopaque {
         return self.vtable.GetBufferPointer(self);
     }
-    pub fn GetBufferSize(self: *const ID3DBlob) callconv(.Inline) usize {
+    pub inline fn GetBufferSize(self: *const ID3DBlob) usize {
         return self.vtable.GetBufferSize(self);
     }
 };
 
-pub const PFN_DESTRUCTION_CALLBACK = *const fn(
+pub const PFN_DESTRUCTION_CALLBACK = *const fn (
     pData: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows6.1'
 // This COM type is Agile, not sure what that means
@@ -590,23 +590,23 @@ pub const IID_ID3DDestructionNotifier = &IID_ID3DDestructionNotifier_Value;
 pub const ID3DDestructionNotifier = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RegisterDestructionCallback: *const fn(
+        RegisterDestructionCallback: *const fn (
             self: *const ID3DDestructionNotifier,
             callbackFn: ?PFN_DESTRUCTION_CALLBACK,
             pData: ?*anyopaque,
             pCallbackID: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnregisterDestructionCallback: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnregisterDestructionCallback: *const fn (
             self: *const ID3DDestructionNotifier,
             callbackID: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RegisterDestructionCallback(self: *const ID3DDestructionNotifier, callbackFn: ?PFN_DESTRUCTION_CALLBACK, pData: ?*anyopaque, pCallbackID: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn RegisterDestructionCallback(self: *const ID3DDestructionNotifier, callbackFn: ?PFN_DESTRUCTION_CALLBACK, pData: ?*anyopaque, pCallbackID: ?*u32) HRESULT {
         return self.vtable.RegisterDestructionCallback(self, callbackFn, pData, pCallbackID);
     }
-    pub fn UnregisterDestructionCallback(self: *const ID3DDestructionNotifier, callbackID: u32) callconv(.Inline) HRESULT {
+    pub inline fn UnregisterDestructionCallback(self: *const ID3DDestructionNotifier, callbackID: u32) HRESULT {
         return self.vtable.UnregisterDestructionCallback(self, callbackID);
     }
 };
@@ -627,24 +627,24 @@ pub const D3D_INCLUDE_FORCE_DWORD = D3D_INCLUDE_TYPE._INCLUDE_FORCE_DWORD;
 // This COM type is Agile, not sure what that means
 pub const ID3DInclude = extern union {
     pub const VTable = extern struct {
-        Open: *const fn(
+        Open: *const fn (
             self: *const ID3DInclude,
             IncludeType: D3D_INCLUDE_TYPE,
             pFileName: ?[*:0]const u8,
             pParentData: ?*const anyopaque,
             ppData: ?*?*anyopaque,
             pBytes: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Close: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Close: *const fn (
             self: *const ID3DInclude,
             pData: ?*const anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
-    pub fn Open(self: *const ID3DInclude, IncludeType: D3D_INCLUDE_TYPE, pFileName: ?[*:0]const u8, pParentData: ?*const anyopaque, ppData: ?*?*anyopaque, pBytes: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn Open(self: *const ID3DInclude, IncludeType: D3D_INCLUDE_TYPE, pFileName: ?[*:0]const u8, pParentData: ?*const anyopaque, ppData: ?*?*anyopaque, pBytes: ?*u32) HRESULT {
         return self.vtable.Open(self, IncludeType, pFileName, pParentData, ppData, pBytes);
     }
-    pub fn Close(self: *const ID3DInclude, pData: ?*const anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const ID3DInclude, pData: ?*const anyopaque) HRESULT {
         return self.vtable.Close(self, pData);
     }
 };
@@ -1377,7 +1377,6 @@ pub const D3DMATRIX = extern struct {
     },
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
 //--------------------------------------------------------------------------------
@@ -1395,11 +1394,11 @@ const PSTR = @import("../foundation.zig").PSTR;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "PFN_DESTRUCTION_CALLBACK")) { _ = PFN_DESTRUCTION_CALLBACK; }
+    if (@hasDecl(@This(), "PFN_DESTRUCTION_CALLBACK")) {
+        _ = PFN_DESTRUCTION_CALLBACK;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

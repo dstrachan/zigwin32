@@ -13,21 +13,21 @@ pub const DSSI_NO_READONLY_MESSAGE = @as(u32, 64);
 //--------------------------------------------------------------------------------
 // Section: Types (6)
 //--------------------------------------------------------------------------------
-pub const PFNREADOBJECTSECURITY = *const fn(
+pub const PFNREADOBJECTSECURITY = *const fn (
     param0: ?[*:0]const u16,
     param1: u32,
     param2: ?*?PSECURITY_DESCRIPTOR,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const PFNWRITEOBJECTSECURITY = *const fn(
+pub const PFNWRITEOBJECTSECURITY = *const fn (
     param0: ?[*:0]const u16,
     param1: u32,
     param2: ?PSECURITY_DESCRIPTOR,
     param3: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const PFNDSCREATEISECINFO = *const fn(
+pub const PFNDSCREATEISECINFO = *const fn (
     param0: ?[*:0]const u16,
     param1: ?[*:0]const u16,
     param2: u32,
@@ -35,9 +35,9 @@ pub const PFNDSCREATEISECINFO = *const fn(
     param4: ?PFNREADOBJECTSECURITY,
     param5: ?PFNWRITEOBJECTSECURITY,
     param6: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const PFNDSCREATEISECINFOEX = *const fn(
+pub const PFNDSCREATEISECINFOEX = *const fn (
     param0: ?[*:0]const u16,
     param1: ?[*:0]const u16,
     param2: ?[*:0]const u16,
@@ -48,9 +48,9 @@ pub const PFNDSCREATEISECINFOEX = *const fn(
     param7: ?PFNREADOBJECTSECURITY,
     param8: ?PFNWRITEOBJECTSECURITY,
     param9: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const PFNDSCREATESECPAGE = *const fn(
+pub const PFNDSCREATESECPAGE = *const fn (
     param0: ?[*:0]const u16,
     param1: ?[*:0]const u16,
     param2: u32,
@@ -58,9 +58,9 @@ pub const PFNDSCREATESECPAGE = *const fn(
     param4: ?PFNREADOBJECTSECURITY,
     param5: ?PFNWRITEOBJECTSECURITY,
     param6: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
-pub const PFNDSEDITSECURITY = *const fn(
+pub const PFNDSEDITSECURITY = *const fn (
     param0: ?HWND,
     param1: ?[*:0]const u16,
     param2: ?[*:0]const u16,
@@ -69,8 +69,7 @@ pub const PFNDSEDITSECURITY = *const fn(
     param5: ?PFNREADOBJECTSECURITY,
     param6: ?PFNWRITEOBJECTSECURITY,
     param7: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (4)
@@ -84,7 +83,7 @@ pub extern "dssec" fn DSCreateISecurityInfoObject(
     pfnReadSD: ?PFNREADOBJECTSECURITY,
     pfnWriteSD: ?PFNWRITEOBJECTSECURITY,
     lpContext: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2008'
 pub extern "dssec" fn DSCreateISecurityInfoObjectEx(
@@ -98,7 +97,7 @@ pub extern "dssec" fn DSCreateISecurityInfoObjectEx(
     pfnReadSD: ?PFNREADOBJECTSECURITY,
     pfnWriteSD: ?PFNWRITEOBJECTSECURITY,
     lpContext: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2003'
 pub extern "dssec" fn DSCreateSecurityPage(
@@ -109,7 +108,7 @@ pub extern "dssec" fn DSCreateSecurityPage(
     pfnReadSD: ?PFNREADOBJECTSECURITY,
     pfnWriteSD: ?PFNWRITEOBJECTSECURITY,
     lpContext: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windowsServer2008'
 pub extern "dssec" fn DSEditSecurity(
@@ -121,8 +120,7 @@ pub extern "dssec" fn DSEditSecurity(
     pfnReadSD: ?PFNREADOBJECTSECURITY,
     pfnWriteSD: ?PFNWRITEOBJECTSECURITY,
     lpContext: LPARAM,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -140,16 +138,26 @@ const PWSTR = @import("../foundation.zig").PWSTR;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "PFNREADOBJECTSECURITY")) { _ = PFNREADOBJECTSECURITY; }
-    if (@hasDecl(@This(), "PFNWRITEOBJECTSECURITY")) { _ = PFNWRITEOBJECTSECURITY; }
-    if (@hasDecl(@This(), "PFNDSCREATEISECINFO")) { _ = PFNDSCREATEISECINFO; }
-    if (@hasDecl(@This(), "PFNDSCREATEISECINFOEX")) { _ = PFNDSCREATEISECINFOEX; }
-    if (@hasDecl(@This(), "PFNDSCREATESECPAGE")) { _ = PFNDSCREATESECPAGE; }
-    if (@hasDecl(@This(), "PFNDSEDITSECURITY")) { _ = PFNDSEDITSECURITY; }
+    if (@hasDecl(@This(), "PFNREADOBJECTSECURITY")) {
+        _ = PFNREADOBJECTSECURITY;
+    }
+    if (@hasDecl(@This(), "PFNWRITEOBJECTSECURITY")) {
+        _ = PFNWRITEOBJECTSECURITY;
+    }
+    if (@hasDecl(@This(), "PFNDSCREATEISECINFO")) {
+        _ = PFNDSCREATEISECINFO;
+    }
+    if (@hasDecl(@This(), "PFNDSCREATEISECINFOEX")) {
+        _ = PFNDSCREATEISECINFOEX;
+    }
+    if (@hasDecl(@This(), "PFNDSCREATESECPAGE")) {
+        _ = PFNDSCREATESECPAGE;
+    }
+    if (@hasDecl(@This(), "PFNDSEDITSECURITY")) {
+        _ = PFNDSEDITSECURITY;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

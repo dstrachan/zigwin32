@@ -13,16 +13,16 @@ pub const IID_IAudioFrameNative = &IID_IAudioFrameNative_Value;
 pub const IAudioFrameNative = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        GetData: *const fn(
+        GetData: *const fn (
             self: *const IAudioFrameNative,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn GetData(self: *const IAudioFrameNative, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetData(self: *const IAudioFrameNative, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetData(self, riid, ppv);
     }
 };
@@ -32,24 +32,24 @@ pub const IID_IVideoFrameNative = &IID_IVideoFrameNative_Value;
 pub const IVideoFrameNative = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        GetData: *const fn(
+        GetData: *const fn (
             self: *const IVideoFrameNative,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDevice: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDevice: *const fn (
             self: *const IVideoFrameNative,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn GetData(self: *const IVideoFrameNative, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetData(self: *const IVideoFrameNative, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetData(self, riid, ppv);
     }
-    pub fn GetDevice(self: *const IVideoFrameNative, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetDevice(self: *const IVideoFrameNative, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetDevice(self, riid, ppv);
     }
 };
@@ -59,18 +59,18 @@ pub const IID_IAudioFrameNativeFactory = &IID_IAudioFrameNativeFactory_Value;
 pub const IAudioFrameNativeFactory = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CreateFromMFSample: *const fn(
+        CreateFromMFSample: *const fn (
             self: *const IAudioFrameNativeFactory,
             data: ?*IMFSample,
             forceReadOnly: BOOL,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CreateFromMFSample(self: *const IAudioFrameNativeFactory, data: ?*IMFSample, forceReadOnly: BOOL, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateFromMFSample(self: *const IAudioFrameNativeFactory, data: ?*IMFSample, forceReadOnly: BOOL, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.CreateFromMFSample(self, data, forceReadOnly, riid, ppv);
     }
 };
@@ -80,7 +80,7 @@ pub const IID_IVideoFrameNativeFactory = &IID_IVideoFrameNativeFactory_Value;
 pub const IVideoFrameNativeFactory = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CreateFromMFSample: *const fn(
+        CreateFromMFSample: *const fn (
             self: *const IVideoFrameNativeFactory,
             data: ?*IMFSample,
             subtype: ?*const Guid,
@@ -91,16 +91,15 @@ pub const IVideoFrameNativeFactory = extern union {
             device: ?*IMFDXGIDeviceManager,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CreateFromMFSample(self: *const IVideoFrameNativeFactory, data: ?*IMFSample, subtype: ?*const Guid, width: u32, height: u32, forceReadOnly: BOOL, minDisplayAperture: ?*const MFVideoArea, device: ?*IMFDXGIDeviceManager, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateFromMFSample(self: *const IVideoFrameNativeFactory, data: ?*IMFSample, subtype: ?*const Guid, width: u32, height: u32, forceReadOnly: BOOL, minDisplayAperture: ?*const MFVideoArea, device: ?*IMFDXGIDeviceManager, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.CreateFromMFSample(self, data, subtype, width, height, forceReadOnly, minDisplayAperture, device, riid, ppv);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -122,9 +121,7 @@ const IUnknown = @import("../../system/com.zig").IUnknown;
 const MFVideoArea = @import("../../media/media_foundation.zig").MFVideoArea;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

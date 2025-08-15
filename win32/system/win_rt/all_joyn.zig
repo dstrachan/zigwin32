@@ -12,15 +12,15 @@ pub const IWindowsDevicesAllJoynBusAttachmentInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Win32Handle: *const fn(
+        get_Win32Handle: *const fn (
             self: *const IWindowsDevicesAllJoynBusAttachmentInterop,
             value: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn get_Win32Handle(self: *const IWindowsDevicesAllJoynBusAttachmentInterop, value: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn get_Win32Handle(self: *const IWindowsDevicesAllJoynBusAttachmentInterop, value: ?*u64) HRESULT {
         return self.vtable.get_Win32Handle(self, value);
     }
 };
@@ -30,18 +30,18 @@ pub const IID_IWindowsDevicesAllJoynBusAttachmentFactoryInterop = &IID_IWindowsD
 pub const IWindowsDevicesAllJoynBusAttachmentFactoryInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CreateFromWin32Handle: *const fn(
+        CreateFromWin32Handle: *const fn (
             self: *const IWindowsDevicesAllJoynBusAttachmentFactoryInterop,
             win32handle: u64,
             enableAboutData: u8,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CreateFromWin32Handle(self: *const IWindowsDevicesAllJoynBusAttachmentFactoryInterop, win32handle: u64, enableAboutData: u8, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateFromWin32Handle(self: *const IWindowsDevicesAllJoynBusAttachmentFactoryInterop, win32handle: u64, enableAboutData: u8, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.CreateFromWin32Handle(self, win32handle, enableAboutData, riid, ppv);
     }
 };
@@ -51,34 +51,34 @@ pub const IID_IWindowsDevicesAllJoynBusObjectInterop = &IID_IWindowsDevicesAllJo
 pub const IWindowsDevicesAllJoynBusObjectInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        AddPropertyGetHandler: *const fn(
+        AddPropertyGetHandler: *const fn (
             self: *const IWindowsDevicesAllJoynBusObjectInterop,
             context: ?*anyopaque,
             interfaceName: ?HSTRING,
             callback: isize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AddPropertySetHandler: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AddPropertySetHandler: *const fn (
             self: *const IWindowsDevicesAllJoynBusObjectInterop,
             context: ?*anyopaque,
             interfaceName: ?HSTRING,
             callback: isize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
         // TODO: this function has a "SpecialName", should Zig do anything with this?
-        get_Win32Handle: *const fn(
+        get_Win32Handle: *const fn (
             self: *const IWindowsDevicesAllJoynBusObjectInterop,
             value: ?*u64,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn AddPropertyGetHandler(self: *const IWindowsDevicesAllJoynBusObjectInterop, context: ?*anyopaque, interfaceName: ?HSTRING, callback: isize) callconv(.Inline) HRESULT {
+    pub inline fn AddPropertyGetHandler(self: *const IWindowsDevicesAllJoynBusObjectInterop, context: ?*anyopaque, interfaceName: ?HSTRING, callback: isize) HRESULT {
         return self.vtable.AddPropertyGetHandler(self, context, interfaceName, callback);
     }
-    pub fn AddPropertySetHandler(self: *const IWindowsDevicesAllJoynBusObjectInterop, context: ?*anyopaque, interfaceName: ?HSTRING, callback: isize) callconv(.Inline) HRESULT {
+    pub inline fn AddPropertySetHandler(self: *const IWindowsDevicesAllJoynBusObjectInterop, context: ?*anyopaque, interfaceName: ?HSTRING, callback: isize) HRESULT {
         return self.vtable.AddPropertySetHandler(self, context, interfaceName, callback);
     }
-    pub fn get_Win32Handle(self: *const IWindowsDevicesAllJoynBusObjectInterop, value: ?*u64) callconv(.Inline) HRESULT {
+    pub inline fn get_Win32Handle(self: *const IWindowsDevicesAllJoynBusObjectInterop, value: ?*u64) HRESULT {
         return self.vtable.get_Win32Handle(self, value);
     }
 };
@@ -88,21 +88,20 @@ pub const IID_IWindowsDevicesAllJoynBusObjectFactoryInterop = &IID_IWindowsDevic
 pub const IWindowsDevicesAllJoynBusObjectFactoryInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        CreateFromWin32Handle: *const fn(
+        CreateFromWin32Handle: *const fn (
             self: *const IWindowsDevicesAllJoynBusObjectFactoryInterop,
             win32handle: u64,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn CreateFromWin32Handle(self: *const IWindowsDevicesAllJoynBusObjectFactoryInterop, win32handle: u64, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateFromWin32Handle(self: *const IWindowsDevicesAllJoynBusObjectFactoryInterop, win32handle: u64, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.CreateFromWin32Handle(self, win32handle, riid, ppv);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -121,9 +120,7 @@ const IInspectable = @import("../../system/win_rt.zig").IInspectable;
 const IUnknown = @import("../../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -169,8 +169,7 @@ pub const ACTION_HEADER = extern struct {
     reserved: u16,
 };
 
-
-pub const NCB = switch(@import("../zig.zig").arch) {
+pub const NCB = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         ncb_command: u8,
         ncb_retcode: u8,
@@ -213,8 +212,7 @@ pub const NCB = switch(@import("../zig.zig").arch) {
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "netapi32" fn Netbios(
     pncb: ?*NCB,
-) callconv(@import("std").os.windows.WINAPI) u8;
-
+) callconv(.winapi) u8;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -225,9 +223,7 @@ pub extern "netapi32" fn Netbios(
 const HANDLE = @import("../foundation.zig").HANDLE;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

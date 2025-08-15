@@ -38,7 +38,6 @@ pub const SLIST_ENTRY = extern struct {
     Next: ?*SLIST_ENTRY,
 };
 
-
 pub const QUAD = extern struct {
     Anonymous: extern union {
         UseThisFieldToCopy: i64,
@@ -167,12 +166,12 @@ pub const OBJECTID = extern struct {
     Uniquifier: u32,
 };
 
-pub const EXCEPTION_ROUTINE = *const fn(
+pub const EXCEPTION_ROUTINE = *const fn (
     ExceptionRecord: ?*EXCEPTION_RECORD,
     EstablisherFrame: ?*anyopaque,
     ContextRecord: ?*CONTEXT,
     DispatcherContext: ?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) EXCEPTION_DISPOSITION;
+) callconv(.winapi) EXCEPTION_DISPOSITION;
 
 pub const NT_PRODUCT_TYPE = enum(i32) {
     WinNt = 1,
@@ -249,11 +248,7 @@ pub const NT_TIB = extern struct {
     Self: ?*NT_TIB,
 };
 
-
-
-
-
-pub const SLIST_HEADER = switch(@import("../zig.zig").arch) {
+pub const SLIST_HEADER = switch (@import("../zig.zig").arch) {
     .Arm64 => extern union {
         Anonymous: extern struct {
             Alignment: u64,
@@ -283,7 +278,7 @@ pub const SLIST_HEADER = switch(@import("../zig.zig").arch) {
         },
     },
 };
-pub const FLOATING_SAVE_AREA = switch(@import("../zig.zig").arch) {
+pub const FLOATING_SAVE_AREA = switch (@import("../zig.zig").arch) {
     .X64, .Arm64 => extern struct {
         ControlWord: u32,
         StatusWord: u32,
@@ -314,41 +309,40 @@ pub const FLOATING_SAVE_AREA = switch(@import("../zig.zig").arch) {
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "ntdll" fn RtlInitializeSListHead(
     ListHead: ?*SLIST_HEADER,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "ntdll" fn RtlFirstEntrySList(
     ListHead: ?*const SLIST_HEADER,
-) callconv(@import("std").os.windows.WINAPI) ?*SLIST_ENTRY;
+) callconv(.winapi) ?*SLIST_ENTRY;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "ntdll" fn RtlInterlockedPopEntrySList(
     ListHead: ?*SLIST_HEADER,
-) callconv(@import("std").os.windows.WINAPI) ?*SLIST_ENTRY;
+) callconv(.winapi) ?*SLIST_ENTRY;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "ntdll" fn RtlInterlockedPushEntrySList(
     ListHead: ?*SLIST_HEADER,
     ListEntry: ?*SLIST_ENTRY,
-) callconv(@import("std").os.windows.WINAPI) ?*SLIST_ENTRY;
+) callconv(.winapi) ?*SLIST_ENTRY;
 
 pub extern "ntdll" fn RtlInterlockedPushListSListEx(
     ListHead: ?*SLIST_HEADER,
     List: ?*SLIST_ENTRY,
     ListEnd: ?*SLIST_ENTRY,
     Count: u32,
-) callconv(@import("std").os.windows.WINAPI) ?*SLIST_ENTRY;
+) callconv(.winapi) ?*SLIST_ENTRY;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "ntdll" fn RtlInterlockedFlushSList(
     ListHead: ?*SLIST_HEADER,
-) callconv(@import("std").os.windows.WINAPI) ?*SLIST_ENTRY;
+) callconv(.winapi) ?*SLIST_ENTRY;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "ntdll" fn RtlQueryDepthSList(
     ListHead: ?*SLIST_HEADER,
-) callconv(@import("std").os.windows.WINAPI) u16;
-
+) callconv(.winapi) u16;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -363,11 +357,11 @@ const PSTR = @import("../foundation.zig").PSTR;
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "EXCEPTION_ROUTINE")) { _ = EXCEPTION_ROUTINE; }
+    if (@hasDecl(@This(), "EXCEPTION_ROUTINE")) {
+        _ = EXCEPTION_ROUTINE;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

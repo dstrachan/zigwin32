@@ -237,7 +237,7 @@ pub const D2D1_PATH_SEGMENT = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const D2D1_PATH_SEGMENT_NONE = D2D1_PATH_SEGMENT{ };
+pub const D2D1_PATH_SEGMENT_NONE = D2D1_PATH_SEGMENT{};
 pub const D2D1_PATH_SEGMENT_FORCE_UNSTROKED = D2D1_PATH_SEGMENT{ .FORCE_UNSTROKED = 1 };
 pub const D2D1_PATH_SEGMENT_FORCE_ROUND_LINE_JOIN = D2D1_PATH_SEGMENT{ .FORCE_ROUND_LINE_JOIN = 1 };
 pub const D2D1_PATH_SEGMENT_FORCE_DWORD = D2D1_PATH_SEGMENT{
@@ -290,58 +290,58 @@ pub const IID_ID2D1SimplifiedGeometrySink = &IID_ID2D1SimplifiedGeometrySink_Val
 pub const ID2D1SimplifiedGeometrySink = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetFillMode: *const fn(
+        SetFillMode: *const fn (
             self: *const ID2D1SimplifiedGeometrySink,
             fillMode: D2D1_FILL_MODE,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetSegmentFlags: *const fn(
+        ) callconv(.winapi) void,
+        SetSegmentFlags: *const fn (
             self: *const ID2D1SimplifiedGeometrySink,
             vertexFlags: D2D1_PATH_SEGMENT,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        BeginFigure: *const fn(
+        ) callconv(.winapi) void,
+        BeginFigure: *const fn (
             self: *const ID2D1SimplifiedGeometrySink,
             startPoint: D2D_POINT_2F,
             figureBegin: D2D1_FIGURE_BEGIN,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        AddLines: *const fn(
+        ) callconv(.winapi) void,
+        AddLines: *const fn (
             self: *const ID2D1SimplifiedGeometrySink,
             points: [*]const D2D_POINT_2F,
             pointsCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        AddBeziers: *const fn(
+        ) callconv(.winapi) void,
+        AddBeziers: *const fn (
             self: *const ID2D1SimplifiedGeometrySink,
             beziers: [*]const D2D1_BEZIER_SEGMENT,
             beziersCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        EndFigure: *const fn(
+        ) callconv(.winapi) void,
+        EndFigure: *const fn (
             self: *const ID2D1SimplifiedGeometrySink,
             figureEnd: D2D1_FIGURE_END,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        Close: *const fn(
+        ) callconv(.winapi) void,
+        Close: *const fn (
             self: *const ID2D1SimplifiedGeometrySink,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetFillMode(self: *const ID2D1SimplifiedGeometrySink, fillMode: D2D1_FILL_MODE) callconv(.Inline) void {
+    pub inline fn SetFillMode(self: *const ID2D1SimplifiedGeometrySink, fillMode: D2D1_FILL_MODE) void {
         return self.vtable.SetFillMode(self, fillMode);
     }
-    pub fn SetSegmentFlags(self: *const ID2D1SimplifiedGeometrySink, vertexFlags: D2D1_PATH_SEGMENT) callconv(.Inline) void {
+    pub inline fn SetSegmentFlags(self: *const ID2D1SimplifiedGeometrySink, vertexFlags: D2D1_PATH_SEGMENT) void {
         return self.vtable.SetSegmentFlags(self, vertexFlags);
     }
-    pub fn BeginFigure(self: *const ID2D1SimplifiedGeometrySink, startPoint: D2D_POINT_2F, figureBegin: D2D1_FIGURE_BEGIN) callconv(.Inline) void {
+    pub inline fn BeginFigure(self: *const ID2D1SimplifiedGeometrySink, startPoint: D2D_POINT_2F, figureBegin: D2D1_FIGURE_BEGIN) void {
         return self.vtable.BeginFigure(self, startPoint, figureBegin);
     }
-    pub fn AddLines(self: *const ID2D1SimplifiedGeometrySink, points: [*]const D2D_POINT_2F, pointsCount: u32) callconv(.Inline) void {
+    pub inline fn AddLines(self: *const ID2D1SimplifiedGeometrySink, points: [*]const D2D_POINT_2F, pointsCount: u32) void {
         return self.vtable.AddLines(self, points, pointsCount);
     }
-    pub fn AddBeziers(self: *const ID2D1SimplifiedGeometrySink, beziers: [*]const D2D1_BEZIER_SEGMENT, beziersCount: u32) callconv(.Inline) void {
+    pub inline fn AddBeziers(self: *const ID2D1SimplifiedGeometrySink, beziers: [*]const D2D1_BEZIER_SEGMENT, beziersCount: u32) void {
         return self.vtable.AddBeziers(self, beziers, beziersCount);
     }
-    pub fn EndFigure(self: *const ID2D1SimplifiedGeometrySink, figureEnd: D2D1_FIGURE_END) callconv(.Inline) void {
+    pub inline fn EndFigure(self: *const ID2D1SimplifiedGeometrySink, figureEnd: D2D1_FIGURE_END) void {
         return self.vtable.EndFigure(self, figureEnd);
     }
-    pub fn Close(self: *const ID2D1SimplifiedGeometrySink) callconv(.Inline) HRESULT {
+    pub inline fn Close(self: *const ID2D1SimplifiedGeometrySink) HRESULT {
         return self.vtable.Close(self);
     }
 };
@@ -478,7 +478,6 @@ pub const D2D1_COMPOSITE_MODE_BOUNDED_SOURCE_COPY = D2D1_COMPOSITE_MODE.BOUNDED_
 pub const D2D1_COMPOSITE_MODE_MASK_INVERT = D2D1_COMPOSITE_MODE.MASK_INVERT;
 pub const D2D1_COMPOSITE_MODE_FORCE_DWORD = D2D1_COMPOSITE_MODE.FORCE_DWORD;
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
 //--------------------------------------------------------------------------------
@@ -495,9 +494,7 @@ const HRESULT = @import("../../foundation.zig").HRESULT;
 const IUnknown = @import("../../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

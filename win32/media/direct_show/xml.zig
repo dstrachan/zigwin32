@@ -13,36 +13,35 @@ pub const IID_IXMLGraphBuilder = &IID_IXMLGraphBuilder_Value;
 pub const IXMLGraphBuilder = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        BuildFromXML: *const fn(
+        BuildFromXML: *const fn (
             self: *const IXMLGraphBuilder,
             pGraph: ?*IGraphBuilder,
             pxml: ?*IXMLElement,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SaveToXML: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SaveToXML: *const fn (
             self: *const IXMLGraphBuilder,
             pGraph: ?*IGraphBuilder,
             pbstrxml: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        BuildFromXMLFile: *const fn(
+        ) callconv(.winapi) HRESULT,
+        BuildFromXMLFile: *const fn (
             self: *const IXMLGraphBuilder,
             pGraph: ?*IGraphBuilder,
             wszFileName: ?[*:0]const u16,
             wszBaseURL: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn BuildFromXML(self: *const IXMLGraphBuilder, pGraph: ?*IGraphBuilder, pxml: ?*IXMLElement) callconv(.Inline) HRESULT {
+    pub inline fn BuildFromXML(self: *const IXMLGraphBuilder, pGraph: ?*IGraphBuilder, pxml: ?*IXMLElement) HRESULT {
         return self.vtable.BuildFromXML(self, pGraph, pxml);
     }
-    pub fn SaveToXML(self: *const IXMLGraphBuilder, pGraph: ?*IGraphBuilder, pbstrxml: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn SaveToXML(self: *const IXMLGraphBuilder, pGraph: ?*IGraphBuilder, pbstrxml: ?*?BSTR) HRESULT {
         return self.vtable.SaveToXML(self, pGraph, pbstrxml);
     }
-    pub fn BuildFromXMLFile(self: *const IXMLGraphBuilder, pGraph: ?*IGraphBuilder, wszFileName: ?[*:0]const u16, wszBaseURL: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn BuildFromXMLFile(self: *const IXMLGraphBuilder, pGraph: ?*IGraphBuilder, wszFileName: ?[*:0]const u16, wszBaseURL: ?[*:0]const u16) HRESULT {
         return self.vtable.BuildFromXMLFile(self, pGraph, wszFileName, wszBaseURL);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -63,9 +62,7 @@ const IXMLElement = @import("../../data/xml/ms_xml.zig").IXMLElement;
 const PWSTR = @import("../../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

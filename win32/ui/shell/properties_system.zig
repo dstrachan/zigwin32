@@ -27,15 +27,15 @@ pub const IID_IInitializeWithFile = &IID_IInitializeWithFile_Value;
 pub const IInitializeWithFile = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IInitializeWithFile,
             pszFilePath: ?[*:0]const u16,
             grfMode: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IInitializeWithFile, pszFilePath: ?[*:0]const u16, grfMode: u32) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IInitializeWithFile, pszFilePath: ?[*:0]const u16, grfMode: u32) HRESULT {
         return self.vtable.Initialize(self, pszFilePath, grfMode);
     }
 };
@@ -46,15 +46,15 @@ pub const IID_IInitializeWithStream = &IID_IInitializeWithStream_Value;
 pub const IInitializeWithStream = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Initialize: *const fn(
+        Initialize: *const fn (
             self: *const IInitializeWithStream,
             pstream: ?*IStream,
             grfMode: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Initialize(self: *const IInitializeWithStream, pstream: ?*IStream, grfMode: u32) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IInitializeWithStream, pstream: ?*IStream, grfMode: u32) HRESULT {
         return self.vtable.Initialize(self, pstream, grfMode);
     }
 };
@@ -64,44 +64,44 @@ pub const IID_IPropertyStore = &IID_IPropertyStore_Value;
 pub const IPropertyStore = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IPropertyStore,
             cProps: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IPropertyStore,
             iProp: u32,
             pkey: ?*PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const IPropertyStore,
             key: ?*const PROPERTYKEY,
             pv: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValue: *const fn (
             self: *const IPropertyStore,
             key: ?*const PROPERTYKEY,
             propvar: ?*const PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Commit: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Commit: *const fn (
             self: *const IPropertyStore,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IPropertyStore, cProps: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IPropertyStore, cProps: ?*u32) HRESULT {
         return self.vtable.GetCount(self, cProps);
     }
-    pub fn GetAt(self: *const IPropertyStore, iProp: u32, pkey: ?*PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IPropertyStore, iProp: u32, pkey: ?*PROPERTYKEY) HRESULT {
         return self.vtable.GetAt(self, iProp, pkey);
     }
-    pub fn GetValue(self: *const IPropertyStore, key: ?*const PROPERTYKEY, pv: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const IPropertyStore, key: ?*const PROPERTYKEY, pv: ?*PROPVARIANT) HRESULT {
         return self.vtable.GetValue(self, key, pv);
     }
-    pub fn SetValue(self: *const IPropertyStore, key: ?*const PROPERTYKEY, propvar: ?*const PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetValue(self: *const IPropertyStore, key: ?*const PROPERTYKEY, propvar: ?*const PROPVARIANT) HRESULT {
         return self.vtable.SetValue(self, key, propvar);
     }
-    pub fn Commit(self: *const IPropertyStore) callconv(.Inline) HRESULT {
+    pub inline fn Commit(self: *const IPropertyStore) HRESULT {
         return self.vtable.Commit(self);
     }
 };
@@ -112,38 +112,38 @@ pub const IID_INamedPropertyStore = &IID_INamedPropertyStore_Value;
 pub const INamedPropertyStore = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetNamedValue: *const fn(
+        GetNamedValue: *const fn (
             self: *const INamedPropertyStore,
             pszName: ?[*:0]const u16,
             ppropvar: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetNamedValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetNamedValue: *const fn (
             self: *const INamedPropertyStore,
             pszName: ?[*:0]const u16,
             propvar: ?*const PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNameCount: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNameCount: *const fn (
             self: *const INamedPropertyStore,
             pdwCount: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetNameAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetNameAt: *const fn (
             self: *const INamedPropertyStore,
             iProp: u32,
             pbstrName: ?*?BSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetNamedValue(self: *const INamedPropertyStore, pszName: ?[*:0]const u16, ppropvar: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetNamedValue(self: *const INamedPropertyStore, pszName: ?[*:0]const u16, ppropvar: ?*PROPVARIANT) HRESULT {
         return self.vtable.GetNamedValue(self, pszName, ppropvar);
     }
-    pub fn SetNamedValue(self: *const INamedPropertyStore, pszName: ?[*:0]const u16, propvar: ?*const PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn SetNamedValue(self: *const INamedPropertyStore, pszName: ?[*:0]const u16, propvar: ?*const PROPVARIANT) HRESULT {
         return self.vtable.SetNamedValue(self, pszName, propvar);
     }
-    pub fn GetNameCount(self: *const INamedPropertyStore, pdwCount: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetNameCount(self: *const INamedPropertyStore, pdwCount: ?*u32) HRESULT {
         return self.vtable.GetNameCount(self, pdwCount);
     }
-    pub fn GetNameAt(self: *const INamedPropertyStore, iProp: u32, pbstrName: ?*?BSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetNameAt(self: *const INamedPropertyStore, iProp: u32, pbstrName: ?*?BSTR) HRESULT {
         return self.vtable.GetNameAt(self, iProp, pbstrName);
     }
 };
@@ -182,7 +182,7 @@ pub const GETPROPERTYSTOREFLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const GPS_DEFAULT = GETPROPERTYSTOREFLAGS{ };
+pub const GPS_DEFAULT = GETPROPERTYSTOREFLAGS{};
 pub const GPS_HANDLERPROPERTIESONLY = GETPROPERTYSTOREFLAGS{ .HANDLERPROPERTIESONLY = 1 };
 pub const GPS_READWRITE = GETPROPERTYSTOREFLAGS{ .READWRITE = 1 };
 pub const GPS_TEMPORARY = GETPROPERTYSTOREFLAGS{ .TEMPORARY = 1 };
@@ -218,21 +218,21 @@ pub const IID_IObjectWithPropertyKey = &IID_IObjectWithPropertyKey_Value;
 pub const IObjectWithPropertyKey = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetPropertyKey: *const fn(
+        SetPropertyKey: *const fn (
             self: *const IObjectWithPropertyKey,
             key: ?*const PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyKey: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyKey: *const fn (
             self: *const IObjectWithPropertyKey,
             pkey: ?*PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetPropertyKey(self: *const IObjectWithPropertyKey, key: ?*const PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn SetPropertyKey(self: *const IObjectWithPropertyKey, key: ?*const PROPERTYKEY) HRESULT {
         return self.vtable.SetPropertyKey(self, key);
     }
-    pub fn GetPropertyKey(self: *const IObjectWithPropertyKey, pkey: ?*PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyKey(self: *const IObjectWithPropertyKey, pkey: ?*PROPERTYKEY) HRESULT {
         return self.vtable.GetPropertyKey(self, pkey);
     }
 };
@@ -271,7 +271,7 @@ pub const PKA_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PKA_SET = PKA_FLAGS{ };
+pub const PKA_SET = PKA_FLAGS{};
 pub const PKA_APPEND = PKA_FLAGS{ .APPEND = 1 };
 pub const PKA_DELETE = PKA_FLAGS{ .DELETE = 1 };
 
@@ -281,16 +281,16 @@ pub const IID_IPropertyChange = &IID_IPropertyChange_Value;
 pub const IPropertyChange = extern union {
     pub const VTable = extern struct {
         base: IObjectWithPropertyKey.VTable,
-        ApplyToPropVariant: *const fn(
+        ApplyToPropVariant: *const fn (
             self: *const IPropertyChange,
             propvarIn: ?*const PROPVARIANT,
             ppropvarOut: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IObjectWithPropertyKey: IObjectWithPropertyKey,
     IUnknown: IUnknown,
-    pub fn ApplyToPropVariant(self: *const IPropertyChange, propvarIn: ?*const PROPVARIANT, ppropvarOut: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn ApplyToPropVariant(self: *const IPropertyChange, propvarIn: ?*const PROPVARIANT, ppropvarOut: ?*PROPVARIANT) HRESULT {
         return self.vtable.ApplyToPropVariant(self, propvarIn, ppropvarOut);
     }
 };
@@ -301,59 +301,59 @@ pub const IID_IPropertyChangeArray = &IID_IPropertyChangeArray_Value;
 pub const IPropertyChangeArray = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IPropertyChangeArray,
             pcOperations: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IPropertyChangeArray,
             iIndex: u32,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        InsertAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        InsertAt: *const fn (
             self: *const IPropertyChangeArray,
             iIndex: u32,
             ppropChange: ?*IPropertyChange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Append: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Append: *const fn (
             self: *const IPropertyChangeArray,
             ppropChange: ?*IPropertyChange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        AppendOrReplace: *const fn(
+        ) callconv(.winapi) HRESULT,
+        AppendOrReplace: *const fn (
             self: *const IPropertyChangeArray,
             ppropChange: ?*IPropertyChange,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RemoveAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RemoveAt: *const fn (
             self: *const IPropertyChangeArray,
             iIndex: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsKeyInArray: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsKeyInArray: *const fn (
             self: *const IPropertyChangeArray,
             key: ?*const PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IPropertyChangeArray, pcOperations: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IPropertyChangeArray, pcOperations: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pcOperations);
     }
-    pub fn GetAt(self: *const IPropertyChangeArray, iIndex: u32, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IPropertyChangeArray, iIndex: u32, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetAt(self, iIndex, riid, ppv);
     }
-    pub fn InsertAt(self: *const IPropertyChangeArray, iIndex: u32, ppropChange: ?*IPropertyChange) callconv(.Inline) HRESULT {
+    pub inline fn InsertAt(self: *const IPropertyChangeArray, iIndex: u32, ppropChange: ?*IPropertyChange) HRESULT {
         return self.vtable.InsertAt(self, iIndex, ppropChange);
     }
-    pub fn Append(self: *const IPropertyChangeArray, ppropChange: ?*IPropertyChange) callconv(.Inline) HRESULT {
+    pub inline fn Append(self: *const IPropertyChangeArray, ppropChange: ?*IPropertyChange) HRESULT {
         return self.vtable.Append(self, ppropChange);
     }
-    pub fn AppendOrReplace(self: *const IPropertyChangeArray, ppropChange: ?*IPropertyChange) callconv(.Inline) HRESULT {
+    pub inline fn AppendOrReplace(self: *const IPropertyChangeArray, ppropChange: ?*IPropertyChange) HRESULT {
         return self.vtable.AppendOrReplace(self, ppropChange);
     }
-    pub fn RemoveAt(self: *const IPropertyChangeArray, iIndex: u32) callconv(.Inline) HRESULT {
+    pub inline fn RemoveAt(self: *const IPropertyChangeArray, iIndex: u32) HRESULT {
         return self.vtable.RemoveAt(self, iIndex);
     }
-    pub fn IsKeyInArray(self: *const IPropertyChangeArray, key: ?*const PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn IsKeyInArray(self: *const IPropertyChangeArray, key: ?*const PROPERTYKEY) HRESULT {
         return self.vtable.IsKeyInArray(self, key);
     }
 };
@@ -364,14 +364,14 @@ pub const IID_IPropertyStoreCapabilities = &IID_IPropertyStoreCapabilities_Value
 pub const IPropertyStoreCapabilities = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        IsPropertyWritable: *const fn(
+        IsPropertyWritable: *const fn (
             self: *const IPropertyStoreCapabilities,
             key: ?*const PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn IsPropertyWritable(self: *const IPropertyStoreCapabilities, key: ?*const PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn IsPropertyWritable(self: *const IPropertyStoreCapabilities, key: ?*const PROPERTYKEY) HRESULT {
         return self.vtable.IsPropertyWritable(self, key);
     }
 };
@@ -393,42 +393,42 @@ pub const IID_IPropertyStoreCache = &IID_IPropertyStoreCache_Value;
 pub const IPropertyStoreCache = extern union {
     pub const VTable = extern struct {
         base: IPropertyStore.VTable,
-        GetState: *const fn(
+        GetState: *const fn (
             self: *const IPropertyStoreCache,
             key: ?*const PROPERTYKEY,
             pstate: ?*PSC_STATE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValueAndState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValueAndState: *const fn (
             self: *const IPropertyStoreCache,
             key: ?*const PROPERTYKEY,
             ppropvar: ?*PROPVARIANT,
             pstate: ?*PSC_STATE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetState: *const fn (
             self: *const IPropertyStoreCache,
             key: ?*const PROPERTYKEY,
             state: PSC_STATE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetValueAndState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetValueAndState: *const fn (
             self: *const IPropertyStoreCache,
             key: ?*const PROPERTYKEY,
             ppropvar: ?*const PROPVARIANT,
             state: PSC_STATE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPropertyStore: IPropertyStore,
     IUnknown: IUnknown,
-    pub fn GetState(self: *const IPropertyStoreCache, key: ?*const PROPERTYKEY, pstate: ?*PSC_STATE) callconv(.Inline) HRESULT {
+    pub inline fn GetState(self: *const IPropertyStoreCache, key: ?*const PROPERTYKEY, pstate: ?*PSC_STATE) HRESULT {
         return self.vtable.GetState(self, key, pstate);
     }
-    pub fn GetValueAndState(self: *const IPropertyStoreCache, key: ?*const PROPERTYKEY, ppropvar: ?*PROPVARIANT, pstate: ?*PSC_STATE) callconv(.Inline) HRESULT {
+    pub inline fn GetValueAndState(self: *const IPropertyStoreCache, key: ?*const PROPERTYKEY, ppropvar: ?*PROPVARIANT, pstate: ?*PSC_STATE) HRESULT {
         return self.vtable.GetValueAndState(self, key, ppropvar, pstate);
     }
-    pub fn SetState(self: *const IPropertyStoreCache, key: ?*const PROPERTYKEY, state: PSC_STATE) callconv(.Inline) HRESULT {
+    pub inline fn SetState(self: *const IPropertyStoreCache, key: ?*const PROPERTYKEY, state: PSC_STATE) HRESULT {
         return self.vtable.SetState(self, key, state);
     }
-    pub fn SetValueAndState(self: *const IPropertyStoreCache, key: ?*const PROPERTYKEY, ppropvar: ?*const PROPVARIANT, state: PSC_STATE) callconv(.Inline) HRESULT {
+    pub inline fn SetValueAndState(self: *const IPropertyStoreCache, key: ?*const PROPERTYKEY, ppropvar: ?*const PROPVARIANT, state: PSC_STATE) HRESULT {
         return self.vtable.SetValueAndState(self, key, ppropvar, state);
     }
 };
@@ -450,42 +450,42 @@ pub const IID_IPropertyEnumType = &IID_IPropertyEnumType_Value;
 pub const IPropertyEnumType = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetEnumType: *const fn(
+        GetEnumType: *const fn (
             self: *const IPropertyEnumType,
             penumtype: ?*PROPENUMTYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetValue: *const fn (
             self: *const IPropertyEnumType,
             ppropvar: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRangeMinValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRangeMinValue: *const fn (
             self: *const IPropertyEnumType,
             ppropvarMin: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRangeSetValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRangeSetValue: *const fn (
             self: *const IPropertyEnumType,
             ppropvarSet: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplayText: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplayText: *const fn (
             self: *const IPropertyEnumType,
             ppszDisplay: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetEnumType(self: *const IPropertyEnumType, penumtype: ?*PROPENUMTYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetEnumType(self: *const IPropertyEnumType, penumtype: ?*PROPENUMTYPE) HRESULT {
         return self.vtable.GetEnumType(self, penumtype);
     }
-    pub fn GetValue(self: *const IPropertyEnumType, ppropvar: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetValue(self: *const IPropertyEnumType, ppropvar: ?*PROPVARIANT) HRESULT {
         return self.vtable.GetValue(self, ppropvar);
     }
-    pub fn GetRangeMinValue(self: *const IPropertyEnumType, ppropvarMin: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetRangeMinValue(self: *const IPropertyEnumType, ppropvarMin: ?*PROPVARIANT) HRESULT {
         return self.vtable.GetRangeMinValue(self, ppropvarMin);
     }
-    pub fn GetRangeSetValue(self: *const IPropertyEnumType, ppropvarSet: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn GetRangeSetValue(self: *const IPropertyEnumType, ppropvarSet: ?*PROPVARIANT) HRESULT {
         return self.vtable.GetRangeSetValue(self, ppropvarSet);
     }
-    pub fn GetDisplayText(self: *const IPropertyEnumType, ppszDisplay: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplayText(self: *const IPropertyEnumType, ppszDisplay: ?*?PWSTR) HRESULT {
         return self.vtable.GetDisplayText(self, ppszDisplay);
     }
 };
@@ -496,15 +496,15 @@ pub const IID_IPropertyEnumType2 = &IID_IPropertyEnumType2_Value;
 pub const IPropertyEnumType2 = extern union {
     pub const VTable = extern struct {
         base: IPropertyEnumType.VTable,
-        GetImageReference: *const fn(
+        GetImageReference: *const fn (
             self: *const IPropertyEnumType2,
             ppszImageRes: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPropertyEnumType: IPropertyEnumType,
     IUnknown: IUnknown,
-    pub fn GetImageReference(self: *const IPropertyEnumType2, ppszImageRes: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetImageReference(self: *const IPropertyEnumType2, ppszImageRes: ?*?PWSTR) HRESULT {
         return self.vtable.GetImageReference(self, ppszImageRes);
     }
 };
@@ -515,40 +515,40 @@ pub const IID_IPropertyEnumTypeList = &IID_IPropertyEnumTypeList_Value;
 pub const IPropertyEnumTypeList = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IPropertyEnumTypeList,
             pctypes: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IPropertyEnumTypeList,
             itype: u32,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConditionAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConditionAt: *const fn (
             self: *const IPropertyEnumTypeList,
             nIndex: u32,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FindMatchingIndex: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FindMatchingIndex: *const fn (
             self: *const IPropertyEnumTypeList,
             propvarCmp: ?*const PROPVARIANT,
             pnIndex: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IPropertyEnumTypeList, pctypes: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IPropertyEnumTypeList, pctypes: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pctypes);
     }
-    pub fn GetAt(self: *const IPropertyEnumTypeList, itype: u32, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IPropertyEnumTypeList, itype: u32, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetAt(self, itype, riid, ppv);
     }
-    pub fn GetConditionAt(self: *const IPropertyEnumTypeList, nIndex: u32, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetConditionAt(self: *const IPropertyEnumTypeList, nIndex: u32, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetConditionAt(self, nIndex, riid, ppv);
     }
-    pub fn FindMatchingIndex(self: *const IPropertyEnumTypeList, propvarCmp: ?*const PROPVARIANT, pnIndex: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn FindMatchingIndex(self: *const IPropertyEnumTypeList, propvarCmp: ?*const PROPVARIANT, pnIndex: ?*u32) HRESULT {
         return self.vtable.FindMatchingIndex(self, propvarCmp, pnIndex);
     }
 };
@@ -587,7 +587,7 @@ pub const PROPDESC_TYPE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     ISSYSTEMPROPERTY: u1 = 0,
 };
-pub const PDTF_DEFAULT = PROPDESC_TYPE_FLAGS{ };
+pub const PDTF_DEFAULT = PROPDESC_TYPE_FLAGS{};
 pub const PDTF_MULTIPLEVALUES = PROPDESC_TYPE_FLAGS{ .MULTIPLEVALUES = 1 };
 pub const PDTF_ISINNATE = PROPDESC_TYPE_FLAGS{ .ISINNATE = 1 };
 pub const PDTF_ISGROUP = PROPDESC_TYPE_FLAGS{ .ISGROUP = 1 };
@@ -653,7 +653,7 @@ pub const PROPDESC_VIEW_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PDVF_DEFAULT = PROPDESC_VIEW_FLAGS{ };
+pub const PDVF_DEFAULT = PROPDESC_VIEW_FLAGS{};
 pub const PDVF_CENTERALIGN = PROPDESC_VIEW_FLAGS{ .CENTERALIGN = 1 };
 pub const PDVF_RIGHTALIGN = PROPDESC_VIEW_FLAGS{ .RIGHTALIGN = 1 };
 pub const PDVF_BEGINNEWGROUP = PROPDESC_VIEW_FLAGS{ .BEGINNEWGROUP = 1 };
@@ -745,7 +745,7 @@ pub const PROPDESC_FORMAT_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PDFF_DEFAULT = PROPDESC_FORMAT_FLAGS{ };
+pub const PDFF_DEFAULT = PROPDESC_FORMAT_FLAGS{};
 pub const PDFF_PREFIXNAME = PROPDESC_FORMAT_FLAGS{ .PREFIXNAME = 1 };
 pub const PDFF_FILENAME = PROPDESC_FORMAT_FLAGS{ .FILENAME = 1 };
 pub const PDFF_ALWAYSKB = PROPDESC_FORMAT_FLAGS{ .ALWAYSKB = 1 };
@@ -839,163 +839,163 @@ pub const IID_IPropertyDescription = &IID_IPropertyDescription_Value;
 pub const IPropertyDescription = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetPropertyKey: *const fn(
+        GetPropertyKey: *const fn (
             self: *const IPropertyDescription,
             pkey: ?*PROPERTYKEY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCanonicalName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCanonicalName: *const fn (
             self: *const IPropertyDescription,
             ppszName: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyType: *const fn (
             self: *const IPropertyDescription,
             pvartype: ?*u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplayName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplayName: *const fn (
             self: *const IPropertyDescription,
             ppszName: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEditInvitation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEditInvitation: *const fn (
             self: *const IPropertyDescription,
             ppszInvite: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTypeFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetTypeFlags: *const fn (
             self: *const IPropertyDescription,
             mask: PROPDESC_TYPE_FLAGS,
             ppdtFlags: ?*PROPDESC_TYPE_FLAGS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetViewFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetViewFlags: *const fn (
             self: *const IPropertyDescription,
             ppdvFlags: ?*PROPDESC_VIEW_FLAGS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDefaultColumnWidth: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDefaultColumnWidth: *const fn (
             self: *const IPropertyDescription,
             pcxChars: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplayType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplayType: *const fn (
             self: *const IPropertyDescription,
             pdisplaytype: ?*PROPDESC_DISPLAYTYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetColumnState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetColumnState: *const fn (
             self: *const IPropertyDescription,
             pcsFlags: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetGroupingRange: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetGroupingRange: *const fn (
             self: *const IPropertyDescription,
             pgr: ?*PROPDESC_GROUPING_RANGE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRelativeDescriptionType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRelativeDescriptionType: *const fn (
             self: *const IPropertyDescription,
             prdt: ?*PROPDESC_RELATIVEDESCRIPTION_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRelativeDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetRelativeDescription: *const fn (
             self: *const IPropertyDescription,
             propvar1: ?*const PROPVARIANT,
             propvar2: ?*const PROPVARIANT,
             ppszDesc1: ?*?PWSTR,
             ppszDesc2: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSortDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSortDescription: *const fn (
             self: *const IPropertyDescription,
             psd: ?*PROPDESC_SORTDESCRIPTION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetSortDescriptionLabel: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetSortDescriptionLabel: *const fn (
             self: *const IPropertyDescription,
             fDescending: BOOL,
             ppszDescription: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAggregationType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAggregationType: *const fn (
             self: *const IPropertyDescription,
             paggtype: ?*PROPDESC_AGGREGATION_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetConditionType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetConditionType: *const fn (
             self: *const IPropertyDescription,
             pcontype: ?*PROPDESC_CONDITION_TYPE,
             popDefault: ?*CONDITION_OPERATION,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEnumTypeList: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEnumTypeList: *const fn (
             self: *const IPropertyDescription,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CoerceToCanonicalValue: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CoerceToCanonicalValue: *const fn (
             self: *const IPropertyDescription,
             ppropvar: ?*PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FormatForDisplay: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FormatForDisplay: *const fn (
             self: *const IPropertyDescription,
             propvar: ?*const PROPVARIANT,
             pdfFlags: PROPDESC_FORMAT_FLAGS,
             ppszDisplay: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsValueCanonical: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsValueCanonical: *const fn (
             self: *const IPropertyDescription,
             propvar: ?*const PROPVARIANT,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetPropertyKey(self: *const IPropertyDescription, pkey: ?*PROPERTYKEY) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyKey(self: *const IPropertyDescription, pkey: ?*PROPERTYKEY) HRESULT {
         return self.vtable.GetPropertyKey(self, pkey);
     }
-    pub fn GetCanonicalName(self: *const IPropertyDescription, ppszName: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetCanonicalName(self: *const IPropertyDescription, ppszName: ?*?PWSTR) HRESULT {
         return self.vtable.GetCanonicalName(self, ppszName);
     }
-    pub fn GetPropertyType(self: *const IPropertyDescription, pvartype: ?*u16) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyType(self: *const IPropertyDescription, pvartype: ?*u16) HRESULT {
         return self.vtable.GetPropertyType(self, pvartype);
     }
-    pub fn GetDisplayName(self: *const IPropertyDescription, ppszName: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplayName(self: *const IPropertyDescription, ppszName: ?*?PWSTR) HRESULT {
         return self.vtable.GetDisplayName(self, ppszName);
     }
-    pub fn GetEditInvitation(self: *const IPropertyDescription, ppszInvite: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetEditInvitation(self: *const IPropertyDescription, ppszInvite: ?*?PWSTR) HRESULT {
         return self.vtable.GetEditInvitation(self, ppszInvite);
     }
-    pub fn GetTypeFlags(self: *const IPropertyDescription, mask: PROPDESC_TYPE_FLAGS, ppdtFlags: ?*PROPDESC_TYPE_FLAGS) callconv(.Inline) HRESULT {
+    pub inline fn GetTypeFlags(self: *const IPropertyDescription, mask: PROPDESC_TYPE_FLAGS, ppdtFlags: ?*PROPDESC_TYPE_FLAGS) HRESULT {
         return self.vtable.GetTypeFlags(self, mask, ppdtFlags);
     }
-    pub fn GetViewFlags(self: *const IPropertyDescription, ppdvFlags: ?*PROPDESC_VIEW_FLAGS) callconv(.Inline) HRESULT {
+    pub inline fn GetViewFlags(self: *const IPropertyDescription, ppdvFlags: ?*PROPDESC_VIEW_FLAGS) HRESULT {
         return self.vtable.GetViewFlags(self, ppdvFlags);
     }
-    pub fn GetDefaultColumnWidth(self: *const IPropertyDescription, pcxChars: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDefaultColumnWidth(self: *const IPropertyDescription, pcxChars: ?*u32) HRESULT {
         return self.vtable.GetDefaultColumnWidth(self, pcxChars);
     }
-    pub fn GetDisplayType(self: *const IPropertyDescription, pdisplaytype: ?*PROPDESC_DISPLAYTYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplayType(self: *const IPropertyDescription, pdisplaytype: ?*PROPDESC_DISPLAYTYPE) HRESULT {
         return self.vtable.GetDisplayType(self, pdisplaytype);
     }
-    pub fn GetColumnState(self: *const IPropertyDescription, pcsFlags: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetColumnState(self: *const IPropertyDescription, pcsFlags: ?*u32) HRESULT {
         return self.vtable.GetColumnState(self, pcsFlags);
     }
-    pub fn GetGroupingRange(self: *const IPropertyDescription, pgr: ?*PROPDESC_GROUPING_RANGE) callconv(.Inline) HRESULT {
+    pub inline fn GetGroupingRange(self: *const IPropertyDescription, pgr: ?*PROPDESC_GROUPING_RANGE) HRESULT {
         return self.vtable.GetGroupingRange(self, pgr);
     }
-    pub fn GetRelativeDescriptionType(self: *const IPropertyDescription, prdt: ?*PROPDESC_RELATIVEDESCRIPTION_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetRelativeDescriptionType(self: *const IPropertyDescription, prdt: ?*PROPDESC_RELATIVEDESCRIPTION_TYPE) HRESULT {
         return self.vtable.GetRelativeDescriptionType(self, prdt);
     }
-    pub fn GetRelativeDescription(self: *const IPropertyDescription, propvar1: ?*const PROPVARIANT, propvar2: ?*const PROPVARIANT, ppszDesc1: ?*?PWSTR, ppszDesc2: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetRelativeDescription(self: *const IPropertyDescription, propvar1: ?*const PROPVARIANT, propvar2: ?*const PROPVARIANT, ppszDesc1: ?*?PWSTR, ppszDesc2: ?*?PWSTR) HRESULT {
         return self.vtable.GetRelativeDescription(self, propvar1, propvar2, ppszDesc1, ppszDesc2);
     }
-    pub fn GetSortDescription(self: *const IPropertyDescription, psd: ?*PROPDESC_SORTDESCRIPTION) callconv(.Inline) HRESULT {
+    pub inline fn GetSortDescription(self: *const IPropertyDescription, psd: ?*PROPDESC_SORTDESCRIPTION) HRESULT {
         return self.vtable.GetSortDescription(self, psd);
     }
-    pub fn GetSortDescriptionLabel(self: *const IPropertyDescription, fDescending: BOOL, ppszDescription: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetSortDescriptionLabel(self: *const IPropertyDescription, fDescending: BOOL, ppszDescription: ?*?PWSTR) HRESULT {
         return self.vtable.GetSortDescriptionLabel(self, fDescending, ppszDescription);
     }
-    pub fn GetAggregationType(self: *const IPropertyDescription, paggtype: ?*PROPDESC_AGGREGATION_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetAggregationType(self: *const IPropertyDescription, paggtype: ?*PROPDESC_AGGREGATION_TYPE) HRESULT {
         return self.vtable.GetAggregationType(self, paggtype);
     }
-    pub fn GetConditionType(self: *const IPropertyDescription, pcontype: ?*PROPDESC_CONDITION_TYPE, popDefault: ?*CONDITION_OPERATION) callconv(.Inline) HRESULT {
+    pub inline fn GetConditionType(self: *const IPropertyDescription, pcontype: ?*PROPDESC_CONDITION_TYPE, popDefault: ?*CONDITION_OPERATION) HRESULT {
         return self.vtable.GetConditionType(self, pcontype, popDefault);
     }
-    pub fn GetEnumTypeList(self: *const IPropertyDescription, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetEnumTypeList(self: *const IPropertyDescription, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetEnumTypeList(self, riid, ppv);
     }
-    pub fn CoerceToCanonicalValue(self: *const IPropertyDescription, ppropvar: ?*PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn CoerceToCanonicalValue(self: *const IPropertyDescription, ppropvar: ?*PROPVARIANT) HRESULT {
         return self.vtable.CoerceToCanonicalValue(self, ppropvar);
     }
-    pub fn FormatForDisplay(self: *const IPropertyDescription, propvar: ?*const PROPVARIANT, pdfFlags: PROPDESC_FORMAT_FLAGS, ppszDisplay: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn FormatForDisplay(self: *const IPropertyDescription, propvar: ?*const PROPVARIANT, pdfFlags: PROPDESC_FORMAT_FLAGS, ppszDisplay: ?*?PWSTR) HRESULT {
         return self.vtable.FormatForDisplay(self, propvar, pdfFlags, ppszDisplay);
     }
-    pub fn IsValueCanonical(self: *const IPropertyDescription, propvar: ?*const PROPVARIANT) callconv(.Inline) HRESULT {
+    pub inline fn IsValueCanonical(self: *const IPropertyDescription, propvar: ?*const PROPVARIANT) HRESULT {
         return self.vtable.IsValueCanonical(self, propvar);
     }
 };
@@ -1006,16 +1006,16 @@ pub const IID_IPropertyDescription2 = &IID_IPropertyDescription2_Value;
 pub const IPropertyDescription2 = extern union {
     pub const VTable = extern struct {
         base: IPropertyDescription.VTable,
-        GetImageReferenceForValue: *const fn(
+        GetImageReferenceForValue: *const fn (
             self: *const IPropertyDescription2,
             propvar: ?*const PROPVARIANT,
             ppszImageRes: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPropertyDescription: IPropertyDescription,
     IUnknown: IUnknown,
-    pub fn GetImageReferenceForValue(self: *const IPropertyDescription2, propvar: ?*const PROPVARIANT, ppszImageRes: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetImageReferenceForValue(self: *const IPropertyDescription2, propvar: ?*const PROPVARIANT, ppszImageRes: ?*?PWSTR) HRESULT {
         return self.vtable.GetImageReferenceForValue(self, propvar, ppszImageRes);
     }
 };
@@ -1026,24 +1026,24 @@ pub const IID_IPropertyDescriptionAliasInfo = &IID_IPropertyDescriptionAliasInfo
 pub const IPropertyDescriptionAliasInfo = extern union {
     pub const VTable = extern struct {
         base: IPropertyDescription.VTable,
-        GetSortByAlias: *const fn(
+        GetSortByAlias: *const fn (
             self: *const IPropertyDescriptionAliasInfo,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAdditionalSortByAliases: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAdditionalSortByAliases: *const fn (
             self: *const IPropertyDescriptionAliasInfo,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPropertyDescription: IPropertyDescription,
     IUnknown: IUnknown,
-    pub fn GetSortByAlias(self: *const IPropertyDescriptionAliasInfo, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetSortByAlias(self: *const IPropertyDescriptionAliasInfo, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetSortByAlias(self, riid, ppv);
     }
-    pub fn GetAdditionalSortByAliases(self: *const IPropertyDescriptionAliasInfo, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetAdditionalSortByAliases(self: *const IPropertyDescriptionAliasInfo, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetAdditionalSortByAliases(self, riid, ppv);
     }
 };
@@ -1082,7 +1082,7 @@ pub const PROPDESC_SEARCHINFO_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PDSIF_DEFAULT = PROPDESC_SEARCHINFO_FLAGS{ };
+pub const PDSIF_DEFAULT = PROPDESC_SEARCHINFO_FLAGS{};
 pub const PDSIF_ININVERTEDINDEX = PROPDESC_SEARCHINFO_FLAGS{ .ININVERTEDINDEX = 1 };
 pub const PDSIF_ISCOLUMN = PROPDESC_SEARCHINFO_FLAGS{ .ISCOLUMN = 1 };
 pub const PDSIF_ISCOLUMNSPARSE = PROPDESC_SEARCHINFO_FLAGS{ .ISCOLUMNSPARSE = 1 };
@@ -1110,36 +1110,36 @@ pub const IID_IPropertyDescriptionSearchInfo = &IID_IPropertyDescriptionSearchIn
 pub const IPropertyDescriptionSearchInfo = extern union {
     pub const VTable = extern struct {
         base: IPropertyDescription.VTable,
-        GetSearchInfoFlags: *const fn(
+        GetSearchInfoFlags: *const fn (
             self: *const IPropertyDescriptionSearchInfo,
             ppdsiFlags: ?*PROPDESC_SEARCHINFO_FLAGS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetColumnIndexType: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetColumnIndexType: *const fn (
             self: *const IPropertyDescriptionSearchInfo,
             ppdciType: ?*PROPDESC_COLUMNINDEX_TYPE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetProjectionString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetProjectionString: *const fn (
             self: *const IPropertyDescriptionSearchInfo,
             ppszProjection: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetMaxSize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetMaxSize: *const fn (
             self: *const IPropertyDescriptionSearchInfo,
             pcbMaxSize: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPropertyDescription: IPropertyDescription,
     IUnknown: IUnknown,
-    pub fn GetSearchInfoFlags(self: *const IPropertyDescriptionSearchInfo, ppdsiFlags: ?*PROPDESC_SEARCHINFO_FLAGS) callconv(.Inline) HRESULT {
+    pub inline fn GetSearchInfoFlags(self: *const IPropertyDescriptionSearchInfo, ppdsiFlags: ?*PROPDESC_SEARCHINFO_FLAGS) HRESULT {
         return self.vtable.GetSearchInfoFlags(self, ppdsiFlags);
     }
-    pub fn GetColumnIndexType(self: *const IPropertyDescriptionSearchInfo, ppdciType: ?*PROPDESC_COLUMNINDEX_TYPE) callconv(.Inline) HRESULT {
+    pub inline fn GetColumnIndexType(self: *const IPropertyDescriptionSearchInfo, ppdciType: ?*PROPDESC_COLUMNINDEX_TYPE) HRESULT {
         return self.vtable.GetColumnIndexType(self, ppdciType);
     }
-    pub fn GetProjectionString(self: *const IPropertyDescriptionSearchInfo, ppszProjection: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn GetProjectionString(self: *const IPropertyDescriptionSearchInfo, ppszProjection: ?*?PWSTR) HRESULT {
         return self.vtable.GetProjectionString(self, ppszProjection);
     }
-    pub fn GetMaxSize(self: *const IPropertyDescriptionSearchInfo, pcbMaxSize: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetMaxSize(self: *const IPropertyDescriptionSearchInfo, pcbMaxSize: ?*u32) HRESULT {
         return self.vtable.GetMaxSize(self, pcbMaxSize);
     }
 };
@@ -1150,17 +1150,17 @@ pub const IID_IPropertyDescriptionRelatedPropertyInfo = &IID_IPropertyDescriptio
 pub const IPropertyDescriptionRelatedPropertyInfo = extern union {
     pub const VTable = extern struct {
         base: IPropertyDescription.VTable,
-        GetRelatedProperty: *const fn(
+        GetRelatedProperty: *const fn (
             self: *const IPropertyDescriptionRelatedPropertyInfo,
             pszRelationshipName: ?[*:0]const u16,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPropertyDescription: IPropertyDescription,
     IUnknown: IUnknown,
-    pub fn GetRelatedProperty(self: *const IPropertyDescriptionRelatedPropertyInfo, pszRelationshipName: ?[*:0]const u16, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetRelatedProperty(self: *const IPropertyDescriptionRelatedPropertyInfo, pszRelationshipName: ?[*:0]const u16, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetRelatedProperty(self, pszRelationshipName, riid, ppv);
     }
 };
@@ -1188,84 +1188,84 @@ pub const IID_IPropertySystem = &IID_IPropertySystem_Value;
 pub const IPropertySystem = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetPropertyDescription: *const fn(
+        GetPropertyDescription: *const fn (
             self: *const IPropertySystem,
             propkey: ?*const PROPERTYKEY,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyDescriptionByName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyDescriptionByName: *const fn (
             self: *const IPropertySystem,
             pszCanonicalName: ?[*:0]const u16,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyDescriptionListFromString: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyDescriptionListFromString: *const fn (
             self: *const IPropertySystem,
             pszPropList: ?[*:0]const u16,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnumeratePropertyDescriptions: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnumeratePropertyDescriptions: *const fn (
             self: *const IPropertySystem,
             filterOn: PROPDESC_ENUMFILTER,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FormatForDisplay: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FormatForDisplay: *const fn (
             self: *const IPropertySystem,
             key: ?*const PROPERTYKEY,
             propvar: ?*const PROPVARIANT,
             pdff: PROPDESC_FORMAT_FLAGS,
             pszText: [*:0]u16,
             cchText: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FormatForDisplayAlloc: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FormatForDisplayAlloc: *const fn (
             self: *const IPropertySystem,
             key: ?*const PROPERTYKEY,
             propvar: ?*const PROPVARIANT,
             pdff: PROPDESC_FORMAT_FLAGS,
             ppszDisplay: ?*?PWSTR,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RegisterPropertySchema: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RegisterPropertySchema: *const fn (
             self: *const IPropertySystem,
             pszPath: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnregisterPropertySchema: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnregisterPropertySchema: *const fn (
             self: *const IPropertySystem,
             pszPath: ?[*:0]const u16,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        RefreshPropertySchema: *const fn(
+        ) callconv(.winapi) HRESULT,
+        RefreshPropertySchema: *const fn (
             self: *const IPropertySystem,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetPropertyDescription(self: *const IPropertySystem, propkey: ?*const PROPERTYKEY, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyDescription(self: *const IPropertySystem, propkey: ?*const PROPERTYKEY, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetPropertyDescription(self, propkey, riid, ppv);
     }
-    pub fn GetPropertyDescriptionByName(self: *const IPropertySystem, pszCanonicalName: ?[*:0]const u16, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyDescriptionByName(self: *const IPropertySystem, pszCanonicalName: ?[*:0]const u16, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetPropertyDescriptionByName(self, pszCanonicalName, riid, ppv);
     }
-    pub fn GetPropertyDescriptionListFromString(self: *const IPropertySystem, pszPropList: ?[*:0]const u16, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyDescriptionListFromString(self: *const IPropertySystem, pszPropList: ?[*:0]const u16, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetPropertyDescriptionListFromString(self, pszPropList, riid, ppv);
     }
-    pub fn EnumeratePropertyDescriptions(self: *const IPropertySystem, filterOn: PROPDESC_ENUMFILTER, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn EnumeratePropertyDescriptions(self: *const IPropertySystem, filterOn: PROPDESC_ENUMFILTER, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.EnumeratePropertyDescriptions(self, filterOn, riid, ppv);
     }
-    pub fn FormatForDisplay(self: *const IPropertySystem, key: ?*const PROPERTYKEY, propvar: ?*const PROPVARIANT, pdff: PROPDESC_FORMAT_FLAGS, pszText: [*:0]u16, cchText: u32) callconv(.Inline) HRESULT {
+    pub inline fn FormatForDisplay(self: *const IPropertySystem, key: ?*const PROPERTYKEY, propvar: ?*const PROPVARIANT, pdff: PROPDESC_FORMAT_FLAGS, pszText: [*:0]u16, cchText: u32) HRESULT {
         return self.vtable.FormatForDisplay(self, key, propvar, pdff, pszText, cchText);
     }
-    pub fn FormatForDisplayAlloc(self: *const IPropertySystem, key: ?*const PROPERTYKEY, propvar: ?*const PROPVARIANT, pdff: PROPDESC_FORMAT_FLAGS, ppszDisplay: ?*?PWSTR) callconv(.Inline) HRESULT {
+    pub inline fn FormatForDisplayAlloc(self: *const IPropertySystem, key: ?*const PROPERTYKEY, propvar: ?*const PROPVARIANT, pdff: PROPDESC_FORMAT_FLAGS, ppszDisplay: ?*?PWSTR) HRESULT {
         return self.vtable.FormatForDisplayAlloc(self, key, propvar, pdff, ppszDisplay);
     }
-    pub fn RegisterPropertySchema(self: *const IPropertySystem, pszPath: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn RegisterPropertySchema(self: *const IPropertySystem, pszPath: ?[*:0]const u16) HRESULT {
         return self.vtable.RegisterPropertySchema(self, pszPath);
     }
-    pub fn UnregisterPropertySchema(self: *const IPropertySystem, pszPath: ?[*:0]const u16) callconv(.Inline) HRESULT {
+    pub inline fn UnregisterPropertySchema(self: *const IPropertySystem, pszPath: ?[*:0]const u16) HRESULT {
         return self.vtable.UnregisterPropertySchema(self, pszPath);
     }
-    pub fn RefreshPropertySchema(self: *const IPropertySystem) callconv(.Inline) HRESULT {
+    pub inline fn RefreshPropertySchema(self: *const IPropertySystem) HRESULT {
         return self.vtable.RefreshPropertySchema(self);
     }
 };
@@ -1276,23 +1276,23 @@ pub const IID_IPropertyDescriptionList = &IID_IPropertyDescriptionList_Value;
 pub const IPropertyDescriptionList = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetCount: *const fn(
+        GetCount: *const fn (
             self: *const IPropertyDescriptionList,
             pcElem: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetAt: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetAt: *const fn (
             self: *const IPropertyDescriptionList,
             iElem: u32,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetCount(self: *const IPropertyDescriptionList, pcElem: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCount(self: *const IPropertyDescriptionList, pcElem: ?*u32) HRESULT {
         return self.vtable.GetCount(self, pcElem);
     }
-    pub fn GetAt(self: *const IPropertyDescriptionList, iElem: u32, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetAt(self: *const IPropertyDescriptionList, iElem: u32, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetAt(self, iElem, riid, ppv);
     }
 };
@@ -1303,28 +1303,28 @@ pub const IID_IPropertyStoreFactory = &IID_IPropertyStoreFactory_Value;
 pub const IPropertyStoreFactory = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetPropertyStore: *const fn(
+        GetPropertyStore: *const fn (
             self: *const IPropertyStoreFactory,
             flags: GETPROPERTYSTOREFLAGS,
             pUnkFactory: ?*IUnknown,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyStoreForKeys: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyStoreForKeys: *const fn (
             self: *const IPropertyStoreFactory,
             rgKeys: ?*const PROPERTYKEY,
             cKeys: u32,
             flags: GETPROPERTYSTOREFLAGS,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetPropertyStore(self: *const IPropertyStoreFactory, flags: GETPROPERTYSTOREFLAGS, pUnkFactory: ?*IUnknown, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyStore(self: *const IPropertyStoreFactory, flags: GETPROPERTYSTOREFLAGS, pUnkFactory: ?*IUnknown, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetPropertyStore(self, flags, pUnkFactory, riid, ppv);
     }
-    pub fn GetPropertyStoreForKeys(self: *const IPropertyStoreFactory, rgKeys: ?*const PROPERTYKEY, cKeys: u32, flags: GETPROPERTYSTOREFLAGS, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyStoreForKeys(self: *const IPropertyStoreFactory, rgKeys: ?*const PROPERTYKEY, cKeys: u32, flags: GETPROPERTYSTOREFLAGS, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetPropertyStoreForKeys(self, rgKeys, cKeys, flags, riid, ppv);
     }
 };
@@ -1335,18 +1335,18 @@ pub const IID_IDelayedPropertyStoreFactory = &IID_IDelayedPropertyStoreFactory_V
 pub const IDelayedPropertyStoreFactory = extern union {
     pub const VTable = extern struct {
         base: IPropertyStoreFactory.VTable,
-        GetDelayedPropertyStore: *const fn(
+        GetDelayedPropertyStore: *const fn (
             self: *const IDelayedPropertyStoreFactory,
             flags: GETPROPERTYSTOREFLAGS,
             dwStoreId: u32,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPropertyStoreFactory: IPropertyStoreFactory,
     IUnknown: IUnknown,
-    pub fn GetDelayedPropertyStore(self: *const IDelayedPropertyStoreFactory, flags: GETPROPERTYSTOREFLAGS, dwStoreId: u32, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetDelayedPropertyStore(self: *const IDelayedPropertyStoreFactory, flags: GETPROPERTYSTOREFLAGS, dwStoreId: u32, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.GetDelayedPropertyStore(self, flags, dwStoreId, riid, ppv);
     }
 };
@@ -1370,31 +1370,31 @@ pub const IID_IPersistSerializedPropStorage = &IID_IPersistSerializedPropStorage
 pub const IPersistSerializedPropStorage = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetFlags: *const fn(
+        SetFlags: *const fn (
             self: *const IPersistSerializedPropStorage,
             flags: i32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetPropertyStorage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetPropertyStorage: *const fn (
             self: *const IPersistSerializedPropStorage,
             // TODO: what to do with BytesParamIndex 1?
             psps: ?*SERIALIZEDPROPSTORAGE,
             cb: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyStorage: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyStorage: *const fn (
             self: *const IPersistSerializedPropStorage,
             ppsps: ?*?*SERIALIZEDPROPSTORAGE,
             pcb: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetFlags(self: *const IPersistSerializedPropStorage, flags: i32) callconv(.Inline) HRESULT {
+    pub inline fn SetFlags(self: *const IPersistSerializedPropStorage, flags: i32) HRESULT {
         return self.vtable.SetFlags(self, flags);
     }
-    pub fn SetPropertyStorage(self: *const IPersistSerializedPropStorage, psps: ?*SERIALIZEDPROPSTORAGE, cb: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetPropertyStorage(self: *const IPersistSerializedPropStorage, psps: ?*SERIALIZEDPROPSTORAGE, cb: u32) HRESULT {
         return self.vtable.SetPropertyStorage(self, psps, cb);
     }
-    pub fn GetPropertyStorage(self: *const IPersistSerializedPropStorage, ppsps: ?*?*SERIALIZEDPROPSTORAGE, pcb: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyStorage(self: *const IPersistSerializedPropStorage, ppsps: ?*?*SERIALIZEDPROPSTORAGE, pcb: ?*u32) HRESULT {
         return self.vtable.GetPropertyStorage(self, ppsps, pcb);
     }
 };
@@ -1405,25 +1405,25 @@ pub const IID_IPersistSerializedPropStorage2 = &IID_IPersistSerializedPropStorag
 pub const IPersistSerializedPropStorage2 = extern union {
     pub const VTable = extern struct {
         base: IPersistSerializedPropStorage.VTable,
-        GetPropertyStorageSize: *const fn(
+        GetPropertyStorageSize: *const fn (
             self: *const IPersistSerializedPropStorage2,
             pcb: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyStorageBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyStorageBuffer: *const fn (
             self: *const IPersistSerializedPropStorage2,
             // TODO: what to do with BytesParamIndex 1?
             psps: ?*SERIALIZEDPROPSTORAGE,
             cb: u32,
             pcbWritten: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IPersistSerializedPropStorage: IPersistSerializedPropStorage,
     IUnknown: IUnknown,
-    pub fn GetPropertyStorageSize(self: *const IPersistSerializedPropStorage2, pcb: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyStorageSize(self: *const IPersistSerializedPropStorage2, pcb: ?*u32) HRESULT {
         return self.vtable.GetPropertyStorageSize(self, pcb);
     }
-    pub fn GetPropertyStorageBuffer(self: *const IPersistSerializedPropStorage2, psps: ?*SERIALIZEDPROPSTORAGE, cb: u32, pcbWritten: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyStorageBuffer(self: *const IPersistSerializedPropStorage2, psps: ?*SERIALIZEDPROPSTORAGE, cb: u32, pcbWritten: ?*u32) HRESULT {
         return self.vtable.GetPropertyStorageBuffer(self, psps, cb, pcbWritten);
     }
 };
@@ -1433,13 +1433,13 @@ pub const IID_IPropertySystemChangeNotify = &IID_IPropertySystemChangeNotify_Val
 pub const IPropertySystemChangeNotify = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SchemaRefreshed: *const fn(
+        SchemaRefreshed: *const fn (
             self: *const IPropertySystemChangeNotify,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SchemaRefreshed(self: *const IPropertySystemChangeNotify) callconv(.Inline) HRESULT {
+    pub inline fn SchemaRefreshed(self: *const IPropertySystemChangeNotify) HRESULT {
         return self.vtable.SchemaRefreshed(self);
     }
 };
@@ -1450,17 +1450,17 @@ pub const IID_ICreateObject = &IID_ICreateObject_Value;
 pub const ICreateObject = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        CreateObject: *const fn(
+        CreateObject: *const fn (
             self: *const ICreateObject,
             clsid: ?*const Guid,
             pUnkOuter: ?*IUnknown,
             riid: ?*const Guid,
             ppv: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn CreateObject(self: *const ICreateObject, clsid: ?*const Guid, pUnkOuter: ?*IUnknown, riid: ?*const Guid, ppv: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn CreateObject(self: *const ICreateObject, clsid: ?*const Guid, pUnkOuter: ?*IUnknown, riid: ?*const Guid, ppv: **anyopaque) HRESULT {
         return self.vtable.CreateObject(self, clsid, pUnkOuter, riid, ppv);
     }
 };
@@ -1499,7 +1499,7 @@ pub const PSTIME_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PSTF_UTC = PSTIME_FLAGS{ };
+pub const PSTF_UTC = PSTIME_FLAGS{};
 pub const PSTF_LOCAL = PSTIME_FLAGS{ .LOCAL = 1 };
 
 pub const PROPVAR_COMPARE_UNIT = enum(i32) {
@@ -1553,7 +1553,7 @@ pub const PROPVAR_COMPARE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PVCF_DEFAULT = PROPVAR_COMPARE_FLAGS{ };
+pub const PVCF_DEFAULT = PROPVAR_COMPARE_FLAGS{};
 pub const PVCF_TREATEMPTYASGREATERTHAN = PROPVAR_COMPARE_FLAGS{ .TREATEMPTYASGREATERTHAN = 1 };
 pub const PVCF_USESTRCMP = PROPVAR_COMPARE_FLAGS{ .USESTRCMP = 1 };
 pub const PVCF_USESTRCMPC = PROPVAR_COMPARE_FLAGS{ .USESTRCMPC = 1 };
@@ -1595,7 +1595,7 @@ pub const PROPVAR_CHANGE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PVCHF_DEFAULT = PROPVAR_CHANGE_FLAGS{ };
+pub const PVCHF_DEFAULT = PROPVAR_CHANGE_FLAGS{};
 pub const PVCHF_NOVALUEPROP = PROPVAR_CHANGE_FLAGS{ .NOVALUEPROP = 1 };
 pub const PVCHF_ALPHABOOL = PROPVAR_CHANGE_FLAGS{ .ALPHABOOL = 1 };
 pub const PVCHF_NOUSEROVERRIDE = PROPVAR_CHANGE_FLAGS{ .NOUSEROVERRIDE = 1 };
@@ -1636,7 +1636,7 @@ pub const DRAWPROGRESSFLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const DPF_NONE = DRAWPROGRESSFLAGS{ };
+pub const DPF_NONE = DRAWPROGRESSFLAGS{};
 pub const DPF_MARQUEE = DRAWPROGRESSFLAGS{ .MARQUEE = 1 };
 pub const DPF_MARQUEE_COMPLETE = DRAWPROGRESSFLAGS{ .MARQUEE_COMPLETE = 1 };
 pub const DPF_ERROR = DRAWPROGRESSFLAGS{ .ERROR = 1 };
@@ -1677,7 +1677,7 @@ pub const SYNC_TRANSFER_STATUS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const STS_NONE = SYNC_TRANSFER_STATUS{ };
+pub const STS_NONE = SYNC_TRANSFER_STATUS{};
 pub const STS_NEEDSUPLOAD = SYNC_TRANSFER_STATUS{ .NEEDSUPLOAD = 1 };
 pub const STS_NEEDSDOWNLOAD = SYNC_TRANSFER_STATUS{ .NEEDSDOWNLOAD = 1 };
 pub const STS_TRANSFERRING = SYNC_TRANSFER_STATUS{ .TRANSFERRING = 1 };
@@ -1724,7 +1724,7 @@ pub const PLACEHOLDER_STATES = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PS_NONE = PLACEHOLDER_STATES{ };
+pub const PS_NONE = PLACEHOLDER_STATES{};
 pub const PS_MARKED_FOR_OFFLINE_AVAILABILITY = PLACEHOLDER_STATES{ .MARKED_FOR_OFFLINE_AVAILABILITY = 1 };
 pub const PS_FULL_PRIMARY_STREAM_AVAILABLE = PLACEHOLDER_STATES{ .FULL_PRIMARY_STREAM_AVAILABLE = 1 };
 pub const PS_CREATE_FILE_ACCESSIBLE = PLACEHOLDER_STATES{ .CREATE_FILE_ACCESSIBLE = 1 };
@@ -1775,7 +1775,7 @@ pub const PROPERTYUI_NAME_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PUIFNF_DEFAULT = PROPERTYUI_NAME_FLAGS{ };
+pub const PUIFNF_DEFAULT = PROPERTYUI_NAME_FLAGS{};
 pub const PUIFNF_MNEMONIC = PROPERTYUI_NAME_FLAGS{ .MNEMONIC = 1 };
 
 pub const PROPERTYUI_FLAGS = packed struct(u32) {
@@ -1812,7 +1812,7 @@ pub const PROPERTYUI_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PUIF_DEFAULT = PROPERTYUI_FLAGS{ };
+pub const PUIF_DEFAULT = PROPERTYUI_FLAGS{};
 pub const PUIF_RIGHTALIGN = PROPERTYUI_FLAGS{ .RIGHTALIGN = 1 };
 pub const PUIF_NOLABELININFOTIP = PROPERTYUI_FLAGS{ .NOLABELININFOTIP = 1 };
 
@@ -1850,7 +1850,7 @@ pub const PROPERTYUI_FORMAT_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const PUIFFDF_DEFAULT = PROPERTYUI_FORMAT_FLAGS{ };
+pub const PUIFFDF_DEFAULT = PROPERTYUI_FORMAT_FLAGS{};
 pub const PUIFFDF_RIGHTTOLEFT = PROPERTYUI_FORMAT_FLAGS{ .RIGHTTOLEFT = 1 };
 pub const PUIFFDF_SHORTFORMAT = PROPERTYUI_FORMAT_FLAGS{ .SHORTFORMAT = 1 };
 pub const PUIFFDF_NOTIME = PROPERTYUI_FORMAT_FLAGS{ .NOTIME = 1 };
@@ -1862,48 +1862,48 @@ pub const IID_IPropertyUI = &IID_IPropertyUI_Value;
 pub const IPropertyUI = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        ParsePropertyName: *const fn(
+        ParsePropertyName: *const fn (
             self: *const IPropertyUI,
             pszName: ?[*:0]const u16,
             pfmtid: ?*Guid,
             ppid: ?*u32,
             pchEaten: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetCannonicalName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetCannonicalName: *const fn (
             self: *const IPropertyUI,
             fmtid: ?*const Guid,
             pid: u32,
             pwszText: [*:0]u16,
             cchText: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDisplayName: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDisplayName: *const fn (
             self: *const IPropertyUI,
             fmtid: ?*const Guid,
             pid: u32,
             flags: PROPERTYUI_NAME_FLAGS,
             pwszText: [*:0]u16,
             cchText: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPropertyDescription: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPropertyDescription: *const fn (
             self: *const IPropertyUI,
             fmtid: ?*const Guid,
             pid: u32,
             pwszText: [*:0]u16,
             cchText: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetDefaultWidth: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetDefaultWidth: *const fn (
             self: *const IPropertyUI,
             fmtid: ?*const Guid,
             pid: u32,
             pcxChars: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFlags: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFlags: *const fn (
             self: *const IPropertyUI,
             fmtid: ?*const Guid,
             pid: u32,
             pflags: ?*PROPERTYUI_FLAGS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FormatForDisplay: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FormatForDisplay: *const fn (
             self: *const IPropertyUI,
             fmtid: ?*const Guid,
             pid: u32,
@@ -1911,40 +1911,40 @@ pub const IPropertyUI = extern union {
             puiff: PROPERTYUI_FORMAT_FLAGS,
             pwszText: [*:0]u16,
             cchText: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetHelpInfo: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetHelpInfo: *const fn (
             self: *const IPropertyUI,
             fmtid: ?*const Guid,
             pid: u32,
             pwszHelpFile: [*:0]u16,
             cch: u32,
             puHelpID: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn ParsePropertyName(self: *const IPropertyUI, pszName: ?[*:0]const u16, pfmtid: ?*Guid, ppid: ?*u32, pchEaten: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn ParsePropertyName(self: *const IPropertyUI, pszName: ?[*:0]const u16, pfmtid: ?*Guid, ppid: ?*u32, pchEaten: ?*u32) HRESULT {
         return self.vtable.ParsePropertyName(self, pszName, pfmtid, ppid, pchEaten);
     }
-    pub fn GetCannonicalName(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pwszText: [*:0]u16, cchText: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetCannonicalName(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pwszText: [*:0]u16, cchText: u32) HRESULT {
         return self.vtable.GetCannonicalName(self, fmtid, pid, pwszText, cchText);
     }
-    pub fn GetDisplayName(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, flags: PROPERTYUI_NAME_FLAGS, pwszText: [*:0]u16, cchText: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDisplayName(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, flags: PROPERTYUI_NAME_FLAGS, pwszText: [*:0]u16, cchText: u32) HRESULT {
         return self.vtable.GetDisplayName(self, fmtid, pid, flags, pwszText, cchText);
     }
-    pub fn GetPropertyDescription(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pwszText: [*:0]u16, cchText: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetPropertyDescription(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pwszText: [*:0]u16, cchText: u32) HRESULT {
         return self.vtable.GetPropertyDescription(self, fmtid, pid, pwszText, cchText);
     }
-    pub fn GetDefaultWidth(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pcxChars: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetDefaultWidth(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pcxChars: ?*u32) HRESULT {
         return self.vtable.GetDefaultWidth(self, fmtid, pid, pcxChars);
     }
-    pub fn GetFlags(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pflags: ?*PROPERTYUI_FLAGS) callconv(.Inline) HRESULT {
+    pub inline fn GetFlags(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pflags: ?*PROPERTYUI_FLAGS) HRESULT {
         return self.vtable.GetFlags(self, fmtid, pid, pflags);
     }
-    pub fn FormatForDisplay(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, ppropvar: ?*const PROPVARIANT, puiff: PROPERTYUI_FORMAT_FLAGS, pwszText: [*:0]u16, cchText: u32) callconv(.Inline) HRESULT {
+    pub inline fn FormatForDisplay(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, ppropvar: ?*const PROPVARIANT, puiff: PROPERTYUI_FORMAT_FLAGS, pwszText: [*:0]u16, cchText: u32) HRESULT {
         return self.vtable.FormatForDisplay(self, fmtid, pid, ppropvar, puiff, pwszText, cchText);
     }
-    pub fn GetHelpInfo(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pwszHelpFile: [*:0]u16, cch: u32, puHelpID: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetHelpInfo(self: *const IPropertyUI, fmtid: ?*const Guid, pid: u32, pwszHelpFile: [*:0]u16, cch: u32, puHelpID: ?*u32) HRESULT {
         return self.vtable.GetHelpInfo(self, fmtid, pid, pwszHelpFile, cch, puHelpID);
     }
 };
@@ -1996,7 +1996,7 @@ pub const SYNC_ENGINE_STATE_FLAGS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const SESF_NONE = SYNC_ENGINE_STATE_FLAGS{ };
+pub const SESF_NONE = SYNC_ENGINE_STATE_FLAGS{};
 pub const SESF_SERVICE_QUOTA_NEARING_LIMIT = SYNC_ENGINE_STATE_FLAGS{ .SERVICE_QUOTA_NEARING_LIMIT = 1 };
 pub const SESF_SERVICE_QUOTA_EXCEEDED_LIMIT = SYNC_ENGINE_STATE_FLAGS{ .SERVICE_QUOTA_EXCEEDED_LIMIT = 1 };
 pub const SESF_AUTHENTICATION_ERROR = SYNC_ENGINE_STATE_FLAGS{ .AUTHENTICATION_ERROR = 1 };
@@ -2033,7 +2033,6 @@ pub const PROPPRG = extern struct {
     achPIFFile: [260]CHAR align(1),
 };
 
-
 //--------------------------------------------------------------------------------
 // Section: Functions (227)
 //--------------------------------------------------------------------------------
@@ -2042,13 +2041,13 @@ pub extern "propsys" fn PropVariantToWinRTPropertyValue(
     propvar: ?*const PROPVARIANT,
     riid: ?*const Guid,
     ppv: ?**anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows8.0'
 pub extern "propsys" fn WinRTPropertyValueToPropVariant(
     punkPropertyValue: ?*IUnknown,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "propsys" fn PSFormatForDisplay(
@@ -2057,7 +2056,7 @@ pub extern "propsys" fn PSFormatForDisplay(
     pdfFlags: PROPDESC_FORMAT_FLAGS,
     pwszText: [*:0]u16,
     cchText: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "propsys" fn PSFormatForDisplayAlloc(
@@ -2065,7 +2064,7 @@ pub extern "propsys" fn PSFormatForDisplayAlloc(
     propvar: ?*const PROPVARIANT,
     pdff: PROPDESC_FORMAT_FLAGS,
     ppszDisplay: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "propsys" fn PSFormatPropertyValue(
@@ -2073,33 +2072,33 @@ pub extern "propsys" fn PSFormatPropertyValue(
     ppd: ?*IPropertyDescription,
     pdff: PROPDESC_FORMAT_FLAGS,
     ppszDisplay: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSGetImageReferenceForValue(
     propkey: ?*const PROPERTYKEY,
     propvar: ?*const PROPVARIANT,
     ppszImageRes: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSStringFromPropertyKey(
     pkey: ?*const PROPERTYKEY,
     psz: [*:0]u16,
     cch: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSPropertyKeyFromString(
     pszString: ?[*:0]const u16,
     pkey: ?*PROPERTYKEY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSCreateMemoryPropertyStore(
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSCreateDelayedMultiplexPropertyStore(
@@ -2109,7 +2108,7 @@ pub extern "propsys" fn PSCreateDelayedMultiplexPropertyStore(
     cStores: u32,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSCreateMultiplexPropertyStore(
@@ -2117,7 +2116,7 @@ pub extern "propsys" fn PSCreateMultiplexPropertyStore(
     cStores: u32,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSCreatePropertyChangeArray(
@@ -2127,7 +2126,7 @@ pub extern "propsys" fn PSCreatePropertyChangeArray(
     cChanges: u32,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSCreateSimplePropertyChange(
@@ -2136,27 +2135,27 @@ pub extern "propsys" fn PSCreateSimplePropertyChange(
     propvar: ?*const PROPVARIANT,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetPropertyDescription(
     propkey: ?*const PROPERTYKEY,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetPropertyDescriptionByName(
     pszCanonicalName: ?[*:0]const u16,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSLookupPropertyHandlerCLSID(
     pszFilePath: ?[*:0]const u16,
     pclsid: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetItemPropertyHandler(
@@ -2164,7 +2163,7 @@ pub extern "propsys" fn PSGetItemPropertyHandler(
     fReadWrite: BOOL,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetItemPropertyHandlerWithCreateObject(
@@ -2173,67 +2172,66 @@ pub extern "propsys" fn PSGetItemPropertyHandlerWithCreateObject(
     punkCreateObject: ?*IUnknown,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetPropertyValue(
     pps: ?*IPropertyStore,
     ppd: ?*IPropertyDescription,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSSetPropertyValue(
     pps: ?*IPropertyStore,
     ppd: ?*IPropertyDescription,
     propvar: ?*const PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSRegisterPropertySchema(
     pszPath: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSUnregisterPropertySchema(
     pszPath: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
-pub extern "propsys" fn PSRefreshPropertySchema(
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+pub extern "propsys" fn PSRefreshPropertySchema() callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSEnumeratePropertyDescriptions(
     filterOn: PROPDESC_ENUMFILTER,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetPropertyKeyFromName(
     pszName: ?[*:0]const u16,
     ppropkey: ?*PROPERTYKEY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetNameFromPropertyKey(
     propkey: ?*const PROPERTYKEY,
     ppszCanonicalName: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSCoerceToCanonicalValue(
     key: ?*const PROPERTYKEY,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetPropertyDescriptionListFromString(
     pszPropList: ?[*:0]const u16,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSCreatePropertyStoreFromPropertySetStorage(
@@ -2241,7 +2239,7 @@ pub extern "propsys" fn PSCreatePropertyStoreFromPropertySetStorage(
     grfMode: u32,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSCreatePropertyStoreFromObject(
@@ -2249,20 +2247,20 @@ pub extern "propsys" fn PSCreatePropertyStoreFromObject(
     grfMode: u32,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSCreateAdapterFromPropertyStore(
     pps: ?*IPropertyStore,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetPropertySystem(
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetPropertyFromPropertyStorage(
@@ -2271,7 +2269,7 @@ pub extern "propsys" fn PSGetPropertyFromPropertyStorage(
     cb: u32,
     rpkey: ?*const PROPERTYKEY,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PSGetNamedPropertyFromPropertyStorage(
@@ -2280,7 +2278,7 @@ pub extern "propsys" fn PSGetNamedPropertyFromPropertyStorage(
     cb: u32,
     pszName: ?[*:0]const u16,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadType(
@@ -2288,7 +2286,7 @@ pub extern "propsys" fn PSPropertyBag_ReadType(
     propName: ?[*:0]const u16,
     @"var": ?*VARIANT,
     type: u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadStr(
@@ -2296,181 +2294,181 @@ pub extern "propsys" fn PSPropertyBag_ReadStr(
     propName: ?[*:0]const u16,
     value: [*:0]u16,
     characterCount: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadStrAlloc(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadBSTR(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteStr(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteBSTR(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadInt(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteInt(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadSHORT(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*i16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteSHORT(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: i16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadLONG(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteLONG(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadDWORD(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteDWORD(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadBOOL(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteBOOL(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadPOINTL(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*POINTL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WritePOINTL(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*const POINTL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadPOINTS(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*POINTS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WritePOINTS(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*const POINTS,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadRECTL(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*RECTL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteRECTL(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*const RECTL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadStream(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*?*IStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteStream(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*IStream,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_Delete(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadULONGLONG(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*u64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteULONGLONG(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: u64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadUnknown(
@@ -2478,49 +2476,49 @@ pub extern "propsys" fn PSPropertyBag_ReadUnknown(
     propName: ?[*:0]const u16,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteUnknown(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     punk: ?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadGUID(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WriteGUID(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*const Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_ReadPropertyKey(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*PROPERTYKEY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "propsys" fn PSPropertyBag_WritePropertyKey(
     propBag: ?*IPropertyBag,
     propName: ?[*:0]const u16,
     value: ?*const PROPERTYKEY,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromResource(
     hinst: ?HINSTANCE,
     id: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromBuffer(
@@ -2528,223 +2526,223 @@ pub extern "propsys" fn InitPropVariantFromBuffer(
     pv: ?*const anyopaque,
     cb: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromCLSID(
     clsid: ?*const Guid,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromGUIDAsString(
     guid: ?*const Guid,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromFileTime(
     pftIn: ?*const FILETIME,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromPropVariantVectorElem(
     propvarIn: ?*const PROPVARIANT,
     iElem: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantVectorFromPropVariant(
     propvarSingle: ?*const PROPVARIANT,
     ppropvarVector: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromStrRet(
     pstrret: ?*STRRET,
     pidl: ?*ITEMIDLIST,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromBooleanVector(
     prgf: ?[*]const BOOL,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromInt16Vector(
     prgn: ?[*]const i16,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromUInt16Vector(
     prgn: ?[*:0]const u16,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromInt32Vector(
     prgn: ?[*]const i32,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromUInt32Vector(
     prgn: ?[*]const u32,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromInt64Vector(
     prgn: ?[*]const i64,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromUInt64Vector(
     prgn: ?[*]const u64,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromDoubleVector(
     prgn: ?[*]const f64,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromFileTimeVector(
     prgft: ?[*]const FILETIME,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromStringVector(
     prgsz: ?[*]?PWSTR,
     cElems: u32,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitPropVariantFromStringAsVector(
     psz: ?[*:0]const u16,
     ppropvar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToBooleanWithDefault(
     propvarIn: ?*const PROPVARIANT,
     fDefault: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt16WithDefault(
     propvarIn: ?*const PROPVARIANT,
     iDefault: i16,
-) callconv(@import("std").os.windows.WINAPI) i16;
+) callconv(.winapi) i16;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt16WithDefault(
     propvarIn: ?*const PROPVARIANT,
     uiDefault: u16,
-) callconv(@import("std").os.windows.WINAPI) u16;
+) callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt32WithDefault(
     propvarIn: ?*const PROPVARIANT,
     lDefault: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt32WithDefault(
     propvarIn: ?*const PROPVARIANT,
     ulDefault: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt64WithDefault(
     propvarIn: ?*const PROPVARIANT,
     llDefault: i64,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt64WithDefault(
     propvarIn: ?*const PROPVARIANT,
     ullDefault: u64,
-) callconv(@import("std").os.windows.WINAPI) u64;
+) callconv(.winapi) u64;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToDoubleWithDefault(
     propvarIn: ?*const PROPVARIANT,
     dblDefault: f64,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToStringWithDefault(
     propvarIn: ?*const PROPVARIANT,
     pszDefault: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToBoolean(
     propvarIn: ?*const PROPVARIANT,
     pfRet: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt16(
     propvarIn: ?*const PROPVARIANT,
     piRet: ?*i16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt16(
     propvarIn: ?*const PROPVARIANT,
     puiRet: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt32(
     propvarIn: ?*const PROPVARIANT,
     plRet: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt32(
     propvarIn: ?*const PROPVARIANT,
     pulRet: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt64(
     propvarIn: ?*const PROPVARIANT,
     pllRet: ?*i64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt64(
     propvarIn: ?*const PROPVARIANT,
     pullRet: ?*u64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToDouble(
     propvarIn: ?*const PROPVARIANT,
     pdblRet: ?*f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToBuffer(
@@ -2752,50 +2750,50 @@ pub extern "propsys" fn PropVariantToBuffer(
     // TODO: what to do with BytesParamIndex 2?
     pv: ?*anyopaque,
     cb: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToString(
     propvar: ?*const PROPVARIANT,
     psz: [*:0]u16,
     cch: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToGUID(
     propvar: ?*const PROPVARIANT,
     pguid: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToStringAlloc(
     propvar: ?*const PROPVARIANT,
     ppszOut: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToBSTR(
     propvar: ?*const PROPVARIANT,
     pbstrOut: ?*?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToStrRet(
     propvar: ?*const PROPVARIANT,
     pstrret: ?*STRRET,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToFileTime(
     propvar: ?*const PROPVARIANT,
     pstfOut: PSTIME_FLAGS,
     pftOut: ?*FILETIME,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetElementCount(
     propvar: ?*const PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToBooleanVector(
@@ -2803,7 +2801,7 @@ pub extern "propsys" fn PropVariantToBooleanVector(
     prgf: [*]BOOL,
     crgf: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt16Vector(
@@ -2811,7 +2809,7 @@ pub extern "propsys" fn PropVariantToInt16Vector(
     prgn: [*]i16,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt16Vector(
@@ -2819,7 +2817,7 @@ pub extern "propsys" fn PropVariantToUInt16Vector(
     prgn: [*:0]u16,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt32Vector(
@@ -2827,7 +2825,7 @@ pub extern "propsys" fn PropVariantToInt32Vector(
     prgn: [*]i32,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt32Vector(
@@ -2835,7 +2833,7 @@ pub extern "propsys" fn PropVariantToUInt32Vector(
     prgn: [*]u32,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt64Vector(
@@ -2843,7 +2841,7 @@ pub extern "propsys" fn PropVariantToInt64Vector(
     prgn: [*]i64,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt64Vector(
@@ -2851,7 +2849,7 @@ pub extern "propsys" fn PropVariantToUInt64Vector(
     prgn: [*]u64,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToDoubleVector(
@@ -2859,7 +2857,7 @@ pub extern "propsys" fn PropVariantToDoubleVector(
     prgn: [*]f64,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToFileTimeVector(
@@ -2867,7 +2865,7 @@ pub extern "propsys" fn PropVariantToFileTimeVector(
     prgft: [*]FILETIME,
     crgft: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToStringVector(
@@ -2875,153 +2873,153 @@ pub extern "propsys" fn PropVariantToStringVector(
     prgsz: [*]?PWSTR,
     crgsz: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToBooleanVectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgf: ?*?*BOOL,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt16VectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgn: ?*?*i16,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt16VectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgn: ?*?*u16,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt32VectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgn: ?*?*i32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt32VectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgn: ?*?*u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToInt64VectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgn: ?*?*i64,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToUInt64VectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgn: ?*?*u64,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToDoubleVectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgn: ?*?*f64,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToFileTimeVectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgft: ?*?*FILETIME,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantToStringVectorAlloc(
     propvar: ?*const PROPVARIANT,
     pprgsz: ?*?*?PWSTR,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetBooleanElem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     pfVal: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetInt16Elem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     pnVal: ?*i16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetUInt16Elem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     pnVal: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetInt32Elem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     pnVal: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetUInt32Elem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     pnVal: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetInt64Elem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     pnVal: ?*i64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetUInt64Elem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     pnVal: ?*u64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetDoubleElem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     pnVal: ?*f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetFileTimeElem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     pftVal: ?*FILETIME,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantGetStringElem(
     propvar: ?*const PROPVARIANT,
     iElem: u32,
     ppszVal: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn ClearPropVariantArray(
     rgPropVar: [*]PROPVARIANT,
     cVars: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantCompareEx(
@@ -3029,7 +3027,7 @@ pub extern "propsys" fn PropVariantCompareEx(
     propvar2: ?*const PROPVARIANT,
     unit: PROPVAR_COMPARE_UNIT,
     flags: PROPVAR_COMPARE_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn PropVariantChangeType(
@@ -3037,26 +3035,26 @@ pub extern "propsys" fn PropVariantChangeType(
     propvarSrc: ?*const PROPVARIANT,
     flags: PROPVAR_CHANGE_FLAGS,
     vt: u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "propsys" fn PropVariantToVariant(
     pPropVar: ?*const PROPVARIANT,
     pVar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "propsys" fn VariantToPropVariant(
     pVar: ?*const VARIANT,
     pPropVar: ?*PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromResource(
     hinst: ?HINSTANCE,
     id: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromBuffer(
@@ -3064,205 +3062,205 @@ pub extern "propsys" fn InitVariantFromBuffer(
     pv: ?*const anyopaque,
     cb: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromGUIDAsString(
     guid: ?*const Guid,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromFileTime(
     pft: ?*const FILETIME,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromFileTimeArray(
     prgft: ?[*]const FILETIME,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromStrRet(
     pstrret: ?*STRRET,
     pidl: ?*ITEMIDLIST,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromVariantArrayElem(
     varIn: ?*const VARIANT,
     iElem: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromBooleanArray(
     prgf: [*]const BOOL,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromInt16Array(
     prgn: [*]const i16,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromUInt16Array(
     prgn: [*:0]const u16,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromInt32Array(
     prgn: [*]const i32,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromUInt32Array(
     prgn: [*]const u32,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromInt64Array(
     prgn: [*]const i64,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromUInt64Array(
     prgn: [*]const u64,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromDoubleArray(
     prgn: [*]const f64,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn InitVariantFromStringArray(
     prgsz: [*]?PWSTR,
     cElems: u32,
     pvar: ?*VARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToBooleanWithDefault(
     varIn: ?*const VARIANT,
     fDefault: BOOL,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt16WithDefault(
     varIn: ?*const VARIANT,
     iDefault: i16,
-) callconv(@import("std").os.windows.WINAPI) i16;
+) callconv(.winapi) i16;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt16WithDefault(
     varIn: ?*const VARIANT,
     uiDefault: u16,
-) callconv(@import("std").os.windows.WINAPI) u16;
+) callconv(.winapi) u16;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt32WithDefault(
     varIn: ?*const VARIANT,
     lDefault: i32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt32WithDefault(
     varIn: ?*const VARIANT,
     ulDefault: u32,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt64WithDefault(
     varIn: ?*const VARIANT,
     llDefault: i64,
-) callconv(@import("std").os.windows.WINAPI) i64;
+) callconv(.winapi) i64;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt64WithDefault(
     varIn: ?*const VARIANT,
     ullDefault: u64,
-) callconv(@import("std").os.windows.WINAPI) u64;
+) callconv(.winapi) u64;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToDoubleWithDefault(
     varIn: ?*const VARIANT,
     dblDefault: f64,
-) callconv(@import("std").os.windows.WINAPI) f64;
+) callconv(.winapi) f64;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToStringWithDefault(
     varIn: ?*const VARIANT,
     pszDefault: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) ?PWSTR;
+) callconv(.winapi) ?PWSTR;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToBoolean(
     varIn: ?*const VARIANT,
     pfRet: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt16(
     varIn: ?*const VARIANT,
     piRet: ?*i16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt16(
     varIn: ?*const VARIANT,
     puiRet: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt32(
     varIn: ?*const VARIANT,
     plRet: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt32(
     varIn: ?*const VARIANT,
     pulRet: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt64(
     varIn: ?*const VARIANT,
     pllRet: ?*i64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt64(
     varIn: ?*const VARIANT,
     pullRet: ?*u64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToDouble(
     varIn: ?*const VARIANT,
     pdblRet: ?*f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToBuffer(
@@ -3270,51 +3268,51 @@ pub extern "propsys" fn VariantToBuffer(
     // TODO: what to do with BytesParamIndex 2?
     pv: ?*anyopaque,
     cb: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToGUID(
     varIn: ?*const VARIANT,
     pguid: ?*Guid,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToString(
     varIn: ?*const VARIANT,
     pszBuf: [*:0]u16,
     cchBuf: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToStringAlloc(
     varIn: ?*const VARIANT,
     ppszBuf: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToDosDateTime(
     varIn: ?*const VARIANT,
     pwDate: ?*u16,
     pwTime: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToStrRet(
     varIn: ?*const VARIANT,
     pstrret: ?*STRRET,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToFileTime(
     varIn: ?*const VARIANT,
     stfOut: PSTIME_FLAGS,
     pftOut: ?*FILETIME,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetElementCount(
     varIn: ?*const VARIANT,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToBooleanArray(
@@ -3322,7 +3320,7 @@ pub extern "propsys" fn VariantToBooleanArray(
     prgf: [*]BOOL,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt16Array(
@@ -3330,7 +3328,7 @@ pub extern "propsys" fn VariantToInt16Array(
     prgn: [*]i16,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt16Array(
@@ -3338,7 +3336,7 @@ pub extern "propsys" fn VariantToUInt16Array(
     prgn: [*:0]u16,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt32Array(
@@ -3346,7 +3344,7 @@ pub extern "propsys" fn VariantToInt32Array(
     prgn: [*]i32,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt32Array(
@@ -3354,7 +3352,7 @@ pub extern "propsys" fn VariantToUInt32Array(
     prgn: [*]u32,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt64Array(
@@ -3362,7 +3360,7 @@ pub extern "propsys" fn VariantToInt64Array(
     prgn: [*]i64,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt64Array(
@@ -3370,7 +3368,7 @@ pub extern "propsys" fn VariantToUInt64Array(
     prgn: [*]u64,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToDoubleArray(
@@ -3378,7 +3376,7 @@ pub extern "propsys" fn VariantToDoubleArray(
     prgn: [*]f64,
     crgn: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToStringArray(
@@ -3386,145 +3384,145 @@ pub extern "propsys" fn VariantToStringArray(
     prgsz: [*]?PWSTR,
     crgsz: u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToBooleanArrayAlloc(
     @"var": ?*const VARIANT,
     pprgf: ?*?*BOOL,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt16ArrayAlloc(
     @"var": ?*const VARIANT,
     pprgn: ?*?*i16,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt16ArrayAlloc(
     @"var": ?*const VARIANT,
     pprgn: ?*?*u16,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt32ArrayAlloc(
     @"var": ?*const VARIANT,
     pprgn: ?*?*i32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt32ArrayAlloc(
     @"var": ?*const VARIANT,
     pprgn: ?*?*u32,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToInt64ArrayAlloc(
     @"var": ?*const VARIANT,
     pprgn: ?*?*i64,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToUInt64ArrayAlloc(
     @"var": ?*const VARIANT,
     pprgn: ?*?*u64,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToDoubleArrayAlloc(
     @"var": ?*const VARIANT,
     pprgn: ?*?*f64,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantToStringArrayAlloc(
     @"var": ?*const VARIANT,
     pprgsz: ?*?*?PWSTR,
     pcElem: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetBooleanElem(
     @"var": ?*const VARIANT,
     iElem: u32,
     pfVal: ?*BOOL,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetInt16Elem(
     @"var": ?*const VARIANT,
     iElem: u32,
     pnVal: ?*i16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetUInt16Elem(
     @"var": ?*const VARIANT,
     iElem: u32,
     pnVal: ?*u16,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetInt32Elem(
     @"var": ?*const VARIANT,
     iElem: u32,
     pnVal: ?*i32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetUInt32Elem(
     @"var": ?*const VARIANT,
     iElem: u32,
     pnVal: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetInt64Elem(
     @"var": ?*const VARIANT,
     iElem: u32,
     pnVal: ?*i64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetUInt64Elem(
     @"var": ?*const VARIANT,
     iElem: u32,
     pnVal: ?*u64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetDoubleElem(
     @"var": ?*const VARIANT,
     iElem: u32,
     pnVal: ?*f64,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantGetStringElem(
     @"var": ?*const VARIANT,
     iElem: u32,
     ppszVal: ?*?PWSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn ClearVariantArray(
     pvars: [*]VARIANT,
     cvars: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "propsys" fn VariantCompare(
     var1: ?*const VARIANT,
     var2: ?*const VARIANT,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "shell32" fn SHGetPropertyStoreFromIDList(
@@ -3532,7 +3530,7 @@ pub extern "shell32" fn SHGetPropertyStoreFromIDList(
     flags: GETPROPERTYSTOREFLAGS,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "shell32" fn SHGetPropertyStoreFromParsingName(
@@ -3541,13 +3539,13 @@ pub extern "shell32" fn SHGetPropertyStoreFromParsingName(
     flags: GETPROPERTYSTOREFLAGS,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.0.6000'
 pub extern "shell32" fn SHAddDefaultPropertiesByExt(
     pszExt: ?[*:0]const u16,
     pPropStore: ?*IPropertyStore,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "shell32" fn PifMgr_OpenProperties(
@@ -3555,7 +3553,7 @@ pub extern "shell32" fn PifMgr_OpenProperties(
     pszPIF: ?[*:0]const u16,
     hInf: u32,
     flOpt: u32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "shell32" fn PifMgr_GetProperties(
@@ -3565,7 +3563,7 @@ pub extern "shell32" fn PifMgr_GetProperties(
     lpProps: ?*anyopaque,
     cbProps: i32,
     flOpt: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "shell32" fn PifMgr_SetProperties(
@@ -3575,13 +3573,13 @@ pub extern "shell32" fn PifMgr_SetProperties(
     lpProps: ?*const anyopaque,
     cbProps: i32,
     flOpt: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "shell32" fn PifMgr_CloseProperties(
     hProps: ?HANDLE,
     flOpt: u32,
-) callconv(@import("std").os.windows.WINAPI) ?HANDLE;
+) callconv(.winapi) ?HANDLE;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "shell32" fn SHPropStgCreate(
@@ -3593,7 +3591,7 @@ pub extern "shell32" fn SHPropStgCreate(
     dwDisposition: u32,
     ppstg: ?*?*IPropertyStorage,
     puCodePage: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "shell32" fn SHPropStgReadMultiple(
@@ -3602,7 +3600,7 @@ pub extern "shell32" fn SHPropStgReadMultiple(
     cpspec: u32,
     rgpspec: [*]const PROPSPEC,
     rgvar: [*]PROPVARIANT,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "shell32" fn SHPropStgWriteMultiple(
@@ -3612,15 +3610,14 @@ pub extern "shell32" fn SHPropStgWriteMultiple(
     rgpspec: [*]const PROPSPEC,
     rgvar: [*]PROPVARIANT,
     propidNameFirst: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows6.1'
 pub extern "shell32" fn SHGetPropertyStoreForWindow(
     hwnd: ?HWND,
     riid: ?*const Guid,
     ppv: ?*?*anyopaque,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -3656,9 +3653,7 @@ const STRRET = @import("../../ui/shell/common.zig").STRRET;
 const VARIANT = @import("../../system/com.zig").VARIANT;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

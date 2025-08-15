@@ -11,21 +11,20 @@ pub const IID_ICoreFrameworkInputViewInterop = &IID_ICoreFrameworkInputViewInter
 pub const ICoreFrameworkInputViewInterop = extern union {
     pub const VTable = extern struct {
         base: IInspectable.VTable,
-        GetForWindow: *const fn(
+        GetForWindow: *const fn (
             self: *const ICoreFrameworkInputViewInterop,
             appWindow: ?HWND,
             riid: ?*const Guid,
             coreFrameworkInputView: **anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IInspectable: IInspectable,
     IUnknown: IUnknown,
-    pub fn GetForWindow(self: *const ICoreFrameworkInputViewInterop, appWindow: ?HWND, riid: ?*const Guid, coreFrameworkInputView: **anyopaque) callconv(.Inline) HRESULT {
+    pub inline fn GetForWindow(self: *const ICoreFrameworkInputViewInterop, appWindow: ?HWND, riid: ?*const Guid, coreFrameworkInputView: **anyopaque) HRESULT {
         return self.vtable.GetForWindow(self, appWindow, riid, coreFrameworkInputView);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -44,9 +43,7 @@ const IInspectable = @import("../../system/win_rt.zig").IInspectable;
 const IUnknown = @import("../../system/com.zig").IUnknown;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

@@ -266,88 +266,88 @@ pub const IID_IXAPO = &IID_IXAPO_Value;
 pub const IXAPO = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetRegistrationProperties: *const fn(
+        GetRegistrationProperties: *const fn (
             self: *const IXAPO,
             ppRegistrationProperties: ?*?*XAPO_REGISTRATION_PROPERTIES,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsInputFormatSupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsInputFormatSupported: *const fn (
             self: *const IXAPO,
             pOutputFormat: ?*const WAVEFORMATEX,
             pRequestedInputFormat: ?*const WAVEFORMATEX,
             ppSupportedInputFormat: ?*?*WAVEFORMATEX,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        IsOutputFormatSupported: *const fn(
+        ) callconv(.winapi) HRESULT,
+        IsOutputFormatSupported: *const fn (
             self: *const IXAPO,
             pInputFormat: ?*const WAVEFORMATEX,
             pRequestedOutputFormat: ?*const WAVEFORMATEX,
             ppSupportedOutputFormat: ?*?*WAVEFORMATEX,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Initialize: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Initialize: *const fn (
             self: *const IXAPO,
             // TODO: what to do with BytesParamIndex 1?
             pData: ?*const anyopaque,
             DataByteSize: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Reset: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Reset: *const fn (
             self: *const IXAPO,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        LockForProcess: *const fn(
+        ) callconv(.winapi) void,
+        LockForProcess: *const fn (
             self: *const IXAPO,
             InputLockedParameterCount: u32,
             pInputLockedParameters: ?[*]const XAPO_LOCKFORPROCESS_PARAMETERS,
             OutputLockedParameterCount: u32,
             pOutputLockedParameters: ?[*]const XAPO_LOCKFORPROCESS_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnlockForProcess: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnlockForProcess: *const fn (
             self: *const IXAPO,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        Process: *const fn(
+        ) callconv(.winapi) void,
+        Process: *const fn (
             self: *const IXAPO,
             InputProcessParameterCount: u32,
             pInputProcessParameters: ?[*]const XAPO_PROCESS_BUFFER_PARAMETERS,
             OutputProcessParameterCount: u32,
             pOutputProcessParameters: ?[*]XAPO_PROCESS_BUFFER_PARAMETERS,
             IsEnabled: BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        CalcInputFrames: *const fn(
+        ) callconv(.winapi) void,
+        CalcInputFrames: *const fn (
             self: *const IXAPO,
             OutputFrameCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
-        CalcOutputFrames: *const fn(
+        ) callconv(.winapi) u32,
+        CalcOutputFrames: *const fn (
             self: *const IXAPO,
             InputFrameCount: u32,
-        ) callconv(@import("std").os.windows.WINAPI) u32,
+        ) callconv(.winapi) u32,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetRegistrationProperties(self: *const IXAPO, ppRegistrationProperties: ?*?*XAPO_REGISTRATION_PROPERTIES) callconv(.Inline) HRESULT {
+    pub inline fn GetRegistrationProperties(self: *const IXAPO, ppRegistrationProperties: ?*?*XAPO_REGISTRATION_PROPERTIES) HRESULT {
         return self.vtable.GetRegistrationProperties(self, ppRegistrationProperties);
     }
-    pub fn IsInputFormatSupported(self: *const IXAPO, pOutputFormat: ?*const WAVEFORMATEX, pRequestedInputFormat: ?*const WAVEFORMATEX, ppSupportedInputFormat: ?*?*WAVEFORMATEX) callconv(.Inline) HRESULT {
+    pub inline fn IsInputFormatSupported(self: *const IXAPO, pOutputFormat: ?*const WAVEFORMATEX, pRequestedInputFormat: ?*const WAVEFORMATEX, ppSupportedInputFormat: ?*?*WAVEFORMATEX) HRESULT {
         return self.vtable.IsInputFormatSupported(self, pOutputFormat, pRequestedInputFormat, ppSupportedInputFormat);
     }
-    pub fn IsOutputFormatSupported(self: *const IXAPO, pInputFormat: ?*const WAVEFORMATEX, pRequestedOutputFormat: ?*const WAVEFORMATEX, ppSupportedOutputFormat: ?*?*WAVEFORMATEX) callconv(.Inline) HRESULT {
+    pub inline fn IsOutputFormatSupported(self: *const IXAPO, pInputFormat: ?*const WAVEFORMATEX, pRequestedOutputFormat: ?*const WAVEFORMATEX, ppSupportedOutputFormat: ?*?*WAVEFORMATEX) HRESULT {
         return self.vtable.IsOutputFormatSupported(self, pInputFormat, pRequestedOutputFormat, ppSupportedOutputFormat);
     }
-    pub fn Initialize(self: *const IXAPO, pData: ?*const anyopaque, DataByteSize: u32) callconv(.Inline) HRESULT {
+    pub inline fn Initialize(self: *const IXAPO, pData: ?*const anyopaque, DataByteSize: u32) HRESULT {
         return self.vtable.Initialize(self, pData, DataByteSize);
     }
-    pub fn Reset(self: *const IXAPO) callconv(.Inline) void {
+    pub inline fn Reset(self: *const IXAPO) void {
         return self.vtable.Reset(self);
     }
-    pub fn LockForProcess(self: *const IXAPO, InputLockedParameterCount: u32, pInputLockedParameters: ?[*]const XAPO_LOCKFORPROCESS_PARAMETERS, OutputLockedParameterCount: u32, pOutputLockedParameters: ?[*]const XAPO_LOCKFORPROCESS_PARAMETERS) callconv(.Inline) HRESULT {
+    pub inline fn LockForProcess(self: *const IXAPO, InputLockedParameterCount: u32, pInputLockedParameters: ?[*]const XAPO_LOCKFORPROCESS_PARAMETERS, OutputLockedParameterCount: u32, pOutputLockedParameters: ?[*]const XAPO_LOCKFORPROCESS_PARAMETERS) HRESULT {
         return self.vtable.LockForProcess(self, InputLockedParameterCount, pInputLockedParameters, OutputLockedParameterCount, pOutputLockedParameters);
     }
-    pub fn UnlockForProcess(self: *const IXAPO) callconv(.Inline) void {
+    pub inline fn UnlockForProcess(self: *const IXAPO) void {
         return self.vtable.UnlockForProcess(self);
     }
-    pub fn Process(self: *const IXAPO, InputProcessParameterCount: u32, pInputProcessParameters: ?[*]const XAPO_PROCESS_BUFFER_PARAMETERS, OutputProcessParameterCount: u32, pOutputProcessParameters: ?[*]XAPO_PROCESS_BUFFER_PARAMETERS, IsEnabled: BOOL) callconv(.Inline) void {
+    pub inline fn Process(self: *const IXAPO, InputProcessParameterCount: u32, pInputProcessParameters: ?[*]const XAPO_PROCESS_BUFFER_PARAMETERS, OutputProcessParameterCount: u32, pOutputProcessParameters: ?[*]XAPO_PROCESS_BUFFER_PARAMETERS, IsEnabled: BOOL) void {
         return self.vtable.Process(self, InputProcessParameterCount, pInputProcessParameters, OutputProcessParameterCount, pOutputProcessParameters, IsEnabled);
     }
-    pub fn CalcInputFrames(self: *const IXAPO, OutputFrameCount: u32) callconv(.Inline) u32 {
+    pub inline fn CalcInputFrames(self: *const IXAPO, OutputFrameCount: u32) u32 {
         return self.vtable.CalcInputFrames(self, OutputFrameCount);
     }
-    pub fn CalcOutputFrames(self: *const IXAPO, InputFrameCount: u32) callconv(.Inline) u32 {
+    pub inline fn CalcOutputFrames(self: *const IXAPO, InputFrameCount: u32) u32 {
         return self.vtable.CalcOutputFrames(self, InputFrameCount);
     }
 };
@@ -357,25 +357,25 @@ pub const IID_IXAPOParameters = &IID_IXAPOParameters_Value;
 pub const IXAPOParameters = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetParameters: *const fn(
+        SetParameters: *const fn (
             self: *const IXAPOParameters,
             // TODO: what to do with BytesParamIndex 1?
             pParameters: ?*const anyopaque,
             ParameterByteSize: u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        GetParameters: *const fn(
+        ) callconv(.winapi) void,
+        GetParameters: *const fn (
             self: *const IXAPOParameters,
             // TODO: what to do with BytesParamIndex 1?
             pParameters: ?*anyopaque,
             ParameterByteSize: u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetParameters(self: *const IXAPOParameters, pParameters: ?*const anyopaque, ParameterByteSize: u32) callconv(.Inline) void {
+    pub inline fn SetParameters(self: *const IXAPOParameters, pParameters: ?*const anyopaque, ParameterByteSize: u32) void {
         return self.vtable.SetParameters(self, pParameters, ParameterByteSize);
     }
-    pub fn GetParameters(self: *const IXAPOParameters, pParameters: ?*anyopaque, ParameterByteSize: u32) callconv(.Inline) void {
+    pub inline fn GetParameters(self: *const IXAPOParameters, pParameters: ?*anyopaque, ParameterByteSize: u32) void {
         return self.vtable.GetParameters(self, pParameters, ParameterByteSize);
     }
 };
@@ -530,15 +530,15 @@ pub const IID_IXAudio2 = &IID_IXAudio2_Value;
 pub const IXAudio2 = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        RegisterForCallbacks: *const fn(
+        RegisterForCallbacks: *const fn (
             self: *const IXAudio2,
             pCallback: ?*IXAudio2EngineCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        UnregisterForCallbacks: *const fn(
+        ) callconv(.winapi) HRESULT,
+        UnregisterForCallbacks: *const fn (
             self: *const IXAudio2,
             pCallback: ?*IXAudio2EngineCallback,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        CreateSourceVoice: *const fn(
+        ) callconv(.winapi) void,
+        CreateSourceVoice: *const fn (
             self: *const IXAudio2,
             ppSourceVoice: ?*?*IXAudio2SourceVoice,
             pSourceFormat: ?*const WAVEFORMATEX,
@@ -547,8 +547,8 @@ pub const IXAudio2 = extern union {
             pCallback: ?*IXAudio2VoiceCallback,
             pSendList: ?*const XAUDIO2_VOICE_SENDS,
             pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateSubmixVoice: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateSubmixVoice: *const fn (
             self: *const IXAudio2,
             ppSubmixVoice: ?*?*IXAudio2SubmixVoice,
             InputChannels: u32,
@@ -557,8 +557,8 @@ pub const IXAudio2 = extern union {
             ProcessingStage: u32,
             pSendList: ?*const XAUDIO2_VOICE_SENDS,
             pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CreateMasteringVoice: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CreateMasteringVoice: *const fn (
             self: *const IXAudio2,
             ppMasteringVoice: ?*?*IXAudio2MasteringVoice,
             InputChannels: u32,
@@ -567,57 +567,57 @@ pub const IXAudio2 = extern union {
             szDeviceId: ?[*:0]const u16,
             pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN,
             StreamCategory: AUDIO_STREAM_CATEGORY,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        StartEngine: *const fn(
+        ) callconv(.winapi) HRESULT,
+        StartEngine: *const fn (
             self: *const IXAudio2,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        StopEngine: *const fn(
+        ) callconv(.winapi) HRESULT,
+        StopEngine: *const fn (
             self: *const IXAudio2,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        CommitChanges: *const fn(
+        ) callconv(.winapi) void,
+        CommitChanges: *const fn (
             self: *const IXAudio2,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetPerformanceData: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetPerformanceData: *const fn (
             self: *const IXAudio2,
             pPerfData: ?*XAUDIO2_PERFORMANCE_DATA,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetDebugConfiguration: *const fn(
+        ) callconv(.winapi) void,
+        SetDebugConfiguration: *const fn (
             self: *const IXAudio2,
             pDebugConfiguration: ?*const XAUDIO2_DEBUG_CONFIGURATION,
             pReserved: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn RegisterForCallbacks(self: *const IXAudio2, pCallback: ?*IXAudio2EngineCallback) callconv(.Inline) HRESULT {
+    pub inline fn RegisterForCallbacks(self: *const IXAudio2, pCallback: ?*IXAudio2EngineCallback) HRESULT {
         return self.vtable.RegisterForCallbacks(self, pCallback);
     }
-    pub fn UnregisterForCallbacks(self: *const IXAudio2, pCallback: ?*IXAudio2EngineCallback) callconv(.Inline) void {
+    pub inline fn UnregisterForCallbacks(self: *const IXAudio2, pCallback: ?*IXAudio2EngineCallback) void {
         return self.vtable.UnregisterForCallbacks(self, pCallback);
     }
-    pub fn CreateSourceVoice(self: *const IXAudio2, ppSourceVoice: ?*?*IXAudio2SourceVoice, pSourceFormat: ?*const WAVEFORMATEX, Flags: u32, MaxFrequencyRatio: f32, pCallback: ?*IXAudio2VoiceCallback, pSendList: ?*const XAUDIO2_VOICE_SENDS, pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN) callconv(.Inline) HRESULT {
+    pub inline fn CreateSourceVoice(self: *const IXAudio2, ppSourceVoice: ?*?*IXAudio2SourceVoice, pSourceFormat: ?*const WAVEFORMATEX, Flags: u32, MaxFrequencyRatio: f32, pCallback: ?*IXAudio2VoiceCallback, pSendList: ?*const XAUDIO2_VOICE_SENDS, pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN) HRESULT {
         return self.vtable.CreateSourceVoice(self, ppSourceVoice, pSourceFormat, Flags, MaxFrequencyRatio, pCallback, pSendList, pEffectChain);
     }
-    pub fn CreateSubmixVoice(self: *const IXAudio2, ppSubmixVoice: ?*?*IXAudio2SubmixVoice, InputChannels: u32, InputSampleRate: u32, Flags: u32, ProcessingStage: u32, pSendList: ?*const XAUDIO2_VOICE_SENDS, pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN) callconv(.Inline) HRESULT {
+    pub inline fn CreateSubmixVoice(self: *const IXAudio2, ppSubmixVoice: ?*?*IXAudio2SubmixVoice, InputChannels: u32, InputSampleRate: u32, Flags: u32, ProcessingStage: u32, pSendList: ?*const XAUDIO2_VOICE_SENDS, pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN) HRESULT {
         return self.vtable.CreateSubmixVoice(self, ppSubmixVoice, InputChannels, InputSampleRate, Flags, ProcessingStage, pSendList, pEffectChain);
     }
-    pub fn CreateMasteringVoice(self: *const IXAudio2, ppMasteringVoice: ?*?*IXAudio2MasteringVoice, InputChannels: u32, InputSampleRate: u32, Flags: u32, szDeviceId: ?[*:0]const u16, pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN, StreamCategory: AUDIO_STREAM_CATEGORY) callconv(.Inline) HRESULT {
+    pub inline fn CreateMasteringVoice(self: *const IXAudio2, ppMasteringVoice: ?*?*IXAudio2MasteringVoice, InputChannels: u32, InputSampleRate: u32, Flags: u32, szDeviceId: ?[*:0]const u16, pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN, StreamCategory: AUDIO_STREAM_CATEGORY) HRESULT {
         return self.vtable.CreateMasteringVoice(self, ppMasteringVoice, InputChannels, InputSampleRate, Flags, szDeviceId, pEffectChain, StreamCategory);
     }
-    pub fn StartEngine(self: *const IXAudio2) callconv(.Inline) HRESULT {
+    pub inline fn StartEngine(self: *const IXAudio2) HRESULT {
         return self.vtable.StartEngine(self);
     }
-    pub fn StopEngine(self: *const IXAudio2) callconv(.Inline) void {
+    pub inline fn StopEngine(self: *const IXAudio2) void {
         return self.vtable.StopEngine(self);
     }
-    pub fn CommitChanges(self: *const IXAudio2, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn CommitChanges(self: *const IXAudio2, OperationSet: u32) HRESULT {
         return self.vtable.CommitChanges(self, OperationSet);
     }
-    pub fn GetPerformanceData(self: *const IXAudio2, pPerfData: ?*XAUDIO2_PERFORMANCE_DATA) callconv(.Inline) void {
+    pub inline fn GetPerformanceData(self: *const IXAudio2, pPerfData: ?*XAUDIO2_PERFORMANCE_DATA) void {
         return self.vtable.GetPerformanceData(self, pPerfData);
     }
-    pub fn SetDebugConfiguration(self: *const IXAudio2, pDebugConfiguration: ?*const XAUDIO2_DEBUG_CONFIGURATION, pReserved: ?*anyopaque) callconv(.Inline) void {
+    pub inline fn SetDebugConfiguration(self: *const IXAudio2, pDebugConfiguration: ?*const XAUDIO2_DEBUG_CONFIGURATION, pReserved: ?*anyopaque) void {
         return self.vtable.SetDebugConfiguration(self, pDebugConfiguration, pReserved);
     }
 };
@@ -627,185 +627,185 @@ pub const IID_IXAudio2Extension = &IID_IXAudio2Extension_Value;
 pub const IXAudio2Extension = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetProcessingQuantum: *const fn(
+        GetProcessingQuantum: *const fn (
             self: *const IXAudio2Extension,
             quantumNumerator: ?*u32,
             quantumDenominator: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        GetProcessor: *const fn(
+        ) callconv(.winapi) void,
+        GetProcessor: *const fn (
             self: *const IXAudio2Extension,
             processor: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetProcessingQuantum(self: *const IXAudio2Extension, quantumNumerator: ?*u32, quantumDenominator: ?*u32) callconv(.Inline) void {
+    pub inline fn GetProcessingQuantum(self: *const IXAudio2Extension, quantumNumerator: ?*u32, quantumDenominator: ?*u32) void {
         return self.vtable.GetProcessingQuantum(self, quantumNumerator, quantumDenominator);
     }
-    pub fn GetProcessor(self: *const IXAudio2Extension, processor: ?*u32) callconv(.Inline) void {
+    pub inline fn GetProcessor(self: *const IXAudio2Extension, processor: ?*u32) void {
         return self.vtable.GetProcessor(self, processor);
     }
 };
 
 pub const IXAudio2Voice = extern union {
     pub const VTable = extern struct {
-        GetVoiceDetails: *const fn(
+        GetVoiceDetails: *const fn (
             self: *const IXAudio2Voice,
             pVoiceDetails: ?*XAUDIO2_VOICE_DETAILS,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetOutputVoices: *const fn(
+        ) callconv(.winapi) void,
+        SetOutputVoices: *const fn (
             self: *const IXAudio2Voice,
             pSendList: ?*const XAUDIO2_VOICE_SENDS,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEffectChain: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEffectChain: *const fn (
             self: *const IXAudio2Voice,
             pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        EnableEffect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        EnableEffect: *const fn (
             self: *const IXAudio2Voice,
             EffectIndex: u32,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        DisableEffect: *const fn(
+        ) callconv(.winapi) HRESULT,
+        DisableEffect: *const fn (
             self: *const IXAudio2Voice,
             EffectIndex: u32,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEffectState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEffectState: *const fn (
             self: *const IXAudio2Voice,
             EffectIndex: u32,
             pEnabled: ?*BOOL,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetEffectParameters: *const fn(
+        ) callconv(.winapi) void,
+        SetEffectParameters: *const fn (
             self: *const IXAudio2Voice,
             EffectIndex: u32,
             // TODO: what to do with BytesParamIndex 2?
             pParameters: ?*const anyopaque,
             ParametersByteSize: u32,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetEffectParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetEffectParameters: *const fn (
             self: *const IXAudio2Voice,
             EffectIndex: u32,
             // TODO: what to do with BytesParamIndex 2?
             pParameters: ?*anyopaque,
             ParametersByteSize: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetFilterParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetFilterParameters: *const fn (
             self: *const IXAudio2Voice,
             pParameters: ?*const XAUDIO2_FILTER_PARAMETERS,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFilterParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFilterParameters: *const fn (
             self: *const IXAudio2Voice,
             pParameters: ?*XAUDIO2_FILTER_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetOutputFilterParameters: *const fn(
+        ) callconv(.winapi) void,
+        SetOutputFilterParameters: *const fn (
             self: *const IXAudio2Voice,
             pDestinationVoice: ?*IXAudio2Voice,
             pParameters: ?*const XAUDIO2_FILTER_PARAMETERS,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetOutputFilterParameters: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetOutputFilterParameters: *const fn (
             self: *const IXAudio2Voice,
             pDestinationVoice: ?*IXAudio2Voice,
             pParameters: ?*XAUDIO2_FILTER_PARAMETERS,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetVolume: *const fn(
+        ) callconv(.winapi) void,
+        SetVolume: *const fn (
             self: *const IXAudio2Voice,
             Volume: f32,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetVolume: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetVolume: *const fn (
             self: *const IXAudio2Voice,
             pVolume: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetChannelVolumes: *const fn(
+        ) callconv(.winapi) void,
+        SetChannelVolumes: *const fn (
             self: *const IXAudio2Voice,
             Channels: u32,
             pVolumes: [*]const f32,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetChannelVolumes: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetChannelVolumes: *const fn (
             self: *const IXAudio2Voice,
             Channels: u32,
             pVolumes: [*]f32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetOutputMatrix: *const fn(
+        ) callconv(.winapi) void,
+        SetOutputMatrix: *const fn (
             self: *const IXAudio2Voice,
             pDestinationVoice: ?*IXAudio2Voice,
             SourceChannels: u32,
             DestinationChannels: u32,
             pLevelMatrix: ?*const f32,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetOutputMatrix: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetOutputMatrix: *const fn (
             self: *const IXAudio2Voice,
             pDestinationVoice: ?*IXAudio2Voice,
             SourceChannels: u32,
             DestinationChannels: u32,
             pLevelMatrix: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        DestroyVoice: *const fn(
+        ) callconv(.winapi) void,
+        DestroyVoice: *const fn (
             self: *const IXAudio2Voice,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
-    pub fn GetVoiceDetails(self: *const IXAudio2Voice, pVoiceDetails: ?*XAUDIO2_VOICE_DETAILS) callconv(.Inline) void {
+    pub inline fn GetVoiceDetails(self: *const IXAudio2Voice, pVoiceDetails: ?*XAUDIO2_VOICE_DETAILS) void {
         return self.vtable.GetVoiceDetails(self, pVoiceDetails);
     }
-    pub fn SetOutputVoices(self: *const IXAudio2Voice, pSendList: ?*const XAUDIO2_VOICE_SENDS) callconv(.Inline) HRESULT {
+    pub inline fn SetOutputVoices(self: *const IXAudio2Voice, pSendList: ?*const XAUDIO2_VOICE_SENDS) HRESULT {
         return self.vtable.SetOutputVoices(self, pSendList);
     }
-    pub fn SetEffectChain(self: *const IXAudio2Voice, pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN) callconv(.Inline) HRESULT {
+    pub inline fn SetEffectChain(self: *const IXAudio2Voice, pEffectChain: ?*const XAUDIO2_EFFECT_CHAIN) HRESULT {
         return self.vtable.SetEffectChain(self, pEffectChain);
     }
-    pub fn EnableEffect(self: *const IXAudio2Voice, EffectIndex: u32, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn EnableEffect(self: *const IXAudio2Voice, EffectIndex: u32, OperationSet: u32) HRESULT {
         return self.vtable.EnableEffect(self, EffectIndex, OperationSet);
     }
-    pub fn DisableEffect(self: *const IXAudio2Voice, EffectIndex: u32, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn DisableEffect(self: *const IXAudio2Voice, EffectIndex: u32, OperationSet: u32) HRESULT {
         return self.vtable.DisableEffect(self, EffectIndex, OperationSet);
     }
-    pub fn GetEffectState(self: *const IXAudio2Voice, EffectIndex: u32, pEnabled: ?*BOOL) callconv(.Inline) void {
+    pub inline fn GetEffectState(self: *const IXAudio2Voice, EffectIndex: u32, pEnabled: ?*BOOL) void {
         return self.vtable.GetEffectState(self, EffectIndex, pEnabled);
     }
-    pub fn SetEffectParameters(self: *const IXAudio2Voice, EffectIndex: u32, pParameters: ?*const anyopaque, ParametersByteSize: u32, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetEffectParameters(self: *const IXAudio2Voice, EffectIndex: u32, pParameters: ?*const anyopaque, ParametersByteSize: u32, OperationSet: u32) HRESULT {
         return self.vtable.SetEffectParameters(self, EffectIndex, pParameters, ParametersByteSize, OperationSet);
     }
-    pub fn GetEffectParameters(self: *const IXAudio2Voice, EffectIndex: u32, pParameters: ?*anyopaque, ParametersByteSize: u32) callconv(.Inline) HRESULT {
+    pub inline fn GetEffectParameters(self: *const IXAudio2Voice, EffectIndex: u32, pParameters: ?*anyopaque, ParametersByteSize: u32) HRESULT {
         return self.vtable.GetEffectParameters(self, EffectIndex, pParameters, ParametersByteSize);
     }
-    pub fn SetFilterParameters(self: *const IXAudio2Voice, pParameters: ?*const XAUDIO2_FILTER_PARAMETERS, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetFilterParameters(self: *const IXAudio2Voice, pParameters: ?*const XAUDIO2_FILTER_PARAMETERS, OperationSet: u32) HRESULT {
         return self.vtable.SetFilterParameters(self, pParameters, OperationSet);
     }
-    pub fn GetFilterParameters(self: *const IXAudio2Voice, pParameters: ?*XAUDIO2_FILTER_PARAMETERS) callconv(.Inline) void {
+    pub inline fn GetFilterParameters(self: *const IXAudio2Voice, pParameters: ?*XAUDIO2_FILTER_PARAMETERS) void {
         return self.vtable.GetFilterParameters(self, pParameters);
     }
-    pub fn SetOutputFilterParameters(self: *const IXAudio2Voice, pDestinationVoice: ?*IXAudio2Voice, pParameters: ?*const XAUDIO2_FILTER_PARAMETERS, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetOutputFilterParameters(self: *const IXAudio2Voice, pDestinationVoice: ?*IXAudio2Voice, pParameters: ?*const XAUDIO2_FILTER_PARAMETERS, OperationSet: u32) HRESULT {
         return self.vtable.SetOutputFilterParameters(self, pDestinationVoice, pParameters, OperationSet);
     }
-    pub fn GetOutputFilterParameters(self: *const IXAudio2Voice, pDestinationVoice: ?*IXAudio2Voice, pParameters: ?*XAUDIO2_FILTER_PARAMETERS) callconv(.Inline) void {
+    pub inline fn GetOutputFilterParameters(self: *const IXAudio2Voice, pDestinationVoice: ?*IXAudio2Voice, pParameters: ?*XAUDIO2_FILTER_PARAMETERS) void {
         return self.vtable.GetOutputFilterParameters(self, pDestinationVoice, pParameters);
     }
-    pub fn SetVolume(self: *const IXAudio2Voice, Volume: f32, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetVolume(self: *const IXAudio2Voice, Volume: f32, OperationSet: u32) HRESULT {
         return self.vtable.SetVolume(self, Volume, OperationSet);
     }
-    pub fn GetVolume(self: *const IXAudio2Voice, pVolume: ?*f32) callconv(.Inline) void {
+    pub inline fn GetVolume(self: *const IXAudio2Voice, pVolume: ?*f32) void {
         return self.vtable.GetVolume(self, pVolume);
     }
-    pub fn SetChannelVolumes(self: *const IXAudio2Voice, Channels: u32, pVolumes: [*]const f32, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetChannelVolumes(self: *const IXAudio2Voice, Channels: u32, pVolumes: [*]const f32, OperationSet: u32) HRESULT {
         return self.vtable.SetChannelVolumes(self, Channels, pVolumes, OperationSet);
     }
-    pub fn GetChannelVolumes(self: *const IXAudio2Voice, Channels: u32, pVolumes: [*]f32) callconv(.Inline) void {
+    pub inline fn GetChannelVolumes(self: *const IXAudio2Voice, Channels: u32, pVolumes: [*]f32) void {
         return self.vtable.GetChannelVolumes(self, Channels, pVolumes);
     }
-    pub fn SetOutputMatrix(self: *const IXAudio2Voice, pDestinationVoice: ?*IXAudio2Voice, SourceChannels: u32, DestinationChannels: u32, pLevelMatrix: ?*const f32, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetOutputMatrix(self: *const IXAudio2Voice, pDestinationVoice: ?*IXAudio2Voice, SourceChannels: u32, DestinationChannels: u32, pLevelMatrix: ?*const f32, OperationSet: u32) HRESULT {
         return self.vtable.SetOutputMatrix(self, pDestinationVoice, SourceChannels, DestinationChannels, pLevelMatrix, OperationSet);
     }
-    pub fn GetOutputMatrix(self: *const IXAudio2Voice, pDestinationVoice: ?*IXAudio2Voice, SourceChannels: u32, DestinationChannels: u32, pLevelMatrix: ?*f32) callconv(.Inline) void {
+    pub inline fn GetOutputMatrix(self: *const IXAudio2Voice, pDestinationVoice: ?*IXAudio2Voice, SourceChannels: u32, DestinationChannels: u32, pLevelMatrix: ?*f32) void {
         return self.vtable.GetOutputMatrix(self, pDestinationVoice, SourceChannels, DestinationChannels, pLevelMatrix);
     }
-    pub fn DestroyVoice(self: *const IXAudio2Voice) callconv(.Inline) void {
+    pub inline fn DestroyVoice(self: *const IXAudio2Voice) void {
         return self.vtable.DestroyVoice(self);
     }
 };
@@ -813,80 +813,80 @@ pub const IXAudio2Voice = extern union {
 pub const IXAudio2SourceVoice = extern union {
     pub const VTable = extern struct {
         base: IXAudio2Voice.VTable,
-        Start: *const fn(
+        Start: *const fn (
             self: *const IXAudio2SourceVoice,
             Flags: u32,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Stop: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Stop: *const fn (
             self: *const IXAudio2SourceVoice,
             Flags: u32,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SubmitSourceBuffer: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SubmitSourceBuffer: *const fn (
             self: *const IXAudio2SourceVoice,
             pBuffer: ?*const XAUDIO2_BUFFER,
             pBufferWMA: ?*const XAUDIO2_BUFFER_WMA,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        FlushSourceBuffers: *const fn(
+        ) callconv(.winapi) HRESULT,
+        FlushSourceBuffers: *const fn (
             self: *const IXAudio2SourceVoice,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        Discontinuity: *const fn(
+        ) callconv(.winapi) HRESULT,
+        Discontinuity: *const fn (
             self: *const IXAudio2SourceVoice,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        ExitLoop: *const fn(
+        ) callconv(.winapi) HRESULT,
+        ExitLoop: *const fn (
             self: *const IXAudio2SourceVoice,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetState: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetState: *const fn (
             self: *const IXAudio2SourceVoice,
             pVoiceState: ?*XAUDIO2_VOICE_STATE,
             Flags: u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetFrequencyRatio: *const fn(
+        ) callconv(.winapi) void,
+        SetFrequencyRatio: *const fn (
             self: *const IXAudio2SourceVoice,
             Ratio: f32,
             OperationSet: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetFrequencyRatio: *const fn(
+        ) callconv(.winapi) HRESULT,
+        GetFrequencyRatio: *const fn (
             self: *const IXAudio2SourceVoice,
             pRatio: ?*f32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        SetSourceSampleRate: *const fn(
+        ) callconv(.winapi) void,
+        SetSourceSampleRate: *const fn (
             self: *const IXAudio2SourceVoice,
             NewSourceSampleRate: u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IXAudio2Voice: IXAudio2Voice,
-    pub fn Start(self: *const IXAudio2SourceVoice, Flags: u32, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn Start(self: *const IXAudio2SourceVoice, Flags: u32, OperationSet: u32) HRESULT {
         return self.vtable.Start(self, Flags, OperationSet);
     }
-    pub fn Stop(self: *const IXAudio2SourceVoice, Flags: u32, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn Stop(self: *const IXAudio2SourceVoice, Flags: u32, OperationSet: u32) HRESULT {
         return self.vtable.Stop(self, Flags, OperationSet);
     }
-    pub fn SubmitSourceBuffer(self: *const IXAudio2SourceVoice, pBuffer: ?*const XAUDIO2_BUFFER, pBufferWMA: ?*const XAUDIO2_BUFFER_WMA) callconv(.Inline) HRESULT {
+    pub inline fn SubmitSourceBuffer(self: *const IXAudio2SourceVoice, pBuffer: ?*const XAUDIO2_BUFFER, pBufferWMA: ?*const XAUDIO2_BUFFER_WMA) HRESULT {
         return self.vtable.SubmitSourceBuffer(self, pBuffer, pBufferWMA);
     }
-    pub fn FlushSourceBuffers(self: *const IXAudio2SourceVoice) callconv(.Inline) HRESULT {
+    pub inline fn FlushSourceBuffers(self: *const IXAudio2SourceVoice) HRESULT {
         return self.vtable.FlushSourceBuffers(self);
     }
-    pub fn Discontinuity(self: *const IXAudio2SourceVoice) callconv(.Inline) HRESULT {
+    pub inline fn Discontinuity(self: *const IXAudio2SourceVoice) HRESULT {
         return self.vtable.Discontinuity(self);
     }
-    pub fn ExitLoop(self: *const IXAudio2SourceVoice, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn ExitLoop(self: *const IXAudio2SourceVoice, OperationSet: u32) HRESULT {
         return self.vtable.ExitLoop(self, OperationSet);
     }
-    pub fn GetState(self: *const IXAudio2SourceVoice, pVoiceState: ?*XAUDIO2_VOICE_STATE, Flags: u32) callconv(.Inline) void {
+    pub inline fn GetState(self: *const IXAudio2SourceVoice, pVoiceState: ?*XAUDIO2_VOICE_STATE, Flags: u32) void {
         return self.vtable.GetState(self, pVoiceState, Flags);
     }
-    pub fn SetFrequencyRatio(self: *const IXAudio2SourceVoice, Ratio: f32, OperationSet: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetFrequencyRatio(self: *const IXAudio2SourceVoice, Ratio: f32, OperationSet: u32) HRESULT {
         return self.vtable.SetFrequencyRatio(self, Ratio, OperationSet);
     }
-    pub fn GetFrequencyRatio(self: *const IXAudio2SourceVoice, pRatio: ?*f32) callconv(.Inline) void {
+    pub inline fn GetFrequencyRatio(self: *const IXAudio2SourceVoice, pRatio: ?*f32) void {
         return self.vtable.GetFrequencyRatio(self, pRatio);
     }
-    pub fn SetSourceSampleRate(self: *const IXAudio2SourceVoice, NewSourceSampleRate: u32) callconv(.Inline) HRESULT {
+    pub inline fn SetSourceSampleRate(self: *const IXAudio2SourceVoice, NewSourceSampleRate: u32) HRESULT {
         return self.vtable.SetSourceSampleRate(self, NewSourceSampleRate);
     }
 };
@@ -902,93 +902,93 @@ pub const IXAudio2SubmixVoice = extern union {
 pub const IXAudio2MasteringVoice = extern union {
     pub const VTable = extern struct {
         base: IXAudio2Voice.VTable,
-        GetChannelMask: *const fn(
+        GetChannelMask: *const fn (
             self: *const IXAudio2MasteringVoice,
             pChannelmask: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IXAudio2Voice: IXAudio2Voice,
-    pub fn GetChannelMask(self: *const IXAudio2MasteringVoice, pChannelmask: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetChannelMask(self: *const IXAudio2MasteringVoice, pChannelmask: ?*u32) HRESULT {
         return self.vtable.GetChannelMask(self, pChannelmask);
     }
 };
 
 pub const IXAudio2EngineCallback = extern union {
     pub const VTable = extern struct {
-        OnProcessingPassStart: *const fn(
+        OnProcessingPassStart: *const fn (
             self: *const IXAudio2EngineCallback,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        OnProcessingPassEnd: *const fn(
+        ) callconv(.winapi) void,
+        OnProcessingPassEnd: *const fn (
             self: *const IXAudio2EngineCallback,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        OnCriticalError: *const fn(
+        ) callconv(.winapi) void,
+        OnCriticalError: *const fn (
             self: *const IXAudio2EngineCallback,
             Error: HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
-    pub fn OnProcessingPassStart(self: *const IXAudio2EngineCallback) callconv(.Inline) void {
+    pub inline fn OnProcessingPassStart(self: *const IXAudio2EngineCallback) void {
         return self.vtable.OnProcessingPassStart(self);
     }
-    pub fn OnProcessingPassEnd(self: *const IXAudio2EngineCallback) callconv(.Inline) void {
+    pub inline fn OnProcessingPassEnd(self: *const IXAudio2EngineCallback) void {
         return self.vtable.OnProcessingPassEnd(self);
     }
-    pub fn OnCriticalError(self: *const IXAudio2EngineCallback, Error: HRESULT) callconv(.Inline) void {
+    pub inline fn OnCriticalError(self: *const IXAudio2EngineCallback, Error: HRESULT) void {
         return self.vtable.OnCriticalError(self, Error);
     }
 };
 
 pub const IXAudio2VoiceCallback = extern union {
     pub const VTable = extern struct {
-        OnVoiceProcessingPassStart: *const fn(
+        OnVoiceProcessingPassStart: *const fn (
             self: *const IXAudio2VoiceCallback,
             BytesRequired: u32,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        OnVoiceProcessingPassEnd: *const fn(
+        ) callconv(.winapi) void,
+        OnVoiceProcessingPassEnd: *const fn (
             self: *const IXAudio2VoiceCallback,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        OnStreamEnd: *const fn(
+        ) callconv(.winapi) void,
+        OnStreamEnd: *const fn (
             self: *const IXAudio2VoiceCallback,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        OnBufferStart: *const fn(
-            self: *const IXAudio2VoiceCallback,
-            pBufferContext: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        OnBufferEnd: *const fn(
+        ) callconv(.winapi) void,
+        OnBufferStart: *const fn (
             self: *const IXAudio2VoiceCallback,
             pBufferContext: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        OnLoopEnd: *const fn(
+        ) callconv(.winapi) void,
+        OnBufferEnd: *const fn (
             self: *const IXAudio2VoiceCallback,
             pBufferContext: ?*anyopaque,
-        ) callconv(@import("std").os.windows.WINAPI) void,
-        OnVoiceError: *const fn(
+        ) callconv(.winapi) void,
+        OnLoopEnd: *const fn (
+            self: *const IXAudio2VoiceCallback,
+            pBufferContext: ?*anyopaque,
+        ) callconv(.winapi) void,
+        OnVoiceError: *const fn (
             self: *const IXAudio2VoiceCallback,
             pBufferContext: ?*anyopaque,
             Error: HRESULT,
-        ) callconv(@import("std").os.windows.WINAPI) void,
+        ) callconv(.winapi) void,
     };
     vtable: *const VTable,
-    pub fn OnVoiceProcessingPassStart(self: *const IXAudio2VoiceCallback, BytesRequired: u32) callconv(.Inline) void {
+    pub inline fn OnVoiceProcessingPassStart(self: *const IXAudio2VoiceCallback, BytesRequired: u32) void {
         return self.vtable.OnVoiceProcessingPassStart(self, BytesRequired);
     }
-    pub fn OnVoiceProcessingPassEnd(self: *const IXAudio2VoiceCallback) callconv(.Inline) void {
+    pub inline fn OnVoiceProcessingPassEnd(self: *const IXAudio2VoiceCallback) void {
         return self.vtable.OnVoiceProcessingPassEnd(self);
     }
-    pub fn OnStreamEnd(self: *const IXAudio2VoiceCallback) callconv(.Inline) void {
+    pub inline fn OnStreamEnd(self: *const IXAudio2VoiceCallback) void {
         return self.vtable.OnStreamEnd(self);
     }
-    pub fn OnBufferStart(self: *const IXAudio2VoiceCallback, pBufferContext: ?*anyopaque) callconv(.Inline) void {
+    pub inline fn OnBufferStart(self: *const IXAudio2VoiceCallback, pBufferContext: ?*anyopaque) void {
         return self.vtable.OnBufferStart(self, pBufferContext);
     }
-    pub fn OnBufferEnd(self: *const IXAudio2VoiceCallback, pBufferContext: ?*anyopaque) callconv(.Inline) void {
+    pub inline fn OnBufferEnd(self: *const IXAudio2VoiceCallback, pBufferContext: ?*anyopaque) void {
         return self.vtable.OnBufferEnd(self, pBufferContext);
     }
-    pub fn OnLoopEnd(self: *const IXAudio2VoiceCallback, pBufferContext: ?*anyopaque) callconv(.Inline) void {
+    pub inline fn OnLoopEnd(self: *const IXAudio2VoiceCallback, pBufferContext: ?*anyopaque) void {
         return self.vtable.OnLoopEnd(self, pBufferContext);
     }
-    pub fn OnVoiceError(self: *const IXAudio2VoiceCallback, pBufferContext: ?*anyopaque, Error: HRESULT) callconv(.Inline) void {
+    pub inline fn OnVoiceError(self: *const IXAudio2VoiceCallback, pBufferContext: ?*anyopaque, Error: HRESULT) void {
         return self.vtable.OnVoiceError(self, pBufferContext, Error);
     }
 };
@@ -1120,39 +1120,38 @@ pub const IID_IXAPOHrtfParameters = &IID_IXAPOHrtfParameters_Value;
 pub const IXAPOHrtfParameters = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        SetSourcePosition: *const fn(
+        SetSourcePosition: *const fn (
             self: *const IXAPOHrtfParameters,
             position: ?*const HrtfPosition,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSourceOrientation: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSourceOrientation: *const fn (
             self: *const IXAPOHrtfParameters,
             orientation: ?*const HrtfOrientation,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetSourceGain: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetSourceGain: *const fn (
             self: *const IXAPOHrtfParameters,
             gain: f32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        SetEnvironment: *const fn(
+        ) callconv(.winapi) HRESULT,
+        SetEnvironment: *const fn (
             self: *const IXAPOHrtfParameters,
             environment: HrtfEnvironment,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn SetSourcePosition(self: *const IXAPOHrtfParameters, position: ?*const HrtfPosition) callconv(.Inline) HRESULT {
+    pub inline fn SetSourcePosition(self: *const IXAPOHrtfParameters, position: ?*const HrtfPosition) HRESULT {
         return self.vtable.SetSourcePosition(self, position);
     }
-    pub fn SetSourceOrientation(self: *const IXAPOHrtfParameters, orientation: ?*const HrtfOrientation) callconv(.Inline) HRESULT {
+    pub inline fn SetSourceOrientation(self: *const IXAPOHrtfParameters, orientation: ?*const HrtfOrientation) HRESULT {
         return self.vtable.SetSourceOrientation(self, orientation);
     }
-    pub fn SetSourceGain(self: *const IXAPOHrtfParameters, gain: f32) callconv(.Inline) HRESULT {
+    pub inline fn SetSourceGain(self: *const IXAPOHrtfParameters, gain: f32) HRESULT {
         return self.vtable.SetSourceGain(self, gain);
     }
-    pub fn SetEnvironment(self: *const IXAPOHrtfParameters, environment: HrtfEnvironment) callconv(.Inline) HRESULT {
+    pub inline fn SetEnvironment(self: *const IXAPOHrtfParameters, environment: HrtfEnvironment) HRESULT {
         return self.vtable.SetEnvironment(self, environment);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (5)
@@ -1163,28 +1162,27 @@ pub extern "xaudio2_8" fn CreateFX(
     // TODO: what to do with BytesParamIndex 3?
     pInitDat: ?*const anyopaque,
     InitDataByteSize: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "xaudio2_8" fn XAudio2CreateWithVersionInfo(
     ppXAudio2: ?*?*IXAudio2,
     Flags: u32,
     XAudio2Processor: u32,
     ntddiVersion: u32,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "xaudio2_8" fn CreateAudioVolumeMeter(
     ppApo: ?*?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "xaudio2_8" fn CreateAudioReverb(
     ppApo: ?*?*IUnknown,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 pub extern "hrtfapo" fn CreateHrtfApo(
     init: ?*const HrtfApoInit,
     xApo: **IXAPO,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
-
+) callconv(.winapi) HRESULT;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -1201,9 +1199,7 @@ const PWSTR = @import("../../foundation.zig").PWSTR;
 const WAVEFORMATEX = @import("../../media/audio.zig").WAVEFORMATEX;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

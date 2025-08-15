@@ -12,14 +12,14 @@ pub const IID_IRandomAccessStreamFileAccessMode = &IID_IRandomAccessStreamFileAc
 pub const IRandomAccessStreamFileAccessMode = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        GetMode: *const fn(
+        GetMode: *const fn (
             self: *const IRandomAccessStreamFileAccessMode,
             fileAccessMode: ?*u32,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn GetMode(self: *const IRandomAccessStreamFileAccessMode, fileAccessMode: ?*u32) callconv(.Inline) HRESULT {
+    pub inline fn GetMode(self: *const IRandomAccessStreamFileAccessMode, fileAccessMode: ?*u32) HRESULT {
         return self.vtable.GetMode(self, fileAccessMode);
     }
 };
@@ -30,13 +30,13 @@ pub const IID_IUnbufferedFileHandleOplockCallback = &IID_IUnbufferedFileHandleOp
 pub const IUnbufferedFileHandleOplockCallback = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OnBrokenCallback: *const fn(
+        OnBrokenCallback: *const fn (
             self: *const IUnbufferedFileHandleOplockCallback,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OnBrokenCallback(self: *const IUnbufferedFileHandleOplockCallback) callconv(.Inline) HRESULT {
+    pub inline fn OnBrokenCallback(self: *const IUnbufferedFileHandleOplockCallback) HRESULT {
         return self.vtable.OnBrokenCallback(self);
     }
 };
@@ -47,21 +47,21 @@ pub const IID_IUnbufferedFileHandleProvider = &IID_IUnbufferedFileHandleProvider
 pub const IUnbufferedFileHandleProvider = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OpenUnbufferedFileHandle: *const fn(
+        OpenUnbufferedFileHandle: *const fn (
             self: *const IUnbufferedFileHandleProvider,
             oplockBreakCallback: ?*IUnbufferedFileHandleOplockCallback,
             fileHandle: ?*usize,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        CloseUnbufferedFileHandle: *const fn(
+        ) callconv(.winapi) HRESULT,
+        CloseUnbufferedFileHandle: *const fn (
             self: *const IUnbufferedFileHandleProvider,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OpenUnbufferedFileHandle(self: *const IUnbufferedFileHandleProvider, oplockBreakCallback: ?*IUnbufferedFileHandleOplockCallback, fileHandle: ?*usize) callconv(.Inline) HRESULT {
+    pub inline fn OpenUnbufferedFileHandle(self: *const IUnbufferedFileHandleProvider, oplockBreakCallback: ?*IUnbufferedFileHandleOplockCallback, fileHandle: ?*usize) HRESULT {
         return self.vtable.OpenUnbufferedFileHandle(self, oplockBreakCallback, fileHandle);
     }
-    pub fn CloseUnbufferedFileHandle(self: *const IUnbufferedFileHandleProvider) callconv(.Inline) HRESULT {
+    pub inline fn CloseUnbufferedFileHandle(self: *const IUnbufferedFileHandleProvider) HRESULT {
         return self.vtable.CloseUnbufferedFileHandle(self);
     }
 };
@@ -100,7 +100,7 @@ pub const HANDLE_OPTIONS = packed struct(u32) {
     OVERLAPPED: u1 = 0,
     WRITE_THROUGH: u1 = 0,
 };
-pub const HO_NONE = HANDLE_OPTIONS{ };
+pub const HO_NONE = HANDLE_OPTIONS{};
 pub const HO_OPEN_REQUIRING_OPLOCK = HANDLE_OPTIONS{ .OPEN_REQUIRING_OPLOCK = 1 };
 pub const HO_DELETE_ON_CLOSE = HANDLE_OPTIONS{ .DELETE_ON_CLOSE = 1 };
 pub const HO_SEQUENTIAL_SCAN = HANDLE_OPTIONS{ .SEQUENTIAL_SCAN = 1 };
@@ -143,7 +143,7 @@ pub const HANDLE_ACCESS_OPTIONS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const HAO_NONE = HANDLE_ACCESS_OPTIONS{ };
+pub const HAO_NONE = HANDLE_ACCESS_OPTIONS{};
 pub const HAO_READ_ATTRIBUTES = HANDLE_ACCESS_OPTIONS{ .READ_ATTRIBUTES = 1 };
 pub const HAO_READ = HANDLE_ACCESS_OPTIONS{
     ._0 = 1,
@@ -196,7 +196,7 @@ pub const HANDLE_SHARING_OPTIONS = packed struct(u32) {
     _30: u1 = 0,
     _31: u1 = 0,
 };
-pub const HSO_SHARE_NONE = HANDLE_SHARING_OPTIONS{ };
+pub const HSO_SHARE_NONE = HANDLE_SHARING_OPTIONS{};
 pub const HSO_SHARE_READ = HANDLE_SHARING_OPTIONS{ .READ = 1 };
 pub const HSO_SHARE_WRITE = HANDLE_SHARING_OPTIONS{ .WRITE = 1 };
 pub const HSO_SHARE_DELETE = HANDLE_SHARING_OPTIONS{ .DELETE = 1 };
@@ -220,13 +220,13 @@ pub const IID_IOplockBreakingHandler = &IID_IOplockBreakingHandler_Value;
 pub const IOplockBreakingHandler = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        OplockBreaking: *const fn(
+        OplockBreaking: *const fn (
             self: *const IOplockBreakingHandler,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn OplockBreaking(self: *const IOplockBreakingHandler) callconv(.Inline) HRESULT {
+    pub inline fn OplockBreaking(self: *const IOplockBreakingHandler) HRESULT {
         return self.vtable.OplockBreaking(self);
     }
 };
@@ -237,18 +237,18 @@ pub const IID_IStorageItemHandleAccess = &IID_IStorageItemHandleAccess_Value;
 pub const IStorageItemHandleAccess = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Create: *const fn(
+        Create: *const fn (
             self: *const IStorageItemHandleAccess,
             accessOptions: HANDLE_ACCESS_OPTIONS,
             sharingOptions: HANDLE_SHARING_OPTIONS,
             options: HANDLE_OPTIONS,
             oplockBreakingHandler: ?*IOplockBreakingHandler,
             interopHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Create(self: *const IStorageItemHandleAccess, accessOptions: HANDLE_ACCESS_OPTIONS, sharingOptions: HANDLE_SHARING_OPTIONS, options: HANDLE_OPTIONS, oplockBreakingHandler: ?*IOplockBreakingHandler, interopHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn Create(self: *const IStorageItemHandleAccess, accessOptions: HANDLE_ACCESS_OPTIONS, sharingOptions: HANDLE_SHARING_OPTIONS, options: HANDLE_OPTIONS, oplockBreakingHandler: ?*IOplockBreakingHandler, interopHandle: ?*?HANDLE) HRESULT {
         return self.vtable.Create(self, accessOptions, sharingOptions, options, oplockBreakingHandler, interopHandle);
     }
 };
@@ -259,7 +259,7 @@ pub const IID_IStorageFolderHandleAccess = &IID_IStorageFolderHandleAccess_Value
 pub const IStorageFolderHandleAccess = extern union {
     pub const VTable = extern struct {
         base: IUnknown.VTable,
-        Create: *const fn(
+        Create: *const fn (
             self: *const IStorageFolderHandleAccess,
             fileName: ?[*:0]const u16,
             creationOptions: HANDLE_CREATION_OPTIONS,
@@ -268,15 +268,14 @@ pub const IStorageFolderHandleAccess = extern union {
             options: HANDLE_OPTIONS,
             oplockBreakingHandler: ?*IOplockBreakingHandler,
             interopHandle: ?*?HANDLE,
-        ) callconv(@import("std").os.windows.WINAPI) HRESULT,
+        ) callconv(.winapi) HRESULT,
     };
     vtable: *const VTable,
     IUnknown: IUnknown,
-    pub fn Create(self: *const IStorageFolderHandleAccess, fileName: ?[*:0]const u16, creationOptions: HANDLE_CREATION_OPTIONS, accessOptions: HANDLE_ACCESS_OPTIONS, sharingOptions: HANDLE_SHARING_OPTIONS, options: HANDLE_OPTIONS, oplockBreakingHandler: ?*IOplockBreakingHandler, interopHandle: ?*?HANDLE) callconv(.Inline) HRESULT {
+    pub inline fn Create(self: *const IStorageFolderHandleAccess, fileName: ?[*:0]const u16, creationOptions: HANDLE_CREATION_OPTIONS, accessOptions: HANDLE_ACCESS_OPTIONS, sharingOptions: HANDLE_SHARING_OPTIONS, options: HANDLE_OPTIONS, oplockBreakingHandler: ?*IOplockBreakingHandler, interopHandle: ?*?HANDLE) HRESULT {
         return self.vtable.Create(self, fileName, creationOptions, accessOptions, sharingOptions, options, oplockBreakingHandler, interopHandle);
     }
 };
-
 
 //--------------------------------------------------------------------------------
 // Section: Functions (0)
@@ -295,9 +294,7 @@ const IUnknown = @import("../../system/com.zig").IUnknown;
 const PWSTR = @import("../../foundation.zig").PWSTR;
 
 test {
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;

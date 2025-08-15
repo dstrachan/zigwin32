@@ -9722,7 +9722,7 @@ pub const WIN32_ERROR = enum(u32) {
     ERROR_VHD_CHANGE_TRACKING_DISABLED = 3225026602,
     ERROR_VHD_MISSING_CHANGE_TRACKING_INFORMATION = 3225026608,
     ERROR_QUERY_STORAGE_ERROR = 2151284737,
-_,
+    _,
     pub const WAIT_OBJECT_0 = .NO_ERROR;
     pub const WAIT_ABANDONED_0 = .WAIT_ABANDONED;
     pub const ERROR_SUCCESS = .NO_ERROR;
@@ -16346,7 +16346,7 @@ pub const HINSTANCE = @import("std").os.windows.HINSTANCE;
 
 pub const HRESULT = i32;
 
-pub const HWND = *opaque{};
+pub const HWND = *opaque {};
 
 pub const LPARAM = isize;
 
@@ -16354,7 +16354,7 @@ pub const LRESULT = isize;
 
 pub const NTSTATUS = i32;
 
-pub const PSID = *opaque{};
+pub const PSID = *opaque {};
 
 pub const PSTR = [*:0]u8;
 
@@ -16363,7 +16363,7 @@ pub const PWSTR = [*:0]u16;
 pub const WPARAM = usize;
 
 // TODO: this type has an InvalidHandleValue of '0', what can Zig do with this information?
-pub const HRSRC = *opaque{};
+pub const HRSRC = *opaque {};
 
 pub const CHAR = u8;
 
@@ -16401,14 +16401,11 @@ pub const DECIMAL = extern struct {
     },
 };
 
-pub const FARPROC = *const fn(
-) callconv(@import("std").os.windows.WINAPI) isize;
+pub const FARPROC = *const fn () callconv(.winapi) isize;
 
-pub const NEARPROC = *const fn(
-) callconv(@import("std").os.windows.WINAPI) isize;
+pub const NEARPROC = *const fn () callconv(.winapi) isize;
 
-pub const PROC = *const fn(
-) callconv(@import("std").os.windows.WINAPI) isize;
+pub const PROC = *const fn () callconv(.winapi) isize;
 
 pub const HSPRITE__ = extern struct {
     unused: i32,
@@ -16509,65 +16506,64 @@ pub const LUID = extern struct {
     HighPart: i32,
 };
 
-pub const PAPCFUNC = *const fn(
+pub const PAPCFUNC = *const fn (
     Parameter: usize,
-) callconv(@import("std").os.windows.WINAPI) void;
-
+) callconv(.winapi) void;
 
 //--------------------------------------------------------------------------------
 // Section: Functions (19)
 //--------------------------------------------------------------------------------
 pub extern "oleaut32" fn SysAllocString(
     psz: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) ?BSTR;
+) callconv(.winapi) ?BSTR;
 
 pub extern "oleaut32" fn SysReAllocString(
     pbstr: ?*?BSTR,
     psz: ?[*:0]const u16,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 pub extern "oleaut32" fn SysAllocStringLen(
     strIn: ?[*:0]const u16,
     ui: u32,
-) callconv(@import("std").os.windows.WINAPI) ?BSTR;
+) callconv(.winapi) ?BSTR;
 
 pub extern "oleaut32" fn SysReAllocStringLen(
     pbstr: ?*?BSTR,
     psz: ?[*:0]const u16,
     len: u32,
-) callconv(@import("std").os.windows.WINAPI) i32;
+) callconv(.winapi) i32;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "oleaut32" fn SysAddRefString(
     bstrString: ?BSTR,
-) callconv(@import("std").os.windows.WINAPI) HRESULT;
+) callconv(.winapi) HRESULT;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "oleaut32" fn SysReleaseString(
     bstrString: ?BSTR,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "oleaut32" fn SysFreeString(
     bstrString: ?BSTR,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 pub extern "oleaut32" fn SysStringLen(
     pbstr: ?BSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "oleaut32" fn SysStringByteLen(
     bstr: ?BSTR,
-) callconv(@import("std").os.windows.WINAPI) u32;
+) callconv(.winapi) u32;
 
 pub extern "oleaut32" fn SysAllocStringByteLen(
     psz: ?[*:0]const u8,
     len: u32,
-) callconv(@import("std").os.windows.WINAPI) ?BSTR;
+) callconv(.winapi) ?BSTR;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn CloseHandle(
     hObject: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn DuplicateHandle(
@@ -16578,47 +16574,45 @@ pub extern "kernel32" fn DuplicateHandle(
     dwDesiredAccess: u32,
     bInheritHandle: BOOL,
     dwOptions: DUPLICATE_HANDLE_OPTIONS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows10.0.10240'
 pub extern "api-ms-win-core-handle-l1-1-0" fn CompareObjectHandles(
     hFirstObjectHandle: ?HANDLE,
     hSecondObjectHandle: ?HANDLE,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn GetHandleInformation(
     hObject: ?HANDLE,
     lpdwFlags: ?*u32,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.0'
 pub extern "kernel32" fn SetHandleInformation(
     hObject: ?HANDLE,
     dwMask: u32,
     dwFlags: HANDLE_FLAGS,
-) callconv(@import("std").os.windows.WINAPI) BOOL;
+) callconv(.winapi) BOOL;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
-pub extern "kernel32" fn GetLastError(
-) callconv(@import("std").os.windows.WINAPI) WIN32_ERROR;
+pub extern "kernel32" fn GetLastError() callconv(.winapi) WIN32_ERROR;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "kernel32" fn SetLastError(
     dwErrCode: WIN32_ERROR,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "user32" fn SetLastErrorEx(
     dwErrCode: WIN32_ERROR,
     dwType: u32,
-) callconv(@import("std").os.windows.WINAPI) void;
+) callconv(.winapi) void;
 
 // TODO: this type is limited to platform 'windows5.1.2600'
 pub extern "ntdll" fn RtlNtStatusToDosError(
     Status: NTSTATUS,
-) callconv(@import("std").os.windows.WINAPI) u32;
-
+) callconv(.winapi) u32;
 
 //--------------------------------------------------------------------------------
 // Section: Unicode Aliases (0)
@@ -16629,14 +16623,20 @@ pub extern "ntdll" fn RtlNtStatusToDosError(
 
 test {
     // The following '_ = <FuncPtrType>' lines are a workaround for https://github.com/ziglang/zig/issues/4476
-    if (@hasDecl(@This(), "FARPROC")) { _ = FARPROC; }
-    if (@hasDecl(@This(), "NEARPROC")) { _ = NEARPROC; }
-    if (@hasDecl(@This(), "PROC")) { _ = PROC; }
-    if (@hasDecl(@This(), "PAPCFUNC")) { _ = PAPCFUNC; }
+    if (@hasDecl(@This(), "FARPROC")) {
+        _ = FARPROC;
+    }
+    if (@hasDecl(@This(), "NEARPROC")) {
+        _ = NEARPROC;
+    }
+    if (@hasDecl(@This(), "PROC")) {
+        _ = PROC;
+    }
+    if (@hasDecl(@This(), "PAPCFUNC")) {
+        _ = PAPCFUNC;
+    }
 
-    @setEvalBranchQuota(
-        comptime @import("std").meta.declarations(@This()).len * 3
-    );
+    @setEvalBranchQuota(comptime @import("std").meta.declarations(@This()).len * 3);
 
     // reference all the pub declarations
     if (!@import("builtin").is_test) return;
